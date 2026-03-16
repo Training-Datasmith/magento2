@@ -219,6 +219,35 @@ class Uploader extends \Magento\MediaStorage\Model\File\Uploader
     }
 
     /**
+     * Validate that a URL does not resolve to a private, loopback, or reserved IP address (SSRF prevention).
+     *
+     * @param string $url Full URL including scheme
+     * @return void
+     * @throws LocalizedException
+     */
+    private function validateUrlNotSsrf(string $url): void
+    {
+        $host = parse_url($url, PHP_URL_HOST);
+        if (!$host) {
+            throw new LocalizedException(__('Could not parse resource url.'));
+        }
+
+        // Resolve hostname to IP address
+        $ip = gethostbyname($host);
+
+        // Block loopback, link-local, private, and other reserved ranges
+        if (filter_var(
+            $ip,
+            FILTER_VALIDATE_IP,
+            FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE
+        ) === false) {
+            throw new LocalizedException(
+                __('URL "%1" resolves to a disallowed IP address.', $host)
+            );
+        }
+    }
+
+    /**
      * Writes a url-based file to the temp directory.
      *
      * @param string $url
@@ -228,6 +257,9 @@ class Uploader extends \Magento\MediaStorage\Model\File\Uploader
      */
     private function downloadFileFromUrl($url, $driver)
     {
+        // Reconstruct the full URL to validate against SSRF targets
+        $this->validateUrlNotSsrf($driver . '://' . $url);
+
         $parsedUrlPath = parse_url($url, PHP_URL_PATH);
 
         if (!$parsedUrlPath) {

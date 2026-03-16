@@ -9,6 +9,7 @@ declare(strict_types=1);
 namespace Magento\Catalog\Model\Product\Option\Type\File;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Encryption\Helper\Security;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\File\Size;
@@ -128,7 +129,10 @@ class ValidatorInfo extends Validator
         if ($this->validatePath($optionValue) && $validatorChain->isValid($this->fileFullPath, $optionValue['title'])) {
             return $this->rootDirectory->isReadable($this->fileRelativePath)
                 && isset($optionValue['secret_key'])
-                && $this->buildSecretKey($this->fileRelativePath) == $optionValue['secret_key'];
+                && Security::compareStrings(
+                    $this->buildSecretKey($this->fileRelativePath),
+                    (string)$optionValue['secret_key']
+                );
         } else {
             $errors = $this->getValidatorErrors($validatorChain->getErrors(), $optionValue, $option);
             if (count($errors) > 0) {

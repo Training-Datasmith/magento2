@@ -22,6 +22,7 @@ use Magento\Framework\Controller\Result\Raw as RawResult;
 use Magento\Framework\Controller\Result\RawFactory;
 use Magento\Framework\Controller\Result\RedirectFactory;
 use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
+use Magento\Framework\Encryption\Helper\Security;
 use Magento\Framework\Phrase;
 
 /**
@@ -74,7 +75,7 @@ class BackendValidator implements ValidatorInterface
                     BackendUrl::SECRET_KEY_PARAM_NAME
                 );
                 $secretKey = $this->backendUrl->getSecretKey();
-                $validSecretKey = ($secretKeyValue === $secretKey);
+                $validSecretKey = Security::compareStrings($secretKeyValue, $secretKey);
             }
             $valid = $validFormKey && $validSecretKey;
         }

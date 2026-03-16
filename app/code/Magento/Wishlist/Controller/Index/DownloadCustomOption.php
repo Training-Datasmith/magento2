@@ -14,6 +14,7 @@ use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\App\Filesystem\DirectoryList;
 use Magento\Framework\App\ObjectManager;
 use Magento\Framework\Controller\ResultFactory;
+use Magento\Framework\Encryption\Helper\Security;
 use Magento\Framework\Serialize\Serializer\Json;
 
 /**
@@ -97,7 +98,7 @@ class DownloadCustomOption extends \Magento\Wishlist\Controller\AbstractIndex im
             $info = $this->json->unserialize($option->getValue());
             $secretKey = $this->getRequest()->getParam('key');
 
-            if ($secretKey == $info['secret_key']) {
+            if (Security::compareStrings((string)$secretKey, (string)$info['secret_key'])) {
                 return $this->_fileResponseFactory->create(
                     $info['title'],
                     ['value' => $info['quote_path'], 'type' => 'filename'],
