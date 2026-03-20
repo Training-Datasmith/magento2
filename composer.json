@@ -403,9 +403,9 @@
             "Magento\\Sniffs\\": "dev/tests/static/framework/Magento/Sniffs/",
             "Magento\\Tools\\": "dev/tools/Magento/Tools/",
             "Magento\\Tools\\Sanity\\": "dev/build/publication/sanity/Magento/Tools/Sanity/",
-            "Magento\\TestFramework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
-            "Magento\\TestFramework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/",
-            "Magento\\PhpStan\\": "dev/tests/static/framework/Magento/PhpStan/"
+            "Magento\\Test_Framework\\Inspection\\": "dev/tests/static/framework/Magento/TestFramework/Inspection/",
+            "Magento\\Test_Framework\\Utility\\": "dev/tests/static/framework/Magento/TestFramework/Utility/",
+            "Magento\\Php_Stan\\": "dev/tests/static/framework/Magento/PhpStan/"
         }
     },
     "prefer-stable": true,
