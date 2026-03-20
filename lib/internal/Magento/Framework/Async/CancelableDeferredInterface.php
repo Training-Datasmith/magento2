@@ -4,8 +4,7 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Async;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Async;
  *
  * @api
  */
-interface CancelableDeferredInterface extends DeferredInterface
+interface Cancelable_Deferred_Interface extends Deferred_Interface
 {
     /**
      * Cancels the operation.
@@ -25,11 +24,10 @@ interface CancelableDeferredInterface extends DeferredInterface
      * @throws CancelingDeferredException When failed to cancel.
      */
     public function cancel(bool $force = false): void;
-
     /**
      * Whether the operation has been cancelled already.
      *
      * @return bool
      */
-    public function isCancelled(): bool;
+    public function is_cancelled(): bool;
 }

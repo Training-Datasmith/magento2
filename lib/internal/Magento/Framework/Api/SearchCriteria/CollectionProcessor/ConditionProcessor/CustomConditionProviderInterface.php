@@ -4,12 +4,10 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Framework\Api\Search_Criteria\Collection_Processor\Condition_Processor;
 
-namespace Magento\Framework\Api\SearchCriteria\CollectionProcessor\ConditionProcessor;
-
-use Magento\Framework\Exception\InputException;
-
+use Magento\Framework\Exception\Input_Exception;
 /**
  * Provides collections of custom condition processors (CustomConditionInterface)
  *
@@ -18,7 +16,7 @@ use Magento\Framework\Exception\InputException;
  *
  * @api
  */
-interface CustomConditionProviderInterface
+interface Custom_Condition_Provider_Interface
 {
     /**
      * Get custom processor by field name
@@ -27,13 +25,12 @@ interface CustomConditionProviderInterface
      * @return CustomConditionInterface
      * @throws InputException
      */
-    public function getProcessorByField(string $fieldName): CustomConditionInterface;
-
+    public function get_processor_by_field(string $field_name): Custom_Condition_Interface;
     /**
      * Check if collection has custom processor for given field name
      *
      * @param string $fieldName
      * @return bool
      */
-    public function hasProcessorForField(string $fieldName): bool;
+    public function has_processor_for_field(string $field_name): bool;
 }

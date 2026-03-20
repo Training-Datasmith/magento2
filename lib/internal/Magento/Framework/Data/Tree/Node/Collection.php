@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Tree\Node;
 
 use Magento\Framework\Data\Tree;
 use Magento\Framework\Data\Tree\Node;
-
 /**
  * Tree node collection
  *
@@ -23,12 +21,10 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
      * @var array
      */
     private $_nodes;
-
     /**
      * @var Node
      */
     private $_container;
-
     /**
      * @param Node $container
      */
@@ -37,28 +33,25 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
         $this->_nodes = [];
         $this->_container = $container;
     }
-
     /**
      * Get the nodes
      *
      * @return array
      */
-    public function getNodes()
+    public function get_nodes()
     {
         return $this->_nodes;
     }
-
     /**
      * Implementation of \IteratorAggregate::getIterator()
      *
      * @return \ArrayIterator
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function getIterator()
     {
         return new \ArrayIterator($this->_nodes);
     }
-
     /**
      * Implementation of \ArrayAccess:offsetSet()
      *
@@ -66,48 +59,44 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
      * @param mixed $value
      * @return void
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function offsetSet($key, $value)
     {
         $this->_nodes[$key] = $value;
     }
-
     /**
      * Implementation of \ArrayAccess:offsetGet()
      *
      * @param string $key
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function offsetGet($key)
     {
         return $this->_nodes[$key];
     }
-
     /**
      * Implementation of \ArrayAccess:offsetUnset()
      *
      * @param string $key
      * @return void
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function offsetUnset($key)
     {
         unset($this->_nodes[$key]);
     }
-
     /**
      * Implementation of \ArrayAccess:offsetExists()
      *
      * @param string $key
      * @return bool
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function offsetExists($key)
     {
         return isset($this->_nodes[$key]);
     }
-
     /**
      * Adds a node to this node
      *
@@ -116,19 +105,15 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
      */
     public function add(Node $node)
     {
-        $node->setParent($this->_container);
-
+        $node->set_parent($this->_container);
         // Set the Tree for the node
-        if ($this->_container->getTree() instanceof Tree) {
-            $node->setTree($this->_container->getTree());
+        if ($this->_container->get_tree() instanceof Tree) {
+            $node->set_tree($this->_container->get_tree());
         }
-
-        $nodeId = $node->getId() ?? '';
-        $this->_nodes[$nodeId] = $node;
-
+        $node_id = $node->get_id() ?? '';
+        $this->_nodes[$node_id] = $node;
         return $node;
     }
-
     /**
      * Delete
      *
@@ -137,30 +122,28 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
      */
     public function delete($node)
     {
-        $nodeId = $node->getId() ?? '';
-        if (isset($this->_nodes[$nodeId])) {
-            unset($this->_nodes[$nodeId]);
+        $node_id = $node->get_id() ?? '';
+        if (isset($this->_nodes[$node_id])) {
+            unset($this->_nodes[$node_id]);
         }
         return $this;
     }
-
     /**
      * Return count
      *
      * @return int
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function count()
     {
         return count($this->_nodes);
     }
-
     /**
      * Return the last node
      *
      * @return mixed
      */
-    public function lastNode()
+    public function last_node()
     {
         if (!empty($this->_nodes)) {
             $result = end($this->_nodes);
@@ -168,21 +151,19 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
         } else {
             $result = null;
         }
-
         return $result;
     }
-
     /**
      * Search by Id
      *
      * @param string $nodeId
      * @return null
      */
-    public function searchById($nodeId)
+    public function search_by_id($node_id)
     {
-        $nodeId = $nodeId ?? '';
-        if (isset($this->_nodes[$nodeId])) {
-            return $this->_nodes[$nodeId];
+        $node_id = $node_id ?? '';
+        if (isset($this->_nodes[$node_id])) {
+            return $this->_nodes[$node_id];
         }
         return null;
     }

@@ -1,17 +1,14 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
 use Magento\Framework\Data\Tree\Node;
 use Magento\Framework\Data\Tree\Node\Collection as NodeCollection;
-
 /**
  * Data tree
  *
@@ -27,25 +24,22 @@ class Tree
      * @var NodeCollection
      */
     protected $_nodes;
-
     /**
      * Initialize Tree
      */
     public function __construct()
     {
-        $this->_nodes = new NodeCollection($this);
+        $this->_nodes = new Node_Collection($this);
     }
-
     /**
      * Enter description here...
      *
      * @return \Magento\Framework\Data\Tree
      */
-    public function getTree()
+    public function get_tree()
     {
         return $this;
     }
-
     /**
      * Enter description here...
      *
@@ -54,10 +48,9 @@ class Tree
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function load($parentNode = null)
+    public function load($parent_node = null)
     {
     }
-
     /**
      * Enter description here...
      *
@@ -66,10 +59,9 @@ class Tree
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function loadNode($nodeId)
+    public function load_node($node_id)
     {
     }
-
     /**
      * Append child
      *
@@ -80,17 +72,15 @@ class Tree
      * @return Node
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function appendChild($data, $parentNode, $prevNode = null)
+    public function append_child($data, $parent_node, $prev_node = null)
     {
         if (is_array($data)) {
-            $node = $this->addNode(new Node($data, $parentNode->getIdField(), $this), $parentNode);
+            $node = $this->add_node(new Node($data, $parent_node->get_id_field(), $this), $parent_node);
         } elseif ($data instanceof Node) {
-            $node = $this->addNode($data, $parentNode);
+            $node = $this->add_node($data, $parent_node);
         }
-
         return $node;
     }
-
     /**
      * Add node
      *
@@ -99,17 +89,15 @@ class Tree
      *
      * @return Node
      */
-    public function addNode($node, $parent = null)
+    public function add_node($node, $parent = null)
     {
         $this->_nodes->add($node);
-        $node->setParent($parent);
+        $node->set_parent($parent);
         if ($parent !== null && $parent instanceof Node) {
-            $parent->addChild($node);
+            $parent->add_child($node);
         }
-
         return $node;
     }
-
     /**
      * Move node
      *
@@ -120,10 +108,9 @@ class Tree
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function moveNodeTo($node, $parentNode, $prevNode = null)
+    public function move_node_to($node, $parent_node, $prev_node = null)
     {
     }
-
     /**
      * Copy node
      *
@@ -134,10 +121,9 @@ class Tree
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function copyNodeTo($node, $parentNode, $prevNode = null)
+    public function copy_node_to($node, $parent_node, $prev_node = null)
     {
     }
-
     /**
      * Remove node
      *
@@ -145,17 +131,15 @@ class Tree
      *
      * @return $this
      */
-    public function removeNode($node)
+    public function remove_node($node)
     {
         $this->_nodes->delete($node);
-        if ($node->getParent()) {
-            $node->getParent()->removeChild($node);
+        if ($node->get_parent()) {
+            $node->get_parent()->remove_child($node);
         }
-
         unset($node);
         return $this;
     }
-
     /**
      * Create node
      *
@@ -165,10 +149,9 @@ class Tree
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function createNode($parentNode, $prevNode = null)
+    public function create_node($parent_node, $prev_node = null)
     {
     }
-
     /**
      * Get child
      *
@@ -177,10 +160,9 @@ class Tree
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getChild($node)
+    public function get_child($node)
     {
     }
-
     /**
      * Get children
      *
@@ -189,20 +171,18 @@ class Tree
      * @return void
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getChildren($node)
+    public function get_children($node)
     {
     }
-
     /**
      * Enter description here...
      *
      * @return NodeCollection
      */
-    public function getNodes()
+    public function get_nodes()
     {
         return $this->_nodes;
     }
-
     /**
      * Enter description here...
      *
@@ -210,11 +190,10 @@ class Tree
      *
      * @return Node
      */
-    public function getNodeById($nodeId)
+    public function get_node_by_id($node_id)
     {
-        return $this->_nodes->searchById($nodeId);
+        return $this->_nodes->search_by_id($node_id);
     }
-
     /**
      * Get path
      *
@@ -222,15 +201,14 @@ class Tree
      *
      * @return array
      */
-    public function getPath($node)
+    public function get_path($node)
     {
         if ($node instanceof Node) {
         } elseif (is_numeric($node)) {
-            if ($_node = $this->getNodeById($node)) {
-                return $_node->getPath();
+            if ($_node = $this->get_node_by_id($node)) {
+                return $_node->get_path();
             }
         }
-
         return [];
     }
 }

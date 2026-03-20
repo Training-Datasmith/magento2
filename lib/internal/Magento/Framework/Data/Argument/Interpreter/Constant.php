@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Argument\Interpreter;
 
-use Magento\Framework\Data\Argument\InterpreterInterface;
-
+use Magento\Framework\Data\Argument\Interpreter_Interface;
 /**
  * Interpreter that returns value of a constant by its name
  */
-class Constant implements InterpreterInterface
+class Constant implements Interpreter_Interface
 {
     /**
      * @inheritdoc
@@ -28,7 +26,6 @@ class Constant implements InterpreterInterface
         if (!defined($data['value'])) {
             throw new \InvalidArgumentException('Constant "' . $data['value'] . '" is not defined.');
         }
-
         return constant($data['value']);
     }
 }

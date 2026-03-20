@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer\Select;
 
 class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Select
@@ -15,8 +14,8 @@ class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Select
      *
      * @return array
      */
-    protected function _getOptions()
+    protected function _get_options()
     {
-        return $this->getColumn()->getOptions();
+        return $this->get_column()->get_options();
     }
 }

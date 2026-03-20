@@ -4,46 +4,39 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Cardinal_Commerce\Model\Response;
 
-namespace Magento\CardinalCommerce\Model\Response;
-
-use Magento\CardinalCommerce\Model\Config;
-use Magento\CardinalCommerce\Model\JwtManagement;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Cardinal_Commerce\Model\Config;
+use Magento\Cardinal_Commerce\Model\Jwt_Management;
+use Magento\Framework\Exception\Localized_Exception;
 use Magento\Payment\Model\Method\Logger as PaymentLogger;
-use Psr\Log\LoggerInterface;
-
+use Psr\Log\Logger_Interface;
 /**
  * Parses content of CardinalCommerce response JWT.
  */
-class JwtParser implements JwtParserInterface
+class Jwt_Parser implements Jwt_Parser_Interface
 {
     /**
      * @var JwtManagement
      */
-    private $jwtManagement;
-
+    private $jwt_management;
     /**
      * @var Config
      */
     private $config;
-
     /**
      * @var JwtPayloadValidatorInterface
      */
-    private $tokenValidator;
-
+    private $token_validator;
     /**
      * @var LoggerInterface
      */
     private $logger;
-
     /**
      * @var PaymentLogger
      */
-    private $paymentLogger;
-
+    private $payment_logger;
     /**
      * @param JwtManagement $jwtManagement
      * @param Config $config
@@ -51,20 +44,14 @@ class JwtParser implements JwtParserInterface
      * @param PaymentLogger $paymentLogger
      * @param LoggerInterface $logger
      */
-    public function __construct(
-        JwtManagement $jwtManagement,
-        Config $config,
-        JwtPayloadValidatorInterface $tokenValidator,
-        PaymentLogger $paymentLogger,
-        LoggerInterface $logger
-    ) {
-        $this->jwtManagement = $jwtManagement;
+    public function __construct(Jwt_Management $jwt_management, Config $config, Jwt_Payload_Validator_Interface $token_validator, Payment_Logger $payment_logger, Logger_Interface $logger)
+    {
+        $this->jwt_management = $jwt_management;
         $this->config = $config;
-        $this->tokenValidator = $tokenValidator;
-        $this->paymentLogger = $paymentLogger;
+        $this->token_validator = $token_validator;
+        $this->payment_logger = $payment_logger;
         $this->logger = $logger;
     }
-
     /**
      * Returns response JWT payload.
      *
@@ -74,22 +61,20 @@ class JwtParser implements JwtParserInterface
      */
     public function execute(string $jwt): array
     {
-        $jwtPayload = '';
+        $jwt_payload = '';
         try {
             $this->debug(['Cardinal Response JWT:' => $jwt]);
-            $jwtPayload = $this->jwtManagement->decode($jwt, $this->config->getApiKey());
-            $this->debug(['Cardinal Response JWT payload:' => $jwtPayload]);
-            if (!$this->tokenValidator->validate($jwtPayload)) {
-                $this->throwException();
+            $jwt_payload = $this->jwt_management->decode($jwt, $this->config->get_api_key());
+            $this->debug(['Cardinal Response JWT payload:' => $jwt_payload]);
+            if (!$this->token_validator->validate($jwt_payload)) {
+                $this->throw_exception();
             }
         } catch (\InvalidArgumentException $e) {
             $this->logger->critical($e, ['CardinalCommerce3DSecure']);
-            $this->throwException();
+            $this->throw_exception();
         }
-
-        return $jwtPayload;
+        return $jwt_payload;
     }
-
     /**
      * Log JWT data.
      *
@@ -98,24 +83,18 @@ class JwtParser implements JwtParserInterface
      */
     private function debug(array $data)
     {
-        if ($this->config->isDebugModeEnabled()) {
-            $this->paymentLogger->debug($data, ['iss'], true);
+        if ($this->config->is_debug_mode_enabled()) {
+            $this->payment_logger->debug($data, ['iss'], true);
         }
     }
-
     /**
      * Throw general localized exception.
      *
      * @return void
      * @throws LocalizedException
      */
-    private function throwException()
+    private function throw_exception()
     {
-        throw new LocalizedException(
-            __(
-                'Authentication Failed. Your card issuer cannot authenticate this card. ' .
-                'Please select another card or form of payment to complete your purchase.'
-            )
-        );
+        throw new Localized_Exception(__('Authentication Failed. Your card issuer cannot authenticate this card. ' . 'Please select another card or form of payment to complete your purchase.'));
     }
 }

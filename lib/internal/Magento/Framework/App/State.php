@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -23,103 +22,87 @@ class State
      * Application run code
      */
     public const PARAM_MODE = 'MAGE_MODE';
-
     /**
      * Application mode
      *
      * @var string
      */
-    protected $_appMode;
-
+    protected $_app_mode;
     /**
      * Is downloader flag
      *
      * @var bool
      */
-    protected $_isDownloader = false;
-
+    protected $_is_downloader = false;
     /**
      * Update mode flag
      *
      * @var bool
      */
-    protected $_updateMode = false;
-
+    protected $_update_mode = false;
     /**
      * Config scope model
      *
      * @var \Magento\Framework\Config\ScopeInterface
      */
-    protected $_configScope;
-
+    protected $_config_scope;
     /**
      * @var string
      */
-    protected $_areaCode;
-
+    protected $_area_code;
     /**
      * Is area code being emulated
      *
      * @var bool
      */
-    protected $_isAreaCodeEmulated = false;
-
+    protected $_is_area_code_emulated = false;
     /**
      * @var AreaList
      */
-    private $areaList;
-
+    private $area_list;
     /**
      * Application modes
      */
     public const MODE_DEVELOPER = 'developer';
-
     public const MODE_PRODUCTION = 'production';
-
     public const MODE_DEFAULT = 'default';
-
     /**
      * @param \Magento\Framework\Config\ScopeInterface $configScope
      * @param string $mode
      * @throws \LogicException
      */
-    public function __construct(
-        \Magento\Framework\Config\ScopeInterface $configScope,
-        $mode = self::MODE_DEFAULT
-    ) {
-        $this->_configScope = $configScope;
+    public function __construct(\Magento\Framework\Config\Scope_Interface $config_scope, $mode = self::MODE_DEFAULT)
+    {
+        $this->_config_scope = $config_scope;
         switch ($mode) {
             case self::MODE_DEVELOPER:
             case self::MODE_PRODUCTION:
             case self::MODE_DEFAULT:
-                $this->_appMode = $mode;
+                $this->_app_mode = $mode;
                 break;
             default:
                 throw new \InvalidArgumentException("Unknown application mode: {$mode}");
         }
     }
-
     /**
      * Return current app mode
      *
      * @return string
      */
-    public function getMode()
+    public function get_mode()
     {
-        return $this->_appMode;
+        return $this->_app_mode;
     }
-
     /**
      * Set is downloader flag
      *
      * @param bool $flag
      * @return void
      */
-    public function setIsDownloader($flag = true)
+    public function set_is_downloader($flag = true)
     {
-        $this->_isDownloader = $flag;
+        $this->_is_downloader = $flag;
     }
-
     /**
      * Set area code
      *
@@ -127,45 +110,37 @@ class State
      * @return void
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function setAreaCode($code)
+    public function set_area_code($code)
     {
-        $this->checkAreaCode($code);
-
-        if (isset($this->_areaCode)) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                new \Magento\Framework\Phrase('Area code is already set')
-            );
+        $this->check_area_code($code);
+        if (isset($this->_area_code)) {
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('Area code is already set'));
         }
-        $this->_configScope->setCurrentScope($code);
-        $this->_areaCode = $code;
+        $this->_config_scope->set_current_scope($code);
+        $this->_area_code = $code;
     }
-
     /**
      * Get area code
      *
      * @return string
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getAreaCode()
+    public function get_area_code()
     {
-        if (!isset($this->_areaCode)) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                new \Magento\Framework\Phrase('Area code is not set')
-            );
+        if (!isset($this->_area_code)) {
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('Area code is not set'));
         }
-        return $this->_areaCode;
+        return $this->_area_code;
     }
-
     /**
      * Checks whether area code is being emulated
      *
      * @return bool
      */
-    public function isAreaCodeEmulated()
+    public function is_area_code_emulated()
     {
-        return $this->_isAreaCodeEmulated;
+        return $this->_is_area_code_emulated;
     }
-
     /**
      * Emulate callback inside some area code
      *
@@ -175,23 +150,20 @@ class State
      * @return mixed
      * @throws \Exception
      */
-    public function emulateAreaCode($areaCode, $callback, $params = [])
+    public function emulate_area_code($area_code, $callback, $params = [])
     {
-        $this->checkAreaCode($areaCode);
-
-        $currentArea = $this->_areaCode;
-        $this->_areaCode = $areaCode;
-        $this->_isAreaCodeEmulated = true;
+        $this->check_area_code($area_code);
+        $current_area = $this->_area_code;
+        $this->_area_code = $area_code;
+        $this->_is_area_code_emulated = true;
         try {
             $result = call_user_func_array($callback, $params);
         } finally {
-            $this->_areaCode = $currentArea;
-            $this->_isAreaCodeEmulated = false;
+            $this->_area_code = $current_area;
+            $this->_is_area_code_emulated = false;
         }
-
         return $result;
     }
-
     /**
      * Check that area code exists
      *
@@ -199,20 +171,13 @@ class State
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return void
      */
-    private function checkAreaCode($areaCode)
+    private function check_area_code($area_code)
     {
-        $areaCodes = array_merge(
-            [Area::AREA_GLOBAL],
-            $this->getAreaListInstance()->getCodes()
-        );
-
-        if (!in_array($areaCode, $areaCodes)) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                new \Magento\Framework\Phrase('Area code "%1" does not exist', [$areaCode])
-            );
+        $area_codes = array_merge([Area::AREA_GLOBAL], $this->get_area_list_instance()->get_codes());
+        if (!in_array($area_code, $area_codes)) {
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('Area code "%1" does not exist', [$area_code]));
         }
     }
-
     /**
      * Get Instance of AreaList
      *
@@ -220,12 +185,11 @@ class State
      * @deprecated 101.0.0
      * @see Nothing
      */
-    private function getAreaListInstance()
+    private function get_area_list_instance()
     {
-        if ($this->areaList === null) {
-            $this->areaList = ObjectManager::getInstance()->get(AreaList::class);
+        if ($this->area_list === null) {
+            $this->area_list = Object_Manager::get_instance()->get(Area_List::class);
         }
-
-        return $this->areaList;
+        return $this->area_list;
     }
 }

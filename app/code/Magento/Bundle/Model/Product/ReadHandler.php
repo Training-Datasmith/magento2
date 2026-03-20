@@ -1,36 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Model\Product;
 
-use Magento\Bundle\Api\ProductOptionRepositoryInterface as OptionRepository;
-use Magento\Framework\EntityManager\Operation\ExtensionInterface;
-
+use Magento\Bundle\Api\Product_Option_Repository_Interface as OptionRepository;
+use Magento\Framework\Entity_Manager\Operation\Extension_Interface;
 /**
  * Class ReadHandler
  */
-class ReadHandler implements ExtensionInterface
+class Read_Handler implements Extension_Interface
 {
     /**
      * @var OptionRepository
      */
-    private $optionRepository;
-
+    private $option_repository;
     /**
      * ReadHandler constructor.
      *
      * @param OptionRepository $optionRepository
      */
-    public function __construct(OptionRepository $optionRepository)
+    public function __construct(Option_Repository $option_repository)
     {
-        $this->optionRepository = $optionRepository;
+        $this->option_repository = $option_repository;
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -40,15 +36,15 @@ class ReadHandler implements ExtensionInterface
     public function execute($entity, $arguments = [])
     {
         /** @var $entity \Magento\Catalog\Api\Data\ProductInterface */
-        if ($entity->getTypeId() != \Magento\Bundle\Model\Product\Type::TYPE_CODE) {
+        if ($entity->get_type_id() != \Magento\Bundle\Model\Product\Type::TYPE_CODE) {
             return $entity;
         }
-        $entityExtension = $entity->getExtensionAttributes();
-        $options = $this->optionRepository->getListByProduct($entity);
+        $entity_extension = $entity->get_extension_attributes();
+        $options = $this->option_repository->get_list_by_product($entity);
         if ($options) {
-            $entityExtension->setBundleProductOptions($options);
+            $entity_extension->set_bundle_product_options($options);
         }
-        $entity->setExtensionAttributes($entityExtension);
+        $entity->set_extension_attributes($entity_extension);
         return $entity;
     }
 }

@@ -1,40 +1,33 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Composer;
 
-use Composer\IO\BufferIO;
-use Magento\Framework\App\Filesystem\DirectoryList;
-
-class ComposerFactory
+use Composer\IO\Buffer_Io;
+use Magento\Framework\App\Filesystem\Directory_List;
+class Composer_Factory
 {
     /**
      * @var DirectoryList
      */
-    private $directoryList;
-
+    private $directory_list;
     /**
      * @var ComposerJsonFinder
      */
-    private $composerJsonFinder;
-
+    private $composer_json_finder;
     /**
      * @param DirectoryList $directoryList
      * @param ComposerJsonFinder $composerJsonFinder
      */
-    public function __construct(
-        DirectoryList $directoryList,
-        ComposerJsonFinder $composerJsonFinder
-    ) {
-        $this->directoryList = $directoryList;
-        $this->composerJsonFinder = $composerJsonFinder;
+    public function __construct(Directory_List $directory_list, Composer_Json_Finder $composer_json_finder)
+    {
+        $this->directory_list = $directory_list;
+        $this->composer_json_finder = $composer_json_finder;
     }
-
     /**
      * Create \Composer\Composer
      *
@@ -43,11 +36,7 @@ class ComposerFactory
      */
     public function create()
     {
-        putenv('COMPOSER_HOME=' . $this->directoryList->getPath(DirectoryList::COMPOSER_HOME));
-
-        return \Composer\Factory::create(
-            new BufferIO(),
-            $this->composerJsonFinder->findComposerJson()
-        );
+        putenv('COMPOSER_HOME=' . $this->directory_list->get_path(Directory_List::COMPOSER_HOME));
+        return \Composer\Factory::create(new Buffer_Io(), $this->composer_json_finder->find_composer_json());
     }
 }

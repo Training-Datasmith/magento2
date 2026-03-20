@@ -1,54 +1,39 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
-use Magento\Framework\DataObject;
-
+use Magento\Framework\Data_Object;
 /**
  * Class AbstractCriteria
  */
-abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterface
+abstract class Abstract_Criteria implements \Magento\Framework\Api\Criteria_Interface
 {
     /**
      * @var array
      */
-    protected $data = [
-        self::PART_FIELDS => ['list' => []],
-        self::PART_FILTERS => ['list' => []],
-        self::PART_ORDERS => ['list' => []],
-        self::PART_CRITERIA_LIST => ['list' => []],
-    ];
-
+    protected $data = [self::PART_FIELDS => ['list' => []], self::PART_FILTERS => ['list' => []], self::PART_ORDERS => ['list' => []], self::PART_CRITERIA_LIST => ['list' => []]];
     /**
      * @var string
      */
-    protected $mapperInterfaceName;
-
+    protected $mapper_interface_name;
     /**
      * Get associated Mapper Interface name
      *
      * @throws \Exception
      * @return string
      */
-    public function getMapperInterfaceName()
+    public function get_mapper_interface_name()
     {
-        if (!$this->mapperInterfaceName) {
-            throw new \Exception(
-                (string)new \Magento\Framework\Phrase(
-                    'Missed Mapper Interface for Criteria Interface: %1',
-                    [get_class($this)]
-                )
-            );
+        if (!$this->mapper_interface_name) {
+            throw new \Exception((string) new \Magento\Framework\Phrase('Missed Mapper Interface for Criteria Interface: %1', [get_class($this)]));
         }
-        return $this->mapperInterfaceName;
+        return $this->mapper_interface_name;
     }
-
     /**
      * Add field to select
      *
@@ -56,25 +41,20 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
      * @param string|null $alias
      * @return void
      */
-    public function addField($field, $alias = null)
+    public function add_field($field, $alias = null)
     {
         if ($field === '*') {
             $this->data[self::PART_FIELDS]['list'] = [$field];
-        } else {
-            if (is_array($field)) {
-                foreach ($field as $key => $value) {
-                    $this->addField($value, is_string($key) ? $key : null);
-                }
-            } else {
-                if ($alias === null) {
-                    $this->data[self::PART_FIELDS]['list'][$field] = $field;
-                } else {
-                    $this->data[self::PART_FIELDS]['list'][$alias] = $field;
-                }
+        } else if (is_array($field)) {
+            foreach ($field as $key => $value) {
+                $this->add_field($value, is_string($key) ? $key : null);
             }
+        } else if ($alias === null) {
+            $this->data[self::PART_FIELDS]['list'][$field] = $field;
+        } else {
+            $this->data[self::PART_FIELDS]['list'][$alias] = $field;
         }
     }
-
     /**
      * Add field filter to collection
      *
@@ -116,17 +96,12 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
      * @throws \Exception
      * @return void
      */
-    public function addFilter($name, $field, $condition = null, $type = 'and')
+    public function add_filter($name, $field, $condition = null, $type = 'and')
     {
         if (isset($this->data[self::PART_FILTERS]['list'][$name])) {
-            throw new \Exception(
-                (string)new \Magento\Framework\Phrase(
-                    'Filter already exists in Criteria object: %1',
-                    [$name]
-                )
-            );
+            throw new \Exception((string) new \Magento\Framework\Phrase('Filter already exists in Criteria object: %1', [$name]));
         }
-        $filter = new DataObject();
+        $filter = new Data_Object();
         // implements ArrayAccess
         $filter['name'] = $name;
         $filter['field'] = $field;
@@ -134,7 +109,6 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
         $filter['type'] = strtolower($type);
         $this->data[self::PART_FILTERS]['list'][$name] = $filter;
     }
-
     /**
      * self::setOrder() alias
      *
@@ -143,12 +117,12 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
      * @param bool $unShift
      * @return void
      */
-    public function addOrder($field, $direction = self::SORT_ORDER_DESC, $unShift = false)
+    public function add_order($field, $direction = self::SORT_ORDER_DESC, $un_shift = false)
     {
         $direction = strtoupper($direction) == self::SORT_ORDER_ASC ? self::SORT_ORDER_ASC : self::SORT_ORDER_DESC;
         unset($this->data[self::PART_ORDERS]['list'][$field]);
         // avoid ordering by the same field twice
-        if ($unShift) {
+        if ($un_shift) {
             $orders = [$field => $direction];
             foreach ($this->data[self::PART_ORDERS]['list'] as $key => $dir) {
                 $orders[$key] = $dir;
@@ -158,7 +132,6 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
             $this->data[self::PART_ORDERS]['list'][$field] = $direction;
         }
     }
-
     /**
      * Set Query limit
      *
@@ -166,11 +139,10 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
      * @param int $size
      * @return void
      */
-    public function setLimit($offset, $size)
+    public function set_limit($offset, $size)
     {
         $this->data[self::PART_LIMIT] = [$offset, $size];
     }
-
     /**
      * Removes field from select
      *
@@ -178,9 +150,9 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
      * @param bool $isAlias Alias identifier
      * @return void
      */
-    public function removeField($field, $isAlias = false)
+    public function remove_field($field, $is_alias = false)
     {
-        if ($isAlias) {
+        if ($is_alias) {
             if (isset($this->data[self::PART_FIELDS]['list'][$field])) {
                 unset($this->data[self::PART_FIELDS]['list'][$field]);
             }
@@ -193,81 +165,73 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
             }
         }
     }
-
     /**
      * Removes all fields from select
      *
      * @return void
      */
-    public function removeAllFields()
+    public function remove_all_fields()
     {
         $this->data[self::PART_FIELDS]['list'] = [];
     }
-
     /**
      * Removes filter by name
      *
      * @param string $name
      * @return void
      */
-    public function removeFilter($name)
+    public function remove_filter($name)
     {
         if (isset($this->data[self::PART_FILTERS]['list'][$name])) {
             unset($this->data[self::PART_FILTERS]['list'][$name]);
         }
     }
-
     /**
      * Removes all filters
      *
      * @return void
      */
-    public function removeAllFilters()
+    public function remove_all_filters()
     {
         $this->data[self::PART_FILTERS]['list'] = [];
     }
-
     /**
      * Get Criteria objects added to current Composite Criteria
      *
      * @return array
      */
-    public function getCriteriaList()
+    public function get_criteria_list()
     {
         return $this->data[self::PART_CRITERIA_LIST]['list'];
     }
-
     /**
      * Get list of filters
      *
      * @return array
      */
-    public function getFilters()
+    public function get_filters()
     {
         return $this->data[self::PART_FILTERS]['list'];
     }
-
     /**
      * Get ordering criteria
      *
      * @return array
      */
-    public function getOrders()
+    public function get_orders()
     {
         return $this->data[self::PART_ORDERS]['list'];
     }
-
     /**
      * Get limit
      * (['offset', 'page'])
      *
      * @return array
      */
-    public function getLimit()
+    public function get_limit()
     {
         return $this->data[self::PART_LIMIT];
     }
-
     /**
      * Retrieve criteria part
      *
@@ -275,21 +239,19 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
      * @param mixed $default
      * @return mixed
      */
-    public function getPart($name, $default = null)
+    public function get_part($name, $default = null)
     {
         return $this->data[$name] ?? $default;
     }
-
     /**
      * Return all criteria parts as array
      *
      * @return array
      */
-    public function toArray()
+    public function to_array()
     {
         return $this->data;
     }
-
     /**
      * Reset criteria
      *
@@ -297,11 +259,6 @@ abstract class AbstractCriteria implements \Magento\Framework\Api\CriteriaInterf
      */
     public function reset()
     {
-        $this->data = [
-            self::PART_FIELDS => ['list' => []],
-            self::PART_FILTERS => ['list' => []],
-            self::PART_ORDERS => ['list' => []],
-            self::PART_CRITERIA_LIST => ['list' => []],
-        ];
+        $this->data = [self::PART_FIELDS => ['list' => []], self::PART_FILTERS => ['list' => []], self::PART_ORDERS => ['list' => []], self::PART_CRITERIA_LIST => ['list' => []]];
     }
 }

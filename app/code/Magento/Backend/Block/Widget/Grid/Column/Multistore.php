@@ -4,8 +4,7 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Block\Widget\Grid\Column;
 
 /**
@@ -22,8 +21,8 @@ class Multistore extends \Magento\Backend\Block\Widget\Grid\Column
      *
      * @return string
      */
-    public function isDisplayed()
+    public function is_displayed()
     {
-        return !$this->_storeManager->isSingleStoreMode();
+        return !$this->_store_manager->is_single_store_mode();
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Composer;
 
 /**
@@ -18,19 +17,16 @@ class Remove
      *
      * @var MagentoComposerApplicationFactory
      */
-    private $composerApplicationFactory;
-
+    private $composer_application_factory;
     /**
      * Constructor
      *
      * @param MagentoComposerApplicationFactory $composerApplicationFactory
      */
-    public function __construct(
-        MagentoComposerApplicationFactory $composerApplicationFactory
-    ) {
-        $this->composerApplicationFactory = $composerApplicationFactory;
+    public function __construct(Magento_Composer_Application_Factory $composer_application_factory)
+    {
+        $this->composer_application_factory = $composer_application_factory;
     }
-
     /**
      * Run 'composer remove'
      *
@@ -41,14 +37,7 @@ class Remove
      */
     public function remove(array $packages)
     {
-        $composerApplication = $this->composerApplicationFactory->create();
-
-        return $composerApplication->runComposerCommand(
-            [
-                'command' => 'remove',
-                'packages' => $packages,
-                '--no-update-with-dependencies' => true,
-            ]
-        );
+        $composer_application = $this->composer_application_factory->create();
+        return $composer_application->run_composer_command(['command' => 'remove', 'packages' => $packages, '--no-update-with-dependencies' => true]);
     }
 }

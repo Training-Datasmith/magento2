@@ -1,31 +1,29 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Block\Catalog\Product\View\Type;
 
 use Magento\Bundle\Model\Option;
 use Magento\Bundle\Model\Product\Price;
-use Magento\Bundle\Model\Product\PriceFactory;
+use Magento\Bundle\Model\Product\Price_Factory;
 use Magento\Bundle\Model\Product\Type;
 use Magento\Catalog\Block\Product\Context;
-use Magento\Catalog\Block\Product\View\AbstractView;
+use Magento\Catalog\Block\Product\View\Abstract_View;
 use Magento\Catalog\Model\Product;
-use Magento\Catalog\Pricing\Price\FinalPrice;
-use Magento\Catalog\Pricing\Price\RegularPrice;
-use Magento\CatalogRule\Model\ResourceModel\Product\CollectionProcessor;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\DataObject;
-use Magento\Framework\Json\EncoderInterface;
-use Magento\Framework\Locale\FormatInterface;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\Stdlib\ArrayUtils;
-
+use Magento\Catalog\Pricing\Price\Final_Price;
+use Magento\Catalog\Pricing\Price\Regular_Price;
+use Magento\Catalog_Rule\Model\Resource_Model\Product\Collection_Processor;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Data_Object;
+use Magento\Framework\Json\Encoder_Interface;
+use Magento\Framework\Locale\Format_Interface;
+use Magento\Framework\Object_Manager\Reset_After_Request_Interface;
+use Magento\Framework\Pricing\Price_Currency_Interface;
+use Magento\Framework\Stdlib\Array_Utils;
 /**
  * Catalog bundle product info block
  *
@@ -33,53 +31,44 @@ use Magento\Framework\Stdlib\ArrayUtils;
  * @since 100.0.2
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Bundle extends AbstractView implements ResetAfterRequestInterface
+class Bundle extends Abstract_View implements Reset_After_Request_Interface
 {
     /**
      * @var array
      */
     protected $options;
-
     /**
      * @var \Magento\Catalog\Helper\Product
      */
-    protected $catalogProduct;
-
+    protected $catalog_product;
     /**
      * @var PriceFactory
      */
-    protected $productPriceFactory;
-
+    protected $product_price_factory;
     /**
      * @var EncoderInterface
      */
-    protected $jsonEncoder;
-
+    protected $json_encoder;
     /**
      * @var FormatInterface
      */
-    protected $localeFormat;
-
+    protected $locale_format;
     /**
      * @var array
      */
-    private $selectedOptions = [];
-
+    private $selected_options = [];
     /**
      * @var \Magento\CatalogRule\Model\ResourceModel\Product\CollectionProcessor
      */
-    private $catalogRuleProcessor;
-
+    private $catalog_rule_processor;
     /**
      * @var array
      */
-    private $optionsPosition = [];
-
+    private $options_position = [];
     /**
      * @var PriceCurrencyInterface
      */
-    private $priceCurrency;
-
+    private $price_currency;
     /**
      * @param Context $context
      * @param ArrayUtils $arrayUtils
@@ -91,32 +80,16 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      * @param CollectionProcessor|null $catalogRuleProcessor
      * @param PriceCurrencyInterface|null $priceCurrency
      */
-    public function __construct(
-        Context $context,
-        ArrayUtils $arrayUtils,
-        \Magento\Catalog\Helper\Product $catalogProduct,
-        PriceFactory $productPrice,
-        EncoderInterface $jsonEncoder,
-        FormatInterface $localeFormat,
-        array $data = [],
-        ?CollectionProcessor $catalogRuleProcessor = null,
-        ?PriceCurrencyInterface $priceCurrency = null
-    ) {
-        $this->catalogProduct = $catalogProduct;
-        $this->productPriceFactory = $productPrice;
-        $this->jsonEncoder = $jsonEncoder;
-        $this->localeFormat = $localeFormat;
-        parent::__construct(
-            $context,
-            $arrayUtils,
-            $data
-        );
-        $this->catalogRuleProcessor = $catalogRuleProcessor ?? ObjectManager::getInstance()
-                ->get(CollectionProcessor::class);
-        $this->priceCurrency = $priceCurrency ?? ObjectManager::getInstance()
-            ->get(PriceCurrencyInterface::class);
+    public function __construct(Context $context, Array_Utils $array_utils, \Magento\Catalog\Helper\Product $catalog_product, Price_Factory $product_price, Encoder_Interface $json_encoder, Format_Interface $locale_format, array $data = [], ?Collection_Processor $catalog_rule_processor = null, ?Price_Currency_Interface $price_currency = null)
+    {
+        $this->catalog_product = $catalog_product;
+        $this->product_price_factory = $product_price;
+        $this->json_encoder = $json_encoder;
+        $this->locale_format = $locale_format;
+        parent::__construct($context, $array_utils, $data);
+        $this->catalog_rule_processor = $catalog_rule_processor ?? Object_Manager::get_instance()->get(Collection_Processor::class);
+        $this->price_currency = $price_currency ?? Object_Manager::get_instance()->get(Price_Currency_Interface::class);
     }
-
     /**
      * Returns the bundle product options
      *
@@ -126,115 +99,89 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      * @param bool $stripSelection
      * @return array
      */
-    public function getOptions($stripSelection = false)
+    public function get_options($strip_selection = false)
     {
         if (!$this->options) {
-            $product = $this->getProduct();
+            $product = $this->get_product();
             /** @var Type $typeInstance */
-            $typeInstance = $product->getTypeInstance();
-            $typeInstance->setStoreFilter($product->getStoreId(), $product);
-
-            $optionCollection = $typeInstance->getOptionsCollection($product);
-
-            $selectionCollection = $typeInstance->getSelectionsCollection(
-                $typeInstance->getOptionsIds($product),
-                $product
-            );
-            $this->catalogRuleProcessor->addPriceData($selectionCollection);
-            $selectionCollection->addTierPriceData();
-
-            $this->options = $optionCollection->appendSelections(
-                $selectionCollection,
-                $stripSelection,
-                $this->catalogProduct->getSkipSaleableCheck()
-            );
+            $type_instance = $product->get_type_instance();
+            $type_instance->set_store_filter($product->get_store_id(), $product);
+            $option_collection = $type_instance->get_options_collection($product);
+            $selection_collection = $type_instance->get_selections_collection($type_instance->get_options_ids($product), $product);
+            $this->catalog_rule_processor->add_price_data($selection_collection);
+            $selection_collection->add_tier_price_data();
+            $this->options = $option_collection->append_selections($selection_collection, $strip_selection, $this->catalog_product->get_skip_saleable_check());
         }
-
         return $this->options;
     }
-
     /**
      * Return true if product has options
      *
      * @return bool
      */
-    public function hasOptions()
+    public function has_options()
     {
-        $this->getOptions();
-        return !(empty($this->options) || !$this->getProduct()->isSalable());
+        $this->get_options();
+        return !(empty($this->options) || !$this->get_product()->is_salable());
     }
-
     /**
      * Returns JSON encoded config to be used in JS scripts
      *
      * @return string
      */
-    public function getJsonConfig()
+    public function get_json_config()
     {
         /** @var Option[] $optionsArray */
-        $optionsArray = $this->getOptions();
+        $options_array = $this->get_options();
         $options = [];
-        $currentProduct = $this->getProduct();
-
-        $defaultValues = [];
-        $preConfiguredFlag = $currentProduct->hasPreconfiguredValues();
+        $current_product = $this->get_product();
+        $default_values = [];
+        $pre_configured_flag = $current_product->has_preconfigured_values();
         /** @var DataObject|null $preConfiguredValues */
-        $preConfiguredValues = $preConfiguredFlag ? $currentProduct->getPreconfiguredValues() : null;
-
+        $pre_configured_values = $pre_configured_flag ? $current_product->get_preconfigured_values() : null;
         $position = 0;
-        foreach ($optionsArray as $optionItem) {
+        foreach ($options_array as $option_item) {
             /* @var $optionItem Option */
-            if (!$optionItem->getSelections()) {
+            if (!$option_item->get_selections()) {
                 continue;
             }
-            $optionId = $optionItem->getId();
-            $options[$optionId] = $this->getOptionItemData($optionItem, $currentProduct, $position);
-            $this->optionsPosition[$position] = $optionId;
-
+            $option_id = $option_item->get_id();
+            $options[$option_id] = $this->get_option_item_data($option_item, $current_product, $position);
+            $this->options_position[$position] = $option_id;
             // Add attribute default value (if set)
-            if ($preConfiguredFlag) {
-                $configValue = $preConfiguredValues->getData('bundle_option/' . $optionId);
-                if ($configValue) {
-                    $defaultValues[$optionId] = $configValue;
+            if ($pre_configured_flag) {
+                $config_value = $pre_configured_values->get_data('bundle_option/' . $option_id);
+                if ($config_value) {
+                    $default_values[$option_id] = $config_value;
                 }
-                $options = $this->processOptions($optionId, $options, $preConfiguredValues);
+                $options = $this->process_options($option_id, $options, $pre_configured_values);
             }
             $position++;
         }
-        $config = $this->getConfigData($currentProduct, $options);
-
-        $configObj = new DataObject(
-            [
-                'config' => $config,
-            ]
-        );
-
+        $config = $this->get_config_data($current_product, $options);
+        $config_obj = new Data_Object(['config' => $config]);
         //pass the return array encapsulated in an object for the other modules to be able to alter it eg: weee
-        $this->_eventManager->dispatch('catalog_product_option_price_configuration_after', ['configObj' => $configObj]);
-        $config = $configObj->getConfig();
-
-        if ($preConfiguredFlag && !empty($defaultValues)) {
-            $config['defaultValues'] = $defaultValues;
+        $this->_event_manager->dispatch('catalog_product_option_price_configuration_after', ['configObj' => $config_obj]);
+        $config = $config_obj->get_config();
+        if ($pre_configured_flag && !empty($default_values)) {
+            $config['defaultValues'] = $default_values;
         }
-
-        return $this->jsonEncoder->encode($config);
+        return $this->json_encoder->encode($config);
     }
-
     /**
      * Get html for option
      *
      * @param Option $option
      * @return string
      */
-    public function getOptionHtml(Option $option)
+    public function get_option_html(Option $option)
     {
-        $optionBlock = $this->getChildBlock($option->getType());
-        if (!$optionBlock) {
-            return __('There is no defined renderer for "%1" option type.', $this->escapeHtml($option->getType()));
+        $option_block = $this->get_child_block($option->get_type());
+        if (!$option_block) {
+            return __('There is no defined renderer for "%1" option type.', $this->escape_html($option->get_type()));
         }
-        return $optionBlock->setOption($option)->toHtml();
+        return $option_block->set_option($option)->to_html();
     }
-
     /**
      * Get formed data from option selection item.
      *
@@ -243,43 +190,15 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      *
      * @return array
      */
-    private function getSelectionItemData(Product $product, Product $selection)
+    private function get_selection_item_data(Product $product, Product $selection)
     {
-        $qty = ($selection->getSelectionQty() * 1) ?: '1';
-
-        $optionPriceAmount = $product->getPriceInfo()
-            ->getPrice(\Magento\Bundle\Pricing\Price\BundleOptionPrice::PRICE_CODE)
-            ->getOptionSelectionAmount($selection);
-        $finalPrice = $optionPriceAmount->getValue();
-        $basePrice = $optionPriceAmount->getBaseAmount();
-
-        $oldPrice = $product->getPriceInfo()
-            ->getPrice(\Magento\Bundle\Pricing\Price\BundleOptionRegularPrice::PRICE_CODE)
-            ->getOptionSelectionAmount($selection)
-            ->getValue();
-
-        return [
-            'qty' => $qty,
-            'customQty' => $selection->getSelectionCanChangeQty(),
-            'optionId' => $selection->getId(),
-            'prices' => [
-                'oldPrice' => [
-                    'amount' => $this->priceCurrency->roundPrice($oldPrice),
-                ],
-                'basePrice' => [
-                    'amount' => $this->priceCurrency->roundPrice($basePrice),
-                ],
-                'finalPrice' => [
-                    'amount' => $this->priceCurrency->roundPrice($finalPrice),
-                ],
-            ],
-            'priceType' => $selection->getSelectionPriceType(),
-            'tierPrice' => $this->getTierPrices($product, $selection),
-            'name' => $selection->getName(),
-            'canApplyMsrp' => false,
-        ];
+        $qty = $selection->get_selection_qty() * 1 ?: '1';
+        $option_price_amount = $product->get_price_info()->get_price(\Magento\Bundle\Pricing\Price\Bundle_Option_Price::PRICE_CODE)->get_option_selection_amount($selection);
+        $final_price = $option_price_amount->get_value();
+        $base_price = $option_price_amount->get_base_amount();
+        $old_price = $product->get_price_info()->get_price(\Magento\Bundle\Pricing\Price\Bundle_Option_Regular_Price::PRICE_CODE)->get_option_selection_amount($selection)->get_value();
+        return ['qty' => $qty, 'customQty' => $selection->get_selection_can_change_qty(), 'optionId' => $selection->get_id(), 'prices' => ['oldPrice' => ['amount' => $this->price_currency->round_price($old_price)], 'basePrice' => ['amount' => $this->price_currency->round_price($base_price)], 'finalPrice' => ['amount' => $this->price_currency->round_price($final_price)]], 'priceType' => $selection->get_selection_price_type(), 'tierPrice' => $this->get_tier_prices($product, $selection), 'name' => $selection->get_name(), 'canApplyMsrp' => false];
     }
-
     /**
      * Get tier prices from option selection item
      *
@@ -287,39 +206,22 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      * @param Product $selection
      * @return array
      */
-    private function getTierPrices(Product $product, Product $selection)
+    private function get_tier_prices(Product $product, Product $selection)
     {
         // recalculate currency
-        $tierPrices = $selection->getPriceInfo()
-            ->getPrice(\Magento\Catalog\Pricing\Price\TierPrice::PRICE_CODE)
-            ->getTierPriceList();
-
-        foreach ($tierPrices as &$tierPriceInfo) {
+        $tier_prices = $selection->get_price_info()->get_price(\Magento\Catalog\Pricing\Price\Tier_Price::PRICE_CODE)->get_tier_price_list();
+        foreach ($tier_prices as &$tier_price_info) {
             /** @var \Magento\Framework\Pricing\Amount\Base $price */
-            $price = $tierPriceInfo['price'];
-
-            $priceBaseAmount = $price->getBaseAmount();
-            $priceValue = $price->getValue();
-
-            $bundleProductPrice = $this->productPriceFactory->create();
-            $priceBaseAmount = $bundleProductPrice->getLowestPrice($product, $priceBaseAmount);
-            $priceValue = $bundleProductPrice->getLowestPrice($product, $priceValue);
-
-            $tierPriceInfo['prices'] = [
-                'oldPrice' => [
-                    'amount' => $priceBaseAmount,
-                ],
-                'basePrice' => [
-                    'amount' => $priceBaseAmount,
-                ],
-                'finalPrice' => [
-                    'amount' => $priceValue,
-                ],
-            ];
+            $price = $tier_price_info['price'];
+            $price_base_amount = $price->get_base_amount();
+            $price_value = $price->get_value();
+            $bundle_product_price = $this->product_price_factory->create();
+            $price_base_amount = $bundle_product_price->get_lowest_price($product, $price_base_amount);
+            $price_value = $bundle_product_price->get_lowest_price($product, $price_value);
+            $tier_price_info['prices'] = ['oldPrice' => ['amount' => $price_base_amount], 'basePrice' => ['amount' => $price_base_amount], 'finalPrice' => ['amount' => $price_value]];
         }
-        return $tierPrices;
+        return $tier_prices;
     }
-
     /**
      * Get formed data from selections of option
      *
@@ -327,24 +229,20 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      * @param Product $product
      * @return array
      */
-    private function getSelections(Option $option, Product $product)
+    private function get_selections(Option $option, Product $product)
     {
         $selections = [];
-        $selectionCount = count($option->getSelections());
-        foreach ($option->getSelections() as $selectionItem) {
+        $selection_count = count($option->get_selections());
+        foreach ($option->get_selections() as $selection_item) {
             /* @var $selectionItem Product */
-            $selectionId = $selectionItem->getSelectionId();
-            $selections[$selectionId] = $this->getSelectionItemData($product, $selectionItem);
-
-            if (($selectionItem->getIsDefault() || $selectionCount == 1 && $option->getRequired())
-                && $selectionItem->isSalable()
-            ) {
-                $this->selectedOptions[$option->getId()][] = $selectionId;
+            $selection_id = $selection_item->get_selection_id();
+            $selections[$selection_id] = $this->get_selection_item_data($product, $selection_item);
+            if (($selection_item->get_is_default() || $selection_count == 1 && $option->get_required()) && $selection_item->is_salable()) {
+                $this->selected_options[$option->get_id()][] = $selection_id;
             }
         }
         return $selections;
     }
-
     /**
      * Get formed data from option
      *
@@ -353,16 +251,10 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      * @param int $position
      * @return array
      */
-    private function getOptionItemData(Option $option, Product $product, $position)
+    private function get_option_item_data(Option $option, Product $product, $position)
     {
-        return [
-            'selections' => $this->getSelections($option, $product),
-            'title' => $option->getTitle(),
-            'isMulti' => in_array($option->getType(), ['multi', 'checkbox']),
-            'position' => $position,
-        ];
+        return ['selections' => $this->get_selections($option, $product), 'title' => $option->get_title(), 'isMulti' => in_array($option->get_type(), ['multi', 'checkbox']), 'position' => $position];
     }
-
     /**
      * Get formed config data from calculated options data
      *
@@ -370,43 +262,14 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      * @param array $options
      * @return array
      */
-    private function getConfigData(Product $product, array $options)
+    private function get_config_data(Product $product, array $options)
     {
-        $isFixedPrice = $this->getProduct()->getPriceType() == Price::PRICE_TYPE_FIXED;
-
-        $productAmount = $product
-            ->getPriceInfo()
-            ->getPrice(FinalPrice::PRICE_CODE)
-            ->getPriceWithoutOption();
-
-        $baseProductAmount = $product
-            ->getPriceInfo()
-            ->getPrice(RegularPrice::PRICE_CODE)
-            ->getAmount();
-
-        $config = [
-            'options' => $options,
-            'selected' => $this->selectedOptions,
-            'positions' => $this->optionsPosition,
-            'bundleId' => $product->getId(),
-            'priceFormat' => $this->localeFormat->getPriceFormat(),
-            'prices' => [
-                'oldPrice' => [
-                    'amount' => $isFixedPrice ? $baseProductAmount->getValue() : 0,
-                ],
-                'basePrice' => [
-                    'amount' => $isFixedPrice ? $productAmount->getBaseAmount() : 0,
-                ],
-                'finalPrice' => [
-                    'amount' => $isFixedPrice ? $productAmount->getValue() : 0,
-                ],
-            ],
-            'priceType' => $product->getPriceType(),
-            'isFixedPrice' => $isFixedPrice,
-        ];
+        $is_fixed_price = $this->get_product()->get_price_type() == Price::PRICE_TYPE_FIXED;
+        $product_amount = $product->get_price_info()->get_price(Final_Price::PRICE_CODE)->get_price_without_option();
+        $base_product_amount = $product->get_price_info()->get_price(Regular_Price::PRICE_CODE)->get_amount();
+        $config = ['options' => $options, 'selected' => $this->selected_options, 'positions' => $this->options_position, 'bundleId' => $product->get_id(), 'priceFormat' => $this->locale_format->get_price_format(), 'prices' => ['oldPrice' => ['amount' => $is_fixed_price ? $base_product_amount->get_value() : 0], 'basePrice' => ['amount' => $is_fixed_price ? $product_amount->get_base_amount() : 0], 'finalPrice' => ['amount' => $is_fixed_price ? $product_amount->get_value() : 0]], 'priceType' => $product->get_price_type(), 'isFixedPrice' => $is_fixed_price];
         return $config;
     }
-
     /**
      * Set preconfigured quantities and selections to options.
      *
@@ -415,33 +278,26 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      * @param DataObject $preConfiguredValues
      * @return array
      */
-    private function processOptions(string $optionId, array $options, DataObject $preConfiguredValues)
+    private function process_options(string $option_id, array $options, Data_Object $pre_configured_values)
     {
-        $preConfiguredQtys = $preConfiguredValues->getData("bundle_option_qty/{$optionId}") ?? [];
-        $selections = $options[$optionId]['selections'];
-        array_walk(
-            $selections,
-            function (&$selection, $selectionId) use ($preConfiguredQtys) {
-                if (is_array($preConfiguredQtys) && isset($preConfiguredQtys[$selectionId])) {
-                    $selection['qty'] = $preConfiguredQtys[$selectionId];
-                } else {
-                    if ((int)$preConfiguredQtys > 0) {
-                        $selection['qty'] = $preConfiguredQtys;
-                    }
-                }
+        $pre_configured_qtys = $pre_configured_values->get_data("bundle_option_qty/{$option_id}") ?? [];
+        $selections = $options[$option_id]['selections'];
+        array_walk($selections, function (&$selection, $selection_id) use ($pre_configured_qtys) {
+            if (is_array($pre_configured_qtys) && isset($pre_configured_qtys[$selection_id])) {
+                $selection['qty'] = $pre_configured_qtys[$selection_id];
+            } else if ((int) $pre_configured_qtys > 0) {
+                $selection['qty'] = $pre_configured_qtys;
             }
-        );
-        $options[$optionId]['selections'] = $selections;
-
+        });
+        $options[$option_id]['selections'] = $selections;
         return $options;
     }
-
     /**
      * @inheritDoc
      */
-    public function _resetState(): void
+    public function _reset_state(): void
     {
-        $this->selectedOptions = [];
-        $this->optionsPosition = [];
+        $this->selected_options = [];
+        $this->options_position = [];
     }
 }

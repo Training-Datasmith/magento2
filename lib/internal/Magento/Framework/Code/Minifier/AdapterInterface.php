@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Code\Minifier;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Code\Minifier;
  *
  * @api
  */
-interface AdapterInterface
+interface Adapter_Interface
 {
     /**
      * Minify content

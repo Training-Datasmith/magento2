@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework;
 
 /**
@@ -15,7 +13,7 @@ namespace Magento\Framework;
  * @api
  * @since 100.0.2
  */
-class Event extends \Magento\Framework\DataObject
+class Event extends \Magento\Framework\Data_Object
 {
     /**
      * Observers collection
@@ -23,7 +21,6 @@ class Event extends \Magento\Framework\DataObject
      * @var \Magento\Framework\Event\Observer\Collection
      */
     protected $_observers;
-
     /**
      * Initializes observers collection
      *
@@ -34,17 +31,15 @@ class Event extends \Magento\Framework\DataObject
         $this->_observers = new \Magento\Framework\Event\Observer\Collection();
         parent::__construct($data);
     }
-
     /**
      * Returns all the registered observers for the event
      *
      * @return \Magento\Framework\Event\Observer\Collection
      */
-    public function getObservers()
+    public function get_observers()
     {
         return $this->_observers;
     }
-
     /**
      * Register an observer for the event
      *
@@ -52,12 +47,11 @@ class Event extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function addObserver(\Magento\Framework\Event\Observer $observer)
+    public function add_observer(\Magento\Framework\Event\Observer $observer)
     {
-        $this->getObservers()->addObserver($observer);
+        $this->get_observers()->add_observer($observer);
         return $this;
     }
-
     /**
      * Removes an observer by its name
      *
@@ -65,12 +59,11 @@ class Event extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function removeObserverByName($observerName)
+    public function remove_observer_by_name($observer_name)
     {
-        $this->getObservers()->removeObserverByName($observerName);
+        $this->get_observers()->remove_observer_by_name($observer_name);
         return $this;
     }
-
     /**
      * Dispatches the event to registered observers
      *
@@ -78,20 +71,18 @@ class Event extends \Magento\Framework\DataObject
      */
     public function dispatch()
     {
-        $this->getObservers()->dispatch($this);
+        $this->get_observers()->dispatch($this);
         return $this;
     }
-
     /**
      * Retrieve event name
      *
      * @return string
      */
-    public function getName()
+    public function get_name()
     {
         return $this->_data['name'] ?? null;
     }
-
     /**
      * Set name
      *
@@ -99,19 +90,18 @@ class Event extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function setName($data)
+    public function set_name($data)
     {
         $this->_data['name'] = $data;
         return $this;
     }
-
     /**
      * Get block
      *
      * @return mixed
      */
-    public function getBlock()
+    public function get_block()
     {
-        return $this->_getData('block');
+        return $this->_get_data('block');
     }
 }

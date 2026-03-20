@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid;
 
 /**
@@ -15,29 +14,26 @@ namespace Magento\Backend\Block\Widget\Grid;
  * @deprecated 100.2.0 in favour of UI component implementation
  * @since 100.0.2
  */
-interface ExportInterface
+interface Export_Interface
 {
     /**
      * Retrieve grid export types
      *
      * @return array|bool
      */
-    public function getExportTypes();
-
+    public function get_export_types();
     /**
      * Retrieve grid id
      *
      * @return string
      */
-    public function getId();
-
+    public function get_id();
     /**
      * Render export button
      *
      * @return string
      */
-    public function getExportButtonHtml();
-
+    public function get_export_button_html();
     /**
      * Add new export type to grid
      *
@@ -45,8 +41,7 @@ interface ExportInterface
      * @param   string $label
      * @return  \Magento\Backend\Block\Widget\Grid
      */
-    public function addExportType($url, $label);
-
+    public function add_export_type($url, $label);
     /**
      * Retrieve a file container array by grid data as CSV
      *
@@ -54,22 +49,19 @@ interface ExportInterface
      *
      * @return array
      */
-    public function getCsvFile();
-
+    public function get_csv_file();
     /**
      * Retrieve Grid data as CSV
      *
      * @return string
      */
-    public function getCsv();
-
+    public function get_csv();
     /**
      * Retrieve data in xml
      *
      * @return string
      */
-    public function getXml();
-
+    public function get_xml();
     /**
      * Retrieve a file container array by grid data as MS Excel 2003 XML Document
      *
@@ -78,12 +70,11 @@ interface ExportInterface
      * @param string $sheetName
      * @return array
      */
-    public function getExcelFile($sheetName = '');
-
+    public function get_excel_file($sheet_name = '');
     /**
      * Retrieve grid data as MS Excel 2003 XML Document
      *
      * @return string
      */
-    public function getExcel();
+    public function get_excel();
 }

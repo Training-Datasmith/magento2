@@ -1,63 +1,56 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\App;
 
 use Magento\Config\App\Config\Type\System;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
+use Magento\Framework\App\Config\Scope_Config_Interface;
 /**
  * Backend config accessor.
  */
-class Config implements ConfigInterface
+class Config implements Config_Interface
 {
     /**
      * @var array
      */
     private $data;
-
-    public function __construct(protected \Magento\Framework\App\Config $appConfig)
+    public function __construct(protected \Magento\Framework\App\Config $app_config)
     {
     }
-
     /**
      * @inheritdoc
      */
-    public function getValue($path)
+    public function get_value($path)
     {
         if (isset($this->data[$path])) {
             return $this->data[$path];
         }
-
-        $configPath = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        $config_path = Scope_Config_Interface::SCOPE_TYPE_DEFAULT;
         if ($path) {
-            $configPath .= '/' . $path;
+            $config_path .= '/' . $path;
         }
-        return $this->appConfig->get(System::CONFIG_TYPE, $configPath);
+        return $this->app_config->get(System::CONFIG_TYPE, $config_path);
     }
-
     /**
      * @inheritdoc
      */
-    public function setValue($path, $value): void
+    public function set_value($path, $value): void
     {
         $this->data[$path] = $value;
     }
-
     /**
      * @inheritdoc
      */
-    public function isSetFlag($path): bool
+    public function is_set_flag($path): bool
     {
-        $configPath = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        $config_path = Scope_Config_Interface::SCOPE_TYPE_DEFAULT;
         if ($path) {
-            $configPath .= '/' . $path;
+            $config_path .= '/' . $path;
         }
-        return (bool) $this->appConfig->get(System::CONFIG_TYPE, $configPath);
+        return (bool) $this->app_config->get(System::CONFIG_TYPE, $config_path);
     }
 }

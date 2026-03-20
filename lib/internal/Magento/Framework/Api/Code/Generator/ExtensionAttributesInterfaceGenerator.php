@@ -1,25 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api\Code\Generator;
 
-use Magento\Framework\Code\Generator\DefinedClasses;
+use Magento\Framework\Code\Generator\Defined_Classes;
 use Magento\Framework\Code\Generator\Io;
-
 /**
  * Code generator for data object extension interfaces.
  */
-class ExtensionAttributesInterfaceGenerator extends \Magento\Framework\Api\Code\Generator\ExtensionAttributesGenerator
+class Extension_Attributes_Interface_Generator extends \Magento\Framework\Api\Code\Generator\Extension_Attributes_Generator
 {
     public const ENTITY_TYPE = 'extensionInterface';
-
     public const EXTENSION_INTERFACE_SUFFIX = 'ExtensionInterface';
-
     /**
      * Initialize dependencies.
      *
@@ -30,50 +26,32 @@ class ExtensionAttributesInterfaceGenerator extends \Magento\Framework\Api\Code\
      * @param \Magento\Framework\Code\Generator\CodeGeneratorInterface $classGenerator
      * @param DefinedClasses $definedClasses
      */
-    public function __construct(
-        \Magento\Framework\Api\ExtensionAttribute\Config $config,
-        $sourceClassName = null,
-        $resultClassName = null,
-        ?Io $ioObject = null,
-        ?\Magento\Framework\Code\Generator\CodeGeneratorInterface $classGenerator = null,
-        ?DefinedClasses $definedClasses = null
-    ) {
-        if (!$classGenerator) {
-            $classGenerator = new \Magento\Framework\Code\Generator\InterfaceGenerator();
-        }
-        parent::__construct(
-            $config,
-            $sourceClassName,
-            $resultClassName,
-            $ioObject,
-            $classGenerator,
-            $definedClasses
-        );
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getExtendedClass()
+    public function __construct(\Magento\Framework\Api\Extension_Attribute\Config $config, $source_class_name = null, $result_class_name = null, ?Io $io_object = null, ?\Magento\Framework\Code\Generator\Code_Generator_Interface $class_generator = null, ?Defined_Classes $defined_classes = null)
     {
-        return '\\' . \Magento\Framework\Api\ExtensionAttributesInterface::class;
+        if (!$class_generator) {
+            $class_generator = new \Magento\Framework\Code\Generator\Interface_Generator();
+        }
+        parent::__construct($config, $source_class_name, $result_class_name, $io_object, $class_generator, $defined_classes);
     }
-
     /**
      * {@inheritdoc}
      */
-    protected function validateResultClassName()
+    protected function get_extended_class()
+    {
+        return '\\' . \Magento\Framework\Api\Extension_Attributes_Interface::class;
+    }
+    /**
+     * {@inheritdoc}
+     */
+    protected function validate_result_class_name()
     {
         $result = true;
-        $sourceClassName = $this->getSourceClassName();
-        $resultClassName = $this->_getResultClassName();
-        $interfaceSuffix = 'Interface';
-        $expectedResultClassName = substr($sourceClassName, 0, -strlen($interfaceSuffix))
-            . self::EXTENSION_INTERFACE_SUFFIX;
-        if ($resultClassName !== $expectedResultClassName) {
-            $this->_addError(
-                'Invalid extension interface name [' . $resultClassName . ']. Use ' . $expectedResultClassName
-            );
+        $source_class_name = $this->get_source_class_name();
+        $result_class_name = $this->_get_result_class_name();
+        $interface_suffix = 'Interface';
+        $expected_result_class_name = substr($source_class_name, 0, -strlen($interface_suffix)) . self::EXTENSION_INTERFACE_SUFFIX;
+        if ($result_class_name !== $expected_result_class_name) {
+            $this->_add_error('Invalid extension interface name [' . $result_class_name . ']. Use ' . $expected_result_class_name);
             $result = false;
         }
         return $result;

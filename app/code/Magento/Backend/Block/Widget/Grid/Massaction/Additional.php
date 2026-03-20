@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Massaction;
 
 /**
@@ -20,8 +19,7 @@ class Additional extends \Magento\Backend\Block\Widget\Form\Generic
     /**
      * @var \Magento\Framework\View\Layout\Argument\Interpreter\Options
      */
-    protected $_optionsInterpreter;
-
+    protected $_options_interpreter;
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -29,45 +27,38 @@ class Additional extends \Magento\Backend\Block\Widget\Form\Generic
      * @param \Magento\Framework\View\Layout\Argument\Interpreter\Options $optionsInterpreter
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Data\FormFactory $formFactory,
-        \Magento\Framework\View\Layout\Argument\Interpreter\Options $optionsInterpreter,
-        array $data = []
-    ) {
-        parent::__construct($context, $registry, $formFactory, $data);
-        $this->_optionsInterpreter = $optionsInterpreter;
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $registry, \Magento\Framework\Data\Form_Factory $form_factory, \Magento\Framework\View\Layout\Argument\Interpreter\Options $options_interpreter, array $data = [])
+    {
+        parent::__construct($context, $registry, $form_factory, $data);
+        $this->_options_interpreter = $options_interpreter;
     }
-
     /**
      * Prepare form before rendering HTML
      *
      * @return $this
      */
-    protected function _prepareForm()
+    protected function _prepare_form()
     {
         /** @var \Magento\Framework\Data\Form $form */
-        $form = $this->_formFactory->create();
-        foreach ($this->getData('fields') as $itemId => $item) {
-            $this->_prepareFormItem($item);
-            $form->addField($itemId, $item['type'], $item);
+        $form = $this->_form_factory->create();
+        foreach ($this->get_data('fields') as $item_id => $item) {
+            $this->_prepare_form_item($item);
+            $form->add_field($item_id, $item['type'], $item);
         }
-        $this->setForm($form);
+        $this->set_form($form);
         return $this;
     }
-
     /**
      * Prepare form item
      *
      * @param array &$item
      * @return void
      */
-    protected function _prepareFormItem(array &$item)
+    protected function _prepare_form_item(array &$item)
     {
         if ($item['type'] == 'select' && is_string($item['values'])) {
-            $modelClass = $item['values'];
-            $item['values'] = $this->_optionsInterpreter->evaluate(['model' => $modelClass]);
+            $model_class = $item['values'];
+            $item['values'] = $this->_options_interpreter->evaluate(['model' => $model_class]);
         }
         $item['class'] = isset($item['class']) ? $item['class'] . ' absolute-advice' : 'absolute-advice';
     }

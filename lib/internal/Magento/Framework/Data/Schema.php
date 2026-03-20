@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
-class Schema extends \Magento\Framework\DataObject
+class Schema extends \Magento\Framework\Data_Object
 {
     /**
      * @param mixed $schema
@@ -17,22 +16,21 @@ class Schema extends \Magento\Framework\DataObject
     public function load($schema)
     {
         if (is_array($schema)) {
-            $this->setData($schema);
+            $this->set_data($schema);
         } elseif (is_string($schema)) {
             if (is_file($schema)) {
                 include $schema;
-                $this->setData($schema);
+                $this->set_data($schema);
             }
         }
     }
-
     /**
      * @param mixed $rawData
      * @return DataArray
      */
-    public function extract($rawData)
+    public function extract($raw_data)
     {
-        $elements = $rawData;
-        return new DataArray($elements);
+        $elements = $raw_data;
+        return new Data_Array($elements);
     }
 }

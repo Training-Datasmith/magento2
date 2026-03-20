@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -14,26 +13,24 @@ namespace Magento\Framework\App;
  * @api
  * @since 100.0.2
  */
-interface ProductMetadataInterface
+interface Product_Metadata_Interface
 {
     /**
      * Get Product version
      *
      * @return string
      */
-    public function getVersion();
-
+    public function get_version();
     /**
      * Get Product edition
      *
      * @return string
      */
-    public function getEdition();
-
+    public function get_edition();
     /**
      * Get Product name
      *
      * @return string
      */
-    public function getName();
+    public function get_name();
 }

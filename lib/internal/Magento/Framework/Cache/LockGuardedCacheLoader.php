@@ -1,27 +1,24 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache;
 
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Lock\LockManagerInterface;
-
+use Magento\Framework\App\Deployment_Config;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Lock\Lock_Manager_Interface;
 /**
  * Default mutex that provide concurrent access to cache storage.
  */
-class LockGuardedCacheLoader
+class Lock_Guarded_Cache_Loader
 {
     /**
      * @var LockManagerInterface
      */
     private $locker;
-
     /**
      * Lifetime of the lock for write in cache.
      *
@@ -29,8 +26,7 @@ class LockGuardedCacheLoader
      *
      * @var int
      */
-    private $lockTimeout;
-
+    private $lock_timeout;
     /**
      * Timeout between retrieves to load the configuration from the cache.
      *
@@ -38,8 +34,7 @@ class LockGuardedCacheLoader
      *
      * @var int
      */
-    private $delayTimeout;
-
+    private $delay_timeout;
     /**
      * Timeout for information to be collected and saved.
      * If timeout passed that means that data cannot be saved right now.
@@ -49,34 +44,29 @@ class LockGuardedCacheLoader
      *
      * @var int
      */
-    private $loadTimeout;
-
+    private $load_timeout;
     /**
      * Minimal delay timeout in ms.
      *
      * @var int
      */
-    private $minimalDelayTimeout;
-
+    private $minimal_delay_timeout;
     /**
      * @var DeploymentConfig
      */
-    private $deploymentConfig;
-
+    private $deployment_config;
     /**
      * Option that allows to switch off blocking for parallel generation.
      *
      * @var string
      */
     private const CONFIG_PATH_ALLOW_PARALLEL_CACHE_GENERATION = 'cache/allow_parallel_generation';
-
     /**
      * Config value of parallel generation.
      *
      * @var bool|null
      */
-    private ?bool $allowParallelGenerationConfigValue;
-
+    private ?bool $allow_parallel_generation_config_value;
     /**
      * @param LockManagerInterface $locker
      * @param int $lockTimeout
@@ -85,22 +75,15 @@ class LockGuardedCacheLoader
      * @param int $minimalDelayTimeout
      * @param DeploymentConfig|null $deploymentConfig
      */
-    public function __construct(
-        LockManagerInterface $locker,
-        int $lockTimeout = 10000,
-        int $delayTimeout = 20,
-        int $loadTimeout = 10000,
-        int $minimalDelayTimeout = 5,
-        ?DeploymentConfig $deploymentConfig = null
-    ) {
+    public function __construct(Lock_Manager_Interface $locker, int $lock_timeout = 10000, int $delay_timeout = 20, int $load_timeout = 10000, int $minimal_delay_timeout = 5, ?Deployment_Config $deployment_config = null)
+    {
         $this->locker = $locker;
-        $this->lockTimeout = $lockTimeout;
-        $this->delayTimeout = $delayTimeout;
-        $this->loadTimeout = $loadTimeout;
-        $this->minimalDelayTimeout = $minimalDelayTimeout;
-        $this->deploymentConfig = $deploymentConfig ?? ObjectManager::getInstance()->get(DeploymentConfig::class);
+        $this->lock_timeout = $lock_timeout;
+        $this->delay_timeout = $delay_timeout;
+        $this->load_timeout = $load_timeout;
+        $this->minimal_delay_timeout = $minimal_delay_timeout;
+        $this->deployment_config = $deployment_config ?? Object_Manager::get_instance()->get(Deployment_Config::class);
     }
-
     /**
      * Load data.
      *
@@ -110,46 +93,36 @@ class LockGuardedCacheLoader
      * @param callable $dataSaver
      * @return mixed
      */
-    public function lockedLoadData(
-        string $lockName,
-        callable $dataLoader,
-        callable $dataCollector,
-        callable $dataSaver
-    ) {
-        $cachedData = $dataLoader(); //optimistic read
-        $deadline = microtime(true) + $this->loadTimeout / 1000;
-
-        if (empty($this->allowParallelGenerationConfigValue)) {
-            $this->allowParallelGenerationConfigValue = (bool) $this->deploymentConfig
-                ->get(self::CONFIG_PATH_ALLOW_PARALLEL_CACHE_GENERATION);
+    public function locked_load_data(string $lock_name, callable $data_loader, callable $data_collector, callable $data_saver)
+    {
+        $cached_data = $data_loader();
+        //optimistic read
+        $deadline = microtime(true) + $this->load_timeout / 1000;
+        if (empty($this->allow_parallel_generation_config_value)) {
+            $this->allow_parallel_generation_config_value = (bool) $this->deployment_config->get(self::CONFIG_PATH_ALLOW_PARALLEL_CACHE_GENERATION);
         }
-
-        while ($cachedData === false) {
+        while ($cached_data === false) {
             if ($deadline <= microtime(true)) {
-                return $dataCollector();
+                return $data_collector();
             }
-
-            if ($this->locker->lock($lockName, 0)) {
+            if ($this->locker->lock($lock_name, 0)) {
                 try {
-                    $data = $dataCollector();
-                    $dataSaver($data);
-                    $cachedData = $data;
+                    $data = $data_collector();
+                    $data_saver($data);
+                    $cached_data = $data;
                 } finally {
-                    $this->locker->unlock($lockName);
+                    $this->locker->unlock($lock_name);
                 }
-            } elseif ($this->allowParallelGenerationConfigValue) {
-                return $dataCollector();
+            } elseif ($this->allow_parallel_generation_config_value) {
+                return $data_collector();
             }
-
-            if ($cachedData === false) {
-                usleep($this->getLookupTimeout() * 1000);
-                $cachedData = $dataLoader();
+            if ($cached_data === false) {
+                usleep($this->get_lookup_timeout() * 1000);
+                $cached_data = $data_loader();
             }
         }
-
-        return $cachedData;
+        return $cached_data;
     }
-
     /**
      * Clean data.
      *
@@ -157,15 +130,13 @@ class LockGuardedCacheLoader
      * @param callable $dataCleaner
      * @return void
      */
-    public function lockedCleanData(string $lockName, callable $dataCleaner)
+    public function locked_clean_data(string $lock_name, callable $data_cleaner)
     {
-        while ($this->locker->isLocked($lockName)) {
-            usleep($this->getLookupTimeout() * 1000);
+        while ($this->locker->is_locked($lock_name)) {
+            usleep($this->get_lookup_timeout() * 1000);
         }
-
-        $dataCleaner();
+        $data_cleaner();
     }
-
     /**
      * Delay will be applied as rand($minimalDelayTimeout, $delayTimeout).
      * This helps to desynchronize multiple clients trying
@@ -173,8 +144,8 @@ class LockGuardedCacheLoader
      *
      * @return int
      */
-    private function getLookupTimeout()
+    private function get_lookup_timeout()
     {
-        return rand($this->minimalDelayTimeout, $this->delayTimeout);
+        return rand($this->minimal_delay_timeout, $this->delay_timeout);
     }
 }

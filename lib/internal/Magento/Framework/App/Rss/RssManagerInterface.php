@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Rss;
 
 /**
@@ -13,19 +12,18 @@ namespace Magento\Framework\App\Rss;
  *
  * @api
  */
-interface RssManagerInterface
+interface Rss_Manager_Interface
 {
     /**
      * Get Data Provider by type
      * @param string $type
      * @return DataProviderInterface
      */
-    public function getProvider($type);
-
+    public function get_provider($type);
     /**
      * Get all registered providers
      *
      * @return array
      */
-    public function getProviders();
+    public function get_providers();
 }

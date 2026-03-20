@@ -1,50 +1,45 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager;
+namespace Magento\Framework\Entity_Manager;
 
 /**
  * Class CompositeMapper
  */
-class CompositeMapper implements MapperInterface
+class Composite_Mapper implements Mapper_Interface
 {
     /**
      * @var MapperInterface[]
      */
     private $mappers;
-
     /**
      * @param MapperInterface[] $mappers
      */
-    public function __construct(
-        $mappers
-    ) {
+    public function __construct($mappers)
+    {
         $this->mappers = $mappers;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function entityToDatabase($entityType, $data)
+    public function entity_to_database($entity_type, $data)
     {
         foreach ($this->mappers as $mapper) {
-            $data = $mapper->entityToDatabase($entityType, $data);
+            $data = $mapper->entity_to_database($entity_type, $data);
         }
         return $data;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function databaseToEntity($entityType, $data)
+    public function database_to_entity($entity_type, $data)
     {
         foreach ($this->mappers as $mapper) {
-            $data = $mapper->databaseToEntity($entityType, $data);
+            $data = $mapper->database_to_entity($entity_type, $data);
         }
         return $data;
     }

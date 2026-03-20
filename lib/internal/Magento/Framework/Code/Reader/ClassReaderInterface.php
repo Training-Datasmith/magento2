@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Code\Reader;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Code\Reader;
  *
  * @api
  */
-interface ClassReaderInterface
+interface Class_Reader_Interface
 {
     /**
      * Read class constructor signature
@@ -22,8 +21,7 @@ interface ClassReaderInterface
      * @return array|null
      * @throws \ReflectionException
      */
-    public function getConstructor($className);
-
+    public function get_constructor($class_name);
     /**
      * Retrieve parent relation information for type in a following format
      * array(
@@ -36,5 +34,5 @@ interface ClassReaderInterface
      * @param string $className
      * @return string[]
      */
-    public function getParents($className);
+    public function get_parents($class_name);
 }

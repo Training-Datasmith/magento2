@@ -1,36 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Bundle\Model\ResourceModel\Option;
+namespace Magento\Bundle\Model\Resource_Model\Option;
 
 use Magento\Catalog\Model\Product\Attribute\Source\Status;
-
 /**
  * Bundle Options Resource Collection
  * @api
  * @since 100.0.2
  */
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+class Collection extends \Magento\Framework\Model\Resource_Model\Db\Collection\Abstract_Collection
 {
     /**
      * All item ids cache
      *
      * @var array
      */
-    protected $_itemIds;
-
+    protected $_item_ids;
     /**
      * True when selections appended
      *
      * @var bool
      */
-    protected $_selectionsAppended = false;
-
+    protected $_selections_appended = false;
     /**
      * Init model and resource model
      *
@@ -38,81 +34,36 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init(\Magento\Bundle\Model\Option::class, \Magento\Bundle\Model\ResourceModel\Option::class);
+        $this->_init(\Magento\Bundle\Model\Option::class, \Magento\Bundle\Model\Resource_Model\Option::class);
     }
-
     /**
      * Joins values to options
      *
      * @param int $storeId
      * @return $this
      */
-    public function joinValues($storeId)
+    public function join_values($store_id)
     {
-        $this->getSelect()->joinLeft(
-            ['option_value_default' => $this->getTable('catalog_product_bundle_option_value')],
-            implode(
-                ' AND ',
-                [
-                    'main_table.option_id = option_value_default.option_id',
-                    'main_table.parent_id = option_value_default.parent_product_id',
-                    'option_value_default.store_id = 0',
-                ]
-            ),
-            []
-        )->columns(
-            ['default_title' => 'option_value_default.title']
-        );
-
-        $title = $this->getConnection()->getCheckSql(
-            'option_value.title IS NOT NULL',
-            'option_value.title',
-            'option_value_default.title'
-        );
-        if ($storeId !== null) {
-            $this->getSelect()->columns(
-                ['title' => $title]
-            )->joinLeft(
-                ['option_value' => $this->getTable('catalog_product_bundle_option_value')],
-                $this->getConnection()->quoteInto(
-                    implode(
-                        ' AND ',
-                        [
-                            'main_table.option_id = option_value.option_id',
-                            'main_table.parent_id = option_value.parent_product_id',
-                            'option_value.store_id = ?',
-                        ]
-                    ),
-                    $storeId
-                ),
-                []
-            );
+        $this->get_select()->join_left(['option_value_default' => $this->get_table('catalog_product_bundle_option_value')], implode(' AND ', ['main_table.option_id = option_value_default.option_id', 'main_table.parent_id = option_value_default.parent_product_id', 'option_value_default.store_id = 0']), [])->columns(['default_title' => 'option_value_default.title']);
+        $title = $this->get_connection()->get_check_sql('option_value.title IS NOT NULL', 'option_value.title', 'option_value_default.title');
+        if ($store_id !== null) {
+            $this->get_select()->columns(['title' => $title])->join_left(['option_value' => $this->get_table('catalog_product_bundle_option_value')], $this->get_connection()->quote_into(implode(' AND ', ['main_table.option_id = option_value.option_id', 'main_table.parent_id = option_value.parent_product_id', 'option_value.store_id = ?']), $store_id), []);
         }
         return $this;
     }
-
     /**
      * Sets product id filter
      *
      * @param int $productId
      * @return $this
      */
-    public function setProductIdFilter($productId)
+    public function set_product_id_filter($product_id)
     {
-        $productTable = $this->getTable('catalog_product_entity');
-        $linkField = $this->getConnection()->getAutoIncrementField($productTable);
-        $this->getSelect()->join(
-            ['cpe' => $productTable],
-            'cpe.'.$linkField.' = main_table.parent_id',
-            []
-        )->where(
-            'cpe.entity_id = ?',
-            $productId
-        );
-
+        $product_table = $this->get_table('catalog_product_entity');
+        $link_field = $this->get_connection()->get_auto_increment_field($product_table);
+        $this->get_select()->join(['cpe' => $product_table], 'cpe.' . $link_field . ' = main_table.parent_id', [])->where('cpe.entity_id = ?', $product_id);
         return $this;
     }
-
     /**
      * Set product link filter
      *
@@ -121,26 +72,21 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      * @return $this
      * @since 100.1.0
      */
-    public function setProductLinkFilter($productLinkFieldValue)
+    public function set_product_link_filter($product_link_field_value)
     {
-        $this->getSelect()->where(
-            'main_table.parent_id = ?',
-            $productLinkFieldValue
-        );
+        $this->get_select()->where('main_table.parent_id = ?', $product_link_field_value);
         return $this;
     }
-
     /**
      * Sets order by position
      *
      * @return $this
      */
-    public function setPositionOrder()
+    public function set_position_order()
     {
-        $this->getSelect()->order('main_table.position asc')->order('main_table.option_id asc');
+        $this->get_select()->order('main_table.position asc')->order('main_table.option_id asc');
         return $this;
     }
-
     /**
      * Append selection to options
      *
@@ -149,83 +95,75 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      * @param bool $appendAll indicates do we need to filter by saleable and required custom options
      * @return \Magento\Framework\DataObject[]
      */
-    public function appendSelections($selectionsCollection, $stripBefore = false, $appendAll = true)
+    public function append_selections($selections_collection, $strip_before = false, $append_all = true)
     {
-        if ($stripBefore) {
-            $this->_stripSelections();
+        if ($strip_before) {
+            $this->_strip_selections();
         }
-
-        if (!$this->_selectionsAppended) {
-            foreach ($selectionsCollection->getItems() as $key => $selection) {
-                $option = $this->getItemById($selection->getOptionId());
+        if (!$this->_selections_appended) {
+            foreach ($selections_collection->get_items() as $key => $selection) {
+                $option = $this->get_item_by_id($selection->get_option_id());
                 if ($option) {
-                    if ($appendAll ||
-                        ((int) $selection->getStatus()) === Status::STATUS_ENABLED && !$selection->getRequiredOptions()
-                    ) {
-                        $selection->setOption($option);
-                        $option->addSelection($selection);
+                    if ($append_all || (int) $selection->get_status() === Status::STATUS_ENABLED && !$selection->get_required_options()) {
+                        $selection->set_option($option);
+                        $option->add_selection($selection);
                     } else {
-                        $selectionsCollection->removeItemByKey($key);
+                        $selections_collection->remove_item_by_key($key);
                     }
                 }
             }
-            $this->_selectionsAppended = true;
+            $this->_selections_appended = true;
         }
-
-        return $this->getItems();
+        return $this->get_items();
     }
-
     /**
      * Removes appended selections before
      *
      * @return $this
      */
-    protected function _stripSelections()
+    protected function _strip_selections()
     {
-        foreach ($this->getItems() as $option) {
-            $option->setSelections([]);
+        foreach ($this->get_items() as $option) {
+            $option->set_selections([]);
         }
-        $this->_selectionsAppended = false;
+        $this->_selections_appended = false;
         return $this;
     }
-
     /**
      * Sets filter by option id
      *
      * @param array|int $ids
      * @return $this
      */
-    public function setIdFilter($ids)
+    public function set_id_filter($ids)
     {
         if (is_array($ids)) {
-            $this->addFieldToFilter('main_table.option_id', ['in' => $ids]);
+            $this->add_field_to_filter('main_table.option_id', ['in' => $ids]);
         } elseif ($ids != '') {
-            $this->addFieldToFilter('main_table.option_id', $ids);
+            $this->add_field_to_filter('main_table.option_id', $ids);
         }
         return $this;
     }
-
     /**
      * Reset all item ids cache
      *
      * @return $this
      */
-    public function resetAllIds()
+    public function reset_all_ids()
     {
-        $this->_itemIds = null;
+        $this->_item_ids = null;
         return $this;
     }
-
     /**
      * Retrieve all ids for collection
      *
      * @return array
      */
-    public function getAllIds()
+    public function get_all_ids()
     {
-        if ($this->_itemIds === null) {
-            $this->_itemIds = parent::getAllIds();
+        if ($this->_item_ids === null) {
+            $this->_item_ids = parent::get_all_ids();
         }
-        return $this->_itemIds;
+        return $this->_item_ids;
     }
 }

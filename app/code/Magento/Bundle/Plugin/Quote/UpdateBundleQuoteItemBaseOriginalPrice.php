@@ -4,30 +4,26 @@
  * Copyright 2024 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Plugin\Quote;
 
-use Magento\Bundle\Model\Product\OriginalPrice;
+use Magento\Bundle\Model\Product\Original_Price;
 use Magento\Bundle\Model\Product\Type;
-use Magento\Quote\Api\Data\ShippingAssignmentInterface;
+use Magento\Quote\Api\Data\Shipping_Assignment_Interface;
 use Magento\Quote\Model\Quote;
 use Magento\Quote\Model\Quote\Address\Total;
 use Magento\Quote\Model\Quote\Address\Total\Subtotal;
-
 /**
  * Update bundle base original price
  */
-class UpdateBundleQuoteItemBaseOriginalPrice
+class Update_Bundle_Quote_Item_Base_Original_Price
 {
     /**
      * @param OriginalPrice $price
      */
-    public function __construct(
-        private readonly OriginalPrice $price
-    ) {
+    public function __construct(private readonly Original_Price $price)
+    {
     }
-
     /**
      * Update bundle base original price
      *
@@ -40,18 +36,13 @@ class UpdateBundleQuoteItemBaseOriginalPrice
      * @return Subtotal
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterCollect(
-        Subtotal $subject,
-        Subtotal $result,
-        Quote $quote,
-        ShippingAssignmentInterface $shippingAssignment,
-        Total $total
-    ): Subtotal {
-        foreach ($quote->getAllVisibleItems() as $quoteItem) {
-            if ($quoteItem->getProductType() === Type::TYPE_CODE) {
-                $price = $quoteItem->getProduct()->getPrice();
-                $price += $this->price->getTotalBundleItemsOriginalPrice($quoteItem->getProduct());
-                $quoteItem->setBaseOriginalPrice($price);
+    public function after_collect(Subtotal $subject, Subtotal $result, Quote $quote, Shipping_Assignment_Interface $shipping_assignment, Total $total): Subtotal
+    {
+        foreach ($quote->get_all_visible_items() as $quote_item) {
+            if ($quote_item->get_product_type() === Type::TYPE_CODE) {
+                $price = $quote_item->get_product()->get_price();
+                $price += $this->price->get_total_bundle_items_original_price($quote_item->get_product());
+                $quote_item->set_base_original_price($price);
             }
         }
         return $result;

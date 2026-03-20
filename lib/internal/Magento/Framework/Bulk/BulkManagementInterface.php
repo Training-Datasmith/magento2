@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Bulk;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Bulk;
  * @api
  * @since 103.0.0
  */
-interface BulkManagementInterface
+interface Bulk_Management_Interface
 {
     /**
      * Schedule new bulk
@@ -25,8 +24,7 @@ interface BulkManagementInterface
      * @return boolean
      * @since 103.0.0
      */
-    public function scheduleBulk($bulkUuid, array $operations, $description, $userId = null);
-
+    public function schedule_bulk($bulk_uuid, array $operations, $description, $user_id = null);
     /**
      * Delete bulk
      *
@@ -34,5 +32,5 @@ interface BulkManagementInterface
      * @return boolean
      * @since 103.0.0
      */
-    public function deleteBulk($bulkId);
+    public function delete_bulk($bulk_id);
 }

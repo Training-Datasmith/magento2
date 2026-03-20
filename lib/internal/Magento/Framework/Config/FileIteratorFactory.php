@@ -1,34 +1,31 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config;
 
 /**
  * @api
  * @since 100.0.2
  */
-class FileIteratorFactory
+class File_Iterator_Factory
 {
     /**
      * @var \Magento\Framework\Filesystem\File\ReadFactory
      */
-    private $fileReadFactory;
-
+    private $file_read_factory;
     /**
      * Constructor
      *
      * @param \Magento\Framework\Filesystem\File\ReadFactory $fileReadFactory
      */
-    public function __construct(\Magento\Framework\Filesystem\File\ReadFactory $fileReadFactory)
+    public function __construct(\Magento\Framework\Filesystem\File\Read_Factory $file_read_factory)
     {
-        $this->fileReadFactory = $fileReadFactory;
+        $this->file_read_factory = $file_read_factory;
     }
-
     /**
      * Create file iterator
      *
@@ -37,6 +34,6 @@ class FileIteratorFactory
      */
     public function create($paths)
     {
-        return new FileIterator($this->fileReadFactory, $paths);
+        return new File_Iterator($this->file_read_factory, $paths);
     }
 }

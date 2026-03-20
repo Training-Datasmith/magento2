@@ -1,72 +1,61 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api\Data;
 
-use Magento\Framework\Api\ExtensibleDataInterface;
-
+use Magento\Framework\Api\Extensible_Data_Interface;
 /**
  * @api
  * @since 100.0.2
  */
-interface CategoryProductLinkInterface extends ExtensibleDataInterface
+interface Category_Product_Link_Interface extends Extensible_Data_Interface
 {
     /**
      * @return string|null
      */
-    public function getSku();
-
+    public function get_sku();
     /**
      * @param string $sku
      * @return $this
      */
-    public function setSku($sku);
-
+    public function set_sku($sku);
     /**
      * @return int|null
      */
-    public function getPosition();
-
+    public function get_position();
     /**
      * @param int $position
      * @return $this
      */
-    public function setPosition($position);
-
+    public function set_position($position);
     /**
      * Get category id
      *
      * @return string
      */
-    public function getCategoryId();
-
+    public function get_category_id();
     /**
      * Set category id
      *
      * @param string $categoryId
      * @return $this
      */
-    public function setCategoryId($categoryId);
-
+    public function set_category_id($category_id);
     /**
      * Retrieve existing extension attributes object.
      *
      * @return \Magento\Catalog\Api\Data\CategoryProductLinkExtensionInterface|null
      */
-    public function getExtensionAttributes();
-
+    public function get_extension_attributes();
     /**
      * Set an extension attributes object.
      *
      * @param \Magento\Catalog\Api\Data\CategoryProductLinkExtensionInterface $extensionAttributes
      * @return $this
      */
-    public function setExtensionAttributes(
-        \Magento\Catalog\Api\Data\CategoryProductLinkExtensionInterface $extensionAttributes
-    );
+    public function set_extension_attributes(\Magento\Catalog\Api\Data\Category_Product_Link_Extension_Interface $extension_attributes);
 }

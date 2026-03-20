@@ -4,9 +4,7 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\DB\Helper;
 
 /**
@@ -15,7 +13,7 @@ namespace Magento\Framework\DB\Helper;
  * This helper provides methods to clean up deprecated 'SET NAMES utf8;' statements from
  * database connection configurations in env.php during setup/upgrade operations.
  */
-class InitStatementsCleanup
+class Init_Statements_Cleanup
 {
     /**
      * Remove 'SET NAMES utf8;' from initStatements string
@@ -29,40 +27,33 @@ class InitStatementsCleanup
      * @param string $initStatements The initStatements string from connection config
      * @return string|null Returns cleaned string, or null if nothing remains
      */
-    public function removeSetNamesUtf8(string $initStatements): ?string
+    public function remove_set_names_utf8(string $init_statements): ?string
     {
         // Skip if empty
-        if (empty(trim($initStatements))) {
+        if (empty(trim($init_statements))) {
             return null;
         }
-
         // Check if it contains 'SET NAMES utf8'
-        if (stripos($initStatements, 'SET NAMES utf8') === false) {
-            return $initStatements;
+        if (stripos($init_statements, 'SET NAMES utf8') === false) {
+            return $init_statements;
         }
-
         // Remove 'SET NAMES utf8;' and 'SET NAMES utf8' (with or without semicolon)
-        $cleaned = preg_replace(
-            '/\s*SET\s+NAMES\s+utf8\s*;?\s*/i',
-            '',
-            $initStatements
-        );
-
+        $cleaned = preg_replace('/\s*SET\s+NAMES\s+utf8\s*;?\s*/i', '', $init_statements);
         // Clean up any extra semicolons or whitespace
         $cleaned = trim($cleaned);
-        $cleaned = preg_replace('/;\s*;+/', ';', $cleaned);  // Remove duplicate semicolons
-        $cleaned = trim($cleaned, ';');  // Remove leading/trailing semicolons
-        $cleaned = preg_replace('/\s+/', ' ', $cleaned);  // Normalize whitespace
-
+        $cleaned = preg_replace('/;\s*;+/', ';', $cleaned);
+        // Remove duplicate semicolons
+        $cleaned = trim($cleaned, ';');
+        // Remove leading/trailing semicolons
+        $cleaned = preg_replace('/\s+/', ' ', $cleaned);
+        // Normalize whitespace
         // If nothing left after removing SET NAMES utf8, return null
         if (empty($cleaned)) {
             return null;
         }
-
         // Return cleaned value with semicolon at the end
         return $cleaned . ';';
     }
-
     /**
      * Process connection configuration array and remove deprecated SET NAMES utf8
      *
@@ -73,36 +64,29 @@ class InitStatementsCleanup
      * @param array &$connectionConfig Database connection configuration array (passed by reference)
      * @return bool True if configuration was modified
      */
-    public function processConnectionConfig(array &$connectionConfig): bool
+    public function process_connection_config(array &$connection_config): bool
     {
-        if (!isset($connectionConfig['initStatements'])) {
+        if (!isset($connection_config['initStatements'])) {
             return false;
         }
-
-        $initStatements = $connectionConfig['initStatements'];
-
+        $init_statements = $connection_config['initStatements'];
         // Skip if not a string
-        if (!is_string($initStatements)) {
+        if (!is_string($init_statements)) {
             return false;
         }
-
-        $cleaned = $this->removeSetNamesUtf8($initStatements);
-
+        $cleaned = $this->remove_set_names_utf8($init_statements);
         // If cleaned is null, remove the entire initStatements key
         if ($cleaned === null) {
-            unset($connectionConfig['initStatements']);
+            unset($connection_config['initStatements']);
             return true;
         }
-
         // If cleaned is different from original, update it
-        if ($cleaned !== $initStatements) {
-            $connectionConfig['initStatements'] = $cleaned;
+        if ($cleaned !== $init_statements) {
+            $connection_config['initStatements'] = $cleaned;
             return true;
         }
-
         return false;
     }
-
     /**
      * Process all database connections in env.php config array
      *
@@ -112,30 +96,29 @@ class InitStatementsCleanup
      * @param array &$envConfig The full env.php configuration array (passed by reference)
      * @return bool True if any configuration was modified
      */
-    public function processEnvConfig(array &$envConfig): bool
+    public function process_env_config(array &$env_config): bool
     {
         $modified = false;
-
         // Process regular database connections
-        if (isset($envConfig['db']['connection']) && is_array($envConfig['db']['connection'])) {
-            foreach ($envConfig['db']['connection'] as &$connectionConfig) {
-                if ($this->processConnectionConfig($connectionConfig)) {
+        if (isset($env_config['db']['connection']) && is_array($env_config['db']['connection'])) {
+            foreach ($env_config['db']['connection'] as &$connection_config) {
+                if ($this->process_connection_config($connection_config)) {
                     $modified = true;
                 }
             }
-            unset($connectionConfig); // Break reference
+            unset($connection_config);
+            // Break reference
         }
-
         // Process slave connections
-        if (isset($envConfig['db']['slave_connection']) && is_array($envConfig['db']['slave_connection'])) {
-            foreach ($envConfig['db']['slave_connection'] as &$slaveConfig) {
-                if ($this->processConnectionConfig($slaveConfig)) {
+        if (isset($env_config['db']['slave_connection']) && is_array($env_config['db']['slave_connection'])) {
+            foreach ($env_config['db']['slave_connection'] as &$slave_config) {
+                if ($this->process_connection_config($slave_config)) {
                     $modified = true;
                 }
             }
-            unset($slaveConfig); // Break reference
+            unset($slave_config);
+            // Break reference
         }
-
         return $modified;
     }
 }

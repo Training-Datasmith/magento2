@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Configuration validation schema locator
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config;
 
 /**
@@ -16,19 +15,18 @@ namespace Magento\Framework\Config;
  * @api
  * @since 100.0.2
  */
-interface SchemaLocatorInterface
+interface Schema_Locator_Interface
 {
     /**
      * Get path to merged config schema
      *
      * @return string|null
      */
-    public function getSchema();
-
+    public function get_schema();
     /**
      * Get path to per file validation schema
      *
      * @return string|null
      */
-    public function getPerFileSchema();
+    public function get_per_file_schema();
 }

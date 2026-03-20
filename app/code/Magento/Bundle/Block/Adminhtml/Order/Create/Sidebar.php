@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Block\Adminhtml\Order\Create;
 
 class Sidebar
@@ -20,17 +19,13 @@ class Sidebar
      * @return string
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function aroundGetItemQty(
-        \Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\AbstractSidebar $subject,
-        \Closure $proceed,
-        \Magento\Framework\DataObject $item
-    ) {
-        if ($item->getProduct()->getTypeId() == \Magento\Bundle\Model\Product\Type::TYPE_CODE) {
+    public function around_get_item_qty(\Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\Abstract_Sidebar $subject, \Closure $proceed, \Magento\Framework\Data_Object $item)
+    {
+        if ($item->get_product()->get_type_id() == \Magento\Bundle\Model\Product\Type::TYPE_CODE) {
             return '';
         }
         return $proceed($item);
     }
-
     /**
      * Check whether product configuration is required before adding to order
      *
@@ -41,14 +36,11 @@ class Sidebar
      * @return bool
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function aroundIsConfigurationRequired(
-        \Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\AbstractSidebar $subject,
-        \Closure $proceed,
-        $productType
-    ) {
-        if ($productType == \Magento\Bundle\Model\Product\Type::TYPE_CODE) {
+    public function around_is_configuration_required(\Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\Abstract_Sidebar $subject, \Closure $proceed, $product_type)
+    {
+        if ($product_type == \Magento\Bundle\Model\Product\Type::TYPE_CODE) {
             return true;
         }
-        return $proceed($productType);
+        return $proceed($product_type);
     }
 }

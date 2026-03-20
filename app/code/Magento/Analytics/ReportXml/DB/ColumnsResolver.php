@@ -1,81 +1,72 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml\DB;
 
-namespace Magento\Analytics\ReportXml\DB;
-
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Sql\ColumnValueExpression;
-
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\DB\Sql\Column_Value_Expression;
 /**
  * Resolves columns names
  */
-class ColumnsResolver
+class Columns_Resolver
 {
     /**
      * @var \Magento\Framework\DB\Adapter\AdapterInterface
      */
     private $connection;
-
     /**
      * ColumnsResolver constructor.
      */
-    public function __construct(private readonly NameResolver $nameResolver, private readonly ResourceConnection $resourceConnection)
+    public function __construct(private readonly Name_Resolver $name_resolver, private readonly Resource_Connection $resource_connection)
     {
     }
-
     /**
      * Returns connection
      *
      * @return \Magento\Framework\DB\Adapter\AdapterInterface
      */
-    private function getConnection()
+    private function get_connection()
     {
         if (!$this->connection) {
-            $this->connection = $this->resourceConnection->getConnection();
+            $this->connection = $this->resource_connection->get_connection();
         }
         return $this->connection;
     }
-
     /**
      * Set columns list to SelectBuilder
      *
      * @return array
      */
-    public function getColumns(SelectBuilder $selectBuilder, array $entityConfig)
+    public function get_columns(Select_Builder $select_builder, array $entity_config)
     {
-        if (!isset($entityConfig['attribute'])) {
+        if (!isset($entity_config['attribute'])) {
             return [];
         }
         $group = [];
-        $columns = $selectBuilder->getColumns();
-        foreach ($entityConfig['attribute'] as $attributeData) {
-            $columnAlias = $this->nameResolver->getAlias($attributeData);
-            $tableAlias = $this->nameResolver->getAlias($entityConfig);
-            $columnName = $this->nameResolver->getName($attributeData);
-            if (isset($attributeData['function'])) {
+        $columns = $select_builder->get_columns();
+        foreach ($entity_config['attribute'] as $attribute_data) {
+            $column_alias = $this->name_resolver->get_alias($attribute_data);
+            $table_alias = $this->name_resolver->get_alias($entity_config);
+            $column_name = $this->name_resolver->get_name($attribute_data);
+            if (isset($attribute_data['function'])) {
                 $prefix = '';
-                if (!empty($attributeData['distinct'])) {
+                if (!empty($attribute_data['distinct'])) {
                     $prefix = ' DISTINCT ';
                 }
-                $expression = new ColumnValueExpression(
-                    strtoupper($attributeData['function']) . '(' . $prefix
-                    . $this->getConnection()->quoteIdentifier($tableAlias . '.' . $columnName)
-                    . ')'
-                );
+                $expression = new Column_Value_Expression(strtoupper($attribute_data['function']) . '(' . $prefix . $this->get_connection()->quote_identifier($table_alias . '.' . $column_name) . ')');
             } else {
-                $expression = $tableAlias . '.' . $columnName;
+                $expression = $table_alias . '.' . $column_name;
             }
-            $columns[$columnAlias] = $expression;
-            if (isset($attributeData['group'])) {
-                $group[$columnAlias] = $expression;
+            $columns[$column_alias] = $expression;
+            if (isset($attribute_data['group'])) {
+                $group[$column_alias] = $expression;
             }
         }
-        $selectBuilder->setGroup(array_merge($selectBuilder->getGroup(), $group));
+        $select_builder->set_group(array_merge($select_builder->get_group(), $group));
         return $columns;
     }
 }

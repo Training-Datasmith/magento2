@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Reader\Source;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\App\Config\Reader\Source;
  * @package Magento\Framework\App\Config\Reader\Source
  * @api
  */
-interface SourceInterface
+interface Source_Interface
 {
     /**
      * Retrieve config by scope
@@ -22,5 +21,5 @@ interface SourceInterface
      * @param string|null $scopeCode
      * @return array
      */
-    public function get($scopeCode = null);
+    public function get($scope_code = null);
 }

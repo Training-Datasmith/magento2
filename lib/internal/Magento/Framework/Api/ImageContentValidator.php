@@ -1,46 +1,35 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
-use Magento\Framework\Api\Data\ImageContentInterface;
-use Magento\Framework\Exception\InputException;
+use Magento\Framework\Api\Data\Image_Content_Interface;
+use Magento\Framework\Exception\Input_Exception;
 use Magento\Framework\Phrase;
-
 /**
  * Class for Image content validation
  */
-class ImageContentValidator implements ImageContentValidatorInterface
+class Image_Content_Validator implements Image_Content_Validator_Interface
 {
     /**
      * @var array
      */
-    private $defaultMimeTypes = [
-        'image/jpg',
-        'image/jpeg',
-        'image/gif',
-        'image/png',
-    ];
-
+    private $default_mime_types = ['image/jpg', 'image/jpeg', 'image/gif', 'image/png'];
     /**
      * @var array
      */
-    private $allowedMimeTypes;
-
+    private $allowed_mime_types;
     /**
      * @param array $allowedMimeTypes
      */
-    public function __construct(
-        array $allowedMimeTypes = []
-    ) {
-        $this->allowedMimeTypes = array_merge($this->defaultMimeTypes, $allowedMimeTypes);
+    public function __construct(array $allowed_mime_types = [])
+    {
+        $this->allowed_mime_types = array_merge($this->default_mime_types, $allowed_mime_types);
     }
-
     /**
      * Check if gallery entry content is valid
      *
@@ -48,47 +37,45 @@ class ImageContentValidator implements ImageContentValidatorInterface
      * @return bool
      * @throws InputException
      */
-    public function isValid(ImageContentInterface $imageContent)
+    public function is_valid(Image_Content_Interface $image_content)
     {
-        $fileContent = @base64_decode($imageContent->getBase64EncodedData(), true);
-        if (empty($fileContent)) {
-            throw new InputException(new Phrase('The image content must be valid base64 encoded data.'));
+        $file_content = @base64_decode($image_content->get_base64encoded_data(), true);
+        if (empty($file_content)) {
+            throw new Input_Exception(new Phrase('The image content must be valid base64 encoded data.'));
         }
-        $imageProperties = @getimagesizefromstring($fileContent);
-        if (empty($imageProperties)) {
-            throw new InputException(new Phrase('The image content must be valid base64 encoded data.'));
+        $image_properties = @getimagesizefromstring($file_content);
+        if (empty($image_properties)) {
+            throw new Input_Exception(new Phrase('The image content must be valid base64 encoded data.'));
         }
-        $sourceMimeType = $imageProperties['mime'];
-        if ($sourceMimeType != $imageContent->getType() || !$this->isMimeTypeValid($sourceMimeType)) {
-            throw new InputException(new Phrase('The image MIME type is not valid or not supported.'));
+        $source_mime_type = $image_properties['mime'];
+        if ($source_mime_type != $image_content->get_type() || !$this->is_mime_type_valid($source_mime_type)) {
+            throw new Input_Exception(new Phrase('The image MIME type is not valid or not supported.'));
         }
-        if (!$this->isNameValid($imageContent->getName())) {
-            throw new InputException(new Phrase('Provided image name contains forbidden characters.'));
+        if (!$this->is_name_valid($image_content->get_name())) {
+            throw new Input_Exception(new Phrase('Provided image name contains forbidden characters.'));
         }
         return true;
     }
-
     /**
      * Check if given mime type is valid
      *
      * @param string $mimeType
      * @return bool
      */
-    protected function isMimeTypeValid($mimeType)
+    protected function is_mime_type_valid($mime_type)
     {
-        return in_array($mimeType, $this->allowedMimeTypes);
+        return in_array($mime_type, $this->allowed_mime_types);
     }
-
     /**
      * Check if given filename is valid
      *
      * @param string $name
      * @return bool
      */
-    protected function isNameValid($name)
+    protected function is_name_valid($name)
     {
         // Cannot contain \ / ? * : " ; < > ( ) | { }
-        if ($name === null || !preg_match('/^[^\\/?*:";<>()|{}\\\\]+$/', $name)) {
+        if ($name === null || !preg_match('/^[^\/?*:";<>()|{}\\\\]+$/', $name)) {
             return false;
         }
         return true;

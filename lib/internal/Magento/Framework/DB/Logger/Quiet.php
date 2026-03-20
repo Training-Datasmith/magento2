@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Logger;
 
-class Quiet implements \Magento\Framework\DB\LoggerInterface
+class Quiet implements \Magento\Framework\DB\Logger_Interface
 {
     /**
      * {@inheritdoc}
@@ -16,25 +15,22 @@ class Quiet implements \Magento\Framework\DB\LoggerInterface
     public function log($str)
     {
     }
-
     /**
      * {@inheritdoc}
      */
-    public function logStats($type, $sql, $bind = [], $result = null)
+    public function log_stats($type, $sql, $bind = [], $result = null)
     {
     }
-
     /**
      * {@inheritdoc}
      */
     public function critical(\Exception $e)
     {
     }
-
     /**
      * {@inheritdoc}
      */
-    public function startTimer()
+    public function start_timer()
     {
     }
 }

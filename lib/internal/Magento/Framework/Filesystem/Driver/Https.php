@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Origin filesystem driver
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Filesystem\Driver;
 
 /**
@@ -22,24 +21,20 @@ class Https extends Http
      * @var string
      */
     protected $scheme = 'https';
-
     /**
      * Parse a https url
      *
      * @param string $path
      * @return array
      */
-    protected function parseUrl($path)
+    protected function parse_url($path)
     {
-        $urlProp = parent::parseUrl($path);
-
-        if (!isset($urlProp['port'])) {
-            $urlProp['port'] = 443;
+        $url_prop = parent::parse_url($path);
+        if (!isset($url_prop['port'])) {
+            $url_prop['port'] = 443;
         }
-
-        return $urlProp;
+        return $url_prop;
     }
-
     /**
      * Open a https url
      *

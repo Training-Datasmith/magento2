@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api\Search;
 
-use Magento\Framework\Api\SearchCriteriaInterface as BaseSearchCriteriaInterface;
-
+use Magento\Framework\Api\Search_Criteria_Interface as BaseSearchCriteriaInterface;
 /**
  * Interface SearchCriteriaInterface
  *
@@ -17,16 +15,15 @@ use Magento\Framework\Api\SearchCriteriaInterface as BaseSearchCriteriaInterface
  * @package Magento\Framework\Api\Search
  * @since 100.0.2
  */
-interface SearchCriteriaInterface extends BaseSearchCriteriaInterface
+interface Search_Criteria_Interface extends Base_Search_Criteria_Interface
 {
     /**
      * @return string
      */
-    public function getRequestName();
-
+    public function get_request_name();
     /**
      * @param string $requestName
      * @return $this
      */
-    public function setRequestName($requestName);
+    public function set_request_name($request_name);
 }

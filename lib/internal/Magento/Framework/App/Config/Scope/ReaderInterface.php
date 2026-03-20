@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Scope Reader
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Scope;
 
 /**
@@ -15,7 +14,7 @@ namespace Magento\Framework\App\Config\Scope;
  *
  * @api
  */
-interface ReaderInterface
+interface Reader_Interface
 {
     /**
      * Read configuration scope
@@ -24,5 +23,5 @@ interface ReaderInterface
      * @throws \Exception May throw an exception if the given scope is invalid
      * @return array
      */
-    public function read($scopeType = null);
+    public function read($scope_type = null);
 }

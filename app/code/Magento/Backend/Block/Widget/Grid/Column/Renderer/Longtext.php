@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
  * @deprecated 100.2.0 in favour of UI component implementation
  * @since 100.0.2
  */
-class Longtext extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
+class Longtext extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract_Renderer
 {
     /**
      * Render contents as a long text
@@ -24,21 +23,21 @@ class Longtext extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstra
      * @param \Magento\Framework\DataObject $row
      * @return string
      */
-    public function render(\Magento\Framework\DataObject $row)
+    public function render(\Magento\Framework\Data_Object $row)
     {
-        $truncateLength = 250;
+        $truncate_length = 250;
         // stringLength() is for legacy purposes
-        if ($this->getColumn()->getStringLimit()) {
-            $truncateLength = $this->getColumn()->getStringLimit();
+        if ($this->get_column()->get_string_limit()) {
+            $truncate_length = $this->get_column()->get_string_limit();
         }
-        if ($this->getColumn()->getTruncate()) {
-            $truncateLength = $this->getColumn()->getTruncate();
+        if ($this->get_column()->get_truncate()) {
+            $truncate_length = $this->get_column()->get_truncate();
         }
-        $text = $this->filterManager->truncate(parent::_getValue($row), ['length' => $truncateLength]);
-        if (!$this->getColumn()->hasEscape() || $this->getColumn()->getEscape()) {
-            $text = $this->escapeHtml($text);
+        $text = $this->filter_manager->truncate(parent::_get_value($row), ['length' => $truncate_length]);
+        if (!$this->get_column()->has_escape() || $this->get_column()->get_escape()) {
+            $text = $this->escape_html($text);
         }
-        if ($this->getColumn()->getNl2br()) {
+        if ($this->get_column()->get_nl2br()) {
             $text = nl2br($text);
         }
         return $text;

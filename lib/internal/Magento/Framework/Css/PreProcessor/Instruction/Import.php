@@ -1,92 +1,76 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Css\Pre_Processor\Instruction;
 
-namespace Magento\Framework\Css\PreProcessor\Instruction;
-
-use Magento\Framework\Css\PreProcessor\FileGenerator\RelatedGenerator;
-use Magento\Framework\View\Asset\LocalInterface;
-use Magento\Framework\View\Asset\NotationResolver;
-use Magento\Framework\View\Asset\PreProcessor\Chain;
-use Magento\Framework\View\Asset\PreProcessorInterface;
-
+use Magento\Framework\Css\Pre_Processor\File_Generator\Related_Generator;
+use Magento\Framework\View\Asset\Local_Interface;
+use Magento\Framework\View\Asset\Notation_Resolver;
+use Magento\Framework\View\Asset\Pre_Processor\Chain;
+use Magento\Framework\View\Asset\Pre_Processor_Interface;
 /**
  * 'import' instruction preprocessor
  */
-class Import implements PreProcessorInterface
+class Import implements Pre_Processor_Interface
 {
     /**
      * Pattern of 'import' instruction
      */
-    public const REPLACE_PATTERN =
-        '#@import[\s]*'
-        . '(?P<start>[\(\),\w\s]*?[\'\"][\s]*)'
-        . '(?P<path>[^\)\'\"]*?)'
-        . '(?P<end>[\s]*[\'\"][\s\w]*[\)]?)[\s]*;#';
-
+    public const REPLACE_PATTERN = '#@import[\s]*' . '(?P<start>[\(\),\w\s]*?[\'\"][\s]*)' . '(?P<path>[^\)\'\"]*?)' . '(?P<end>[\s]*[\'\"][\s\w]*[\)]?)[\s]*;#';
     /**
      * @var \Magento\Framework\View\Asset\NotationResolver\Module
      */
-    private $notationResolver;
-
+    private $notation_resolver;
     /**
      * @var array
      */
-    protected $relatedFiles = [];
-
+    protected $related_files = [];
     /**
      * @var RelatedGenerator
      */
-    private $relatedFileGenerator;
-
+    private $related_file_generator;
     /**
      * Constructor
      *
      * @param NotationResolver\Module $notationResolver
      * @param RelatedGenerator $relatedFileGenerator
      */
-    public function __construct(
-        NotationResolver\Module $notationResolver,
-        RelatedGenerator $relatedFileGenerator
-    ) {
-        $this->notationResolver = $notationResolver;
-        $this->relatedFileGenerator = $relatedFileGenerator;
+    public function __construct(Notation_Resolver\Module $notation_resolver, Related_Generator $related_file_generator)
+    {
+        $this->notation_resolver = $notation_resolver;
+        $this->related_file_generator = $related_file_generator;
     }
-
     /**
      * @inheritdoc
      */
     public function process(Chain $chain)
     {
-        $asset = $chain->getAsset();
-        $contentType = $chain->getContentType();
-        $replaceCallback = function ($matchContent) use ($asset, $contentType) {
-            return $this->replace($matchContent, $asset, $contentType);
+        $asset = $chain->get_asset();
+        $content_type = $chain->get_content_type();
+        $replace_callback = function ($match_content) use ($asset, $content_type) {
+            return $this->replace($match_content, $asset, $content_type);
         };
-        $content = $this->removeComments($chain->getContent());
-
-        $processedContent = preg_replace_callback(self::REPLACE_PATTERN, $replaceCallback, $content);
-        $this->relatedFileGenerator->generate($this);
-        if ($processedContent !== $content) {
-            $chain->setContent($processedContent);
+        $content = $this->remove_comments($chain->get_content());
+        $processed_content = preg_replace_callback(self::REPLACE_PATTERN, $replace_callback, $content);
+        $this->related_file_generator->generate($this);
+        if ($processed_content !== $content) {
+            $chain->set_content($processed_content);
         }
     }
-
     /**
      * Returns the content without commented lines
      *
      * @param string $content
      * @return string
      */
-    private function removeComments($content)
+    private function remove_comments($content)
     {
-        return preg_replace("#(^\s*//.*$)|((^\s*/\*(?s).*?(\*/)(?!\*/))$)#m", '', $content);
+        return preg_replace("#(^\\s*//.*\$)|((^\\s*/\\*(?s).*?(\\*/)(?!\\*/))\$)#m", '', $content);
     }
-
     /**
      * Retrieve information on all related files, processed so far
      *
@@ -97,21 +81,19 @@ class Import implements PreProcessorInterface
      *
      * @return array
      */
-    public function getRelatedFiles()
+    public function get_related_files()
     {
-        return $this->relatedFiles;
+        return $this->related_files;
     }
-
     /**
      * Clear the record of related files, processed so far
      *
      * @return void
      */
-    public function resetRelatedFiles()
+    public function reset_related_files()
     {
-        $this->relatedFiles = [];
+        $this->related_files = [];
     }
-
     /**
      * Add related file to the record of processed files
      *
@@ -119,11 +101,10 @@ class Import implements PreProcessorInterface
      * @param LocalInterface $asset
      * @return void
      */
-    protected function recordRelatedFile($matchedFileId, LocalInterface $asset)
+    protected function record_related_file($matched_file_id, Local_Interface $asset)
     {
-        $this->relatedFiles[] = [$matchedFileId, $asset];
+        $this->related_files[] = [$matched_file_id, $asset];
     }
-
     /**
      * Return replacement of an original @import directive
      *
@@ -132,21 +113,17 @@ class Import implements PreProcessorInterface
      * @param string $contentType
      * @return string
      */
-    protected function replace(array $matchedContent, LocalInterface $asset, $contentType)
+    protected function replace(array $matched_content, Local_Interface $asset, $content_type)
     {
-        $matchedFileId = $this->fixFileExtension($matchedContent['path'], $contentType);
-
-        $start = $matchedContent['start'];
-        $end = $matchedContent['end'];
+        $matched_file_id = $this->fix_file_extension($matched_content['path'], $content_type);
+        $start = $matched_content['start'];
+        $end = $matched_content['end'];
         if ($start && strpos(trim($start), 'url') !== 0) {
-            $this->recordRelatedFile($matchedFileId, $asset);
+            $this->record_related_file($matched_file_id, $asset);
         }
-
-        $resolvedPath = $this->notationResolver->convertModuleNotationToPath($asset, $matchedFileId);
-
-        return "@import {$start}{$resolvedPath}{$end};";
+        $resolved_path = $this->notation_resolver->convert_module_notation_to_path($asset, $matched_file_id);
+        return "@import {$start}{$resolved_path}{$end};";
     }
-
     /**
      * Resolve extension of imported asset according to exact format
      *
@@ -155,11 +132,11 @@ class Import implements PreProcessorInterface
      * @return string
      * @link http://lesscss.org/features/#import-directives-feature-file-extensions
      */
-    protected function fixFileExtension($fileId, $contentType)
+    protected function fix_file_extension($file_id, $content_type)
     {
-        if (!pathinfo($fileId, PATHINFO_EXTENSION)) {
-            $fileId .= '.' . $contentType;
+        if (!pathinfo($file_id, PATHINFO_EXTENSION)) {
+            $file_id .= '.' . $content_type;
         }
-        return $fileId;
+        return $file_id;
     }
 }

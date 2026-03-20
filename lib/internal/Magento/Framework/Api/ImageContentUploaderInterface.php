@@ -4,22 +4,18 @@
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Api;
 
-use Magento\Framework\Api\Data\ImageContentInterface;
-use Magento\Framework\Exception\FileSystemException;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-
-interface ImageContentUploaderInterface extends ImageProcessorInterface
+use Magento\Framework\Api\Data\Image_Content_Interface;
+use Magento\Framework\Exception\File_System_Exception;
+use Magento\Framework\Exception\Localized_Exception;
+use Magento\Framework\Filesystem\Directory\Write_Interface;
+interface Image_Content_Uploader_Interface extends Image_Processor_Interface
 {
     public const CASE_SENSITIVE = 1;
     public const PATH_DISPERSION = 2;
     public const RENAME_IF_EXIST = 4;
-
     /**
      * Move image content to a temp directory.
      *
@@ -29,11 +25,7 @@ interface ImageContentUploaderInterface extends ImageProcessorInterface
      * @throws FileSystemException
      * @throws LocalizedException
      */
-    public function saveToTmpDir(
-        ImageContentInterface $imageContent,
-        bool $validate = true
-    ): string;
-
+    public function save_to_tmp_dir(Image_Content_Interface $image_content, bool $validate = true): string;
     /**
      * Move image content from temp to the specified directory.
      *
@@ -48,12 +40,5 @@ interface ImageContentUploaderInterface extends ImageProcessorInterface
      * @throws FileSystemException
      * @throws LocalizedException
      */
-    public function moveFromTmpDir(
-        ImageContentInterface $imageContent,
-        string $tmpFileName,
-        WriteInterface $destinationDirectory,
-        ?string $destinationPath = null,
-        ?string $fileName = null,
-        int $flags = 0
-    ): ?string;
+    public function move_from_tmp_dir(Image_Content_Interface $image_content, string $tmp_file_name, Write_Interface $destination_directory, ?string $destination_path = null, ?string $file_name = null, int $flags = 0): ?string;
 }

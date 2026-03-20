@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Controller\Adminhtml\Bundle\Product\Edit;
 
-class GridOnly extends \Magento\Catalog\Controller\Adminhtml\Product\GridOnly
+class Grid_Only extends \Magento\Catalog\Controller\Adminhtml\Product\Grid_Only
 {
 }

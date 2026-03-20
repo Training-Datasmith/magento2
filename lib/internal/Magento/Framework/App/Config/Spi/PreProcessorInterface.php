@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Spi;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\App\Config\Spi;
  *
  * @api
  */
-interface PreProcessorInterface
+interface Pre_Processor_Interface
 {
     /**
      * Pre-processing of config

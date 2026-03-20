@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Dashboard\Tab;
 
 /**
@@ -22,17 +21,11 @@ class Orders extends \Magento\Backend\Block\Dashboard\Graph
      * @param \Magento\Backend\Helper\Dashboard\Order $dataHelper
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Reports\Model\ResourceModel\Order\CollectionFactory $collectionFactory,
-        \Magento\Backend\Helper\Dashboard\Data $dashboardData,
-        \Magento\Backend\Helper\Dashboard\Order $dataHelper,
-        array $data = []
-    ) {
-        $this->_dataHelper = $dataHelper;
-        parent::__construct($context, $collectionFactory, $dashboardData, $data);
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Reports\Model\Resource_Model\Order\Collection_Factory $collection_factory, \Magento\Backend\Helper\Dashboard\Data $dashboard_data, \Magento\Backend\Helper\Dashboard\Order $data_helper, array $data = [])
+    {
+        $this->_data_helper = $data_helper;
+        parent::__construct($context, $collection_factory, $dashboard_data, $data);
     }
-
     /**
      * Initialize object
      *
@@ -40,24 +33,21 @@ class Orders extends \Magento\Backend\Block\Dashboard\Graph
      */
     protected function _construct()
     {
-        $this->setHtmlId('orders');
+        $this->set_html_id('orders');
         parent::_construct();
     }
-
     /**
      * Prepare chart data
      *
      * @return void
      */
-    protected function _prepareData()
+    protected function _prepare_data()
     {
-        $this->getDataHelper()->setParam('store', $this->getRequest()->getParam('store'));
-        $this->getDataHelper()->setParam('website', $this->getRequest()->getParam('website'));
-        $this->getDataHelper()->setParam('group', $this->getRequest()->getParam('group'));
-
-        $this->setDataRows('quantity');
-        $this->_axisMaps = ['x' => 'range', 'y' => 'quantity'];
-
-        parent::_prepareData();
+        $this->get_data_helper()->set_param('store', $this->get_request()->get_param('store'));
+        $this->get_data_helper()->set_param('website', $this->get_request()->get_param('website'));
+        $this->get_data_helper()->set_param('group', $this->get_request()->get_param('group'));
+        $this->set_data_rows('quantity');
+        $this->_axis_maps = ['x' => 'range', 'y' => 'quantity'];
+        parent::_prepare_data();
     }
 }

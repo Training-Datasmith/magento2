@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget;
 
-use Magento\Framework\App\ObjectManager;
-
+use Magento\Framework\App\Object_Manager;
 /**
  * Backend form widget
  *
@@ -27,15 +25,12 @@ class Form extends \Magento\Backend\Block\Widget
      * @var \Magento\Framework\Data\Form
      */
     protected $_form;
-
     /**
      * @var string
      */
     protected $_template = 'Magento_Backend::widget/form.phtml';
-
     /** @var Form\Element\ElementCreator */
     private $creator;
-
     /**
      * Constructs form
      *
@@ -43,15 +38,11 @@ class Form extends \Magento\Backend\Block\Widget
      * @param array $data
      * @param Form\Element\ElementCreator|null $creator
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        array $data = [],
-        ?Form\Element\ElementCreator $creator = null
-    ) {
+    public function __construct(\Magento\Backend\Block\Template\Context $context, array $data = [], ?Form\Element\Element_Creator $creator = null)
+    {
         parent::__construct($context, $data);
-        $this->creator = $creator ?: ObjectManager::getInstance()->get(Form\Element\ElementCreator::class);
+        $this->creator = $creator ?: Object_Manager::get_instance()->get(Form\Element\Element_Creator::class);
     }
-
     /**
      * Class constructor
      *
@@ -60,10 +51,8 @@ class Form extends \Magento\Backend\Block\Widget
     protected function _construct()
     {
         parent::_construct();
-
-        $this->setDestElementId('edit_form');
+        $this->set_dest_element_id('edit_form');
     }
-
     /**
      * Preparing global layout
      *
@@ -71,96 +60,73 @@ class Form extends \Magento\Backend\Block\Widget
      *
      * @return $this
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
-        \Magento\Framework\Data\Form::setElementRenderer(
-            $this->getLayout()->createBlock(
-                \Magento\Backend\Block\Widget\Form\Renderer\Element::class,
-                $this->getNameInLayout() . '_element'
-            )
-        );
-        \Magento\Framework\Data\Form::setFieldsetRenderer(
-            $this->getLayout()->createBlock(
-                \Magento\Backend\Block\Widget\Form\Renderer\Fieldset::class,
-                $this->getNameInLayout() . '_fieldset'
-            )
-        );
-        \Magento\Framework\Data\Form::setFieldsetElementRenderer(
-            $this->getLayout()->createBlock(
-                \Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Element::class,
-                $this->getNameInLayout() . '_fieldset_element'
-            )
-        );
-
-        return parent::_prepareLayout();
+        \Magento\Framework\Data\Form::set_element_renderer($this->get_layout()->create_block(\Magento\Backend\Block\Widget\Form\Renderer\Element::class, $this->get_name_in_layout() . '_element'));
+        \Magento\Framework\Data\Form::set_fieldset_renderer($this->get_layout()->create_block(\Magento\Backend\Block\Widget\Form\Renderer\Fieldset::class, $this->get_name_in_layout() . '_fieldset'));
+        \Magento\Framework\Data\Form::set_fieldset_element_renderer($this->get_layout()->create_block(\Magento\Backend\Block\Widget\Form\Renderer\Fieldset\Element::class, $this->get_name_in_layout() . '_fieldset_element'));
+        return parent::_prepare_layout();
     }
-
     /**
      * Get form object
      *
      * @return \Magento\Framework\Data\Form
      */
-    public function getForm()
+    public function get_form()
     {
         return $this->_form;
     }
-
     /**
      * Get form HTML
      *
      * @return string
      */
-    public function getFormHtml()
+    public function get_form_html()
     {
-        if (is_object($this->getForm())) {
-            return $this->getForm()->getHtml();
+        if (is_object($this->get_form())) {
+            return $this->get_form()->get_html();
         }
         return '';
     }
-
     /**
      * Set form object
      *
      * @param \Magento\Framework\Data\Form $form
      * @return $this
      */
-    public function setForm(\Magento\Framework\Data\Form $form)
+    public function set_form(\Magento\Framework\Data\Form $form)
     {
         $this->_form = $form;
-        $this->_form->setParent($this);
-        $this->_form->setBaseUrl($this->_urlBuilder->getBaseUrl());
-
-        $customAttributes = $this->getData('custom_attributes');
-        if (is_array($customAttributes)) {
-            foreach ($customAttributes as $key => $value) {
-                $this->_form->addCustomAttribute($key, $value);
+        $this->_form->set_parent($this);
+        $this->_form->set_base_url($this->_url_builder->get_base_url());
+        $custom_attributes = $this->get_data('custom_attributes');
+        if (is_array($custom_attributes)) {
+            foreach ($custom_attributes as $key => $value) {
+                $this->_form->add_custom_attribute($key, $value);
             }
         }
         return $this;
     }
-
     /**
      * Prepare form before rendering HTML
      *
      * @return $this
      */
-    protected function _prepareForm()
+    protected function _prepare_form()
     {
         return $this;
     }
-
     /**
      * This method is called before rendering HTML
      *
      * @return $this
      */
-    protected function _beforeToHtml()
+    protected function _before_to_html()
     {
-        $this->_prepareForm();
-        $this->_initFormValues();
-        return parent::_beforeToHtml();
+        $this->_prepare_form();
+        $this->_init_form_values();
+        return parent::_before_to_html();
     }
-
     /**
      * Initialize form fields values
      *
@@ -168,11 +134,10 @@ class Form extends \Magento\Backend\Block\Widget
      *
      * @return $this
      */
-    protected function _initFormValues()
+    protected function _init_form_values()
     {
         return $this;
     }
-
     /**
      * Set Fieldset to Form
      *
@@ -181,37 +146,31 @@ class Form extends \Magento\Backend\Block\Widget
      * @param array $exclude attributes that should be skipped
      * @return void
      */
-    protected function _setFieldset($attributes, $fieldset, $exclude = [])
+    protected function _set_fieldset($attributes, $fieldset, $exclude = [])
     {
-        $this->_addElementTypes($fieldset);
+        $this->_add_element_types($fieldset);
         foreach ($attributes as $attribute) {
             /* @var $attribute \Magento\Eav\Model\Entity\Attribute */
-            if (!$this->_isAttributeVisible($attribute)) {
+            if (!$this->_is_attribute_visible($attribute)) {
                 continue;
             }
-            if (($inputType = $attribute->getFrontend()->getInputType())
-                && !in_array($attribute->getAttributeCode(), $exclude)
-                && ('media_image' !== $inputType || $attribute->getAttributeCode() == 'image')
-            ) {
+            if (($input_type = $attribute->get_frontend()->get_input_type()) && !in_array($attribute->get_attribute_code(), $exclude) && ('media_image' !== $input_type || $attribute->get_attribute_code() == 'image')) {
                 $element = $this->creator->create($fieldset, $attribute);
-                $element->setAfterElementHtml($this->_getAdditionalElementHtml($element));
-
-                $this->_applyTypeSpecificConfig($inputType, $element, $attribute);
+                $element->set_after_element_html($this->_get_additional_element_html($element));
+                $this->_apply_type_specific_config($input_type, $element, $attribute);
             }
         }
     }
-
     /**
      * Check whether attribute is visible
      *
      * @param \Magento\Eav\Model\Entity\Attribute $attribute
      * @return bool
      */
-    protected function _isAttributeVisible(\Magento\Eav\Model\Entity\Attribute $attribute)
+    protected function _is_attribute_visible(\Magento\Eav\Model\Entity\Attribute $attribute)
     {
-        return !(!$attribute || $attribute->hasIsVisible() && !$attribute->getIsVisible());
+        return !(!$attribute || $attribute->has_is_visible() && !$attribute->get_is_visible());
     }
-
     /**
      * Apply configuration specific for different element type
      *
@@ -220,61 +179,52 @@ class Form extends \Magento\Backend\Block\Widget
      * @param \Magento\Eav\Model\Entity\Attribute $attribute
      * @return void
      */
-    protected function _applyTypeSpecificConfig($inputType, $element, \Magento\Eav\Model\Entity\Attribute $attribute)
+    protected function _apply_type_specific_config($input_type, $element, \Magento\Eav\Model\Entity\Attribute $attribute)
     {
-        switch ($inputType) {
+        switch ($input_type) {
             case 'select':
-                $element->setValues($attribute->getSource()->getAllOptions(true, true));
+                $element->set_values($attribute->get_source()->get_all_options(true, true));
                 break;
             case 'multiselect':
-                $element->setValues($attribute->getSource()->getAllOptions(false, true));
-                $element->setCanBeEmpty(true);
+                $element->set_values($attribute->get_source()->get_all_options(false, true));
+                $element->set_can_be_empty(true);
                 break;
             case 'date':
-                $element->setDateFormat($this->_localeDate->getDateFormatWithLongYear());
+                $element->set_date_format($this->_locale_date->get_date_format_with_long_year());
                 break;
             case 'datetime':
-                $element->setDateFormat($this->_localeDate->getDateFormatWithLongYear());
-                $element->setTimeFormat($this->_localeDate->getTimeFormat());
+                $element->set_date_format($this->_locale_date->get_date_format_with_long_year());
+                $element->set_time_format($this->_locale_date->get_time_format());
                 break;
             case 'multiline':
-                $element->setLineCount($attribute->getMultilineCount());
+                $element->set_line_count($attribute->get_multiline_count());
                 break;
             default:
                 break;
         }
     }
-
     /**
      * Add new element type
      *
      * @param \Magento\Framework\Data\Form\AbstractForm $baseElement
      * @return void
      */
-    protected function _addElementTypes(\Magento\Framework\Data\Form\AbstractForm $baseElement)
+    protected function _add_element_types(\Magento\Framework\Data\Form\Abstract_Form $base_element)
     {
-        $types = array_merge(
-            [
-                'datetime' => 'date',
-            ],
-            $this->_getAdditionalElementTypes()
-        );
-
-        foreach ($types as $code => $className) {
-            $baseElement->addType($code, $className);
+        $types = array_merge(['datetime' => 'date'], $this->_get_additional_element_types());
+        foreach ($types as $code => $class_name) {
+            $base_element->add_type($code, $class_name);
         }
     }
-
     /**
      * Retrieve predefined additional element types
      *
      * @return array
      */
-    protected function _getAdditionalElementTypes()
+    protected function _get_additional_element_types()
     {
         return [];
     }
-
     /**
      * Render additional element
      *
@@ -282,7 +232,7 @@ class Form extends \Magento\Backend\Block\Widget
      * @return string
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function _getAdditionalElementHtml($element)
+    protected function _get_additional_element_html($element)
     {
         return '';
     }

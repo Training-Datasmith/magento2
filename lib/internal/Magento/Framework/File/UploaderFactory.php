@@ -1,33 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\File;
 
 /**
  * @api
  */
-class UploaderFactory
+class Uploader_Factory
 {
     /**
      * Object manager
      *
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    private $_objectManager;
-
+    private $_object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->_objectManager = $objectManager;
+        $this->_object_manager = $object_manager;
     }
-
     /**
      * Create new uploader instance
      *
@@ -36,6 +33,6 @@ class UploaderFactory
      */
     public function create(array $data = [])
     {
-        return $this->_objectManager->create(\Magento\Framework\File\Uploader::class, $data);
+        return $this->_object_manager->create(\Magento\Framework\File\Uploader::class, $data);
     }
 }

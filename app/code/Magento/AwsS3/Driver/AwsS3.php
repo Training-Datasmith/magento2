@@ -4,65 +4,51 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\AwsS3\Driver;
+declare (strict_types=1);
+namespace Magento\Aws_S3\Driver;
 
 use Exception;
 use Generator;
 use League\Flysystem\Config;
-use League\Flysystem\FilesystemAdapter;
-use League\Flysystem\FilesystemException as FlysystemFilesystemException;
-use League\Flysystem\UnableToRetrieveMetadata;
+use League\Flysystem\Filesystem_Adapter;
+use League\Flysystem\Filesystem_Exception as FlysystemFilesystemException;
+use League\Flysystem\Unable_To_Retrieve_Metadata;
 use League\Flysystem\Visibility;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Exception\FileSystemException;
-use Magento\Framework\Filesystem\DriverInterface;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Exception\File_System_Exception;
+use Magento\Framework\Filesystem\Driver_Interface;
 use Magento\Framework\Phrase;
-use Magento\RemoteStorage\Driver\Adapter\MetadataProviderInterface;
-use Magento\RemoteStorage\Driver\DriverException;
-use Magento\RemoteStorage\Driver\RemoteDriverInterface;
-use Psr\Log\LoggerInterface;
+use Magento\Remote_Storage\Driver\Adapter\Metadata_Provider_Interface;
+use Magento\Remote_Storage\Driver\Driver_Exception;
+use Magento\Remote_Storage\Driver\Remote_Driver_Interface;
+use Psr\Log\Logger_Interface;
 use Throwable;
-
 /**
  * Driver for AWS S3 IO operations.
  *
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class AwsS3 implements RemoteDriverInterface
+class Aws_S3 implements Remote_Driver_Interface
 {
     public const TYPE_DIR = 'dir';
     public const TYPE_FILE = 'file';
-
     private const TEST_FLAG = 'storage.flag';
-
     private const CONFIG = ['ACL' => 'private', 'visibility' => Visibility::PRIVATE];
-
     /**
      * @var FilesystemAdapter
      */
     private $adapter;
-
     private array $streams = [];
-
     /**
      * @var MetadataProviderInterface
      */
-    private $metadataProvider;
-
-    public function __construct(
-        FilesystemAdapter $adapter,
-        private readonly LoggerInterface $logger,
-        private readonly string $objectUrl,
-        ?MetadataProviderInterface $metadataProvider = null
-    ) {
+    private $metadata_provider;
+    public function __construct(Filesystem_Adapter $adapter, private readonly Logger_Interface $logger, private readonly string $object_url, ?Metadata_Provider_Interface $metadata_provider = null)
+    {
         $this->adapter = $adapter;
-        $this->metadataProvider = $metadataProvider ??
-            ObjectManager::getInstance()->get(MetadataProviderInterface::class);
+        $this->metadata_provider = $metadata_provider ?? Object_Manager::get_instance()->get(Metadata_Provider_Interface::class);
     }
-
     /**
      * Destroy opened streams.
      */
@@ -70,14 +56,13 @@ class AwsS3 implements RemoteDriverInterface
     {
         try {
             foreach ($this->streams as $stream) {
-                $this->fileClose($stream);
+                $this->file_close($stream);
             }
         } catch (Exception $e) {
             // log exception as throwing an exception from a destructor causes a fatal error
             $this->logger->critical($e);
         }
     }
-
     /**
      * @inheritDoc
      */
@@ -86,355 +71,294 @@ class AwsS3 implements RemoteDriverInterface
         try {
             $this->adapter->write(self::TEST_FLAG, '', new Config(self::CONFIG));
         } catch (Exception $exception) {
-            throw new DriverException(__($exception->getMessage()), $exception);
+            throw new Driver_Exception(__($exception->get_message()), $exception);
         }
     }
-
     /**
      * @inheritDoc
      */
-    public function fileGetContents($path, $flag = null, $context = null): string
+    public function file_get_contents($path, $flag = null, $context = null): string
     {
-        $path = $this->normalizeRelativePath($path, true);
-
+        $path = $this->normalize_relative_path($path, true);
         if (isset($this->streams[$path])) {
             //phpcs:disable
             return file_get_contents(stream_get_meta_data($this->streams[$path])['uri']);
             //phpcs:enable
         }
-
         try {
             return $this->adapter->read($path);
-        } catch (FlysystemFilesystemException $e) {
-            $this->logger->error($e->getMessage());
+        } catch (Flysystem_Filesystem_Exception $e) {
+            $this->logger->error($e->get_message());
             return '';
         }
     }
-
     /**
      * @inheritDoc
      */
-    public function isExists($path): bool
+    public function is_exists($path): bool
     {
         if ($path === '/') {
             return true;
         }
-
-        $path = $this->normalizeRelativePath($path, true);
-
+        $path = $this->normalize_relative_path($path, true);
         if (!$path) {
             return true;
         }
-
         try {
-            return $this->adapter->fileExists($path);
-        } catch (FlysystemFilesystemException $e) {
-            $this->logger->error($e->getMessage());
+            return $this->adapter->file_exists($path);
+        } catch (Flysystem_Filesystem_Exception $e) {
+            $this->logger->error($e->get_message());
             return false;
         }
     }
-
     /**
      * @inheritDoc
      */
-    public function isWritable($path): bool
+    public function is_writable($path): bool
     {
         return true;
     }
-
     /**
      * @inheritDoc
      */
-    public function createDirectory($path, $permissions = 0777): bool
+    public function create_directory($path, $permissions = 0777): bool
     {
         if ($path === '/') {
             return true;
         }
-
-        return $this->createDirectoryRecursively($path);
+        return $this->create_directory_recursively($path);
     }
-
     /**
      * Create directory recursively.
      *
      * @throws FileSystemException
      */
-    private function createDirectoryRecursively(string $path): bool
+    private function create_directory_recursively(string $path): bool
     {
-        $path = $this->normalizeRelativePath($path);
+        $path = $this->normalize_relative_path($path);
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
-        $parentDir = dirname($path);
-
-        while (!$this->isDirectory($parentDir)) {
-            if (!$this->createDirectoryRecursively($parentDir)) {
+        $parent_dir = dirname($path);
+        while (!$this->is_directory($parent_dir)) {
+            if (!$this->create_directory_recursively($parent_dir)) {
                 return false;
             }
         }
-
-        if (!$this->isDirectory($path)) {
-
+        if (!$this->is_directory($path)) {
             try {
-                $this->adapter->createDirectory($this->fixPath($path), new Config(self::CONFIG));
-            } catch (FlysystemFilesystemException $e) {
-                $this->logger->error($e->getMessage());
+                $this->adapter->create_directory($this->fix_path($path), new Config(self::CONFIG));
+            } catch (Flysystem_Filesystem_Exception $e) {
+                $this->logger->error($e->get_message());
                 return false;
             }
         }
-
         return true;
     }
-
     /**
      * @inheritDoc
      */
-    public function copy($source, $destination, ?DriverInterface $targetDriver = null): bool
+    public function copy($source, $destination, ?Driver_Interface $target_driver = null): bool
     {
         try {
-            $this->adapter->copy(
-                $this->normalizeRelativePath($source, true),
-                $this->normalizeRelativePath($destination, true),
-                new Config(self::CONFIG)
-            );
-        } catch (FlysystemFilesystemException $e) {
-            $this->logger->error($e->getMessage());
+            $this->adapter->copy($this->normalize_relative_path($source, true), $this->normalize_relative_path($destination, true), new Config(self::CONFIG));
+        } catch (Flysystem_Filesystem_Exception $e) {
+            $this->logger->error($e->get_message());
             return false;
         }
         return true;
     }
-
     /**
      * @inheritDoc
      */
-    public function deleteFile($path): bool
+    public function delete_file($path): bool
     {
         try {
-            $this->adapter->delete(
-                $this->normalizeRelativePath($path, true)
-            );
-        } catch (FlysystemFilesystemException $e) {
-            $this->logger->error($e->getMessage());
+            $this->adapter->delete($this->normalize_relative_path($path, true));
+        } catch (Flysystem_Filesystem_Exception $e) {
+            $this->logger->error($e->get_message());
             return false;
         }
         return true;
     }
-
     /**
      * @inheritDoc
      */
-    public function deleteDirectory($path): bool
+    public function delete_directory($path): bool
     {
         try {
-            $this->adapter->deleteDirectory(
-                $this->normalizeRelativePath($path, true)
-            );
-        } catch (FlysystemFilesystemException $e) {
-            $this->logger->error($e->getMessage());
+            $this->adapter->delete_directory($this->normalize_relative_path($path, true));
+        } catch (Flysystem_Filesystem_Exception $e) {
+            $this->logger->error($e->get_message());
             return false;
         }
         return true;
     }
-
     /**
      * @inheritDoc
      */
-    public function filePutContents($path, $content, $mode = null): bool|int
+    public function file_put_contents($path, $content, $mode = null): bool|int
     {
-        $path = $this->normalizeRelativePath($path, true);
+        $path = $this->normalize_relative_path($path, true);
         $config = self::CONFIG;
-
         // phpcs:ignore Generic.PHP.NoSilencedErrors.Discouraged
-        if (false !== ($imageSize = @getimagesizefromstring($content))) {
-            $config['Metadata'] = [
-                'image-width' => $imageSize[0],
-                'image-height' => $imageSize[1],
-            ];
+        if (false !== $image_size = @getimagesizefromstring($content)) {
+            $config['Metadata'] = ['image-width' => $image_size[0], 'image-height' => $image_size[1]];
         }
-
         try {
             $this->adapter->write($path, $content, new Config($config));
-            return ($this->adapter->fileSize($path)->fileSize() !== null) ?? true;
-
-        } catch (FlysystemFilesystemException | UnableToRetrieveMetadata $e) {
-            $this->logger->error($e->getMessage());
+            return $this->adapter->file_size($path)->file_size() !== null ?? true;
+        } catch (Flysystem_Filesystem_Exception|Unable_To_Retrieve_Metadata $e) {
+            $this->logger->error($e->get_message());
             return false;
         }
     }
-
     /**
      * @inheritDoc
      */
-    public function readDirectoryRecursively($path = null): array
+    public function read_directory_recursively($path = null): array
     {
-        return $this->readPath($path, true);
+        return $this->read_path($path, true);
     }
-
     /**
      * @inheritDoc
      */
-    public function readDirectory($path): array
+    public function read_directory($path): array
     {
-        return $this->readPath($path, false);
+        return $this->read_path($path, false);
     }
-
     /**
      * @inheritDoc
      */
-    public function getRealPathSafety($path): string|array|null
+    public function get_real_path_safety($path): string|array|null
     {
         //Removing redundant directory separators
-        $path = preg_replace(
-            '~(?<!:)\/\/+~',
-            '/',
-            $path
-        );
-
+        $path = preg_replace('~(?<!:)\/\/+~', '/', $path);
         if (!str_contains((string) $path, '/.')) {
             return $path;
         }
-
-        $isAbsolute = str_starts_with((string) $path, $this->normalizeAbsolutePath(''));
-        $path = $this->normalizeRelativePath($path);
-
-        $pathParts = explode('/', $path);
-        if (end($pathParts) === '.') {
-            $pathParts[count($pathParts) - 1] = '';
+        $is_absolute = str_starts_with((string) $path, $this->normalize_absolute_path(''));
+        $path = $this->normalize_relative_path($path);
+        $path_parts = explode('/', $path);
+        if (end($path_parts) === '.') {
+            $path_parts[count($path_parts) - 1] = '';
         }
-        $realPath = [];
-        foreach ($pathParts as $pathPart) {
-            if ($pathPart === '.') {
+        $real_path = [];
+        foreach ($path_parts as $path_part) {
+            if ($path_part === '.') {
                 continue;
             }
-            if ($pathPart === '..') {
-                array_pop($realPath);
+            if ($path_part === '..') {
+                array_pop($real_path);
                 continue;
             }
-            $realPath[] = $pathPart;
+            $real_path[] = $path_part;
         }
-
-        if ($isAbsolute) {
-            return $this->normalizeAbsolutePath(implode('/', $realPath));
+        if ($is_absolute) {
+            return $this->normalize_absolute_path(implode('/', $real_path));
         }
-
-        return implode('/', $realPath);
+        return implode('/', $real_path);
     }
-
     /**
      * @inheritDoc
      */
-    public function getAbsolutePath($basePath, $path, $scheme = null): string
+    public function get_absolute_path($base_path, $path, $scheme = null): string
     {
-        $basePath = (string)$basePath;
-        $path = (string)$path;
-
-        if ($basePath && $path && str_starts_with(rtrim($path, '/'), rtrim($basePath, '/'))) {
-            return $this->normalizeAbsolutePath($path);
+        $base_path = (string) $base_path;
+        $path = (string) $path;
+        if ($base_path && $path && str_starts_with(rtrim($path, '/'), rtrim($base_path, '/'))) {
+            return $this->normalize_absolute_path($path);
         }
-
-        if ($basePath) {
-            $path = $basePath . ltrim($path, '/');
+        if ($base_path) {
+            $path = $base_path . ltrim($path, '/');
         }
-
-        return $this->normalizeAbsolutePath($path);
+        return $this->normalize_absolute_path($path);
     }
-
     /**
      * Resolves relative path.
      *
      * @param string $path Absolute path
      * @return string Relative path
      */
-    private function normalizeRelativePath(string $path, bool $fixPath = false): string
+    private function normalize_relative_path(string $path, bool $fix_path = false): string
     {
-        $relativePath = str_replace($this->normalizeAbsolutePath(''), '', $path);
-
-        if ($fixPath) {
-            return $this->fixPath($relativePath);
+        $relative_path = str_replace($this->normalize_absolute_path(''), '', $path);
+        if ($fix_path) {
+            return $this->fix_path($relative_path);
         }
-
-        return $relativePath;
+        return $relative_path;
     }
-
     /**
      * Resolves absolute path.
      *
      * @param string $path Relative path
      * @return string Absolute path
      */
-    private function normalizeAbsolutePath(string $path): string
+    private function normalize_absolute_path(string $path): string
     {
-        $path = str_replace($this->getObjectUrl(''), '', $path);
-
-        return $this->getObjectUrl($path);
+        $path = str_replace($this->get_object_url(''), '', $path);
+        return $this->get_object_url($path);
     }
-
     /**
      * Retrieves object URL from cache.
      */
-    private function getObjectUrl(string $path): string
+    private function get_object_url(string $path): string
     {
-        return $this->objectUrl . ltrim($path, '/');
+        return $this->object_url . ltrim($path, '/');
     }
-
     /**
      * @inheritDoc
      */
-    public function isReadable($path): bool
+    public function is_readable($path): bool
     {
-        return $this->isExists($path);
+        return $this->is_exists($path);
     }
-
     /**
      * Check is specified path a file.
      *
      * @return bool
      */
-    private function isTypeFile(string $path)
+    private function is_type_file(string $path)
     {
         try {
-            $metadata = $this->metadataProvider->getMetadata($this->normalizeRelativePath($path, true));
+            $metadata = $this->metadata_provider->get_metadata($this->normalize_relative_path($path, true));
             if ($metadata && isset($metadata['type'])) {
                 return $metadata['type'] === self::TYPE_FILE;
             }
-        } catch (UnableToRetrieveMetadata) {
+        } catch (Unable_To_Retrieve_Metadata) {
             return false;
         }
         return false;
     }
-
     /**
      * @inheritDoc
      */
-    public function isFile($path): bool
+    public function is_file($path): bool
     {
         if (!$path || $path === '/') {
             return false;
         }
-        return $this->isTypeFile($path);
+        return $this->is_type_file($path);
     }
-
     /**
      * @inheritDoc
      */
-    public function isDirectory($path): bool
+    public function is_directory($path): bool
     {
         if (in_array($path, ['.', '/', ''], true)) {
             return true;
         }
-
         if (!$path) {
             return true;
         }
-        return $this->isTypeDirectory($path);
+        return $this->is_type_directory($path);
     }
-
     /**
      * Check is given path a directory in metadata.
      */
-    private function isTypeDirectory(string $path): bool
+    private function is_type_directory(string $path): bool
     {
         try {
-            $meta = $this->metadataProvider->getMetadata($this->normalizeRelativePath($path, true));
-        } catch (UnableToRetrieveMetadata) {
+            $meta = $this->metadata_provider->get_metadata($this->normalize_relative_path($path, true));
+        } catch (Unable_To_Retrieve_Metadata) {
             return false;
         }
         if (isset($meta['type']) && $meta['type'] === self::TYPE_DIR) {
@@ -442,138 +366,100 @@ class AwsS3 implements RemoteDriverInterface
         }
         return false;
     }
-
     /**
      * Check if directory exists by path.
      */
-    private function directoryExists(string $path): bool
+    private function directory_exists(string $path): bool
     {
         try {
-            return $this->adapter->fileExists($path);
+            return $this->adapter->file_exists($path);
         } catch (Throwable) {
             // catch closed iterator
             return false;
         }
     }
-
     /**
      * @inheritDoc
      */
-    public function getRelativePath($basePath, $path = null): string
+    public function get_relative_path($base_path, $path = null): string
     {
-        $basePath = (string)$basePath;
-        $path = (string)$path;
-
-        if ($basePath && $path
-            && ($basePath === $path . '/' || str_starts_with($path, $basePath))
-        ) {
-            return substr($path, strlen($basePath));
+        $base_path = (string) $base_path;
+        $path = (string) $path;
+        if ($base_path && $path && ($base_path === $path . '/' || str_starts_with($path, $base_path))) {
+            return substr($path, strlen($base_path));
         }
-
         return $path;
     }
-
     /**
      * @inheritDoc
      */
-    public function getParentDirectory($path): string
+    public function get_parent_directory($path): string
     {
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
-        return rtrim(dirname($this->normalizeAbsolutePath($path)), '/') . '/';
+        return rtrim(dirname($this->normalize_absolute_path($path)), '/') . '/';
     }
-
     /**
      * @inheritDoc
      */
-    public function getRealPath($path): string
+    public function get_real_path($path): string
     {
-        return $this->normalizeAbsolutePath($path);
+        return $this->normalize_absolute_path($path);
     }
-
     /**
      * @inheritDoc
      */
-    public function rename($oldPath, $newPath, ?DriverInterface $targetDriver = null): bool
+    public function rename($old_path, $new_path, ?Driver_Interface $target_driver = null): bool
     {
-        if ($oldPath === $newPath) {
+        if ($old_path === $new_path) {
             return true;
         }
-
         try {
-            $this->adapter->move(
-                $this->normalizeRelativePath($oldPath, true),
-                $this->normalizeRelativePath($newPath, true),
-                new Config(self::CONFIG)
-            );
-        } catch (FlysystemFilesystemException $e) {
-            $this->logger->error($e->getMessage());
+            $this->adapter->move($this->normalize_relative_path($old_path, true), $this->normalize_relative_path($new_path, true), new Config(self::CONFIG));
+        } catch (Flysystem_Filesystem_Exception $e) {
+            $this->logger->error($e->get_message());
             return false;
         }
         return true;
     }
-
     /**
      * @inheritDoc
      */
     public function stat($path): array
     {
-        $result = [
-            'dev' => 0,
-            'ino' => 0,
-            'mode' => 0,
-            'nlink' => 0,
-            'uid' => 0,
-            'gid' => 0,
-            'rdev' => 0,
-            'atime' => 0,
-            'ctime' => 0,
-            'blksize' => 0,
-            'blocks' => 0,
-            'size' => 0,
-            'type' => '',
-            'mtime' => 0,
-            'disposition' => null,
-        ];
-        $path = $this->normalizeRelativePath($path, true);
+        $result = ['dev' => 0, 'ino' => 0, 'mode' => 0, 'nlink' => 0, 'uid' => 0, 'gid' => 0, 'rdev' => 0, 'atime' => 0, 'ctime' => 0, 'blksize' => 0, 'blocks' => 0, 'size' => 0, 'type' => '', 'mtime' => 0, 'disposition' => null];
+        $path = $this->normalize_relative_path($path, true);
         try {
-            $metaInfo = $this->metadataProvider->getMetadata($path);
-        } catch (UnableToRetrieveMetadata) {
-            if ($this->directoryExists($path)) {
+            $meta_info = $this->metadata_provider->get_metadata($path);
+        } catch (Unable_To_Retrieve_Metadata) {
+            if ($this->directory_exists($path)) {
                 $result['type'] = self::TYPE_DIR;
             }
             return $result;
         }
-
-        if (!$metaInfo) {
-            throw new FileSystemException(__('Cannot gather stats! %1', [$this->getWarningMessage()]));
+        if (!$meta_info) {
+            throw new File_System_Exception(__('Cannot gather stats! %1', [$this->get_warning_message()]));
         }
-        if ($metaInfo['type'] === 'file') {
-            $result['size'] = $metaInfo['size'];
-            $result['type'] = $metaInfo['type'];
-            $result['mtime'] = $metaInfo['timestamp'];
+        if ($meta_info['type'] === 'file') {
+            $result['size'] = $meta_info['size'];
+            $result['type'] = $meta_info['type'];
+            $result['mtime'] = $meta_info['timestamp'];
         }
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function getMetadata(string $path): array
+    public function get_metadata(string $path): array
     {
-        return $this->metadataProvider->getMetadata($this->normalizeRelativePath($path));
+        return $this->metadata_provider->get_metadata($this->normalize_relative_path($path));
     }
-
     /**
      * @inheritDoc
      */
     public function search($pattern, $path): array
     {
-        return iterator_to_array(
-            $this->glob(rtrim((string)$path, '/') . '/' . ltrim((string)$pattern, '/')),
-            false
-        );
+        return iterator_to_array($this->glob(rtrim((string) $path, '/') . '/' . ltrim((string) $pattern, '/')), false);
     }
-
     /**
      * Emulate php glob function for AWS S3 storage
      *
@@ -581,251 +467,190 @@ class AwsS3 implements RemoteDriverInterface
      */
     private function glob(string $pattern): Generator
     {
-        $patternFound = preg_match('(\*|\?|\[.+\])', $pattern, $parentPattern, PREG_OFFSET_CAPTURE);
-
-        if ($patternFound) {
+        $pattern_found = preg_match('(\*|\?|\[.+\])', $pattern, $parent_pattern, PREG_OFFSET_CAPTURE);
+        if ($pattern_found) {
             // phpcs:ignore Magento2.Functions.DiscouragedFunction
-            $parentDirectory = dirname(substr($pattern, 0, $parentPattern[0][1] + 1));
-            $leftover = substr($pattern, $parentPattern[0][1]);
+            $parent_directory = dirname(substr($pattern, 0, $parent_pattern[0][1] + 1));
+            $leftover = substr($pattern, $parent_pattern[0][1]);
             $index = strpos($leftover, '/');
-            $searchPattern = $this->getSearchPattern($pattern, $parentPattern, $parentDirectory, $index);
-
-            if ($this->isDirectory($parentDirectory)) {
-                yield from $this->getDirectoryContent($parentDirectory, $searchPattern, $leftover, $index);
+            $search_pattern = $this->get_search_pattern($pattern, $parent_pattern, $parent_directory, $index);
+            if ($this->is_directory($parent_directory)) {
+                yield from $this->get_directory_content($parent_directory, $search_pattern, $leftover, $index);
             }
-        } elseif ($this->isExists($pattern)) {
-            yield $this->normalizeAbsolutePath($pattern);
+        } elseif ($this->is_exists($pattern)) {
+            yield $this->normalize_absolute_path($pattern);
         }
     }
-
     /**
      * @inheritDoc
      */
-    public function symlink($source, $destination, ?DriverInterface $targetDriver = null): bool
+    public function symlink($source, $destination, ?Driver_Interface $target_driver = null): bool
     {
-        return $this->copy($source, $destination, $targetDriver);
+        return $this->copy($source, $destination, $target_driver);
     }
-
     /**
      * @inheritDoc
      */
-    public function changePermissions($path, $permissions): bool
+    public function change_permissions($path, $permissions): bool
     {
         return true;
     }
-
     /**
      * @inheritDoc
      */
-    public function changePermissionsRecursively($path, $dirPermissions, $filePermissions): bool
+    public function change_permissions_recursively($path, $dir_permissions, $file_permissions): bool
     {
         return true;
     }
-
     /**
      * @inheritDoc
      */
-    public function touch($path, $modificationTime = null): bool
+    public function touch($path, $modification_time = null): bool
     {
-        $path = $this->normalizeRelativePath($path, true);
-
+        $path = $this->normalize_relative_path($path, true);
         try {
-            $content = $this->adapter->fileExists($path) ?
-                $this->adapter->read($path)
-                : '';
+            $content = $this->adapter->file_exists($path) ? $this->adapter->read($path) : '';
             $this->adapter->write($path, $content, new Config([]));
-        } catch (FlysystemFilesystemException $e) {
-            $this->logger->error($e->getMessage());
+        } catch (Flysystem_Filesystem_Exception $e) {
+            $this->logger->error($e->get_message());
             return false;
         }
-
         return true;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileReadLine($resource, $length, $ending = null): string
+    public function file_read_line($resource, $length, $ending = null): string
     {
         // phpcs:disable
         $result = @stream_get_line($resource, $length, (string) $ending);
         // phpcs:enable
         if (false === $result) {
-            throw new FileSystemException(
-                new Phrase('File cannot be read %1', [$this->getWarningMessage()])
-            );
+            throw new File_System_Exception(new Phrase('File cannot be read %1', [$this->get_warning_message()]));
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileRead($resource, $length): string
+    public function file_read($resource, $length): string
     {
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
         $result = fread($resource, $length);
         if ($result === false) {
-            throw new FileSystemException(__('File cannot be read %1', [$this->getWarningMessage()]));
+            throw new File_System_Exception(__('File cannot be read %1', [$this->get_warning_message()]));
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileGetCsv($resource, $length = 0, $delimiter = ',', $enclosure = '"', $escape = '\\')
+    public function file_get_csv($resource, $length = 0, $delimiter = ',', $enclosure = '"', $escape = '\\')
     {
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
         $result = fgetcsv($resource, $length, $delimiter, $enclosure, $escape);
         if ($result === null) {
-            throw new FileSystemException(
-                new Phrase(
-                    'The "%1" CSV handle is incorrect. Verify the handle and try again.',
-                    [$this->getWarningMessage()]
-                )
-            );
+            throw new File_System_Exception(new Phrase('The "%1" CSV handle is incorrect. Verify the handle and try again.', [$this->get_warning_message()]));
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileTell($resource): int
+    public function file_tell($resource): int
     {
         // phpcs:ignore Magento2.Functions.DiscouragedFunction, Generic.PHP.NoSilencedErrors.Discouraged
         $result = @ftell($resource);
         if ($result === null) {
-            throw new FileSystemException(
-                new Phrase('An error occurred during "%1" execution.', [$this->getWarningMessage()])
-            );
+            throw new File_System_Exception(new Phrase('An error occurred during "%1" execution.', [$this->get_warning_message()]));
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileSeek($resource, $offset, $whence = SEEK_SET): int
+    public function file_seek($resource, $offset, $whence = SEEK_SET): int
     {
         // phpcs:ignore Magento2.Functions.DiscouragedFunction, Generic.PHP.NoSilencedErrors.Discouraged
         $result = @fseek($resource, $offset, $whence);
         if ($result === -1) {
-            throw new FileSystemException(
-                new Phrase(
-                    'An error occurred during "%1" fileSeek execution.',
-                    [$this->getWarningMessage()]
-                )
-            );
+            throw new File_System_Exception(new Phrase('An error occurred during "%1" fileSeek execution.', [$this->get_warning_message()]));
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function endOfFile($resource): bool
+    public function end_of_file($resource): bool
     {
         // phpcs:ignore Magento2.Functions.DiscouragedFunction.DiscouragedWithAlternative
         return feof($resource);
     }
-
     /**
      * @inheritDoc
      */
-    public function filePutCsv($resource, array $data, $delimiter = ',', $enclosure = '"'): int|false
+    public function file_put_csv($resource, array $data, $delimiter = ',', $enclosure = '"'): int|false
     {
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
         return fputcsv($resource, $data, $delimiter, $enclosure, '\\');
     }
-
     /**
      * @inheritDoc
      */
-    public function fileFlush($resource): bool
+    public function file_flush($resource): bool
     {
         // phpcs:ignore Magento2.Functions.DiscouragedFunction, Generic.PHP.NoSilencedErrors.Discouraged
         $result = @fflush($resource);
         if (!$result) {
-            throw new FileSystemException(
-                new Phrase(
-                    'An error occurred during "%1" fileFlush execution.',
-                    [$this->getWarningMessage()]
-                )
-            );
+            throw new File_System_Exception(new Phrase('An error occurred during "%1" fileFlush execution.', [$this->get_warning_message()]));
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileLock($resource, $lockMode = LOCK_EX): bool
+    public function file_lock($resource, $lock_mode = LOCK_EX): bool
     {
         // phpcs:ignore Magento2.Functions.DiscouragedFunction, Generic.PHP.NoSilencedErrors.Discouraged
-        $result = @flock($resource, $lockMode);
+        $result = @flock($resource, $lock_mode);
         if (!$result) {
-            throw new FileSystemException(
-                new Phrase(
-                    'An error occurred during "%1" fileLock execution.',
-                    [$this->getWarningMessage()]
-                )
-            );
+            throw new File_System_Exception(new Phrase('An error occurred during "%1" fileLock execution.', [$this->get_warning_message()]));
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileUnlock($resource): bool
+    public function file_unlock($resource): bool
     {
         // phpcs:ignore Magento2.Functions.DiscouragedFunction, Generic.PHP.NoSilencedErrors.Discouraged
         $result = @flock($resource, LOCK_UN);
         if (!$result) {
-            throw new FileSystemException(
-                new Phrase(
-                    'An error occurred during "%1" fileUnlock execution.',
-                    [$this->getWarningMessage()]
-                )
-            );
+            throw new File_System_Exception(new Phrase('An error occurred during "%1" fileUnlock execution.', [$this->get_warning_message()]));
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileWrite($resource, $data): int|false
+    public function file_write($resource, $data): int|false
     {
         //phpcs:disable
-        $resourcePath = stream_get_meta_data($resource)['uri'];
+        $resource_path = stream_get_meta_data($resource)['uri'];
         //phpcs:enable
-
         foreach ($this->streams as $stream) {
             //phpcs:disable
-            if (stream_get_meta_data($stream)['uri'] === $resourcePath) {
+            if (stream_get_meta_data($stream)['uri'] === $resource_path) {
                 return fwrite($stream, $data);
             }
             //phpcs:enable
         }
-
         return false;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileClose($resource): bool
+    public function file_close($resource): bool
     {
         if (!is_resource($resource)) {
             return false;
@@ -833,41 +658,36 @@ class AwsS3 implements RemoteDriverInterface
         //phpcs:disable
         $meta = stream_get_meta_data($resource);
         //phpcs:enable
-
         foreach ($this->streams as $path => $stream) {
             // phpcs:ignore
             if (stream_get_meta_data($stream)['uri'] === $meta['uri']) {
                 if (isset($meta['seekable']) && $meta['seekable']) {
                     // rewind the file pointer to make sure the full content of the file is saved
-                    $this->fileSeek($resource, 0);
+                    $this->file_seek($resource, 0);
                 }
-                $this->adapter->writeStream($path, $resource, new Config(self::CONFIG));
+                $this->adapter->write_stream($path, $resource, new Config(self::CONFIG));
                 // Remove path from streams after
                 unset($this->streams[$path]);
-
                 // phpcs:ignore Magento2.Functions.DiscouragedFunction.DiscouragedWithAlternative
                 return fclose($stream);
             }
         }
-
         return false;
     }
-
     /**
      * @inheritDoc
      */
-    public function fileOpen($path, $mode)
+    public function file_open($path, $mode)
     {
         $_mode = str_replace(['b', '+'], '', strtolower($mode));
         if (!in_array($_mode, ['r', 'w', 'a'], true)) {
-            throw new FileSystemException(new Phrase('Invalid file open mode "%1".', [$mode]));
+            throw new File_System_Exception(new Phrase('Invalid file open mode "%1".', [$mode]));
         }
-        $path = $this->normalizeRelativePath($path, true);
-
+        $path = $this->normalize_relative_path($path, true);
         if (!isset($this->streams[$path])) {
             $this->streams[$path] = tmpfile();
             try {
-                if ($this->adapter->fileExists($path)) {
+                if ($this->adapter->file_exists($path)) {
                     if ($_mode !== 'w') {
                         //phpcs:ignore Magento2.Functions.DiscouragedFunction
                         fwrite($this->streams[$path], (string) $this->adapter->read($path));
@@ -877,107 +697,78 @@ class AwsS3 implements RemoteDriverInterface
                         }
                     }
                 }
-            } catch (FlysystemFilesystemException $e) {
-                $this->logger->error($e->getMessage());
+            } catch (Flysystem_Filesystem_Exception $e) {
+                $this->logger->error($e->get_message());
             }
         }
-
         return $this->streams[$path];
     }
-
     /**
      * Removes slashes in path.
      */
-    private function fixPath(string $path): string
+    private function fix_path(string $path): string
     {
         return trim($path, '/');
     }
-
     /**
      * Returns last warning message string
      */
-    private function getWarningMessage(): ?string
+    private function get_warning_message(): ?string
     {
         $warning = error_get_last();
         if ($warning && $warning['type'] === E_WARNING) {
             return 'Warning!' . $warning['message'];
         }
-
         return null;
     }
-
     /**
      * Read directory by path and is recursive flag
      */
-    private function readPath(string $path, bool $isRecursive = false): array
+    private function read_path(string $path, bool $is_recursive = false): array
     {
-        $relativePath = $this->normalizeRelativePath($path);
-        $itemsList = [];
-        foreach ($this->adapter->listContents($this->fixPath($relativePath), $isRecursive) as $item) {
+        $relative_path = $this->normalize_relative_path($path);
+        $items_list = [];
+        foreach ($this->adapter->list_contents($this->fix_path($relative_path), $is_recursive) as $item) {
             $path = $item->path();
-            if (!empty($path)
-                && $path !== $relativePath
-                && (!$relativePath || str_starts_with((string) $path, $relativePath))) {
+            if (!empty($path) && $path !== $relative_path && (!$relative_path || str_starts_with((string) $path, $relative_path))) {
                 //phpcs:ignore Magento2.Functions.DiscouragedFunction
-                $itemsList[] = $this->getAbsolutePath(dirname((string) $path), $path);
+                $items_list[] = $this->get_absolute_path(dirname((string) $path), $path);
             }
         }
-
-        return $itemsList;
+        return $items_list;
     }
-
     /**
      * Get search pattern for directory
      */
-    private function getSearchPattern(string $pattern, array $parentPattern, string $parentDirectory, int|bool $index): string
+    private function get_search_pattern(string $pattern, array $parent_pattern, string $parent_directory, int|bool $index): string
     {
-        $parentLength = strlen($parentDirectory);
+        $parent_length = strlen($parent_directory);
         if ($index !== false) {
-            $searchPattern = substr(
-                $pattern,
-                $parentLength + 1,
-                $parentPattern[0][1] - $parentLength + $index - 1
-            );
+            $search_pattern = substr($pattern, $parent_length + 1, $parent_pattern[0][1] - $parent_length + $index - 1);
         } else {
-            $searchPattern = substr($pattern, $parentLength + 1);
+            $search_pattern = substr($pattern, $parent_length + 1);
         }
-
-        $replacement = [
-            '/\*/' => '.*',
-            '/\?/' => '.',
-            '/\//' => '\/',
-        ];
-
-        return preg_replace(array_keys($replacement), array_values($replacement), $searchPattern);
+        $replacement = ['/\*/' => '.*', '/\?/' => '.', '/\//' => '\/'];
+        return preg_replace(array_keys($replacement), array_values($replacement), $search_pattern);
     }
-
     /**
      * Get directory content by given search pattern
      *
      * @throws FileSystemException
      */
-    private function getDirectoryContent(
-        string $parentDirectory,
-        string $searchPattern,
-        string $leftover,
-        int|bool $index
-    ): Generator {
-        $items = $this->readDirectory($parentDirectory);
-        $directoryContent = [];
+    private function get_directory_content(string $parent_directory, string $search_pattern, string $leftover, int|bool $index): Generator
+    {
+        $items = $this->read_directory($parent_directory);
+        $directory_content = [];
         foreach ($items as $item) {
-            if (preg_match('/' . $searchPattern . '$/', (string) $item)
-                // phpcs:ignore Magento2.Functions.DiscouragedFunction
-                && !str_starts_with(basename((string) $item), '.')) {
+            if (preg_match('/' . $search_pattern . '$/', (string) $item) && !str_starts_with(basename((string) $item), '.')) {
                 if ($index === false || strlen($leftover) === $index + 1) {
-                    yield $this->normalizeAbsolutePath(
-                        $this->isDirectory($item) ? rtrim((string) $item, '/') . '/' : $item
-                    );
+                    yield $this->normalize_absolute_path($this->is_directory($item) ? rtrim((string) $item, '/') . '/' : $item);
                 } elseif (strlen($leftover) > $index + 1) {
-                    yield from $this->glob("{$parentDirectory}/{$item}" . substr($leftover, $index));
+                    yield from $this->glob("{$parent_directory}/{$item}" . substr($leftover, $index));
                 }
             }
         }
-
-        return $directoryContent;
+        return $directory_content;
     }
 }

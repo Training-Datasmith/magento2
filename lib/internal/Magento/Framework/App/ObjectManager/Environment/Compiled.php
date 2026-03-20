@@ -1,45 +1,39 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\App\ObjectManager\Environment;
+namespace Magento\Framework\App\Object_Manager\Environment;
 
 use Magento\Framework\App\Area;
-use Magento\Framework\App\EnvironmentInterface;
-use Magento\Framework\App\Interception\Cache\CompiledConfig;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Interception\ObjectManager\ConfigInterface;
-use Magento\Framework\ObjectManager\FactoryInterface;
-
+use Magento\Framework\App\Environment_Interface;
+use Magento\Framework\App\Interception\Cache\Compiled_Config;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Interception\Object_Manager\Config_Interface;
+use Magento\Framework\Object_Manager\Factory_Interface;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Compiled extends AbstractEnvironment implements EnvironmentInterface
+class Compiled extends Abstract_Environment implements Environment_Interface
 {
     /**#@+
      * Mode name
      */
     public const MODE = 'compiled';
-
     /**
      * @var string
      */
     protected $mode = self::MODE;
-
     /**
      * @var string
      */
-    protected $configPreference = \Magento\Framework\ObjectManager\Factory\Compiled::class;
-
+    protected $config_preference = \Magento\Framework\Object_Manager\Factory\Compiled::class;
     /**
      * @var \Magento\Framework\App\ObjectManager\ConfigLoader\Compiled
      */
-    private $configLoader;
-
+    private $config_loader;
     /**
      * Creates factory
      *
@@ -48,79 +42,54 @@ class Compiled extends AbstractEnvironment implements EnvironmentInterface
      *
      * @return FactoryInterface
      */
-    protected function createFactory($arguments, $factoryClass)
+    protected function create_factory($arguments, $factory_class)
     {
-        return new $factoryClass(
-            $this->getDiConfig(),
-            $arguments['shared_instances'],
-            $arguments
-        );
+        return new $factory_class($this->get_di_config(), $arguments['shared_instances'], $arguments);
     }
-
     /**
      * Returns initialized compiled config
      *
      * @return \Magento\Framework\Interception\ObjectManager\ConfigInterface
      */
-    public function getDiConfig()
+    public function get_di_config()
     {
         if (!$this->config) {
-            $this->config = new \Magento\Framework\Interception\ObjectManager\Config\Compiled(
-                $this->getConfigData()
-            );
+            $this->config = new \Magento\Framework\Interception\Object_Manager\Config\Compiled($this->get_config_data());
         }
-
         return $this->config;
     }
-
     /**
      * Returns config data as array
      *
      * @return array
      */
-    protected function getConfigData()
+    protected function get_config_data()
     {
-        return $this->getObjectManagerConfigLoader()->load(Area::AREA_GLOBAL);
+        return $this->get_object_manager_config_loader()->load(Area::AREA_GLOBAL);
     }
-
     /**
      * Returns new instance of compiled config loader
      *
      * @return \Magento\Framework\App\ObjectManager\ConfigLoader\Compiled
      */
-    public function getObjectManagerConfigLoader()
+    public function get_object_manager_config_loader()
     {
-        if ($this->configLoader) {
-            return $this->configLoader;
+        if ($this->config_loader) {
+            return $this->config_loader;
         }
-
-        $this->configLoader = new \Magento\Framework\App\ObjectManager\ConfigLoader\Compiled();
-        return $this->configLoader;
+        $this->config_loader = new \Magento\Framework\App\Object_Manager\Config_Loader\Compiled();
+        return $this->config_loader;
     }
-
     /**
      * @inheritDoc
      */
-    public function configureObjectManager(ConfigInterface $diConfig, &$sharedInstances)
+    public function configure_object_manager(Config_Interface $di_config, &$shared_instances)
     {
-        $objectManager = ObjectManager::getInstance();
-
-        $objectManager->configure(
-            $objectManager
-                ->get(\Magento\Framework\ObjectManager\ConfigLoaderInterface::class)
-                ->load(Area::AREA_GLOBAL)
-        );
-        $objectManager->get(\Magento\Framework\Config\ScopeInterface::class)
-            ->setCurrentScope('global');
-        $diConfig->setInterceptionConfig(
-            $objectManager->get(\Magento\Framework\Interception\Config\Config::class)
-        );
-        $sharedInstances[\Magento\Framework\Interception\PluginList\PluginList::class] = $objectManager->create(
-            \Magento\Framework\Interception\PluginListInterface::class,
-            ['cache' => $objectManager->get(\Magento\Framework\App\Interception\Cache\CompiledConfig::class)]
-        );
-        $objectManager
-            ->get(\Magento\Framework\App\Cache\Manager::class)
-            ->setEnabled([CompiledConfig::TYPE_IDENTIFIER], true);
+        $object_manager = Object_Manager::get_instance();
+        $object_manager->configure($object_manager->get(\Magento\Framework\Object_Manager\Config_Loader_Interface::class)->load(Area::AREA_GLOBAL));
+        $object_manager->get(\Magento\Framework\Config\Scope_Interface::class)->set_current_scope('global');
+        $di_config->set_interception_config($object_manager->get(\Magento\Framework\Interception\Config\Config::class));
+        $shared_instances[\Magento\Framework\Interception\Plugin_List\Plugin_List::class] = $object_manager->create(\Magento\Framework\Interception\Plugin_List_Interface::class, ['cache' => $object_manager->get(\Magento\Framework\App\Interception\Cache\Compiled_Config::class)]);
+        $object_manager->get(\Magento\Framework\App\Cache\Manager::class)->set_enabled([Compiled_Config::TYPE_IDENTIFIER], true);
     }
 }

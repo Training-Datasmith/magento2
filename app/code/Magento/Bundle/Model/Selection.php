@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Model;
 
 /**
@@ -36,13 +35,12 @@ namespace Magento\Bundle\Model;
  * @api
  * @since 100.0.2
  */
-class Selection extends \Magento\Framework\Model\AbstractModel
+class Selection extends \Magento\Framework\Model\Abstract_Model
 {
     /**
      * @var \Magento\Catalog\Helper\Data
      */
-    protected $_catalogData;
-
+    protected $_catalog_data;
     /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -51,18 +49,11 @@ class Selection extends \Magento\Framework\Model\AbstractModel
      * @param \Magento\Framework\Data\Collection\AbstractDb $resourceCollection
      * @param array $data
      */
-    public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Catalog\Helper\Data $catalogData,
-        \Magento\Bundle\Model\ResourceModel\Selection $resource,
-        ?\Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
-        array $data = []
-    ) {
-        $this->_catalogData = $catalogData;
-        parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+    public function __construct(\Magento\Framework\Model\Context $context, \Magento\Framework\Registry $registry, \Magento\Catalog\Helper\Data $catalog_data, \Magento\Bundle\Model\Resource_Model\Selection $resource, ?\Magento\Framework\Data\Collection\Abstract_Db $resource_collection = null, array $data = [])
+    {
+        $this->_catalog_data = $catalog_data;
+        parent::__construct($context, $registry, $resource, $resource_collection, $data);
     }
-
     /**
      * Initialize resource model
      *
@@ -70,47 +61,44 @@ class Selection extends \Magento\Framework\Model\AbstractModel
      */
     protected function _construct()
     {
-        $this->_init(\Magento\Bundle\Model\ResourceModel\Selection::class);
+        $this->_init(\Magento\Bundle\Model\Resource_Model\Selection::class);
         parent::_construct();
     }
-
     /**
      * Processing object before save data
      *
      * @return void
      */
-    public function beforeSave()
+    public function before_save()
     {
-        if (!$this->_catalogData->isPriceGlobal() && $this->getWebsiteId()) {
-            $this->setData('tmp_selection_price_value', $this->getSelectionPriceValue());
-            $this->setData('tmp_selection_price_type', $this->getSelectionPriceType());
-            $this->setSelectionPriceValue($this->getOrigData('selection_price_value'));
-            $this->setSelectionPriceType($this->getOrigData('selection_price_type'));
+        if (!$this->_catalog_data->is_price_global() && $this->get_website_id()) {
+            $this->set_data('tmp_selection_price_value', $this->get_selection_price_value());
+            $this->set_data('tmp_selection_price_type', $this->get_selection_price_type());
+            $this->set_selection_price_value($this->get_orig_data('selection_price_value'));
+            $this->set_selection_price_type($this->get_orig_data('selection_price_type'));
         }
-        parent::beforeSave();
+        parent::before_save();
     }
-
     /**
      * Processing object after save data
      *
      * @return $this
      */
-    public function afterSave()
+    public function after_save()
     {
-        if (!$this->_catalogData->isPriceGlobal() && $this->getWebsiteId()) {
-            if (null !== $this->getData('tmp_selection_price_value')) {
-                $this->setSelectionPriceValue($this->getData('tmp_selection_price_value'));
+        if (!$this->_catalog_data->is_price_global() && $this->get_website_id()) {
+            if (null !== $this->get_data('tmp_selection_price_value')) {
+                $this->set_selection_price_value($this->get_data('tmp_selection_price_value'));
             }
-            if (null !== $this->getData('tmp_selection_price_type')) {
-                $this->setSelectionPriceType($this->getData('tmp_selection_price_type'));
+            if (null !== $this->get_data('tmp_selection_price_type')) {
+                $this->set_selection_price_type($this->get_data('tmp_selection_price_type'));
             }
-            $this->getResource()->saveSelectionPrice($this);
-
-            if (!$this->getDefaultPriceScope()) {
-                $this->unsSelectionPriceValue();
-                $this->unsSelectionPriceType();
+            $this->get_resource()->save_selection_price($this);
+            if (!$this->get_default_price_scope()) {
+                $this->uns_selection_price_value();
+                $this->uns_selection_price_type();
             }
         }
-        return parent::afterSave();
+        return parent::after_save();
     }
 }

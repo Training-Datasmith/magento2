@@ -4,18 +4,16 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Scope;
 
-use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\Exception\Localized_Exception;
 /**
  * Interface Validator for validating scope and scope code
  *
  * @api
  */
-interface ValidatorInterface
+interface Validator_Interface
 {
     /**
      * Validate if exists given scope and scope code
@@ -26,5 +24,5 @@ interface ValidatorInterface
      * @return boolean
      * @throws LocalizedException
      */
-    public function isValid($scope, $scopeCode = null);
+    public function is_valid($scope, $scope_code = null);
 }

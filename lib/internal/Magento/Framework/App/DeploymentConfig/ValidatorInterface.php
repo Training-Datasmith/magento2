@@ -4,16 +4,15 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Framework\App\DeploymentConfig;
+declare (strict_types=1);
+namespace Magento\Framework\App\Deployment_Config;
 
 /**
  * Validator interface for section data from shared configuration files.
  *
  * @api
  */
-interface ValidatorInterface
+interface Validator_Interface
 {
     /**
      * Validates data and returns messages with causes of wrong data.

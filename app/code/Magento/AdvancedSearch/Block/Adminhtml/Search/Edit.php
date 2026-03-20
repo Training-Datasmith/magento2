@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdvancedSearch\Block\Adminhtml\Search;
+namespace Magento\Advanced_Search\Block\Adminhtml\Search;
 
 /**
  * Search queries relations grid container
@@ -23,11 +22,11 @@ class Edit extends \Magento\Backend\Block\Widget\Grid\Container
      */
     protected function _construct()
     {
-        $this->_blockGroup = 'Magento_AdvancedSearch';
+        $this->_block_group = 'Magento_AdvancedSearch';
         $this->_controller = 'adminhtml_search';
-        $this->_headerText = __('Related Search Terms');
-        $this->_addButtonLabel = __('Add New Search Term');
+        $this->_header_text = __('Related Search Terms');
+        $this->_add_button_label = __('Add New Search Term');
         parent::_construct();
-        $this->buttonList->remove('add');
+        $this->button_list->remove('add');
     }
 }

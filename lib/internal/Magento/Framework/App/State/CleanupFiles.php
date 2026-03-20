@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\State;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\Exception\File_System_Exception;
 use Magento\Framework\Filesystem;
-
 /**
  * A service for cleaning up application state
  */
-class CleanupFiles
+class Cleanup_Files
 {
     /**
      * File system
@@ -23,7 +21,6 @@ class CleanupFiles
      * @var Filesystem
      */
     private $filesystem;
-
     /**
      * Constructor
      *
@@ -33,59 +30,42 @@ class CleanupFiles
     {
         $this->filesystem = $filesystem;
     }
-
     /**
      * Clears all files that are subject of code generation
      *
      * @return string[]
      */
-    public function clearCodeGeneratedFiles()
+    public function clear_code_generated_files()
     {
-        return array_merge(
-            $this->clearCodeGeneratedClasses(),
-            $this->clearMaterializedViewFiles()
-        );
+        return array_merge($this->clear_code_generated_classes(), $this->clear_materialized_view_files());
     }
-
     /**
      * Clears code-generated classes
      *
      * @return string[]
      */
-    public function clearCodeGeneratedClasses()
+    public function clear_code_generated_classes()
     {
-        return array_merge(
-            $this->emptyDir(DirectoryList::GENERATED_CODE),
-            $this->emptyDir(DirectoryList::GENERATED_METADATA)
-        );
+        return array_merge($this->empty_dir(Directory_List::GENERATED_CODE), $this->empty_dir(Directory_List::GENERATED_METADATA));
     }
-
     /**
      * Clears materialized static view files
      *
      * @return string[]
      */
-    public function clearMaterializedViewFiles()
+    public function clear_materialized_view_files()
     {
-        return array_merge(
-            $this->emptyDir(DirectoryList::STATIC_VIEW),
-            $this->emptyDir(DirectoryList::VAR_DIR, DirectoryList::TMP_MATERIALIZATION_DIR)
-        );
+        return array_merge($this->empty_dir(Directory_List::STATIC_VIEW), $this->empty_dir(Directory_List::VAR_DIR, Directory_List::TMP_MATERIALIZATION_DIR));
     }
-
     /**
      * Clears all files
      *
      * @return string[]
      */
-    public function clearAllFiles()
+    public function clear_all_files()
     {
-        return array_merge(
-            $this->emptyDir(DirectoryList::STATIC_VIEW),
-            $this->emptyDir(DirectoryList::VAR_DIR)
-        );
+        return array_merge($this->empty_dir(Directory_List::STATIC_VIEW), $this->empty_dir(Directory_List::VAR_DIR));
     }
-
     /**
      * Deletes contents of specified directory
      *
@@ -93,27 +73,25 @@ class CleanupFiles
      * @param string|null $subPath
      * @return string[]
      */
-    private function emptyDir($code, $subPath = null)
+    private function empty_dir($code, $sub_path = null)
     {
         $messages = [];
-
-        $dir = $this->filesystem->getDirectoryWrite($code);
-        $dirPath = $dir->getAbsolutePath();
-        if (!$dir->isExist()) {
-            $messages[] = "The directory '{$dirPath}' doesn't exist - skipping cleanup";
+        $dir = $this->filesystem->get_directory_write($code);
+        $dir_path = $dir->get_absolute_path();
+        if (!$dir->is_exist()) {
+            $messages[] = "The directory '{$dir_path}' doesn't exist - skipping cleanup";
             return $messages;
         }
-        foreach ($dir->search('*', $subPath) as $path) {
+        foreach ($dir->search('*', $sub_path) as $path) {
             if ($path !== '.' && $path !== '..') {
-                $messages[] = $dirPath . $path;
+                $messages[] = $dir_path . $path;
                 try {
                     $dir->delete($path);
-                } catch (FileSystemException $e) {
-                    $messages[] = $e->getMessage();
+                } catch (File_System_Exception $e) {
+                    $messages[] = $e->get_message();
                 }
             }
         }
-
         return $messages;
     }
 }

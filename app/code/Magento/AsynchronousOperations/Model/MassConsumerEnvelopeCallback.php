@@ -4,100 +4,79 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Model;
 
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Exception\NotFoundException;
-use Magento\Framework\MessageQueue\ConnectionLostException;
-use Magento\Framework\MessageQueue\ConsumerConfigurationInterface;
-use Magento\Framework\MessageQueue\EnvelopeInterface;
-use Magento\Framework\MessageQueue\LockInterface;
-use Magento\Framework\MessageQueue\MessageLockException;
-use Magento\Framework\MessageQueue\QueueInterface;
-use Psr\Log\LoggerInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\Exception\Not_Found_Exception;
+use Magento\Framework\Message_Queue\Connection_Lost_Exception;
+use Magento\Framework\Message_Queue\Consumer_Configuration_Interface;
+use Magento\Framework\Message_Queue\Envelope_Interface;
+use Magento\Framework\Message_Queue\Lock_Interface;
+use Magento\Framework\Message_Queue\Message_Lock_Exception;
+use Magento\Framework\Message_Queue\Queue_Interface;
+use Psr\Log\Logger_Interface;
 /**
  * Class used as public callback function by async consumer.
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class MassConsumerEnvelopeCallback
+class Mass_Consumer_Envelope_Callback
 {
     /**
      * @var OperationProcessor
      */
-    private $operationProcessor;
-
+    private $operation_processor;
     /**
      * @var MessageControllerDecorator
      */
-    private $messageControllerDecorator;
-
-    public function __construct(
-        private readonly ResourceConnection $resource,
-        private readonly ConsumerConfigurationInterface $configuration,
-        OperationProcessorFactory $operationProcessorFactory,
-        private readonly LoggerInterface $logger,
-        private readonly QueueInterface $queue,
-        ?MessageControllerDecorator $messageControllerDecorator = null
-    ) {
-        $this->operationProcessor = $operationProcessorFactory->create(
-            [
-                'configuration' => $this->configuration,
-            ]
-        );
-        $this->messageControllerDecorator = $messageControllerDecorator
-            ?: ObjectManager::getInstance()->get(MessageControllerDecorator::class);
+    private $message_controller_decorator;
+    public function __construct(private readonly Resource_Connection $resource, private readonly Consumer_Configuration_Interface $configuration, Operation_Processor_Factory $operation_processor_factory, private readonly Logger_Interface $logger, private readonly Queue_Interface $queue, ?Message_Controller_Decorator $message_controller_decorator = null)
+    {
+        $this->operation_processor = $operation_processor_factory->create(['configuration' => $this->configuration]);
+        $this->message_controller_decorator = $message_controller_decorator ?: Object_Manager::get_instance()->get(Message_Controller_Decorator::class);
     }
-
     /**
      * Get transaction callback. This handles the case of async.
      */
-    public function execute(EnvelopeInterface $message): void
+    public function execute(Envelope_Interface $message): void
     {
         $queue = $this->queue;
         /** @var LockInterface $lock */
         $lock = null;
         try {
-            $topicName = $message->getProperties()['topic_name'];
-            $lock = $this->messageControllerDecorator->lock($message, $this->configuration->getConsumerName());
-
-            $allowedTopics = $this->configuration->getTopicNames();
-            if (in_array($topicName, $allowedTopics)) {
-                $this->operationProcessor->process($message->getBody());
+            $topic_name = $message->get_properties()['topic_name'];
+            $lock = $this->message_controller_decorator->lock($message, $this->configuration->get_consumer_name());
+            $allowed_topics = $this->configuration->get_topic_names();
+            if (in_array($topic_name, $allowed_topics)) {
+                $this->operation_processor->process($message->get_body());
             } else {
                 $queue->reject($message);
                 return;
             }
             $queue->acknowledge($message);
-        } catch (MessageLockException) {
+        } catch (Message_Lock_Exception) {
             $queue->acknowledge($message);
-        } catch (ConnectionLostException) {
+        } catch (Connection_Lost_Exception) {
             if ($lock) {
-                $this->resource->getConnection()
-                    ->delete($this->resource->getTableName('queue_lock'), ['id = ?' => $lock->getId()]);
+                $this->resource->get_connection()->delete($this->resource->get_table_name('queue_lock'), ['id = ?' => $lock->get_id()]);
             }
-        } catch (NotFoundException $e) {
+        } catch (Not_Found_Exception $e) {
             $queue->acknowledge($message);
-            $this->logger->warning($e->getMessage());
+            $this->logger->warning($e->get_message());
         } catch (\Exception $e) {
-            $queue->reject($message, false, $e->getMessage());
+            $queue->reject($message, false, $e->get_message());
             if ($lock) {
-                $this->resource->getConnection()
-                    ->delete($this->resource->getTableName('queue_lock'), ['id = ?' => $lock->getId()]);
+                $this->resource->get_connection()->delete($this->resource->get_table_name('queue_lock'), ['id = ?' => $lock->get_id()]);
             }
         }
     }
-
     /**
      * Get message queue.
      *
      * @return QueueInterface
      */
-    public function getQueue()
+    public function get_queue()
     {
         return $this->queue;
     }

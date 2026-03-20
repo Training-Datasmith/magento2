@@ -4,37 +4,31 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Acl\Data;
 
-use Magento\Framework\Cache\CacheConstants;
-
+use Magento\Framework\Cache\Cache_Constants;
 /**
  * ACL data cache layer.
  */
-class Cache implements CacheInterface
+class Cache implements Cache_Interface
 {
     /**
      * Acl Data cache tag.
      */
     public const ACL_DATA_CACHE_TAG = 'acl_cache';
-
     /**
      * @var \Magento\Framework\Config\CacheInterface
      */
     private $cache;
-
     /**
      * @var \Magento\Framework\Acl\Builder
      */
-    private $aclBuilder;
-
+    private $acl_builder;
     /**
      * @var string
      */
-    private $cacheTag;
-
+    private $cache_tag;
     /**
      * Cache constructor.
      *
@@ -42,16 +36,12 @@ class Cache implements CacheInterface
      * @param \Magento\Framework\Acl\Builder $aclBuilder
      * @param string $cacheTag
      */
-    public function __construct(
-        \Magento\Framework\Config\CacheInterface $cache,
-        \Magento\Framework\Acl\Builder $aclBuilder,
-        $cacheTag = self::ACL_DATA_CACHE_TAG
-    ) {
+    public function __construct(\Magento\Framework\Config\Cache_Interface $cache, \Magento\Framework\Acl\Builder $acl_builder, $cache_tag = self::ACL_DATA_CACHE_TAG)
+    {
         $this->cache = $cache;
-        $this->aclBuilder = $aclBuilder;
-        $this->cacheTag = $cacheTag;
+        $this->acl_builder = $acl_builder;
+        $this->cache_tag = $cache_tag;
     }
-
     /**
      * @inheritDoc
      */
@@ -59,7 +49,6 @@ class Cache implements CacheInterface
     {
         return $this->cache->test($identifier);
     }
-
     /**
      * @inheritDoc
      */
@@ -67,15 +56,13 @@ class Cache implements CacheInterface
     {
         return $this->cache->load($identifier);
     }
-
     /**
      * @inheritDoc
      */
-    public function save($data, $identifier, array $tags = [], $lifeTime = null)
+    public function save($data, $identifier, array $tags = [], $life_time = null)
     {
-        return $this->cache->save($data, $identifier, array_merge($tags, [$this->cacheTag]), $lifeTime);
+        return $this->cache->save($data, $identifier, array_merge($tags, [$this->cache_tag]), $life_time);
     }
-
     /**
      * @inheritDoc
      */
@@ -83,29 +70,26 @@ class Cache implements CacheInterface
     {
         return $this->cache->remove($identifier);
     }
-
     /**
      * @inheritDoc
      */
-    public function clean($mode = CacheConstants::CLEANING_MODE_MATCHING_TAG, array $tags = [])
+    public function clean($mode = Cache_Constants::CLEANING_MODE_MATCHING_TAG, array $tags = [])
     {
-        $this->aclBuilder->resetRuntimeAcl();
-        return $this->cache->clean($mode, array_merge($tags, [$this->cacheTag]));
+        $this->acl_builder->reset_runtime_acl();
+        return $this->cache->clean($mode, array_merge($tags, [$this->cache_tag]));
     }
-
     /**
      * @inheritDoc
      */
-    public function getBackend()
+    public function get_backend()
     {
-        return $this->cache->getBackend();
+        return $this->cache->get_backend();
     }
-
     /**
      * @inheritDoc
      */
-    public function getLowLevelFrontend()
+    public function get_low_level_frontend()
     {
-        return $this->cache->getLowLevelFrontend();
+        return $this->cache->get_low_level_frontend();
     }
 }

@@ -1,62 +1,42 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml\DB;
 
-namespace Magento\Analytics\ReportXml\DB;
-
-use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\App\Resource_Connection;
 use Magento\Framework\DB\Sql\Expression;
-
 /**
  * Mapper for WHERE conditions
  */
-class ConditionResolver
+class Condition_Resolver
 {
-    private array $conditionMap = [
-        'eq' => '%1$s = %2$s',
-        'neq' => '%1$s != %2$s',
-        'like' => '%1$s LIKE %2$s',
-        'nlike' => '%1$s NOT LIKE %2$s',
-        'in' => '%1$s IN(%2$s)',
-        'nin' => '%1$s NOT IN(%2$s)',
-        'notnull' => '%1$s IS NOT NULL',
-        'null' => '%1$s IS NULL',
-        'gt' => '%1$s > %2$s',
-        'lt' => '%1$s < %2$s',
-        'gteq' => '%1$s >= %2$s',
-        'lteq' => '%1$s <= %2$s',
-        'finset' => 'FIND_IN_SET(%2$s, %1$s)',
-    ];
-
+    private array $condition_map = ['eq' => '%1$s = %2$s', 'neq' => '%1$s != %2$s', 'like' => '%1$s LIKE %2$s', 'nlike' => '%1$s NOT LIKE %2$s', 'in' => '%1$s IN(%2$s)', 'nin' => '%1$s NOT IN(%2$s)', 'notnull' => '%1$s IS NOT NULL', 'null' => '%1$s IS NULL', 'gt' => '%1$s > %2$s', 'lt' => '%1$s < %2$s', 'gteq' => '%1$s >= %2$s', 'lteq' => '%1$s <= %2$s', 'finset' => 'FIND_IN_SET(%2$s, %1$s)'];
     /**
      * @var \Magento\Framework\DB\Adapter\AdapterInterface
      */
     private $connection;
-
     /**
      * ConditionResolver constructor.
      */
-    public function __construct(private readonly ResourceConnection $resourceConnection)
+    public function __construct(private readonly Resource_Connection $resource_connection)
     {
     }
-
     /**
      * Returns connection
      *
      * @return \Magento\Framework\DB\Adapter\AdapterInterface
      */
-    private function getConnection()
+    private function get_connection()
     {
         if (!$this->connection) {
-            $this->connection = $this->resourceConnection->getConnection();
+            $this->connection = $this->resource_connection->get_connection();
         }
         return $this->connection;
     }
-
     /**
      * Returns value for condition
      *
@@ -64,7 +44,7 @@ class ConditionResolver
      * @param string $referencedEntity
      * @return mixed|null|string|\Zend_Db_Expr
      */
-    private function getValue(array $condition, ?string $referencedEntity)
+    private function get_value(array $condition, ?string $referenced_entity)
     {
         $value = null;
         $argument = $condition['_value'] ?? null;
@@ -72,37 +52,27 @@ class ConditionResolver
             $condition['type'] = 'value';
         }
         return match ($condition['type']) {
-            'value' => $this->getConnection()->quote($argument),
+            'value' => $this->get_connection()->quote($argument),
             'variable' => new Expression($argument),
-            'identifier' => $this->getConnection()->quoteIdentifier(
-                $referencedEntity ? $referencedEntity . '.' . $argument : $argument
-            ),
+            'identifier' => $this->get_connection()->quote_identifier($referenced_entity ? $referenced_entity . '.' . $argument : $argument),
             default => $value,
         };
     }
-
     /**
      * Returns condition for WHERE
      *
      * @param null|string $referencedEntity
      */
-    private function getCondition(SelectBuilder $selectBuilder, string $tableName, array $condition, $referencedEntity = null): string
+    private function get_condition(Select_Builder $select_builder, string $table_name, array $condition, $referenced_entity = null): string
     {
-        $columns = $selectBuilder->getColumns();
-        if (isset($columns[$condition['attribute']])
-            && $columns[$condition['attribute']] instanceof Expression
-        ) {
+        $columns = $select_builder->get_columns();
+        if (isset($columns[$condition['attribute']]) && $columns[$condition['attribute']] instanceof Expression) {
             $expression = $columns[$condition['attribute']];
         } else {
-            $expression = $this->getConnection()->quoteIdentifier($tableName . '.' . $condition['attribute']);
+            $expression = $this->get_connection()->quote_identifier($table_name . '.' . $condition['attribute']);
         }
-        return sprintf(
-            $this->conditionMap[$condition['operator']],
-            $expression,
-            $this->getValue($condition, $referencedEntity)
-        );
+        return sprintf($this->condition_map[$condition['operator']], $expression, $this->get_value($condition, $referenced_entity));
     }
-
     /**
      * Build WHERE condition
      *
@@ -111,34 +81,24 @@ class ConditionResolver
      * @param null|string $referencedAlias
      * @return array
      */
-    public function getFilter(SelectBuilder $selectBuilder, $filterConfig, $aliasName, $referencedAlias = null): string
+    public function get_filter(Select_Builder $select_builder, $filter_config, $alias_name, $referenced_alias = null): string
     {
-        $filtersParts = [];
-        foreach ($filterConfig as $filter) {
+        $filters_parts = [];
+        foreach ($filter_config as $filter) {
             $glue = $filter['glue'];
             $parts = [];
             foreach ($filter['condition'] as $condition) {
                 if (isset($condition['type']) && $condition['type'] == 'variable') {
                     // phpcs:ignore Magento2.Performance.ForeachArrayMerge
-                    $selectBuilder->setParams(array_merge($selectBuilder->getParams(), [$condition['_value']]));
+                    $select_builder->set_params(array_merge($select_builder->get_params(), [$condition['_value']]));
                 }
-                $parts[] = $this->getCondition(
-                    $selectBuilder,
-                    $aliasName,
-                    $condition,
-                    $referencedAlias
-                );
+                $parts[] = $this->get_condition($select_builder, $alias_name, $condition, $referenced_alias);
             }
             if (isset($filter['filter'])) {
-                $parts[] = '(' . $this->getFilter(
-                    $selectBuilder,
-                    $filter['filter'],
-                    $aliasName,
-                    $referencedAlias
-                ) . ')';
+                $parts[] = '(' . $this->get_filter($select_builder, $filter['filter'], $alias_name, $referenced_alias) . ')';
             }
-            $filtersParts[] = '(' . implode(' ' . strtoupper((string) $glue) . ' ', $parts) . ')';
+            $filters_parts[] = '(' . implode(' ' . strtoupper((string) $glue) . ' ', $parts) . ')';
         }
-        return implode(' OR ', $filtersParts);
+        return implode(' OR ', $filters_parts);
     }
 }

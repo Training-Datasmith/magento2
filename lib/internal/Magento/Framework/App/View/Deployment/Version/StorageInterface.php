@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\View\Deployment\Version;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\App\View\Deployment\Version;
  *
  * @api
  */
-interface StorageInterface
+interface Storage_Interface
 {
     /**
      * Retrieve version value from a persistent storage
@@ -22,7 +21,6 @@ interface StorageInterface
      * @throws \UnexpectedValueException Exception is thrown when unable to retrieve data from a storage
      */
     public function load();
-
     /**
      * Store version value in a persistent storage
      *

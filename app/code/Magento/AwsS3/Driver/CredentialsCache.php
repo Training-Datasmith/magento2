@@ -4,63 +4,55 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Aws_S3\Driver;
 
-namespace Magento\AwsS3\Driver;
-
-use Aws\CacheInterface;
-use Aws\Credentials\CredentialsFactory;
-use Magento\Framework\App\CacheInterface as MagentoCacheInterface;
+use Aws\Cache_Interface;
+use Aws\Credentials\Credentials_Factory;
+use Magento\Framework\App\Cache_Interface as MagentoCacheInterface;
 use Magento\Framework\Serialize\Serializer\Json;
-
 /** Cache Adapter for AWS credentials */
-class CredentialsCache implements CacheInterface
+class Credentials_Cache implements Cache_Interface
 {
     /**
      * @var CredentialsFactory
      */
-    private $credentialsFactory;
-
-    public function __construct(private readonly MagentoCacheInterface $magentoCache, CredentialsFactory $credentialsFactory, private readonly Json $json)
+    private $credentials_factory;
+    public function __construct(private readonly Magento_Cache_Interface $magento_cache, Credentials_Factory $credentials_factory, private readonly Json $json)
     {
-        $this->credentialsFactory = $credentialsFactory;
+        $this->credentials_factory = $credentials_factory;
     }
-
     /**
      * @inheritdoc
      */
     public function get($key)
     {
-        $value = $this->magentoCache->load($key);
-
+        $value = $this->magento_cache->load($key);
         if (!is_string($value)) {
             return null;
         }
-
         $result = $this->json->unserialize($value);
         try {
-            return $this->credentialsFactory->create($result);
+            return $this->credentials_factory->create($result);
         } catch (\Exception) {
             return $result;
         }
     }
-
     /**
      * @inheritdoc
      */
     public function set($key, $value, $ttl = 0): void
     {
         if (method_exists($value, 'toArray')) {
-            $value = $value->toArray();
+            $value = $value->to_array();
         }
-        $this->magentoCache->save($this->json->serialize($value), $key, [], $ttl);
+        $this->magento_cache->save($this->json->serialize($value), $key, [], $ttl);
     }
-
     /**
      * @inheritdoc
      */
     public function remove($key): void
     {
-        $this->magentoCache->remove($key);
+        $this->magento_cache->remove($key);
     }
 }

@@ -4,10 +4,9 @@
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\DB\Logger;
 
-class QueryAnalyzerException extends \Exception
+class Query_Analyzer_Exception extends \Exception
 {
 }

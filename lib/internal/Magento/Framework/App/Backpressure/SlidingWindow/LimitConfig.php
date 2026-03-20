@@ -4,26 +4,22 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\Framework\App\Backpressure\SlidingWindow;
+declare (strict_types=1);
+namespace Magento\Framework\App\Backpressure\Sliding_Window;
 
 /**
  * Limit configuration
  */
-class LimitConfig
+class Limit_Config
 {
     /**
      * @var int
      */
     private int $limit;
-
     /**
      * @var int
      */
     private int $period;
-
     /**
      * @param int $limit
      * @param int $period
@@ -33,23 +29,21 @@ class LimitConfig
         $this->limit = $limit;
         $this->period = $period;
     }
-
     /**
      * Requests per period
      *
      * @return int
      */
-    public function getLimit(): int
+    public function get_limit(): int
     {
         return $this->limit;
     }
-
     /**
      * Period in seconds
      *
      * @return int
      */
-    public function getPeriod(): int
+    public function get_period(): int
     {
         return $this->period;
     }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Form;
 
 /**
@@ -19,29 +18,23 @@ class Generic extends \Magento\Backend\Block\Widget\Form
     /**
      * @var \Magento\Framework\Data\FormFactory
      */
-    protected $_formFactory;
-
+    protected $_form_factory;
     /**
      * Core registry
      *
      * @var \Magento\Framework\Registry
      */
-    protected $_coreRegistry;
-
+    protected $_core_registry;
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param \Magento\Framework\Data\FormFactory $formFactory
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Data\FormFactory $formFactory,
-        array $data = []
-    ) {
-        $this->_coreRegistry = $registry;
-        $this->_formFactory = $formFactory;
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Registry $registry, \Magento\Framework\Data\Form_Factory $form_factory, array $data = [])
+    {
+        $this->_core_registry = $registry;
+        $this->_form_factory = $form_factory;
         parent::__construct($context, $data);
     }
 }

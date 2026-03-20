@@ -1,45 +1,38 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All rights reserved.
  */
-
-namespace Magento\Framework\DB\DataConverter;
+namespace Magento\Framework\DB\Data_Converter;
 
 use Magento\Framework\Serialize\Serializer\Json;
 use Magento\Framework\Serialize\Serializer\Serialize;
-
 /**
  * Convert from serialized to JSON format
  */
-class SerializedToJson implements DataConverterInterface
+class Serialized_To_Json implements Data_Converter_Interface
 {
     /**
      * @var Serialize
      */
     private $serialize;
-
     /**
      * @var Json
      */
     private $json;
-
     /**
      * Constructor
      *
      * @param Serialize $serialize
      * @param Json $json
      */
-    public function __construct(
-        Serialize $serialize,
-        Json $json
-    ) {
+    public function __construct(Serialize $serialize, Json $json)
+    {
         $this->serialize = $serialize;
         $this->json = $json;
     }
-
     /**
      * Convert from serialized to JSON format
      *
@@ -49,30 +42,26 @@ class SerializedToJson implements DataConverterInterface
      */
     public function convert($value)
     {
-        if ($this->isValidJsonValue($value)) {
+        if ($this->is_valid_json_value($value)) {
             return $value;
         }
-        return $this->encodeJson($this->unserializeValue($value));
+        return $this->encode_json($this->unserialize_value($value));
     }
-
     /**
      * Is a valid JSON serialized value
      *
      * @param string $value
      * @return bool
      */
-    protected function isValidJsonValue($value)
+    protected function is_valid_json_value($value)
     {
-        if (in_array($value, ['null', 'false', '0', '""', '[]'])
-            || (json_decode($value) !== null && json_last_error() === JSON_ERROR_NONE)
-        ) {
+        if (in_array($value, ['null', 'false', '0', '""', '[]']) || json_decode($value) !== null && json_last_error() === JSON_ERROR_NONE) {
             return true;
         }
         //JSON last error reset
         json_encode([]);
         return false;
     }
-
     /**
      * Unserialize value
      *
@@ -80,21 +69,20 @@ class SerializedToJson implements DataConverterInterface
      * @return mixed
      * @throws DataConversionException
      */
-    protected function unserializeValue($value)
+    protected function unserialize_value($value)
     {
         try {
-            set_error_handler(function ($errorNumber, $errorString) {
-                throw new DataConversionException($errorString, $errorNumber);
+            set_error_handler(function ($error_number, $error_string) {
+                throw new Data_Conversion_Exception($error_string, $error_number);
             });
             $value = $this->serialize->unserialize($value);
         } catch (\Throwable $throwable) {
-            throw new DataConversionException($throwable->getMessage());
+            throw new Data_Conversion_Exception($throwable->get_message());
         } finally {
             restore_error_handler();
         }
         return $value;
     }
-
     /**
      * Encode value with json encoder.
      *
@@ -104,19 +92,15 @@ class SerializedToJson implements DataConverterInterface
      * @return string
      * @throws DataConversionException
      */
-    protected function encodeJson($value)
+    protected function encode_json($value)
     {
-        $storedSerializePrecision = ini_get('serialize_precision');
-
+        $stored_serialize_precision = ini_get('serialize_precision');
         // In PHP 8.1+ json_encode() uses PG(serialize_precision)
         ini_set('serialize_precision', 17);
-
         $value = $this->json->serialize($value);
-
-        ini_set('serialize_precision', $storedSerializePrecision);
-
+        ini_set('serialize_precision', $stored_serialize_precision);
         if (json_last_error()) {
-            throw new DataConversionException(json_last_error_msg());
+            throw new Data_Conversion_Exception(json_last_error_msg());
         }
         return $value;
     }

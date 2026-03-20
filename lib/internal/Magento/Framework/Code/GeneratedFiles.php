@@ -1,55 +1,47 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Code;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\Exception\File_System_Exception;
 use Magento\Framework\Exception\RuntimeException;
-use Magento\Framework\Filesystem\Directory\WriteFactory;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\Lock\LockManagerInterface;
-
+use Magento\Framework\Filesystem\Directory\Write_Factory;
+use Magento\Framework\Filesystem\Directory\Write_Interface;
+use Magento\Framework\Lock\Lock_Manager_Interface;
 /**
  * Clean generated code, DI configuration and cache folders
  */
-class GeneratedFiles
+class Generated_Files
 {
     /**
      * Regenerate flag file name
      */
     public const REGENERATE_FLAG = '/var/.regenerate';
-
     /**
      * Regenerate lock file name
      */
     public const REGENERATE_LOCK = self::REGENERATE_FLAG . '.lock';
-
     /**
      * Acquire regenerate lock timeout
      */
     public const REGENERATE_LOCK_TIMEOUT = 5;
-
     /**
      * @var DirectoryList
      */
-    private $directoryList;
-
+    private $directory_list;
     /**
      * @var WriteInterface
      */
     private $write;
-
     /**
      * @var LockManagerInterface
      */
-    private $lockManager;
-
+    private $lock_manager;
     /**
      * GeneratedFiles constructor.
      *
@@ -57,26 +49,21 @@ class GeneratedFiles
      * @param WriteFactory $writeFactory
      * @param LockManagerInterface $lockManager
      */
-    public function __construct(
-        DirectoryList $directoryList,
-        WriteFactory $writeFactory,
-        LockManagerInterface $lockManager
-    ) {
-        $this->directoryList = $directoryList;
-        $this->write = $writeFactory->create(BP);
-        $this->lockManager = $lockManager;
+    public function __construct(Directory_List $directory_list, Write_Factory $write_factory, Lock_Manager_Interface $lock_manager)
+    {
+        $this->directory_list = $directory_list;
+        $this->write = $write_factory->create(BP);
+        $this->lock_manager = $lock_manager;
     }
-
     /**
      * Create flag for cleaning up generated content
      *
      * @return void
      */
-    public function requestRegeneration()
+    public function request_regeneration()
     {
         $this->write->touch(self::REGENERATE_FLAG);
     }
-
     /**
      * Clean generated code, generated metadata and cache directories
      *
@@ -87,79 +74,72 @@ class GeneratedFiles
      */
     public function regenerate()
     {
-        $this->cleanGeneratedFiles();
+        $this->clean_generated_files();
     }
-
     /**
      * Clean generated code, generated metadata and cache directories
      *
      * @return void
      */
-    public function cleanGeneratedFiles()
+    public function clean_generated_files()
     {
-        if ($this->isCleanGeneratedFilesAllowed() && $this->acquireLock()) {
+        if ($this->is_clean_generated_files_allowed() && $this->acquire_lock()) {
             try {
                 $this->write->delete(self::REGENERATE_FLAG);
-                $this->deleteFolder(DirectoryList::GENERATED_CODE);
-                $this->deleteFolder(DirectoryList::GENERATED_METADATA);
-                $this->deleteFolder(DirectoryList::CACHE);
-            } catch (FileSystemException $exception) {
+                $this->delete_folder(Directory_List::GENERATED_CODE);
+                $this->delete_folder(Directory_List::GENERATED_METADATA);
+                $this->delete_folder(Directory_List::CACHE);
+            } catch (File_System_Exception $exception) {
                 // A filesystem error occurred, possible concurrency error while trying
                 // to delete a generated folder being used by another process.
                 // Request regeneration for the next and unlock
-                $this->requestRegeneration();
+                $this->request_regeneration();
             } finally {
-                $this->lockManager->unlock(self::REGENERATE_LOCK);
+                $this->lock_manager->unlock(self::REGENERATE_LOCK);
             }
         }
     }
-
     /**
      * Clean generated files is allowed if requested and not locked
      *
      * @return bool
      */
-    private function isCleanGeneratedFilesAllowed(): bool
+    private function is_clean_generated_files_allowed(): bool
     {
         try {
-            $isAllowed = $this->write->isExist(self::REGENERATE_FLAG)
-                && !$this->lockManager->isLocked(self::REGENERATE_LOCK);
-        } catch (FileSystemException | RuntimeException $e) {
+            $is_allowed = $this->write->is_exist(self::REGENERATE_FLAG) && !$this->lock_manager->is_locked(self::REGENERATE_LOCK);
+        } catch (File_System_Exception|RuntimeException $e) {
             // Possible filesystem problem
-            $isAllowed = false;
+            $is_allowed = false;
         }
-
-        return $isAllowed;
+        return $is_allowed;
     }
-
     /**
      * Acquire lock for performing operations
      *
      * @return bool
      */
-    private function acquireLock(): bool
+    private function acquire_lock(): bool
     {
         try {
-            $lockAcquired = $this->lockManager->lock(self::REGENERATE_LOCK, self::REGENERATE_LOCK_TIMEOUT);
+            $lock_acquired = $this->lock_manager->lock(self::REGENERATE_LOCK, self::REGENERATE_LOCK_TIMEOUT);
         } catch (RuntimeException $exception) {
             // Lock not acquired due to possible filesystem problem
-            $lockAcquired = false;
+            $lock_acquired = false;
         }
-
-        return $lockAcquired;
+        return $lock_acquired;
     }
-
     /**
      * Delete folder by path
      *
      * @param string $pathType
      * @return void
      */
-    private function deleteFolder(string $pathType): void
+    private function delete_folder(string $path_type): void
     {
-        $relativePath = $this->write->getRelativePath($this->directoryList->getPath($pathType));
-        if ($this->write->isDirectory($relativePath)) {
-            $this->write->delete($relativePath);
+        $relative_path = $this->write->get_relative_path($this->directory_list->get_path($path_type));
+        if ($this->write->is_directory($relative_path)) {
+            $this->write->delete($relative_path);
         }
     }
 }

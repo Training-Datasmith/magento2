@@ -4,13 +4,11 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Async_Config\Api;
 
-namespace Magento\AsyncConfig\Api;
-
-use Magento\Framework\Exception\FileSystemException;
-
-interface AsyncConfigPublisherInterface
+use Magento\Framework\Exception\File_System_Exception;
+interface Async_Config_Publisher_Interface
 {
     /**
      * Save Configuration Data
@@ -18,5 +16,5 @@ interface AsyncConfigPublisherInterface
      * @return void
      * @throws FileSystemException
      */
-    public function saveConfigData(array $configData);
+    public function save_config_data(array $config_data);
 }

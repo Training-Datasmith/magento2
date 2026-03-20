@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Exception;
 
 use Magento\Framework\Phrase;
-
 /**
  * @api
  * @since 100.0.2
  */
-abstract class AbstractAggregateException extends LocalizedException implements AggregateExceptionInterface
+abstract class Abstract_Aggregate_Exception extends Localized_Exception implements Aggregate_Exception_Interface
 {
     /**
      * The array of errors that have been added via the addError() method
@@ -22,21 +20,18 @@ abstract class AbstractAggregateException extends LocalizedException implements 
      * @var \Magento\Framework\Exception\LocalizedException[]
      */
     protected $errors = [];
-
     /**
      * The original phrase
      *
      * @var \Magento\Framework\Phrase
      */
-    protected $originalPhrase;
-
+    protected $original_phrase;
     /**
      * An internal variable indicating how many time addError has been called
      *
      * @var int
      */
-    private $addErrorCalls = 0;
-
+    private $add_error_calls = 0;
     /**
      * Initialize the exception
      *
@@ -46,67 +41,63 @@ abstract class AbstractAggregateException extends LocalizedException implements 
      */
     public function __construct(Phrase $phrase, ?\Exception $cause = null, $code = 0)
     {
-        $this->originalPhrase = $phrase;
+        $this->original_phrase = $phrase;
         parent::__construct($phrase, $cause, $code);
     }
-
     /**
      * Add new error into the list of exceptions
      *
      * @param \Magento\Framework\Phrase $phrase
      * @return $this
      */
-    public function addError(Phrase $phrase)
+    public function add_error(Phrase $phrase)
     {
-        $this->addErrorCalls++;
+        $this->add_error_calls++;
         if (empty($this->errors)) {
-            if (1 === $this->addErrorCalls) {
+            if (1 === $this->add_error_calls) {
                 // First call: simply overwrite the phrase and message
                 $this->phrase = $phrase;
                 $this->message = $phrase->render();
-                $this->logMessage = null;
-            } elseif (2 === $this->addErrorCalls) {
+                $this->log_message = null;
+            } elseif (2 === $this->add_error_calls) {
                 // Second call: store the error from the first call and the second call in the array
                 // restore the phrase to its original value
-                $this->errors[] = new LocalizedException($this->phrase);
-                $this->errors[] = new LocalizedException($phrase);
-                $this->phrase = $this->originalPhrase;
-                $this->message = $this->originalPhrase->render();
-                $this->logMessage = null;
+                $this->errors[] = new Localized_Exception($this->phrase);
+                $this->errors[] = new Localized_Exception($phrase);
+                $this->phrase = $this->original_phrase;
+                $this->message = $this->original_phrase->render();
+                $this->log_message = null;
             }
         } else {
             // All subsequent calls after the second should reach here
-            $this->errors[] = new LocalizedException($phrase);
+            $this->errors[] = new Localized_Exception($phrase);
         }
         return $this;
     }
-
     /**
      * @param LocalizedException $exception
      * @return $this
      * @since 101.0.6
      */
-    public function addException(LocalizedException $exception)
+    public function add_exception(Localized_Exception $exception)
     {
-        $this->addErrorCalls++;
+        $this->add_error_calls++;
         $this->errors[] = $exception;
         return $this;
     }
-
     /**
      * Should return true if someone has added different errors to this exception after construction
      *
      * @return bool
      */
-    public function wasErrorAdded()
+    public function was_error_added()
     {
-        return (0 < $this->addErrorCalls);
+        return 0 < $this->add_error_calls;
     }
-
     /**
      * @inheritdoc
      */
-    public function getErrors()
+    public function get_errors()
     {
         return $this->errors;
     }

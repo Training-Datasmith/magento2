@@ -1,32 +1,28 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api\Search;
 
-use Magento\Framework\Api\CustomAttributesDataInterface;
-
+use Magento\Framework\Api\Custom_Attributes_Data_Interface;
 /**
  * Interface Search Document
  *
  * @api
  */
-interface DocumentInterface extends CustomAttributesDataInterface
+interface Document_Interface extends Custom_Attributes_Data_Interface
 {
     public const ID = 'id';
-
     /**
      * @return int
      */
-    public function getId();
-
+    public function get_id();
     /**
      * @param int $id
      * @return $this
      */
-    public function setId($id);
+    public function set_id($id);
 }

@@ -1,31 +1,27 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Argument\Interpreter;
 
-use Magento\Framework\Data\Argument\InterpreterInterface;
-use Magento\Framework\Stdlib\BooleanUtils;
-
-class DataObject implements InterpreterInterface
+use Magento\Framework\Data\Argument\Interpreter_Interface;
+use Magento\Framework\Stdlib\Boolean_Utils;
+class Data_Object implements Interpreter_Interface
 {
     /**
      * @var \Magento\Framework\Stdlib\BooleanUtils
      */
-    protected $booleanUtils;
-
+    protected $boolean_utils;
     /**
      * @param BooleanUtils $booleanUtils
      */
-    public function __construct(BooleanUtils $booleanUtils)
+    public function __construct(Boolean_Utils $boolean_utils)
     {
-        $this->booleanUtils = $booleanUtils;
+        $this->boolean_utils = $boolean_utils;
     }
-
     /**
      * Compute and return effective value of an argument
      *
@@ -41,7 +37,7 @@ class DataObject implements InterpreterInterface
             $result['sortOrder'] = $data['sortOrder'];
         }
         if (isset($data['shared'])) {
-            $result['shared'] = $this->booleanUtils->toBoolean($data['shared']);
+            $result['shared'] = $this->boolean_utils->to_boolean($data['shared']);
         }
         return $result;
     }

@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -13,6 +12,6 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface RouterListInterface extends \Iterator
+interface Router_List_Interface extends \Iterator
 {
 }

@@ -4,15 +4,13 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Captcha\Model;
 
-use Magento\Authorization\Model\UserContextInterface;
+use Magento\Authorization\Model\User_Context_Interface;
 use Magento\Captcha\Helper\Data;
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Object_Manager;
 use Magento\Framework\Math\Random;
-
 /**
  * Implementation of \Laminas\Captcha\Image
  *
@@ -21,36 +19,31 @@ use Magento\Framework\Math\Random;
  * @api
  * @since 100.0.2
  */
-class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Model\CaptchaInterface
+class Default_Model extends \Laminas\Captcha\Image implements \Magento\Captcha\Model\Captcha_Interface
 {
     /**
      * Key in session for captcha code
      */
     public const SESSION_WORD = 'word';
-
     /**
      * Min captcha lengths default value
      */
     public const DEFAULT_WORD_LENGTH_FROM = 3;
-
     /**
      * Max captcha lengths default value
      */
     public const DEFAULT_WORD_LENGTH_TO = 5;
-
     /**
      * @var Data
      * @since 100.2.0
      */
-    protected $captchaData;
-
+    protected $captcha_data;
     /**
      * Captcha expire time
      * @var int
      * @since 100.2.0
      */
     protected $expiration;
-
     /**
      * Override default value to prevent a captcha cut off
      * @var int
@@ -58,49 +51,41 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
      * @since 100.2.0
      */
     protected $fsize = 22;
-
     /**
      * Captcha form id
      * @var string
      * @since 100.2.0
      */
-    protected $formId;
-
+    protected $form_id;
     /**
      * @var \Magento\Captcha\Model\ResourceModel\LogFactory
      * @since 100.2.0
      */
-    protected $resLogFactory;
-
+    protected $res_log_factory;
     /**
      * Overrides parent parameter as session comes in constructor.
      *
      * @var bool
      * @since 100.2.0
      */
-    protected $keepSession = true;
-
+    protected $keep_session = true;
     /**
      * @var \Magento\Framework\Session\SessionManagerInterface
      * @since 100.2.0
      */
     protected $session;
-
     /**
      * @var string
      */
     private $words;
-
     /**
      * @var Random
      */
-    private $randomMath;
-
+    private $random_math;
     /**
      * @var UserContextInterface
      */
-    private $userContext;
-
+    private $user_context;
     /**
      * @param \Magento\Framework\Session\SessionManagerInterface $session
      * @param \Magento\Captcha\Helper\Data $captchaData
@@ -110,278 +95,237 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
      * @param UserContextInterface|null $userContext
      * @throws \Laminas\Captcha\Exception\ExtensionNotLoadedException
      */
-    public function __construct(
-        \Magento\Framework\Session\SessionManagerInterface $session,
-        \Magento\Captcha\Helper\Data $captchaData,
-        \Magento\Captcha\Model\ResourceModel\LogFactory $resLogFactory,
-        $formId,
-        ?Random $randomMath = null,
-        ?UserContextInterface $userContext = null
-    ) {
+    public function __construct(\Magento\Framework\Session\Session_Manager_Interface $session, \Magento\Captcha\Helper\Data $captcha_data, \Magento\Captcha\Model\Resource_Model\Log_Factory $res_log_factory, $form_id, ?Random $random_math = null, ?User_Context_Interface $user_context = null)
+    {
         parent::__construct();
         $this->session = $session;
-        $this->captchaData = $captchaData;
-        $this->resLogFactory = $resLogFactory;
-        $this->formId = $formId;
-        $this->randomMath = $randomMath ?? ObjectManager::getInstance()->get(Random::class);
-        $this->userContext = $userContext ?? ObjectManager::getInstance()->get(UserContextInterface::class);
+        $this->captcha_data = $captcha_data;
+        $this->res_log_factory = $res_log_factory;
+        $this->form_id = $form_id;
+        $this->random_math = $random_math ?? Object_Manager::get_instance()->get(Random::class);
+        $this->user_context = $user_context ?? Object_Manager::get_instance()->get(User_Context_Interface::class);
     }
-
     /**
      * Returns key with respect of current form ID
      *
      * @param string $key
      * @return string
      */
-    private function getFormIdKey($key)
+    private function get_form_id_key($key)
     {
-        return $this->formId . '_' . $key;
+        return $this->form_id . '_' . $key;
     }
-
     /**
      * Get Block Name
      *
      * @return string
      */
-    public function getBlockName()
+    public function get_block_name()
     {
-        return \Magento\Captcha\Block\Captcha\DefaultCaptcha::class;
+        return \Magento\Captcha\Block\Captcha\Default_Captcha::class;
     }
-
     /**
      * Whether captcha is required to be inserted to this form
      *
      * @param null|string $login
      * @return bool
      */
-    public function isRequired($login = null)
+    public function is_required($login = null)
     {
-        if (($this->isUserAuth()
-                && !$this->isShownToLoggedInUser())
-            || !$this->isEnabled()
-            || !in_array(
-                $this->formId,
-                $this->getTargetForms()
-            )
-            || $this->userContext->getUserType() === UserContextInterface::USER_TYPE_INTEGRATION
-        ) {
+        if ($this->is_user_auth() && !$this->is_shown_to_logged_in_user() || !$this->is_enabled() || !in_array($this->form_id, $this->get_target_forms()) || $this->user_context->get_user_type() === User_Context_Interface::USER_TYPE_INTEGRATION) {
             return false;
         }
-
-        return $this->isShowAlways()
-            || $this->isOverLimitAttempts($login)
-            || $this->session->getData($this->getFormIdKey('show_captcha'));
+        return $this->is_show_always() || $this->is_over_limit_attempts($login) || $this->session->get_data($this->get_form_id_key('show_captcha'));
     }
-
     /**
      * Check if CAPTCHA has to be shown to logged in user on this form
      *
      * @return bool
      */
-    public function isShownToLoggedInUser()
+    public function is_shown_to_logged_in_user()
     {
-        $forms = (array)$this->captchaData->getConfig('shown_to_logged_in_user');
-        foreach ($forms as $formId => $isShownToLoggedIn) {
-            if ($isShownToLoggedIn && $this->formId == $formId) {
+        $forms = (array) $this->captcha_data->get_config('shown_to_logged_in_user');
+        foreach ($forms as $form_id => $is_shown_to_logged_in) {
+            if ($is_shown_to_logged_in && $this->form_id == $form_id) {
                 return true;
             }
         }
         return false;
     }
-
     /**
      * Check is over limit attempts
      *
      * @param string $login
      * @return bool
      */
-    private function isOverLimitAttempts($login)
+    private function is_over_limit_attempts($login)
     {
-        return $this->isOverLimitIpAttempt() || $this->isOverLimitLoginAttempts($login);
+        return $this->is_over_limit_ip_attempt() || $this->is_over_limit_login_attempts($login);
     }
-
     /**
      * Returns number of allowed attempts for same login
      *
      * @return int
      */
-    private function getAllowedAttemptsForSameLogin()
+    private function get_allowed_attempts_for_same_login()
     {
-        return (int)$this->captchaData->getConfig('failed_attempts_login');
+        return (int) $this->captcha_data->get_config('failed_attempts_login');
     }
-
     /**
      * Returns number of allowed attempts from same IP
      *
      * @return int
      */
-    private function getAllowedAttemptsFromSameIp()
+    private function get_allowed_attempts_from_same_ip()
     {
-        return (int)$this->captchaData->getConfig('failed_attempts_ip');
+        return (int) $this->captcha_data->get_config('failed_attempts_ip');
     }
-
     /**
      * Check is over limit saved attempts from one ip
      *
      * @return bool
      */
-    private function isOverLimitIpAttempt()
+    private function is_over_limit_ip_attempt()
     {
-        $countAttemptsByIp = $this->getResourceModel()->countAttemptsByRemoteAddress();
-        return $countAttemptsByIp >= $this->getAllowedAttemptsFromSameIp();
+        $count_attempts_by_ip = $this->get_resource_model()->count_attempts_by_remote_address();
+        return $count_attempts_by_ip >= $this->get_allowed_attempts_from_same_ip();
     }
-
     /**
      * Is Over Limit Login Attempts
      *
      * @param string $login
      * @return bool
      */
-    private function isOverLimitLoginAttempts($login)
+    private function is_over_limit_login_attempts($login)
     {
         if ($login != false) {
-            $countAttemptsByLogin = $this->getResourceModel()->countAttemptsByUserLogin($login);
-            return $countAttemptsByLogin >= $this->getAllowedAttemptsForSameLogin();
+            $count_attempts_by_login = $this->get_resource_model()->count_attempts_by_user_login($login);
+            return $count_attempts_by_login >= $this->get_allowed_attempts_for_same_login();
         }
         return false;
     }
-
     /**
      * Check is user auth
      *
      * @return bool
      */
-    private function isUserAuth()
+    private function is_user_auth()
     {
-        return $this->session->isLoggedIn() || $this->userContext->getUserId();
+        return $this->session->is_logged_in() || $this->user_context->get_user_id();
     }
-
     /**
      * Whether to respect case while checking the answer
      *
      * @return bool
      */
-    public function isCaseSensitive()
+    public function is_case_sensitive()
     {
-        return (string)$this->captchaData->getConfig('case_sensitive');
+        return (string) $this->captcha_data->get_config('case_sensitive');
     }
-
     /**
      * Get font to use when generating captcha
      *
      * @return string
      */
-    public function getFont()
+    public function get_font()
     {
-        $font = (string)$this->captchaData->getConfig('font');
-        $fonts = $this->captchaData->getFonts();
-
+        $font = (string) $this->captcha_data->get_config('font');
+        $fonts = $this->captcha_data->get_fonts();
         if (isset($fonts[$font])) {
-            $fontPath = $fonts[$font]['path'];
+            $font_path = $fonts[$font]['path'];
         } else {
-            $fontData = array_shift($fonts);
-            $fontPath = $fontData['path'];
+            $font_data = array_shift($fonts);
+            $font_path = $font_data['path'];
         }
-
-        return $fontPath;
+        return $font_path;
     }
-
     /**
      * After this time isCorrect() is going to return FALSE even if word was guessed correctly
      *
      * @return int
      */
-    public function getExpiration()
+    public function get_expiration()
     {
         if (!$this->expiration) {
             /**
              * as "timeout" configuration parameter specifies timeout in minutes - we multiply it on 60 to set
              * expiration in seconds
              */
-            $this->expiration = (int)$this->captchaData->getConfig('timeout') * 60;
+            $this->expiration = (int) $this->captcha_data->get_config('timeout') * 60;
         }
         return $this->expiration;
     }
-
     /**
      * Get timeout for session token
      *
      * @return int
      */
-    public function getTimeout()
+    public function get_timeout()
     {
-        return $this->getExpiration();
+        return $this->get_expiration();
     }
-
     /**
      * Get captcha image directory
      *
      * @return string
      */
-    public function getImgDir()
+    public function get_img_dir()
     {
-        return $this->captchaData->getImgDir();
+        return $this->captcha_data->get_img_dir();
     }
-
     /**
      * Get captcha image base URL
      *
      * @return string
      */
-    public function getImgUrl()
+    public function get_img_url()
     {
-        return $this->captchaData->getImgUrl();
+        return $this->captcha_data->get_img_url();
     }
-
     /**
      * Checks whether captcha was guessed correctly by user
      *
      * @param string $word
      * @return bool
      */
-    public function isCorrect($word)
+    public function is_correct($word)
     {
-        $storedWords = $this->getWords();
-        $this->clearWord();
-
-        if (!$word || !$storedWords) {
+        $stored_words = $this->get_words();
+        $this->clear_word();
+        if (!$word || !$stored_words) {
             return false;
         }
-
-        if (!$this->isCaseSensitive()) {
-            $storedWords = strtolower($storedWords);
+        if (!$this->is_case_sensitive()) {
+            $stored_words = strtolower($stored_words);
             $word = strtolower($word);
         }
-        return in_array($word, explode(',', $storedWords));
+        return in_array($word, explode(',', $stored_words));
     }
-
     /**
      * Return full URL to captcha image
      *
      * @return string
      */
-    public function getImgSrc()
+    public function get_img_src()
     {
-        return $this->getImgUrl() . $this->getId() . $this->getSuffix();
+        return $this->get_img_url() . $this->get_id() . $this->get_suffix();
     }
-
     /**
      * Log attempt
      *
      * @param string $login
      * @return $this
      */
-    public function logAttempt($login)
+    public function log_attempt($login)
     {
-        if ($this->isEnabled() && in_array($this->formId, $this->getTargetForms())) {
-            $this->getResourceModel()->logAttempt($login);
-            if ($this->isOverLimitLoginAttempts($login)) {
-                $this->setShowCaptchaInSession(true);
+        if ($this->is_enabled() && in_array($this->form_id, $this->get_target_forms())) {
+            $this->get_resource_model()->log_attempt($login);
+            if ($this->is_over_limit_login_attempts($login)) {
+                $this->set_show_captcha_in_session(true);
             }
         }
         return $this;
     }
-
     /**
      * Set show_captcha flag in session
      *
@@ -389,15 +333,13 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
      * @return void
      * @since 100.1.0
      */
-    public function setShowCaptchaInSession($value = true)
+    public function set_show_captcha_in_session($value = true)
     {
         if ($value !== true) {
             $value = false;
         }
-
-        $this->session->setData($this->getFormIdKey('show_captcha'), $value);
+        $this->session->set_data($this->get_form_id_key('show_captcha'), $value);
     }
-
     /**
      * Generate word used for captcha render
      *
@@ -405,13 +347,12 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
      * @throws \Magento\Framework\Exception\LocalizedException
      * @since 100.2.0
      */
-    protected function generateWord()
+    protected function generate_word()
     {
-        $symbols = (string)$this->captchaData->getConfig('symbols');
-        $wordLen = $this->getWordLen();
-        return $this->randomMath->getRandomString($wordLen, $symbols);
+        $symbols = (string) $this->captcha_data->get_config('symbols');
+        $word_len = $this->get_word_len();
+        return $this->random_math->get_random_string($word_len, $symbols);
     }
-
     /**
      * Returns length for generating captcha word. This value may be dynamic.
      *
@@ -419,68 +360,57 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
      * @throws \Magento\Framework\Exception\LocalizedException
      * @since 100.2.0
      */
-    public function getWordLen()
+    public function get_word_len()
     {
         $from = 0;
         $to = 0;
-        $length = (string)$this->captchaData->getConfig('length');
+        $length = (string) $this->captcha_data->get_config('length');
         if (!is_numeric($length)) {
             if (preg_match('/(\d+)-(\d+)/', $length, $matches)) {
-                $from = (int)$matches[1];
-                $to = (int)$matches[2];
+                $from = (int) $matches[1];
+                $to = (int) $matches[2];
             }
         } else {
-            $from = (int)$length;
-            $to = (int)$length;
+            $from = (int) $length;
+            $to = (int) $length;
         }
-
         if ($to < $from || $from < 1 || $to < 1) {
             $from = self::DEFAULT_WORD_LENGTH_FROM;
             $to = self::DEFAULT_WORD_LENGTH_TO;
         }
-
-        return Random::getRandomNumber($from, $to);
+        return Random::get_random_number($from, $to);
     }
-
     /**
      * Whether to show captcha for this form every time
      *
      * @return bool
      */
-    private function isShowAlways()
+    private function is_show_always()
     {
-        $captchaMode = (string)$this->captchaData->getConfig('mode');
-
-        if ($captchaMode === Data::MODE_ALWAYS) {
+        $captcha_mode = (string) $this->captcha_data->get_config('mode');
+        if ($captcha_mode === Data::MODE_ALWAYS) {
             return true;
         }
-
-        if ($captchaMode === Data::MODE_AFTER_FAIL
-            && $this->getAllowedAttemptsForSameLogin() === 0
-        ) {
+        if ($captcha_mode === Data::MODE_AFTER_FAIL && $this->get_allowed_attempts_for_same_login() === 0) {
             return true;
         }
-
-        $alwaysFor = $this->captchaData->getConfig('always_for');
-        foreach ($alwaysFor as $nodeFormId => $isAlwaysFor) {
-            if ($isAlwaysFor && $this->formId == $nodeFormId) {
+        $always_for = $this->captcha_data->get_config('always_for');
+        foreach ($always_for as $node_form_id => $is_always_for) {
+            if ($is_always_for && $this->form_id == $node_form_id) {
                 return true;
             }
         }
-
         return false;
     }
-
     /**
      * Whether captcha is enabled at this area
      *
      * @return bool
      */
-    private function isEnabled()
+    private function is_enabled()
     {
-        return (string)$this->captchaData->getConfig('enable');
+        return (string) $this->captcha_data->get_config('enable');
     }
-
     /**
      * Retrieve list of forms where captcha must be shown
      *
@@ -488,39 +418,35 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
      *
      * @return array
      */
-    private function getTargetForms()
+    private function get_target_forms()
     {
-        $formsString = (string)$this->captchaData->getConfig('forms');
-        return explode(',', $formsString);
+        $forms_string = (string) $this->captcha_data->get_config('forms');
+        return explode(',', $forms_string);
     }
-
     /**
      * Get captcha word
      *
      * @return string|null
      */
-    public function getWord()
+    public function get_word()
     {
-        $sessionData = $this->session->getData($this->getFormIdKey(self::SESSION_WORD));
-        return time() < $sessionData['expires'] ? $sessionData['data'] : null;
+        $session_data = $this->session->get_data($this->get_form_id_key(self::SESSION_WORD));
+        return time() < $session_data['expires'] ? $session_data['data'] : null;
     }
-
     /**
      * Get captcha words
      *
      * @return string
      */
-    private function getWords()
+    private function get_words()
     {
-        $sessionData = $this->session->getData($this->getFormIdKey(self::SESSION_WORD));
+        $session_data = $this->session->get_data($this->get_form_id_key(self::SESSION_WORD));
         $words = '';
-        if (isset($sessionData['expires'], $sessionData['words']) && time() < $sessionData['expires']) {
-            $words = $sessionData['words'];
+        if (isset($session_data['expires'], $session_data['words']) && time() < $session_data['expires']) {
+            $words = $session_data['words'];
         }
-
         return $words;
     }
-
     /**
      * Set captcha word
      *
@@ -528,29 +454,24 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
      * @return $this
      * @since 100.2.0
      */
-    protected function setWord($word)
+    protected function set_word($word)
     {
         $this->words = $this->words ? $this->words . ',' . $word : $word;
-        $this->session->setData(
-            $this->getFormIdKey(self::SESSION_WORD),
-            ['data' => $word, 'words' => $this->words, 'expires' => time() + $this->getTimeout()]
-        );
+        $this->session->set_data($this->get_form_id_key(self::SESSION_WORD), ['data' => $word, 'words' => $this->words, 'expires' => time() + $this->get_timeout()]);
         $this->word = $word;
         return $this;
     }
-
     /**
      * Set captcha word
      *
      * @return $this
      */
-    private function clearWord()
+    private function clear_word()
     {
-        $this->session->unsetData($this->getFormIdKey(self::SESSION_WORD));
+        $this->session->unset_data($this->get_form_id_key(self::SESSION_WORD));
         $this->word = null;
         return $this;
     }
-
     /**
      * Override function to generate less curly captcha that will not cut off
      *
@@ -559,11 +480,10 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
      * @throws \Magento\Framework\Exception\LocalizedException
      * @since 100.2.0
      */
-    protected function randomSize()
+    protected function random_size()
     {
-        return Random::getRandomNumber(280, 300) / 100;
+        return Random::get_random_number(280, 300) / 100;
     }
-
     /**
      * Overlap of the parent method
      *
@@ -579,16 +499,16 @@ class DefaultModel extends \Laminas\Captcha\Image implements \Magento\Captcha\Mo
     protected function gc()
     {
         // phpcs:ignore
-        return; // required for static testing to pass
+        return;
+        // required for static testing to pass
     }
-
     /**
      * Get resource model
      *
      * @return \Magento\Captcha\Model\ResourceModel\Log
      */
-    private function getResourceModel()
+    private function get_resource_model()
     {
-        return $this->resLogFactory->create();
+        return $this->res_log_factory->create();
     }
 }

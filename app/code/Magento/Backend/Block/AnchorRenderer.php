@@ -1,43 +1,36 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block;
 
 use Magento\Backend\Model\Menu\Item;
 use Magento\Framework\Escaper;
-
 /**
  * Class AnchorRenderer
  */
-class AnchorRenderer
+class Anchor_Renderer
 {
     /**
      * @var MenuItemChecker
      */
-    private $menuItemChecker;
-
+    private $menu_item_checker;
     /**
      * @var Escaper
      */
     private $escaper;
-
     /**
      * @param MenuItemChecker $menuItemChecker
      * @param Escaper $escaper
      */
-    public function __construct(
-        MenuItemChecker $menuItemChecker,
-        Escaper $escaper
-    ) {
-        $this->menuItemChecker = $menuItemChecker;
+    public function __construct(Menu_Item_Checker $menu_item_checker, Escaper $escaper)
+    {
+        $this->menu_item_checker = $menu_item_checker;
         $this->escaper = $escaper;
     }
-
     /**
      * Render menu item anchor.
      *
@@ -49,48 +42,37 @@ class AnchorRenderer
      * @param int $level
      * @return string
      */
-    public function renderAnchor($activeItem, Item $menuItem, $level)
+    public function render_anchor($active_item, Item $menu_item, $level)
     {
-        if ($level == 1 && $menuItem->getUrl() == '#') {
+        if ($level == 1 && $menu_item->get_url() == '#') {
             $output = '';
-            if ($menuItem->hasChildren()) {
-                $output = '<strong class="submenu-group-title" role="presentation">'
-                    . '<span>' . $this->escaper->escapeHtml(__($menuItem->getTitle())) . '</span>'
-                    . '</strong>';
+            if ($menu_item->has_children()) {
+                $output = '<strong class="submenu-group-title" role="presentation">' . '<span>' . $this->escaper->escape_html(__($menu_item->get_title())) . '</span>' . '</strong>';
             }
         } else {
-            $target = $menuItem->getTarget() ? ('target=' . $menuItem->getTarget()) : '';
-            $output = '<a href="' . $menuItem->getUrl() . '" ' . $target . ' ' . $this->_renderItemAnchorTitle(
-                $menuItem
-            ) . $this->_renderItemOnclickFunction(
-                $menuItem
-            ) . ' class="' . ($this->menuItemChecker->isItemActive($activeItem, $menuItem, $level) ? '_active' : '')
-                . '">' . '<span>' . $this->escaper->escapeHtml(__($menuItem->getTitle()))
-                . '</span>' . '</a>';
+            $target = $menu_item->get_target() ? 'target=' . $menu_item->get_target() : '';
+            $output = '<a href="' . $menu_item->get_url() . '" ' . $target . ' ' . $this->_render_item_anchor_title($menu_item) . $this->_render_item_onclick_function($menu_item) . ' class="' . ($this->menu_item_checker->is_item_active($active_item, $menu_item, $level) ? '_active' : '') . '">' . '<span>' . $this->escaper->escape_html(__($menu_item->get_title())) . '</span>' . '</a>';
         }
-
         return $output;
     }
-
     /**
      * Render menu item anchor title
      *
      * @param Item $menuItem
      * @return string
      */
-    private function _renderItemAnchorTitle($menuItem)
+    private function _render_item_anchor_title($menu_item)
     {
-        return $menuItem->hasTooltip() ? 'title="' . __($menuItem->getTooltip()) . '"' : '';
+        return $menu_item->has_tooltip() ? 'title="' . __($menu_item->get_tooltip()) . '"' : '';
     }
-
     /**
      * Render menu item onclick function
      *
      * @param Item $menuItem
      * @return string
      */
-    private function _renderItemOnclickFunction($menuItem)
+    private function _render_item_onclick_function($menu_item)
     {
-        return $menuItem->hasClickCallback() ? ' onclick="' . $menuItem->getClickCallback() . '"' : '';
+        return $menu_item->has_click_callback() ? ' onclick="' . $menu_item->get_click_callback() . '"' : '';
     }
 }

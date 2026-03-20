@@ -1,36 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api\Search;
 
-use Magento\Framework\Api\SearchCriteria as BaseSearchCriteria;
-
+use Magento\Framework\Api\Search_Criteria as BaseSearchCriteria;
 /**
  * @api
  * @since 100.0.2
  */
-class SearchCriteria extends BaseSearchCriteria implements SearchCriteriaInterface
+class Search_Criteria extends Base_Search_Criteria implements Search_Criteria_Interface
 {
     public const REQUEST_NAME = 'request_name';
-
     /**
      * {@inheritdoc}
      */
-    public function getRequestName()
+    public function get_request_name()
     {
         return $this->_get(self::REQUEST_NAME);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function setRequestName($requestName)
+    public function set_request_name($request_name)
     {
-        return $this->setData(self::REQUEST_NAME, $requestName);
+        return $this->set_data(self::REQUEST_NAME, $request_name);
     }
 }

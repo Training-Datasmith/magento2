@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager;
+namespace Magento\Framework\Entity_Manager;
 
 /**
  * MapperInterface
  */
-interface MapperInterface
+interface Mapper_Interface
 {
     /**
      * Map entity field name to database field name
@@ -21,8 +20,7 @@ interface MapperInterface
      * @return array
      * @throws \Exception
      */
-    public function entityToDatabase($entityType, $data);
-
+    public function entity_to_database($entity_type, $data);
     /**
      * Map database field name to entity field name
      *
@@ -31,5 +29,5 @@ interface MapperInterface
      * @return array
      * @throws \Exception
      */
-    public function databaseToEntity($entityType, $data);
+    public function database_to_entity($entity_type, $data);
 }

@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -13,12 +12,12 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface FeedInterface
+interface Feed_Interface
 {
     /**
      * Returns the formatted feed content
      *
      * @return string
      */
-    public function getFormattedContent(): string;
+    public function get_formatted_content(): string;
 }

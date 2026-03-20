@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Exception;
 
 use Magento\Framework\Phrase;
-
 /**
  * @api
  * @since 100.0.2
  */
-class AlreadyExistsException extends LocalizedException
+class Already_Exists_Exception extends Localized_Exception
 {
     /**
      * @param Phrase $phrase

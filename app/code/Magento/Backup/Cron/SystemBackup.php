@@ -1,77 +1,64 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backup\Cron;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Store\Model\ScopeInterface;
-
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Store\Model\Scope_Interface;
 /**
  * Performs scheduled backup.
  */
-class SystemBackup
+class System_Backup
 {
     public const XML_PATH_BACKUP_ENABLED = 'system/backup/enabled';
-
     public const XML_PATH_BACKUP_TYPE = 'system/backup/type';
-
     public const XML_PATH_BACKUP_MAINTENANCE_MODE = 'system/backup/maintenance';
-
     /**
      * Error messages
      *
      * @var array
      */
     protected $_errors = [];
-
     /**
      * Backup data
      *
      * @var \Magento\Backup\Helper\Data
      */
-    protected $_backupData = null;
-
+    protected $_backup_data = null;
     /**
      * Core registry
      *
      * @var \Magento\Framework\Registry
      */
-    protected $_coreRegistry = null;
-
+    protected $_core_registry = null;
     /**
      * @var \Psr\Log\LoggerInterface
      */
     protected $_logger;
-
     /**
      * Core store config
      *
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
-    protected $_scopeConfig;
-
+    protected $_scope_config;
     /**
      * Filesystem facade
      *
      * @var \Magento\Framework\Filesystem
      */
     protected $_filesystem;
-
     /**
      * @var \Magento\Framework\Backup\Factory
      */
-    protected $_backupFactory;
-
+    protected $_backup_factory;
     /**
      * @var \Magento\Framework\App\MaintenanceMode
      */
-    protected $maintenanceMode;
-
+    protected $maintenance_mode;
     /**
      * @param \Magento\Backup\Helper\Data $backupData
      * @param \Magento\Framework\Registry $coreRegistry
@@ -81,24 +68,16 @@ class SystemBackup
      * @param \Magento\Framework\Backup\Factory $backupFactory
      * @param \Magento\Framework\App\MaintenanceMode $maintenanceMode
      */
-    public function __construct(
-        \Magento\Backup\Helper\Data $backupData,
-        \Magento\Framework\Registry $coreRegistry,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\Filesystem $filesystem,
-        \Magento\Framework\Backup\Factory $backupFactory,
-        \Magento\Framework\App\MaintenanceMode $maintenanceMode
-    ) {
-        $this->_backupData = $backupData;
-        $this->_coreRegistry = $coreRegistry;
+    public function __construct(\Magento\Backup\Helper\Data $backup_data, \Magento\Framework\Registry $core_registry, \Psr\Log\Logger_Interface $logger, \Magento\Framework\App\Config\Scope_Config_Interface $scope_config, \Magento\Framework\Filesystem $filesystem, \Magento\Framework\Backup\Factory $backup_factory, \Magento\Framework\App\Maintenance_Mode $maintenance_mode)
+    {
+        $this->_backup_data = $backup_data;
+        $this->_core_registry = $core_registry;
         $this->_logger = $logger;
-        $this->_scopeConfig = $scopeConfig;
+        $this->_scope_config = $scope_config;
         $this->_filesystem = $filesystem;
-        $this->_backupFactory = $backupFactory;
-        $this->maintenanceMode = $maintenanceMode;
+        $this->_backup_factory = $backup_factory;
+        $this->maintenance_mode = $maintenance_mode;
     }
-
     /**
      * Create Backup
      *
@@ -107,55 +86,34 @@ class SystemBackup
      */
     public function execute()
     {
-        if (!$this->_backupData->isEnabled()) {
+        if (!$this->_backup_data->is_enabled()) {
             return $this;
         }
-
-        if (!$this->_scopeConfig->isSetFlag(self::XML_PATH_BACKUP_ENABLED, ScopeInterface::SCOPE_STORE)) {
+        if (!$this->_scope_config->is_set_flag(self::XML_PATH_BACKUP_ENABLED, Scope_Interface::SCOPE_STORE)) {
             return $this;
         }
-
-        if ($this->_scopeConfig->isSetFlag(self::XML_PATH_BACKUP_MAINTENANCE_MODE, ScopeInterface::SCOPE_STORE)) {
-            $this->maintenanceMode->set(true);
+        if ($this->_scope_config->is_set_flag(self::XML_PATH_BACKUP_MAINTENANCE_MODE, Scope_Interface::SCOPE_STORE)) {
+            $this->maintenance_mode->set(true);
         }
-
-        $type = $this->_scopeConfig->getValue(self::XML_PATH_BACKUP_TYPE, ScopeInterface::SCOPE_STORE);
-
+        $type = $this->_scope_config->get_value(self::XML_PATH_BACKUP_TYPE, Scope_Interface::SCOPE_STORE);
         $this->_errors = [];
         try {
-            $backupManager = $this->_backupFactory->create(
-                $type
-            )->setBackupExtension(
-                $this->_backupData->getExtensionByType($type)
-            )->setTime(
-                time()
-            )->setBackupsDir(
-                $this->_backupData->getBackupsDir()
-            );
-
-            $this->_coreRegistry->register('backup_manager', $backupManager);
-
+            $backup_manager = $this->_backup_factory->create($type)->set_backup_extension($this->_backup_data->get_extension_by_type($type))->set_time(time())->set_backups_dir($this->_backup_data->get_backups_dir());
+            $this->_core_registry->register('backup_manager', $backup_manager);
             if ($type != \Magento\Framework\Backup\Factory::TYPE_DB) {
-                $backupManager->setRootDir(
-                    $this->_filesystem->getDirectoryRead(DirectoryList::ROOT)->getAbsolutePath()
-                )->addIgnorePaths(
-                    $this->_backupData->getBackupIgnorePaths()
-                );
+                $backup_manager->set_root_dir($this->_filesystem->get_directory_read(Directory_List::ROOT)->get_absolute_path())->add_ignore_paths($this->_backup_data->get_backup_ignore_paths());
             }
-
-            $backupManager->create();
-            $message = $this->_backupData->getCreateSuccessMessageByType($type);
+            $backup_manager->create();
+            $message = $this->_backup_data->get_create_success_message_by_type($type);
             $this->_logger->info($message);
         } catch (\Exception $e) {
-            $this->_errors[] = $e->getMessage();
-            $this->_errors[] = $e->getTrace();
+            $this->_errors[] = $e->get_message();
+            $this->_errors[] = $e->get_trace();
             throw $e;
         }
-
-        if ($this->_scopeConfig->isSetFlag(self::XML_PATH_BACKUP_MAINTENANCE_MODE, ScopeInterface::SCOPE_STORE)) {
-            $this->maintenanceMode->set(false);
+        if ($this->_scope_config->is_set_flag(self::XML_PATH_BACKUP_MAINTENANCE_MODE, Scope_Interface::SCOPE_STORE)) {
+            $this->maintenance_mode->set(false);
         }
-
         return $this;
     }
 }

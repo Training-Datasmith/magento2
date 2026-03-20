@@ -1,88 +1,76 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB;
 
-use Magento\Framework\Api\CriteriaInterface;
-use Magento\Framework\Data\Collection\Db\FetchStrategyInterface;
-use Magento\Framework\Data\ObjectFactory;
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Psr\Log\LoggerInterface as Logger;
-
+use Magento\Framework\Api\Criteria_Interface;
+use Magento\Framework\Data\Collection\Db\Fetch_Strategy_Interface;
+use Magento\Framework\Data\Object_Factory;
+use Magento\Framework\DB\Adapter\Adapter_Interface;
+use Psr\Log\Logger_Interface as Logger;
 /**
  * Class AbstractMapper
  * @package Magento\Framework\DB
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-abstract class AbstractMapper implements MapperInterface
+abstract class Abstract_Mapper implements Mapper_Interface
 {
     /**
      * Resource model name
      *
      * @var string
      */
-    protected $resourceModel;
-
+    protected $resource_model;
     /**
      * Resource instance
      *
      * @var \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected $resource;
-
     /**
      * Store joined tables here
      *
      * @var array
      */
-    protected $joinedTables = [];
-
+    protected $joined_tables = [];
     /**
      * DB connection
      *
      * @var AdapterInterface
      */
     protected $connection;
-
     /**
      * Select object
      *
      * @var Select
      */
     protected $select;
-
     /**
      * @var Logger
      */
     protected $logger;
-
     /**
      * @var FetchStrategyInterface
      */
-    protected $fetchStrategy;
-
+    protected $fetch_strategy;
     /**
      * @var ObjectFactory
      */
-    protected $objectFactory;
-
+    protected $object_factory;
     /**
      * @var MapperFactory
      */
-    protected $mapperFactory;
-
+    protected $mapper_factory;
     /**
      * Fields and filters map
      *
      * @var array
      */
     protected $map = [];
-
     /**
      * @param Logger $logger
      * @param FetchStrategyInterface $fetchStrategy
@@ -90,51 +78,43 @@ abstract class AbstractMapper implements MapperInterface
      * @param MapperFactory $mapperFactory
      * @param Select $select
      */
-    public function __construct(
-        Logger $logger,
-        FetchStrategyInterface $fetchStrategy,
-        ObjectFactory $objectFactory,
-        MapperFactory $mapperFactory,
-        ?Select $select = null
-    ) {
+    public function __construct(Logger $logger, Fetch_Strategy_Interface $fetch_strategy, Object_Factory $object_factory, Mapper_Factory $mapper_factory, ?Select $select = null)
+    {
         $this->logger = $logger;
-        $this->fetchStrategy = $fetchStrategy;
-        $this->objectFactory = $objectFactory;
-        $this->mapperFactory = $mapperFactory;
+        $this->fetch_strategy = $fetch_strategy;
+        $this->object_factory = $object_factory;
+        $this->mapper_factory = $mapper_factory;
         $this->select = $select;
         $this->init();
     }
-
     /**
      * Set initial conditions
      *
      * @return void
      */
     abstract protected function init();
-
     /**
      * Map criteria to Select Query Object
      *
      * @param CriteriaInterface $criteria
      * @return Select
      */
-    public function map(CriteriaInterface $criteria)
+    public function map(Criteria_Interface $criteria)
     {
-        $criteriaParts = $criteria->toArray();
-        foreach ($criteriaParts as $key => $value) {
-            $camelCaseKey = \Magento\Framework\Api\SimpleDataObjectConverter::snakeCaseToUpperCamelCase($key);
-            $mapperMethod = 'map' . $camelCaseKey;
-            if (method_exists($this, $mapperMethod)) {
+        $criteria_parts = $criteria->to_array();
+        foreach ($criteria_parts as $key => $value) {
+            $camel_case_key = \Magento\Framework\Api\Simple_Data_Object_Converter::snake_case_to_upper_camel_case($key);
+            $mapper_method = 'map' . $camel_case_key;
+            if (method_exists($this, $mapper_method)) {
                 if (!is_array($value)) {
-                    throw new \InvalidArgumentException('Wrong type of argument, expecting array for '. $mapperMethod);
+                    throw new \InvalidArgumentException('Wrong type of argument, expecting array for ' . $mapper_method);
                 }
                 // The `array_values` is a workaround to ensure the same behavior in PHP 7 and 8.
-                call_user_func_array([$this, $mapperMethod], array_values($value));
+                call_user_func_array([$this, $mapper_method], array_values($value));
             }
         }
         return $this->select;
     }
-
     /**
      * Add attribute expression (SUM, COUNT, etc)
      * Example: ('sub_total', 'SUM({{attribute}})', 'revenue')
@@ -146,109 +126,98 @@ abstract class AbstractMapper implements MapperInterface
      * @param array|string $fields
      * @return void
      */
-    public function addExpressionFieldToSelect($alias, $expression, $fields)
+    public function add_expression_field_to_select($alias, $expression, $fields)
     {
         // validate alias
         if (!is_array($fields)) {
             $fields = [$fields => $fields];
         }
-        $fullExpression = $expression;
-        foreach ($fields as $fieldKey => $fieldItem) {
-            $fieldItem = $fieldItem !== null ? $fieldItem : '';
-            $fullExpression = $fullExpression !== null ? $fullExpression : '';
-            $fullExpression = str_replace('{{' . $fieldKey . '}}', $fieldItem, $fullExpression);
+        $full_expression = $expression;
+        foreach ($fields as $field_key => $field_item) {
+            $field_item = $field_item !== null ? $field_item : '';
+            $full_expression = $full_expression !== null ? $full_expression : '';
+            $full_expression = str_replace('{{' . $field_key . '}}', $field_item, $full_expression);
         }
-        $this->getSelect()->columns([$alias => $fullExpression]);
+        $this->get_select()->columns([$alias => $full_expression]);
     }
-
     /**
      * @inheritdoc
      */
-    public function addFieldToFilter($field, $condition = null)
+    public function add_field_to_filter($field, $condition = null)
     {
         if (is_array($field)) {
             $conditions = [];
             foreach ($field as $key => $value) {
-                $conditions[] = $this->translateCondition($value, isset($condition[$key]) ? $condition[$key] : null);
+                $conditions[] = $this->translate_condition($value, isset($condition[$key]) ? $condition[$key] : null);
             }
-
-            $resultCondition = '(' . implode(') ' . \Magento\Framework\DB\Select::SQL_OR . ' (', $conditions) . ')';
+            $result_condition = '(' . implode(') ' . \Magento\Framework\DB\Select::SQL_OR . ' (', $conditions) . ')';
         } else {
-            $resultCondition = $this->translateCondition($field, $condition);
+            $result_condition = $this->translate_condition($field, $condition);
         }
-        $this->select->where($resultCondition, null, Select::TYPE_CONDITION);
+        $this->select->where($result_condition, null, Select::TYPE_CONDITION);
     }
-
     /**
      * @inheritdoc
      */
     public function reset()
     {
-        $this->getSelect()->reset();
+        $this->get_select()->reset();
     }
-
     /**
      * Set resource model name
      *
      * @param string $model
      * @return void
      */
-    protected function setResourceModelName($model)
+    protected function set_resource_model_name($model)
     {
-        $this->resourceModel = $model;
+        $this->resource_model = $model;
     }
-
     /**
      *  Retrieve resource model name
      *
      * @return string
      */
-    protected function getResourceModelName()
+    protected function get_resource_model_name()
     {
-        return $this->resourceModel;
+        return $this->resource_model;
     }
-
     /**
      * Get resource instance
      *
      * @return \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
-    public function getResource()
+    public function get_resource()
     {
         if (empty($this->resource)) {
-            $this->resource = \Magento\Framework\App\ObjectManager::getInstance()->create(
-                $this->getResourceModelName()
-            );
+            $this->resource = \Magento\Framework\App\Object_Manager::get_instance()->create($this->get_resource_model_name());
         }
         return $this->resource;
     }
-
     /**
      * Standard query builder initialization
      *
      * @param string $resourceInterface
      * @return void
      */
-    protected function initResource($resourceInterface)
+    protected function init_resource($resource_interface)
     {
-        $this->setResourceModelName($resourceInterface);
-        $this->setConnection($this->getResource()->getConnection());
+        $this->set_resource_model_name($resource_interface);
+        $this->set_connection($this->get_resource()->get_connection());
         if (!$this->select) {
-            $this->select = $this->getConnection()->select();
-            $this->initSelect();
+            $this->select = $this->get_connection()->select();
+            $this->init_select();
         }
     }
-
     /**
      * Init collection select
      *
      * @return void
      */
-    protected function initSelect()
+    protected function init_select()
     {
-        $this->getSelect()->from(['main_table' => $this->getResource()->getMainTable()]);
+        $this->get_select()->from(['main_table' => $this->get_resource()->get_main_table()]);
     }
-
     /**
      * Join table to collection select
      *
@@ -268,22 +237,20 @@ abstract class AbstractMapper implements MapperInterface
         } else {
             $alias = $table;
         }
-        if (!isset($this->joinedTables[$table])) {
-            $this->getSelect()->join([$alias => $this->getTable($table)], $condition, $cols);
-            $this->joinedTables[$alias] = true;
+        if (!isset($this->joined_tables[$table])) {
+            $this->get_select()->join([$alias => $this->get_table($table)], $condition, $cols);
+            $this->joined_tables[$alias] = true;
         }
     }
-
     /**
      * Retrieve connection object
      *
      * @return AdapterInterface
      */
-    protected function getConnection()
+    protected function get_connection()
     {
         return $this->connection;
     }
-
     /**
      * Set database connection adapter
      *
@@ -291,18 +258,13 @@ abstract class AbstractMapper implements MapperInterface
      * @return void
      * @throws \InvalidArgumentException
      */
-    protected function setConnection($connection)
+    protected function set_connection($connection)
     {
-        if (!$connection instanceof \Magento\Framework\DB\Adapter\AdapterInterface) {
-            throw new \InvalidArgumentException(
-                (string)new \Magento\Framework\Phrase(
-                    'dbModel read resource does not implement \Magento\Framework\DB\Adapter\AdapterInterface'
-                )
-            );
+        if (!$connection instanceof \Magento\Framework\DB\Adapter\Adapter_Interface) {
+            throw new \InvalidArgumentException((string) new \Magento\Framework\Phrase('dbModel read resource does not implement \Magento\Framework\DB\Adapter\AdapterInterface'));
         }
         $this->connection = $connection;
     }
-
     /**
      * Build sql where condition part
      *
@@ -310,37 +272,33 @@ abstract class AbstractMapper implements MapperInterface
      * @param   null|string|array $condition
      * @return  string
      */
-    protected function translateCondition($field, $condition)
+    protected function translate_condition($field, $condition)
     {
-        $field = $this->getMappedField($field);
-        return $this->getConditionSql($this->getConnection()->quoteIdentifier($field), $condition);
+        $field = $this->get_mapped_field($field);
+        return $this->get_condition_sql($this->get_connection()->quote_identifier($field), $condition);
     }
-
     /**
      * Try to get mapped field name for filter to collection
      *
      * @param   string $field
      * @return  string
      */
-    protected function getMappedField($field)
+    protected function get_mapped_field($field)
     {
-        $mapper = $this->getMapper();
-
+        $mapper = $this->get_mapper();
         if (isset($mapper['fields'][$field])) {
-            $mappedField = $mapper['fields'][$field];
+            $mapped_field = $mapper['fields'][$field];
         } else {
-            $mappedField = $field;
+            $mapped_field = $field;
         }
-
-        return $mappedField;
+        return $mapped_field;
     }
-
     /**
      * Retrieve mapper data
      *
      * @return array|bool|null
      */
-    protected function getMapper()
+    protected function get_mapper()
     {
         if (isset($this->map)) {
             return $this->map;
@@ -348,7 +306,6 @@ abstract class AbstractMapper implements MapperInterface
             return false;
         }
     }
-
     /**
      * Build SQL statement for condition
      *
@@ -380,48 +337,44 @@ abstract class AbstractMapper implements MapperInterface
      * @param integer|string|array $condition
      * @return string
      */
-    protected function getConditionSql($fieldName, $condition)
+    protected function get_condition_sql($field_name, $condition)
     {
-        return $this->getConnection()->prepareSqlCondition($fieldName, $condition);
+        return $this->get_connection()->prepare_sql_condition($field_name, $condition);
     }
-
     /**
      * Return the field name for the condition.
      *
      * @param string $fieldName
      * @return string
      */
-    protected function getConditionFieldName($fieldName)
+    protected function get_condition_field_name($field_name)
     {
-        return $fieldName;
+        return $field_name;
     }
-
     /**
      * Hook for operations before rendering filters
      *
      * @return void
      */
-    protected function renderFiltersBefore() //phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
+    protected function render_filters_before()
     {
     }
-
     /**
      * Retrieve table name
      *
      * @param string $table
      * @return string
      */
-    protected function getTable($table)
+    protected function get_table($table)
     {
-        return $this->getResource()->getTable($table);
+        return $this->get_resource()->get_table($table);
     }
-
     /**
      * Get \Magento\Framework\DB\Select object instance
      *
      * @return Select
      */
-    protected function getSelect()
+    protected function get_select()
     {
         return $this->select;
     }

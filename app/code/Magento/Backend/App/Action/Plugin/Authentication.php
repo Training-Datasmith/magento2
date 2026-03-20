@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\App\Action\Plugin;
 
-use Magento\Framework\Exception\AuthenticationException;
-
+use Magento\Framework\Exception\Authentication_Exception;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
@@ -18,18 +16,10 @@ class Authentication
     /**
      * @var string[]
      */
-    protected $_openActions = [
-        'forgotpassword',
-        'resetpassword',
-        'resetpasswordpost',
-        'logout',
-        'refresh', // captcha refresh
-    ];
-
-    public function __construct(protected \Magento\Backend\Model\Auth $_auth, protected \Magento\Backend\Model\UrlInterface $_url, protected \Magento\Framework\App\ResponseInterface $_response, protected \Magento\Framework\App\ActionFlag $_actionFlag, protected \Magento\Framework\Message\ManagerInterface $messageManager, protected \Magento\Backend\Model\UrlInterface $backendUrl, protected \Magento\Framework\Controller\Result\RedirectFactory $resultRedirectFactory, protected \Magento\Backend\App\BackendAppList $backendAppList, protected \Magento\Framework\Data\Form\FormKey\Validator $formKeyValidator)
+    protected $_open_actions = ['forgotpassword', 'resetpassword', 'resetpasswordpost', 'logout', 'refresh'];
+    public function __construct(protected \Magento\Backend\Model\Auth $_auth, protected \Magento\Backend\Model\Url_Interface $_url, protected \Magento\Framework\App\Response_Interface $_response, protected \Magento\Framework\App\Action_Flag $_action_flag, protected \Magento\Framework\Message\Manager_Interface $message_manager, protected \Magento\Backend\Model\Url_Interface $backend_url, protected \Magento\Framework\Controller\Result\Redirect_Factory $result_redirect_factory, protected \Magento\Backend\App\Backend_App_List $backend_app_list, protected \Magento\Framework\Data\Form\Form_Key\Validator $form_key_validator)
     {
     }
-
     /**
      * Ensures user is authenticated before accessing backend action controllers.
      *
@@ -37,130 +27,106 @@ class Authentication
      * @return mixed
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function aroundDispatch(
-        \Magento\Backend\App\AbstractAction $subject,
-        \Closure $proceed,
-        \Magento\Framework\App\RequestInterface $request
-    ) {
-        $requestedActionName = $request->getActionName();
-        if (in_array($requestedActionName, $this->_openActions)) {
-            $request->setDispatched(true);
+    public function around_dispatch(\Magento\Backend\App\Abstract_Action $subject, \Closure $proceed, \Magento\Framework\App\Request_Interface $request)
+    {
+        $requested_action_name = $request->get_action_name();
+        if (in_array($requested_action_name, $this->_open_actions)) {
+            $request->set_dispatched(true);
         } else {
-            if ($this->_auth->getUser()) {
-                $this->_auth->getUser()->reload();
+            if ($this->_auth->get_user()) {
+                $this->_auth->get_user()->reload();
             }
-            if (!$this->_auth->isLoggedIn()) {
-                $this->_processNotLoggedInUser($request);
+            if (!$this->_auth->is_logged_in()) {
+                $this->_process_not_logged_in_user($request);
             } else {
-                $this->_auth->getAuthStorage()->prolong();
-
-                $backendApp = null;
-                if ($request->getParam('app')) {
-                    $backendApp = $this->backendAppList->getCurrentApp();
+                $this->_auth->get_auth_storage()->prolong();
+                $backend_app = null;
+                if ($request->get_param('app')) {
+                    $backend_app = $this->backend_app_list->get_current_app();
                 }
-
-                if ($backendApp) {
-                    $resultRedirect = $this->resultRedirectFactory->create();
-                    $baseUrl = \Magento\Framework\App\Request\Http::getUrlNoScript($this->backendUrl->getBaseUrl());
-                    $baseUrl = $baseUrl . $backendApp->getStartupPage();
-                    return $resultRedirect->setUrl($baseUrl);
+                if ($backend_app) {
+                    $result_redirect = $this->result_redirect_factory->create();
+                    $base_url = \Magento\Framework\App\Request\Http::get_url_no_script($this->backend_url->get_base_url());
+                    $base_url = $base_url . $backend_app->get_startup_page();
+                    return $result_redirect->set_url($base_url);
                 }
             }
         }
-        $this->_auth->getAuthStorage()->refreshAcl();
+        $this->_auth->get_auth_storage()->refresh_acl();
         return $proceed($request);
     }
-
     /**
      * Process not logged in user data
      *
      * @return void
      */
-    protected function _processNotLoggedInUser(\Magento\Framework\App\RequestInterface $request)
+    protected function _process_not_logged_in_user(\Magento\Framework\App\Request_Interface $request)
     {
-        $isRedirectNeeded = false;
-        if ($request->getPost('login')) {
-            if ($this->formKeyValidator->validate($request)) {
-                if ($this->_performLogin($request)) {
-                    $isRedirectNeeded = $this->_redirectIfNeededAfterLogin($request);
+        $is_redirect_needed = false;
+        if ($request->get_post('login')) {
+            if ($this->form_key_validator->validate($request)) {
+                if ($this->_perform_login($request)) {
+                    $is_redirect_needed = $this->_redirect_if_needed_after_login($request);
                 }
             } else {
-                $this->_actionFlag->set('', \Magento\Framework\App\ActionInterface::FLAG_NO_DISPATCH, true);
-                $this->_response->setRedirect($this->_url->getCurrentUrl());
-                $this->messageManager->addErrorMessage(__('Invalid Form Key. Please refresh the page.'));
-                $isRedirectNeeded = true;
+                $this->_action_flag->set('', \Magento\Framework\App\Action_Interface::FLAG_NO_DISPATCH, true);
+                $this->_response->set_redirect($this->_url->get_current_url());
+                $this->message_manager->add_error_message(__('Invalid Form Key. Please refresh the page.'));
+                $is_redirect_needed = true;
             }
         }
-        if (!$isRedirectNeeded && !$request->isForwarded()) {
-            if ($request->getParam('isIframe')) {
-                $request->setForwarded(true)
-                    ->setRouteName('adminhtml')
-                    ->setControllerName('auth')
-                    ->setActionName('deniedIframe')
-                    ->setDispatched(false);
-            } elseif ($request->getParam('isAjax')) {
-                $request->setForwarded(true)
-                    ->setRouteName('adminhtml')
-                    ->setControllerName('auth')
-                    ->setActionName('deniedJson')
-                    ->setDispatched(false);
+        if (!$is_redirect_needed && !$request->is_forwarded()) {
+            if ($request->get_param('isIframe')) {
+                $request->set_forwarded(true)->set_route_name('adminhtml')->set_controller_name('auth')->set_action_name('deniedIframe')->set_dispatched(false);
+            } elseif ($request->get_param('isAjax')) {
+                $request->set_forwarded(true)->set_route_name('adminhtml')->set_controller_name('auth')->set_action_name('deniedJson')->set_dispatched(false);
             } else {
-                $request->setForwarded(true)
-                    ->setRouteName('adminhtml')
-                    ->setControllerName('auth')
-                    ->setActionName('login')
-                    ->setDispatched(false);
+                $request->set_forwarded(true)->set_route_name('adminhtml')->set_controller_name('auth')->set_action_name('login')->set_dispatched(false);
             }
         }
     }
-
     /**
      * Performs login, if user submitted login form
      *
      * @return bool
      */
-    protected function _performLogin(\Magento\Framework\App\RequestInterface $request)
+    protected function _perform_login(\Magento\Framework\App\Request_Interface $request)
     {
-        $outputValue = true;
-        $postLogin = $request->getPost('login');
-        $username = $postLogin['username'] ?? '';
-        $password = $postLogin['password'] ?? '';
-        $request->setPostValue('login', null);
-
+        $output_value = true;
+        $post_login = $request->get_post('login');
+        $username = $post_login['username'] ?? '';
+        $password = $post_login['password'] ?? '';
+        $request->set_post_value('login', null);
         try {
             $this->_auth->login($username, $password);
-        } catch (AuthenticationException $e) {
-            if (!$request->getParam('messageSent')) {
-                $this->messageManager->addErrorMessage($e->getMessage());
-                $request->setParam('messageSent', true);
-                $outputValue = false;
+        } catch (Authentication_Exception $e) {
+            if (!$request->get_param('messageSent')) {
+                $this->message_manager->add_error_message($e->get_message());
+                $request->set_param('messageSent', true);
+                $output_value = false;
             }
         }
-        return $outputValue;
+        return $output_value;
     }
-
     /**
      * Checks, whether Magento requires redirection after successful admin login, and redirects user, if needed
      */
-    protected function _redirectIfNeededAfterLogin(\Magento\Framework\App\RequestInterface $request): bool
+    protected function _redirect_if_needed_after_login(\Magento\Framework\App\Request_Interface $request): bool
     {
-        $requestUri = null;
-
+        $request_uri = null;
         // Checks, whether secret key is required for admin access or request uri is explicitly set
-        if ($this->_url->useSecretKey()) {
+        if ($this->_url->use_secret_key()) {
             // The requested URL has an invalid secret key and therefore redirecting to this URL
             // will cause a security vulnerability.
-            $requestUri = $this->_url->getUrl($this->_url->getStartupPageUrl());
+            $request_uri = $this->_url->get_url($this->_url->get_startup_page_url());
         } elseif ($request) {
-            $requestUri = $request->getRequestUri();
+            $request_uri = $request->get_request_uri();
         }
-
-        if (!$requestUri) {
+        if (!$request_uri) {
             return false;
         }
-
-        $this->_response->setRedirect($requestUri);
-        $this->_actionFlag->set('', \Magento\Framework\App\ActionInterface::FLAG_NO_DISPATCH, true);
+        $this->_response->set_redirect($request_uri);
+        $this->_action_flag->set('', \Magento\Framework\App\Action_Interface::FLAG_NO_DISPATCH, true);
         return true;
     }
 }

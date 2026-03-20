@@ -1,22 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Api\Extension_Attribute;
 
-namespace Magento\Framework\Api\ExtensionAttribute;
-
-use Magento\Framework\Data\Collection\AbstractDb as DbCollection;
-
+use Magento\Framework\Data\Collection\Abstract_Db as DbCollection;
 /**
  * Join processor allows to join extension attributes during collections loading.
  *
  * @api
  * @since 100.0.2
  */
-interface JoinProcessorInterface
+interface Join_Processor_Interface
 {
     /**
      * Processes extension attributes join instructions to add necessary joins to the collection of extensible entities.
@@ -26,8 +24,7 @@ interface JoinProcessorInterface
      * @return void
      * @throws \LogicException
      */
-    public function process(DbCollection $collection, $extensibleEntityClass = null);
-
+    public function process(Db_Collection $collection, $extensible_entity_class = null);
     /**
      * Extract extension attributes into separate extension object.
      *
@@ -39,5 +36,5 @@ interface JoinProcessorInterface
      * @return array
      * @throws \LogicException
      */
-    public function extractExtensionAttributes($extensibleEntityClass, array $data);
+    public function extract_extension_attributes($extensible_entity_class, array $data);
 }

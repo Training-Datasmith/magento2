@@ -1,12 +1,10 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Tree;
 
 /**
@@ -21,56 +19,48 @@ class Db extends \Magento\Framework\Data\Tree
     public const PARENT_FIELD = 'parent';
     public const LEVEL_FIELD = 'level';
     public const ORDER_FIELD = 'order';
-
     /**
      * DB connection
      *
      * @var \Magento\Framework\DB\Adapter\AdapterInterface
      */
     protected $_conn;
-
     /**
      * Data table name
      *
      * @var string
      */
     protected $_table;
-
     /**
      * SQL select object
      *
      * @var \Magento\Framework\DB\Select
      */
     protected $_select;
-
     /**
      * Tree structure field name: _idField
      *
      * @var string
      */
-    protected $_idField;
-
+    protected $_id_field;
     /**
      * Tree structure field name: _parentField
      *
      * @var string
      */
-    protected $_parentField;
-
+    protected $_parent_field;
     /**
      * Tree structure field name: _levelField
      *
      * @var string
      */
-    protected $_levelField;
-
+    protected $_level_field;
     /**
      * Tree structure field name: _orderField
      *
      * @var string
      */
-    protected $_orderField;
-
+    protected $_order_field;
     /**
      * $fields = array(
      *      \Magento\Framework\Data\Tree\Db::ID_FIELD       => string,
@@ -85,49 +75,35 @@ class Db extends \Magento\Framework\Data\Tree
      *
      * @throws \Exception
      */
-    public function __construct(\Magento\Framework\DB\Adapter\AdapterInterface $connection, $table, $fields)
+    public function __construct(\Magento\Framework\DB\Adapter\Adapter_Interface $connection, $table, $fields)
     {
         parent::__construct();
-
         if (!$connection) {
-            throw new \Exception('Wrong "$connection" parametr'); // phpcs:ignore
+            throw new \Exception('Wrong "$connection" parametr');
+            // phpcs:ignore
         }
-
         $this->_conn = $connection;
         $this->_table = $table;
-
-        if (!isset(
-            $fields[self::ID_FIELD]
-        ) || !isset(
-            $fields[self::PARENT_FIELD]
-        ) || !isset(
-            $fields[self::LEVEL_FIELD]
-        ) || !isset(
-            $fields[self::ORDER_FIELD]
-        )
-        ) {
-            throw new \Exception('"$fields" tree configuratin array'); // phpcs:ignore
+        if (!isset($fields[self::ID_FIELD]) || !isset($fields[self::PARENT_FIELD]) || !isset($fields[self::LEVEL_FIELD]) || !isset($fields[self::ORDER_FIELD])) {
+            throw new \Exception('"$fields" tree configuratin array');
+            // phpcs:ignore
         }
-
-        $this->_idField = $fields[self::ID_FIELD];
-        $this->_parentField = $fields[self::PARENT_FIELD];
-        $this->_levelField = $fields[self::LEVEL_FIELD];
-        $this->_orderField = $fields[self::ORDER_FIELD];
-
+        $this->_id_field = $fields[self::ID_FIELD];
+        $this->_parent_field = $fields[self::PARENT_FIELD];
+        $this->_level_field = $fields[self::LEVEL_FIELD];
+        $this->_order_field = $fields[self::ORDER_FIELD];
         $this->_select = $this->_conn->select();
         $this->_select->from($this->_table, array_values($fields));
     }
-
     /**
      * Get database select
      *
      * @return \Magento\Framework\DB\Select
      */
-    public function getDbSelect()
+    public function get_db_select()
     {
         return $this->_select;
     }
-
     /**
      * Set database select
      *
@@ -135,11 +111,10 @@ class Db extends \Magento\Framework\Data\Tree
      *
      * @return void
      */
-    public function setDbSelect($select)
+    public function set_db_select($select)
     {
         $this->_select = $select;
     }
-
     /**
      * Load tree
      *
@@ -149,37 +124,34 @@ class Db extends \Magento\Framework\Data\Tree
      * @return $this
      * @throws \Exception
      */
-    public function load($parentNode = null, $recursionLevel = 100)
+    public function load($parent_node = null, $recursion_level = 100)
     {
-        if ($parentNode === null) {
-            $this->_loadFullTree();
+        if ($parent_node === null) {
+            $this->_load_full_tree();
             return $this;
-        } elseif ($parentNode instanceof Node) {
-            $parentId = $parentNode->getId();
-        } elseif (is_numeric($parentNode)) {
-            $parentId = $parentNode;
-            $parentNode = null;
+        } elseif ($parent_node instanceof Node) {
+            $parent_id = $parent_node->get_id();
+        } elseif (is_numeric($parent_node)) {
+            $parent_id = $parent_node;
+            $parent_node = null;
         } else {
-            throw new \Exception('root node id is not defined'); // phpcs:ignore
+            throw new \Exception('root node id is not defined');
+            // phpcs:ignore
         }
-
         $select = clone $this->_select;
-        $select->order($this->_table . '.' . $this->_orderField . ' ASC');
-        $condition = $this->_conn->quoteInto("{$this->_table}.{$this->_parentField}=?", $parentId);
+        $select->order($this->_table . '.' . $this->_order_field . ' ASC');
+        $condition = $this->_conn->quote_into("{$this->_table}.{$this->_parent_field}=?", $parent_id);
         $select->where($condition);
-        $arrNodes = $this->_conn->fetchAll($select);
-        foreach ($arrNodes as $nodeInfo) {
-            $node = new Node($nodeInfo, $this->_idField, $this, $parentNode);
-            $this->addNode($node, $parentNode);
-
-            if ($recursionLevel) {
-                $node->loadChildren($recursionLevel - 1);
+        $arr_nodes = $this->_conn->fetch_all($select);
+        foreach ($arr_nodes as $node_info) {
+            $node = new Node($node_info, $this->_id_field, $this, $parent_node);
+            $this->add_node($node, $parent_node);
+            if ($recursion_level) {
+                $node->load_children($recursion_level - 1);
             }
         }
-
         return $this;
     }
-
     /**
      * Load node
      *
@@ -187,16 +159,15 @@ class Db extends \Magento\Framework\Data\Tree
      *
      * @return Node
      */
-    public function loadNode($nodeId)
+    public function load_node($node_id)
     {
         $select = clone $this->_select;
-        $condition = $this->_conn->quoteInto("{$this->_table}.{$this->_idField}=?", $nodeId);
+        $condition = $this->_conn->quote_into("{$this->_table}.{$this->_id_field}=?", $node_id);
         $select->where($condition);
-        $node = new Node($this->_conn->fetchRow($select), $this->_idField, $this);
-        $this->addNode($node);
+        $node = new Node($this->_conn->fetch_row($select), $this->_id_field, $this);
+        $this->add_node($node);
         return $node;
     }
-
     /**
      * Append child
      *
@@ -206,27 +177,18 @@ class Db extends \Magento\Framework\Data\Tree
      *
      * @return Node
      */
-    public function appendChild($data, $parentNode, $prevNode = null)
+    public function append_child($data, $parent_node, $prev_node = null)
     {
-        $orderSelect = $this->_conn->select();
-        $orderSelect->from(
-            $this->_table,
-            new \Zend_Db_Expr('MAX(' . $this->_conn->quoteIdentifier($this->_orderField) . ')')
-        )->where(
-            $this->_conn->quoteIdentifier($this->_parentField) . '=' . $parentNode->getId()
-        );
-
-        $order = $this->_conn->fetchOne($orderSelect);
-        $data[$this->_parentField] = $parentNode->getId();
-        $data[$this->_levelField] = $parentNode->getData($this->_levelField) + 1;
-        $data[$this->_orderField] = $order + 1;
-
+        $order_select = $this->_conn->select();
+        $order_select->from($this->_table, new \Zend_Db_Expr('MAX(' . $this->_conn->quote_identifier($this->_order_field) . ')'))->where($this->_conn->quote_identifier($this->_parent_field) . '=' . $parent_node->get_id());
+        $order = $this->_conn->fetch_one($order_select);
+        $data[$this->_parent_field] = $parent_node->get_id();
+        $data[$this->_level_field] = $parent_node->get_data($this->_level_field) + 1;
+        $data[$this->_order_field] = $order + 1;
         $this->_conn->insert($this->_table, $data);
-        $data[$this->_idField] = $this->_conn->lastInsertId();
-
-        return parent::appendChild($data, $parentNode, $prevNode);
+        $data[$this->_id_field] = $this->_conn->last_insert_id();
+        return parent::append_child($data, $parent_node, $prev_node);
     }
-
     /**
      * Move tree node
      *
@@ -237,60 +199,40 @@ class Db extends \Magento\Framework\Data\Tree
      * @return void
      * @throws \Exception
      */
-    public function moveNodeTo($node, $parentNode, $prevNode = null)
+    public function move_node_to($node, $parent_node, $prev_node = null)
     {
         $data = [];
-        $data[$this->_parentField] = $parentNode->getId();
-        $data[$this->_levelField] = $parentNode->getData($this->_levelField) + 1;
+        $data[$this->_parent_field] = $parent_node->get_id();
+        $data[$this->_level_field] = $parent_node->get_data($this->_level_field) + 1;
         // New node order
-        if ($prevNode === null || $prevNode->getData($this->_orderField) === null) {
-            $data[$this->_orderField] = 1;
+        if ($prev_node === null || $prev_node->get_data($this->_order_field) === null) {
+            $data[$this->_order_field] = 1;
         } else {
-            $data[$this->_orderField] = $prevNode->getData($this->_orderField) + 1;
+            $data[$this->_order_field] = $prev_node->get_data($this->_order_field) + 1;
         }
-
-        $condition = $this->_conn->quoteInto("{$this->_idField}=?", $node->getId());
-
+        $condition = $this->_conn->quote_into("{$this->_id_field}=?", $node->get_id());
         // For reorder new node branch
-        $dataReorderNew = [
-            $this->_orderField => new \Zend_Db_Expr($this->_conn->quoteIdentifier($this->_orderField) . '+1'),
-        ];
-        $conditionReorderNew = $this->_conn->quoteIdentifier(
-            $this->_parentField
-        ) . '=' . $parentNode->getId() . ' AND ' . $this->_conn->quoteIdentifier(
-            $this->_orderField
-        ) . '>=' . $data[$this->_orderField];
-
+        $data_reorder_new = [$this->_order_field => new \Zend_Db_Expr($this->_conn->quote_identifier($this->_order_field) . '+1')];
+        $condition_reorder_new = $this->_conn->quote_identifier($this->_parent_field) . '=' . $parent_node->get_id() . ' AND ' . $this->_conn->quote_identifier($this->_order_field) . '>=' . $data[$this->_order_field];
         // For reorder old node branch
-        $dataReorderOld = [
-            $this->_orderField => new \Zend_Db_Expr($this->_conn->quoteIdentifier($this->_orderField) . '-1'),
-        ];
-        $conditionReorderOld = $this->_conn->quoteIdentifier(
-            $this->_parentField
-        ) . '=' . $node->getData(
-            $this->_parentField
-        ) . ' AND ' . $this->_conn->quoteIdentifier(
-            $this->_orderField
-        ) . '>' . $node->getData(
-            $this->_orderField
-        );
-
-        $this->_conn->beginTransaction();
+        $data_reorder_old = [$this->_order_field => new \Zend_Db_Expr($this->_conn->quote_identifier($this->_order_field) . '-1')];
+        $condition_reorder_old = $this->_conn->quote_identifier($this->_parent_field) . '=' . $node->get_data($this->_parent_field) . ' AND ' . $this->_conn->quote_identifier($this->_order_field) . '>' . $node->get_data($this->_order_field);
+        $this->_conn->begin_transaction();
         try {
             // Prepare new node branch
-            $this->_conn->update($this->_table, $dataReorderNew, $conditionReorderNew);
+            $this->_conn->update($this->_table, $data_reorder_new, $condition_reorder_new);
             // Move node
             $this->_conn->update($this->_table, $data, $condition);
             // Update old node branch
-            $this->_conn->update($this->_table, $dataReorderOld, $conditionReorderOld);
-            $this->_updateChildLevels($node->getId(), $data[$this->_levelField]);
+            $this->_conn->update($this->_table, $data_reorder_old, $condition_reorder_old);
+            $this->_update_child_levels($node->get_id(), $data[$this->_level_field]);
             $this->_conn->commit();
         } catch (\Exception $e) {
-            $this->_conn->rollBack();
-            throw new \Exception('Can\'t move tree node'); // phpcs:ignore
+            $this->_conn->roll_back();
+            throw new \Exception('Can\'t move tree node');
+            // phpcs:ignore
         }
     }
-
     /**
      * Update child levels
      *
@@ -299,52 +241,35 @@ class Db extends \Magento\Framework\Data\Tree
      *
      * @return $this
      */
-    protected function _updateChildLevels($parentId, $parentLevel)
+    protected function _update_child_levels($parent_id, $parent_level)
     {
-        $select = $this->_conn->select()->from(
-            $this->_table,
-            $this->_idField
-        )->where(
-            $this->_parentField . '=?',
-            $parentId
-        );
-        $ids = $this->_conn->fetchCol($select);
-
+        $select = $this->_conn->select()->from($this->_table, $this->_id_field)->where($this->_parent_field . '=?', $parent_id);
+        $ids = $this->_conn->fetch_col($select);
         if (!empty($ids)) {
-            $this->_conn->update(
-                $this->_table,
-                [$this->_levelField => $parentLevel + 1],
-                $this->_conn->quoteInto($this->_idField . ' IN (?)', $ids)
-            );
+            $this->_conn->update($this->_table, [$this->_level_field => $parent_level + 1], $this->_conn->quote_into($this->_id_field . ' IN (?)', $ids));
             foreach ($ids as $id) {
-                $this->_updateChildLevels($id, $parentLevel + 1);
+                $this->_update_child_levels($id, $parent_level + 1);
             }
         }
-
         return $this;
     }
-
     /**
      * Load full tree
      *
      * @return $this
      */
-    protected function _loadFullTree()
+    protected function _load_full_tree()
     {
         $select = clone $this->_select;
-        $select->order($this->_table . '.' . $this->_levelField)->order($this->_table . '.' . $this->_orderField);
-
-        $arrNodes = $this->_conn->fetchAll($select);
-
-        foreach ($arrNodes as $nodeInfo) {
-            $node = new Node($nodeInfo, $this->_idField, $this);
-            $parentNode = $this->getNodeById($nodeInfo[$this->_parentField]);
-            $this->addNode($node, $parentNode);
+        $select->order($this->_table . '.' . $this->_level_field)->order($this->_table . '.' . $this->_order_field);
+        $arr_nodes = $this->_conn->fetch_all($select);
+        foreach ($arr_nodes as $node_info) {
+            $node = new Node($node_info, $this->_id_field, $this);
+            $parent_node = $this->get_node_by_id($node_info[$this->_parent_field]);
+            $this->add_node($node, $parent_node);
         }
-
         return $this;
     }
-
     /**
      * Remove node
      *
@@ -353,35 +278,24 @@ class Db extends \Magento\Framework\Data\Tree
      * @return $this
      * @throws \Exception
      */
-    public function removeNode($node)
+    public function remove_node($node)
     {
         // For reorder old node branch
-        $dataReorderOld = [
-            $this->_orderField => new \Zend_Db_Expr($this->_conn->quoteIdentifier($this->_orderField) . '-1'),
-        ];
-        $conditionReorderOld = $this->_conn->quoteIdentifier(
-            $this->_parentField
-        ) . '=' . $node->getData(
-            $this->_parentField
-        ) . ' AND ' . $this->_conn->quoteIdentifier(
-            $this->_orderField
-        ) . '>' . $node->getData(
-            $this->_orderField
-        );
-
-        $this->_conn->beginTransaction();
+        $data_reorder_old = [$this->_order_field => new \Zend_Db_Expr($this->_conn->quote_identifier($this->_order_field) . '-1')];
+        $condition_reorder_old = $this->_conn->quote_identifier($this->_parent_field) . '=' . $node->get_data($this->_parent_field) . ' AND ' . $this->_conn->quote_identifier($this->_order_field) . '>' . $node->get_data($this->_order_field);
+        $this->_conn->begin_transaction();
         try {
-            $condition = $this->_conn->quoteInto("{$this->_idField}=?", $node->getId());
+            $condition = $this->_conn->quote_into("{$this->_id_field}=?", $node->get_id());
             $this->_conn->delete($this->_table, $condition);
             // Update old node branch
-            $this->_conn->update($this->_table, $dataReorderOld, $conditionReorderOld);
+            $this->_conn->update($this->_table, $data_reorder_old, $condition_reorder_old);
             $this->_conn->commit();
         } catch (\Exception $e) {
-            $this->_conn->rollBack();
-            throw new \Exception('Can\'t remove tree node'); // phpcs:ignore
+            $this->_conn->roll_back();
+            throw new \Exception('Can\'t remove tree node');
+            // phpcs:ignore
         }
-
-        parent::removeNode($node);
+        parent::remove_node($node);
         return $this;
     }
 }

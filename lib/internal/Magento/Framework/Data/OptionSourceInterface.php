@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
 /**
@@ -14,12 +13,12 @@ namespace Magento\Framework\Data;
  * @api
  * @since 100.0.2
  */
-interface OptionSourceInterface
+interface Option_Source_Interface
 {
     /**
      * Return array of options as value-label pairs
      *
      * @return array Format: array(array('value' => '<value>', 'label' => '<label>'), ...)
      */
-    public function toOptionArray();
+    public function to_option_array();
 }

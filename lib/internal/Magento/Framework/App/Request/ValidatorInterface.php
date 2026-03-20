@@ -4,19 +4,17 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Request;
 
-use Magento\Framework\App\ActionInterface;
-use Magento\Framework\App\RequestInterface;
-
+use Magento\Framework\App\Action_Interface;
+use Magento\Framework\App\Request_Interface;
 /**
  * Validate interface before giving passing it to an ActionInterface.
  *
  * @api
  */
-interface ValidatorInterface
+interface Validator_Interface
 {
     /**
      * Validate request and throw the exception if it's invalid.
@@ -27,8 +25,5 @@ interface ValidatorInterface
      *
      * @return void
      */
-    public function validate(
-        RequestInterface $request,
-        ActionInterface $action
-    ): void;
+    public function validate(Request_Interface $request, Action_Interface $action): void;
 }

@@ -4,38 +4,32 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Encryption\Adapter;
 
 /**
  * Mcrypt adapter for decrypting values using legacy ciphers
  */
-class Mcrypt implements EncryptionAdapterInterface
+class Mcrypt implements Encryption_Adapter_Interface
 {
     /**
      * @var string
      */
     private $cipher;
-
     /**
      * @var string
      */
     private $mode;
-
     /**
      * @var string
      */
-    private $initVector;
-
+    private $init_vector;
     /**
      * Encryption algorithm module handle
      *
      * @var resource
      */
     private $handle;
-
     /**
      * Mcrypt constructor.
      * @param string $key
@@ -44,47 +38,35 @@ class Mcrypt implements EncryptionAdapterInterface
      * @param string $initVector
      * @throws \Exception
      */
-    public function __construct(
-        string $key,
-        string $cipher = MCRYPT_BLOWFISH,
-        string $mode = MCRYPT_MODE_ECB,
-        ?string $initVector = null
-    ) {
+    public function __construct(string $key, string $cipher = MCRYPT_BLOWFISH, string $mode = MCRYPT_MODE_ECB, ?string $init_vector = null)
+    {
         $this->cipher = $cipher;
         $this->mode = $mode;
         // @codingStandardsIgnoreLine
         $this->handle = @mcrypt_module_open($cipher, '', $mode, '');
         try {
             // @codingStandardsIgnoreLine
-            $maxKeySize = @mcrypt_enc_get_key_size($this->handle);
-            if (strlen($key) > $maxKeySize) {
-                throw new \Magento\Framework\Exception\LocalizedException(
-                    new \Magento\Framework\Phrase('Key must not exceed %1 bytes.', [$maxKeySize])
-                );
+            $max_key_size = @mcrypt_enc_get_key_size($this->handle);
+            if (strlen($key) > $max_key_size) {
+                throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('Key must not exceed %1 bytes.', [$max_key_size]));
             }
             // @codingStandardsIgnoreLine
-            $initVectorSize = @mcrypt_enc_get_iv_size($this->handle);
-            if (null === $initVector) {
+            $init_vector_size = @mcrypt_enc_get_iv_size($this->handle);
+            if (null === $init_vector) {
                 /* Set vector to zero bytes to not use it */
-                $initVector = str_repeat("\0", $initVectorSize);
-            } elseif (!is_string($initVector) || strlen($initVector) != $initVectorSize) {
-                throw new \Magento\Framework\Exception\LocalizedException(
-                    new \Magento\Framework\Phrase(
-                        'Init vector must be a string of %1 bytes.',
-                        [$initVectorSize]
-                    )
-                );
+                $init_vector = str_repeat("\x00", $init_vector_size);
+            } elseif (!is_string($init_vector) || strlen($init_vector) != $init_vector_size) {
+                throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('Init vector must be a string of %1 bytes.', [$init_vector_size]));
             }
-            $this->initVector = $initVector;
+            $this->init_vector = $init_vector;
         } catch (\Exception $e) {
             // @codingStandardsIgnoreLine
             @mcrypt_module_close($this->handle);
-            throw new \Magento\Framework\Exception\LocalizedException(new \Magento\Framework\Phrase($e->getMessage()));
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase($e->get_message()));
         }
         // @codingStandardsIgnoreLine
-        @mcrypt_generic_init($this->handle, $key, $initVector);
+        @mcrypt_generic_init($this->handle, $key, $init_vector);
     }
-
     /**
      * Destructor frees allocated resources
      */
@@ -95,47 +77,42 @@ class Mcrypt implements EncryptionAdapterInterface
         @mcrypt_module_close($this->handle);
         // @codingStandardsIgnoreEnd
     }
-
     /**
      * Retrieve a name of currently used cryptographic algorithm
      *
      * @return string
      */
-    public function getCipher(): string
+    public function get_cipher(): string
     {
         return $this->cipher;
     }
-
     /**
      * Mode in which cryptographic algorithm is running
      *
      * @return string
      */
-    public function getMode(): string
+    public function get_mode(): string
     {
         return $this->mode;
     }
-
     /**
      * Retrieve an actual value of initial vector that has been used to initialize a cipher
      *
      * @return string
      */
-    public function getInitVector(): ?string
+    public function get_init_vector(): ?string
     {
-        return $this->initVector;
+        return $this->init_vector;
     }
-
     /**
      * Get the current mcrypt handle
      *
      * @return resource
      */
-    public function getHandle()
+    public function get_handle()
     {
         return $this->handle;
     }
-
     /**
      * Encrypt a string
      *
@@ -149,9 +126,8 @@ class Mcrypt implements EncryptionAdapterInterface
             return $data;
         }
         // @codingStandardsIgnoreLine
-        return @mcrypt_generic($this->getHandle(), $data);
+        return @mcrypt_generic($this->get_handle(), $data);
     }
-
     /**
      * Decrypt a string
      *
@@ -169,7 +145,7 @@ class Mcrypt implements EncryptionAdapterInterface
          * Returned string can in fact be longer than the unencrypted string due to the padding of the data
          * @link http://www.php.net/manual/en/function.mdecrypt-generic.php
          */
-        $data = rtrim($data, "\0");
+        $data = rtrim($data, "\x00");
         return $data;
     }
 }

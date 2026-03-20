@@ -1,113 +1,102 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config;
 
-use Magento\Framework\Filesystem\DriverPool;
-use Magento\Framework\Filesystem\File\ReadFactory;
-
+use Magento\Framework\Filesystem\Driver_Pool;
+use Magento\Framework\Filesystem\File\Read_Factory;
 /**
  * @api
  * @since 100.0.2
  */
-class FileIterator implements \Iterator, \Countable
+class File_Iterator implements \Iterator, \Countable
 {
     /**
      * @var array
      */
     protected $paths = [];
-
     /**
      * @var int
      */
     protected $position;
-
     /**
      * @var ReadFactory
      */
-    protected $fileReadFactory;
-
+    protected $file_read_factory;
     /**
      * Constructor
      *
      * @param ReadFactory $readFactory
      * @param array $paths
      */
-    public function __construct(ReadFactory $readFactory, array $paths)
+    public function __construct(Read_Factory $read_factory, array $paths)
     {
-        $this->fileReadFactory = $readFactory;
+        $this->file_read_factory = $read_factory;
         $this->paths = $paths;
         $this->position = 0;
     }
-
     /**
      * Rewind
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function rewind()
     {
         reset($this->paths);
     }
-
     /**
      * Current
      *
      * @return string
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function current()
     {
-        $fileRead = $this->fileReadFactory->create($this->key(), DriverPool::FILE);
-        return $fileRead->readAll();
+        $file_read = $this->file_read_factory->create($this->key(), Driver_Pool::FILE);
+        return $file_read->read_all();
     }
-
     /**
      * Key
      *
      * @return mixed
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function key()
     {
         return current($this->paths);
     }
-
     /**
      * Next
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function next()
     {
         next($this->paths);
     }
-
     /**
      * Valid
      *
      * @return bool
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function valid()
     {
         return (bool) $this->key();
     }
-
     /**
      * Convert to an array
      *
      * @return array
      */
-    #[\ReturnTypeWillChange]
-    public function toArray()
+    #[\Return_Type_Will_Change]
+    public function to_array()
     {
         $result = [];
         foreach ($this as $item) {
@@ -115,13 +104,12 @@ class FileIterator implements \Iterator, \Countable
         }
         return $result;
     }
-
     /**
      * Count
      *
      * @return int
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function count()
     {
         return count($this->paths);

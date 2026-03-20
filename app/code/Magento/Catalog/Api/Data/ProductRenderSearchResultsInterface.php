@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api\Data;
 
 /**
@@ -13,20 +12,19 @@ namespace Magento\Catalog\Api\Data;
  *
  * @api
  */
-interface ProductRenderSearchResultsInterface
+interface Product_Render_Search_Results_Interface
 {
     /**
      * Get list of products rendered information
      *
      * @return \Magento\Catalog\Api\Data\ProductRenderInterface[]
      */
-    public function getItems();
-
+    public function get_items();
     /**
      * Set list of products rendered information
      *
      * @param \Magento\Catalog\Api\Data\ProductRenderInterface[] $items
      * @return $this
      */
-    public function setItems(array $items);
+    public function set_items(array $items);
 }

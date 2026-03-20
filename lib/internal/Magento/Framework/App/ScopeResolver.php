@@ -1,57 +1,50 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
-use Magento\Framework\ObjectManagerInterface;
-
-class ScopeResolver implements ScopeResolverInterface
+use Magento\Framework\Object_Manager_Interface;
+class Scope_Resolver implements Scope_Resolver_Interface
 {
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @var ScopeInterface
      */
-    private $defaultScope;
-
+    private $default_scope;
     /**
      * ScopeResolver constructor
      *
      * @param ObjectManagerInterface $objectManager
      */
-    public function __construct(ObjectManagerInterface $objectManager)
+    public function __construct(Object_Manager_Interface $object_manager)
     {
-        $this->objectManager = $objectManager;
+        $this->object_manager = $object_manager;
     }
-
     /**
      * {@inheritdoc}
      * @return ScopeDefault
      */
-    public function getScope($scopeId = null)
+    public function get_scope($scope_id = null)
     {
-        if (!$this->defaultScope) {
-            $this->defaultScope = $this->objectManager->create(ScopeDefault::class);
+        if (!$this->default_scope) {
+            $this->default_scope = $this->object_manager->create(Scope_Default::class);
         }
-
-        return $this->defaultScope;
+        return $this->default_scope;
     }
-
     /**
      * Retrieve a list of available scopes
      *
      * @return ScopeInterface[]
      */
-    public function getScopes()
+    public function get_scopes()
     {
-        return [$this->defaultScope];
+        return [$this->default_scope];
     }
 }

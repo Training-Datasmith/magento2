@@ -1,19 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Collection of events
  */
-
 namespace Magento\Framework\Event;
 
 use Magento\Framework\Event;
-
 class Collection
 {
     /**
@@ -22,7 +19,6 @@ class Collection
      * @var array
      */
     protected $events;
-
     /**
      * Global observers
      *
@@ -30,40 +26,36 @@ class Collection
      *
      * @var Observer\Collection
      */
-    protected $globalObservers;
-
+    protected $global_observers;
     /**
      * Initializes global observers collection
      *
      * @param array $events
      * @param Observer\Collection $observerCollection
      */
-    public function __construct(array $events = [], ?Observer\Collection $observerCollection = null)
+    public function __construct(array $events = [], ?Observer\Collection $observer_collection = null)
     {
         $this->events = $events;
-        $this->globalObservers = !$observerCollection ? new Observer\Collection() : $observerCollection;
+        $this->global_observers = !$observer_collection ? new Observer\Collection() : $observer_collection;
     }
-
     /**
      * Returns all registered events in collection
      *
      * @return array
      */
-    public function getAllEvents()
+    public function get_all_events()
     {
         return $this->events;
     }
-
     /**
      * Returns all registered global observers for the collection of events
      *
      * @return Observer\Collection
      */
-    public function getGlobalObservers()
+    public function get_global_observers()
     {
-        return $this->globalObservers;
+        return $this->global_observers;
     }
-
     /**
      * Returns event by its name
      *
@@ -72,26 +64,24 @@ class Collection
      * @param string $eventName
      * @return Event
      */
-    public function getEventByName($eventName)
+    public function get_event_by_name($event_name)
     {
-        if (!isset($this->events[$eventName])) {
-            $this->addEvent(new Event(['name' => $eventName]));
+        if (!isset($this->events[$event_name])) {
+            $this->add_event(new Event(['name' => $event_name]));
         }
-        return $this->events[$eventName];
+        return $this->events[$event_name];
     }
-
     /**
      * Register an event for this collection
      *
      * @param Event $event
      * @return $this
      */
-    public function addEvent(Event $event)
+    public function add_event(Event $event)
     {
-        $this->events[$event->getName()] = $event;
+        $this->events[$event->get_name()] = $event;
         return $this;
     }
-
     /**
      * Register an observer
      *
@@ -101,17 +91,16 @@ class Collection
      * @param Observer $observer
      * @return $this
      */
-    public function addObserver(Observer $observer)
+    public function add_observer(Observer $observer)
     {
-        $eventName = $observer->getEventName();
-        if ($eventName) {
-            $this->getEventByName($eventName)->addObserver($observer);
+        $event_name = $observer->get_event_name();
+        if ($event_name) {
+            $this->get_event_by_name($event_name)->add_observer($observer);
         } else {
-            $this->getGlobalObservers()->addObserver($observer);
+            $this->get_global_observers()->add_observer($observer);
         }
         return $this;
     }
-
     /**
      * Dispatch event name with optional data
      *
@@ -121,11 +110,11 @@ class Collection
      * @param array $data
      * @return $this
      */
-    public function dispatch($eventName, array $data = [])
+    public function dispatch($event_name, array $data = [])
     {
-        $event = $this->getEventByName($eventName);
-        $event->addData($data)->dispatch();
-        $this->getGlobalObservers()->dispatch($event);
+        $event = $this->get_event_by_name($event_name);
+        $event->add_data($data)->dispatch();
+        $this->get_global_observers()->dispatch($event);
         return $this;
     }
 }

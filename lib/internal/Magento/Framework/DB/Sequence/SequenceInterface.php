@@ -4,8 +4,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\DB\Sequence;
 
 /**
@@ -13,19 +12,18 @@ namespace Magento\Framework\DB\Sequence;
  *
  * @api
  */
-interface SequenceInterface
+interface Sequence_Interface
 {
     /**
      * Retrieve current value
      *
      * @return string
      */
-    public function getCurrentValue();
-
+    public function get_current_value();
     /**
      * Retrieve next value
      *
      * @return string
      */
-    public function getNextValue();
+    public function get_next_value();
 }

@@ -1,25 +1,23 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Action;
 
-use Magento\Framework\App\ActionFlag;
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\Response\RedirectInterface;
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\App\ViewInterface;
-use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
-use Magento\Framework\Exception\NotFoundException;
-use Magento\Framework\Message\ManagerInterface as MessageManagerInterface;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\App\Action_Flag;
+use Magento\Framework\App\Request_Interface;
+use Magento\Framework\App\Response\Redirect_Interface;
+use Magento\Framework\App\Response_Interface;
+use Magento\Framework\App\View_Interface;
+use Magento\Framework\Event\Manager_Interface as EventManagerInterface;
+use Magento\Framework\Exception\Not_Found_Exception;
+use Magento\Framework\Message\Manager_Interface as MessageManagerInterface;
+use Magento\Framework\Object_Manager_Interface;
 use Magento\Framework\Profiler;
-use Magento\Framework\UrlInterface;
-
+use Magento\Framework\Url_Interface;
 /**
  * Extend from this class to create actions controllers in frontend area of your application.
  * It contains standard action behavior (event dispatching, flag checks)
@@ -34,66 +32,57 @@ use Magento\Framework\UrlInterface;
  * @SuppressWarnings(PHPMD.NumberOfChildren)
  * @since 100.0.2
  */
-abstract class Action extends AbstractAction
+abstract class Action extends Abstract_Action
 {
     /**
      * @var ObjectManagerInterface
      */
-    protected $_objectManager;
-
+    protected $_object_manager;
     /**
      * Namespace for session.
      * Should be defined for proper working session.
      *
      * @var string
      */
-    protected $_sessionNamespace;
-
+    protected $_session_namespace;
     /**
      * @var EventManagerInterface
      */
-    protected $_eventManager;
-
+    protected $_event_manager;
     /**
      * @var ActionFlag
      */
-    protected $_actionFlag;
-
+    protected $_action_flag;
     /**
      * @var RedirectInterface
      */
     protected $_redirect;
-
     /**
      * @var ViewInterface
      */
     protected $_view;
-
     /**
      * @var UrlInterface
      */
     protected $_url;
-
     /**
      * @var MessageManagerInterface
      */
-    protected $messageManager;
-
+    protected $message_manager;
     /**
      * @param Context $context
      */
     public function __construct(Context $context)
     {
         parent::__construct($context);
-        $this->_objectManager = $context->getObjectManager();
-        $this->_eventManager = $context->getEventManager();
-        $this->_url = $context->getUrl();
-        $this->_actionFlag = $context->getActionFlag();
-        $this->_redirect = $context->getRedirect();
-        $this->_view = $context->getView();
-        $this->messageManager = $context->getMessageManager();
+        $this->_object_manager = $context->get_object_manager();
+        $this->_event_manager = $context->get_event_manager();
+        $this->_url = $context->get_url();
+        $this->_action_flag = $context->get_action_flag();
+        $this->_redirect = $context->get_redirect();
+        $this->_view = $context->get_view();
+        $this->message_manager = $context->get_message_manager();
     }
-
     /**
      * Dispatch request
      *
@@ -101,22 +90,20 @@ abstract class Action extends AbstractAction
      * @return ResponseInterface
      * @throws NotFoundException
      */
-    public function dispatch(RequestInterface $request)
+    public function dispatch(Request_Interface $request)
     {
         $this->_request = $request;
-        $profilerKey = 'CONTROLLER_ACTION:' . $request->getFullActionName();
-        Profiler::start($profilerKey);
-
+        $profiler_key = 'CONTROLLER_ACTION:' . $request->get_full_action_name();
+        Profiler::start($profiler_key);
         $result = null;
-        if ($request->isDispatched() && !$this->_actionFlag->get('', self::FLAG_NO_DISPATCH)) {
+        if ($request->is_dispatched() && !$this->_action_flag->get('', self::FLAG_NO_DISPATCH)) {
             Profiler::start('action_body');
             $result = $this->execute();
             Profiler::stop('action_body');
         }
-        Profiler::stop($profilerKey);
+        Profiler::stop($profiler_key);
         return $result ?: $this->_response;
     }
-
     /**
      * Throw control to different action (control and module if was specified).
      *
@@ -128,27 +115,21 @@ abstract class Action extends AbstractAction
      */
     protected function _forward($action, $controller = null, $module = null, ?array $params = null)
     {
-        $request = $this->getRequest();
-
-        $request->initForward();
-
+        $request = $this->get_request();
+        $request->init_forward();
         if (isset($params)) {
-            $request->setParams($params);
+            $request->set_params($params);
         }
-
         if (isset($controller)) {
-            $request->setControllerName($controller);
-
+            $request->set_controller_name($controller);
             // Module should only be reset if controller has been specified
             if (isset($module)) {
-                $request->setModuleName($module);
+                $request->set_module_name($module);
             }
         }
-
-        $request->setActionName($action);
-        $request->setDispatched(false);
+        $request->set_action_name($action);
+        $request->set_dispatched(false);
     }
-
     /**
      * Set redirect into response
      *
@@ -158,17 +139,16 @@ abstract class Action extends AbstractAction
      */
     protected function _redirect($path, $arguments = [])
     {
-        $this->_redirect->redirect($this->getResponse(), $path, $arguments);
-        return $this->getResponse();
+        $this->_redirect->redirect($this->get_response(), $path, $arguments);
+        return $this->get_response();
     }
-
     /**
      * Returns ActionFlag value
      *
      * @return \Magento\Framework\App\ActionFlag
      */
-    public function getActionFlag()
+    public function get_action_flag()
     {
-        return $this->_actionFlag;
+        return $this->_action_flag;
     }
 }

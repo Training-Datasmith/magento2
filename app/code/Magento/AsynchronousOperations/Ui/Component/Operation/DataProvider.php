@@ -1,104 +1,84 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AsynchronousOperations\Ui\Component\Operation;
+namespace Magento\Asynchronous_Operations\Ui\Component\Operation;
 
 /**
  * Class DataProvider
  */
-class DataProvider extends \Magento\Ui\DataProvider\AbstractDataProvider
+class Data_Provider extends \Magento\Ui\Data_Provider\Abstract_Data_Provider
 {
     /**
      * @var \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\Collection
      */
     protected $collection;
-
     /**
      * DataProvider constructor.
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
      */
-    public function __construct(
-        $name,
-        $primaryFieldName,
-        $requestFieldName,
-        \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory $bulkCollectionFactory,
-        private readonly \Magento\AsynchronousOperations\Model\Operation\Details $operationDetails,
-        private readonly \Magento\Framework\App\RequestInterface $request,
-        array $meta = [],
-        array $data = []
-    ) {
-        $this->collection = $bulkCollectionFactory->create();
-        parent::__construct($name, $primaryFieldName, $requestFieldName, $meta, $data);
-        $this->meta = $this->prepareMeta($this->meta);
+    public function __construct($name, $primary_field_name, $request_field_name, \Magento\Asynchronous_Operations\Model\Resource_Model\Bulk\Collection_Factory $bulk_collection_factory, private readonly \Magento\Asynchronous_Operations\Model\Operation\Details $operation_details, private readonly \Magento\Framework\App\Request_Interface $request, array $meta = [], array $data = [])
+    {
+        $this->collection = $bulk_collection_factory->create();
+        parent::__construct($name, $primary_field_name, $request_field_name, $meta, $data);
+        $this->meta = $this->prepare_meta($this->meta);
     }
-
     /**
      * Human readable summary for bulk
      *
      * @param array $operationDetails structure is implied as getOperationDetails() result
      * @return string
      */
-    private function getSummaryReport(array $operationDetails)
+    private function get_summary_report(array $operation_details)
     {
-        if (0 == $operationDetails['operations_successful'] && 0 == $operationDetails['operations_failed']) {
+        if (0 == $operation_details['operations_successful'] && 0 == $operation_details['operations_failed']) {
             return __('Pending, in queue...');
         }
-
-        $summaryReport = __('%1 items selected for mass update', $operationDetails['operations_total'])->__toString();
-        if ($operationDetails['operations_successful'] > 0) {
-            $summaryReport .= __(', %1 successfully updated', $operationDetails['operations_successful']);
+        $summary_report = __('%1 items selected for mass update', $operation_details['operations_total'])->__toString();
+        if ($operation_details['operations_successful'] > 0) {
+            $summary_report .= __(', %1 successfully updated', $operation_details['operations_successful']);
         }
-
-        if ($operationDetails['operations_failed'] > 0) {
-            $summaryReport .= __(', %1 failed to update', $operationDetails['operations_failed']);
+        if ($operation_details['operations_failed'] > 0) {
+            $summary_report .= __(', %1 failed to update', $operation_details['operations_failed']);
         }
-
-        return $summaryReport;
+        return $summary_report;
     }
-
     /**
      * Bulk summary with operation statistics
      */
-    public function getData(): array
+    public function get_data(): array
     {
         $data = [];
-        $items = $this->collection->getItems();
+        $items = $this->collection->get_items();
         if (count($items) == 0) {
             return $data;
         }
         $bulk = array_shift($items);
         /** @var \Magento\AsynchronousOperations\Api\Data\BulkSummaryInterface $bulk */
-        $data = $bulk->getData();
-        $operationDetails = $this->operationDetails->getDetails($data['uuid']);
-        $data['summary'] = $this->getSummaryReport($operationDetails);
-        $data = array_merge($data, $operationDetails);
-
-        return [$bulk->getBulkId() => $data];
+        $data = $bulk->get_data();
+        $operation_details = $this->operation_details->get_details($data['uuid']);
+        $data['summary'] = $this->get_summary_report($operation_details);
+        $data = array_merge($data, $operation_details);
+        return [$bulk->get_bulk_id() => $data];
     }
-
     /**
      * Prepares Meta
      */
-    public function prepareMeta(array $meta): array
+    public function prepare_meta(array $meta): array
     {
-        $requestId = $this->request->getParam($this->requestFieldName);
-        $operationDetails = $this->operationDetails->getDetails($requestId);
-
-        if (isset($operationDetails['failed_retriable']) && !$operationDetails['failed_retriable']) {
+        $request_id = $this->request->get_param($this->request_field_name);
+        $operation_details = $this->operation_details->get_details($request_id);
+        if (isset($operation_details['failed_retriable']) && !$operation_details['failed_retriable']) {
             $meta['retriable_operations']['arguments']['data']['disabled'] = true;
         }
-
-        if (isset($operationDetails['failed_not_retriable']) && !$operationDetails['failed_not_retriable']) {
+        if (isset($operation_details['failed_not_retriable']) && !$operation_details['failed_not_retriable']) {
             $meta['failed_operations']['arguments']['data']['disabled'] = true;
         }
-
         return $meta;
     }
 }

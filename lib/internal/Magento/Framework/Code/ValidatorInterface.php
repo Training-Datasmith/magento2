@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Code;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Code;
  *
  * @api
  */
-interface ValidatorInterface
+interface Validator_Interface
 {
     /**
      * Validate class
@@ -22,5 +21,5 @@ interface ValidatorInterface
      * @return bool
      * @throws \Magento\Framework\Exception\ValidatorException
      */
-    public function validate($className);
+    public function validate($class_name);
 }

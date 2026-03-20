@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\App\Action\Plugin;
 
-use Magento\Backend\App\AbstractAction;
-use Magento\Framework\App\RequestInterface;
-
+use Magento\Backend\App\Abstract_Action;
+use Magento\Framework\App\Request_Interface;
 /**
  * Massaction key processor
  */
-class MassactionKey
+class Massaction_Key
 {
     /**
      * Process massaction key
@@ -22,13 +20,13 @@ class MassactionKey
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function beforeDispatch(AbstractAction $subject, RequestInterface $request): void
+    public function before_dispatch(Abstract_Action $subject, Request_Interface $request): void
     {
-        $key = $request->getPost('massaction_prepare_key');
+        $key = $request->get_post('massaction_prepare_key');
         if ($key) {
-            $postData = $request->getPost($key);
-            $value = is_array($postData) ? $postData : explode(',', $postData ?? '');
-            $request->setPostValue($key, $value ?: null);
+            $post_data = $request->get_post($key);
+            $value = is_array($post_data) ? $post_data : explode(',', $post_data ?? '');
+            $request->set_post_value($key, $value ?: null);
         }
     }
 }

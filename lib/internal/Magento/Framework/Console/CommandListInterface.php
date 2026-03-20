@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Console;
 
 /**
@@ -13,12 +12,12 @@ namespace Magento\Framework\Console;
  * @api
  * @since 100.0.2
  */
-interface CommandListInterface
+interface Command_List_Interface
 {
     /**
      * Gets list of command instances
      *
      * @return \Symfony\Component\Console\Command\Command[]
      */
-    public function getCommands();
+    public function get_commands();
 }

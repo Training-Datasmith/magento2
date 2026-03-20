@@ -1,22 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Observer;
+namespace Magento\Framework\Entity_Manager\Observer;
 
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Model\AbstractModel;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-
+use Magento\Framework\Event\Observer_Interface;
+use Magento\Framework\Model\Abstract_Model;
+use Magento\Framework\Model\Resource_Model\Db\Abstract_Db;
 /**
  * Class BeforeEntitySave
  */
-class BeforeEntitySave implements ObserverInterface
+class Before_Entity_Save implements Observer_Interface
 {
     /**
      * Apply model save operation
@@ -27,15 +25,15 @@ class BeforeEntitySave implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $entity = $observer->getEvent()->getEntity();
-        if ($entity instanceof AbstractModel) {
-            if ($entity->getResource() instanceof  AbstractDb) {
-                $entity = $entity->getResource()->serializeFields($entity);
+        $entity = $observer->get_event()->get_entity();
+        if ($entity instanceof Abstract_Model) {
+            if ($entity->get_resource() instanceof Abstract_Db) {
+                $entity = $entity->get_resource()->serialize_fields($entity);
             }
-            $entity->validateBeforeSave();
-            $entity->beforeSave();
-            $entity->setParentId((int)$entity->getParentId());
-            $entity->getResource()->beforeSave($entity);
+            $entity->validate_before_save();
+            $entity->before_save();
+            $entity->set_parent_id((int) $entity->get_parent_id());
+            $entity->get_resource()->before_save($entity);
         }
     }
 }

@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface AttributeSetManagementInterface
+interface Attribute_Set_Management_Interface
 {
     /**
      * Create attribute set from data
@@ -23,5 +22,5 @@ interface AttributeSetManagementInterface
      * @throws \Magento\Framework\Exception\InputException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function create(\Magento\Eav\Api\Data\AttributeSetInterface $attributeSet, $skeletonId);
+    public function create(\Magento\Eav\Api\Data\Attribute_Set_Interface $attribute_set, $skeleton_id);
 }

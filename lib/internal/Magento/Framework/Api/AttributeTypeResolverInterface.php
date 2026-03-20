@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Api;
  *
  * @api
  */
-interface AttributeTypeResolverInterface
+interface Attribute_Type_Resolver_Interface
 {
     /**
      * Resolve attribute type
@@ -23,5 +22,5 @@ interface AttributeTypeResolverInterface
      * @param string $context
      * @return string
      */
-    public function resolveObjectType($attributeCode, $value, $context);
+    public function resolve_object_type($attribute_code, $value, $context);
 }

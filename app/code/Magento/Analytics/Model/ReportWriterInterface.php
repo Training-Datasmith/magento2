@@ -4,12 +4,10 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Analytics\Model;
 
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-
+use Magento\Framework\Filesystem\Directory\Write_Interface;
 /**
  * Interface ReportWriterInterface
  *
@@ -20,7 +18,7 @@ use Magento\Framework\Filesystem\Directory\WriteInterface;
  *
  * @api
  */
-interface ReportWriterInterface
+interface Report_Writer_Interface
 {
     /**
      * Writes report files to provided path
@@ -28,5 +26,5 @@ interface ReportWriterInterface
      * @param string $path
      * @return void
      */
-    public function write(WriteInterface $directory, $path);
+    public function write(Write_Interface $directory, $path);
 }

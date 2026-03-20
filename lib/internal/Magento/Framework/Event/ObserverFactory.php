@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Event;
 
 /**
@@ -13,32 +12,29 @@ namespace Magento\Framework\Event;
  *
  * @api
  */
-class ObserverFactory
+class Observer_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager;
-
+    protected $_object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->_objectManager = $objectManager;
+        $this->_object_manager = $object_manager;
     }
-
     /**
      * Get observer model instance
      *
      * @param string $className
      * @return mixed
      */
-    public function get($className)
+    public function get($class_name)
     {
-        return $this->_objectManager->get($className);
+        return $this->_object_manager->get($class_name);
     }
-
     /**
      * Create observer model instance
      *
@@ -46,8 +42,8 @@ class ObserverFactory
      * @param array $arguments
      * @return mixed
      */
-    public function create($className, array $arguments = [])
+    public function create($class_name, array $arguments = [])
     {
-        return $this->_objectManager->create($className, $arguments);
+        return $this->_object_manager->create($class_name, $arguments);
     }
 }

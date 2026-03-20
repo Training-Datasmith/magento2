@@ -4,108 +4,90 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Frontend\Adapter;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\Cache\Frontend\Adapter\Symfony\MagentoDatabaseAdapter;
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\FilesystemTagAdapter;
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\GenericTagAdapter;
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\RedisTagAdapter;
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\TagAdapterInterface;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\Cache\Frontend\Adapter\Symfony\Magento_Database_Adapter;
+use Magento\Framework\Cache\Frontend\Adapter\Symfony_Adapters\Filesystem_Tag_Adapter;
+use Magento\Framework\Cache\Frontend\Adapter\Symfony_Adapters\Generic_Tag_Adapter;
+use Magento\Framework\Cache\Frontend\Adapter\Symfony_Adapters\Redis_Tag_Adapter;
+use Magento\Framework\Cache\Frontend\Adapter\Symfony_Adapters\Tag_Adapter_Interface;
 use Magento\Framework\Filesystem;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
+use Magento\Framework\Object_Manager\Reset_After_Request_Interface;
 use Magento\Framework\Serialize\Serializer\Serialize;
 use Predis\Client as PredisClient;
-use Psr\Cache\CacheItemPoolInterface;
-use Symfony\Component\Cache\Adapter\AdapterInterface;
-use Symfony\Component\Cache\Adapter\ApcuAdapter;
-use Symfony\Component\Cache\Adapter\ChainAdapter;
-use Symfony\Component\Cache\Adapter\FilesystemAdapter;
-use Symfony\Component\Cache\Adapter\MemcachedAdapter;
-use Symfony\Component\Cache\Adapter\RedisAdapter;
-use Symfony\Component\Cache\Adapter\TagAwareAdapter;
-use Symfony\Component\Cache\Marshaller\DefaultMarshaller;
-
+use Psr\Cache\Cache_Item_Pool_Interface;
+use Symfony\Component\Cache\Adapter\Adapter_Interface;
+use Symfony\Component\Cache\Adapter\Apcu_Adapter;
+use Symfony\Component\Cache\Adapter\Chain_Adapter;
+use Symfony\Component\Cache\Adapter\Filesystem_Adapter;
+use Symfony\Component\Cache\Adapter\Memcached_Adapter;
+use Symfony\Component\Cache\Adapter\Redis_Adapter;
+use Symfony\Component\Cache\Adapter\Tag_Aware_Adapter;
+use Symfony\Component\Cache\Marshaller\Default_Marshaller;
 /**
  * Symfony cache adapter factory
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class SymfonyAdapterProvider implements ResetAfterRequestInterface
+class Symfony_Adapter_Provider implements Reset_After_Request_Interface
 {
     /**
      * @var Filesystem
      */
     private Filesystem $filesystem;
-
     /**
      * @var ResourceConnection
      */
-    private ResourceConnection $resource;
-
+    private Resource_Connection $resource;
     public const REDIS_MAX_LIFETIME = 2592000;
     public const REDIS_DEFAULT_CONNECT_TIMEOUT = 2.5;
     public const REDIS_DEFAULT_CONNECT_RETRIES = 1;
-
     /**
      * @var Serialize
      */
     private Serialize $serializer;
-
     /**
      * @var array<string, mixed>
      */
-    private array $connectionPool = [];
-
+    private array $connection_pool = [];
     /**
      * Cached adapter type mappings (lowercase => canonical)
      *
      * @var array<string, string>
      */
-    private array $adapterTypeMap = [
+    private array $adapter_type_map = [
         // Redis backends
         'redis' => 'redis',
-
         // Valkey backends
         'valkey' => 'redis',
-
         // Memcached backends
         'memcached' => 'memcached',
         'libmemcached' => 'memcached',
-
         // File backends
         'file' => 'filesystem',
-
         // Database backend
         'database' => 'database',
-
         // APCu backends
         'apc' => 'apcu',
         'apcu' => 'apcu',
-
         // Two-level cache
         'two_levels' => 'twolevel',
         'twolevel' => 'twolevel',
     ];
-
     /**
      * @param Filesystem $filesystem
      * @param ResourceConnection $resource
      * @param Serialize $serializer PHP native serializer
      */
-    public function __construct(
-        Filesystem $filesystem,
-        ResourceConnection $resource,
-        Serialize $serializer
-    ) {
+    public function __construct(Filesystem $filesystem, Resource_Connection $resource, Serialize $serializer)
+    {
         $this->filesystem = $filesystem;
         $this->resource = $resource;
         $this->serializer = $serializer;
     }
-
     /**
      * Reset state for Application Server (Swoole) request handling
      *
@@ -114,11 +96,10 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      *
      * @return void
      */
-    public function _resetState(): void
+    public function _reset_state(): void
     {
-        $this->connectionPool = [];
+        $this->connection_pool = [];
     }
-
     /**
      * Create Symfony cache adapter based on backend type and options
      *
@@ -129,40 +110,32 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @return CacheItemPoolInterface
      * @throws \Exception
      */
-    public function createAdapter(
-        string $backendType,
-        array $backendOptions,
-        string $namespace = '',
-        ?int $defaultLifetime = null
-    ): CacheItemPoolInterface {
+    public function create_adapter(string $backend_type, array $backend_options, string $namespace = '', ?int $default_lifetime = null): Cache_Item_Pool_Interface
+    {
         // Optimize: Use pre-built map instead of switch
-        $backendTypeLower = strtolower($backendType);
-        $resolvedType = $this->adapterTypeMap[$backendTypeLower] ?? 'filesystem';
-
+        $backend_type_lower = strtolower($backend_type);
+        $resolved_type = $this->adapter_type_map[$backend_type_lower] ?? 'filesystem';
         // Create adapter based on resolved type with fallback to filesystem
         try {
-            $adapter = match ($resolvedType) {
-                'redis' => $this->createRedisAdapter($backendOptions, $namespace, $defaultLifetime),
-                'memcached' => $this->createMemcachedAdapter($backendOptions, $namespace, $defaultLifetime),
-                'filesystem' => $this->createFilesystemAdapter($backendOptions, $namespace, $defaultLifetime),
-                'database' => $this->createDatabaseAdapter($backendOptions, $namespace, $defaultLifetime),
-                'apcu' => $this->createApcuAdapter($namespace, $defaultLifetime),
-                'twolevel' => $this->createTwoLevelAdapter($backendOptions, $namespace, $defaultLifetime),
-                default => $this->createFilesystemAdapter($backendOptions, $namespace, $defaultLifetime),
+            $adapter = match ($resolved_type) {
+                'redis' => $this->create_redis_adapter($backend_options, $namespace, $default_lifetime),
+                'memcached' => $this->create_memcached_adapter($backend_options, $namespace, $default_lifetime),
+                'filesystem' => $this->create_filesystem_adapter($backend_options, $namespace, $default_lifetime),
+                'database' => $this->create_database_adapter($backend_options, $namespace, $default_lifetime),
+                'apcu' => $this->create_apcu_adapter($namespace, $default_lifetime),
+                'twolevel' => $this->create_two_level_adapter($backend_options, $namespace, $default_lifetime),
+                default => $this->create_filesystem_adapter($backend_options, $namespace, $default_lifetime),
             };
         } catch (\Exception $e) {
             // Fallback to filesystem adapter if the requested adapter fails
-            $adapter = $this->createFilesystemAdapter($backendOptions, $namespace, $defaultLifetime);
+            $adapter = $this->create_filesystem_adapter($backend_options, $namespace, $default_lifetime);
         }
-
         // Skip TagAwareAdapter for Redis/Filesystem (native tag support)
-        if (in_array($resolvedType, ['redis', 'filesystem'], true)) {
+        if (in_array($resolved_type, ['redis', 'filesystem'], true)) {
             return $adapter;
         }
-
-        return new TagAwareAdapter($adapter);
+        return new Tag_Aware_Adapter($adapter);
     }
-
     /**
      * Create appropriate tag adapter based on backend type
      *
@@ -173,57 +146,37 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @param array $backendOptions
      * @return TagAdapterInterface
      */
-    public function createTagAdapter(
-        string $backendType,
-        CacheItemPoolInterface $cachePool,
-        string $namespace = '',
-        bool $isPageCache = false,
-        array $backendOptions = []
-    ): TagAdapterInterface {
+    public function create_tag_adapter(string $backend_type, Cache_Item_Pool_Interface $cache_pool, string $namespace = '', bool $is_page_cache = false, array $backend_options = []): Tag_Adapter_Interface
+    {
         // Resolve backend type
-        $backendTypeLower = strtolower($backendType);
-        $resolvedType = $this->adapterTypeMap[$backendTypeLower] ?? 'filesystem';
-
+        $backend_type_lower = strtolower($backend_type);
+        $resolved_type = $this->adapter_type_map[$backend_type_lower] ?? 'filesystem';
         // Check if Lua scripts are enabled (separate flags for different operations)
-        $useLua = !empty($backendOptions['use_lua']) && $backendOptions['use_lua'] === '1';
-        $useLuaOnGc = !empty($backendOptions['use_lua_on_gc']) && $backendOptions['use_lua_on_gc'] === '1';
-
+        $use_lua = !empty($backend_options['use_lua']) && $backend_options['use_lua'] === '1';
+        $use_lua_on_gc = !empty($backend_options['use_lua_on_gc']) && $backend_options['use_lua_on_gc'] === '1';
         // Create appropriate tag adapter with fallback to GenericTagAdapter
         try {
-            return match ($resolvedType) {
-                'redis' => new RedisTagAdapter(
-                    $cachePool,
-                    $namespace,
-                    $useLua,
-                    $useLuaOnGc
-                ),
-                'filesystem' => new FilesystemTagAdapter(
-                    $cachePool,
-                    $this->getCacheDirectory()
-                ),
-                default => new GenericTagAdapter(
-                    $cachePool,
-                    $isPageCache
-                ),
+            return match ($resolved_type) {
+                'redis' => new Redis_Tag_Adapter($cache_pool, $namespace, $use_lua, $use_lua_on_gc),
+                'filesystem' => new Filesystem_Tag_Adapter($cache_pool, $this->get_cache_directory()),
+                default => new Generic_Tag_Adapter($cache_pool, $is_page_cache),
             };
         } catch (\Exception $e) {
             // Fallback to GenericTagAdapter if specialized adapter creation fails
-            return new GenericTagAdapter($cachePool, $isPageCache);
+            return new Generic_Tag_Adapter($cache_pool, $is_page_cache);
         }
     }
-
     /**
      * Get cache directory for filesystem operations
      *
      * @return string
      */
-    private function getCacheDirectory(): string
+    private function get_cache_directory(): string
     {
         // Use Magento's var/cache directory via Filesystem
-        $cacheDir = $this->filesystem->getDirectoryRead(DirectoryList::CACHE);
-        return $cacheDir->getAbsolutePath() . 'symfony';
+        $cache_dir = $this->filesystem->get_directory_read(Directory_List::CACHE);
+        return $cache_dir->get_absolute_path() . 'symfony';
     }
-
     /**
      * Create Redis cache adapter with automatic fallback support
      *
@@ -236,91 +189,49 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @SuppressWarnings(PHPMD.NPathComplexity)
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    private function createRedisAdapter(
-        array $options,
-        string $namespace,
-        ?int $defaultLifetime
-    ): AdapterInterface {
+    private function create_redis_adapter(array $options, string $namespace, ?int $default_lifetime): Adapter_Interface
+    {
         // Extract connection parameters (optimized with null coalescing)
         $host = $options['server'] ?? $options['host'] ?? '127.0.0.1';
-        $port = (int)($options['port'] ?? 6379);
+        $port = (int) ($options['port'] ?? 6379);
         $password = $options['password'] ?? null;
-        $database = (int)($options['database'] ?? 0);
-
+        $database = (int) ($options['database'] ?? 0);
         // OPTIMIZATION: Auto-enable igbinary if available (2-3x faster serialization)
         $serializer = $options['serializer'] ?? null;
         if ($serializer === null && extension_loaded('igbinary')) {
             $serializer = 'igbinary';
         }
-
         // Persistent connection support (15-30% performance gain)
-        $persistent = isset($options['persistent']) ? (bool)$options['persistent'] : true;  // Enable by default
-        $persistentId = $options['persistent_id'] ?? null;
-
+        $persistent = isset($options['persistent']) ? (bool) $options['persistent'] : true;
+        // Enable by default
+        $persistent_id = $options['persistent_id'] ?? null;
         // Connection tuning parameters with Zend-compatible defaults
-        $timeout = isset($options['timeout'])
-            ? (float)$options['timeout']
-            : self::REDIS_DEFAULT_CONNECT_TIMEOUT;
-        $readTimeout = isset($options['read_timeout']) ? (float)$options['read_timeout'] : null;
-        $retryInterval = isset($options['retry_interval']) ? (int)$options['retry_interval'] : null;
-        $connectRetries = isset($options['connect_retries'])
-            ? (int)$options['connect_retries']
-            : self::REDIS_DEFAULT_CONNECT_RETRIES;
-
+        $timeout = isset($options['timeout']) ? (float) $options['timeout'] : self::REDIS_DEFAULT_CONNECT_TIMEOUT;
+        $read_timeout = isset($options['read_timeout']) ? (float) $options['read_timeout'] : null;
+        $retry_interval = isset($options['retry_interval']) ? (int) $options['retry_interval'] : null;
+        $connect_retries = isset($options['connect_retries']) ? (int) $options['connect_retries'] : self::REDIS_DEFAULT_CONNECT_RETRIES;
         // For Predis with Ultra-Optimized client: use connection pooling like phpredis
         // The client's internal cache is cleared on writes and database switches,
         // so connection pooling is safe and provides better performance
-        $usePhpRedis = extension_loaded('redis');
-        $connectionKey = sprintf('redis:%s:%d:%d', $host, $port, $database);
-
-        if (!isset($this->connectionPool[$connectionKey])) {
-            if ($usePhpRedis) {
-                $this->connectionPool[$connectionKey] = $this->createPhpRedisConnection(
-                    $host,
-                    $port,
-                    $password,
-                    $database,
-                    $persistent,
-                    $persistentId,
-                    $timeout,
-                    $readTimeout,
-                    $retryInterval,
-                    $connectRetries
-                );
-            } elseif (class_exists(PredisClient::class)) {
-                $this->connectionPool[$connectionKey] = $this->createOptimizedPredisConnection(
-                    $host,
-                    $port,
-                    $password,
-                    $database,
-                    $persistent,
-                    $timeout,
-                    $readTimeout
-                );
+        $use_php_redis = extension_loaded('redis');
+        $connection_key = sprintf('redis:%s:%d:%d', $host, $port, $database);
+        if (!isset($this->connection_pool[$connection_key])) {
+            if ($use_php_redis) {
+                $this->connection_pool[$connection_key] = $this->create_php_redis_connection($host, $port, $password, $database, $persistent, $persistent_id, $timeout, $read_timeout, $retry_interval, $connect_retries);
+            } elseif (class_exists(Predis_Client::class)) {
+                $this->connection_pool[$connection_key] = $this->create_optimized_predis_connection($host, $port, $password, $database, $persistent, $timeout, $read_timeout);
             } else {
-                throw new \RuntimeException(
-                    'Redis cache requires either phpredis extension or predis/predis library. ' .
-                    'Install phpredis extension (recommended) or run: composer require predis/predis'
-                );
+                throw new \RuntimeException('Redis cache requires either phpredis extension or predis/predis library. ' . 'Install phpredis extension (recommended) or run: composer require predis/predis');
             }
         }
-
         // Set client name every time (even for pooled connections)
-        if ($persistentId) {
-            $this->setRedisClientName($this->connectionPool[$connectionKey], $persistentId);
+        if ($persistent_id) {
+            $this->set_redis_client_name($this->connection_pool[$connection_key], $persistent_id);
         }
-
         // Create marshaller with igbinary support if configured
-        $marshaller = $this->createMarshaller($serializer);
-
-        return new RedisAdapter(
-            $this->connectionPool[$connectionKey],
-            $namespace,
-            $defaultLifetime ?? 0,
-            $marshaller
-        );
+        $marshaller = $this->create_marshaller($serializer);
+        return new Redis_Adapter($this->connection_pool[$connection_key], $namespace, $default_lifetime ?? 0, $marshaller);
     }
-
     /**
      * Create phpredis connection (native C extension)
      *
@@ -339,59 +250,38 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @return \Redis|\RedisCluster|\Relay\Relay
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    private function createPhpRedisConnection(
-        string $host,
-        int $port,
-        ?string $password,
-        int $database,
-        bool $persistent,
-        ?string $persistentId,
-        ?float $timeout,
-        ?float $readTimeout,
-        ?int $retryInterval,
-        ?int $connectRetries
-    ) {
+    private function create_php_redis_connection(string $host, int $port, ?string $password, int $database, bool $persistent, ?string $persistent_id, ?float $timeout, ?float $read_timeout, ?int $retry_interval, ?int $connect_retries)
+    {
         // Build optimized DSN with all connection parameters
-        $dsnParams = [];
-
+        $dsn_params = [];
         // Add persistent connection parameters
         if ($persistent) {
-            $dsnParams[] = 'persistent=1';
-            if ($persistentId) {
-                $dsnParams[] = 'persistent_id=' . urlencode($persistentId);
+            $dsn_params[] = 'persistent=1';
+            if ($persistent_id) {
+                $dsn_params[] = 'persistent_id=' . urlencode($persistent_id);
             }
         }
-
         // Add connection timeout parameters
         if ($timeout !== null) {
-            $dsnParams[] = 'timeout=' . $timeout;
+            $dsn_params[] = 'timeout=' . $timeout;
         }
-
-        if ($readTimeout !== null) {
-            $dsnParams[] = 'read_timeout=' . $readTimeout;
+        if ($read_timeout !== null) {
+            $dsn_params[] = 'read_timeout=' . $read_timeout;
         }
-
         // Add retry parameters
-        if ($retryInterval !== null) {
-            $dsnParams[] = 'retry_interval=' . $retryInterval;
+        if ($retry_interval !== null) {
+            $dsn_params[] = 'retry_interval=' . $retry_interval;
         }
-
-        if ($connectRetries !== null) {
-            $dsnParams[] = 'connect_retries=' . $connectRetries;
+        if ($connect_retries !== null) {
+            $dsn_params[] = 'connect_retries=' . $connect_retries;
         }
-
         // Build base DSN
-        $baseDsn = $password
-            ? sprintf('redis://%s@%s:%d/%d', urlencode($password), $host, $port, $database)
-            : sprintf('redis://%s:%d/%d', $host, $port, $database);
-
+        $base_dsn = $password ? sprintf('redis://%s@%s:%d/%d', urlencode($password), $host, $port, $database) : sprintf('redis://%s:%d/%d', $host, $port, $database);
         // Append DSN parameters
-        $dsn = $dsnParams ? $baseDsn . '?' . implode('&', $dsnParams) : $baseDsn;
-
+        $dsn = $dsn_params ? $base_dsn . '?' . implode('&', $dsn_params) : $base_dsn;
         // Create and return the connection using Symfony's factory
-        return RedisAdapter::createConnection($dsn);
+        return Redis_Adapter::create_connection($dsn);
     }
-
     /**
      * Create ultra-optimized Predis connection (Symfony-compatible, maximum performance)
      *
@@ -405,33 +295,15 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @return OptimizedPredisClient
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    private function createOptimizedPredisConnection(
-        string $host,
-        int $port,
-        ?string $password,
-        int $database,
-        bool $persistent,
-        ?float $timeout,
-        ?float $readTimeout
-    ) {
-        $params = [
-            'scheme' => 'tcp',
-            'host' => $host,
-            'port' => $port,
-            'database' => $database,
-        ];
-
+    private function create_optimized_predis_connection(string $host, int $port, ?string $password, int $database, bool $persistent, ?float $timeout, ?float $read_timeout)
+    {
+        $params = ['scheme' => 'tcp', 'host' => $host, 'port' => $port, 'database' => $database];
         if ($password) {
             $params['password'] = $password;
         }
-
-        $options = [
-            'exceptions' => false,
-        ];
-
-        return new OptimizedPredisClient($params, $options);
+        $options = ['exceptions' => false];
+        return new Optimized_Predis_Client($params, $options);
     }
-
     /**
      * Set Redis client name for better monitoring and debugging
      *
@@ -439,29 +311,28 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @param string $clientName Name to set for the client
      * @return void
      */
-    private function setRedisClientName($connection, string $clientName): void
+    private function set_redis_client_name($connection, string $client_name): void
     {
         try {
             // Set Redis client name for better monitoring
             if ($connection instanceof \Redis) {
                 // phpredis
-                $connection->client('SETNAME', $clientName);
+                $connection->client('SETNAME', $client_name);
                 // phpcs:disable Magento2.CodeAnalysis.EmptyBlock
-            } elseif ($connection instanceof \RedisCluster) {
+            } elseif ($connection instanceof \Redis_Cluster) {
                 // phpcs:enable Magento2.CodeAnalysis.EmptyBlock
-            } elseif ($connection instanceof PredisClient) {
+            } elseif ($connection instanceof Predis_Client) {
                 // Predis
-                $connection->client('SETNAME', $clientName);
+                $connection->client('SETNAME', $client_name);
             } elseif (method_exists($connection, 'client')) {
                 // Relay or other compatible implementations
-                $connection->client('SETNAME', $clientName);
+                $connection->client('SETNAME', $client_name);
             }
             // phpcs:ignore Magento2.CodeAnalysis.EmptyBlock
         } catch (\Exception $e) {
             // Intentional no-op: Client name is for monitoring only, failures are non-critical
         }
     }
-
     /**
      * Create marshaller for serialization
      *
@@ -470,24 +341,21 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @param string|null $serializer Serializer name ('igbinary' or null for default)
      * @return DefaultMarshaller|null
      */
-    private function createMarshaller(?string $serializer): ?DefaultMarshaller
+    private function create_marshaller(?string $serializer): ?Default_Marshaller
     {
         // If no serializer specified or not 'igbinary', return null (uses default PHP serializer)
         if ($serializer !== 'igbinary') {
             return null;
         }
-
         // Check if igbinary extension is loaded
         if (!extension_loaded('igbinary')) {
             // Fallback to default PHP serializer if igbinary not available
             return null;
         }
-
         // Create marshaller with igbinary enabled, true = use igbinary_serialize/igbinary_unserialize
         // false = don't throw on serialization failure (graceful degradation)
-        return new DefaultMarshaller(true, false);
+        return new Default_Marshaller(true, false);
     }
-
     /**
      * Create Memcached cache adapter
      *
@@ -496,11 +364,8 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @param int|null $defaultLifetime
      * @return AdapterInterface
      */
-    private function createMemcachedAdapter(
-        array $options,
-        string $namespace,
-        ?int $defaultLifetime
-    ): AdapterInterface {
+    private function create_memcached_adapter(array $options, string $namespace, ?int $default_lifetime): Adapter_Interface
+    {
         // Build server list (optimized)
         if (isset($options['servers'])) {
             // Multiple servers - optimize with direct assignment
@@ -509,27 +374,20 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
                 $servers[] = [$server[0] ?? '127.0.0.1', $server[1] ?? 11211];
             }
             // phpcs:ignore Magento2.Security.InsecureFunction,Magento2.Functions.DiscouragedFunction
-            $connectionKey = 'memcached:' . md5(serialize($servers));
+            $connection_key = 'memcached:' . md5(serialize($servers));
         } else {
             // Single server - fast path
             $host = $options['server'] ?? $options['host'] ?? '127.0.0.1';
             $port = $options['port'] ?? 11211;
             $servers = [[$host, $port]];
-            $connectionKey = sprintf('memcached:%s:%d', $host, $port);
+            $connection_key = sprintf('memcached:%s:%d', $host, $port);
         }
-
         // Check connection pool
-        if (!isset($this->connectionPool[$connectionKey])) {
-            $this->connectionPool[$connectionKey] = MemcachedAdapter::createConnection($servers);
+        if (!isset($this->connection_pool[$connection_key])) {
+            $this->connection_pool[$connection_key] = Memcached_Adapter::create_connection($servers);
         }
-
-        return new MemcachedAdapter(
-            $this->connectionPool[$connectionKey],
-            $namespace,
-            $defaultLifetime ?? 0
-        );
+        return new Memcached_Adapter($this->connection_pool[$connection_key], $namespace, $default_lifetime ?? 0);
     }
-
     /**
      * Create Filesystem cache adapter
      *
@@ -538,37 +396,26 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @param int|null $defaultLifetime
      * @return AdapterInterface
      */
-    private function createFilesystemAdapter(
-        array $options,
-        string $namespace,
-        ?int $defaultLifetime
-    ): AdapterInterface {
+    private function create_filesystem_adapter(array $options, string $namespace, ?int $default_lifetime): Adapter_Interface
+    {
         // Get cache directory (optimized path)
         if (isset($options['cache_dir'])) {
-            $cacheDir = $options['cache_dir'];
+            $cache_dir = $options['cache_dir'];
         } else {
             // Cache the directory path for reuse
-            static $defaultCacheDir = null;
-            if ($defaultCacheDir === null) {
-                $directory = $this->filesystem->getDirectoryWrite(DirectoryList::CACHE);
-                $defaultCacheDir = $directory->getAbsolutePath();
+            static $default_cache_dir = null;
+            if ($default_cache_dir === null) {
+                $directory = $this->filesystem->get_directory_write(Directory_List::CACHE);
+                $default_cache_dir = $directory->get_absolute_path();
                 $directory->create();
             }
-            $cacheDir = $defaultCacheDir;
+            $cache_dir = $default_cache_dir;
         }
-
         // Add igbinary marshaller support for file cache (70% faster, 58% smaller)
         $serializer = $options['serializer'] ?? null;
-        $marshaller = $this->createMarshaller($serializer);
-
-        return new FilesystemAdapter(
-            $namespace,
-            $defaultLifetime ?? 0,
-            $cacheDir,
-            $marshaller
-        );
+        $marshaller = $this->create_marshaller($serializer);
+        return new Filesystem_Adapter($namespace, $default_lifetime ?? 0, $cache_dir, $marshaller);
     }
-
     /**
      * Create Magento Database cache adapter
      *
@@ -578,20 +425,11 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @return CacheItemPoolInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    private function createDatabaseAdapter(
-        array $options,
-        string $namespace,
-        ?int $defaultLifetime
-    ): CacheItemPoolInterface {
+    private function create_database_adapter(array $options, string $namespace, ?int $default_lifetime): Cache_Item_Pool_Interface
+    {
         // Use Magento's existing Database backend (reuses cache/cache_tag tables)
-        return new MagentoDatabaseAdapter(
-            $this->resource,
-            $this->serializer,
-            $namespace,
-            $defaultLifetime ?? 0
-        );
+        return new Magento_Database_Adapter($this->resource, $this->serializer, $namespace, $default_lifetime ?? 0);
     }
-
     /**
      * Create APCu cache adapter
      *
@@ -599,14 +437,10 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @param int|null $defaultLifetime
      * @return AdapterInterface
      */
-    private function createApcuAdapter(string $namespace, ?int $defaultLifetime): AdapterInterface
+    private function create_apcu_adapter(string $namespace, ?int $default_lifetime): Adapter_Interface
     {
-        return new ApcuAdapter(
-            $namespace,
-            $defaultLifetime ?? 0
-        );
+        return new Apcu_Adapter($namespace, $default_lifetime ?? 0);
     }
-
     /**
      * Create two-level cache adapter (fast + persistent)
      *
@@ -620,36 +454,28 @@ class SymfonyAdapterProvider implements ResetAfterRequestInterface
      * @param int|null $defaultLifetime
      * @return AdapterInterface
      */
-    private function createTwoLevelAdapter(
-        array $options,
-        string $namespace,
-        ?int $defaultLifetime
-    ): AdapterInterface {
+    private function create_two_level_adapter(array $options, string $namespace, ?int $default_lifetime): Adapter_Interface
+    {
         $adapters = [];
-
         // Fast cache (APCu or Filesystem) - cached extension check
-        static $apcuAvailable = null;
-        if ($apcuAvailable === null) {
-            $apcuAvailable = extension_loaded('apcu') && ini_get('apc.enabled');
+        static $apcu_available = null;
+        if ($apcu_available === null) {
+            $apcu_available = extension_loaded('apcu') && ini_get('apc.enabled');
         }
-
-        if ($apcuAvailable) {
-            $adapters[] = $this->createApcuAdapter($namespace . '_fast', $defaultLifetime);
+        if ($apcu_available) {
+            $adapters[] = $this->create_apcu_adapter($namespace . '_fast', $default_lifetime);
         } else {
-            $fastOptions = $options['fast_backend_options'] ?? [];
-            $adapters[] = $this->createFilesystemAdapter($fastOptions, $namespace . '_fast', $defaultLifetime);
+            $fast_options = $options['fast_backend_options'] ?? [];
+            $adapters[] = $this->create_filesystem_adapter($fast_options, $namespace . '_fast', $default_lifetime);
         }
-
         // Persistent cache (Redis or Filesystem) - optimized type check
-        $slowOptions = $options['slow_backend_options'] ?? [];
-        $slowType = strtolower($options['slow_backend'] ?? 'file');
-
-        if ($slowType === 'redis') {
-            $adapters[] = $this->createRedisAdapter($slowOptions, $namespace . '_slow', $defaultLifetime);
+        $slow_options = $options['slow_backend_options'] ?? [];
+        $slow_type = strtolower($options['slow_backend'] ?? 'file');
+        if ($slow_type === 'redis') {
+            $adapters[] = $this->create_redis_adapter($slow_options, $namespace . '_slow', $default_lifetime);
         } else {
-            $adapters[] = $this->createFilesystemAdapter($slowOptions, $namespace . '_slow', $defaultLifetime);
+            $adapters[] = $this->create_filesystem_adapter($slow_options, $namespace . '_slow', $default_lifetime);
         }
-
-        return new ChainAdapter($adapters, $defaultLifetime ?? 0);
+        return new Chain_Adapter($adapters, $default_lifetime ?? 0);
     }
 }

@@ -1,24 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model;
 
-use Magento\Framework\Config\DataInterface;
-
+use Magento\Framework\Config\Data_Interface;
 /**
  * Config of Analytics.
  */
-class Config implements ConfigInterface
+class Config implements Config_Interface
 {
-    public function __construct(private readonly DataInterface $data)
+    public function __construct(private readonly Data_Interface $data)
     {
     }
-
     /**
      * Get config value by key.
      *

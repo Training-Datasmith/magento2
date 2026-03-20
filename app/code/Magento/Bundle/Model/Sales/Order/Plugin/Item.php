@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Model\Sales\Order\Plugin;
 
 /**
@@ -20,17 +19,14 @@ class Item
      * @param float|integer $result
      * @return float|integer
      */
-    public function afterGetQtyToCancel(\Magento\Sales\Model\Order\Item $subject, $result)
+    public function after_get_qty_to_cancel(\Magento\Sales\Model\Order\Item $subject, $result)
     {
-        if ($subject->getProductType() === \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE || $subject->getParentItem()
-            && $subject->getParentItem()->getProductType() === \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE
-        ) {
-            $qtyToCancel = $this->getQtyToCancelBundle($subject);
-            return max($qtyToCancel, 0);
+        if ($subject->get_product_type() === \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE || $subject->get_parent_item() && $subject->get_parent_item()->get_product_type() === \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE) {
+            $qty_to_cancel = $this->get_qty_to_cancel_bundle($subject);
+            return max($qty_to_cancel, 0);
         }
         return $result;
     }
-
     /**
      * Retrieve item qty available for ship
      *
@@ -38,16 +34,13 @@ class Item
      * @param float|integer $result
      * @return bool
      */
-    public function afterIsProcessingAvailable(\Magento\Sales\Model\Order\Item $subject, $result)
+    public function after_is_processing_available(\Magento\Sales\Model\Order\Item $subject, $result)
     {
-        if ($subject->getProductType() === \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE || $subject->getParentItem()
-            && $subject->getParentItem()->getProductType() === \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE
-        ) {
-            return $subject->getSimpleQtyToShip() > $subject->getQtyToCancel();
+        if ($subject->get_product_type() === \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE || $subject->get_parent_item() && $subject->get_parent_item()->get_product_type() === \Magento\Catalog\Model\Product\Type::TYPE_BUNDLE) {
+            return $subject->get_simple_qty_to_ship() > $subject->get_qty_to_cancel();
         }
         return $result;
     }
-
     /**
      * Retrieve Bundle child item qty available for cancel
      * getQtyToShip() always returns 0 for BundleItems that ship together
@@ -55,11 +48,11 @@ class Item
      * @param \Magento\Sales\Model\Order\Item $item
      * @return float|integer
      */
-    private function getQtyToCancelBundle($item)
+    private function get_qty_to_cancel_bundle($item)
     {
-        if ($item->isDummy(true)) {
-            return min($item->getQtyToInvoice(), $item->getSimpleQtyToShip());
+        if ($item->is_dummy(true)) {
+            return min($item->get_qty_to_invoice(), $item->get_simple_qty_to_ship());
         }
-        return min($item->getQtyToInvoice(), $item->getQtyToShip());
+        return min($item->get_qty_to_invoice(), $item->get_qty_to_ship());
     }
 }

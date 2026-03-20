@@ -1,32 +1,28 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Model\Option;
 
-use Magento\Framework\Validator\NotEmpty;
-use Magento\Framework\Validator\NotEmptyFactory;
-use Magento\Framework\Validator\ValidateException;
-
-class Validator extends \Magento\Framework\Validator\AbstractValidator
+use Magento\Framework\Validator\Not_Empty;
+use Magento\Framework\Validator\Not_Empty_Factory;
+use Magento\Framework\Validator\Validate_Exception;
+class Validator extends \Magento\Framework\Validator\Abstract_Validator
 {
     /**
      * @var NotEmpty
      */
-    private $notEmpty;
-
+    private $not_empty;
     /**
      * @param NotEmptyFactory $notEmptyFactory
      */
-    public function __construct(NotEmptyFactory $notEmptyFactory)
+    public function __construct(Not_Empty_Factory $not_empty_factory)
     {
-        $this->notEmpty = $notEmptyFactory->create(['options' => NotEmpty::ALL]);
+        $this->not_empty = $not_empty_factory->create(['options' => Not_Empty::ALL]);
     }
-
     /**
      * This method check is valid value.
      *
@@ -35,13 +31,11 @@ class Validator extends \Magento\Framework\Validator\AbstractValidator
      * @return boolean
      * @throws ValidateException
      */
-    public function isValid($value)
+    public function is_valid($value)
     {
-        $this->validateRequiredFields($value);
-
-        return !$this->hasMessages();
+        $this->validate_required_fields($value);
+        return !$this->has_messages();
     }
-
     /**
      * This method  validate required fields.
      *
@@ -50,19 +44,15 @@ class Validator extends \Magento\Framework\Validator\AbstractValidator
      * @return void
      * @throws \Exception|ValidateException
      */
-    protected function validateRequiredFields($value)
+    protected function validate_required_fields($value)
     {
         $messages = [];
-        $requiredFields = [
-            'title' => $value->getTitle(),
-            'type' => $value->getType(),
-        ];
-        foreach ($requiredFields as $requiredField => $requiredValue) {
-            if (!$this->notEmpty->isValid(trim((string) $requiredValue))) {
-                $messages[$requiredField] =
-                    __('"%fieldName" is required. Enter and try again.', ['fieldName' => $requiredField]);
+        $required_fields = ['title' => $value->get_title(), 'type' => $value->get_type()];
+        foreach ($required_fields as $required_field => $required_value) {
+            if (!$this->not_empty->is_valid(trim((string) $required_value))) {
+                $messages[$required_field] = __('"%fieldName" is required. Enter and try again.', ['fieldName' => $required_field]);
             }
         }
-        $this->_addMessages($messages);
+        $this->_add_messages($messages);
     }
 }

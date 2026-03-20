@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Filter;
 
 /**
@@ -16,12 +15,12 @@ class Massaction extends \Magento\Backend\Block\Widget\Grid\Column\Filter\Checkb
     /**
      * @inheritDoc
      */
-    public function getCondition()
+    public function get_condition()
     {
-        if ($this->getValue()) {
-            return ['in' => $this->getColumn()->getSelected() ? $this->getColumn()->getSelected() : [0]];
+        if ($this->get_value()) {
+            return ['in' => $this->get_column()->get_selected() ? $this->get_column()->get_selected() : [0]];
         } else {
-            return ['nin' => $this->getColumn()->getSelected() ? $this->getColumn()->getSelected() : [0]];
+            return ['nin' => $this->get_column()->get_selected() ? $this->get_column()->get_selected() : [0]];
         }
     }
 }

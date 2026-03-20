@@ -1,20 +1,17 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\Escaper;
-
 /**
  * Form checkbox element
  */
-class Checkbox extends AbstractElement
+class Checkbox extends Abstract_Element
 {
     /**
      * @param Factory $factoryElement
@@ -22,57 +19,36 @@ class Checkbox extends AbstractElement
      * @param Escaper $escaper
      * @param array $data
      */
-    public function __construct(
-        Factory $factoryElement,
-        CollectionFactory $factoryCollection,
-        Escaper $escaper,
-        $data = []
-    ) {
-        parent::__construct($factoryElement, $factoryCollection, $escaper, $data);
-        $this->setType('checkbox');
-        $this->setExtType('checkbox');
+    public function __construct(Factory $factory_element, Collection_Factory $factory_collection, Escaper $escaper, $data = [])
+    {
+        parent::__construct($factory_element, $factory_collection, $escaper, $data);
+        $this->set_type('checkbox');
+        $this->set_ext_type('checkbox');
     }
-
     /**
      * Get HTML attributes
      *
      * @return string[]
      */
-    public function getHtmlAttributes()
+    public function get_html_attributes()
     {
-        return [
-            'type',
-            'title',
-            'class',
-            'style',
-            'checked',
-            'onclick',
-            'onchange',
-            'disabled',
-            'tabindex',
-            'data-form-part',
-            'data-role',
-            'data-action',
-        ];
+        return ['type', 'title', 'class', 'style', 'checked', 'onclick', 'onchange', 'disabled', 'tabindex', 'data-form-part', 'data-role', 'data-action'];
     }
-
     /**
      * Get Element HTML
      *
      * @return string
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    public function getElementHtml()
+    public function get_element_html()
     {
-        if ($checked = $this->getChecked()) {
-            $this->setData('checked', true);
+        if ($checked = $this->get_checked()) {
+            $this->set_data('checked', true);
         } else {
-            $this->unsetData('checked');
+            $this->unset_data('checked');
         }
-
-        return parent::getElementHtml();
+        return parent::get_element_html();
     }
-
     /**
      * Set check status of checkbox
      *
@@ -80,20 +56,19 @@ class Checkbox extends AbstractElement
      *
      * @return Checkbox
      */
-    public function setIsChecked($value = false)
+    public function set_is_checked($value = false)
     {
-        $this->setData('checked', $value);
+        $this->set_data('checked', $value);
         return $this;
     }
-
     /**
      * Return check status of checkbox
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getIsChecked()
+    public function get_is_checked()
     {
-        return $this->getData('checked');
+        return $this->get_data('checked');
     }
 }

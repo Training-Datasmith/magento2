@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Api;
  * @api
  * @since 100.0.2
  */
-interface ExtensibleDataInterface
+interface Extensible_Data_Interface
 {
     /**
      * Key for extension attributes object

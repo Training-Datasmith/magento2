@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Backend\Model\Cache\ResourceModel\Grid;
+namespace Magento\Backend\Model\Cache\Resource_Model\Grid;
 
 /**
  * @api
@@ -17,20 +16,16 @@ class Collection extends \Magento\Framework\Data\Collection
     /**
      * @var \Magento\Framework\App\Cache\TypeListInterface
      */
-    protected $_cacheTypeList;
-
+    protected $_cache_type_list;
     /**
      * @param \Magento\Framework\Data\Collection\EntityFactory $entityFactory
      * @param \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
      */
-    public function __construct(
-        \Magento\Framework\Data\Collection\EntityFactory $entityFactory,
-        \Magento\Framework\App\Cache\TypeListInterface $cacheTypeList
-    ) {
-        $this->_cacheTypeList = $cacheTypeList;
-        parent::__construct($entityFactory);
+    public function __construct(\Magento\Framework\Data\Collection\Entity_Factory $entity_factory, \Magento\Framework\App\Cache\Type_List_Interface $cache_type_list)
+    {
+        $this->_cache_type_list = $cache_type_list;
+        parent::__construct($entity_factory);
     }
-
     /**
      * Load data
      *
@@ -39,13 +34,13 @@ class Collection extends \Magento\Framework\Data\Collection
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function loadData($printQuery = false, $logQuery = false)
+    public function load_data($print_query = false, $log_query = false)
     {
-        if (!$this->isLoaded()) {
-            foreach ($this->_cacheTypeList->getTypes() as $type) {
-                $this->addItem($type);
+        if (!$this->is_loaded()) {
+            foreach ($this->_cache_type_list->get_types() as $type) {
+                $this->add_item($type);
             }
-            $this->_setIsLoaded(true);
+            $this->_set_is_loaded(true);
         }
         return $this;
     }

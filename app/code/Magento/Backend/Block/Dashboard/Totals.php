@@ -4,18 +4,16 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Block\Dashboard;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Backend\Model\Dashboard\Period;
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Object_Manager;
 use Magento\Framework\Module\Manager;
-use Magento\Reports\Model\ResourceModel\Order\Collection;
-use Magento\Reports\Model\ResourceModel\Order\CollectionFactory;
+use Magento\Reports\Model\Resource_Model\Order\Collection;
+use Magento\Reports\Model\Resource_Model\Order\Collection_Factory;
 use Magento\Store\Model\Store;
-
 /**
  * Adminhtml dashboard totals bar
  * @api
@@ -27,17 +25,14 @@ class Totals extends Bar
      * @var string
      */
     protected $_template = 'Magento_Backend::dashboard/totalbar.phtml';
-
     /**
      * @var Manager
      */
-    protected $_moduleManager;
-
+    protected $_module_manager;
     /**
      * @var Period
      */
     private $period;
-
     /**
      * @param Context $context
      * @param CollectionFactory $collectionFactory
@@ -45,72 +40,43 @@ class Totals extends Bar
      * @param array $data
      * @param Period|null $period
      */
-    public function __construct(
-        Context $context,
-        CollectionFactory $collectionFactory,
-        Manager $moduleManager,
-        array $data = [],
-        ?Period $period = null
-    ) {
-        $this->_moduleManager = $moduleManager;
-        $this->period = $period ?? ObjectManager::getInstance()->get(Period::class);
-        parent::__construct($context, $collectionFactory, $data);
+    public function __construct(Context $context, Collection_Factory $collection_factory, Manager $module_manager, array $data = [], ?Period $period = null)
+    {
+        $this->_module_manager = $module_manager;
+        $this->period = $period ?? Object_Manager::get_instance()->get(Period::class);
+        parent::__construct($context, $collection_factory, $data);
     }
-
     /**
      * @inheritDoc
      * @return $this|void
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
-        if (!$this->_moduleManager->isEnabled('Magento_Reports')) {
+        if (!$this->_module_manager->is_enabled('Magento_Reports')) {
             return $this;
         }
-        $isFilter = $this->getRequest()->getParam(
-            'store'
-        ) || $this->getRequest()->getParam(
-            'website'
-        ) || $this->getRequest()->getParam(
-            'group'
-        );
-        $firstPeriod = array_key_first($this->period->getDatePeriods());
-        $period = $this->getRequest()->getParam('period', $firstPeriod);
-
+        $is_filter = $this->get_request()->get_param('store') || $this->get_request()->get_param('website') || $this->get_request()->get_param('group');
+        $first_period = array_key_first($this->period->get_date_periods());
+        $period = $this->get_request()->get_param('period', $first_period);
         /* @var $collection Collection */
-        $collection = $this->_collectionFactory->create()->addCreateAtPeriodFilter(
-            $period
-        )->calculateTotals(
-            $isFilter
-        );
-
-        if ($this->getRequest()->getParam('store')) {
-            $collection->addFieldToFilter('store_id', $this->getRequest()->getParam('store'));
-        } else {
-            if ($this->getRequest()->getParam('website')) {
-                $storeIds = $this->_storeManager->getWebsite($this->getRequest()->getParam('website'))->getStoreIds();
-                $collection->addFieldToFilter('store_id', ['in' => $storeIds]);
-            } else {
-                if ($this->getRequest()->getParam('group')) {
-                    $storeIds = $this->_storeManager->getGroup($this->getRequest()->getParam('group'))->getStoreIds();
-                    $collection->addFieldToFilter('store_id', ['in' => $storeIds]);
-                } elseif (!$collection->isLive()) {
-                    $collection->addFieldToFilter(
-                        'store_id',
-                        ['eq' => $this->_storeManager->getStore(Store::ADMIN_CODE)->getId()]
-                    );
-                }
-            }
+        $collection = $this->_collection_factory->create()->add_create_at_period_filter($period)->calculate_totals($is_filter);
+        if ($this->get_request()->get_param('store')) {
+            $collection->add_field_to_filter('store_id', $this->get_request()->get_param('store'));
+        } else if ($this->get_request()->get_param('website')) {
+            $store_ids = $this->_store_manager->get_website($this->get_request()->get_param('website'))->get_store_ids();
+            $collection->add_field_to_filter('store_id', ['in' => $store_ids]);
+        } else if ($this->get_request()->get_param('group')) {
+            $store_ids = $this->_store_manager->get_group($this->get_request()->get_param('group'))->get_store_ids();
+            $collection->add_field_to_filter('store_id', ['in' => $store_ids]);
+        } elseif (!$collection->is_live()) {
+            $collection->add_field_to_filter('store_id', ['eq' => $this->_store_manager->get_store(Store::ADMIN_CODE)->get_id()]);
         }
-
         $collection->load();
-
-        $totals = $collection->getFirstItem();
-
-        $this->addTotal(__('Revenue'), $totals->getRevenue());
-        $this->addTotal(__('Tax'), $totals->getTax());
-        $this->addTotal(__('Shipping'), $totals->getShipping());
-        $this->addTotal(__('Quantity'), $totals->getQuantity() * 1, true);
-
+        $totals = $collection->get_first_item();
+        $this->add_total(__('Revenue'), $totals->get_revenue());
+        $this->add_total(__('Tax'), $totals->get_tax());
+        $this->add_total(__('Shipping'), $totals->get_shipping());
+        $this->add_total(__('Quantity'), $totals->get_quantity() * 1, true);
         return $this;
     }
 }

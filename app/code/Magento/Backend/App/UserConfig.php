@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\App;
 
 use Magento\Config\Model\Config\Factory;
 use Magento\Framework\App\Bootstrap;
 use Magento\Framework\App\Console\Response;
-use Magento\Framework\AppInterface;
-
+use Magento\Framework\App_Interface;
 /**
  * @api
  * @since 100.0.2
  */
-class UserConfig implements AppInterface
+class User_Config implements App_Interface
 {
     /**
      * Console response
@@ -25,21 +23,18 @@ class UserConfig implements AppInterface
      * @var Response
      */
     private $response;
-
     /**
      * Requested changes
      *
      * @var array
      */
     private $request;
-
     /**
      * Factory for config models
      *
      * @var Factory
      */
-    private $configFactory;
-
+    private $config_factory;
     /**
      * Constructor
      *
@@ -47,16 +42,12 @@ class UserConfig implements AppInterface
      * @param Response $response
      * @param array $request
      */
-    public function __construct(
-        Factory $configFactory,
-        Response $response,
-        array $request
-    ) {
+    public function __construct(Factory $config_factory, Response $response, array $request)
+    {
         $this->response = $response;
         $this->request = $request;
-        $this->configFactory = $configFactory;
+        $this->config_factory = $config_factory;
     }
-
     /**
      * Run application
      *
@@ -64,29 +55,27 @@ class UserConfig implements AppInterface
      */
     public function launch()
     {
-        $this->response->terminateOnSend(false);
-        $this->updateUserConfigData();
+        $this->response->terminate_on_send(false);
+        $this->update_user_config_data();
         return $this->response;
     }
-
     /**
      * Inserts provided user configuration data into database
      *
      * @return void
      */
-    private function updateUserConfigData()
+    private function update_user_config_data()
     {
         foreach ($this->request as $key => $val) {
-            $configModel = $this->configFactory->create();
-            $configModel->setDataByPath($key, $val);
-            $configModel->save();
+            $config_model = $this->config_factory->create();
+            $config_model->set_data_by_path($key, $val);
+            $config_model->save();
         }
     }
-
     /**
      * {@inheritdoc}
      */
-    public function catchException(Bootstrap $bootstrap, \Exception $exception)
+    public function catch_exception(Bootstrap $bootstrap, \Exception $exception)
     {
         return false;
     }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget;
 
 /**
@@ -25,132 +24,108 @@ class Grid extends \Magento\Backend\Block\Widget
      *
      * @var string
      */
-    protected $_varNameLimit = 'limit';
-
+    protected $_var_name_limit = 'limit';
     /**
      * @var string
      */
-    protected $_varNamePage = 'page';
-
+    protected $_var_name_page = 'page';
     /**
      * @var string
      */
-    protected $_varNameSort = 'sort';
-
+    protected $_var_name_sort = 'sort';
     /**
      * @var string
      */
-    protected $_varNameDir = 'dir';
-
+    protected $_var_name_dir = 'dir';
     /**
      * @var string
      */
-    protected $_varNameFilter = 'filter';
-
+    protected $_var_name_filter = 'filter';
     /**
      * @var int
      */
-    protected $_defaultLimit = 20;
-
+    protected $_default_limit = 20;
     /**
      * @var int
      */
-    protected $_defaultPage = 1;
-
+    protected $_default_page = 1;
     /**
      * @var bool|string
      */
-    protected $_defaultSort = false;
-
+    protected $_default_sort = false;
     /**
      * @var string
      */
-    protected $_defaultDir = 'desc';
-
+    protected $_default_dir = 'desc';
     /**
      * @var array
      */
-    protected $_defaultFilter = [];
-
+    protected $_default_filter = [];
     /**
      * Empty grid text
      *
      * @var string|null
      */
-    protected $_emptyText;
-
+    protected $_empty_text;
     /**
      * Empty grid text CSS class
      *
      * @var string|null
      */
-    protected $_emptyTextCss = 'empty-text';
-
+    protected $_empty_text_css = 'empty-text';
     /**
      * Pager visibility
      *
      * @var boolean
      */
-    protected $_pagerVisibility = true;
-
+    protected $_pager_visibility = true;
     /**
      * Massage block visibility
      *
      * @var boolean
      */
-    protected $_messageBlockVisibility = false;
-
+    protected $_message_block_visibility = false;
     /**
      * Should parameters be saved in session
      *
      * @var bool
      */
-    protected $_saveParametersInSession = false;
-
+    protected $_save_parameters_in_session = false;
     /**
      * Count totals
      *
      * @var boolean
      */
-    protected $_countTotals = false;
-
+    protected $_count_totals = false;
     /**
      * Totals
      *
      * @var \Magento\Framework\DataObject
      */
-    protected $_varTotals;
-
+    protected $_var_totals;
     /**
      * @var string
      */
     protected $_template = 'Magento_Backend::widget/grid.phtml';
-
     /**
      * @var \Magento\Backend\Model\Session
      */
-    protected $_backendSession;
-
+    protected $_backend_session;
     /**
      * @var \Magento\Backend\Helper\Data
      */
-    protected $_backendHelper;
-
+    protected $_backend_helper;
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backend\Helper\Data $backendHelper
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Backend\Helper\Data $backendHelper,
-        array $data = []
-    ) {
-        $this->_backendHelper = $backendHelper;
-        $this->_backendSession = $context->getBackendSession();
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Backend\Helper\Data $backend_helper, array $data = [])
+    {
+        $this->_backend_helper = $backend_helper;
+        $this->_backend_session = $context->get_backend_session();
         parent::__construct($context, $data);
     }
-
     /**
      * Internal constructor, that is called from real constructor
      *
@@ -161,564 +136,471 @@ class Grid extends \Magento\Backend\Block\Widget
     protected function _construct()
     {
         parent::_construct();
-
-        if (!$this->getRowClickCallback()) {
-            $this->setRowClickCallback('openGridRow');
+        if (!$this->get_row_click_callback()) {
+            $this->set_row_click_callback('openGridRow');
         }
-
-        if ($this->hasData('id')) {
-            $this->setId($this->getData('id'));
+        if ($this->has_data('id')) {
+            $this->set_id($this->get_data('id'));
         }
-
-        if ($this->hasData('default_sort')) {
-            $this->setDefaultSort($this->getData('default_sort'));
+        if ($this->has_data('default_sort')) {
+            $this->set_default_sort($this->get_data('default_sort'));
         }
-
-        if ($this->hasData('default_dir')) {
-            $this->setDefaultDir($this->getData('default_dir'));
+        if ($this->has_data('default_dir')) {
+            $this->set_default_dir($this->get_data('default_dir'));
         }
-
-        if ($this->hasData('save_parameters_in_session')) {
-            $this->setSaveParametersInSession($this->getData('save_parameters_in_session'));
+        if ($this->has_data('save_parameters_in_session')) {
+            $this->set_save_parameters_in_session($this->get_data('save_parameters_in_session'));
         }
-
-        $this->setPagerVisibility(
-            $this->hasData('pager_visibility') ? (bool)$this->getData('pager_visibility') : true
-        );
-
-        $this->setData('use_ajax', $this->hasData('use_ajax') ? (bool)$this->getData('use_ajax') : false);
+        $this->set_pager_visibility($this->has_data('pager_visibility') ? (bool) $this->get_data('pager_visibility') : true);
+        $this->set_data('use_ajax', $this->has_data('use_ajax') ? (bool) $this->get_data('use_ajax') : false);
     }
-
     /**
      * Set collection object
      *
      * @param \Magento\Framework\Data\Collection $collection
      * @return void
      */
-    public function setCollection($collection)
+    public function set_collection($collection)
     {
-        $this->setData('dataSource', $collection);
+        $this->set_data('dataSource', $collection);
     }
-
     /**
      * Get collection object
      *
      * @return \Magento\Framework\Data\Collection
      */
-    public function getCollection()
+    public function get_collection()
     {
-        return $this->getData('dataSource');
+        return $this->get_data('dataSource');
     }
-
     /**
      * Retrieve column set block
      *
      * @return \Magento\Backend\Block\Widget\Grid\ColumnSet
      */
-    public function getColumnSet()
+    public function get_column_set()
     {
-        return $this->getChildBlock('grid.columnSet');
+        return $this->get_child_block('grid.columnSet');
     }
-
     /**
      * Retrieve export block
      *
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return \Magento\Framework\View\Element\AbstractBlock|bool
      */
-    public function getExportBlock()
+    public function get_export_block()
     {
-        if (!$this->getChildBlock('grid.export')) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                __('Export block for grid %1 is not defined', $this->getNameInLayout())
-            );
+        if (!$this->get_child_block('grid.export')) {
+            throw new \Magento\Framework\Exception\Localized_Exception(__('Export block for grid %1 is not defined', $this->get_name_in_layout()));
         }
-        return $this->getChildBlock('grid.export');
+        return $this->get_child_block('grid.export');
     }
-
     /**
      * Retrieve list of grid columns
      *
      * @return array
      */
-    public function getColumns()
+    public function get_columns()
     {
-        return $this->getColumnSet()->getColumns();
+        return $this->get_column_set()->get_columns();
     }
-
     /**
      * Count grid columns
      *
      * @return int
      */
-    public function getColumnCount()
+    public function get_column_count()
     {
-        return count($this->getColumns());
+        return count($this->get_columns());
     }
-
     /**
      * Retrieve column by id
      *
      * @param string $columnId
      * @return \Magento\Framework\View\Element\AbstractBlock|bool
      */
-    public function getColumn($columnId)
+    public function get_column($column_id)
     {
-        return $this->getColumnSet()->getChildBlock($columnId);
+        return $this->get_column_set()->get_child_block($column_id);
     }
-
     /**
      * Process column filtration values
      *
      * @param mixed $data
      * @return $this
      */
-    protected function _setFilterValues($data)
+    protected function _set_filter_values($data)
     {
-        foreach ($this->getColumns() as $columnId => $column) {
-            if (isset(
-                $data[$columnId]
-            ) && (is_array(
-                $data[$columnId]
-            ) && !empty($data[$columnId]) || strlen(
-                $data[$columnId]
-            ) > 0) && $column->getFilter()
-            ) {
-                $column->getFilter()->setValue($data[$columnId]);
-                $this->_addColumnFilterToCollection($column);
+        foreach ($this->get_columns() as $column_id => $column) {
+            if (isset($data[$column_id]) && (is_array($data[$column_id]) && !empty($data[$column_id]) || strlen($data[$column_id]) > 0) && $column->get_filter()) {
+                $column->get_filter()->set_value($data[$column_id]);
+                $this->_add_column_filter_to_collection($column);
             }
         }
         return $this;
     }
-
     /**
      * Add column filtering conditions to collection
      *
      * @param \Magento\Backend\Block\Widget\Grid\Column $column
      * @return $this
      */
-    protected function _addColumnFilterToCollection($column)
+    protected function _add_column_filter_to_collection($column)
     {
-        if ($this->getCollection()) {
-            $field = $column->getFilterIndex() ? $column->getFilterIndex() : $column->getIndex();
-            if ($column->getFilterConditionCallback()) {
-                $object = isset($column->getFilterConditionCallback()['object'])
-                    ? $column->getFilterConditionCallback()['object'] : $column->getFilterConditionCallback()[0];
-                $method = isset($column->getFilterConditionCallback()['method'])
-                    ? $column->getFilterConditionCallback()['method'] : $column->getFilterConditionCallback()[1];
-                $object->$method(
-                    $this->getCollection(),
-                    $column
-                );
+        if ($this->get_collection()) {
+            $field = $column->get_filter_index() ? $column->get_filter_index() : $column->get_index();
+            if ($column->get_filter_condition_callback()) {
+                $object = isset($column->get_filter_condition_callback()['object']) ? $column->get_filter_condition_callback()['object'] : $column->get_filter_condition_callback()[0];
+                $method = isset($column->get_filter_condition_callback()['method']) ? $column->get_filter_condition_callback()['method'] : $column->get_filter_condition_callback()[1];
+                $object->{$method}($this->get_collection(), $column);
             } else {
-                $condition = $column->getFilter()->getCondition();
+                $condition = $column->get_filter()->get_condition();
                 if ($field && $condition) {
-                    $this->getCollection()->addFieldToFilter($field, $condition);
+                    $this->get_collection()->add_field_to_filter($field, $condition);
                 }
             }
         }
         return $this;
     }
-
     /**
      * Sets sorting order by some column
      *
      * @param \Magento\Backend\Block\Widget\Grid\Column $column
      * @return $this
      */
-    protected function _setCollectionOrder($column)
+    protected function _set_collection_order($column)
     {
-        $collection = $this->getCollection();
+        $collection = $this->get_collection();
         if ($collection) {
-            $columnIndex = $column->getFilterIndex() ? $column->getFilterIndex() : $column->getIndex();
-            $collection->setOrder($columnIndex, strtoupper($column->getDir()));
+            $column_index = $column->get_filter_index() ? $column->get_filter_index() : $column->get_index();
+            $collection->set_order($column_index, strtoupper($column->get_dir()));
         }
         return $this;
     }
-
     /**
      * Get prepared collection
      *
      * @return \Magento\Framework\Data\Collection
      */
-    public function getPreparedCollection()
+    public function get_prepared_collection()
     {
-        $this->_prepareCollection();
-        return $this->getCollection();
+        $this->_prepare_collection();
+        return $this->get_collection();
     }
-
     /**
      * Apply sorting and filtering to collection
      *
      * @return $this
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    protected function _prepareCollection()
+    protected function _prepare_collection()
     {
-        if ($this->getCollection()) {
-            $this->_preparePage();
-
-            $columnId = $this->getParam($this->getVarNameSort(), $this->_defaultSort);
-            $dir = $this->getParam($this->getVarNameDir(), $this->_defaultDir);
-            $filter = $this->getParam($this->getVarNameFilter(), null);
-
+        if ($this->get_collection()) {
+            $this->_prepare_page();
+            $column_id = $this->get_param($this->get_var_name_sort(), $this->_default_sort);
+            $dir = $this->get_param($this->get_var_name_dir(), $this->_default_dir);
+            $filter = $this->get_param($this->get_var_name_filter(), null);
             if ($filter === null) {
-                $filter = $this->_defaultFilter;
+                $filter = $this->_default_filter;
             }
-
             if (is_string($filter)) {
-                $data = $this->_backendHelper->prepareFilterString($filter);
-                $data = array_merge($data, (array)$this->getRequest()->getPost($this->getVarNameFilter()));
-                $this->_setFilterValues($data);
+                $data = $this->_backend_helper->prepare_filter_string($filter);
+                $data = array_merge($data, (array) $this->get_request()->get_post($this->get_var_name_filter()));
+                $this->_set_filter_values($data);
             } elseif ($filter && is_array($filter)) {
-                $this->_setFilterValues($filter);
-            } elseif (0 !== count($this->_defaultFilter)) {
-                $this->_setFilterValues($this->_defaultFilter);
+                $this->_set_filter_values($filter);
+            } elseif (0 !== count($this->_default_filter)) {
+                $this->_set_filter_values($this->_default_filter);
             }
-
-            if ($this->getColumn($columnId) && $this->getColumn($columnId)->getIndex()) {
+            if ($this->get_column($column_id) && $this->get_column($column_id)->get_index()) {
                 $dir = strtolower($dir) == 'desc' ? 'desc' : 'asc';
-                $this->getColumn($columnId)->setDir($dir);
-                $this->_setCollectionOrder($this->getColumn($columnId));
+                $this->get_column($column_id)->set_dir($dir);
+                $this->_set_collection_order($this->get_column($column_id));
             }
         }
-
         return $this;
     }
-
     /**
      * Apply pagination to collection
      *
      * @return void
      */
-    protected function _preparePage()
+    protected function _prepare_page()
     {
-        $this->getCollection()->setPageSize((int)$this->getParam($this->getVarNameLimit(), $this->_defaultLimit));
-        $this->getCollection()->setCurPage((int)$this->getParam($this->getVarNamePage(), $this->_defaultPage));
+        $this->get_collection()->set_page_size((int) $this->get_param($this->get_var_name_limit(), $this->_default_limit));
+        $this->get_collection()->set_cur_page((int) $this->get_param($this->get_var_name_page(), $this->_default_page));
     }
-
     /**
      * Initialize grid
      *
      * @return void
      */
-    protected function _prepareGrid()
+    protected function _prepare_grid()
     {
-        $this->_eventManager->dispatch(
-            'backend_block_widget_grid_prepare_grid_before',
-            ['grid' => $this, 'collection' => $this->getCollection()]
-        );
-        if ($this->getChildBlock('grid.massaction') && $this->getChildBlock('grid.massaction')->isAvailable()) {
-            $this->getChildBlock('grid.massaction')->prepareMassactionColumn();
+        $this->_event_manager->dispatch('backend_block_widget_grid_prepare_grid_before', ['grid' => $this, 'collection' => $this->get_collection()]);
+        if ($this->get_child_block('grid.massaction') && $this->get_child_block('grid.massaction')->is_available()) {
+            $this->get_child_block('grid.massaction')->prepare_massaction_column();
         }
-
-        $this->_prepareCollection();
-        if ($this->hasColumnRenderers()) {
-            foreach ($this->getColumnRenderers() as $renderer => $rendererClass) {
-                $this->getColumnSet()->setRendererType($renderer, $rendererClass);
+        $this->_prepare_collection();
+        if ($this->has_column_renderers()) {
+            foreach ($this->get_column_renderers() as $renderer => $renderer_class) {
+                $this->get_column_set()->set_renderer_type($renderer, $renderer_class);
             }
         }
-        if ($this->hasColumnFilters()) {
-            foreach ($this->getColumnFilters() as $filter => $filterClass) {
-                $this->getColumnSet()->setFilterType($filter, $filterClass);
+        if ($this->has_column_filters()) {
+            foreach ($this->get_column_filters() as $filter => $filter_class) {
+                $this->get_column_set()->set_filter_type($filter, $filter_class);
             }
         }
-        $this->getColumnSet()->setSortable($this->getSortable());
-        $this->_prepareFilterButtons();
+        $this->get_column_set()->set_sortable($this->get_sortable());
+        $this->_prepare_filter_buttons();
     }
-
     /**
      * Get massaction block
      *
      * @return bool|\Magento\Framework\View\Element\AbstractBlock
      */
-    public function getMassactionBlock()
+    public function get_massaction_block()
     {
-        return $this->getChildBlock('grid.massaction');
+        return $this->get_child_block('grid.massaction');
     }
-
     /**
      * Prepare grid filter buttons
      *
      * @return void
      */
-    protected function _prepareFilterButtons()
+    protected function _prepare_filter_buttons()
     {
-        $this->setChild(
-            'reset_filter_button',
-            $this->getLayout()->createBlock(
-                \Magento\Backend\Block\Widget\Button::class
-            )->setData(
-                [
-                    'label' => __('Reset Filter'),
-                    'onclick' => $this->getJsObjectName() . '.resetFilter()',
-                    'class' => 'action-reset action-tertiary',
-                ]
-            )->setDataAttribute(['action' => 'grid-filter-reset'])
-        );
-        $this->setChild(
-            'search_button',
-            $this->getLayout()->createBlock(
-                \Magento\Backend\Block\Widget\Button::class
-            )->setData(
-                [
-                    'label' => __('Search'),
-                    'onclick' => $this->getJsObjectName() . '.doFilter()',
-                    'class' => 'action-secondary',
-                ]
-            )->setDataAttribute(['action' => 'grid-filter-apply'])
-        );
+        $this->set_child('reset_filter_button', $this->get_layout()->create_block(\Magento\Backend\Block\Widget\Button::class)->set_data(['label' => __('Reset Filter'), 'onclick' => $this->get_js_object_name() . '.resetFilter()', 'class' => 'action-reset action-tertiary'])->set_data_attribute(['action' => 'grid-filter-reset']));
+        $this->set_child('search_button', $this->get_layout()->create_block(\Magento\Backend\Block\Widget\Button::class)->set_data(['label' => __('Search'), 'onclick' => $this->get_js_object_name() . '.doFilter()', 'class' => 'action-secondary'])->set_data_attribute(['action' => 'grid-filter-apply']));
     }
-
     /**
      * Initialize grid before rendering
      *
      * @return $this
      */
-    protected function _beforeToHtml()
+    protected function _before_to_html()
     {
-        $this->_prepareGrid();
-        return parent::_beforeToHtml();
+        $this->_prepare_grid();
+        return parent::_before_to_html();
     }
-
     /**
      * Retrieve limit request key
      *
      * @return string
      */
-    public function getVarNameLimit()
+    public function get_var_name_limit()
     {
-        return $this->_varNameLimit;
+        return $this->_var_name_limit;
     }
-
     /**
      * Retrieve page request key
      *
      * @return string
      */
-    public function getVarNamePage()
+    public function get_var_name_page()
     {
-        return $this->_varNamePage;
+        return $this->_var_name_page;
     }
-
     /**
      * Retrieve sort request key
      *
      * @return string
      */
-    public function getVarNameSort()
+    public function get_var_name_sort()
     {
-        return $this->_varNameSort;
+        return $this->_var_name_sort;
     }
-
     /**
      * Retrieve sort direction request key
      *
      * @return string
      */
-    public function getVarNameDir()
+    public function get_var_name_dir()
     {
-        return $this->_varNameDir;
+        return $this->_var_name_dir;
     }
-
     /**
      * Retrieve filter request key
      *
      * @return string
      */
-    public function getVarNameFilter()
+    public function get_var_name_filter()
     {
-        return $this->_varNameFilter;
+        return $this->_var_name_filter;
     }
-
     /**
      * Set Limit request key
      *
      * @param string $name
      * @return $this
      */
-    public function setVarNameLimit($name)
+    public function set_var_name_limit($name)
     {
-        $this->_varNameLimit = $name;
+        $this->_var_name_limit = $name;
         return $this;
     }
-
     /**
      * Set Page request key
      *
      * @param string $name
      * @return $this
      */
-    public function setVarNamePage($name)
+    public function set_var_name_page($name)
     {
-        $this->_varNamePage = $name;
+        $this->_var_name_page = $name;
         return $this;
     }
-
     /**
      * Set Sort request key
      *
      * @param string $name
      * @return $this
      */
-    public function setVarNameSort($name)
+    public function set_var_name_sort($name)
     {
-        $this->_varNameSort = $name;
+        $this->_var_name_sort = $name;
         return $this;
     }
-
     /**
      * Set Sort Direction request key
      *
      * @param string $name
      * @return $this
      */
-    public function setVarNameDir($name)
+    public function set_var_name_dir($name)
     {
-        $this->_varNameDir = $name;
+        $this->_var_name_dir = $name;
         return $this;
     }
-
     /**
      * Set Filter request key
      *
      * @param string $name
      * @return $this
      */
-    public function setVarNameFilter($name)
+    public function set_var_name_filter($name)
     {
-        $this->_varNameFilter = $name;
+        $this->_var_name_filter = $name;
         return $this;
     }
-
     /**
      * Set visibility of pager
      *
      * @param bool $visible
      * @return $this
      */
-    public function setPagerVisibility($visible = true)
+    public function set_pager_visibility($visible = true)
     {
-        $this->_pagerVisibility = $visible;
+        $this->_pager_visibility = $visible;
         return $this;
     }
-
     /**
      * Return visibility of pager
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getPagerVisibility()
+    public function get_pager_visibility()
     {
-        return $this->_pagerVisibility;
+        return $this->_pager_visibility;
     }
-
     /**
      * Set visibility of message blocks
      *
      * @param bool $visible
      * @return void
      */
-    public function setMessageBlockVisibility($visible = true)
+    public function set_message_block_visibility($visible = true)
     {
-        $this->_messageBlockVisibility = $visible;
+        $this->_message_block_visibility = $visible;
     }
-
     /**
      * Return visibility of message blocks
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getMessageBlockVisibility()
+    public function get_message_block_visibility()
     {
-        return $this->_messageBlockVisibility;
+        return $this->_message_block_visibility;
     }
-
     /**
      * Set default limit
      *
      * @param int $limit
      * @return $this
      */
-    public function setDefaultLimit($limit)
+    public function set_default_limit($limit)
     {
-        $this->_defaultLimit = $limit;
+        $this->_default_limit = $limit;
         return $this;
     }
-
     /**
      * Set default page
      *
      * @param int $page
      * @return $this
      */
-    public function setDefaultPage($page)
+    public function set_default_page($page)
     {
-        $this->_defaultPage = $page;
+        $this->_default_page = $page;
         return $this;
     }
-
     /**
      * Set default sort
      *
      * @param string $sort
      * @return $this
      */
-    public function setDefaultSort($sort)
+    public function set_default_sort($sort)
     {
-        $this->_defaultSort = $sort;
+        $this->_default_sort = $sort;
         return $this;
     }
-
     /**
      * Set default direction
      *
      * @param string $dir
      * @return $this
      */
-    public function setDefaultDir($dir)
+    public function set_default_dir($dir)
     {
-        $this->_defaultDir = $dir;
+        $this->_default_dir = $dir;
         return $this;
     }
-
     /**
      * Set default filter
      *
      * @param string $filter
      * @return $this
      */
-    public function setDefaultFilter($filter)
+    public function set_default_filter($filter)
     {
-        $this->_defaultFilter = $filter;
+        $this->_default_filter = $filter;
         return $this;
     }
-
     /**
      * Check whether grid container should be displayed
      *
      * @return bool
      */
-    public function canDisplayContainer()
+    public function can_display_container()
     {
-        if ($this->getRequest()->getQuery('ajax')) {
+        if ($this->get_request()->get_query('ajax')) {
             return false;
         }
         return true;
     }
-
     /**
      * Retrieve grid reload url
      *
      * @return string;
      */
-    public function getGridUrl()
+    public function get_grid_url()
     {
-        return $this->hasData('grid_url') ? $this->getData('grid_url') : $this->getAbsoluteGridUrl();
+        return $this->has_data('grid_url') ? $this->get_data('grid_url') : $this->get_absolute_grid_url();
     }
-
     /**
      * Grid url getter
      *
@@ -727,11 +609,10 @@ class Grid extends \Magento\Backend\Block\Widget
      * @param array $params url parameters
      * @return string current grid url
      */
-    public function getAbsoluteGridUrl($params = [])
+    public function get_absolute_grid_url($params = [])
     {
-        return $this->getCurrentUrl($params);
+        return $this->get_current_url($params);
     }
-
     /**
      * Retrieve grid
      *
@@ -739,120 +620,110 @@ class Grid extends \Magento\Backend\Block\Widget
      * @param mixed $default
      * @return mixed
      */
-    public function getParam($paramName, $default = null)
+    public function get_param($param_name, $default = null)
     {
-        $sessionParamName = $this->getId() . $paramName;
-        if ($this->getRequest()->has($paramName)) {
-            $param = $this->getRequest()->getParam($paramName);
-            if ($this->_saveParametersInSession) {
-                $this->_backendSession->setData($sessionParamName, $param);
+        $session_param_name = $this->get_id() . $param_name;
+        if ($this->get_request()->has($param_name)) {
+            $param = $this->get_request()->get_param($param_name);
+            if ($this->_save_parameters_in_session) {
+                $this->_backend_session->set_data($session_param_name, $param);
             }
             return $param;
-        } elseif ($this->_saveParametersInSession && ($param = $this->_backendSession->getData($sessionParamName))) {
+        } elseif ($this->_save_parameters_in_session && $param = $this->_backend_session->get_data($session_param_name)) {
             return $param;
         }
-
         return $default;
     }
-
     /**
      * Set whether grid parameters should be saved in session
      *
      * @param bool $flag
      * @return $this
      */
-    public function setSaveParametersInSession($flag)
+    public function set_save_parameters_in_session($flag)
     {
-        $this->_saveParametersInSession = $flag;
+        $this->_save_parameters_in_session = $flag;
         return $this;
     }
-
     /**
      * Retrieve grid javascript object name
      *
      * @return string
      */
-    public function getJsObjectName()
+    public function get_js_object_name()
     {
-        return preg_replace('~[^a-z0-9_]*~i', '', $this->getId()) . 'JsObject';
+        return preg_replace('~[^a-z0-9_]*~i', '', $this->get_id()) . 'JsObject';
     }
-
     /**
      * Set count totals
      *
      * @param bool $count
      * @return $this
      */
-    public function setCountTotals($count = true)
+    public function set_count_totals($count = true)
     {
-        $this->_countTotals = $count;
+        $this->_count_totals = $count;
         return $this;
     }
-
     /**
      * Return count totals
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getCountTotals()
+    public function get_count_totals()
     {
-        return $this->_countTotals;
+        return $this->_count_totals;
     }
-
     /**
      * Set totals
      *
      * @param \Magento\Framework\DataObject $totals
      * @return void
      */
-    public function setTotals(\Magento\Framework\DataObject $totals)
+    public function set_totals(\Magento\Framework\Data_Object $totals)
     {
-        $this->_varTotals = $totals;
+        $this->_var_totals = $totals;
     }
-
     /**
      * Retrieve totals
      *
      * @return \Magento\Framework\DataObject
      */
-    public function getTotals()
+    public function get_totals()
     {
-        return $this->_varTotals;
+        return $this->_var_totals;
     }
-
     /**
      * Generate list of grid buttons
      *
      * @return string
      */
-    public function getMainButtonsHtml()
+    public function get_main_buttons_html()
     {
         $html = '';
-        if ($this->getColumnSet()->isFilterVisible()) {
-            $html .= $this->getSearchButtonHtml();
-            $html .= $this->getResetFilterButtonHtml();
+        if ($this->get_column_set()->is_filter_visible()) {
+            $html .= $this->get_search_button_html();
+            $html .= $this->get_reset_filter_button_html();
         }
         return $html;
     }
-
     /**
      * Generate reset button
      *
      * @return string
      */
-    public function getResetFilterButtonHtml()
+    public function get_reset_filter_button_html()
     {
-        return $this->getChildHtml('reset_filter_button');
+        return $this->get_child_html('reset_filter_button');
     }
-
     /**
      * Generate search button
      *
      * @return string
      */
-    public function getSearchButtonHtml()
+    public function get_search_button_html()
     {
-        return $this->getChildHtml('search_button');
+        return $this->get_child_html('search_button');
     }
 }

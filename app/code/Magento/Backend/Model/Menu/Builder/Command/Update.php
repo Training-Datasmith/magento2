@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Menu\Builder\Command;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Backend\Model\Menu\Builder\Command;
  * @api
  * @since 100.0.2
  */
-class Update extends \Magento\Backend\Model\Menu\Builder\AbstractCommand
+class Update extends \Magento\Backend\Model\Menu\Builder\Abstract_Command
 {
     /**
      * Update item data
@@ -21,11 +20,11 @@ class Update extends \Magento\Backend\Model\Menu\Builder\AbstractCommand
      * @param array $itemParams
      * @return array
      */
-    protected function _execute(array $itemParams)
+    protected function _execute(array $item_params)
     {
         foreach ($this->_data as $key => $value) {
-            $itemParams[$key] = $value;
+            $item_params[$key] = $value;
         }
-        return $itemParams;
+        return $item_params;
     }
 }

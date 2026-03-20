@@ -1,63 +1,54 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget;
 
 use Magento\Backend\Block\Template;
-use Magento\Backend\Block\Widget\Button\ButtonList;
+use Magento\Backend\Block\Widget\Button\Button_List;
 use Magento\Backend\Block\Widget\Button\Item as ButtonItem;
-
 /**
  * Backend container block
  *
  * @api
  * @since 100.0.2
  */
-class Container extends Template implements ContainerInterface
+class Container extends Template implements Container_Interface
 {
     /**
      * Initialization parameters in pseudo-constructor
      */
     public const PARAM_CONTROLLER = 'controller';
-
     public const PARAM_HEADER_TEXT = 'header_text';
-
     /**
      * @var string
      */
     protected $_controller = 'empty';
-
     /**
      * @var string
      */
-    protected $_headerText = 'Container Widget Header';
-
+    protected $_header_text = 'Container Widget Header';
     /**
      * @var ButtonList
      */
-    protected $buttonList;
-
+    protected $button_list;
     /**
      * @var Button\ToolbarInterface
      */
     protected $toolbar;
-
     /**
      * @param Context $context
      * @param array $data
      */
     public function __construct(Context $context, array $data = [])
     {
-        $this->buttonList = $context->getButtonList();
-        $this->toolbar = $context->getButtonToolbar();
+        $this->button_list = $context->get_button_list();
+        $this->toolbar = $context->get_button_toolbar();
         parent::__construct($context, $data);
     }
-
     /**
      * Initialize "controller" and "header text"
      *
@@ -66,14 +57,13 @@ class Container extends Template implements ContainerInterface
     protected function _construct()
     {
         parent::_construct();
-        if ($this->hasData(self::PARAM_CONTROLLER)) {
-            $this->_controller = $this->_getData(self::PARAM_CONTROLLER);
+        if ($this->has_data(self::PARAM_CONTROLLER)) {
+            $this->_controller = $this->_get_data(self::PARAM_CONTROLLER);
         }
-        if ($this->hasData(self::PARAM_HEADER_TEXT)) {
-            $this->_headerText = $this->_getData(self::PARAM_HEADER_TEXT);
+        if ($this->has_data(self::PARAM_HEADER_TEXT)) {
+            $this->_header_text = $this->_get_data(self::PARAM_HEADER_TEXT);
         }
     }
-
     /**
      * Public wrapper for the button list
      *
@@ -84,24 +74,22 @@ class Container extends Template implements ContainerInterface
      * @param string|null $region That button should be displayed in ('toolbar', 'header', 'footer', null)
      * @return $this
      */
-    public function addButton($buttonId, $data, $level = 0, $sortOrder = 0, $region = 'toolbar')
+    public function add_button($button_id, $data, $level = 0, $sort_order = 0, $region = 'toolbar')
     {
-        $this->buttonList->add($buttonId, $data, $level, $sortOrder, $region);
+        $this->button_list->add($button_id, $data, $level, $sort_order, $region);
         return $this;
     }
-
     /**
      * Public wrapper for the button list
      *
      * @param string $buttonId
      * @return $this
      */
-    public function removeButton($buttonId)
+    public function remove_button($button_id)
     {
-        $this->buttonList->remove($buttonId);
+        $this->button_list->remove($button_id);
         return $this;
     }
-
     /**
      * Public wrapper for protected _updateButton method
      *
@@ -110,82 +98,76 @@ class Container extends Template implements ContainerInterface
      * @param string $data
      * @return $this
      */
-    public function updateButton($buttonId, $key, $data)
+    public function update_button($button_id, $key, $data)
     {
-        $this->buttonList->update($buttonId, $key, $data);
+        $this->button_list->update($button_id, $key, $data);
         return $this;
     }
-
     /**
      * Preparing child blocks for each added button
      *
      * @return $this
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
-        $this->toolbar->pushButtons($this, $this->buttonList);
-        return parent::_prepareLayout();
+        $this->toolbar->push_buttons($this, $this->button_list);
+        return parent::_prepare_layout();
     }
-
     /**
      * Produce buttons HTML
      *
      * @param string $region
      * @return string
      */
-    public function getButtonsHtml($region = null)
+    public function get_buttons_html($region = null)
     {
         $out = '';
-        foreach ($this->buttonList->getItems() as $buttons) {
+        foreach ($this->button_list->get_items() as $buttons) {
             /** @var ButtonItem $item */
             foreach ($buttons as $item) {
-                if ($region && $region != $item->getRegion()) {
+                if ($region && $region != $item->get_region()) {
                     continue;
                 }
-                $out .= $this->getChildHtml($item->getButtonKey());
+                $out .= $this->get_child_html($item->get_button_key());
             }
         }
         return $out;
     }
-
     /**
      * Get header text
      *
      * @return string
      */
-    public function getHeaderText()
+    public function get_header_text()
     {
-        return $this->_headerText;
+        return $this->_header_text;
     }
-
     /**
      * Get header CSS class
      *
      * @return string
      */
-    public function getHeaderCssClass()
+    public function get_header_css_class()
     {
         return 'head-' . strtr($this->_controller ?? '', '_', '-');
     }
-
     /**
      * Get header HTML
      *
      * @return string
      */
-    public function getHeaderHtml()
+    public function get_header_html()
     {
-        return '<h3 class="' . $this->getHeaderCssClass() . '">' . $this->getHeaderText() . '</h3>';
+        return '<h3 class="' . $this->get_header_css_class() . '">' . $this->get_header_text() . '</h3>';
     }
-
     /**
      * Check if there's anything to display in footer
      *
      * @return boolean
      */
-    public function hasFooterButtons()
+    public function has_footer_buttons()
     {
-        foreach ($this->buttonList->getItems() as $buttons) {
+        foreach ($this->button_list->get_items() as $buttons) {
             foreach ($buttons as $data) {
                 if (isset($data['region']) && 'footer' == $data['region']) {
                     return true;
@@ -194,15 +176,14 @@ class Container extends Template implements ContainerInterface
         }
         return false;
     }
-
     /**
      * Check whether button rendering is allowed in current context
      *
      * @param ButtonItem $item
      * @return bool
      */
-    public function canRender(Button\Item $item)
+    public function can_render(Button\Item $item)
     {
-        return !$item->isDeleted();
+        return !$item->is_deleted();
     }
 }

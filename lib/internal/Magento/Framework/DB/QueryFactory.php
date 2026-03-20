@@ -1,31 +1,28 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB;
 
 /**
  * Class QueryFactory
  */
-class QueryFactory
+class Query_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->objectManager = $objectManager;
+        $this->object_manager = $object_manager;
     }
-
     /**
      * Create Query object
      *
@@ -34,16 +31,11 @@ class QueryFactory
      * @return QueryInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function create($className, array $arguments = [])
+    public function create($class_name, array $arguments = [])
     {
-        $query = $this->objectManager->create($className, $arguments);
-        if (!$query instanceof QueryInterface) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                new \Magento\Framework\Phrase(
-                    '%1 doesn\'t implement \Magento\Framework\DB\QueryInterface',
-                    [$className]
-                )
-            );
+        $query = $this->object_manager->create($class_name, $arguments);
+        if (!$query instanceof Query_Interface) {
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('%1 doesn\'t implement \Magento\Framework\DB\QueryInterface', [$class_name]));
         }
         return $query;
     }

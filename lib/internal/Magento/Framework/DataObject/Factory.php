@@ -4,10 +4,8 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\Framework\DataObject;
+declare (strict_types=1);
+namespace Magento\Framework\Data_Object;
 
 /**
  * Class Factory
@@ -24,6 +22,6 @@ class Factory
      */
     public function create(array $data = [])
     {
-        return new \Magento\Framework\DataObject($data);
+        return new \Magento\Framework\Data_Object($data);
     }
 }

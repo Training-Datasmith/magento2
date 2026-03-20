@@ -1,55 +1,46 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
-class View implements ViewInterface
+class View implements View_Interface
 {
     /**
      * @var \Magento\Framework\View\LayoutInterface
      */
     protected $_layout;
-
     /**
      * @var \Magento\Framework\Config\ScopeInterface
      */
-    protected $_configScope;
-
+    protected $_config_scope;
     /**
      * @var \Magento\Framework\Event\ManagerInterface
      */
-    protected $_eventManager;
-
+    protected $_event_manager;
     /**
      * @var \Magento\Framework\View\Result\Page
      */
     protected $page;
-
     /**
      * @var ActionFlag
      */
-    protected $_actionFlag;
-
+    protected $_action_flag;
     /**
      * @var ResponseInterface
      */
     protected $_response;
-
     /**
      * @var RequestInterface
      */
     protected $_request;
-
     /**
      * @var bool
      */
-    protected $_isLayoutLoaded = false;
-
+    protected $_is_layout_loaded = false;
     /**
      * @param \Magento\Framework\View\LayoutInterface $layout
      * @param RequestInterface $request
@@ -59,98 +50,81 @@ class View implements ViewInterface
      * @param \Magento\Framework\View\Result\PageFactory $pageFactory
      * @param ActionFlag $actionFlag
      */
-    public function __construct(
-        \Magento\Framework\View\LayoutInterface $layout,
-        RequestInterface $request,
-        ResponseInterface $response,
-        \Magento\Framework\Config\ScopeInterface $configScope,
-        \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Magento\Framework\View\Result\PageFactory $pageFactory,
-        ActionFlag $actionFlag
-    ) {
+    public function __construct(\Magento\Framework\View\Layout_Interface $layout, Request_Interface $request, Response_Interface $response, \Magento\Framework\Config\Scope_Interface $config_scope, \Magento\Framework\Event\Manager_Interface $event_manager, \Magento\Framework\View\Result\Page_Factory $page_factory, Action_Flag $action_flag)
+    {
         $this->_layout = $layout;
         $this->_request = $request;
         $this->_response = $response;
-        $this->_configScope = $configScope;
-        $this->_eventManager = $eventManager;
-        $this->_actionFlag = $actionFlag;
-        $this->page = $pageFactory->create(true);
+        $this->_config_scope = $config_scope;
+        $this->_event_manager = $event_manager;
+        $this->_action_flag = $action_flag;
+        $this->page = $page_factory->create(true);
     }
-
     /**
      * Retrieve current page object
      *
      * @return \Magento\Framework\View\Result\Page
      */
-    public function getPage()
+    public function get_page()
     {
         return $this->page;
     }
-
     /**
      * Retrieve current layout object
      *
      * @return \Magento\Framework\View\LayoutInterface
      */
-    public function getLayout()
+    public function get_layout()
     {
-        return $this->page->getLayout();
+        return $this->page->get_layout();
     }
-
     /**
      * {@inheritdoc}
      */
-    public function loadLayout($handles = null, $generateBlocks = true, $generateXml = true, $addActionHandles = true)
+    public function load_layout($handles = null, $generate_blocks = true, $generate_xml = true, $add_action_handles = true)
     {
-        if ($this->_isLayoutLoaded) {
+        if ($this->_is_layout_loaded) {
             throw new \RuntimeException('Layout must be loaded only once.');
         }
         // if handles were specified in arguments load them first
         if (!empty($handles)) {
-            $this->getLayout()->getUpdate()->addHandle($handles);
+            $this->get_layout()->get_update()->add_handle($handles);
         }
-
-        if ($addActionHandles) {
+        if ($add_action_handles) {
             // add default layout handles for this action
-            $this->page->initLayout();
+            $this->page->init_layout();
         }
-        $this->loadLayoutUpdates();
-
-        if (!$generateXml) {
+        $this->load_layout_updates();
+        if (!$generate_xml) {
             return $this;
         }
-        $this->generateLayoutXml();
-
-        if (!$generateBlocks) {
+        $this->generate_layout_xml();
+        if (!$generate_blocks) {
             return $this;
         }
-        $this->generateLayoutBlocks();
-        $this->_isLayoutLoaded = true;
-
+        $this->generate_layout_blocks();
+        $this->_is_layout_loaded = true;
         return $this;
     }
-
     /**
      * Retrieve the default layout handle name for the current action
      *
      * @return string
      */
-    public function getDefaultLayoutHandle()
+    public function get_default_layout_handle()
     {
-        return $this->page->getDefaultLayoutHandle();
+        return $this->page->get_default_layout_handle();
     }
-
     /**
      * Add layout handle by full controller action name
      *
      * @return $this
      */
-    public function addActionLayoutHandles()
+    public function add_action_layout_handles()
     {
-        $this->getLayout()->getUpdate()->addHandle($this->getDefaultLayoutHandle());
+        $this->get_layout()->get_update()->add_handle($this->get_default_layout_handle());
         return $this;
     }
-
     /**
      * Add layout updates handles associated with the action page
      *
@@ -158,94 +132,80 @@ class View implements ViewInterface
      * @param string|null $defaultHandle
      * @return bool
      */
-    public function addPageLayoutHandles(array $parameters = [], $defaultHandle = null)
+    public function add_page_layout_handles(array $parameters = [], $default_handle = null)
     {
-        return $this->page->addPageLayoutHandles($parameters, $defaultHandle);
+        return $this->page->add_page_layout_handles($parameters, $default_handle);
     }
-
     /**
      * Load layout updates
      *
      * @return $this
      */
-    public function loadLayoutUpdates()
+    public function load_layout_updates()
     {
-        $this->page->getConfig()->publicBuild();
+        $this->page->get_config()->public_build();
         return $this;
     }
-
     /**
      * Generate layout xml
      *
      * @return $this
      */
-    public function generateLayoutXml()
+    public function generate_layout_xml()
     {
-        $this->page->getConfig()->publicBuild();
+        $this->page->get_config()->public_build();
         return $this;
     }
-
     /**
      * Generate layout blocks
      *
      * @return $this
      */
-    public function generateLayoutBlocks()
+    public function generate_layout_blocks()
     {
-        $this->page->getConfig()->publicBuild();
+        $this->page->get_config()->public_build();
         return $this;
     }
-
     /**
      * Rendering layout
      *
      * @param   string $output
      * @return  $this
      */
-    public function renderLayout($output = '')
+    public function render_layout($output = '')
     {
-        if ($this->_actionFlag->get('', 'no-renderLayout')) {
+        if ($this->_action_flag->get('', 'no-renderLayout')) {
             return $this;
         }
-
         \Magento\Framework\Profiler::start('LAYOUT');
-
         \Magento\Framework\Profiler::start('layout_render');
-
         if ('' !== $output) {
-            $this->getLayout()->addOutputElement($output);
+            $this->get_layout()->add_output_element($output);
         }
-
-        $this->_eventManager->dispatch('controller_action_layout_render_before');
-        $this->_eventManager->dispatch(
-            'controller_action_layout_render_before_' . $this->_request->getFullActionName()
-        );
-
-        $this->page->renderResult($this->_response);
+        $this->_event_manager->dispatch('controller_action_layout_render_before');
+        $this->_event_manager->dispatch('controller_action_layout_render_before_' . $this->_request->get_full_action_name());
+        $this->page->render_result($this->_response);
         \Magento\Framework\Profiler::stop('layout_render');
-
         \Magento\Framework\Profiler::stop('LAYOUT');
         return $this;
     }
-
     /**
      * Set isLayoutLoaded flag
      *
      * @param bool $value
      * @return void
      */
-    public function setIsLayoutLoaded($value)
+    public function set_is_layout_loaded($value)
     {
-        $this->_isLayoutLoaded = $value;
+        $this->_is_layout_loaded = $value;
     }
-
     /**
      * Returns is layout loaded
      *
      * @return bool
      */
-    public function isLayoutLoaded()
+    public function is_layout_loaded()
     {
-        return $this->_isLayoutLoaded;
+        return $this->_is_layout_loaded;
     }
 }

@@ -1,139 +1,115 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Crontab;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\Exception\Localized_Exception;
 use Magento\Framework\Filesystem;
 use Magento\Framework\Phrase;
-use Magento\Framework\ShellInterface;
-
+use Magento\Framework\Shell_Interface;
 /**
  * Manager works with cron tasks
  */
-class CrontabManager implements CrontabManagerInterface
+class Crontab_Manager implements Crontab_Manager_Interface
 {
     /**
      * @var ShellInterface
      */
     private $shell;
-
     /**
      * @var Filesystem
      */
     private $filesystem;
-
     /**
      * @param ShellInterface $shell
      * @param Filesystem $filesystem
      */
-    public function __construct(
-        ShellInterface $shell,
-        Filesystem $filesystem
-    ) {
+    public function __construct(Shell_Interface $shell, Filesystem $filesystem)
+    {
         $this->shell = $shell;
         $this->filesystem = $filesystem;
     }
-
     /**
      * Build tasks block start text.
      *
      * @return string
      */
-    private function getTasksBlockStart()
+    private function get_tasks_block_start()
     {
-        $tasksBlockStart = self::TASKS_BLOCK_START;
+        $tasks_block_start = self::TASKS_BLOCK_START;
         if (defined('BP')) {
-            $tasksBlockStart .= ' ' . hash('sha256', BP);
+            $tasks_block_start .= ' ' . hash('sha256', BP);
         }
-        return $tasksBlockStart;
+        return $tasks_block_start;
     }
-
     /**
      * Build tasks block end text.
      *
      * @return string
      */
-    private function getTasksBlockEnd()
+    private function get_tasks_block_end()
     {
-        $tasksBlockEnd = self::TASKS_BLOCK_END;
+        $tasks_block_end = self::TASKS_BLOCK_END;
         if (defined('BP')) {
-            $tasksBlockEnd .= ' ' . hash('sha256', BP);
+            $tasks_block_end .= ' ' . hash('sha256', BP);
         }
-        return $tasksBlockEnd;
+        return $tasks_block_end;
     }
-
     /**
      * @inheritdoc
      */
-    public function getTasks()
+    public function get_tasks()
     {
-        $this->checkSupportedOs();
-        $content = $this->getCrontabContent();
-        $pattern = '!(' . $this->getTasksBlockStart() . ')(.*?)(' . $this->getTasksBlockEnd() . ')!s';
-
+        $this->check_supported_os();
+        $content = $this->get_crontab_content();
+        $pattern = '!(' . $this->get_tasks_block_start() . ')(.*?)(' . $this->get_tasks_block_end() . ')!s';
         if (preg_match($pattern, $content, $matches)) {
             $tasks = trim($matches[2] ?? '', PHP_EOL);
             $tasks = explode(PHP_EOL, $tasks);
             return $tasks;
         }
-
         return [];
     }
-
     /**
      * @inheritdoc
      */
-    public function saveTasks(array $tasks)
+    public function save_tasks(array $tasks)
     {
         if (!$tasks) {
-            throw new LocalizedException(new Phrase('The list of tasks is empty. Add tasks and try again.'));
+            throw new Localized_Exception(new Phrase('The list of tasks is empty. Add tasks and try again.'));
         }
-
-        $this->checkSupportedOs();
-        $baseDir = $this->filesystem->getDirectoryRead(DirectoryList::ROOT)->getAbsolutePath();
-        $logDir = $this->filesystem->getDirectoryRead(DirectoryList::LOG)->getAbsolutePath();
-
+        $this->check_supported_os();
+        $base_dir = $this->filesystem->get_directory_read(Directory_List::ROOT)->get_absolute_path();
+        $log_dir = $this->filesystem->get_directory_read(Directory_List::LOG)->get_absolute_path();
         foreach ($tasks as $key => $task) {
             if (empty($task['expression'])) {
                 $tasks[$key]['expression'] = '* * * * *';
             }
-
             if (empty($task['command'])) {
-                throw new LocalizedException(new Phrase("The command shouldn't be empty. Enter and try again."));
+                throw new Localized_Exception(new Phrase("The command shouldn't be empty. Enter and try again."));
             }
-
-            $tasks[$key]['command'] = str_replace(
-                ['{magentoRoot}', '{magentoLog}'],
-                [$baseDir, $logDir],
-                $task['command']
-            );
+            $tasks[$key]['command'] = str_replace(['{magentoRoot}', '{magentoLog}'], [$base_dir, $log_dir], $task['command']);
         }
-
-        $content = $this->getCrontabContent();
-        $content = $this->cleanMagentoSection($content);
-        $content = $this->generateSection($content, $tasks);
-
+        $content = $this->get_crontab_content();
+        $content = $this->clean_magento_section($content);
+        $content = $this->generate_section($content, $tasks);
         $this->save($content);
     }
-
     /**
      * @inheritdoc
      */
-    public function removeTasks()
+    public function remove_tasks()
     {
-        $this->checkSupportedOs();
-        $content = $this->getCrontabContent();
-        $content = $this->cleanMagentoSection($content);
+        $this->check_supported_os();
+        $content = $this->get_crontab_content();
+        $content = $this->clean_magento_section($content);
         $this->save($content);
     }
-
     /**
      * Generate Magento Tasks Section
      *
@@ -141,42 +117,32 @@ class CrontabManager implements CrontabManagerInterface
      * @param array $tasks
      * @return string
      */
-    private function generateSection($content, $tasks = [])
+    private function generate_section($content, $tasks = [])
     {
         if ($tasks) {
             // Add EOL symbol to previous line if not exist.
             if (substr($content, -strlen(PHP_EOL)) !== PHP_EOL) {
                 $content .= PHP_EOL;
             }
-
-            $content .= $this->getTasksBlockStart() . PHP_EOL;
+            $content .= $this->get_tasks_block_start() . PHP_EOL;
             foreach ($tasks as $task) {
                 $content .= $task['expression'] . ' ' . PHP_BINARY . ' ' . $task['command'] . PHP_EOL;
             }
-            $content .= $this->getTasksBlockEnd() . PHP_EOL;
+            $content .= $this->get_tasks_block_end() . PHP_EOL;
         }
-
         return $content;
     }
-
     /**
      * Clean Magento Tasks Section in crontab content
      *
      * @param string $content
      * @return string
      */
-    private function cleanMagentoSection($content)
+    private function clean_magento_section($content)
     {
-        $content = preg_replace(
-            '!' . preg_quote($this->getTasksBlockStart()) . '.*?'
-            . preg_quote($this->getTasksBlockEnd() . PHP_EOL) . '!s',
-            '',
-            $content
-        );
-
+        $content = preg_replace('!' . preg_quote($this->get_tasks_block_start()) . '.*?' . preg_quote($this->get_tasks_block_end() . PHP_EOL) . '!s', '', $content);
         return $content;
     }
-
     /**
      * Get crontab content without Magento Tasks Section
      *
@@ -184,17 +150,15 @@ class CrontabManager implements CrontabManagerInterface
      *
      * @return string
      */
-    private function getCrontabContent()
+    private function get_crontab_content()
     {
         try {
-            $content = (string)$this->shell->execute('crontab -l 2>/dev/null');
-        } catch (LocalizedException $e) {
+            $content = (string) $this->shell->execute('crontab -l 2>/dev/null');
+        } catch (Localized_Exception $e) {
             return '';
         }
-
         return $content;
     }
-
     /**
      * Save crontab
      *
@@ -205,17 +169,12 @@ class CrontabManager implements CrontabManagerInterface
     private function save($content)
     {
         $content = str_replace(['%', '"', '$'], ['%%', '\"', '\$'], $content);
-
         try {
             $this->shell->execute('echo "' . $content . '" | crontab -');
-        } catch (LocalizedException $e) {
-            throw new LocalizedException(
-                new Phrase('Error during saving of crontab: %1', [$e->getPrevious()->getMessage()]),
-                $e
-            );
+        } catch (Localized_Exception $e) {
+            throw new Localized_Exception(new Phrase('Error during saving of crontab: %1', [$e->get_previous()->get_message()]), $e);
         }
     }
-
     /**
      * Check that OS is supported
      *
@@ -224,12 +183,10 @@ class CrontabManager implements CrontabManagerInterface
      * @return void
      * @throws LocalizedException
      */
-    private function checkSupportedOs()
+    private function check_supported_os()
     {
         if (stripos(PHP_OS, 'WIN') === 0) {
-            throw new LocalizedException(
-                new Phrase('Your operating system is not supported to work with this command')
-            );
+            throw new Localized_Exception(new Phrase('Your operating system is not supported to work with this command'));
         }
     }
 }

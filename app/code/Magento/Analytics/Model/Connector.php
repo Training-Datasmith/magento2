@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model;
 
-use Magento\Framework\Exception\NotFoundException;
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\Exception\Not_Found_Exception;
+use Magento\Framework\Object_Manager_Interface;
 /**
  * A connector to external services.
  *
@@ -27,10 +25,10 @@ class Connector
          * The list may be configured in each module via '/etc/di.xml'.
          */
         private array $commands,
-        private readonly ObjectManagerInterface $objectManager
-    ) {
+        private readonly Object_Manager_Interface $object_manager
+    )
+    {
     }
-
     /**
      * Executes a command in accordance with the given name.
      *
@@ -38,15 +36,13 @@ class Connector
      * @return bool
      * @throws NotFoundException if the command is not found.
      */
-    public function execute($commandName)
+    public function execute($command_name)
     {
-        if (!array_key_exists($commandName, $this->commands)) {
-            throw new NotFoundException(__('Command "%1" was not found.', $commandName));
+        if (!array_key_exists($command_name, $this->commands)) {
+            throw new Not_Found_Exception(__('Command "%1" was not found.', $command_name));
         }
-
         /** @var \Magento\Analytics\Model\Connector\CommandInterface $command */
-        $command = $this->objectManager->create($this->commands[$commandName]);
-
+        $command = $this->object_manager->create($this->commands[$command_name]);
         return $command->execute();
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Ddl;
 
 /**
@@ -22,27 +21,21 @@ class Sequence
      * @param bool|true $unsigned Flag to set sequence_value as UNSIGNED field
      * @return string
      */
-    public function getCreateSequenceDdl(
-        $name,
-        $startNumber = 1,
-        $columnType = Table::TYPE_INTEGER,
-        $unsigned = true
-    ) {
+    public function get_create_sequence_ddl($name, $start_number = 1, $column_type = Table::TYPE_INTEGER, $unsigned = true)
+    {
         $format = 'CREATE TABLE %s (
                      sequence_value %s %s NOT NULL AUTO_INCREMENT,
                      PRIMARY KEY (sequence_value)
             ) AUTO_INCREMENT = %d ENGINE = INNODB';
-
-        return sprintf($format, $name, $columnType, $unsigned ? 'UNSIGNED' : '', $startNumber);
+        return sprintf($format, $name, $column_type, $unsigned ? 'UNSIGNED' : '', $start_number);
     }
-
     /**
      * Return SQL for drop sequence
      *
      * @param string $name
      * @return string
      */
-    public function dropSequence($name)
+    public function drop_sequence($name)
     {
         $format = 'DROP TABLE %s';
         return sprintf($format, $name);

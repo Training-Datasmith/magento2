@@ -1,52 +1,47 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Helper;
 
 /**
  * Abstract DB helper class
  */
-abstract class AbstractHelper
+abstract class Abstract_Helper
 {
     /**
      * Resource helper module prefix
      *
      * @var string
      */
-    protected $_modulePrefix;
-
+    protected $_module_prefix;
     /**
      * @var \Magento\Framework\App\ResourceConnection
      */
     protected $_resource;
-
     /**
      * Initialize resource helper instance
      *
      * @param \Magento\Framework\App\ResourceConnection $resource
      * @param string $modulePrefix
      */
-    public function __construct(\Magento\Framework\App\ResourceConnection $resource, $modulePrefix)
+    public function __construct(\Magento\Framework\App\Resource_Connection $resource, $module_prefix)
     {
         $this->_resource = $resource;
-        $this->_modulePrefix = (string)$modulePrefix;
+        $this->_module_prefix = (string) $module_prefix;
     }
-
     /**
      * Retrieves connection to the resource
      *
      * @return \Magento\Framework\DB\Adapter\AdapterInterface
      */
-    protected function getConnection()
+    protected function get_connection()
     {
-        return $this->_resource->getConnection($this->_modulePrefix);
+        return $this->_resource->get_connection($this->_module_prefix);
     }
-
     /**
      * Escapes value, that participates in LIKE, with '\' symbol.
      * Note: this func cannot be used on its own, because different RDMBS may use different default escape symbols,
@@ -65,24 +60,22 @@ abstract class AbstractHelper
      * @param array $options
      * @return string
      */
-    public function escapeLikeValue($value, $options = [])
+    public function escape_like_value($value, $options = [])
     {
         $value = $value !== null ? str_replace('\\', '\\\\', $value) : '';
-
-        $replaceFrom = [];
-        $replaceTo = [];
+        $replace_from = [];
+        $replace_to = [];
         if (empty($options['allow_symbol_mask'])) {
-            $replaceFrom[] = '_';
-            $replaceTo[] = '\_';
+            $replace_from[] = '_';
+            $replace_to[] = '\_';
         }
         if (empty($options['allow_string_mask'])) {
-            $replaceFrom[] = '%';
-            $replaceTo[] = '\%';
+            $replace_from[] = '%';
+            $replace_to[] = '\%';
         }
-        if ($replaceFrom) {
-            $value = str_replace($replaceFrom, $replaceTo, $value);
+        if ($replace_from) {
+            $value = str_replace($replace_from, $replace_to, $value);
         }
-
         if (isset($options['position'])) {
             switch ($options['position']) {
                 case 'any':
@@ -98,10 +91,8 @@ abstract class AbstractHelper
                     break;
             }
         }
-
         return $value;
     }
-
     /**
      * Escapes, quotes and adds escape symbol to LIKE expression. For options and escaping see escapeLikeValue().
      *
@@ -111,8 +102,7 @@ abstract class AbstractHelper
      *
      * @see escapeLikeValue()
      */
-    abstract public function addLikeEscape($value, $options = []);
-
+    abstract public function add_like_escape($value, $options = []);
     /**
      * Returns case insensitive LIKE construction. For options and escaping see escapeLikeValue().
      *
@@ -123,9 +113,9 @@ abstract class AbstractHelper
      *
      * @see escapeLikeValue()
      */
-    public function getCILike($field, $value, $options = [])
+    public function get_ci_like($field, $value, $options = [])
     {
-        $quotedField = $this->getConnection()->quoteIdentifier($field);
-        return new \Zend_Db_Expr($quotedField . ' LIKE ' . $this->addLikeEscape($value, $options));
+        $quoted_field = $this->get_connection()->quote_identifier($field);
+        return new \Zend_Db_Expr($quoted_field . ' LIKE ' . $this->add_like_escape($value, $options));
     }
 }

@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdvancedSearch\Model\Client;
+namespace Magento\Advanced_Search\Model\Client;
 
 /**
  * @api
  * @since 100.1.0
  */
-interface ClientOptionsInterface
+interface Client_Options_Interface
 {
     /**
      * Return search client options
@@ -21,5 +20,5 @@ interface ClientOptionsInterface
      * @return array
      * @since 100.1.0
      */
-    public function prepareClientOptions($options = []);
+    public function prepare_client_options($options = []);
 }

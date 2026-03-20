@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\Data\Form;
-use Magento\Framework\Data\Form\AbstractForm;
-
+use Magento\Framework\Data\Form\Abstract_Form;
 /**
  * Form element collection
  */
@@ -22,36 +20,32 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
      * @var array
      */
     private $_elements;
-
     /**
      * Elements container
      *
      * @var AbstractForm
      */
     private $_container;
-
     /**
      * Class constructor
      *
      * @param AbstractForm $container
      */
-    public function __construct(AbstractForm $container)
+    public function __construct(Abstract_Form $container)
     {
         $this->_elements = [];
         $this->_container = $container;
     }
-
     /**
      * Implementation of \IteratorAggregate::getIterator()
      *
      * @return \ArrayIterator
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function getIterator()
     {
         return new \ArrayIterator($this->_elements);
     }
-
     /**
      * Implementation of \ArrayAccess:offsetSet()
      *
@@ -59,48 +53,44 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
      * @param mixed $value
      * @return void
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function offsetSet($key, $value)
     {
         $this->_elements[$key] = $value;
     }
-
     /**
      * Implementation of \ArrayAccess:offsetGet()
      *
      * @param mixed $key
      * @return AbstractElement
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function offsetGet($key)
     {
         return $this->_elements[$key];
     }
-
     /**
      * Implementation of \ArrayAccess:offsetUnset()
      *
      * @param mixed $key
      * @return void
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function offsetUnset($key)
     {
         unset($this->_elements[$key]);
     }
-
     /**
      * Implementation of \ArrayAccess:offsetExists()
      *
      * @param mixed $key
      * @return boolean
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function offsetExists($key)
     {
         return isset($this->_elements[$key]);
     }
-
     /**
      * Add element to collection
      *
@@ -109,36 +99,33 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
      * @param bool|string $after
      * @return AbstractElement
      */
-    public function add(AbstractElement $element, $after = false)
+    public function add(Abstract_Element $element, $after = false)
     {
         // Set the Form for the node
-        if ($this->_container->getForm() instanceof Form) {
-            $element->setContainer($this->_container);
-            $element->setForm($this->_container->getForm());
+        if ($this->_container->get_form() instanceof Form) {
+            $element->set_container($this->_container);
+            $element->set_form($this->_container->get_form());
         }
-
         if ($after === false) {
             $this->_elements[] = $element;
         } elseif ($after === '^') {
             array_unshift($this->_elements, $element);
         } elseif (is_string($after)) {
-            $newOrderElements = [];
-            foreach ($this->_elements as $index => $currElement) {
-                if ($currElement->getId() == $after) {
-                    $newOrderElements[] = $currElement;
-                    $newOrderElements[] = $element;
+            $new_order_elements = [];
+            foreach ($this->_elements as $index => $curr_element) {
+                if ($curr_element->get_id() == $after) {
+                    $new_order_elements[] = $curr_element;
+                    $new_order_elements[] = $element;
                     // phpcs:ignore Magento2.Performance.ForeachArrayMerge
-                    $this->_elements = array_merge($newOrderElements, array_slice($this->_elements, $index + 1));
+                    $this->_elements = array_merge($new_order_elements, array_slice($this->_elements, $index + 1));
                     return $element;
                 }
-                $newOrderElements[] = $currElement;
+                $new_order_elements[] = $curr_element;
             }
             $this->_elements[] = $element;
         }
-
         return $element;
     }
-
     /**
      * Sort elements by values using a user-defined comparison function
      *
@@ -150,17 +137,16 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
         usort($this->_elements, $callback);
         return $this;
     }
-
     /**
      * Remove element from collection
      *
      * @param mixed $elementId
      * @return $this
      */
-    public function remove($elementId)
+    public function remove($element_id)
     {
         foreach ($this->_elements as $index => $element) {
-            if ($elementId == $element->getId()) {
+            if ($element_id == $element->get_id()) {
                 unset($this->_elements[$index]);
             }
         }
@@ -168,28 +154,26 @@ class Collection implements \ArrayAccess, \IteratorAggregate, \Countable
         $this->_elements = array_merge($this->_elements, []);
         return $this;
     }
-
     /**
      * Count elements in collection
      *
      * @return int
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function count()
     {
         return count($this->_elements);
     }
-
     /**
      * Find element by ID
      *
      * @param mixed $elementId
      * @return AbstractElement
      */
-    public function searchById($elementId)
+    public function search_by_id($element_id)
     {
         foreach ($this->_elements as $element) {
-            if ($element->getId() == $elementId) {
+            if ($element->get_id() == $element_id) {
                 return $element;
             }
         }

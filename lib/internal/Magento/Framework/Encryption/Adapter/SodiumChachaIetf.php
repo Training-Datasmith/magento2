@@ -4,31 +4,26 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Encryption\Adapter;
 
 /**
  * Sodium adapter for encrypting and decrypting strings
  */
-class SodiumChachaIetf implements EncryptionAdapterInterface
+class Sodium_Chacha_Ietf implements Encryption_Adapter_Interface
 {
     /**
      * @var string
      */
     private $key;
-
     /**
      * Sodium constructor.
      * @param string $key
      */
-    public function __construct(
-        string $key
-    ) {
+    public function __construct(string $key)
+    {
         $this->key = $key;
     }
-
     /**
      * Encrypt a string
      *
@@ -39,16 +34,9 @@ class SodiumChachaIetf implements EncryptionAdapterInterface
     public function encrypt(string $data): string
     {
         $nonce = random_bytes(SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NPUBBYTES);
-        $cipherText = sodium_crypto_aead_chacha20poly1305_ietf_encrypt(
-            (string)$data,
-            $nonce,
-            $nonce,
-            $this->key
-        );
-
-        return $nonce . $cipherText;
+        $cipher_text = sodium_crypto_aead_chacha20poly1305_ietf_encrypt((string) $data, $nonce, $nonce, $this->key);
+        return $nonce . $cipher_text;
     }
-
     /**
      * Decrypt a string
      *
@@ -59,18 +47,11 @@ class SodiumChachaIetf implements EncryptionAdapterInterface
     {
         $nonce = mb_substr($data, 0, SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NPUBBYTES, '8bit');
         $payload = mb_substr($data, SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_IETF_NPUBBYTES, null, '8bit');
-
         try {
-            $plainText = sodium_crypto_aead_chacha20poly1305_ietf_decrypt(
-                $payload,
-                $nonce,
-                $nonce,
-                $this->key
-            );
-        } catch (\SodiumException $e) {
-            $plainText = '';
+            $plain_text = sodium_crypto_aead_chacha20poly1305_ietf_decrypt($payload, $nonce, $nonce, $this->key);
+        } catch (\Sodium_Exception $e) {
+            $plain_text = '';
         }
-
-        return $plainText !== false ? $plainText : '';
+        return $plain_text !== false ? $plain_text : '';
     }
 }

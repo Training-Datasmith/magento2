@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config\Composer;
 
 /**
@@ -21,7 +20,6 @@ class Package
      * @var \StdClass
      */
     protected $json;
-
     /**
      * Constructor
      *
@@ -31,7 +29,6 @@ class Package
     {
         $this->json = $json;
     }
-
     /**
      * Get JSON contents
      *
@@ -39,7 +36,7 @@ class Package
      * @param string|null $format
      * @return string|\StdClass
      */
-    public function getJson($formatted = true, $format = null)
+    public function get_json($formatted = true, $format = null)
     {
         if ($formatted) {
             if (null === $format) {
@@ -49,7 +46,6 @@ class Package
         }
         return $this->json;
     }
-
     /**
      * A getter for properties of the package
      *
@@ -65,9 +61,9 @@ class Package
      * @return mixed
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    public function get($propertyPath, $filter = null)
+    public function get($property_path, $filter = null)
     {
-        $result = $this->traverseGet($this->json, explode('->', $propertyPath ?: ''));
+        $result = $this->traverse_get($this->json, explode('->', $property_path ?: ''));
         if ($result && $filter) {
             foreach ($result as $key => $value) {
                 if (!preg_match($filter, $key)) {
@@ -77,7 +73,6 @@ class Package
         }
         return $result;
     }
-
     /**
      * Traverse an \StdClass object recursively in search of the needed property
      *
@@ -86,14 +81,14 @@ class Package
      * @param int $index
      * @return mixed
      */
-    private function traverseGet(\StdClass $json, array $chain, $index = 0)
+    private function traverse_get(\Std_Class $json, array $chain, $index = 0)
     {
         $property = $chain[$index];
         if (!property_exists($json, $property)) {
             return false;
         }
         if (isset($chain[$index + 1])) {
-            return $this->traverseGet($json->{$property}, $chain, $index + 1);
+            return $this->traverse_get($json->{$property}, $chain, $index + 1);
         } else {
             return $json->{$property};
         }

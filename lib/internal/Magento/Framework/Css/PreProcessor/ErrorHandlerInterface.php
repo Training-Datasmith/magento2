@@ -4,16 +4,15 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Framework\Css\PreProcessor;
+declare (strict_types=1);
+namespace Magento\Framework\Css\Pre_Processor;
 
 /**
  * Error handler interface
  *
  * @api
  */
-interface ErrorHandlerInterface
+interface Error_Handler_Interface
 {
     /**
      * Process an exception which was thrown during processing dynamic instructions
@@ -21,5 +20,5 @@ interface ErrorHandlerInterface
      * @param \Exception $e
      * @return void
      */
-    public function processException(\Exception $e);
+    public function process_exception(\Exception $e);
 }

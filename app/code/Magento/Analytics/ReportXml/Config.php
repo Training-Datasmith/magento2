@@ -1,35 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml;
 
-namespace Magento\Analytics\ReportXml;
-
-use Magento\Framework\Config\DataInterface;
-
+use Magento\Framework\Config\Data_Interface;
 /**
  * Config of ReportXml
  */
-class Config implements ConfigInterface
+class Config implements Config_Interface
 {
     /**
      * Config constructor.
      */
-    public function __construct(private readonly DataInterface $data)
+    public function __construct(private readonly Data_Interface $data)
     {
     }
-
     /**
      * Returns config value by name
      *
      * @param string $queryName
      * @return array
      */
-    public function get($queryName)
+    public function get($query_name)
     {
-        return $this->data->get($queryName);
+        return $this->data->get($query_name);
     }
 }

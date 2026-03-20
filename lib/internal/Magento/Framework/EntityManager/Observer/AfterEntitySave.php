@@ -1,22 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Observer;
+namespace Magento\Framework\Entity_Manager\Observer;
 
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Model\AbstractModel;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-
+use Magento\Framework\Event\Observer_Interface;
+use Magento\Framework\Model\Abstract_Model;
+use Magento\Framework\Model\Resource_Model\Db\Abstract_Db;
 /**
  * Class AfterEntitySave
  */
-class AfterEntitySave implements ObserverInterface
+class After_Entity_Save implements Observer_Interface
 {
     /**
      * Apply model save operation
@@ -27,18 +25,18 @@ class AfterEntitySave implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $entity = $observer->getEvent()->getEntity();
-        if ($entity instanceof AbstractModel) {
-            if (method_exists($entity->getResource(), 'loadAllAttributes')) {
-                $entity->getResource()->loadAllAttributes($entity);
+        $entity = $observer->get_event()->get_entity();
+        if ($entity instanceof Abstract_Model) {
+            if (method_exists($entity->get_resource(), 'loadAllAttributes')) {
+                $entity->get_resource()->load_all_attributes($entity);
             }
-            $entity->getResource()->afterSave($entity);
-            $entity->afterSave();
-            $entity->getResource()->addCommitCallback([$entity, 'afterCommitCallback']);
-            if ($entity->getResource() instanceof  AbstractDb) {
-                $entity->getResource()->unserializeFields($entity);
+            $entity->get_resource()->after_save($entity);
+            $entity->after_save();
+            $entity->get_resource()->add_commit_callback([$entity, 'afterCommitCallback']);
+            if ($entity->get_resource() instanceof Abstract_Db) {
+                $entity->get_resource()->unserialize_fields($entity);
             }
-            $entity->setHasDataChanges(false);
+            $entity->set_has_data_changes(false);
         }
     }
 }

@@ -4,8 +4,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Component;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Component;
  *
  * @api
  */
-interface ComponentRegistrarInterface
+interface Component_Registrar_Interface
 {
     /**
      * Get list of registered Magento components
@@ -23,8 +22,7 @@ interface ComponentRegistrarInterface
      * @param string $type
      * @return array
      */
-    public function getPaths($type);
-
+    public function get_paths($type);
     /**
      * Get path of a component if it is already registered
      *
@@ -32,5 +30,5 @@ interface ComponentRegistrarInterface
      * @param string $componentName
      * @return null|string
      */
-    public function getPath($type, $componentName);
+    public function get_path($type, $component_name);
 }

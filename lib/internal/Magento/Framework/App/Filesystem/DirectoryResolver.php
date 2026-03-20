@@ -4,38 +4,33 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Filesystem;
 
 use Magento\Framework\Filesystem;
-
 /**
  * Magento directories resolver.
  */
-class DirectoryResolver
+class Directory_Resolver
 {
     /**
      * @var DirectoryList
      * @deprecated $this->filesystem->getDirectoryWrite() can be used for getting directory
      */
-    private $directoryList;
-
+    private $directory_list;
     /**
      * @var \Magento\Framework\Filesystem
      */
     private $filesystem;
-
     /**
      * @param DirectoryList $directoryList
      * @param Filesystem $filesystem
      */
-    public function __construct(DirectoryList $directoryList, Filesystem $filesystem)
+    public function __construct(Directory_List $directory_list, Filesystem $filesystem)
     {
-        $this->directoryList = $directoryList;
+        $this->directory_list = $directory_list;
         $this->filesystem = $filesystem;
     }
-
     /**
      * Validate path.
      *
@@ -49,12 +44,11 @@ class DirectoryResolver
      * @return bool
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function validatePath($path, $directoryConfig = DirectoryList::MEDIA)
+    public function validate_path($path, $directory_config = Directory_List::MEDIA)
     {
-        $directory = $this->filesystem->getDirectoryWrite($directoryConfig);
-        $realPath = $directory->getDriver()->getRealPathSafety($path);
-        $root = rtrim($directory->getAbsolutePath(), DIRECTORY_SEPARATOR);
-
-        return strpos($realPath, $root) === 0;
+        $directory = $this->filesystem->get_directory_write($directory_config);
+        $real_path = $directory->get_driver()->get_real_path_safety($path);
+        $root = rtrim($directory->get_absolute_path(), DIRECTORY_SEPARATOR);
+        return strpos($real_path, $root) === 0;
     }
 }

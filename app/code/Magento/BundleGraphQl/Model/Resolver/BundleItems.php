@@ -4,41 +4,36 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\BundleGraphQl\Model\Resolver;
+declare (strict_types=1);
+namespace Magento\Bundle_Graph_Ql\Model\Resolver;
 
 use Magento\Bundle\Model\Product\Type;
-use Magento\BundleGraphQl\Model\Resolver\Options\Collection;
-use Magento\BundleGraphQl\Model\Resolver\Options\CollectionFactory;
-use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\Framework\GraphQl\Query\Resolver\ValueFactory;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-
+use Magento\Bundle_Graph_Ql\Model\Resolver\Options\Collection;
+use Magento\Bundle_Graph_Ql\Model\Resolver\Options\Collection_Factory;
+use Magento\Catalog\Api\Data\Product_Interface;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+use Magento\Framework\Graph_Ql\Config\Element\Field;
+use Magento\Framework\Graph_Ql\Query\Resolver\Value_Factory;
+use Magento\Framework\Graph_Ql\Query\Resolver_Interface;
+use Magento\Framework\Graph_Ql\Schema\Type\Resolve_Info;
 /**
  * @inheritdoc
  */
-class BundleItems implements ResolverInterface
+class Bundle_Items implements Resolver_Interface
 {
     /**
      * @var CollectionFactory
      */
-    private CollectionFactory $bundleOptionCollectionFactory;
-
+    private Collection_Factory $bundle_option_collection_factory;
     /**
      * @var ValueFactory
      */
-    private ValueFactory $valueFactory;
-
+    private Value_Factory $value_factory;
     /**
      * @var MetadataPool
      */
-    private MetadataPool $metadataPool;
-
+    private Metadata_Pool $metadata_pool;
     /**
      * @param Collection $bundleOptionCollection Deprecated. Use $bundleOptionCollectionFactory
      * @param ValueFactory $valueFactory
@@ -46,42 +41,29 @@ class BundleItems implements ResolverInterface
      * @param CollectionFactory|null $bundleOptionCollectionFactory
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function __construct(
-        Collection $bundleOptionCollection,
-        ValueFactory $valueFactory,
-        MetadataPool $metadataPool,
-        ?CollectionFactory $bundleOptionCollectionFactory = null
-    ) {
-        $this->bundleOptionCollectionFactory = $bundleOptionCollectionFactory
-            ?: ObjectManager::getInstance()->get(CollectionFactory::class);
-        $this->valueFactory = $valueFactory;
-        $this->metadataPool = $metadataPool;
+    public function __construct(Collection $bundle_option_collection, Value_Factory $value_factory, Metadata_Pool $metadata_pool, ?Collection_Factory $bundle_option_collection_factory = null)
+    {
+        $this->bundle_option_collection_factory = $bundle_option_collection_factory ?: Object_Manager::get_instance()->get(Collection_Factory::class);
+        $this->value_factory = $value_factory;
+        $this->metadata_pool = $metadata_pool;
     }
-
     /**
      * @inheritDoc
      */
-    public function resolve(Field $field, $context, ResolveInfo $info, ?array $value = null, ?array $args = null)
+    public function resolve(Field $field, $context, Resolve_Info $info, ?array $value = null, ?array $args = null)
     {
-        $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
-        if ($value['type_id'] !== Type::TYPE_CODE
-            || !isset($value[$linkField])
-            || !isset($value[ProductInterface::SKU])
-        ) {
+        $link_field = $this->metadata_pool->get_metadata(Product_Interface::class)->get_link_field();
+        if ($value['type_id'] !== Type::TYPE_CODE || !isset($value[$link_field]) || !isset($value[Product_Interface::SKU])) {
             $result = function () {
                 return null;
             };
-            return $this->valueFactory->create($result);
+            return $this->value_factory->create($result);
         }
-        $bundleOptionCollection = $this->bundleOptionCollectionFactory->create();
-        $bundleOptionCollection->addParentFilterData(
-            (int)$value[$linkField],
-            (int)$value['entity_id'],
-            $value[ProductInterface::SKU]
-        );
-        $result = function () use ($value, $linkField, $bundleOptionCollection) {
-            return $bundleOptionCollection->getOptionsByParentId((int)$value[$linkField]);
+        $bundle_option_collection = $this->bundle_option_collection_factory->create();
+        $bundle_option_collection->add_parent_filter_data((int) $value[$link_field], (int) $value['entity_id'], $value[Product_Interface::SKU]);
+        $result = function () use ($value, $link_field, $bundle_option_collection) {
+            return $bundle_option_collection->get_options_by_parent_id((int) $value[$link_field]);
         };
-        return $this->valueFactory->create($result);
+        return $this->value_factory->create($result);
     }
 }

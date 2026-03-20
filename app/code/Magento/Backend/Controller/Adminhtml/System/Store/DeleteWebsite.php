@@ -1,47 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Controller\Adminhtml\System\Store;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
-
-class DeleteWebsite extends \Magento\Backend\Controller\Adminhtml\System\Store implements HttpGetActionInterface
+use Magento\Framework\App\Action\Http_Get_Action_Interface as HttpGetActionInterface;
+class Delete_Website extends \Magento\Backend\Controller\Adminhtml\System\Store implements Http_Get_Action_Interface
 {
     /**
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
-        $itemId = $this->getRequest()->getParam('item_id', null);
-        if (!($model = $this->_objectManager->create(\Magento\Store\Model\Website::class)->load($itemId))) {
-            $this->messageManager->addErrorMessage(__('Something went wrong. Please try again.'));
+        $item_id = $this->get_request()->get_param('item_id', null);
+        if (!$model = $this->_object_manager->create(\Magento\Store\Model\Website::class)->load($item_id)) {
+            $this->message_manager->add_error_message(__('Something went wrong. Please try again.'));
             /** @var \Magento\Backend\Model\View\Result\Redirect $redirectResult */
-            $redirectResult = $this->resultRedirectFactory->create();
-            return $redirectResult->setPath('adminhtml/*/');
+            $redirect_result = $this->result_redirect_factory->create();
+            return $redirect_result->set_path('adminhtml/*/');
         }
-        if (!$model->isCanDelete()) {
-            $this->messageManager->addErrorMessage(__('This website cannot be deleted.'));
+        if (!$model->is_can_delete()) {
+            $this->message_manager->add_error_message(__('This website cannot be deleted.'));
             /** @var \Magento\Backend\Model\View\Result\Redirect $redirectResult */
-            $redirectResult = $this->resultRedirectFactory->create();
-            return $redirectResult->setPath('adminhtml/*/editWebsite', ['website_id' => $itemId]);
+            $redirect_result = $this->result_redirect_factory->create();
+            return $redirect_result->set_path('adminhtml/*/editWebsite', ['website_id' => $item_id]);
         }
-
-        $this->_addDeletionNotice('website');
-
-        $resultPage = $this->createPage();
-        $resultPage->getConfig()->getTitle()->prepend(__('Delete Web Site'));
-        $resultPage->addBreadcrumb(__('Delete Web Site'), __('Delete Web Site'))
-            ->addContent(
-                $resultPage->getLayout()->createBlock(\Magento\Backend\Block\System\Store\Delete::class)
-                    ->setFormActionUrl($this->getUrl('adminhtml/*/deleteWebsitePost'))
-                    ->setBackUrl($this->getUrl('adminhtml/*/editWebsite', ['website_id' => $itemId]))
-                    ->setStoreTypeTitle(__('Web Site'))->setDataObject($model)
-            );
-        return $resultPage;
+        $this->_add_deletion_notice('website');
+        $result_page = $this->create_page();
+        $result_page->get_config()->get_title()->prepend(__('Delete Web Site'));
+        $result_page->add_breadcrumb(__('Delete Web Site'), __('Delete Web Site'))->add_content($result_page->get_layout()->create_block(\Magento\Backend\Block\System\Store\Delete::class)->set_form_action_url($this->get_url('adminhtml/*/deleteWebsitePost'))->set_back_url($this->get_url('adminhtml/*/editWebsite', ['website_id' => $item_id]))->set_store_type_title(__('Web Site'))->set_data_object($model));
+        return $result_page;
     }
 }

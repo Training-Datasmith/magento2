@@ -4,8 +4,7 @@
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Data;
  *
  * @api
  */
-interface ValueSourceInterface
+interface Value_Source_Interface
 {
     /**
      * Get value by name
@@ -21,5 +20,5 @@ interface ValueSourceInterface
      * @param string $name
      * @return mixed
      */
-    public function getValue($name);
+    public function get_value($name);
 }

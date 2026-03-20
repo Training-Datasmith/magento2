@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model;
 
 /**
  * Contain information about encrypted file.
  */
-class FileInfo
+class File_Info
 {
     /**
      * @param string $path
@@ -25,27 +24,26 @@ class FileInfo
         /**
          * Initialization vector that was used for encryption.
          */
-        private $initializationVector = ''
-    ) {
+        private $initialization_vector = ''
+    )
+    {
     }
-
     /**
      * Retrieve path
      *
      * @return string
      */
-    public function getPath()
+    public function get_path()
     {
         return $this->path;
     }
-
     /**
      * Retrieve initialization vector
      *
      * @return string
      */
-    public function getInitializationVector()
+    public function get_initialization_vector()
     {
-        return $this->initializationVector;
+        return $this->initialization_vector;
     }
 }

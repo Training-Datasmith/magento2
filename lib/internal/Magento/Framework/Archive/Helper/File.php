@@ -1,19 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Helper class that simplifies files stream reading and writing
  */
-
 namespace Magento\Framework\Archive\Helper;
 
-use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\Exception\Localized_Exception;
 class File
 {
     /**
@@ -21,67 +18,58 @@ class File
      *
      * @var string
      */
-    protected $_fileLocation;
-
+    protected $_file_location;
     /**
      * File name
      *
      * @var string
      */
-    protected $_fileName;
-
+    protected $_file_name;
     /**
      * Full path (directory + filename) to file
      *
      * @var string
      */
-    protected $_filePath;
-
+    protected $_file_path;
     /**
      * File permissions that will be set if file opened in write mode
      *
      * @var int
      */
     protected $_chmod;
-
     /**
      * File handler
      *
      * @var resource
      */
-    protected $_fileHandler;
-
+    protected $_file_handler;
     /**
      * Whether file has been opened in write mode
      *
      * @var bool
      */
-    protected $_isInWriteMode;
-
+    protected $_is_in_write_mode;
     /**
      * Set file path via constructor
      *
      * @param string $filePath
      */
-    public function __construct($filePath)
+    public function __construct($file_path)
     {
-        $pathInfo = pathinfo($filePath);
-
-        $this->_filePath = $filePath;
-        $this->_fileLocation = isset($pathInfo['dirname']) ? $pathInfo['dirname'] : '';
-        $this->_fileName = isset($pathInfo['basename']) ? $pathInfo['basename'] : '';
+        $path_info = pathinfo($file_path);
+        $this->_file_path = $file_path;
+        $this->_file_location = isset($path_info['dirname']) ? $path_info['dirname'] : '';
+        $this->_file_name = isset($path_info['basename']) ? $path_info['basename'] : '';
     }
-
     /**
      * Close file if it's not closed before object destruction
      */
     public function __destruct()
     {
-        if ($this->_fileHandler) {
+        if ($this->_file_handler) {
             $this->_close();
         }
     }
-
     /**
      * Open file
      *
@@ -93,53 +81,26 @@ class File
      */
     public function open($mode = 'w+', $chmod = null)
     {
-        $this->_isInWriteMode = $this->_isWritableMode($mode);
-
-        if ($this->_isInWriteMode) {
-            if (!is_writable($this->_fileLocation)) {
-                throw new LocalizedException(
-                    new \Magento\Framework\Phrase(
-                        'You don\'t have permissions to write to the "%1" file.',
-                        [$this->_fileLocation]
-                    )
-                );
+        $this->_is_in_write_mode = $this->_is_writable_mode($mode);
+        if ($this->_is_in_write_mode) {
+            if (!is_writable($this->_file_location)) {
+                throw new Localized_Exception(new \Magento\Framework\Phrase('You don\'t have permissions to write to the "%1" file.', [$this->_file_location]));
             }
-
-            if (is_file($this->_filePath) && !is_writable($this->_filePath)) {
-                throw new LocalizedException(
-                    new \Magento\Framework\Phrase(
-                        'You don\'t have the permissions to open the "%1" file for writing access.',
-                        [$this->_fileName]
-                    )
-                );
+            if (is_file($this->_file_path) && !is_writable($this->_file_path)) {
+                throw new Localized_Exception(new \Magento\Framework\Phrase('You don\'t have the permissions to open the "%1" file for writing access.', [$this->_file_name]));
             }
         }
-
-        if ($this->_isReadableMode($mode) && (!is_file($this->_filePath) || !is_readable($this->_filePath))) {
-            if (!is_file($this->_filePath)) {
-                throw new LocalizedException(
-                    new \Magento\Framework\Phrase(
-                        'The "%1" file doesn\'t exist. Verify the file and try again.',
-                        [$this->_filePath]
-                    )
-                );
+        if ($this->_is_readable_mode($mode) && (!is_file($this->_file_path) || !is_readable($this->_file_path))) {
+            if (!is_file($this->_file_path)) {
+                throw new Localized_Exception(new \Magento\Framework\Phrase('The "%1" file doesn\'t exist. Verify the file and try again.', [$this->_file_path]));
             }
-
-            if (!is_readable($this->_filePath)) {
-                throw new LocalizedException(
-                    new \Magento\Framework\Phrase(
-                        'You don\'t have permissions to read the "%1" file.',
-                        [$this->_filePath]
-                    )
-                );
+            if (!is_readable($this->_file_path)) {
+                throw new Localized_Exception(new \Magento\Framework\Phrase('You don\'t have permissions to read the "%1" file.', [$this->_file_path]));
             }
         }
-
         $this->_open($mode);
-
         $this->_chmod = $chmod;
     }
-
     /**
      * Write data to file
      *
@@ -148,10 +109,9 @@ class File
      */
     public function write($data)
     {
-        $this->_checkFileOpened();
+        $this->_check_file_opened();
         $this->_write($data);
     }
-
     /**
      * Read data from file
      *
@@ -161,14 +121,12 @@ class File
     public function read($length = 4096)
     {
         $data = false;
-        $this->_checkFileOpened();
+        $this->_check_file_opened();
         if ($length > 0) {
             $data = $this->_read($length);
         }
-
         return $data;
     }
-
     /**
      * Check whether end of file reached
      *
@@ -176,10 +134,9 @@ class File
      */
     public function eof()
     {
-        $this->_checkFileOpened();
+        $this->_check_file_opened();
         return $this->_eof();
     }
-
     /**
      * Close file
      *
@@ -187,15 +144,13 @@ class File
      */
     public function close()
     {
-        $this->_checkFileOpened();
+        $this->_check_file_opened();
         $this->_close();
-        $this->_fileHandler = false;
-
-        if ($this->_isInWriteMode && isset($this->_chmod)) {
-            @chmod($this->_filePath, $this->_chmod);
+        $this->_file_handler = false;
+        if ($this->_is_in_write_mode && isset($this->_chmod)) {
+            @chmod($this->_file_path, $this->_chmod);
         }
     }
-
     /**
      * Implementation of file opening
      *
@@ -205,15 +160,11 @@ class File
      */
     protected function _open($mode)
     {
-        $this->_fileHandler = @fopen($this->_filePath, $mode);
-
-        if (false === $this->_fileHandler) {
-            throw new LocalizedException(
-                new \Magento\Framework\Phrase('The "%1" file failed to open.', [$this->_filePath])
-            );
+        $this->_file_handler = @fopen($this->_file_path, $mode);
+        if (false === $this->_file_handler) {
+            throw new Localized_Exception(new \Magento\Framework\Phrase('The "%1" file failed to open.', [$this->_file_path]));
         }
     }
-
     /**
      * Implementation of writing data to file
      *
@@ -223,15 +174,11 @@ class File
      */
     protected function _write($data)
     {
-        $result = @fwrite($this->_fileHandler, $data);
-
+        $result = @fwrite($this->_file_handler, $data);
         if (false === $result) {
-            throw new LocalizedException(
-                new \Magento\Framework\Phrase('The data failed to write to "%1".', [$this->_filePath])
-            );
+            throw new Localized_Exception(new \Magento\Framework\Phrase('The data failed to write to "%1".', [$this->_file_path]));
         }
     }
-
     /**
      * Implementation of file reading
      *
@@ -241,17 +188,12 @@ class File
      */
     protected function _read($length)
     {
-        $result = fread($this->_fileHandler, $length);
-
+        $result = fread($this->_file_handler, $length);
         if (false === $result) {
-            throw new LocalizedException(
-                new \Magento\Framework\Phrase('Failed to read data from %1', [$this->_filePath])
-            );
+            throw new Localized_Exception(new \Magento\Framework\Phrase('Failed to read data from %1', [$this->_file_path]));
         }
-
         return $result;
     }
-
     /**
      * Implementation of EOF indicator
      *
@@ -259,9 +201,8 @@ class File
      */
     protected function _eof()
     {
-        return feof($this->_fileHandler);
+        return feof($this->_file_handler);
     }
-
     /**
      * Implementation of file closing
      *
@@ -269,41 +210,38 @@ class File
      */
     protected function _close()
     {
-        fclose($this->_fileHandler);
+        fclose($this->_file_handler);
     }
-
     /**
      * Check whether requested mode is writable mode
      *
      * @param string $mode
      * @return int
      */
-    protected function _isWritableMode($mode)
+    protected function _is_writable_mode($mode)
     {
         return preg_match('/(^[waxc])|(\+$)/', $mode);
     }
-
     /**
      * Check whether requested mode is readable mode
      *
      * @param string $mode
      * @return bool
      */
-    protected function _isReadableMode($mode)
+    protected function _is_readable_mode($mode)
     {
-        return !$this->_isWritableMode($mode);
+        return !$this->_is_writable_mode($mode);
     }
-
     /**
      * Check whether file is opened
      *
      * @return void
      * @throws LocalizedException
      */
-    protected function _checkFileOpened()
+    protected function _check_file_opened()
     {
-        if (!$this->_fileHandler) {
-            throw new LocalizedException(new \Magento\Framework\Phrase('File not opened'));
+        if (!$this->_file_handler) {
+            throw new Localized_Exception(new \Magento\Framework\Phrase('File not opened'));
         }
     }
 }

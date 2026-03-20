@@ -1,58 +1,48 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Db;
 
-namespace Magento\Framework\EntityManager\Db;
-
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\EntityManager\MetadataPool;
-
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
 /**
  * Class DeleteRow
  */
-class DeleteRow
+class Delete_Row
 {
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var ResourceConnection
      */
-    private $resourceConnection;
-
+    private $resource_connection;
     /**
      * CreateRow constructor.
      *
      * @param MetadataPool $metadataPool
      * @param ResourceConnection $resourceConnection
      */
-    public function __construct(
-        MetadataPool $metadataPool,
-        ResourceConnection $resourceConnection
-    ) {
-        $this->metadataPool = $metadataPool;
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(Metadata_Pool $metadata_pool, Resource_Connection $resource_connection)
+    {
+        $this->metadata_pool = $metadata_pool;
+        $this->resource_connection = $resource_connection;
     }
-
     /**
      * @param string $entityType
      * @param array $data
      * @return int
      * @throws \Exception
      */
-    public function execute($entityType, $data)
+    public function execute($entity_type, $data)
     {
-        $metadata = $this->metadataPool->getMetadata($entityType);
-        $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
-        return $connection->delete(
-            $metadata->getEntityTable(),
-            [$metadata->getLinkField() . ' = ?' => $data[$metadata->getLinkField()]]
-        );
+        $metadata = $this->metadata_pool->get_metadata($entity_type);
+        $connection = $this->resource_connection->get_connection_by_name($metadata->get_entity_connection_name());
+        return $connection->delete($metadata->get_entity_table(), [$metadata->get_link_field() . ' = ?' => $data[$metadata->get_link_field()]]);
     }
 }

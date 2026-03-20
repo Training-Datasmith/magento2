@@ -1,24 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Redirect action class
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Action;
 
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\ResponseInterface;
-
+use Magento\Framework\App\Request_Interface;
+use Magento\Framework\App\Response_Interface;
 /**
  * Issue a redirect.
  *
  * @SuppressWarnings(PHPMD.AllPurposeAction)
  */
-class Redirect extends AbstractAction
+class Redirect extends Abstract_Action
 {
     /**
      * Redirect response
@@ -27,11 +25,10 @@ class Redirect extends AbstractAction
      * @return ResponseInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function dispatch(RequestInterface $request)
+    public function dispatch(Request_Interface $request)
     {
         return $this->execute();
     }
-
     /**
      * @return ResponseInterface
      */

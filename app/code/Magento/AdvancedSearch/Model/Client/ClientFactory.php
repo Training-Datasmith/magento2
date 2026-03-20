@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Advanced_Search\Model\Client;
 
-namespace Magento\AdvancedSearch\Model\Client;
-
-class ClientFactory implements ClientFactoryInterface
+class Client_Factory implements Client_Factory_Interface
 {
     /**
      * @param string $clientClass
@@ -18,13 +17,13 @@ class ClientFactory implements ClientFactoryInterface
         /**
          * Object var
          */
-        protected \Magento\Framework\ObjectManagerInterface $objectManager,
-        private $clientClass,
-        protected \Magento\AdvancedSearch\Helper\Data $helper,
-        private $openSearch = null
-    ) {
+        protected \Magento\Framework\Object_Manager_Interface $object_manager,
+        private $client_class,
+        protected \Magento\Advanced_Search\Helper\Data $helper,
+        private $open_search = null
+    )
+    {
     }
-
     /**
      * Return search client
      *
@@ -32,14 +31,10 @@ class ClientFactory implements ClientFactoryInterface
      */
     public function create(array $options = [])
     {
-        $class = $this->clientClass;
-        if ($this->helper->isClientOpenSearchV2()) {
-            $class = $this->openSearch;
+        $class = $this->client_class;
+        if ($this->helper->is_client_open_search_v2()) {
+            $class = $this->open_search;
         }
-
-        return $this->objectManager->create(
-            $class,
-            ['options' => $options]
-        );
+        return $this->object_manager->create($class, ['options' => $options]);
     }
 }

@@ -4,20 +4,17 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Api;
 
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Api;
-
-use Magento\AsynchronousOperations\Api\Data\OperationInterface;
-
+use Magento\Asynchronous_Operations\Api\Data\Operation_Interface;
 /**
  * Interface for saving multiple operations
  *
  * @api
  * @since 100.4.0
  */
-interface SaveMultipleOperationsInterface
+interface Save_Multiple_Operations_Interface
 {
     /**
      * Save Operations for Bulk

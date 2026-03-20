@@ -4,19 +4,17 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Pricing\Adjustment;
 
 use Magento\Catalog\Model\Product;
-use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
-
+use Magento\Framework\Pricing\Adjustment\Calculator_Interface;
 /**
  * Bundle calculator interface
  *
  * @api
  */
-interface BundleCalculatorInterface extends CalculatorInterface
+interface Bundle_Calculator_Interface extends Calculator_Interface
 {
     /**
      * @param float|string $amount
@@ -24,24 +22,21 @@ interface BundleCalculatorInterface extends CalculatorInterface
      * @param null|bool|string|array $exclude
      * @return \Magento\Framework\Pricing\Amount\AmountInterface
      */
-    public function getMaxAmount($amount, Product $saleableItem, $exclude = null);
-
+    public function get_max_amount($amount, Product $saleable_item, $exclude = null);
     /**
      * @param float|string $amount
      * @param Product $saleableItem
      * @param null|bool|string|array $exclude
      * @return \Magento\Framework\Pricing\Amount\AmountInterface
      */
-    public function getMaxRegularAmount($amount, Product $saleableItem, $exclude = null);
-
+    public function get_max_regular_amount($amount, Product $saleable_item, $exclude = null);
     /**
      * @param float|string $amount
      * @param Product $saleableItem
      * @param null|bool|string|array $exclude
      * @return \Magento\Framework\Pricing\Amount\AmountInterface
      */
-    public function getMinRegularAmount($amount, Product $saleableItem, $exclude = null);
-
+    public function get_min_regular_amount($amount, Product $saleable_item, $exclude = null);
     /**
      * Option amount calculation for saleable item
      *
@@ -51,13 +46,7 @@ interface BundleCalculatorInterface extends CalculatorInterface
      * @param \Magento\Framework\Pricing\Amount\AmountInterface|null $bundleProductAmount
      * @return \Magento\Framework\Pricing\Amount\AmountInterface
      */
-    public function getOptionsAmount(
-        Product $saleableItem,
-        $exclude = null,
-        $searchMin = true,
-        $bundleProductAmount = null
-    );
-
+    public function get_options_amount(Product $saleable_item, $exclude = null, $search_min = true, $bundle_product_amount = null);
     /**
      * Calculate amount for bundle product with all selection prices
      *
@@ -67,8 +56,7 @@ interface BundleCalculatorInterface extends CalculatorInterface
      * @param null|bool|string|array $exclude code of adjustment that has to be excluded
      * @return \Magento\Framework\Pricing\Amount\AmountInterface
      */
-    public function calculateBundleAmount($basePriceValue, $bundleProduct, $selectionPriceList, $exclude = null);
-
+    public function calculate_bundle_amount($base_price_value, $bundle_product, $selection_price_list, $exclude = null);
     /**
      * Create selection price list for the retrieved options
      *
@@ -77,8 +65,7 @@ interface BundleCalculatorInterface extends CalculatorInterface
      * @param bool $useRegularPrice
      * @return \Magento\Bundle\Pricing\Price\BundleSelectionPrice[]
      */
-    public function createSelectionPriceList($option, $bundleProduct, $useRegularPrice = false);
-
+    public function create_selection_price_list($option, $bundle_product, $use_regular_price = false);
     /**
      * Find minimal or maximal price for existing options
      *
@@ -87,12 +74,11 @@ interface BundleCalculatorInterface extends CalculatorInterface
      * @param bool $searchMin
      * @return \Magento\Bundle\Pricing\Price\BundleSelectionPrice[]
      */
-    public function processOptions($option, $selectionPriceList, $searchMin = true);
-
+    public function process_options($option, $selection_price_list, $search_min = true);
     /**
      * @param float $amount
      * @param Product $saleableItem
      * @return \Magento\Framework\Pricing\Amount\AmountInterface
      */
-    public function getAmountWithoutOption($amount, Product $saleableItem);
+    public function get_amount_without_option($amount, Product $saleable_item);
 }

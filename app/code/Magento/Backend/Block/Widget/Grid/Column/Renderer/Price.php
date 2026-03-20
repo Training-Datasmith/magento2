@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 /**
@@ -15,107 +14,93 @@ namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
  * @deprecated 100.2.0 in favour of UI component implementation
  * @since 100.0.2
  */
-class Price extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
+class Price extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract_Renderer
 {
     /**
      * @var int
      */
-    protected $_defaultWidth = 100;
-
+    protected $_default_width = 100;
     /**
      * Currency objects cache
      *
      * @var \Magento\Framework\DataObject[]
      */
     protected static $_currencies = [];
-
     /**
      * @var \Magento\Framework\Locale\CurrencyInterface
      */
-    protected $_localeCurrency;
-
+    protected $_locale_currency;
     /**
      * @param \Magento\Backend\Block\Context $context
      * @param \Magento\Framework\Locale\CurrencyInterface $localeCurrency
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Context $context,
-        \Magento\Framework\Locale\CurrencyInterface $localeCurrency,
-        array $data = []
-    ) {
+    public function __construct(\Magento\Backend\Block\Context $context, \Magento\Framework\Locale\Currency_Interface $locale_currency, array $data = [])
+    {
         parent::__construct($context, $data);
-        $this->_localeCurrency = $localeCurrency;
+        $this->_locale_currency = $locale_currency;
     }
-
     /**
      * Renders grid column
      *
      * @param   \Magento\Framework\DataObject $row
      * @return  string
      */
-    public function render(\Magento\Framework\DataObject $row)
+    public function render(\Magento\Framework\Data_Object $row)
     {
-        if ($data = $this->_getValue($row)) {
-            $currencyCode = $this->_getCurrencyCode($row);
-
-            if (!$currencyCode) {
+        if ($data = $this->_get_value($row)) {
+            $currency_code = $this->_get_currency_code($row);
+            if (!$currency_code) {
                 return $data;
             }
-
-            $data = (float) $data * $this->_getRate($row);
+            $data = (float) $data * $this->_get_rate($row);
             $data = sprintf('%f', $data);
-            $data = $this->_localeCurrency->getCurrency($currencyCode)->toCurrency($data);
+            $data = $this->_locale_currency->get_currency($currency_code)->to_currency($data);
             return $data;
         }
-        return $this->getColumn()->getDefault();
+        return $this->get_column()->get_default();
     }
-
     /**
      * Returns currency code for the row, false on error
      *
      * @param \Magento\Framework\DataObject $row
      * @return string|false
      */
-    protected function _getCurrencyCode($row)
+    protected function _get_currency_code($row)
     {
-        if ($code = $this->getColumn()->getCurrencyCode()) {
+        if ($code = $this->get_column()->get_currency_code()) {
             return $code;
         }
-        $currency = $this->getColumn()->getCurrency();
-
-        if ($currency !== null && $code = $row->getData($currency)) {
+        $currency = $this->get_column()->get_currency();
+        if ($currency !== null && $code = $row->get_data($currency)) {
             return $code;
         }
         return false;
     }
-
     /**
      * Returns rate for the row, 1 by default
      *
      * @param \Magento\Framework\DataObject $row
      * @return float|int
      */
-    protected function _getRate($row)
+    protected function _get_rate($row)
     {
-        if ($rate = $this->getColumn()->getRate()) {
+        if ($rate = $this->get_column()->get_rate()) {
             return (float) $rate;
         }
-        $rateField = $this->getColumn()->getRateField();
-
-        if ($rateField !== null && $rate = $row->getData($rateField)) {
+        $rate_field = $this->get_column()->get_rate_field();
+        if ($rate_field !== null && $rate = $row->get_data($rate_field)) {
             return (float) $rate;
         }
         return 1;
     }
-
     /**
      * Renders CSS
      *
      * @return string
      */
-    public function renderCss()
+    public function render_css()
     {
-        return parent::renderCss() . ' col-price';
+        return parent::render_css() . ' col-price';
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Bulk;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Bulk;
  * @api
  * @since 103.0.0
  */
-interface BulkStatusInterface
+interface Bulk_Status_Interface
 {
     /**
      * Get failed operations by bulk uuid
@@ -23,8 +22,7 @@ interface BulkStatusInterface
      * @return \Magento\Framework\Bulk\OperationInterface[]
      * @since 103.0.0
      */
-    public function getFailedOperationsByBulkId($bulkUuid, $failureType = null);
-
+    public function get_failed_operations_by_bulk_id($bulk_uuid, $failure_type = null);
     /**
      * Get operations count by bulk uuid and status.
      *
@@ -33,8 +31,7 @@ interface BulkStatusInterface
      * @return int
      * @since 103.0.0
      */
-    public function getOperationsCountByBulkIdAndStatus($bulkUuid, $status);
-
+    public function get_operations_count_by_bulk_id_and_status($bulk_uuid, $status);
     /**
      * Get all bulks created by user
      *
@@ -42,8 +39,7 @@ interface BulkStatusInterface
      * @return BulkSummaryInterface[]
      * @since 103.0.0
      */
-    public function getBulksByUser($userId);
-
+    public function get_bulks_by_user($user_id);
     /**
      * Computational status based on statuses of belonging operations
      *
@@ -54,5 +50,5 @@ interface BulkStatusInterface
      * @return int NOT_STARTED | IN_PROGRESS | FINISHED_SUCCESFULLY | FINISHED_WITH_FAILURE
      * @since 103.0.0
      */
-    public function getBulkStatus($bulkUuid);
+    public function get_bulk_status($bulk_uuid);
 }

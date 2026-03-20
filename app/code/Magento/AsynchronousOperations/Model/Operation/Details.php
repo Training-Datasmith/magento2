@@ -1,149 +1,107 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Asynchronous_Operations\Model\Operation;
 
-namespace Magento\AsynchronousOperations\Model\Operation;
-
-use Magento\Framework\Bulk\BulkStatusInterface;
-use Magento\Framework\Bulk\OperationInterface;
-
+use Magento\Framework\Bulk\Bulk_Status_Interface;
+use Magento\Framework\Bulk\Operation_Interface;
 class Details
 {
-    private array $operationCache = [];
-
-    private $bulkUuid;
-
+    private array $operation_cache = [];
+    private $bulk_uuid;
     /**
      * Map between status codes and human readable indexes
      */
-    private array $statusMap = [
-        OperationInterface::STATUS_TYPE_COMPLETE             => 'operations_successful',
-        OperationInterface::STATUS_TYPE_RETRIABLY_FAILED     => 'failed_retriable',
-        OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED => 'failed_not_retriable',
-        OperationInterface::STATUS_TYPE_OPEN                 => 'open',
-        OperationInterface::STATUS_TYPE_REJECTED             => 'rejected',
-    ];
-
+    private array $status_map = [Operation_Interface::STATUS_TYPE_COMPLETE => 'operations_successful', Operation_Interface::STATUS_TYPE_RETRIABLY_FAILED => 'failed_retriable', Operation_Interface::STATUS_TYPE_NOT_RETRIABLY_FAILED => 'failed_not_retriable', Operation_Interface::STATUS_TYPE_OPEN => 'open', Operation_Interface::STATUS_TYPE_REJECTED => 'rejected'];
     /**
      * Init dependencies.
      */
-    public function __construct(
-        private readonly BulkStatusInterface $bulkStatus,
-        $bulkUuid = null
-    ) {
-        $this->bulkUuid = $bulkUuid;
+    public function __construct(private readonly Bulk_Status_Interface $bulk_status, $bulk_uuid = null)
+    {
+        $this->bulk_uuid = $bulk_uuid;
     }
-
     /**
      * Collect operations statistics for the bulk
      *
      * @param string $bulkUuid
      * @return array
      */
-    public function getDetails($bulkUuid)
+    public function get_details($bulk_uuid)
     {
-        $details = [
-            'operations_total'      => 0,
-            'operations_successful' => 0,
-            'operations_failed'     => 0,
-            'failed_retriable'      => 0,
-            'failed_not_retriable'  => 0,
-            'rejected'              => 0,
-        ];
-
-        if (array_key_exists($bulkUuid, $this->operationCache)) {
-            return $this->operationCache[$bulkUuid];
+        $details = ['operations_total' => 0, 'operations_successful' => 0, 'operations_failed' => 0, 'failed_retriable' => 0, 'failed_not_retriable' => 0, 'rejected' => 0];
+        if (array_key_exists($bulk_uuid, $this->operation_cache)) {
+            return $this->operation_cache[$bulk_uuid];
         }
-
-        foreach ($this->statusMap as $statusCode => $readableKey) {
-            $details[$readableKey] = $this->bulkStatus->getOperationsCountByBulkIdAndStatus(
-                $bulkUuid,
-                $statusCode
-            );
+        foreach ($this->status_map as $status_code => $readable_key) {
+            $details[$readable_key] = $this->bulk_status->get_operations_count_by_bulk_id_and_status($bulk_uuid, $status_code);
         }
-
         $details['operations_total'] = array_sum($details);
         $details['operations_failed'] = $details['failed_retriable'] + $details['failed_not_retriable'];
-        $this->operationCache[$bulkUuid] = $details;
-
+        $this->operation_cache[$bulk_uuid] = $details;
         return $details;
     }
-
     /**
      * @inheritDoc
      */
-    public function getOperationsTotal()
+    public function get_operations_total()
     {
-        $this->getDetails($this->bulkUuid);
-
-        return $this->operationCache[$this->bulkUuid]['operations_total'];
+        $this->get_details($this->bulk_uuid);
+        return $this->operation_cache[$this->bulk_uuid]['operations_total'];
     }
-
     /**
      * @inheritDoc
      */
-    public function getOpen()
+    public function get_open()
     {
-        $this->getDetails($this->bulkUuid);
-        $statusKey = $this->statusMap[OperationInterface::STATUS_TYPE_OPEN];
-
-        return $this->operationCache[$this->bulkUuid][$statusKey];
+        $this->get_details($this->bulk_uuid);
+        $status_key = $this->status_map[Operation_Interface::STATUS_TYPE_OPEN];
+        return $this->operation_cache[$this->bulk_uuid][$status_key];
     }
-
     /**
      * @inheritDoc
      */
-    public function getOperationsSuccessful()
+    public function get_operations_successful()
     {
-        $this->getDetails($this->bulkUuid);
-        $statusKey = $this->statusMap[OperationInterface::STATUS_TYPE_COMPLETE];
-
-        return $this->operationCache[$this->bulkUuid][$statusKey];
+        $this->get_details($this->bulk_uuid);
+        $status_key = $this->status_map[Operation_Interface::STATUS_TYPE_COMPLETE];
+        return $this->operation_cache[$this->bulk_uuid][$status_key];
     }
-
     /**
      * @inheritDoc
      */
-    public function getTotalFailed()
+    public function get_total_failed()
     {
-        $this->getDetails($this->bulkUuid);
-
-        return $this->operationCache[$this->bulkUuid]['operations_failed'];
+        $this->get_details($this->bulk_uuid);
+        return $this->operation_cache[$this->bulk_uuid]['operations_failed'];
     }
-
     /**
      * @inheritDoc
      */
-    public function getFailedNotRetriable()
+    public function get_failed_not_retriable()
     {
-        $statusKey = $this->statusMap[OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED];
-
-        return $this->operationCache[$this->bulkUuid][$statusKey];
+        $status_key = $this->status_map[Operation_Interface::STATUS_TYPE_NOT_RETRIABLY_FAILED];
+        return $this->operation_cache[$this->bulk_uuid][$status_key];
     }
-
     /**
      * @inheritDoc
      */
-    public function getFailedRetriable()
+    public function get_failed_retriable()
     {
-        $this->getDetails($this->bulkUuid);
-        $statusKey = $this->statusMap[OperationInterface::STATUS_TYPE_RETRIABLY_FAILED];
-
-        return $this->operationCache[$this->bulkUuid][$statusKey];
+        $this->get_details($this->bulk_uuid);
+        $status_key = $this->status_map[Operation_Interface::STATUS_TYPE_RETRIABLY_FAILED];
+        return $this->operation_cache[$this->bulk_uuid][$status_key];
     }
-
     /**
      * @inheritDoc
      */
-    public function getRejected()
+    public function get_rejected()
     {
-        $this->getDetails($this->bulkUuid);
-        $statusKey = $this->statusMap[OperationInterface::STATUS_TYPE_REJECTED];
-
-        return $this->operationCache[$this->bulkUuid][$statusKey];
+        $this->get_details($this->bulk_uuid);
+        $status_key = $this->status_map[Operation_Interface::STATUS_TYPE_REJECTED];
+        return $this->operation_cache[$this->bulk_uuid][$status_key];
     }
 }

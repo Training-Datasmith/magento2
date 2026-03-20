@@ -1,30 +1,27 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Default no route handler
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Router;
 
-class NoRouteHandler implements \Magento\Framework\App\Router\NoRouteHandlerInterface
+class No_Route_Handler implements \Magento\Framework\App\Router\No_Route_Handler_Interface
 {
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
     protected $_config;
-
     /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $config
      */
-    public function __construct(\Magento\Framework\App\Config\ScopeConfigInterface $config)
+    public function __construct(\Magento\Framework\App\Config\Scope_Config_Interface $config)
     {
         $this->_config = $config;
     }
-
     /**
      * Check and process no route request
      *
@@ -32,22 +29,18 @@ class NoRouteHandler implements \Magento\Framework\App\Router\NoRouteHandlerInte
      * @return bool
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function process(\Magento\Framework\App\RequestInterface $request)
+    public function process(\Magento\Framework\App\Request_Interface $request)
     {
-        $noRoutePath = $this->_config->getValue('web/default/no_route', 'default');
-
-        if ($noRoutePath) {
-            $noRoute = explode('/', $noRoutePath);
+        $no_route_path = $this->_config->get_value('web/default/no_route', 'default');
+        if ($no_route_path) {
+            $no_route = explode('/', $no_route_path);
         } else {
-            $noRoute = [];
+            $no_route = [];
         }
-
-        $moduleName = isset($noRoute[0]) ? $noRoute[0] : 'core';
-        $actionPath = isset($noRoute[1]) ? $noRoute[1] : 'index';
-        $actionName = isset($noRoute[2]) ? $noRoute[2] : 'index';
-
-        $request->setModuleName($moduleName)->setControllerName($actionPath)->setActionName($actionName);
-
+        $module_name = isset($no_route[0]) ? $no_route[0] : 'core';
+        $action_path = isset($no_route[1]) ? $no_route[1] : 'index';
+        $action_name = isset($no_route[2]) ? $no_route[2] : 'index';
+        $request->set_module_name($module_name)->set_controller_name($action_path)->set_action_name($action_name);
         return true;
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Console\Command;
 
 /**
@@ -14,24 +13,23 @@ namespace Magento\Backend\Console\Command;
  * @api
  * @since 100.0.2
  */
-class CacheDisableCommand extends AbstractCacheSetCommand
+class Cache_Disable_Command extends Abstract_Cache_Set_Command
 {
     /**
      * {@inheritdoc}
      */
     protected function configure()
     {
-        $this->setName('cache:disable');
-        $this->setDescription('Disables cache type(s)');
+        $this->set_name('cache:disable');
+        $this->set_description('Disables cache type(s)');
         parent::configure();
     }
-
     /**
      * Is Disable cache
      *
      * @return bool
      */
-    protected function isEnable()
+    protected function is_enable()
     {
         return false;
     }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -13,17 +12,16 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface AreaInterface
+interface Area_Interface
 {
     public const PART_CONFIG = 'config';
     public const PART_TRANSLATE = 'translate';
     public const PART_DESIGN = 'design';
-
     /**
      * Load area part
      *
      * @param string $partName
      * @return $this
      */
-    public function load($partName = null);
+    public function load($part_name = null);
 }

@@ -4,10 +4,8 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Api;
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Api;
 
 /**
  * Interface BulkStatusInterface.
@@ -17,7 +15,7 @@ namespace Magento\AsynchronousOperations\Api;
  * @api
  * @since 100.2.3
  */
-interface BulkStatusInterface extends \Magento\Framework\Bulk\BulkStatusInterface
+interface Bulk_Status_Interface extends \Magento\Framework\Bulk\Bulk_Status_Interface
 {
     /**
      * Get Bulk summary data with list of operations items full data.
@@ -27,8 +25,7 @@ interface BulkStatusInterface extends \Magento\Framework\Bulk\BulkStatusInterfac
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @since 100.2.3
      */
-    public function getBulkDetailedStatus($bulkUuid);
-
+    public function get_bulk_detailed_status($bulk_uuid);
     /**
      * Get Bulk summary data with list of operations items short data.
      *
@@ -37,5 +34,5 @@ interface BulkStatusInterface extends \Magento\Framework\Bulk\BulkStatusInterfac
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @since 100.2.3
      */
-    public function getBulkShortStatus($bulkUuid);
+    public function get_bulk_short_status($bulk_uuid);
 }

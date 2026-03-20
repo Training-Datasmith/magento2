@@ -1,28 +1,25 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\Resource_Connection;
 
-namespace Magento\Framework\App\ResourceConnection;
-
-class SourceFactory
+class Source_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->objectManager = $objectManager;
+        $this->object_manager = $object_manager;
     }
-
     /**
      * Get source class instance by class name
      *
@@ -30,15 +27,12 @@ class SourceFactory
      * @throws \InvalidArgumentException
      * @return SourceProviderInterface
      */
-    public function create($className)
+    public function create($class_name)
     {
-        $source = $this->objectManager->create($className);
-        if (!$source instanceof SourceProviderInterface) {
-            throw new \InvalidArgumentException(
-                $className . ' doesn\'t implement \Magento\Framework\App\ResourceConnection\SourceProviderInterface'
-            );
+        $source = $this->object_manager->create($class_name);
+        if (!$source instanceof Source_Provider_Interface) {
+            throw new \InvalidArgumentException($class_name . ' doesn\'t implement \Magento\Framework\App\ResourceConnection\SourceProviderInterface');
         }
-
         return $source;
     }
 }

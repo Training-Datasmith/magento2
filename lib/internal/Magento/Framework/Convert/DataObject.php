@@ -4,8 +4,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Convert;
 
 /**
@@ -13,11 +12,10 @@ namespace Magento\Framework\Convert;
  *
  * @api
  */
-class DataObject
+class Data_Object
 {
     /** Constant used to mark cycles in the input array/objects */
     public const CYCLE_DETECTED_MARK = '*** CYCLE DETECTED ***';
-
     /**
      * Convert input data into an array and return the resulting array.
      * The resulting array should not contain any objects.
@@ -25,19 +23,18 @@ class DataObject
      * @param array $data input data
      * @return array Data converted to an array
      */
-    public function convertDataToArray($data)
+    public function convert_data_to_array($data)
     {
         $result = [];
         foreach ($data as $key => $value) {
             if (is_object($value) || is_array($value)) {
-                $result[$key] = $this->_convertObjectToArray($value);
+                $result[$key] = $this->_convert_object_to_array($value);
             } else {
                 $result[$key] = $value;
             }
         }
         return $result;
     }
-
     /**
      * Converts a \Magento\Framework\DataObject into an array, including any children objects
      *
@@ -45,7 +42,7 @@ class DataObject
      * @param array $objects array of object hashes used for cycle detection
      * @return array|string Converted object or CYCLE_DETECTED_MARK
      */
-    protected function _convertObjectToArray($obj, &$objects = [])
+    protected function _convert_object_to_array($obj, &$objects = [])
     {
         $data = [];
         if (is_object($obj)) {
@@ -54,28 +51,26 @@ class DataObject
                 return self::CYCLE_DETECTED_MARK;
             }
             $objects[$hash] = true;
-            if ($obj instanceof \Magento\Framework\DataObject) {
-                $data = $obj->getData();
+            if ($obj instanceof \Magento\Framework\Data_Object) {
+                $data = $obj->get_data();
             } else {
-                $data = (array)$obj;
+                $data = (array) $obj;
             }
         } elseif (is_array($obj)) {
             $data = $obj;
         }
-
         $result = [];
         foreach ($data as $key => $value) {
             if (is_scalar($value)) {
                 $result[$key] = $value;
             } elseif (is_array($value)) {
-                $result[$key] = $this->_convertObjectToArray($value, $objects);
-            } elseif ($value instanceof \Magento\Framework\DataObject) {
-                $result[$key] = $this->_convertObjectToArray($value, $objects);
+                $result[$key] = $this->_convert_object_to_array($value, $objects);
+            } elseif ($value instanceof \Magento\Framework\Data_Object) {
+                $result[$key] = $this->_convert_object_to_array($value, $objects);
             }
         }
         return $result;
     }
-
     /**
      * Converts the list of objects into an array of the form: [ [ 'label' => <id>, 'value' => <value> ], ... ].
      *
@@ -88,18 +83,14 @@ class DataObject
      * @param string|callable $valueField
      * @return array
      */
-    public function toOptionArray(array $items, $idField, $valueField)
+    public function to_option_array(array $items, $id_field, $value_field)
     {
         $options = [];
         foreach ($items as $item) {
-            $options[] = [
-                'value' => $this->_invokeGetter($item, $idField),
-                'label' => $this->_invokeGetter($item, $valueField),
-            ];
+            $options[] = ['value' => $this->_invoke_getter($item, $id_field), 'label' => $this->_invoke_getter($item, $value_field)];
         }
         return $options;
     }
-
     /**
      * Converts the list of objects into an array of the form: [ <id> => <value>, ... ].
      *
@@ -112,15 +103,14 @@ class DataObject
      * @param string|callable $valueField
      * @return array
      */
-    public function toOptionHash(array $items, $idField, $valueField)
+    public function to_option_hash(array $items, $id_field, $value_field)
     {
         $options = [];
         foreach ($items as $item) {
-            $options[$this->_invokeGetter($item, $idField)] = $this->_invokeGetter($item, $valueField);
+            $options[$this->_invoke_getter($item, $id_field)] = $this->_invoke_getter($item, $value_field);
         }
         return $options;
     }
-
     /**
      * Returns the value of the property represented by $field on the $item object.
      *
@@ -132,15 +122,15 @@ class DataObject
      * @param string|callable $field
      * @return mixed
      */
-    protected function _invokeGetter($item, $field)
+    protected function _invoke_getter($item, $field)
     {
         if (is_callable($field)) {
             // if $field is a closure, use that on the item
             return $field($item);
         } else {
             // otherwise, turn it into a call to the item's getter method
-            $methodName = 'get' . str_replace(' ', '', ucwords(str_replace('_', ' ', $field)));
-            return $item->{$methodName}();
+            $method_name = 'get' . str_replace(' ', '', ucwords(str_replace('_', ' ', $field)));
+            return $item->{$method_name}();
         }
     }
 }

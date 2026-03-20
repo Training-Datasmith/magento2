@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface RouterInterface
+interface Router_Interface
 {
     /**
      * Match application action by request
@@ -21,5 +20,5 @@ interface RouterInterface
      * @param RequestInterface $request
      * @return ActionInterface
      */
-    public function match(RequestInterface $request);
+    public function match(Request_Interface $request);
 }

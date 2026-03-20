@@ -1,21 +1,18 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Amqp\Topology;
 
 use InvalidArgumentException;
-
 /**
  * @deprecated 103.0.0
  * see: https://github.com/php-amqplib/php-amqplib/issues/405
  */
-trait ArgumentProcessor
+trait Argument_Processor
 {
     /**
      * Process arguments
@@ -23,7 +20,7 @@ trait ArgumentProcessor
      * @param array $arguments
      * @return array
      */
-    public function processArguments($arguments): array
+    public function process_arguments($arguments): array
     {
         $output = [];
         foreach ($arguments as $key => $value) {
@@ -39,7 +36,6 @@ trait ArgumentProcessor
                 throw new InvalidArgumentException('Unknown argument type ' . gettype($value));
             }
         }
-
         return $output;
     }
 }

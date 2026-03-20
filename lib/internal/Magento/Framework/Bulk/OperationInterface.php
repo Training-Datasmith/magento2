@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Bulk;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Bulk;
  * @api
  * @since 103.0.0
  */
-interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterface
+interface Operation_Interface extends \Magento\Framework\Api\Extensible_Data_Interface
 {
     /**#@+
      * Constants for keys of data array. Identical to the name of the getter in snake case
@@ -27,7 +26,6 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     public const RESULT_MESSAGE = 'result_message';
     public const ERROR_CODE = 'error_code';
     /**#@-*/
-
     /**#@+
      * Status types
      */
@@ -37,15 +35,13 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     public const STATUS_TYPE_OPEN = 4;
     public const STATUS_TYPE_REJECTED = 5;
     /**#@-*/
-
     /**
      * Operation id
      *
      * @return int
      * @since 103.0.0
      */
-    public function getId();
-
+    public function get_id();
     /**
      * Set operation id
      *
@@ -53,16 +49,14 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 103.0.0
      */
-    public function setId($id);
-
+    public function set_id($id);
     /**
      * Get bulk uuid
      *
      * @return string
      * @since 103.0.0
      */
-    public function getBulkUuid();
-
+    public function get_bulk_uuid();
     /**
      * Set bulk uuid
      *
@@ -70,16 +64,14 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 103.0.0
      */
-    public function setBulkUuid($bulkId);
-
+    public function set_bulk_uuid($bulk_id);
     /**
      * Message Queue Topic
      *
      * @return string
      * @since 103.0.0
      */
-    public function getTopicName();
-
+    public function get_topic_name();
     /**
      * Set message queue topic
      *
@@ -87,16 +79,14 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 103.0.0
      */
-    public function setTopicName($topic);
-
+    public function set_topic_name($topic);
     /**
      * Serialized Data
      *
      * @return string
      * @since 103.0.0
      */
-    public function getSerializedData();
-
+    public function get_serialized_data();
     /**
      * Set serialized data
      *
@@ -104,16 +94,14 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 103.0.0
      */
-    public function setSerializedData($serializedData);
-
+    public function set_serialized_data($serialized_data);
     /**
      * Result serialized Data
      *
      * @return string
      * @since 103.0.0
      */
-    public function getResultSerializedData();
-
+    public function get_result_serialized_data();
     /**
      * Set result serialized data
      *
@@ -121,8 +109,7 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 103.0.0
      */
-    public function setResultSerializedData($resultSerializedData);
-
+    public function set_result_serialized_data($result_serialized_data);
     /**
      * Get operation status
      *
@@ -131,8 +118,7 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return int
      * @since 103.0.0
      */
-    public function getStatus();
-
+    public function get_status();
     /**
      * Set status
      *
@@ -140,16 +126,14 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 103.0.0
      */
-    public function setStatus($status);
-
+    public function set_status($status);
     /**
      * Get result message
      *
      * @return string
      * @since 103.0.0
      */
-    public function getResultMessage();
-
+    public function get_result_message();
     /**
      * Set result message
      *
@@ -157,16 +141,14 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 103.0.0
      */
-    public function setResultMessage($resultMessage);
-
+    public function set_result_message($result_message);
     /**
      * Get error code
      *
      * @return int
      * @since 103.0.0
      */
-    public function getErrorCode();
-
+    public function get_error_code();
     /**
      * Set error code
      *
@@ -174,5 +156,5 @@ interface OperationInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 103.0.0
      */
-    public function setErrorCode($errorCode);
+    public function set_error_code($error_code);
 }

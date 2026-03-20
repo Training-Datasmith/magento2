@@ -1,33 +1,29 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
-use Magento\Store\Model\ScopeInterface;
-
+use Magento\Store\Model\Scope_Interface;
 /**
  * Configures full path for configurations, including scope data and configuration type.
  */
-class ConfigPathResolver
+class Config_Path_Resolver
 {
     /**
      * @var ScopeCodeResolver
      */
-    private $scopeCodeResolver;
-
+    private $scope_code_resolver;
     /**
      * @param ScopeCodeResolver $scopeCodeResolver
      */
-    public function __construct(ScopeCodeResolver $scopeCodeResolver)
+    public function __construct(Scope_Code_Resolver $scope_code_resolver)
     {
-        $this->scopeCodeResolver = $scopeCodeResolver;
+        $this->scope_code_resolver = $scope_code_resolver;
     }
-
     /**
      * Creates full config path for given params.
      *
@@ -45,26 +41,21 @@ class ConfigPathResolver
      * ```
      * @return string Resolved configuration path
      */
-    public function resolve($path, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeCode = null, $type = null)
+    public function resolve($path, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_code = null, $type = null)
     {
         $path = $path !== null ? trim($path, '/') : '';
         $scope = $scope !== null ? rtrim($scope, 's') : '';
-
         /** Scope name is currently stored in plural form. */
-        if (in_array($scope, [ScopeInterface::SCOPE_STORE, ScopeInterface::SCOPE_WEBSITE])) {
+        if (in_array($scope, [Scope_Interface::SCOPE_STORE, Scope_Interface::SCOPE_WEBSITE])) {
             $scope .= 's';
         }
-
-        $scopePath = $type ? $type . '/' . $scope : $scope;
-
-        if ($scope !== ScopeConfigInterface::SCOPE_TYPE_DEFAULT) {
-            if (is_numeric($scopeCode) || $scopeCode === null) {
-                $scopeCode = $this->scopeCodeResolver->resolve($scope, $scopeCode);
+        $scope_path = $type ? $type . '/' . $scope : $scope;
+        if ($scope !== Scope_Config_Interface::SCOPE_TYPE_DEFAULT) {
+            if (is_numeric($scope_code) || $scope_code === null) {
+                $scope_code = $this->scope_code_resolver->resolve($scope, $scope_code);
             }
-
-            $scopePath .= '/' . $scopeCode;
+            $scope_path .= '/' . $scope_code;
         }
-
-        return $scopePath . ($path ? '/' . $path : '');
+        return $scope_path . ($path ? '/' . $path : '');
     }
 }

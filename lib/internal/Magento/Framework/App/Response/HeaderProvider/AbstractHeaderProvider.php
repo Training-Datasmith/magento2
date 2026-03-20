@@ -1,55 +1,50 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\App\Response\HeaderProvider;
+namespace Magento\Framework\App\Response\Header_Provider;
 
 /**
  * Class to be used for setting headers with static values
  */
-abstract class AbstractHeaderProvider implements \Magento\Framework\App\Response\HeaderProvider\HeaderProviderInterface
+abstract class Abstract_Header_Provider implements \Magento\Framework\App\Response\Header_Provider\Header_Provider_Interface
 {
     /**
      * @var string
      */
-    protected $headerName = '';
-
+    protected $header_name = '';
     /**
      * @var string
      */
-    protected $headerValue = '';
-
+    protected $header_value = '';
     /**
      * Whether the header should be attached to the response
      *
      * @return bool
      */
-    public function canApply()
+    public function can_apply()
     {
         return true;
     }
-
     /**
      * Get header name
      *
      * @return string
      */
-    public function getName()
+    public function get_name()
     {
-        return $this->headerName;
+        return $this->header_name;
     }
-
     /**
      * Get header value
      *
      * @return string
      */
-    public function getValue()
+    public function get_value()
     {
-        return $this->headerValue;
+        return $this->header_value;
     }
 }

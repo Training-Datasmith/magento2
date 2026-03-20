@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model;
 
-use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\Exception\Localized_Exception;
 /**
  * Class for encrypting data.
  */
@@ -18,23 +16,21 @@ class Cryptographer
     /**
      * Cipher method for encryption.
      */
-    private string $cipherMethod = 'AES-256-CBC';
-
+    private string $cipher_method = 'AES-256-CBC';
     /**
      * @var EncodedContextFactory
      */
-    private $encodedContextFactory;
-
+    private $encoded_context_factory;
     public function __construct(
         /**
          * Resource for handling MBI token value.
          */
-        private readonly AnalyticsToken $analyticsToken,
-        EncodedContextFactory $encodedContextFactory
-    ) {
-        $this->encodedContextFactory = $encodedContextFactory;
+        private readonly Analytics_Token $analytics_token,
+        Encoded_Context_Factory $encoded_context_factory
+    )
+    {
+        $this->encoded_context_factory = $encoded_context_factory;
     }
-
     /**
      * Encrypt input data.
      *
@@ -46,81 +42,58 @@ class Cryptographer
     {
         if (!is_string($source)) {
             try {
-                $source = (string)$source;
+                $source = (string) $source;
             } catch (\Exception) {
-                throw new LocalizedException(
-                    __(
-                        'The data is invalid. '
-                        . 'Enter the data as a string or data that can be converted into a string and try again.'
-                    )
-                );
+                throw new Localized_Exception(__('The data is invalid. ' . 'Enter the data as a string or data that can be converted into a string and try again.'));
             }
         } elseif (!$source) {
-            throw new LocalizedException(__('The data is invalid. Enter the data as a string and try again.'));
+            throw new Localized_Exception(__('The data is invalid. Enter the data as a string and try again.'));
         }
-        if (!$this->validateCipherMethod($this->cipherMethod)) {
-            throw new LocalizedException(__('The data is invalid. Use a valid cipher method and try again.'));
+        if (!$this->validate_cipher_method($this->cipher_method)) {
+            throw new Localized_Exception(__('The data is invalid. Use a valid cipher method and try again.'));
         }
-        $initializationVector = $this->getInitializationVector();
-
-        return $this->encodedContextFactory->create([
-            'content' => openssl_encrypt(
-                $source,
-                $this->cipherMethod,
-                $this->getKey(),
-                OPENSSL_RAW_DATA,
-                $initializationVector
-            ),
-            'initializationVector' => $initializationVector,
-        ]);
+        $initialization_vector = $this->get_initialization_vector();
+        return $this->encoded_context_factory->create(['content' => openssl_encrypt($source, $this->cipher_method, $this->get_key(), OPENSSL_RAW_DATA, $initialization_vector), 'initializationVector' => $initialization_vector]);
     }
-
     /**
      * Return key for encryption.
      *
      * @throws LocalizedException
      */
-    private function getKey(): string
+    private function get_key(): string
     {
-        $token = $this->analyticsToken->getToken();
+        $token = $this->analytics_token->get_token();
         if (!$token) {
-            throw new LocalizedException(__('Enter the encryption key and try again.'));
+            throw new Localized_Exception(__('Enter the encryption key and try again.'));
         }
         return hash('sha256', $token);
     }
-
     /**
      * Return established cipher method.
      *
      * @return string
      */
-    private function getCipherMethod()
+    private function get_cipher_method()
     {
-        return $this->cipherMethod;
+        return $this->cipher_method;
     }
-
     /**
      * Return each time generated random initialization vector which depends on the cipher method.
      */
-    private function getInitializationVector(): string
+    private function get_initialization_vector(): string
     {
-        $ivSize = openssl_cipher_iv_length($this->getCipherMethod());
-        return openssl_random_pseudo_bytes($ivSize);
+        $iv_size = openssl_cipher_iv_length($this->get_cipher_method());
+        return openssl_random_pseudo_bytes($iv_size);
     }
-
     /**
      * Check that cipher method is allowed for encryption.
      *
      * @param string $cipherMethod
      */
-    private function validateCipherMethod($cipherMethod): bool
+    private function validate_cipher_method($cipher_method): bool
     {
-        $methods = array_map(
-            strtolower(...),
-            openssl_get_cipher_methods()
-        );
-        $cipherMethod = strtolower($cipherMethod);
-
-        return (false !== array_search($cipherMethod, $methods));
+        $methods = array_map(strtolower(...), openssl_get_cipher_methods());
+        $cipher_method = strtolower($cipher_method);
+        return false !== array_search($cipher_method, $methods);
     }
 }

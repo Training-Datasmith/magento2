@@ -1,48 +1,43 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\DataObject;
+namespace Magento\Framework\Data_Object;
 
 use Ramsey\Uuid\Uuid;
-
 /**
  * Class IdentityService
  */
-class IdentityService implements IdentityGeneratorInterface
+class Identity_Service implements Identity_Generator_Interface
 {
     /**
      * @var \Ramsey\Uuid\UuidFactoryInterface
      */
-    private $uuidFactory;
-
+    private $uuid_factory;
     /**
      * IdentityService constructor.
      */
     public function __construct()
     {
-        $this->uuidFactory = new \Ramsey\Uuid\UuidFactory();
+        $this->uuid_factory = new \Ramsey\Uuid\Uuid_Factory();
     }
-
     /**
      * @inheritDoc
      */
-    public function generateId()
+    public function generate_id()
     {
-        $uuid = $this->uuidFactory->uuid4();
-        return $uuid->toString();
+        $uuid = $this->uuid_factory->uuid4();
+        return $uuid->to_string();
     }
-
     /**
      * @inheritDoc
      */
-    public function generateIdForData($data)
+    public function generate_id_for_data($data)
     {
-        $uuid = $this->uuidFactory->uuid3(Uuid::NAMESPACE_DNS, $data);
-        return $uuid->toString();
+        $uuid = $this->uuid_factory->uuid3(Uuid::NAMESPACE_DNS, $data);
+        return $uuid->to_string();
     }
 }

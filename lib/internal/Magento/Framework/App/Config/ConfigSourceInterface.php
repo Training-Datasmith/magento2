@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Provide access to data. Each Source can be responsible for each storage, where config data can be placed
  *
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
 /**
@@ -15,7 +14,7 @@ namespace Magento\Framework\App\Config;
  *
  * @api
  */
-interface ConfigSourceInterface
+interface Config_Source_Interface
 {
     /**
      * Retrieve configuration raw data array.

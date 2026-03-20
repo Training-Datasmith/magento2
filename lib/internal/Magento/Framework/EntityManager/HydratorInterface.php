@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager;
+namespace Magento\Framework\Entity_Manager;
 
 /**
  * Interface HydratorInterface
  */
-interface HydratorInterface
+interface Hydrator_Interface
 {
     /**
      * Extract data from object
@@ -20,7 +19,6 @@ interface HydratorInterface
      * @return array
      */
     public function extract($entity);
-
     /**
      * Populate entity with data
      *

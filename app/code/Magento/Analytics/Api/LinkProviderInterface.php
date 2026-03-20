@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Analytics\Api;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Analytics\Api;
  *
  * @api
  */
-interface LinkProviderInterface
+interface Link_Provider_Interface
 {
     /**
      * Retrieve link

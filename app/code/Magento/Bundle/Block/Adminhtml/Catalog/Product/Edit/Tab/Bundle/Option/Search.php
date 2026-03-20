@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab\Bundle\Option;
 
 /**
@@ -17,7 +16,6 @@ class Search extends \Magento\Backend\Block\Widget
      * @var string
      */
     protected $_template = 'Magento_Bundle::product/edit/bundle/option/search.phtml';
-
     /**
      * Initialise the block
      *
@@ -25,34 +23,26 @@ class Search extends \Magento\Backend\Block\Widget
      */
     protected function _construct()
     {
-        $this->setId('bundle_option_selection_search');
+        $this->set_id('bundle_option_selection_search');
     }
-
     /**
      * Create search grid
      *
      * @return $this
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
-        $this->setChild(
-            'grid',
-            $this->getLayout()->createBlock(
-                \Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab\Bundle\Option\Search\Grid::class,
-                'adminhtml.catalog.product.edit.tab.bundle.option.search.grid'
-            )
-        );
-        return parent::_prepareLayout();
+        $this->set_child('grid', $this->get_layout()->create_block(\Magento\Bundle\Block\Adminhtml\Catalog\Product\Edit\Tab\Bundle\Option\Search\Grid::class, 'adminhtml.catalog.product.edit.tab.bundle.option.search.grid'));
+        return parent::_prepare_layout();
     }
-
     /**
      * Prepare search grid
      *
      * @return $this
      */
-    protected function _beforeToHtml()
+    protected function _before_to_html()
     {
-        $this->getChildBlock('grid')->setIndex($this->getIndex())->setFirstShow($this->getFirstShow());
-        return parent::_beforeToHtml();
+        $this->get_child_block('grid')->set_index($this->get_index())->set_first_show($this->get_first_show());
+        return parent::_before_to_html();
     }
 }

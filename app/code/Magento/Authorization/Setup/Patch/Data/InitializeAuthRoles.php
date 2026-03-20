@@ -1,117 +1,79 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Authorization\Setup\Patch\Data;
 
 use Magento\Authorization\Model\Acl\Role\Group as RoleGroup;
-use Magento\Authorization\Model\UserContextInterface;
-use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Magento\Framework\Setup\Patch\DataPatchInterface;
-use Magento\Framework\Setup\Patch\PatchVersionInterface;
-
+use Magento\Authorization\Model\User_Context_Interface;
+use Magento\Framework\Setup\Module_Data_Setup_Interface;
+use Magento\Framework\Setup\Patch\Data_Patch_Interface;
+use Magento\Framework\Setup\Patch\Patch_Version_Interface;
 /**
  * Class InitializeAuthRoles
  * @package Magento\Authorization\Setup\Patch
  */
-class InitializeAuthRoles implements DataPatchInterface, PatchVersionInterface
+class Initialize_Auth_Roles implements Data_Patch_Interface, Patch_Version_Interface
 {
     /**
      * InitializeAuthRoles constructor.
      */
-    public function __construct(private readonly ModuleDataSetupInterface $moduleDataSetup, private readonly \Magento\Authorization\Setup\AuthorizationFactory $authFactory)
+    public function __construct(private readonly Module_Data_Setup_Interface $module_data_setup, private readonly \Magento\Authorization\Setup\Authorization_Factory $auth_factory)
     {
     }
-
     /**
      * {@inheritdoc}
      */
     public function apply(): void
     {
-        $roleCollection = $this->authFactory->createRoleCollection()
-            ->addFieldToFilter('parent_id', 0)
-            ->addFieldToFilter('tree_level', 1)
-            ->addFieldToFilter('role_type', RoleGroup::ROLE_TYPE)
-            ->addFieldToFilter('user_id', 0)
-            ->addFieldToFilter('user_type', UserContextInterface::USER_TYPE_ADMIN)
-            ->addFieldToFilter('role_name', 'Administrators');
-
-        if ($roleCollection->count() == 0) {
-            $admGroupRole = $this->authFactory->createRole()->setData(
-                [
-                    'parent_id' => 0,
-                    'tree_level' => 1,
-                    'sort_order' => 1,
-                    'role_type' => RoleGroup::ROLE_TYPE,
-                    'user_id' => 0,
-                    'user_type' => UserContextInterface::USER_TYPE_ADMIN,
-                    'role_name' => 'Administrators',
-                ]
-            )->save();
+        $role_collection = $this->auth_factory->create_role_collection()->add_field_to_filter('parent_id', 0)->add_field_to_filter('tree_level', 1)->add_field_to_filter('role_type', Role_Group::ROLE_TYPE)->add_field_to_filter('user_id', 0)->add_field_to_filter('user_type', User_Context_Interface::USER_TYPE_ADMIN)->add_field_to_filter('role_name', 'Administrators');
+        if ($role_collection->count() == 0) {
+            $adm_group_role = $this->auth_factory->create_role()->set_data(['parent_id' => 0, 'tree_level' => 1, 'sort_order' => 1, 'role_type' => Role_Group::ROLE_TYPE, 'user_id' => 0, 'user_type' => User_Context_Interface::USER_TYPE_ADMIN, 'role_name' => 'Administrators'])->save();
         } else {
             /** @var \Magento\Authorization\Model\ResourceModel\Role $item */
-            foreach ($roleCollection as $item) {
-                $admGroupRole = $item;
+            foreach ($role_collection as $item) {
+                $adm_group_role = $item;
                 break;
             }
         }
-
-        $rulesCollection = $this->authFactory->createRulesCollection()
-            ->addFieldToFilter('role_id', $admGroupRole->getId())
-            ->addFieldToFilter('resource_id', 'all');
-
-        if ($rulesCollection->count() == 0) {
-            $this->authFactory->createRules()->setData(
-                [
-                    'role_id' => $admGroupRole->getId(),
-                    'resource_id' => 'Magento_Backend::all',
-                    'privileges' => null,
-                    'permission' => 'allow',
-                ]
-            )->save();
+        $rules_collection = $this->auth_factory->create_rules_collection()->add_field_to_filter('role_id', $adm_group_role->get_id())->add_field_to_filter('resource_id', 'all');
+        if ($rules_collection->count() == 0) {
+            $this->auth_factory->create_rules()->set_data(['role_id' => $adm_group_role->get_id(), 'resource_id' => 'Magento_Backend::all', 'privileges' => null, 'permission' => 'allow'])->save();
         } else {
             /** @var \Magento\Authorization\Model\Rules $rule */
-            foreach ($rulesCollection as $rule) {
-                $rule->setData('resource_id', 'Magento_Backend::all')->save();
+            foreach ($rules_collection as $rule) {
+                $rule->set_data('resource_id', 'Magento_Backend::all')->save();
             }
         }
-
         /**
          * Delete rows by condition from authorization_rule
          */
-        $tableName = $this->moduleDataSetup->getTable('authorization_rule');
-        if ($tableName) {
-            $this->moduleDataSetup->getConnection()->delete(
-                $tableName,
-                ['resource_id = ?' => 'admin/system/tools/compiler']
-            );
+        $table_name = $this->module_data_setup->get_table('authorization_rule');
+        if ($table_name) {
+            $this->module_data_setup->get_connection()->delete($table_name, ['resource_id = ?' => 'admin/system/tools/compiler']);
         }
     }
-
     /**
      * {@inheritdoc}
      */
-    public static function getDependencies(): array
+    public static function get_dependencies(): array
     {
         return [];
     }
-
     /**
      * {@inheritdoc}
      */
-    public static function getVersion(): string
+    public static function get_version(): string
     {
         return '2.0.0';
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getAliases(): array
+    public function get_aliases(): array
     {
         return [];
     }

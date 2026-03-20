@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Menu\Builder\Command;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Backend\Model\Menu\Builder\Command;
  * @api
  * @since 100.0.2
  */
-class Remove extends \Magento\Backend\Model\Menu\Builder\AbstractCommand
+class Remove extends \Magento\Backend\Model\Menu\Builder\Abstract_Command
 {
     /**
      * Mark item as removed
@@ -21,10 +20,10 @@ class Remove extends \Magento\Backend\Model\Menu\Builder\AbstractCommand
      * @param array $itemParams
      * @return array
      */
-    protected function _execute(array $itemParams)
+    protected function _execute(array $item_params)
     {
-        $itemParams['id'] = $this->getId();
-        $itemParams['removed'] = true;
-        return $itemParams;
+        $item_params['id'] = $this->get_id();
+        $item_params['removed'] = true;
+        return $item_params;
     }
 }

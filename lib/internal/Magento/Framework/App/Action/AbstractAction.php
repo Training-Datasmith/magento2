@@ -1,80 +1,70 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Action;
 
-use Magento\Framework\App\RequestInterface;
-use Magento\Framework\App\ResponseInterface;
-
+use Magento\Framework\App\Request_Interface;
+use Magento\Framework\App\Response_Interface;
 /**
  * Abstract redirect/forward action class
  *
  * @deprecated 103.0.0 Inheritance in controllers should be avoided in favor of composition
  * @see \Magento\Framework\App\ActionInterface
  */
-abstract class AbstractAction implements \Magento\Framework\App\ActionInterface
+abstract class Abstract_Action implements \Magento\Framework\App\Action_Interface
 {
     /**
      * @var \Magento\Framework\App\RequestInterface
      */
     protected $_request;
-
     /**
      * @var \Magento\Framework\App\ResponseInterface
      */
     protected $_response;
-
     /**
      * @var \Magento\Framework\Controller\Result\RedirectFactory
      */
-    protected $resultRedirectFactory;
-
+    protected $result_redirect_factory;
     /**
      * @var \Magento\Framework\Controller\ResultFactory
      */
-    protected $resultFactory;
-
+    protected $result_factory;
     /**
      * @param Context $context
      */
-    public function __construct(
-        Context $context
-    ) {
-        $this->_request = $context->getRequest();
-        $this->_response = $context->getResponse();
-        $this->resultRedirectFactory = $context->getResultRedirectFactory();
-        $this->resultFactory = $context->getResultFactory();
+    public function __construct(Context $context)
+    {
+        $this->_request = $context->get_request();
+        $this->_response = $context->get_response();
+        $this->result_redirect_factory = $context->get_result_redirect_factory();
+        $this->result_factory = $context->get_result_factory();
     }
-
     /**
      * Dispatch request
      *
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    abstract public function dispatch(RequestInterface $request);
-
+    abstract public function dispatch(Request_Interface $request);
     /**
      * Retrieve request object
      *
      * @return \Magento\Framework\App\RequestInterface
      */
-    public function getRequest()
+    public function get_request()
     {
         return $this->_request;
     }
-
     /**
      * Retrieve response object
      *
      * @return \Magento\Framework\App\ResponseInterface
      */
-    public function getResponse()
+    public function get_response()
     {
         return $this->_response;
     }

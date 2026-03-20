@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Autoload;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Filesystem\FileResolver;
-
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\Filesystem\File_Resolver;
 /**
  * Utility class for populating an autoloader with application-specific information for PSR-0 and PSR-4 mappings
  * and include-path contents
@@ -22,16 +20,13 @@ class Populator
      * @param DirectoryList $dirList
      * @return void
      */
-    public static function populateMappings(AutoloaderInterface $autoloader, DirectoryList $dirList)
+    public static function populate_mappings(Autoloader_Interface $autoloader, Directory_List $dir_list)
     {
-        $generationDir = $dirList->getPath(DirectoryList::GENERATED_CODE);
-
-        $autoloader->addPsr4('Magento\\', [$generationDir . '/Magento/'], true);
-
+        $generation_dir = $dir_list->get_path(Directory_List::GENERATED_CODE);
+        $autoloader->add_psr4('Magento\\', [$generation_dir . '/Magento/'], true);
         /** Required for code generation to occur */
-        FileResolver::addIncludePath($generationDir);
-
+        File_Resolver::add_include_path($generation_dir);
         /** Required to autoload custom classes */
-        $autoloader->addPsr0('', [$generationDir]);
+        $autoloader->add_psr0('', [$generation_dir]);
     }
 }

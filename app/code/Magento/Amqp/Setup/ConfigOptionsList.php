@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Amqp\Setup;
 
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Config\Data\ConfigData;
-use Magento\Framework\Config\File\ConfigFilePool;
-use Magento\Framework\Setup\ConfigOptionsListInterface;
-use Magento\Framework\Setup\Option\TextConfigOption;
-
+use Magento\Framework\App\Deployment_Config;
+use Magento\Framework\Config\Data\Config_Data;
+use Magento\Framework\Config\File\Config_File_Pool;
+use Magento\Framework\Setup\Config_Options_List_Interface;
+use Magento\Framework\Setup\Option\Text_Config_Option;
 /**
  * Deployment configuration options needed for Setup application
  */
-class ConfigOptionsList implements ConfigOptionsListInterface
+class Config_Options_List implements Config_Options_List_Interface
 {
     /**
      * Input key for the options
@@ -30,7 +28,6 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     public const INPUT_KEY_QUEUE_AMQP_SSL = 'amqp-ssl';
     public const INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS = 'amqp-ssl-options';
     public const INPUT_KEY_QUEUE_DEFAULT_CONNECTION = 'queue-default-connection';
-
     /**
      * Path to the values in the deployment config
      */
@@ -41,7 +38,6 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     public const CONFIG_PATH_QUEUE_AMQP_VIRTUAL_HOST = 'queue/amqp/virtualhost';
     public const CONFIG_PATH_QUEUE_AMQP_SSL = 'queue/amqp/ssl';
     public const CONFIG_PATH_QUEUE_AMQP_SSL_OPTIONS = 'queue/amqp/ssl_options';
-
     /**
      * Default values
      */
@@ -51,173 +47,81 @@ class ConfigOptionsList implements ConfigOptionsListInterface
     public const DEFAULT_AMQP_PASSWORD = '';
     public const DEFAULT_AMQP_VIRTUAL_HOST = '/';
     public const DEFAULT_AMQP_SSL = '';
-
-    public function __construct(private readonly ConnectionValidator $connectionValidator)
+    public function __construct(private readonly Connection_Validator $connection_validator)
     {
     }
-
     /**
      * @inheritdoc
      */
-    public function getOptions(): array
+    public function get_options(): array
     {
-        return [
-            new TextConfigOption(
-                self::INPUT_KEY_QUEUE_AMQP_HOST,
-                TextConfigOption::FRONTEND_WIZARD_TEXT,
-                self::CONFIG_PATH_QUEUE_AMQP_HOST,
-                'Amqp server host',
-                self::DEFAULT_AMQP_HOST
-            ),
-            new TextConfigOption(
-                self::INPUT_KEY_QUEUE_AMQP_PORT,
-                TextConfigOption::FRONTEND_WIZARD_TEXT,
-                self::CONFIG_PATH_QUEUE_AMQP_PORT,
-                'Amqp server port',
-                self::DEFAULT_AMQP_PORT
-            ),
-            new TextConfigOption(
-                self::INPUT_KEY_QUEUE_AMQP_USER,
-                TextConfigOption::FRONTEND_WIZARD_TEXT,
-                self::CONFIG_PATH_QUEUE_AMQP_USER,
-                'Amqp server username',
-                self::DEFAULT_AMQP_USER
-            ),
-            new TextConfigOption(
-                self::INPUT_KEY_QUEUE_AMQP_PASSWORD,
-                TextConfigOption::FRONTEND_WIZARD_TEXT,
-                self::CONFIG_PATH_QUEUE_AMQP_PASSWORD,
-                'Amqp server password',
-                self::DEFAULT_AMQP_PASSWORD
-            ),
-            new TextConfigOption(
-                self::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST,
-                TextConfigOption::FRONTEND_WIZARD_TEXT,
-                self::CONFIG_PATH_QUEUE_AMQP_VIRTUAL_HOST,
-                'Amqp virtualhost',
-                self::DEFAULT_AMQP_VIRTUAL_HOST
-            ),
-            new TextConfigOption(
-                self::INPUT_KEY_QUEUE_AMQP_SSL,
-                TextConfigOption::FRONTEND_WIZARD_TEXT,
-                self::CONFIG_PATH_QUEUE_AMQP_SSL,
-                'Amqp SSL',
-                self::DEFAULT_AMQP_SSL
-            ),
-            new TextConfigOption(
-                self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS,
-                TextConfigOption::FRONTEND_WIZARD_TEXTAREA,
-                self::CONFIG_PATH_QUEUE_AMQP_SSL_OPTIONS,
-                'Amqp SSL Options (JSON)',
-                self::DEFAULT_AMQP_SSL
-            ),
-        ];
+        return [new Text_Config_Option(self::INPUT_KEY_QUEUE_AMQP_HOST, Text_Config_Option::FRONTEND_WIZARD_TEXT, self::CONFIG_PATH_QUEUE_AMQP_HOST, 'Amqp server host', self::DEFAULT_AMQP_HOST), new Text_Config_Option(self::INPUT_KEY_QUEUE_AMQP_PORT, Text_Config_Option::FRONTEND_WIZARD_TEXT, self::CONFIG_PATH_QUEUE_AMQP_PORT, 'Amqp server port', self::DEFAULT_AMQP_PORT), new Text_Config_Option(self::INPUT_KEY_QUEUE_AMQP_USER, Text_Config_Option::FRONTEND_WIZARD_TEXT, self::CONFIG_PATH_QUEUE_AMQP_USER, 'Amqp server username', self::DEFAULT_AMQP_USER), new Text_Config_Option(self::INPUT_KEY_QUEUE_AMQP_PASSWORD, Text_Config_Option::FRONTEND_WIZARD_TEXT, self::CONFIG_PATH_QUEUE_AMQP_PASSWORD, 'Amqp server password', self::DEFAULT_AMQP_PASSWORD), new Text_Config_Option(self::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST, Text_Config_Option::FRONTEND_WIZARD_TEXT, self::CONFIG_PATH_QUEUE_AMQP_VIRTUAL_HOST, 'Amqp virtualhost', self::DEFAULT_AMQP_VIRTUAL_HOST), new Text_Config_Option(self::INPUT_KEY_QUEUE_AMQP_SSL, Text_Config_Option::FRONTEND_WIZARD_TEXT, self::CONFIG_PATH_QUEUE_AMQP_SSL, 'Amqp SSL', self::DEFAULT_AMQP_SSL), new Text_Config_Option(self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS, Text_Config_Option::FRONTEND_WIZARD_TEXTAREA, self::CONFIG_PATH_QUEUE_AMQP_SSL_OPTIONS, 'Amqp SSL Options (JSON)', self::DEFAULT_AMQP_SSL)];
     }
-
     /**
      * @inheritdoc
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function createConfig(array $data, DeploymentConfig $deploymentConfig): array
+    public function create_config(array $data, Deployment_Config $deployment_config): array
     {
-        $configData = new ConfigData(ConfigFilePool::APP_ENV);
-
-        if (!$this->isDataEmpty($data, self::INPUT_KEY_QUEUE_AMQP_HOST)) {
-            $configData->set(self::CONFIG_PATH_QUEUE_AMQP_HOST, $data[self::INPUT_KEY_QUEUE_AMQP_HOST]);
-            if (!$this->isDataEmpty($data, self::INPUT_KEY_QUEUE_AMQP_PORT)) {
-                $configData->set(self::CONFIG_PATH_QUEUE_AMQP_PORT, $data[self::INPUT_KEY_QUEUE_AMQP_PORT]);
+        $config_data = new Config_Data(Config_File_Pool::APP_ENV);
+        if (!$this->is_data_empty($data, self::INPUT_KEY_QUEUE_AMQP_HOST)) {
+            $config_data->set(self::CONFIG_PATH_QUEUE_AMQP_HOST, $data[self::INPUT_KEY_QUEUE_AMQP_HOST]);
+            if (!$this->is_data_empty($data, self::INPUT_KEY_QUEUE_AMQP_PORT)) {
+                $config_data->set(self::CONFIG_PATH_QUEUE_AMQP_PORT, $data[self::INPUT_KEY_QUEUE_AMQP_PORT]);
             }
-            if (!$this->isDataEmpty($data, self::INPUT_KEY_QUEUE_AMQP_USER)) {
-                $configData->set(self::CONFIG_PATH_QUEUE_AMQP_USER, $data[self::INPUT_KEY_QUEUE_AMQP_USER]);
+            if (!$this->is_data_empty($data, self::INPUT_KEY_QUEUE_AMQP_USER)) {
+                $config_data->set(self::CONFIG_PATH_QUEUE_AMQP_USER, $data[self::INPUT_KEY_QUEUE_AMQP_USER]);
             }
-            if (!$this->isDataEmpty($data, self::INPUT_KEY_QUEUE_AMQP_PASSWORD)) {
-                $configData->set(self::CONFIG_PATH_QUEUE_AMQP_PASSWORD, $data[self::INPUT_KEY_QUEUE_AMQP_PASSWORD]);
+            if (!$this->is_data_empty($data, self::INPUT_KEY_QUEUE_AMQP_PASSWORD)) {
+                $config_data->set(self::CONFIG_PATH_QUEUE_AMQP_PASSWORD, $data[self::INPUT_KEY_QUEUE_AMQP_PASSWORD]);
             }
-            if (!$this->isDataEmpty($data, self::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST)) {
-                $configData->set(
-                    self::CONFIG_PATH_QUEUE_AMQP_VIRTUAL_HOST,
-                    $data[self::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST]
-                );
+            if (!$this->is_data_empty($data, self::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST)) {
+                $config_data->set(self::CONFIG_PATH_QUEUE_AMQP_VIRTUAL_HOST, $data[self::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST]);
             }
-            if (!$this->isDataEmpty($data, self::INPUT_KEY_QUEUE_AMQP_SSL)) {
-                $configData->set(self::CONFIG_PATH_QUEUE_AMQP_SSL, $data[self::INPUT_KEY_QUEUE_AMQP_SSL]);
+            if (!$this->is_data_empty($data, self::INPUT_KEY_QUEUE_AMQP_SSL)) {
+                $config_data->set(self::CONFIG_PATH_QUEUE_AMQP_SSL, $data[self::INPUT_KEY_QUEUE_AMQP_SSL]);
             }
-            if (!$this->isDataEmpty(
-                $data,
-                self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS
-            )) {
-                $options = json_decode(
-                    (string) $data[self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS],
-                    true
-                );
+            if (!$this->is_data_empty($data, self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS)) {
+                $options = json_decode((string) $data[self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS], true);
                 if ($options !== null) {
-                    $configData->set(
-                        self::CONFIG_PATH_QUEUE_AMQP_SSL_OPTIONS,
-                        $options
-                    );
+                    $config_data->set(self::CONFIG_PATH_QUEUE_AMQP_SSL_OPTIONS, $options);
                 }
             }
         }
-
-        return [$configData];
+        return [$config_data];
     }
-
     /**
      * @inheritdoc
      * @return list<'Could not connect to the Amqp Server.'>
      */
-    public function validate(array $options, DeploymentConfig $deploymentConfig): array
+    public function validate(array $options, Deployment_Config $deployment_config): array
     {
         $errors = [];
-
-        if (isset($options[self::INPUT_KEY_QUEUE_AMQP_HOST])
-            && $options[self::INPUT_KEY_QUEUE_AMQP_HOST] !== '') {
-            if (!$this->isDataEmpty(
-                $options,
-                self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS
-            )) {
-                $sslOptions = json_decode(
-                    (string) $options[self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS],
-                    true
-                );
+        if (isset($options[self::INPUT_KEY_QUEUE_AMQP_HOST]) && $options[self::INPUT_KEY_QUEUE_AMQP_HOST] !== '') {
+            if (!$this->is_data_empty($options, self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS)) {
+                $ssl_options = json_decode((string) $options[self::INPUT_KEY_QUEUE_AMQP_SSL_OPTIONS], true);
             } else {
-                $sslOptions = null;
+                $ssl_options = null;
             }
-            $isSslEnabled = !empty($options[self::INPUT_KEY_QUEUE_AMQP_SSL])
-                && $options[self::INPUT_KEY_QUEUE_AMQP_SSL] !== 'false';
-
-            $result = $this->connectionValidator->isConnectionValid(
-                $options[self::INPUT_KEY_QUEUE_AMQP_HOST],
-                $options[self::INPUT_KEY_QUEUE_AMQP_PORT],
-                $options[self::INPUT_KEY_QUEUE_AMQP_USER],
-                $options[self::INPUT_KEY_QUEUE_AMQP_PASSWORD],
-                $options[self::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST],
-                $isSslEnabled,
-                $sslOptions
-            );
-
+            $is_ssl_enabled = !empty($options[self::INPUT_KEY_QUEUE_AMQP_SSL]) && $options[self::INPUT_KEY_QUEUE_AMQP_SSL] !== 'false';
+            $result = $this->connection_validator->is_connection_valid($options[self::INPUT_KEY_QUEUE_AMQP_HOST], $options[self::INPUT_KEY_QUEUE_AMQP_PORT], $options[self::INPUT_KEY_QUEUE_AMQP_USER], $options[self::INPUT_KEY_QUEUE_AMQP_PASSWORD], $options[self::INPUT_KEY_QUEUE_AMQP_VIRTUAL_HOST], $is_ssl_enabled, $ssl_options);
             if (!$result) {
                 $errors[] = 'Could not connect to the Amqp Server.';
             }
-
-            if (isset($options[self::INPUT_KEY_QUEUE_DEFAULT_CONNECTION])
-                && $options[self::INPUT_KEY_QUEUE_DEFAULT_CONNECTION] !== 'amqp') {
+            if (isset($options[self::INPUT_KEY_QUEUE_DEFAULT_CONNECTION]) && $options[self::INPUT_KEY_QUEUE_DEFAULT_CONNECTION] !== 'amqp') {
                 $errors = [];
             }
         }
-
         return $errors;
     }
-
     /**
      * Check if data ($data) with key ($key) is empty
      */
-    private function isDataEmpty(array $data, string $key): bool
+    private function is_data_empty(array $data, string $key): bool
     {
         if (isset($data[$key]) && $data[$key] !== '') {
             return false;
         }
-
         return true;
     }
 }

@@ -1,33 +1,29 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Asynchronous_Operations\Model\Bulk_Status;
 
-namespace Magento\AsynchronousOperations\Model\BulkStatus;
-
-use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterface;
-
-class CalculatedStatusSql
+use Magento\Asynchronous_Operations\Api\Data\Bulk_Summary_Interface;
+class Calculated_Status_Sql
 {
     /**
      * Get sql to calculate bulk status
      *
      * @return \Zend_Db_Expr
      */
-    public function get(string $operationTableName)
+    public function get(string $operation_table_name)
     {
-        return new \Zend_Db_Expr(
-            '(IF(
+        return new \Zend_Db_Expr('(IF(
                 (SELECT count(*)
-                    FROM ' . $operationTableName . '
+                    FROM ' . $operation_table_name . '
                     WHERE bulk_uuid = main_table.uuid
                 ) = 0,
-                ' . BulkSummaryInterface::NOT_STARTED . ',
-                (SELECT MAX(status) FROM ' . $operationTableName . ' WHERE bulk_uuid = main_table.uuid)
-            ))'
-        );
+                ' . Bulk_Summary_Interface::NOT_STARTED . ',
+                (SELECT MAX(status) FROM ' . $operation_table_name . ' WHERE bulk_uuid = main_table.uuid)
+            ))');
     }
 }

@@ -4,13 +4,11 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Backend;
 
-use Magento\Framework\Cache\CacheConstants;
-use Magento\Framework\Cache\Exception\CacheException;
-
+use Magento\Framework\Cache\Cache_Constants;
+use Magento\Framework\Cache\Exception\Cache_Exception;
 /**
  * eAccelerator cache backend
  *
@@ -18,17 +16,13 @@ use Magento\Framework\Cache\Exception\CacheException;
  *             Use Symfony Cache with Redis or File adapters instead.
  * @see \Magento\Framework\Cache\Frontend\Adapter\Symfony
  */
-class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
+class Eaccelerator extends Abstract_Backend implements Extended_Backend_Interface
 {
     /**
      * Log message
      */
-    public const TAGS_UNSUPPORTED_BY_CLEAN_OF_EACCELERATOR_BACKEND =
-        'Magento\Framework\Cache\Backend\Eaccelerator::clean() : tags are unsupported by the Eaccelerator backend';
-
-    public const TAGS_UNSUPPORTED_BY_SAVE_OF_EACCELERATOR_BACKEND =
-        'Magento\Framework\Cache\Backend\Eaccelerator::save() : tags are unsupported by the Eaccelerator backend';
-
+    public const TAGS_UNSUPPORTED_BY_CLEAN_OF_EACCELERATOR_BACKEND = 'Magento\Framework\Cache\Backend\Eaccelerator::clean() : tags are unsupported by the Eaccelerator backend';
+    public const TAGS_UNSUPPORTED_BY_SAVE_OF_EACCELERATOR_BACKEND = 'Magento\Framework\Cache\Backend\Eaccelerator::save() : tags are unsupported by the Eaccelerator backend';
     /**
      * Constructor
      *
@@ -38,13 +32,10 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
     public function __construct(array $options = [])
     {
         if (!extension_loaded('eaccelerator')) {
-            throw new CacheException(
-                __('The eaccelerator extension must be loaded for using this backend!')
-            );
+            throw new Cache_Exception(__('The eaccelerator extension must be loaded for using this backend!'));
         }
         parent::__construct($options);
     }
-
     /**
      * Test if a cache is available for the given id and (if yes) return it (false else)
      *
@@ -55,7 +46,7 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      * @return string cached datas (or false)
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function load($id, $doNotTestCacheValidity = false)
+    public function load($id, $do_not_test_cache_validity = false)
     {
         $tmp = eaccelerator_get($id);
         if (is_array($tmp)) {
@@ -63,7 +54,6 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
         }
         return false;
     }
-
     /**
      * Test if a cache is available or not (for the given id)
      *
@@ -78,7 +68,6 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
         }
         return false;
     }
-
     /**
      * Save some string datas into a cache record
      *
@@ -91,16 +80,15 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      * @param int|bool $specificLifetime Integer to set a specific lifetime or null for infinite lifetime
      * @return bool true if no problem
      */
-    public function save($data, $id, $tags = [], $specificLifetime = null)
+    public function save($data, $id, $tags = [], $specific_lifetime = null)
     {
-        $lifetime = $this->getLifetime($specificLifetime);
+        $lifetime = $this->get_lifetime($specific_lifetime);
         $result = eaccelerator_put($id, [$data, time(), $lifetime], $lifetime);
         if (count($tags) > 0) {
             $this->log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_EACCELERATOR_BACKEND);
         }
         return $result;
     }
-
     /**
      * Remove a cache record
      *
@@ -111,7 +99,6 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
     {
         return eaccelerator_rm($id);
     }
-
     /**
      * Clean some cache records
      *
@@ -129,64 +116,58 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function clean($mode = CacheConstants::CLEANING_MODE_ALL, $tags = [])
+    public function clean($mode = Cache_Constants::CLEANING_MODE_ALL, $tags = [])
     {
         switch ($mode) {
-            case CacheConstants::CLEANING_MODE_ALL:
+            case Cache_Constants::CLEANING_MODE_ALL:
             case 'all':
                 return eaccelerator_clean();
-            case CacheConstants::CLEANING_MODE_OLD:
+            case Cache_Constants::CLEANING_MODE_OLD:
             case 'old':
-                $this->log(
-                    "Magento\Framework\Cache\Backend\Eaccelerator::clean() : ".
-                    'CLEANING_MODE_OLD is unsupported by the Eaccelerator backend'
-                );
+                $this->log("Magento\\Framework\\Cache\\Backend\\Eaccelerator::clean() : " . 'CLEANING_MODE_OLD is unsupported by the Eaccelerator backend');
                 return false;
-            case CacheConstants::CLEANING_MODE_MATCHING_TAG:
-            case CacheConstants::CLEANING_MODE_NOT_MATCHING_TAG:
-            case CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG:
+            case Cache_Constants::CLEANING_MODE_MATCHING_TAG:
+            case Cache_Constants::CLEANING_MODE_NOT_MATCHING_TAG:
+            case Cache_Constants::CLEANING_MODE_MATCHING_ANY_TAG:
             case 'matchingTag':
             case 'notMatchingTag':
             case 'matchingAnyTag':
                 $this->log(self::TAGS_UNSUPPORTED_BY_CLEAN_OF_EACCELERATOR_BACKEND);
                 return false;
             default:
-                throw new CacheException(__('Invalid mode for clean() method'));
+                throw new Cache_Exception(__('Invalid mode for clean() method'));
         }
     }
-
     /**
      * Return the filling percentage of the backend storage
      *
      * @throws CacheException
      * @return int integer between 0 and 100
      */
-    public function getFillingPercentage()
+    public function get_filling_percentage()
     {
         $mem = eaccelerator_info();
-        $memSize = $mem['memorySize'];
-        $memAvailable = $mem['memoryAvailable'];
-        $memUsed = $memSize - $memAvailable;
-        if ($memSize == 0) {
-            throw new CacheException(__('Cannot get eaccelerator memory size'));
+        $mem_size = $mem['memorySize'];
+        $mem_available = $mem['memoryAvailable'];
+        $mem_used = $mem_size - $mem_available;
+        if ($mem_size == 0) {
+            throw new Cache_Exception(__('Cannot get eaccelerator memory size'));
         }
-        if ($memUsed > $memSize) {
+        if ($mem_used > $mem_size) {
             return 100;
         }
-        return (int)(100. * ($memUsed / $memSize));
+        return (int) (100.0 * ($mem_used / $mem_size));
     }
-
     /**
      * Return an array of stored tags
      *
      * @return string[] array of stored tags (string)
      */
-    public function getTags()
+    public function get_tags()
     {
         $this->log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_EACCELERATOR_BACKEND);
         return [];
     }
-
     /**
      * Return an array of stored cache ids which match given tags
      *
@@ -196,12 +177,11 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      * @return string[] array of matching cache ids (string)
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getIdsMatchingTags($tags = [])
+    public function get_ids_matching_tags($tags = [])
     {
         $this->log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_EACCELERATOR_BACKEND);
         return [];
     }
-
     /**
      * Return an array of stored cache ids which don't match given tags
      *
@@ -211,12 +191,11 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      * @return string[] array of not matching cache ids (string)
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getIdsNotMatchingTags($tags = [])
+    public function get_ids_not_matching_tags($tags = [])
     {
         $this->log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_EACCELERATOR_BACKEND);
         return [];
     }
-
     /**
      * Return an array of stored cache ids which match any given tags
      *
@@ -226,19 +205,18 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      * @return string[] array of any matching cache ids (string)
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getIdsMatchingAnyTags($tags = [])
+    public function get_ids_matching_any_tags($tags = [])
     {
         $this->log(self::TAGS_UNSUPPORTED_BY_SAVE_OF_EACCELERATOR_BACKEND);
         return [];
     }
-
     /**
      * Return an array of stored cache ids
      *
      * @return string[] array of stored cache ids (string)
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    public function getIds()
+    public function get_ids()
     {
         $res = [];
         $array = eaccelerator_list_keys();
@@ -247,7 +225,6 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
         }
         return $res;
     }
-
     /**
      * Return an array of metadatas for the given cache id
      *
@@ -260,7 +237,7 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      * @return array|false array of metadatas (false if the cache id is not found)
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    public function getMetadatas($id)
+    public function get_metadatas($id)
     {
         $tmp = eaccelerator_get($id);
         if (is_array($tmp)) {
@@ -276,7 +253,6 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
         }
         return false;
     }
-
     /**
      * Give (if possible) an extra lifetime to the given cache id
      *
@@ -284,7 +260,7 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      * @param int $extraLifetime
      * @return bool true if ok
      */
-    public function touch($id, $extraLifetime)
+    public function touch($id, $extra_lifetime)
     {
         $tmp = eaccelerator_get($id);
         if (is_array($tmp)) {
@@ -296,16 +272,15 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
                 return false;
             }
             $lifetime = $tmp[2];
-            $newLifetime = $lifetime - (time() - $mtime) + $extraLifetime;
-            if ($newLifetime <= 0) {
+            $new_lifetime = $lifetime - (time() - $mtime) + $extra_lifetime;
+            if ($new_lifetime <= 0) {
                 return false;
             }
-            eaccelerator_put($id, [$data, time(), $newLifetime], $newLifetime);
+            eaccelerator_put($id, [$data, time(), $new_lifetime], $new_lifetime);
             return true;
         }
         return false;
     }
-
     /**
      * Return an associative array of capabilities (booleans) of the backend
      *
@@ -320,15 +295,8 @@ class Eaccelerator extends AbstractBackend implements ExtendedBackendInterface
      *
      * @return array associative of with capabilities
      */
-    public function getCapabilities()
+    public function get_capabilities()
     {
-        return [
-            'automatic_cleaning' => false,
-            'tags' => false,
-            'expired_read' => false,
-            'priority' => false,
-            'infinite_lifetime' => false,
-            'get_list' => true,
-        ];
+        return ['automatic_cleaning' => false, 'tags' => false, 'expired_read' => false, 'priority' => false, 'infinite_lifetime' => false, 'get_list' => true];
     }
 }

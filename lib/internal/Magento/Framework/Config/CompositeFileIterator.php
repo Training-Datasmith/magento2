@@ -4,100 +4,87 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Config;
 
-use Magento\Framework\Filesystem\File\ReadFactory;
-
+use Magento\Framework\Filesystem\File\Read_Factory;
 /**
  * Combine existing file iterator and new files.
  */
-class CompositeFileIterator extends FileIterator
+class Composite_File_Iterator extends File_Iterator
 {
     /**
      * @var FileIterator
      */
-    private $existingIterator;
-
+    private $existing_iterator;
     /**
      * @param ReadFactory $readFactory
      * @param array $paths
      * @param FileIterator $existingIterator
      */
-    public function __construct(ReadFactory $readFactory, array $paths, FileIterator $existingIterator)
+    public function __construct(Read_Factory $read_factory, array $paths, File_Iterator $existing_iterator)
     {
-        parent::__construct($readFactory, $paths);
-        $this->existingIterator = $existingIterator;
+        parent::__construct($read_factory, $paths);
+        $this->existing_iterator = $existing_iterator;
     }
-
     /**
      * @inheritDoc
      */
     public function rewind()
     {
-        $this->existingIterator->rewind();
+        $this->existing_iterator->rewind();
         parent::rewind();
     }
-
     /**
      * @inheritDoc
      */
     public function current()
     {
-        if ($this->existingIterator->valid()) {
-            return $this->existingIterator->current();
+        if ($this->existing_iterator->valid()) {
+            return $this->existing_iterator->current();
         }
-
         return parent::current();
     }
-
     /**
      * @inheritDoc
      */
     public function key()
     {
-        if ($this->existingIterator->valid()) {
-            return $this->existingIterator->key();
+        if ($this->existing_iterator->valid()) {
+            return $this->existing_iterator->key();
         }
-
         return parent::key();
     }
-
     /**
      * @inheritDoc
      */
     public function next()
     {
-        if ($this->existingIterator->valid()) {
-            $this->existingIterator->next();
+        if ($this->existing_iterator->valid()) {
+            $this->existing_iterator->next();
         } else {
             parent::next();
         }
     }
-
     /**
      * @inheritDoc
      */
     public function valid()
     {
-        return $this->existingIterator->valid() || parent::valid();
+        return $this->existing_iterator->valid() || parent::valid();
     }
-
     /**
      * @inheritDoc
      */
-    public function toArray()
+    public function to_array()
     {
-        return array_merge($this->existingIterator->toArray(), parent::toArray());
+        return array_merge($this->existing_iterator->to_array(), parent::to_array());
     }
-
     /**
      * @inheritDoc
      */
     public function count()
     {
-        return $this->existingIterator->count() + parent::count();
+        return $this->existing_iterator->count() + parent::count();
     }
 }

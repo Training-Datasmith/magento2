@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\DB\Sql;
 
 /**
@@ -17,7 +16,7 @@ namespace Magento\Framework\DB\Sql;
  *
  * @api
  */
-interface ExpressionInterface
+interface Expression_Interface
 {
     /**
      * The string of the SQL expression stored in this object.

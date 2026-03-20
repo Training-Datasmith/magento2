@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Model\System\Message\Media\Synchronization;
+namespace Magento\Admin_Notification\Model\System\Message\Media\Synchronization;
 
 /**
  * Media synchronization error message class.
@@ -14,7 +13,7 @@ namespace Magento\AdminNotification\Model\System\Message\Media\Synchronization;
  * @api
  * @since 100.0.2
  */
-class Error extends \Magento\AdminNotification\Model\System\Message\Media\AbstractSynchronization
+class Error extends \Magento\Admin_Notification\Model\System\Message\Media\Abstract_Synchronization
 {
     /**
      * Message identity
@@ -22,25 +21,21 @@ class Error extends \Magento\AdminNotification\Model\System\Message\Media\Abstra
      * @var string
      */
     protected $_identity = 'MEDIA_SYNCHRONIZATION_ERROR';
-
     /**
      * Check whether
      */
-    protected function _shouldBeDisplayed(): bool
+    protected function _should_be_displayed(): bool
     {
-        $data = $this->_syncFlag->getFlagData();
+        $data = $this->_sync_flag->get_flag_data();
         return !empty($data['has_errors']);
     }
-
     /**
      * Retrieve message text
      *
      * @return \Magento\Framework\Phrase
      */
-    public function getText()
+    public function get_text()
     {
-        return __(
-            'We were unable to synchronize one or more media files. Please refer to the log file for details.'
-        );
+        return __('We were unable to synchronize one or more media files. Please refer to the log file for details.');
     }
 }

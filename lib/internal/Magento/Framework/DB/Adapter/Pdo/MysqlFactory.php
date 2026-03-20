@@ -1,40 +1,35 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Adapter\Pdo;
 
-use Magento\Framework\DB\LoggerInterface;
-use Magento\Framework\DB\SelectFactory;
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\DB\Logger_Interface;
+use Magento\Framework\DB\Select_Factory;
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Factory for Mysql adapter
  *
  * @api
  */
-class MysqlFactory
+class Mysql_Factory
 {
     /**
      * @var ObjectManagerInterface
      */
-    private $objectManager;
-
+    private $object_manager;
     /**
      * Constructor
      *
      * @param ObjectManagerInterface $objectManager
      */
-    public function __construct(
-        ObjectManagerInterface $objectManager
-    ) {
-        $this->objectManager = $objectManager;
+    public function __construct(Object_Manager_Interface $object_manager)
+    {
+        $this->object_manager = $object_manager;
     }
-
     /**
      * Create instance of Mysql adapter
      *
@@ -45,27 +40,18 @@ class MysqlFactory
      * @return Mysql
      * @throws \InvalidArgumentException
      */
-    public function create(
-        $className,
-        array $config,
-        ?LoggerInterface $logger = null,
-        ?SelectFactory $selectFactory = null
-    ) {
-        if (!in_array(Mysql::class, class_parents($className, true) + [$className => $className])) {
-            throw new \InvalidArgumentException('Invalid class, ' . $className . ' must extend ' . Mysql::class . '.');
+    public function create($class_name, array $config, ?Logger_Interface $logger = null, ?Select_Factory $select_factory = null)
+    {
+        if (!in_array(Mysql::class, class_parents($class_name, true) + [$class_name => $class_name])) {
+            throw new \InvalidArgumentException('Invalid class, ' . $class_name . ' must extend ' . Mysql::class . '.');
         }
-        $arguments = [
-            'config' => $config,
-        ];
+        $arguments = ['config' => $config];
         if ($logger) {
             $arguments['logger'] = $logger;
         }
-        if ($selectFactory) {
-            $arguments['selectFactory'] = $selectFactory;
+        if ($select_factory) {
+            $arguments['selectFactory'] = $select_factory;
         }
-        return $this->objectManager->create(
-            $className,
-            $arguments
-        );
+        return $this->object_manager->create($class_name, $arguments);
     }
 }

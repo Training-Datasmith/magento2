@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing;
 
-namespace Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing;
-
-use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
-use Magento\Framework\Validator\AbstractValidator;
-
-class Validator extends AbstractValidator implements RowValidatorInterface
+use Magento\Catalog_Import_Export\Model\Import\Product\Row_Validator_Interface;
+use Magento\Framework\Validator\Abstract_Validator;
+class Validator extends Abstract_Validator implements Row_Validator_Interface
 {
     /**
      * @param RowValidatorInterface[] $validators
@@ -19,26 +17,24 @@ class Validator extends AbstractValidator implements RowValidatorInterface
     public function __construct(protected $validators = [])
     {
     }
-
     /**
      * Check value is valid
      *
      * @param array $value
      * @return bool
      */
-    public function isValid($value)
+    public function is_valid($value)
     {
-        $returnValue = true;
-        $this->_clearMessages();
+        $return_value = true;
+        $this->_clear_messages();
         foreach ($this->validators as $validator) {
-            if (!$validator->isValid($value)) {
-                $returnValue = false;
-                $this->_addMessages($validator->getMessages());
+            if (!$validator->is_valid($value)) {
+                $return_value = false;
+                $this->_add_messages($validator->get_messages());
             }
         }
-        return $returnValue;
+        return $return_value;
     }
-
     /**
      * @inheritdoc
      */

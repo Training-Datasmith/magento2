@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Model;
+namespace Magento\Admin_Notification\Model;
 
 /**
  * AdminNotification Inbox interface
@@ -14,7 +13,7 @@ namespace Magento\AdminNotification\Model;
  * @api
  * @since 100.0.2
  */
-interface InboxInterface
+interface Inbox_Interface
 {
     /**
      * Retrieve Severity collection array
@@ -22,19 +21,17 @@ interface InboxInterface
      * @param int|null $severity
      * @return array|string|null
      */
-    public function getSeverities($severity = null);
-
+    public function get_severities($severity = null);
     /**
      * Retrieve Latest Notice
      *
      * @return $this
      */
-    public function loadLatestNotice();
-
+    public function load_latest_notice();
     /**
      * Retrieve notice statuses
      *
      * @return array
      */
-    public function getNoticeStatus();
+    public function get_notice_status();
 }

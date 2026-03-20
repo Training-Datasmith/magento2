@@ -1,61 +1,50 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation;
 
-namespace Magento\Framework\EntityManager\Operation;
-
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\EntityManager\HydratorPool;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\TypeResolver;
-
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\Entity_Manager\Hydrator_Pool;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+use Magento\Framework\Entity_Manager\Type_Resolver;
 /**
  * Class CheckIfExists
  */
-class CheckIfExists implements CheckIfExistsInterface
+class Check_If_Exists implements Check_If_Exists_Interface
 {
     /**
      * @var ResourceConnection
      */
-    private $resourceConnection;
-
+    private $resource_connection;
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var HydratorPool
      */
-    private $hydratorPool;
-
+    private $hydrator_pool;
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @param MetadataPool $metadataPool
      * @param HydratorPool $hydratorPool
      * @param TypeResolver $typeResolver
      * @param ResourceConnection $resourceConnection
      */
-    public function __construct(
-        TypeResolver $typeResolver,
-        MetadataPool $metadataPool,
-        HydratorPool $hydratorPool,
-        ResourceConnection $resourceConnection
-    ) {
-        $this->metadataPool = $metadataPool;
-        $this->hydratorPool = $hydratorPool;
-        $this->typeResolver = $typeResolver;
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(Type_Resolver $type_resolver, Metadata_Pool $metadata_pool, Hydrator_Pool $hydrator_pool, Resource_Connection $resource_connection)
+    {
+        $this->metadata_pool = $metadata_pool;
+        $this->hydrator_pool = $hydrator_pool;
+        $this->type_resolver = $type_resolver;
+        $this->resource_connection = $resource_connection;
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -65,19 +54,14 @@ class CheckIfExists implements CheckIfExistsInterface
      */
     public function execute($entity, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $metadata = $this->metadataPool->getMetadata($entityType);
-        $hydrator = $this->hydratorPool->getHydrator($entityType);
-        $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
-        $entityData = $hydrator->extract($entity);
-        if (!isset($entityData[$metadata->getIdentifierField()])) {
+        $entity_type = $this->type_resolver->resolve($entity);
+        $metadata = $this->metadata_pool->get_metadata($entity_type);
+        $hydrator = $this->hydrator_pool->get_hydrator($entity_type);
+        $connection = $this->resource_connection->get_connection_by_name($metadata->get_entity_connection_name());
+        $entity_data = $hydrator->extract($entity);
+        if (!isset($entity_data[$metadata->get_identifier_field()])) {
             return false;
         }
-        return (bool)$connection->fetchOne(
-            $connection->select()
-                ->from($metadata->getEntityTable(), [$metadata->getIdentifierField()])
-                ->where($metadata->getIdentifierField() . ' = ?', $entityData[$metadata->getIdentifierField()])
-                ->limit(1)
-        );
+        return (bool) $connection->fetch_one($connection->select()->from($metadata->get_entity_table(), [$metadata->get_identifier_field()])->where($metadata->get_identifier_field() . ' = ?', $entity_data[$metadata->get_identifier_field()])->limit(1));
     }
 }

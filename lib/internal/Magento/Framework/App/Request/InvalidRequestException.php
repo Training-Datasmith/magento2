@@ -4,33 +4,29 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Request;
 
-use Magento\Framework\App\ResponseInterface;
-use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Exception\NotFoundException;
+use Magento\Framework\App\Response_Interface;
+use Magento\Framework\Controller\Result_Interface;
+use Magento\Framework\Exception\Not_Found_Exception;
 use Magento\Framework\Exception\RuntimeException;
 use Magento\Framework\Phrase;
-
 /**
  * Received request is invalid.
  *
  * @api
  */
-class InvalidRequestException extends RuntimeException
+class Invalid_Request_Exception extends RuntimeException
 {
     /**
      * @var ResponseInterface|ResultInterface
      */
-    private $replaceResult;
-
+    private $replace_result;
     /**
      * @var Phrase[]|null
      */
     private $messages;
-
     /**
      * @param ResponseInterface|ResultInterface|NotFoundException $replaceResult
      * Use this result instead of calling an action instance,
@@ -38,30 +34,27 @@ class InvalidRequestException extends RuntimeException
      * @param Phrase[]|null $messages Messages to show to client
      * as error messages.
      */
-    public function __construct($replaceResult, ?array $messages = null)
+    public function __construct($replace_result, ?array $messages = null)
     {
         parent::__construct(new Phrase('Invalid request received'));
-
-        $this->replaceResult = $replaceResult;
+        $this->replace_result = $replace_result;
         $this->messages = $messages;
     }
-
     /**
      * Return replaced result
      *
      * @return ResponseInterface|ResultInterface|NotFoundException
      */
-    public function getReplaceResult()
+    public function get_replace_result()
     {
-        return $this->replaceResult;
+        return $this->replace_result;
     }
-
     /**
      * Return messages
      *
      * @return Phrase[]|null
      */
-    public function getMessages(): ?array
+    public function get_messages(): ?array
     {
         return $this->messages;
     }

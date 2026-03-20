@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api\Search;
 
 /**
@@ -13,19 +12,18 @@ namespace Magento\Framework\Api\Search;
  *
  * @api
  */
-interface BucketInterface
+interface Bucket_Interface
 {
     /**
      * Get field name
      *
      * @return string
      */
-    public function getName();
-
+    public function get_name();
     /**
      * Get field values
      *
      * @return \Magento\Framework\Api\Search\AggregationValueInterface[]
      */
-    public function getValues();
+    public function get_values();
 }

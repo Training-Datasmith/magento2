@@ -1,30 +1,26 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Advanced_Search\Model;
 
-namespace Magento\AdvancedSearch\Model;
-
-use Magento\Search\Model\QueryInterface;
-
+use Magento\Search\Model\Query_Interface;
 /**
  * @api
  * @since 100.0.2
  */
-interface SuggestedQueriesInterface
+interface Suggested_Queries_Interface
 {
     /**#@+
      * Recommendations settings config paths
      */
     public const SEARCH_RECOMMENDATIONS_ENABLED = 'catalog/search/search_recommendations_enabled';
-    public const SEARCH_RECOMMENDATIONS_COUNT_RESULTS_ENABLED =
-        'catalog/search/search_recommendations_count_results_enabled';
+    public const SEARCH_RECOMMENDATIONS_COUNT_RESULTS_ENABLED = 'catalog/search/search_recommendations_count_results_enabled';
     public const SEARCH_RECOMMENDATIONS_COUNT = 'catalog/search/search_recommendations_count';
     /**#@-*/
-
     /**#@+
      * Suggestions settings config paths
      */
@@ -37,12 +33,11 @@ interface SuggestedQueriesInterface
      *
      * @return \Magento\Search\Model\QueryResult[]
      */
-    public function getItems(QueryInterface $query);
-
+    public function get_items(Query_Interface $query);
     /**
      * Check for counting results
      *
      * @return bool
      */
-    public function isResultsCountEnabled();
+    public function is_results_count_enabled();
 }

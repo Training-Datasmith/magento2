@@ -4,75 +4,59 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Admin_Analytics\Controller\Adminhtml\Config;
 
-namespace Magento\AdminAnalytics\Controller\Adminhtml\Config;
-
-use Magento\AdminAnalytics\Model\ResourceModel\Viewer\Logger as NotificationLogger;
+use Magento\Admin_Analytics\Model\Resource_Model\Viewer\Logger as NotificationLogger;
 use Magento\Backend\App\Action;
 use Magento\Config\Model\Config\Factory;
-use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\App\ProductMetadataInterface;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\Controller\ResultInterface;
-
+use Magento\Framework\App\Action\Http_Post_Action_Interface;
+use Magento\Framework\App\Product_Metadata_Interface;
+use Magento\Framework\Controller\Result_Factory;
+use Magento\Framework\Controller\Result_Interface;
 /**
  * Controller to record Admin analytics usage log
  */
-class DisableAdminUsage extends Action implements HttpPostActionInterface
+class Disable_Admin_Usage extends Action implements Http_Post_Action_Interface
 {
     /**
      * DisableAdminUsage constructor.
      */
-    public function __construct(
-        Action\Context $context,
-        private readonly ProductMetadataInterface $productMetadata,
-        private readonly NotificationLogger $notificationLogger,
-        private readonly Factory $configFactory
-    ) {
+    public function __construct(Action\Context $context, private readonly Product_Metadata_Interface $product_metadata, private readonly Notification_Logger $notification_logger, private readonly Factory $config_factory)
+    {
         parent::__construct($context);
     }
-
     /**
      * Change the value of config/admin/usage/enabled
      */
-    private function disableAdminUsage(): void
+    private function disable_admin_usage(): void
     {
-        $configModel = $this->configFactory->create();
-        $configModel->setDataByPath('admin/usage/enabled', 0);
-        $configModel->save();
+        $config_model = $this->config_factory->create();
+        $config_model->set_data_by_path('admin/usage/enabled', 0);
+        $config_model->save();
     }
-
     /**
      * Log information about the last admin usage selection
      */
-    private function markUserNotified(): ResultInterface
+    private function mark_user_notified(): Result_Interface
     {
-        $responseContent = [
-            'success' => $this->notificationLogger->log(
-                $this->productMetadata->getVersion()
-            ),
-            'error_message' => '',
-        ];
-
-        $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        return $resultJson->setData($responseContent);
+        $response_content = ['success' => $this->notification_logger->log($this->product_metadata->get_version()), 'error_message' => ''];
+        $result_json = $this->result_factory->create(Result_Factory::TYPE_JSON);
+        return $result_json->set_data($response_content);
     }
-
     /**
      * Log information about the last shown advertisement
      */
-    public function execute(): \Magento\Framework\Controller\ResultInterface
+    public function execute(): \Magento\Framework\Controller\Result_Interface
     {
-        $this->disableAdminUsage();
-        return $this->markUserNotified();
+        $this->disable_admin_usage();
+        return $this->mark_user_notified();
     }
-
     /**
      * @inheritDoc
      */
-    protected function _isAllowed()
+    protected function _is_allowed()
     {
-        return $this->_authorization->isAllowed(static::ADMIN_RESOURCE);
+        return $this->_authorization->is_allowed(static::ADMIN_RESOURCE);
     }
 }

@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Ddl;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\DB\Adapter\Adapter_Interface;
 use Magento\Framework\Setup\Declaration\Schema\Dto\Factories\Table as DtoTable;
-
 /**
  * Data Definition for table
  *
@@ -24,148 +22,112 @@ class Table
      * Types of columns
      */
     public const TYPE_BOOLEAN = 'boolean';
-
     public const TYPE_SMALLINT = 'smallint';
-
     public const TYPE_INTEGER = 'integer';
-
     public const TYPE_BIGINT = 'bigint';
-
     public const TYPE_FLOAT = 'float';
-
     public const TYPE_NUMERIC = 'numeric';
-
     public const TYPE_DECIMAL = 'decimal';
-
     public const TYPE_DATE = 'date';
-
     public const TYPE_TIMESTAMP = 'timestamp';
-
     // Capable to support date-time from 1970 + auto-triggers in some RDBMS
     public const TYPE_DATETIME = 'datetime';
-
     // Capable to support long date-time before 1970
     public const TYPE_TEXT = 'text';
-
     // A real blob, stored as binary inside DB
     public const TYPE_BLOB = 'blob';
-
     // Used for back compatibility, when query param can't use statement options
     public const TYPE_VARBINARY = 'varbinary';
-
     /**
      * Default and maximal TEXT and BLOB columns sizes we can support for different DB systems.
      */
     public const DEFAULT_TEXT_SIZE = 1024;
-
     public const MAX_TEXT_SIZE = 2147483648;
-
     public const MAX_VARBINARY_SIZE = 2147483648;
-
     /**
      * Default values for timestamps - fill with current timestamp on inserting record, on changing and both cases
      */
     public const TIMESTAMP_INIT_UPDATE = 'TIMESTAMP_INIT_UPDATE';
-
     public const TIMESTAMP_INIT = 'TIMESTAMP_INIT';
-
     public const TIMESTAMP_UPDATE = 'TIMESTAMP_UPDATE';
-
     /**
      * Actions used for foreign keys
      */
     public const ACTION_CASCADE = 'CASCADE';
-
     public const ACTION_SET_NULL = 'SET NULL';
-
     public const ACTION_NO_ACTION = 'NO ACTION';
-
     public const ACTION_RESTRICT = 'RESTRICT';
-
     public const ACTION_SET_DEFAULT = 'SET DEFAULT';
-
     /**
      * Column option 'default'
      *
      * @var string
      */
     public const OPTION_DEFAULT = 'default';
-
     /**
      * Column option 'identity'
      *
      * @var string
      */
     public const OPTION_IDENTITY = 'identity';
-
     /**
      * Column option 'length'
      *
      * @var string
      */
     public const OPTION_LENGTH = 'length';
-
     /**
      * Column option 'nullable'
      *
      * @var string
      */
     public const OPTION_NULLABLE = 'nullable';
-
     /**
      * Column option 'precision'
      *
      * @var string
      */
     public const OPTION_PRECISION = 'precision';
-
     /**
      * Column option 'primary'
      *
      * @var string
      */
     public const OPTION_PRIMARY = 'primary';
-
     /**
      * Column option 'scale'
      *
      * @var string
      */
     public const OPTION_SCALE = 'scale';
-
     /**
      * Column option 'type'
      *
      * @var string
      */
     public const OPTION_TYPE = 'type';
-
     /**
      * Column option 'unsigned'
      *
      * @var string
      */
     public const OPTION_UNSIGNED = 'unsigned';
-
     /**
      * Name of table
      *
      * @var string
      */
-    protected $_tableName;
-
+    protected $_table_name;
     /**
      * @var string
      */
-    protected $_schemaName;
-
+    protected $_schema_name;
     /**
      * Comment for Table
      *
      * @var string
      */
-    protected $_tableComment;
-
+    protected $_table_comment;
     /**
      * Column descriptions for a table
      *
@@ -190,7 +152,6 @@ class Table
      * @var array
      */
     protected $_columns = [];
-
     /**
      * Index descriptions for a table
      *
@@ -213,7 +174,6 @@ class Table
      * @var array
      */
     protected $_indexes = [];
-
     /**
      * Foreign key descriptions for a table
      *
@@ -233,104 +193,93 @@ class Table
      *
      * @var array
      */
-    protected $_foreignKeys = [];
-
+    protected $_foreign_keys = [];
     /**
      * Additional table options
      *
      * @var array
      */
     protected $_options = ['type' => 'INNODB', 'charset' => 'utf8', 'collate' => 'utf8_general_ci'];
-
     /***
      * @var DtoTable|null
      */
-    private ?DtoTable $DtoTable;
-
+    private ?Dto_Table $dto_table;
     /***
      * constructor
      *
      * @param DtoTable|null $DtoTable
      */
-    public function __construct(
-        ?DtoTable $DtoTable = null
-    ) {
-        $this->DtoTable = $DtoTable ?: ObjectManager::getInstance()->get(DtoTable::class);
+    public function __construct(?Dto_Table $dto_table = null)
+    {
+        $this->dto_table = $dto_table ?: Object_Manager::get_instance()->get(Dto_Table::class);
     }
-
     /**
      * Set table name
      *
      * @param string $name
      * @return $this
      */
-    public function setName($name)
+    public function set_name($name)
     {
-        $this->_tableName = $name;
-        if ($this->_tableComment === null) {
-            $this->_tableComment = $name;
+        $this->_table_name = $name;
+        if ($this->_table_comment === null) {
+            $this->_table_comment = $name;
         }
         return $this;
     }
-
     /**
      * Set schema name
      *
      * @param string $name
      * @return $this
      */
-    public function setSchema($name)
+    public function set_schema($name)
     {
-        $this->_schemaName = $name;
+        $this->_schema_name = $name;
         return $this;
     }
-
     /**
      * Set comment for table
      *
      * @param string $comment
      * @return $this
      */
-    public function setComment($comment)
+    public function set_comment($comment)
     {
-        $this->_tableComment = $comment;
+        $this->_table_comment = $comment;
         return $this;
     }
-
     /**
      * Retrieve name of table
      *
      * @return string
      * @throws \Zend_Db_Exception
      */
-    public function getName()
+    public function get_name()
     {
-        if ($this->_tableName === null) {
+        if ($this->_table_name === null) {
             throw new \Zend_Db_Exception('Table name is not defined');
         }
-        return $this->_tableName;
+        return $this->_table_name;
     }
-
     /**
      * Get schema name
      *
      * @return string|null
      */
-    public function getSchema()
+    public function get_schema()
     {
-        return $this->_schemaName;
+        return $this->_schema_name;
     }
-
     /**
      * Return comment for table
      *
      * @return string
      */
-    public function getComment()
+    public function get_comment()
     {
-        return $this->_tableComment;
+        return $this->_table_comment;
     }
-
     /**
      * Adds column to table.
      *
@@ -355,7 +304,7 @@ class Table
      * @SuppressWarnings(PHPMD.NPathComplexity)
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public function addColumn($name, $type, $size = null, $options = [], $comment = null)
+    public function add_column($name, $type, $size = null, $options = [], $comment = null)
     {
         $position = count($this->_columns);
         $default = false;
@@ -365,29 +314,24 @@ class Table
         $precision = null;
         $unsigned = false;
         $primary = false;
-        $primaryPosition = 0;
+        $primary_position = 0;
         $identity = false;
-
         // Prepare different properties
         switch ($type) {
             case self::TYPE_BOOLEAN:
                 break;
-
             case self::TYPE_SMALLINT:
             case self::TYPE_INTEGER:
             case self::TYPE_BIGINT:
                 if (!empty($options['unsigned'])) {
                     $unsigned = true;
                 }
-
                 break;
-
             case self::TYPE_FLOAT:
                 if (!empty($options['unsigned'])) {
                     $unsigned = true;
                 }
                 break;
-
             case self::TYPE_DECIMAL:
             case self::TYPE_NUMERIC:
                 $match = [];
@@ -408,11 +352,9 @@ class Table
                 if (isset($options['precision'])) {
                     $precision = $options['precision'];
                 }
-
                 if (isset($options['scale'])) {
                     $scale = $options['scale'];
                 }
-
                 if (!empty($options['unsigned'])) {
                     $unsigned = true;
                 }
@@ -429,22 +371,21 @@ class Table
             default:
                 throw new \Zend_Db_Exception('Invalid column data type "' . $type . '"');
         }
-
         if (array_key_exists('default', $options)) {
             $default = $options['default'];
         }
         if (array_key_exists('nullable', $options)) {
-            $nullable = (bool)$options['nullable'];
+            $nullable = (bool) $options['nullable'];
         }
         if (!empty($options['primary'])) {
             $primary = true;
             if (isset($options['primary_position'])) {
-                $primaryPosition = (int)$options['primary_position'];
+                $primary_position = (int) $options['primary_position'];
             } else {
-                $primaryPosition = 0;
+                $primary_position = 0;
                 foreach ($this->_columns as $v) {
                     if ($v['PRIMARY']) {
-                        $primaryPosition++;
+                        $primary_position++;
                     }
                 }
             }
@@ -452,32 +393,13 @@ class Table
         if (!empty($options['identity']) || !empty($options['auto_increment'])) {
             $identity = true;
         }
-
         if ($comment === null) {
             $comment = ucfirst($name);
         }
-
-        $upperName = strtoupper($name);
-        $this->_columns[$upperName] = [
-            'COLUMN_NAME' => $name,
-            'COLUMN_TYPE' => $type,
-            'COLUMN_POSITION' => $position,
-            'DATA_TYPE' => $type,
-            'DEFAULT' => $default,
-            'NULLABLE' => $nullable,
-            'LENGTH' => $length,
-            'SCALE' => $scale,
-            'PRECISION' => $precision,
-            'UNSIGNED' => $unsigned,
-            'PRIMARY' => $primary,
-            'PRIMARY_POSITION' => $primaryPosition,
-            'IDENTITY' => $identity,
-            'COMMENT' => $comment,
-        ];
-
+        $upper_name = strtoupper($name);
+        $this->_columns[$upper_name] = ['COLUMN_NAME' => $name, 'COLUMN_TYPE' => $type, 'COLUMN_POSITION' => $position, 'DATA_TYPE' => $type, 'DEFAULT' => $default, 'NULLABLE' => $nullable, 'LENGTH' => $length, 'SCALE' => $scale, 'PRECISION' => $precision, 'UNSIGNED' => $unsigned, 'PRIMARY' => $primary, 'PRIMARY_POSITION' => $primary_position, 'IDENTITY' => $identity, 'COMMENT' => $comment];
         return $this;
     }
-
     /**
      * Add Foreign Key to table
      *
@@ -490,36 +412,25 @@ class Table
      * @throws \Zend_Db_Exception
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function addForeignKey($fkName, $column, $refTable, $refColumn, $onDelete = null)
+    public function add_foreign_key($fk_name, $column, $ref_table, $ref_column, $on_delete = null)
     {
-        $upperName = strtoupper($fkName);
-
+        $upper_name = strtoupper($fk_name);
         // validate column name
         if (!isset($this->_columns[strtoupper($column)])) {
             throw new \Zend_Db_Exception('Undefined column "' . $column . '"');
         }
-
-        switch ($onDelete) {
+        switch ($on_delete) {
             case self::ACTION_CASCADE:
             case self::ACTION_RESTRICT:
             case self::ACTION_SET_DEFAULT:
             case self::ACTION_SET_NULL:
                 break;
             default:
-                $onDelete = self::ACTION_NO_ACTION;
+                $on_delete = self::ACTION_NO_ACTION;
         }
-
-        $this->_foreignKeys[$upperName] = [
-            'FK_NAME' => $fkName,
-            'COLUMN_NAME' => $column,
-            'REF_TABLE_NAME' => $refTable,
-            'REF_COLUMN_NAME' => $refColumn,
-            'ON_DELETE' => $onDelete,
-        ];
-
+        $this->_foreign_keys[$upper_name] = ['FK_NAME' => $fk_name, 'COLUMN_NAME' => $column, 'REF_TABLE_NAME' => $ref_table, 'REF_COLUMN_NAME' => $ref_column, 'ON_DELETE' => $on_delete];
         return $this;
     }
-
     /**
      * Add index to table
      *
@@ -530,66 +441,45 @@ class Table
      * @throws \Zend_Db_Exception
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function addIndex($indexName, $fields, $options = [])
+    public function add_index($index_name, $fields, $options = [])
     {
-        $idxType = AdapterInterface::INDEX_TYPE_INDEX;
+        $idx_type = Adapter_Interface::INDEX_TYPE_INDEX;
         $position = 0;
         $columns = [];
         if (!is_array($fields)) {
             $fields = [$fields];
         }
-
-        foreach ($fields as $columnData) {
-            $columnSize = null;
-            $columnPos = $position;
-            if (is_string($columnData)) {
-                $columnName = $columnData;
-            } elseif (is_array($columnData)) {
-                if (!isset($columnData['name'])) {
+        foreach ($fields as $column_data) {
+            $column_size = null;
+            $column_pos = $position;
+            if (is_string($column_data)) {
+                $column_name = $column_data;
+            } elseif (is_array($column_data)) {
+                if (!isset($column_data['name'])) {
                     throw new \Zend_Db_Exception('Invalid index column data');
                 }
-
-                $columnName = $columnData['name'];
-                if (!empty($columnData['size'])) {
-                    $columnSize = (int)$columnData['size'];
+                $column_name = $column_data['name'];
+                if (!empty($column_data['size'])) {
+                    $column_size = (int) $column_data['size'];
                 }
-                if (!empty($columnData['position'])) {
-                    $columnPos = (int)$columnData['position'];
+                if (!empty($column_data['position'])) {
+                    $column_pos = (int) $column_data['position'];
                 }
             } else {
                 continue;
             }
-
-            $columns[strtoupper(
-                $columnName
-            )] = [
-                'NAME' => $columnName,
-                'SIZE' => $columnSize,
-                'POSITION' => $columnPos,
-            ];
-
+            $columns[strtoupper($column_name)] = ['NAME' => $column_name, 'SIZE' => $column_size, 'POSITION' => $column_pos];
             $position++;
         }
-
         if (empty($columns)) {
             throw new \Zend_Db_Exception('Columns for index are not defined');
         }
-
         if (!empty($options['type'])) {
-            $idxType = $options['type'];
+            $idx_type = $options['type'];
         }
-
-        $this->_indexes[strtoupper(
-            $indexName
-        )] = [
-            'INDEX_NAME' => $indexName,
-            'COLUMNS' => $this->_normalizeIndexColumnPosition($columns),
-            'TYPE' => $idxType,
-        ];
-
+        $this->_indexes[strtoupper($index_name)] = ['INDEX_NAME' => $index_name, 'COLUMNS' => $this->_normalize_index_column_position($columns), 'TYPE' => $idx_type];
         return $this;
     }
-
     /**
      * Retrieve array of table columns
      *
@@ -597,14 +487,13 @@ class Table
      * @see $this->_columns
      * @return array
      */
-    public function getColumns($normalized = true)
+    public function get_columns($normalized = true)
     {
         if ($normalized) {
-            return $this->_normalizeColumnPosition($this->_columns);
+            return $this->_normalize_column_position($this->_columns);
         }
         return $this->_columns;
     }
-
     /**
      * Set column, formatted according to DDL Table format, into columns structure
      *
@@ -612,35 +501,32 @@ class Table
      * @see $this->_columns
      * @return $this
      */
-    public function setColumn($column)
+    public function set_column($column)
     {
-        $upperName = strtoupper($column['COLUMN_NAME']);
-        $this->_columns[$upperName] = $column;
+        $upper_name = strtoupper($column['COLUMN_NAME']);
+        $this->_columns[$upper_name] = $column;
         return $this;
     }
-
     /**
      * Retrieve array of table indexes
      *
      * @see $this->_indexes
      * @return array
      */
-    public function getIndexes()
+    public function get_indexes()
     {
         return $this->_indexes;
     }
-
     /**
      * Retrieve array of table foreign keys
      *
      * @see $this->_foreignKeys
      * @return array
      */
-    public function getForeignKeys()
+    public function get_foreign_keys()
     {
-        return $this->_foreignKeys;
+        return $this->_foreign_keys;
     }
-
     /**
      * Set table option
      *
@@ -648,12 +534,11 @@ class Table
      * @param string $value
      * @return $this
      */
-    public function setOption($key, $value)
+    public function set_option($key, $value)
     {
         $this->_options[$key] = $value;
         return $this;
     }
-
     /**
      * Retrieve table option value by option name
      *
@@ -662,30 +547,28 @@ class Table
      * @param string $key
      * @return null|string
      */
-    public function getOption($key)
+    public function get_option($key)
     {
         if (!isset($this->_options[$key])) {
             return null;
         }
         if (strtolower($key) == 'charset') {
-            return $this->DtoTable->getDefaultCharset();
+            return $this->dto_table->get_default_charset();
         }
         if (strtolower($key) == 'collate') {
-            return $this->DtoTable->getDefaultCollation();
+            return $this->dto_table->get_default_collation();
         }
         return $this->_options[$key];
     }
-
     /**
      * Retrieve array of table options
      *
      * @return array
      */
-    public function getOptions()
+    public function get_options()
     {
         return $this->_options;
     }
-
     /**
      * Index column position comparison function
      *
@@ -693,11 +576,10 @@ class Table
      * @param array $b
      * @return int
      */
-    protected function _sortIndexColumnPosition($a, $b)
+    protected function _sort_index_column_position($a, $b)
     {
         return $a['POSITION'] - $b['POSITION'];
     }
-
     /**
      * Table column position comparison function
      *
@@ -705,40 +587,38 @@ class Table
      * @param array $b
      * @return int
      */
-    protected function _sortColumnPosition($a, $b)
+    protected function _sort_column_position($a, $b)
     {
         return $a['COLUMN_POSITION'] - $b['COLUMN_POSITION'];
     }
-
     /**
      * Normalize positon of index columns array
      *
      * @param array $columns
      * @return array
      */
-    protected function _normalizeIndexColumnPosition($columns)
+    protected function _normalize_index_column_position($columns)
     {
         uasort($columns, [$this, '_sortIndexColumnPosition']);
         $position = 0;
-        foreach (array_keys($columns) as $columnId) {
-            $columns[$columnId]['POSITION'] = $position;
+        foreach (array_keys($columns) as $column_id) {
+            $columns[$column_id]['POSITION'] = $position;
             $position++;
         }
         return $columns;
     }
-
     /**
      * Normalize positon of table columns array
      *
      * @param array $columns
      * @return array
      */
-    protected function _normalizeColumnPosition($columns)
+    protected function _normalize_column_position($columns)
     {
         uasort($columns, [$this, '_sortColumnPosition']);
         $position = 0;
-        foreach (array_keys($columns) as $columnId) {
-            $columns[$columnId]['COLUMN_POSITION'] = $position;
+        foreach (array_keys($columns) as $column_id) {
+            $columns[$column_id]['COLUMN_POSITION'] = $position;
             $position++;
         }
         return $columns;

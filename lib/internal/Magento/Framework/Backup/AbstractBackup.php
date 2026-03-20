@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Backup;
 
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\Localized_Exception;
 use Magento\Framework\Phrase;
-
 /**
  * Class to work with archives
  *
@@ -18,7 +16,7 @@ use Magento\Framework\Phrase;
  * @api
  * @since 100.0.2
  */
-abstract class AbstractBackup implements BackupInterface, SourceFileInterface
+abstract class Abstract_Backup implements Backup_Interface, Source_File_Interface
 {
     /**
      * Backup name
@@ -26,127 +24,112 @@ abstract class AbstractBackup implements BackupInterface, SourceFileInterface
      * @var string
      */
     protected $_name;
-
     /**
      * Backup creation date
      *
      * @var int
      */
     protected $_time;
-
     /**
      * Backup file extension
      *
      * @var string
      */
-    protected $_backupExtension;
-
+    protected $_backup_extension;
     /**
      * @var object
      */
-    protected $_resourceModel;
-
+    protected $_resource_model;
     /**
      * Magento's root directory
      *
      * @var string
      */
-    protected $_rootDir;
-
+    protected $_root_dir;
     /**
      * Path to directory where backups stored
      *
      * @var string
      */
-    protected $_backupsDir;
-
+    protected $_backups_dir;
     /**
      * Is last operation completed successfully
      *
      * @var bool
      */
-    protected $_lastOperationSucceed = false;
-
+    protected $_last_operation_succeed = false;
     /**
      * Last failed operation error message
      *
      * @var string
      */
-    protected $_lastErrorMessage;
-
+    protected $_last_error_message;
     /**
      * Keep Source files in Backup
      *
      * @var boolean
      */
-    private $keepSourceFile;
-
+    private $keep_source_file;
     /**
      * Set Backup Extension
      *
      * @param string $backupExtension
      * @return $this
      */
-    public function setBackupExtension($backupExtension)
+    public function set_backup_extension($backup_extension)
     {
-        $this->_backupExtension = $backupExtension;
+        $this->_backup_extension = $backup_extension;
         return $this;
     }
-
     /**
      * Get Backup Extension
      *
      * @return string
      */
-    public function getBackupExtension()
+    public function get_backup_extension()
     {
-        return $this->_backupExtension;
+        return $this->_backup_extension;
     }
-
     /**
      * Set Resource Model
      *
      * @param object $resourceModel
      * @return $this
      */
-    public function setResourceModel($resourceModel)
+    public function set_resource_model($resource_model)
     {
-        $this->_resourceModel = $resourceModel;
+        $this->_resource_model = $resource_model;
         return $this;
     }
-
     /**
      * Get Resource Model
      *
      * @return object
      */
-    public function getResourceModel()
+    public function get_resource_model()
     {
-        return $this->_resourceModel;
+        return $this->_resource_model;
     }
-
     /**
      * Set Time
      *
      * @param int $time
      * @return $this
      */
-    public function setTime($time)
+    public function set_time($time)
     {
         $this->_time = $time;
         return $this;
     }
-
     /**
      * Get Time
      *
      * @return int
      */
-    public function getTime()
+    public function get_time()
     {
         return $this->_time;
     }
-
     /**
      * Set root directory of Magento installation
      *
@@ -154,112 +137,96 @@ abstract class AbstractBackup implements BackupInterface, SourceFileInterface
      * @throws LocalizedException
      * @return $this
      */
-    public function setRootDir($rootDir)
+    public function set_root_dir($root_dir)
     {
-        if (!is_dir($rootDir)) {
-            throw new LocalizedException(
-                new Phrase('Bad root directory')
-            );
+        if (!is_dir($root_dir)) {
+            throw new Localized_Exception(new Phrase('Bad root directory'));
         }
-
-        $this->_rootDir = rtrim($rootDir, '/');
+        $this->_root_dir = rtrim($root_dir, '/');
         return $this;
     }
-
     /**
      * Get Magento's root directory
      *
      * @return string
      */
-    public function getRootDir()
+    public function get_root_dir()
     {
-        return $this->_rootDir;
+        return $this->_root_dir;
     }
-
     /**
      * Set path to directory where backups stored
      *
      * @param string $backupsDir
      * @return $this
      */
-    public function setBackupsDir($backupsDir)
+    public function set_backups_dir($backups_dir)
     {
-        $this->_backupsDir = $backupsDir !== null ? rtrim($backupsDir, '/') : '';
+        $this->_backups_dir = $backups_dir !== null ? rtrim($backups_dir, '/') : '';
         return $this;
     }
-
     /**
      * Get path to directory where backups stored
      *
      * @return string
      */
-    public function getBackupsDir()
+    public function get_backups_dir()
     {
-        return $this->_backupsDir;
+        return $this->_backups_dir;
     }
-
     /**
      * Get path to backup
      *
      * @return string
      */
-    public function getBackupPath()
+    public function get_backup_path()
     {
-        return $this->getBackupsDir() . '/' . $this->getBackupFilename();
+        return $this->get_backups_dir() . '/' . $this->get_backup_filename();
     }
-
     /**
      * Get backup file name
      *
      * @return string
      */
-    public function getBackupFilename()
+    public function get_backup_filename()
     {
-        $filename = $this->getTime() . '_' . $this->getType();
-
-        $name = $this->getName();
-
+        $filename = $this->get_time() . '_' . $this->get_type();
+        $name = $this->get_name();
         if (!empty($name)) {
             $filename .= '_' . $name;
         }
-
-        $filename .= '.' . $this->getBackupExtension();
-
+        $filename .= '.' . $this->get_backup_extension();
         return $filename;
     }
-
     /**
      * Check whether last operation completed successfully
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getIsSuccess()
+    public function get_is_success()
     {
-        return $this->_lastOperationSucceed;
+        return $this->_last_operation_succeed;
     }
-
     /**
      * Get last error message
      *
      * @return string
      */
-    public function getErrorMessage()
+    public function get_error_message()
     {
-        return $this->_lastErrorMessage;
+        return $this->_last_error_message;
     }
-
     /**
      * Set error message
      *
      * @param string $errorMessage
      * @return void
      */
-    public function setErrorMessage($errorMessage)
+    public function set_error_message($error_message)
     {
-        $this->_lastErrorMessage = $errorMessage;
+        $this->_last_error_message = $error_message;
     }
-
     /**
      * Set backup name
      *
@@ -267,60 +234,54 @@ abstract class AbstractBackup implements BackupInterface, SourceFileInterface
      * @param bool $applyFilter
      * @return $this
      */
-    public function setName($name, $applyFilter = true)
+    public function set_name($name, $apply_filter = true)
     {
-        if ($applyFilter) {
-            $name = $this->_filterName($name);
+        if ($apply_filter) {
+            $name = $this->_filter_name($name);
         }
         $this->_name = $name;
         return $this;
     }
-
     /**
      * Get backup name
      *
      * @return string
      */
-    public function getName()
+    public function get_name()
     {
         return $this->_name;
     }
-
     /**
      * Get backup display name
      *
      * @return string
      */
-    public function getDisplayName()
+    public function get_display_name()
     {
         return $this->_name !== null ? str_replace('_', ' ', $this->_name) : '';
     }
-
     /**
      * Removes disallowed characters and replaces spaces with underscores
      *
      * @param string $name
      * @return string
      */
-    protected function _filterName($name)
+    protected function _filter_name($name)
     {
         $name = $name !== null ? trim(preg_replace('/[^\da-zA-Z ]/', '', $name)) : '';
         $name = preg_replace('/\s{2,}/', ' ', $name);
-
         return str_replace(' ', '_', $name);
     }
-
     /**
      * Check if keep files of backup
      *
      * @return bool
      * @since 102.0.0
      */
-    public function keepSourceFile()
+    public function keep_source_file()
     {
-        return $this->keepSourceFile;
+        return $this->keep_source_file;
     }
-
     /**
      * Set if keep files of backup
      *
@@ -328,9 +289,9 @@ abstract class AbstractBackup implements BackupInterface, SourceFileInterface
      * @return $this
      * @since 102.0.0
      */
-    public function setKeepSourceFile(bool $keepSourceFile)
+    public function set_keep_source_file(bool $keep_source_file)
     {
-        $this->keepSourceFile = $keepSourceFile;
+        $this->keep_source_file = $keep_source_file;
         return $this;
     }
 }

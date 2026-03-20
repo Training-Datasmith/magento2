@@ -4,10 +4,9 @@
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Advanced_Search\Model\Client;
 
-namespace Magento\AdvancedSearch\Model\Client;
-
-class ClientException extends \Exception
+class Client_Exception extends \Exception
 {
 }

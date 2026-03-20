@@ -1,49 +1,44 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Advanced_Pricing_Import_Export\Model\Indexer\Product\Price\Plugin;
 
-namespace Magento\AdvancedPricingImportExport\Model\Indexer\Product\Price\Plugin;
-
-use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing;
-
+use Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing;
 class Import
 {
-    public function __construct(private readonly \Magento\Framework\Indexer\IndexerRegistry $indexerRegistry)
+    public function __construct(private readonly \Magento\Framework\Indexer\Indexer_Registry $indexer_registry)
     {
     }
-
     /**
      * After import handler
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterSaveAdvancedPricing(AdvancedPricing $subject): void
+    public function after_save_advanced_pricing(Advanced_Pricing $subject): void
     {
-        $this->invalidateIndexer();
+        $this->invalidate_indexer();
     }
-
     /**
      * After delete handler
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterDeleteAdvancedPricing(AdvancedPricing $subject): void
+    public function after_delete_advanced_pricing(Advanced_Pricing $subject): void
     {
-        $this->invalidateIndexer();
+        $this->invalidate_indexer();
     }
-
     /**
      * Invalidate indexer
      */
-    private function invalidateIndexer(): void
+    private function invalidate_indexer(): void
     {
-        $priceIndexer = $this->indexerRegistry->get(\Magento\Catalog\Model\Indexer\Product\Price\Processor::INDEXER_ID);
-        if (!$priceIndexer->isScheduled()) {
-            $priceIndexer->invalidate();
+        $price_indexer = $this->indexer_registry->get(\Magento\Catalog\Model\Indexer\Product\Price\Processor::INDEXER_ID);
+        if (!$price_indexer->is_scheduled()) {
+            $price_indexer->invalidate();
         }
     }
 }

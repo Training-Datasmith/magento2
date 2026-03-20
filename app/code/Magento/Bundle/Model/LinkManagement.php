@@ -4,76 +4,66 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Model;
 
-use Magento\Bundle\Api\Data\LinkInterface;
-use Magento\Bundle\Api\Data\LinkInterfaceFactory;
-use Magento\Bundle\Api\Data\OptionInterface;
-use Magento\Bundle\Api\ProductLinkManagementAddChildrenInterface;
-use Magento\Bundle\Api\ProductLinkManagementInterface;
+use Magento\Bundle\Api\Data\Link_Interface;
+use Magento\Bundle\Api\Data\Link_Interface_Factory;
+use Magento\Bundle\Api\Data\Option_Interface;
+use Magento\Bundle\Api\Product_Link_Management_Add_Children_Interface;
+use Magento\Bundle\Api\Product_Link_Management_Interface;
 use Magento\Bundle\Model\Product\Type;
-use Magento\Bundle\Model\ResourceModel\Bundle;
-use Magento\Bundle\Model\ResourceModel\BundleFactory;
-use Magento\Bundle\Model\ResourceModel\Option\CollectionFactory;
-use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Bundle\Model\Resource_Model\Bundle;
+use Magento\Bundle\Model\Resource_Model\Bundle_Factory;
+use Magento\Bundle\Model\Resource_Model\Option\Collection_Factory;
+use Magento\Catalog\Api\Data\Product_Interface;
+use Magento\Catalog\Api\Product_Repository_Interface;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\Api\DataObjectHelper;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Store\Model\StoreManagerInterface;
-
+use Magento\Framework\Api\Data_Object_Helper;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+use Magento\Framework\Exception\Could_Not_Save_Exception;
+use Magento\Framework\Exception\Input_Exception;
+use Magento\Framework\Exception\No_Such_Entity_Exception;
+use Magento\Store\Model\Store_Manager_Interface;
 /**
  * Class used to manage bundle products links.
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class LinkManagement implements ProductLinkManagementInterface, ProductLinkManagementAddChildrenInterface
+class Link_Management implements Product_Link_Management_Interface, Product_Link_Management_Add_Children_Interface
 {
     /**
      * @var ProductRepositoryInterface
      */
-    protected $productRepository;
-
+    protected $product_repository;
     /**
      * @var LinkInterfaceFactory
      */
-    protected $linkFactory;
-
+    protected $link_factory;
     /**
      * @var BundleFactory
      */
-    protected $bundleFactory;
-
+    protected $bundle_factory;
     /**
      * @var SelectionFactory
      */
-    protected $bundleSelection;
-
+    protected $bundle_selection;
     /**
      * @var CollectionFactory
      */
-    protected $optionCollection;
-
+    protected $option_collection;
     /**
      * @var StoreManagerInterface
      */
-    private $storeManager;
-
+    private $store_manager;
     /**
      * @var DataObjectHelper
      */
-    protected $dataObjectHelper;
-
+    protected $data_object_helper;
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @param ProductRepositoryInterface $productRepository
      * @param LinkInterfaceFactory $linkFactory
@@ -84,113 +74,81 @@ class LinkManagement implements ProductLinkManagementInterface, ProductLinkManag
      * @param DataObjectHelper $dataObjectHelper
      * @param MetadataPool $metadataPool
      */
-    public function __construct(
-        ProductRepositoryInterface $productRepository,
-        LinkInterfaceFactory $linkFactory,
-        SelectionFactory $bundleSelection,
-        BundleFactory $bundleFactory,
-        CollectionFactory $optionCollection,
-        StoreManagerInterface $storeManager,
-        DataObjectHelper $dataObjectHelper,
-        MetadataPool $metadataPool
-    ) {
-        $this->productRepository = $productRepository;
-        $this->linkFactory = $linkFactory;
-        $this->bundleFactory = $bundleFactory;
-        $this->bundleSelection = $bundleSelection;
-        $this->optionCollection = $optionCollection;
-        $this->storeManager = $storeManager;
-        $this->dataObjectHelper = $dataObjectHelper;
-        $this->metadataPool = $metadataPool;
+    public function __construct(Product_Repository_Interface $product_repository, Link_Interface_Factory $link_factory, Selection_Factory $bundle_selection, Bundle_Factory $bundle_factory, Collection_Factory $option_collection, Store_Manager_Interface $store_manager, Data_Object_Helper $data_object_helper, Metadata_Pool $metadata_pool)
+    {
+        $this->product_repository = $product_repository;
+        $this->link_factory = $link_factory;
+        $this->bundle_factory = $bundle_factory;
+        $this->bundle_selection = $bundle_selection;
+        $this->option_collection = $option_collection;
+        $this->store_manager = $store_manager;
+        $this->data_object_helper = $data_object_helper;
+        $this->metadata_pool = $metadata_pool;
     }
-
     /**
      * @inheritDoc
      */
-    public function getChildren($productSku, $optionId = null)
+    public function get_children($product_sku, $option_id = null)
     {
-        $product = $this->productRepository->get($productSku, true);
-        if ($product->getTypeId() != Product\Type::TYPE_BUNDLE) {
-            throw new InputException(__('This is implemented for bundle products only.'));
+        $product = $this->product_repository->get($product_sku, true);
+        if ($product->get_type_id() != Product\Type::TYPE_BUNDLE) {
+            throw new Input_Exception(__('This is implemented for bundle products only.'));
         }
-
-        $childrenList = [];
-        foreach ($this->getOptions($product) as $option) {
-            if (!$option->getSelections() || ($optionId !== null && $option->getOptionId() != $optionId)) {
+        $children_list = [];
+        foreach ($this->get_options($product) as $option) {
+            if (!$option->get_selections() || $option_id !== null && $option->get_option_id() != $option_id) {
                 continue;
             }
             /** @var Product $selection */
-            foreach ($option->getSelections() as $selection) {
-                $childrenList[] = $this->buildLink($selection, $product);
+            foreach ($option->get_selections() as $selection) {
+                $children_list[] = $this->build_link($selection, $product);
             }
         }
-        return $childrenList;
+        return $children_list;
     }
-
     /**
      * @inheritDoc
      */
-    public function addChildByProductSku($sku, $optionId, LinkInterface $linkedProduct)
+    public function add_child_by_product_sku($sku, $option_id, Link_Interface $linked_product)
     {
         /** @var Product $product */
-        $product = $this->productRepository->get($sku, true);
-        return $this->addChild($product, $optionId, $linkedProduct);
+        $product = $this->product_repository->get($sku, true);
+        return $this->add_child($product, $option_id, $linked_product);
     }
-
     /**
      * @inheritDoc
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function saveChild(
-        $sku,
-        LinkInterface $linkedProduct
-    ) {
-        $product = $this->productRepository->get($sku, true);
-        if ($product->getTypeId() != Product\Type::TYPE_BUNDLE) {
-            throw new InputException(
-                __('The product with the "%1" SKU isn\'t a bundle product.', [$product->getSku()])
-            );
+    public function save_child($sku, Link_Interface $linked_product)
+    {
+        $product = $this->product_repository->get($sku, true);
+        if ($product->get_type_id() != Product\Type::TYPE_BUNDLE) {
+            throw new Input_Exception(__('The product with the "%1" SKU isn\'t a bundle product.', [$product->get_sku()]));
         }
-
         /** @var Product $linkProductModel */
-        $linkProductModel = $this->productRepository->get($linkedProduct->getSku());
-        if ($linkProductModel->isComposite()) {
-            throw new InputException(__('The bundle product can\'t contain another composite product.'));
+        $link_product_model = $this->product_repository->get($linked_product->get_sku());
+        if ($link_product_model->is_composite()) {
+            throw new Input_Exception(__('The bundle product can\'t contain another composite product.'));
         }
-
-        if (!$linkedProduct->getId()) {
-            throw new InputException(__('The product link needs an ID field entered. Enter and try again.'));
+        if (!$linked_product->get_id()) {
+            throw new Input_Exception(__('The product link needs an ID field entered. Enter and try again.'));
         }
-
         /** @var Selection $selectionModel */
-        $selectionModel = $this->bundleSelection->create();
-        $selectionModel->load($linkedProduct->getId());
-        if (!$selectionModel->getId()) {
-            throw new InputException(
-                __(
-                    'The product link with the "%1" ID field wasn\'t found. Verify the ID and try again.',
-                    [$linkedProduct->getId()]
-                )
-            );
+        $selection_model = $this->bundle_selection->create();
+        $selection_model->load($linked_product->get_id());
+        if (!$selection_model->get_id()) {
+            throw new Input_Exception(__('The product link with the "%1" ID field wasn\'t found. Verify the ID and try again.', [$linked_product->get_id()]));
         }
-        $selectionModel = $this->mapProductLinkToBundleSelectionModel(
-            $selectionModel,
-            $linkedProduct,
-            $product,
-            (int)$linkProductModel->getId()
-        );
-
+        $selection_model = $this->map_product_link_to_bundle_selection_model($selection_model, $linked_product, $product, (int) $link_product_model->get_id());
         try {
-            $selectionModel->save();
+            $selection_model->save();
         } catch (\Exception $e) {
-            throw new CouldNotSaveException(__('Could not save child: "%1"', $e->getMessage()), $e);
+            throw new Could_Not_Save_Exception(__('Could not save child: "%1"', $e->get_message()), $e);
         }
-
         return true;
     }
-
     /**
      * Linked product processing
      *
@@ -205,60 +163,36 @@ class LinkManagement implements ProductLinkManagementInterface, ProductLinkManag
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    private function processLinkedProduct(
-        LinkInterface $linkedProduct,
-        array $selections,
-        int $optionId,
-        ProductInterface $product,
-        string $linkField,
-        Bundle $resource
-    ): int {
-        $linkProductModel = $this->productRepository->get($linkedProduct->getSku());
-        if ($linkProductModel->isComposite()) {
-            throw new InputException(__('The bundle product can\'t contain another composite product.'));
+    private function process_linked_product(Link_Interface $linked_product, array $selections, int $option_id, Product_Interface $product, string $link_field, Bundle $resource): int
+    {
+        $link_product_model = $this->product_repository->get($linked_product->get_sku());
+        if ($link_product_model->is_composite()) {
+            throw new Input_Exception(__('The bundle product can\'t contain another composite product.'));
         }
-
         if ($selections) {
             foreach ($selections as $selection) {
-                if ($selection['option_id'] == $optionId &&
-                    $selection['product_id'] == $linkProductModel->getEntityId() &&
-                    $selection['parent_product_id'] == $product->getData($linkField)) {
-                    if (!$product->getCopyFromView()) {
-                        throw new CouldNotSaveException(
-                            __(
-                                'Child with specified sku: "%1" already assigned to product: "%2"',
-                                [$linkedProduct->getSku(), $product->getSku()]
-                            )
-                        );
+                if ($selection['option_id'] == $option_id && $selection['product_id'] == $link_product_model->get_entity_id() && $selection['parent_product_id'] == $product->get_data($link_field)) {
+                    if (!$product->get_copy_from_view()) {
+                        throw new Could_Not_Save_Exception(__('Child with specified sku: "%1" already assigned to product: "%2"', [$linked_product->get_sku(), $product->get_sku()]));
                     }
                 }
             }
         }
-
-        $selectionModel = $this->bundleSelection->create();
-        $selectionModel->load($linkedProduct->getId());
-        $selectionModel = $this->mapProductLinkToBundleSelectionModel(
-            $selectionModel,
-            $linkedProduct,
-            $product,
-            (int)$linkProductModel->getEntityId()
-        );
-
-        $selectionModel->setOptionId($optionId);
-
+        $selection_model = $this->bundle_selection->create();
+        $selection_model->load($linked_product->get_id());
+        $selection_model = $this->map_product_link_to_bundle_selection_model($selection_model, $linked_product, $product, (int) $link_product_model->get_entity_id());
+        $selection_model->set_option_id($option_id);
         try {
-            $selectionModel->save();
-            $resource->addProductRelation($product->getData($linkField), $linkProductModel->getEntityId());
+            $selection_model->save();
+            $resource->add_product_relation($product->get_data($link_field), $link_product_model->get_entity_id());
         } catch (\Exception $e) {
-            throw new CouldNotSaveException(__('Could not save child: "%1"', $e->getMessage()), $e);
+            throw new Could_Not_Save_Exception(__('Could not save child: "%1"', $e->get_message()), $e);
         }
-
-        $linkedProduct->setId($selectionModel->getId());
-        $linkedProduct->setSelectionId($selectionModel->getId());
-        $linkedProduct->setOptionId($optionId);
-        return (int)$selectionModel->getId();
+        $linked_product->set_id($selection_model->get_id());
+        $linked_product->set_selection_id($selection_model->get_id());
+        $linked_product->set_option_id($option_id);
+        return (int) $selection_model->get_id();
     }
-
     /**
      * Fill selection model with product link data
      *
@@ -272,42 +206,36 @@ class LinkManagement implements ProductLinkManagementInterface, ProductLinkManag
      * @deprecated
      * @see mapProductLinkToBundleSelectionModel
      */
-    protected function mapProductLinkToSelectionModel(
-        Selection $selectionModel,
-        LinkInterface $productLink,
-        $linkedProductId,
-        $parentProductId
-    ) {
-        $selectionModel->setProductId($linkedProductId);
-        $selectionModel->setParentProductId($parentProductId);
-        if ($productLink->getSelectionId() !== null) {
-            $selectionModel->setSelectionId($productLink->getSelectionId());
+    protected function map_product_link_to_selection_model(Selection $selection_model, Link_Interface $product_link, $linked_product_id, $parent_product_id)
+    {
+        $selection_model->set_product_id($linked_product_id);
+        $selection_model->set_parent_product_id($parent_product_id);
+        if ($product_link->get_selection_id() !== null) {
+            $selection_model->set_selection_id($product_link->get_selection_id());
         }
-        if ($productLink->getOptionId() !== null) {
-            $selectionModel->setOptionId($productLink->getOptionId());
+        if ($product_link->get_option_id() !== null) {
+            $selection_model->set_option_id($product_link->get_option_id());
         }
-        if ($productLink->getPosition() !== null) {
-            $selectionModel->setPosition($productLink->getPosition());
+        if ($product_link->get_position() !== null) {
+            $selection_model->set_position($product_link->get_position());
         }
-        if ($productLink->getQty() !== null) {
-            $selectionModel->setSelectionQty($productLink->getQty());
+        if ($product_link->get_qty() !== null) {
+            $selection_model->set_selection_qty($product_link->get_qty());
         }
-        if ($productLink->getPriceType() !== null) {
-            $selectionModel->setSelectionPriceType($productLink->getPriceType());
+        if ($product_link->get_price_type() !== null) {
+            $selection_model->set_selection_price_type($product_link->get_price_type());
         }
-        if ($productLink->getPrice() !== null) {
-            $selectionModel->setSelectionPriceValue($productLink->getPrice());
+        if ($product_link->get_price() !== null) {
+            $selection_model->set_selection_price_value($product_link->get_price());
         }
-        if ($productLink->getCanChangeQuantity() !== null) {
-            $selectionModel->setSelectionCanChangeQty($productLink->getCanChangeQuantity());
+        if ($product_link->get_can_change_quantity() !== null) {
+            $selection_model->set_selection_can_change_qty($product_link->get_can_change_quantity());
         }
-        if ($productLink->getIsDefault() !== null) {
-            $selectionModel->setIsDefault($productLink->getIsDefault());
+        if ($product_link->get_is_default() !== null) {
+            $selection_model->set_is_default($product_link->get_is_default());
         }
-
-        return $selectionModel;
+        return $selection_model;
     }
-
     /**
      * Fill selection model with product link data.
      *
@@ -319,171 +247,120 @@ class LinkManagement implements ProductLinkManagementInterface, ProductLinkManag
      * @throws NoSuchEntityException
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    private function mapProductLinkToBundleSelectionModel(
-        Selection $selectionModel,
-        LinkInterface $productLink,
-        ProductInterface $parentProduct,
-        int $linkedProductId
-    ): Selection {
-        $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
-        $selectionModel->setProductId($linkedProductId);
-        $selectionModel->setParentProductId($parentProduct->getData($linkField));
-        if ($productLink->getSelectionId() !== null) {
-            $selectionModel->setSelectionId($productLink->getSelectionId());
-        }
-        if ($productLink->getOptionId() !== null) {
-            $selectionModel->setOptionId($productLink->getOptionId());
-        }
-        if ($productLink->getPosition() !== null) {
-            $selectionModel->setPosition($productLink->getPosition());
-        }
-        if ($productLink->getQty() !== null) {
-            $selectionModel->setSelectionQty($productLink->getQty());
-        }
-        if ($productLink->getPriceType() !== null) {
-            $selectionModel->setSelectionPriceType($productLink->getPriceType());
-        }
-        if ($productLink->getPrice() !== null) {
-            $selectionModel->setSelectionPriceValue($productLink->getPrice());
-        }
-        if ($productLink->getCanChangeQuantity() !== null) {
-            $selectionModel->setSelectionCanChangeQty($productLink->getCanChangeQuantity());
-        }
-        if ($productLink->getIsDefault() !== null) {
-            $selectionModel->setIsDefault($productLink->getIsDefault());
-        }
-        $selectionModel->setWebsiteId((int)$this->storeManager->getStore($parentProduct->getStoreId())->getWebsiteId());
-
-        return $selectionModel;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function addChild(
-        ProductInterface $product,
-        $optionId,
-        LinkInterface $linkedProduct
-    ) {
-        if ($product->getTypeId() != Product\Type::TYPE_BUNDLE) {
-            throw new InputException(
-                __('The product with the "%1" SKU isn\'t a bundle product.', $product->getSku())
-            );
-        }
-
-        $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
-
-        $options = $this->optionCollection->create();
-
-        $options->setIdFilter($optionId);
-        $options->setProductLinkFilter($product->getData($linkField));
-
-        $existingOption = $options->getFirstItem();
-
-        if (!$existingOption->getId()) {
-            throw new InputException(
-                __(
-                    'Product with specified sku: "%1" does not contain option: "%2"',
-                    [$product->getSku(), $optionId]
-                )
-            );
-        }
-
-        /* @var $resource Bundle */
-        $resource = $this->bundleFactory->create();
-        $selections = $resource->getSelectionsData($product->getData($linkField));
-        return $this->processLinkedProduct(
-            $linkedProduct,
-            $selections,
-            (int)$optionId,
-            $product,
-            $linkField,
-            $resource
-        );
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function addChildren(
-        ProductInterface $product,
-        int $optionId,
-        array $linkedProducts
-    ): void {
-        if ($product->getTypeId() != Product\Type::TYPE_BUNDLE) {
-            throw new InputException(
-                __('The product with the "%1" SKU isn\'t a bundle product.', $product->getSku())
-            );
-        }
-
-        $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
-        $options = $this->optionCollection->create();
-        $options->setIdFilter($optionId);
-        $options->setProductLinkFilter($product->getData($linkField));
-        $existingOption = $options->getFirstItem();
-
-        if (!$existingOption->getId()) {
-            throw new InputException(
-                __(
-                    'Product with specified sku: "%1" does not contain option: "%2"',
-                    [$product->getSku(), $optionId]
-                )
-            );
-        }
-
-        /* @var $resource Bundle */
-        $resource = $this->bundleFactory->create();
-        $selections = $resource->getSelectionsData($product->getData($linkField));
-
-        foreach ($linkedProducts as $linkedProduct) {
-            $this->processLinkedProduct($linkedProduct, $selections, $optionId, $product, $linkField, $resource);
-        }
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function removeChild($sku, $optionId, $childSku)
+    private function map_product_link_to_bundle_selection_model(Selection $selection_model, Link_Interface $product_link, Product_Interface $parent_product, int $linked_product_id): Selection
     {
-        $product = $this->productRepository->get($sku, true);
-
-        if ($product->getTypeId() != Product\Type::TYPE_BUNDLE) {
-            throw new InputException(__('The product with the "%1" SKU isn\'t a bundle product.', $sku));
+        $link_field = $this->metadata_pool->get_metadata(Product_Interface::class)->get_link_field();
+        $selection_model->set_product_id($linked_product_id);
+        $selection_model->set_parent_product_id($parent_product->get_data($link_field));
+        if ($product_link->get_selection_id() !== null) {
+            $selection_model->set_selection_id($product_link->get_selection_id());
         }
-
-        $excludeSelectionIds = [];
-        $usedProductIds = [];
-        $removeSelectionIds = [];
-        $removeProductIds = [];
-        foreach ($this->getOptions($product) as $option) {
+        if ($product_link->get_option_id() !== null) {
+            $selection_model->set_option_id($product_link->get_option_id());
+        }
+        if ($product_link->get_position() !== null) {
+            $selection_model->set_position($product_link->get_position());
+        }
+        if ($product_link->get_qty() !== null) {
+            $selection_model->set_selection_qty($product_link->get_qty());
+        }
+        if ($product_link->get_price_type() !== null) {
+            $selection_model->set_selection_price_type($product_link->get_price_type());
+        }
+        if ($product_link->get_price() !== null) {
+            $selection_model->set_selection_price_value($product_link->get_price());
+        }
+        if ($product_link->get_can_change_quantity() !== null) {
+            $selection_model->set_selection_can_change_qty($product_link->get_can_change_quantity());
+        }
+        if ($product_link->get_is_default() !== null) {
+            $selection_model->set_is_default($product_link->get_is_default());
+        }
+        $selection_model->set_website_id((int) $this->store_manager->get_store($parent_product->get_store_id())->get_website_id());
+        return $selection_model;
+    }
+    /**
+     * @inheritDoc
+     */
+    public function add_child(Product_Interface $product, $option_id, Link_Interface $linked_product)
+    {
+        if ($product->get_type_id() != Product\Type::TYPE_BUNDLE) {
+            throw new Input_Exception(__('The product with the "%1" SKU isn\'t a bundle product.', $product->get_sku()));
+        }
+        $link_field = $this->metadata_pool->get_metadata(Product_Interface::class)->get_link_field();
+        $options = $this->option_collection->create();
+        $options->set_id_filter($option_id);
+        $options->set_product_link_filter($product->get_data($link_field));
+        $existing_option = $options->get_first_item();
+        if (!$existing_option->get_id()) {
+            throw new Input_Exception(__('Product with specified sku: "%1" does not contain option: "%2"', [$product->get_sku(), $option_id]));
+        }
+        /* @var $resource Bundle */
+        $resource = $this->bundle_factory->create();
+        $selections = $resource->get_selections_data($product->get_data($link_field));
+        return $this->process_linked_product($linked_product, $selections, (int) $option_id, $product, $link_field, $resource);
+    }
+    /**
+     * @inheritDoc
+     */
+    public function add_children(Product_Interface $product, int $option_id, array $linked_products): void
+    {
+        if ($product->get_type_id() != Product\Type::TYPE_BUNDLE) {
+            throw new Input_Exception(__('The product with the "%1" SKU isn\'t a bundle product.', $product->get_sku()));
+        }
+        $link_field = $this->metadata_pool->get_metadata(Product_Interface::class)->get_link_field();
+        $options = $this->option_collection->create();
+        $options->set_id_filter($option_id);
+        $options->set_product_link_filter($product->get_data($link_field));
+        $existing_option = $options->get_first_item();
+        if (!$existing_option->get_id()) {
+            throw new Input_Exception(__('Product with specified sku: "%1" does not contain option: "%2"', [$product->get_sku(), $option_id]));
+        }
+        /* @var $resource Bundle */
+        $resource = $this->bundle_factory->create();
+        $selections = $resource->get_selections_data($product->get_data($link_field));
+        foreach ($linked_products as $linked_product) {
+            $this->process_linked_product($linked_product, $selections, $option_id, $product, $link_field, $resource);
+        }
+    }
+    /**
+     * @inheritDoc
+     */
+    public function remove_child($sku, $option_id, $child_sku)
+    {
+        $product = $this->product_repository->get($sku, true);
+        if ($product->get_type_id() != Product\Type::TYPE_BUNDLE) {
+            throw new Input_Exception(__('The product with the "%1" SKU isn\'t a bundle product.', $sku));
+        }
+        $exclude_selection_ids = [];
+        $used_product_ids = [];
+        $remove_selection_ids = [];
+        $remove_product_ids = [];
+        foreach ($this->get_options($product) as $option) {
             /** @var Selection $selection */
-            foreach ($option->getSelections() as $selection) {
-                if ((strcasecmp($selection->getSku(), $childSku) == 0) && ($selection->getOptionId() == $optionId)) {
-                    $removeSelectionIds[] = $selection->getSelectionId();
-                    $removeProductIds[] = $selection->getProductId();
+            foreach ($option->get_selections() as $selection) {
+                if (strcasecmp($selection->get_sku(), $child_sku) == 0 && $selection->get_option_id() == $option_id) {
+                    $remove_selection_ids[] = $selection->get_selection_id();
+                    $remove_product_ids[] = $selection->get_product_id();
                     continue;
                 }
-                $usedProductIds[] = $selection->getProductId();
-                $excludeSelectionIds[] = $selection->getSelectionId();
+                $used_product_ids[] = $selection->get_product_id();
+                $exclude_selection_ids[] = $selection->get_selection_id();
             }
         }
-        if (empty($removeSelectionIds)) {
-            throw new NoSuchEntityException(
-                __("The bundle product doesn't exist. Review your request and try again.")
-            );
+        if (empty($remove_selection_ids)) {
+            throw new No_Such_Entity_Exception(__("The bundle product doesn't exist. Review your request and try again."));
         }
-        $linkField = $this->metadataPool->getMetadata(ProductInterface::class)->getLinkField();
+        $link_field = $this->metadata_pool->get_metadata(Product_Interface::class)->get_link_field();
         /* @var $resource Bundle */
-        $resource = $this->bundleFactory->create();
-        $resource->dropAllUnneededSelections($product->getData($linkField), $excludeSelectionIds);
-        $productRelationsToRemove = array_diff($removeProductIds, $usedProductIds);
-        if ($productRelationsToRemove) {
-            $resource->removeProductRelations($product->getData($linkField), array_unique($productRelationsToRemove));
+        $resource = $this->bundle_factory->create();
+        $resource->drop_all_unneeded_selections($product->get_data($link_field), $exclude_selection_ids);
+        $product_relations_to_remove = array_diff($remove_product_ids, $used_product_ids);
+        if ($product_relations_to_remove) {
+            $resource->remove_product_relations($product->get_data($link_field), array_unique($product_relations_to_remove));
         }
-
         return true;
     }
-
     /**
      * Build bundle link between two products
      *
@@ -492,32 +369,20 @@ class LinkManagement implements ProductLinkManagementInterface, ProductLinkManag
      *
      * @return LinkInterface
      */
-    private function buildLink(Product $selection, Product $product)
+    private function build_link(Product $selection, Product $product)
     {
-        $selectionPriceType = $selectionPrice = null;
-
+        $selection_price_type = $selection_price = null;
         /** @var Selection $product */
-        if ($product->getPriceType()) {
-            $selectionPriceType = $selection->getSelectionPriceType();
-            $selectionPrice = $selection->getSelectionPriceValue();
+        if ($product->get_price_type()) {
+            $selection_price_type = $selection->get_selection_price_type();
+            $selection_price = $selection->get_selection_price_value();
         }
-
         /** @var LinkInterface $link */
-        $link = $this->linkFactory->create();
-        $this->dataObjectHelper->populateWithArray(
-            $link,
-            $selection->getData(),
-            LinkInterface::class
-        );
-        $link->setIsDefault($selection->getIsDefault())
-            ->setId($selection->getSelectionId())
-            ->setQty($selection->getSelectionQty())
-            ->setCanChangeQuantity($selection->getSelectionCanChangeQty())
-            ->setPrice($selectionPrice)
-            ->setPriceType($selectionPriceType);
+        $link = $this->link_factory->create();
+        $this->data_object_helper->populate_with_array($link, $selection->get_data(), Link_Interface::class);
+        $link->set_is_default($selection->get_is_default())->set_id($selection->get_selection_id())->set_qty($selection->get_selection_qty())->set_can_change_quantity($selection->get_selection_can_change_qty())->set_price($selection_price)->set_price_type($selection_price_type);
         return $link;
     }
-
     /**
      * Get bundle product options
      *
@@ -525,22 +390,13 @@ class LinkManagement implements ProductLinkManagementInterface, ProductLinkManag
      *
      * @return OptionInterface[]
      */
-    private function getOptions(ProductInterface $product)
+    private function get_options(Product_Interface $product)
     {
         /** @var Type $productTypeInstance */
-        $productTypeInstance = $product->getTypeInstance();
-        $productTypeInstance->setStoreFilter(
-            $product->getStoreId(),
-            $product
-        );
-
-        $optionCollection = $productTypeInstance->getOptionsCollection($product);
-
-        $selectionCollection = $productTypeInstance->getSelectionsCollection(
-            $productTypeInstance->getOptionsIds($product),
-            $product
-        );
-
-        return $optionCollection->appendSelections($selectionCollection, true);
+        $product_type_instance = $product->get_type_instance();
+        $product_type_instance->set_store_filter($product->get_store_id(), $product);
+        $option_collection = $product_type_instance->get_options_collection($product);
+        $selection_collection = $product_type_instance->get_selections_collection($product_type_instance->get_options_ids($product), $product);
+        return $option_collection->append_selections($selection_collection, true);
     }
 }

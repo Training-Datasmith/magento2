@@ -1,88 +1,79 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager;
 
-namespace Magento\Framework\EntityManager;
-
-use Magento\Framework\Model\CallbackPool;
-use Psr\Log\LoggerInterface;
-
+use Magento\Framework\Model\Callback_Pool;
+use Psr\Log\Logger_Interface;
 /**
  * Class CallbackHandler
  */
-class CallbackHandler
+class Callback_Handler
 {
     /**
      * @var MetadataPool
      */
-    protected $metadataPool;
-
+    protected $metadata_pool;
     /**
      * @var LoggerInterface
      */
     protected $logger;
-
     /**
      * CallbackHandler constructor.
      *
      * @param MetadataPool $metadataPool
      * @param LoggerInterface $logger
      */
-    public function __construct(
-        MetadataPool $metadataPool,
-        LoggerInterface $logger
-    ) {
-        $this->metadataPool = $metadataPool;
+    public function __construct(Metadata_Pool $metadata_pool, Logger_Interface $logger)
+    {
+        $this->metadata_pool = $metadata_pool;
         $this->logger = $logger;
     }
-
     /**
      * @param string $entityType
      * @throws \Exception
      * @return void
      */
-    public function process($entityType)
+    public function process($entity_type)
     {
-        $metadata = $this->metadataPool->getMetadata($entityType);
-        $connection = $metadata->getEntityConnection();
+        $metadata = $this->metadata_pool->get_metadata($entity_type);
+        $connection = $metadata->get_entity_connection();
         $hash = spl_object_hash($connection);
-        if ($connection->getTransactionLevel() === 0) {
-            $callbacks = CallbackPool::get($hash);
+        if ($connection->get_transaction_level() === 0) {
+            $callbacks = Callback_Pool::get($hash);
             try {
                 foreach ($callbacks as $callback) {
                     call_user_func($callback);
                 }
             } catch (\Exception $e) {
-                $this->logger->error($e->getMessage(), $e->getTrace());
+                $this->logger->error($e->get_message(), $e->get_trace());
                 throw $e;
             }
         }
     }
-
     /**
      * @param string $entityType
      * @param array $callback
      * @throws \Exception
      * @return void
      */
-    public function attach($entityType, $callback)
+    public function attach($entity_type, $callback)
     {
-        $metadata = $this->metadataPool->getMetadata($entityType);
-        CallbackPool::attach(spl_object_hash($metadata->getEntityConnection()), $callback);
+        $metadata = $this->metadata_pool->get_metadata($entity_type);
+        Callback_Pool::attach(spl_object_hash($metadata->get_entity_connection()), $callback);
     }
-
     /**
      * @param string $entityType
      * @throws \Exception
      * @return void
      */
-    public function clear($entityType)
+    public function clear($entity_type)
     {
-        $metadata = $this->metadataPool->getMetadata($entityType);
-        CallbackPool::clear(spl_object_hash($metadata->getEntityConnection()));
+        $metadata = $this->metadata_pool->get_metadata($entity_type);
+        Callback_Pool::clear(spl_object_hash($metadata->get_entity_connection()));
     }
 }

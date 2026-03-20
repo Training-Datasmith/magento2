@@ -4,47 +4,36 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Api;
 
-use Magento\Framework\Api\Search\FilterGroupBuilder;
-
+use Magento\Framework\Api\Search\Filter_Group_Builder;
 /**
  * Builder for SearchCriteria Service Data Object
  *
  * @api
  */
-class SearchCriteriaBuilder extends AbstractSimpleObjectBuilder
+class Search_Criteria_Builder extends Abstract_Simple_Object_Builder
 {
     /**
      * @var FilterGroupBuilder
      */
-    protected $_filterGroupBuilder;
-
+    protected $_filter_group_builder;
     /**
      * @var \Magento\Framework\Api\FilterBuilder
      */
-    protected $filterBuilder;
-
+    protected $filter_builder;
     /**
      * @param ObjectFactory $objectFactory
      * @param FilterGroupBuilder $filterGroupBuilder
      * @param FilterBuilder $filterBuilder
      */
-    public function __construct(
-        ObjectFactory $objectFactory,
-        FilterGroupBuilder $filterGroupBuilder,
-        FilterBuilder $filterBuilder
-    ) {
-        parent::__construct(
-            $objectFactory
-        );
-        $this->_filterGroupBuilder = $filterGroupBuilder;
-        $this->filterBuilder = $filterBuilder;
+    public function __construct(Object_Factory $object_factory, Filter_Group_Builder $filter_group_builder, Filter_Builder $filter_builder)
+    {
+        parent::__construct($object_factory);
+        $this->_filter_group_builder = $filter_group_builder;
+        $this->filter_builder = $filter_builder;
     }
-
     /**
      * Builds the SearchCriteria Data Object
      *
@@ -53,24 +42,22 @@ class SearchCriteriaBuilder extends AbstractSimpleObjectBuilder
     public function create()
     {
         //Initialize with empty array if not set
-        if (empty($this->data[SearchCriteria::FILTER_GROUPS])) {
-            $this->_set(SearchCriteria::FILTER_GROUPS, []);
+        if (empty($this->data[Search_Criteria::FILTER_GROUPS])) {
+            $this->_set(Search_Criteria::FILTER_GROUPS, []);
         }
         return parent::create();
     }
-
     /**
      * Create a filter group based on the filter array provided and add to the filter groups
      *
      * @param \Magento\Framework\Api\Filter[] $filter
      * @return $this
      */
-    public function addFilters(array $filter)
+    public function add_filters(array $filter)
     {
-        $this->data[SearchCriteria::FILTER_GROUPS][] = $this->_filterGroupBuilder->setFilters($filter)->create();
+        $this->data[Search_Criteria::FILTER_GROUPS][] = $this->_filter_group_builder->set_filters($filter)->create();
         return $this;
     }
-
     /**
      * Add search filter
      *
@@ -79,73 +66,63 @@ class SearchCriteriaBuilder extends AbstractSimpleObjectBuilder
      * @param string $conditionType
      * @return $this
      */
-    public function addFilter($field, $value, $conditionType = 'eq')
+    public function add_filter($field, $value, $condition_type = 'eq')
     {
-        $this->addFilters([
-            $this->filterBuilder->setField($field)
-                ->setValue($value)
-                ->setConditionType($conditionType)
-                ->create(),
-        ]);
+        $this->add_filters([$this->filter_builder->set_field($field)->set_value($value)->set_condition_type($condition_type)->create()]);
         return $this;
     }
-
     /**
      * Set filter groups
      *
      * @param \Magento\Framework\Api\Search\FilterGroup[] $filterGroups
      * @return $this
      */
-    public function setFilterGroups(array $filterGroups)
+    public function set_filter_groups(array $filter_groups)
     {
-        return $this->_set(SearchCriteria::FILTER_GROUPS, $filterGroups);
+        return $this->_set(Search_Criteria::FILTER_GROUPS, $filter_groups);
     }
-
     /**
      * Add sort order
      *
      * @param SortOrder $sortOrder
      * @return $this
      */
-    public function addSortOrder($sortOrder)
+    public function add_sort_order($sort_order)
     {
-        if (!isset($this->data[SearchCriteria::SORT_ORDERS])) {
-            $this->data[SearchCriteria::SORT_ORDERS] = [];
+        if (!isset($this->data[Search_Criteria::SORT_ORDERS])) {
+            $this->data[Search_Criteria::SORT_ORDERS] = [];
         }
-        $this->data[SearchCriteria::SORT_ORDERS][] = $sortOrder;
+        $this->data[Search_Criteria::SORT_ORDERS][] = $sort_order;
         return $this;
     }
-
     /**
      * Set sort orders
      *
      * @param SortOrder[] $sortOrders
      * @return $this
      */
-    public function setSortOrders(array $sortOrders)
+    public function set_sort_orders(array $sort_orders)
     {
-        return $this->_set(SearchCriteria::SORT_ORDERS, $sortOrders);
+        return $this->_set(Search_Criteria::SORT_ORDERS, $sort_orders);
     }
-
     /**
      * Set page size
      *
      * @param int $pageSize
      * @return $this
      */
-    public function setPageSize($pageSize)
+    public function set_page_size($page_size)
     {
-        return $this->_set(SearchCriteria::PAGE_SIZE, $pageSize);
+        return $this->_set(Search_Criteria::PAGE_SIZE, $page_size);
     }
-
     /**
      * Set current page
      *
      * @param int $currentPage
      * @return $this
      */
-    public function setCurrentPage($currentPage)
+    public function set_current_page($current_page)
     {
-        return $this->_set(SearchCriteria::CURRENT_PAGE, $currentPage);
+        return $this->_set(Search_Criteria::CURRENT_PAGE, $current_page);
     }
 }

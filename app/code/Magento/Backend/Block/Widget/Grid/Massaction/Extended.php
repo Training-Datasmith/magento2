@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Massaction;
 
-use Magento\Framework\Data\Collection\AbstractDb;
+use Magento\Framework\Data\Collection\Abstract_Db;
 use Magento\Framework\DB\Select;
-
 /**
  * Grid widget massaction block
  *
@@ -30,41 +28,32 @@ class Extended extends \Magento\Backend\Block\Widget
      * @var array
      */
     protected $_items = [];
-
     /**
      * Path to template file in theme
      *
      * @var string
      */
     protected $_template = 'Magento_Backend::widget/grid/massaction_extended.phtml';
-
     /**
      * @var \Magento\Backend\Helper\Data
      */
-    protected $_backendData = null;
-
+    protected $_backend_data = null;
     /**
      * @var \Magento\Framework\Json\EncoderInterface
      */
-    protected $_jsonEncoder;
-
+    protected $_json_encoder;
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
      * @param \Magento\Backend\Helper\Data $backendData
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-        \Magento\Backend\Helper\Data $backendData,
-        array $data = []
-    ) {
-        $this->_jsonEncoder = $jsonEncoder;
-        $this->_backendData = $backendData;
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Framework\Json\Encoder_Interface $json_encoder, \Magento\Backend\Helper\Data $backend_data, array $data = [])
+    {
+        $this->_json_encoder = $json_encoder;
+        $this->_backend_data = $backend_data;
         parent::__construct($context, $data);
     }
-
     /**
      * Sets Massaction template
      *
@@ -73,9 +62,8 @@ class Extended extends \Magento\Backend\Block\Widget
     public function _construct()
     {
         parent::_construct();
-        $this->setErrorText($this->escapeHtml(__('An item needs to be selected. Select and try again.')));
+        $this->set_error_text($this->escape_html(__('An item needs to be selected. Select and try again.')));
     }
-
     /**
      * Add new massaction item
      *
@@ -92,262 +80,219 @@ class Extended extends \Magento\Backend\Block\Widget
      * @param array $item
      * @return $this
      */
-    public function addItem($itemId, array $item)
+    public function add_item($item_id, array $item)
     {
-        $this->_items[$itemId] = $this->getLayout()->createBlock(
-            \Magento\Backend\Block\Widget\Grid\Massaction\Item::class
-        )->setData(
-            $item
-        )->setMassaction(
-            $this
-        )->setId(
-            $itemId
-        );
-
-        if ($this->_items[$itemId]->getAdditional()) {
-            $this->_items[$itemId]->setAdditionalActionBlock($this->_items[$itemId]->getAdditional());
-            $this->_items[$itemId]->unsAdditional();
+        $this->_items[$item_id] = $this->get_layout()->create_block(\Magento\Backend\Block\Widget\Grid\Massaction\Item::class)->set_data($item)->set_massaction($this)->set_id($item_id);
+        if ($this->_items[$item_id]->get_additional()) {
+            $this->_items[$item_id]->set_additional_action_block($this->_items[$item_id]->get_additional());
+            $this->_items[$item_id]->uns_additional();
         }
-
         return $this;
     }
-
     /**
      * Retrieve massaction item with id $itemId
      *
      * @param string $itemId
      * @return \Magento\Backend\Block\Widget\Grid\Massaction\Item|null
      */
-    public function getItem($itemId)
+    public function get_item($item_id)
     {
-        if (isset($this->_items[$itemId])) {
-            return $this->_items[$itemId];
+        if (isset($this->_items[$item_id])) {
+            return $this->_items[$item_id];
         }
-
         return null;
     }
-
     /**
      * Retrieve massaction items
      *
      * @return array
      */
-    public function getItems()
+    public function get_items()
     {
         return $this->_items;
     }
-
     /**
      * Retrieve massaction items JSON
      *
      * @return string
      */
-    public function getItemsJson()
+    public function get_items_json()
     {
         $result = [];
-        foreach ($this->getItems() as $itemId => $item) {
-            $result[$itemId] = $item->toArray();
+        foreach ($this->get_items() as $item_id => $item) {
+            $result[$item_id] = $item->to_array();
         }
-
-        return $this->_jsonEncoder->encode($result);
+        return $this->_json_encoder->encode($result);
     }
-
     /**
      * Retrieve massaction items count
      *
      * @return integer
      */
-    public function getCount()
+    public function get_count()
     {
         return count($this->_items);
     }
-
     /**
      * Checks are massactions available
      *
      * @return boolean
      */
-    public function isAvailable()
+    public function is_available()
     {
-        return $this->getCount() > 0 && $this->getParentBlock()->getMassactionIdField();
+        return $this->get_count() > 0 && $this->get_parent_block()->get_massaction_id_field();
     }
-
     /**
      * Retrieve global form field name for all massaction items
      *
      * @return string
      */
-    public function getFormFieldName()
+    public function get_form_field_name()
     {
-        return $this->getData('form_field_name') ? $this->getData('form_field_name') : 'massaction';
+        return $this->get_data('form_field_name') ? $this->get_data('form_field_name') : 'massaction';
     }
-
     /**
      * Retrieve form field name for internal use. Based on $this->getFormFieldName()
      *
      * @return string
      */
-    public function getFormFieldNameInternal()
+    public function get_form_field_name_internal()
     {
-        return 'internal_' . $this->getFormFieldName();
+        return 'internal_' . $this->get_form_field_name();
     }
-
     /**
      * Retrieve massaction block js object name
      *
      * @return string
      */
-    public function getJsObjectName()
+    public function get_js_object_name()
     {
-        return $this->getHtmlId() . 'JsObject';
+        return $this->get_html_id() . 'JsObject';
     }
-
     /**
      * Retrieve grid block js object name
      *
      * @return string
      */
-    public function getGridJsObjectName()
+    public function get_grid_js_object_name()
     {
-        return $this->getParentBlock()->getJsObjectName();
+        return $this->get_parent_block()->get_js_object_name();
     }
-
     /**
      * Retrieve JSON string of selected checkboxes
      *
      * @return string
      */
-    public function getSelectedJson()
+    public function get_selected_json()
     {
-        if ($selected = $this->getRequest()->getParam($this->getFormFieldNameInternal())) {
+        if ($selected = $this->get_request()->get_param($this->get_form_field_name_internal())) {
             $selected = explode(',', $selected);
             return join(',', $selected);
         }
         return '';
     }
-
     /**
      * Retrieve array of selected checkboxes
      *
      * @return string[]
      */
-    public function getSelected()
+    public function get_selected()
     {
-        if ($selected = $this->getRequest()->getParam($this->getFormFieldNameInternal())) {
+        if ($selected = $this->get_request()->get_param($this->get_form_field_name_internal())) {
             $selected = explode(',', $selected);
             return $selected;
         }
         return [];
     }
-
     /**
      * Retrieve apply button html
      *
      * @return string
      */
-    public function getApplyButtonHtml()
+    public function get_apply_button_html()
     {
-        return $this->getButtonHtml(__('Submit'), $this->getJsObjectName() . '.apply()');
+        return $this->get_button_html(__('Submit'), $this->get_js_object_name() . '.apply()');
     }
-
     /**
      * Get mass action javascript code
      *
      * @return string
      */
-    public function getJavaScript()
+    public function get_java_script()
     {
-        return " {$this->getJsObjectName()} = new varienGridMassaction('{$this->getHtmlId()}', " .
-            "{$this->getGridJsObjectName()}, '{$this->getSelectedJson()}'" .
-            ", '{$this->getFormFieldNameInternal()}', '{$this->getFormFieldName()}');" .
-            "{$this->getJsObjectName()}.setItems({$this->getItemsJson()}); " .
-            "{$this->getJsObjectName()}.setGridIds('{$this->getGridIdsJson()}');" .
-            ($this->getUseAjax() ? "{$this->getJsObjectName()}.setUseAjax(true);" : '') .
-            ($this->getUseSelectAll() ? "{$this->getJsObjectName()}.setUseSelectAll(true);" : '') .
-            "{$this->getJsObjectName()}.errorText = '{$this->getErrorText()}';" . "\n" .
-            "window.{$this->getJsObjectName()} = {$this->getJsObjectName()};";
+        return " {$this->get_js_object_name()} = new varienGridMassaction('{$this->get_html_id()}', " . "{$this->get_grid_js_object_name()}, '{$this->get_selected_json()}'" . ", '{$this->get_form_field_name_internal()}', '{$this->get_form_field_name()}');" . "{$this->get_js_object_name()}.setItems({$this->get_items_json()}); " . "{$this->get_js_object_name()}.setGridIds('{$this->get_grid_ids_json()}');" . ($this->get_use_ajax() ? "{$this->get_js_object_name()}.setUseAjax(true);" : '') . ($this->get_use_select_all() ? "{$this->get_js_object_name()}.setUseSelectAll(true);" : '') . "{$this->get_js_object_name()}.errorText = '{$this->get_error_text()}';" . "\n" . "window.{$this->get_js_object_name()} = {$this->get_js_object_name()};";
     }
-
     /**
      * Get grid ids in JSON format
      *
      * @return string
      */
-    public function getGridIdsJson()
+    public function get_grid_ids_json()
     {
-        if (!$this->getUseSelectAll()) {
+        if (!$this->get_use_select_all()) {
             return '';
         }
-
         /** @var \Magento\Framework\Data\Collection $allIdsCollection */
-        $allIdsCollection = clone $this->getParentBlock()->getCollection();
-
-        if ($this->getMassactionIdField()) {
-            $massActionIdField = $this->getMassactionIdField();
+        $all_ids_collection = clone $this->get_parent_block()->get_collection();
+        if ($this->get_massaction_id_field()) {
+            $mass_action_id_field = $this->get_massaction_id_field();
         } else {
-            $massActionIdField = $this->getParentBlock()->getMassactionIdField();
+            $mass_action_id_field = $this->get_parent_block()->get_massaction_id_field();
         }
-
-        if ($allIdsCollection instanceof AbstractDb) {
-            $idsSelect = clone $allIdsCollection->getSelect();
-            $idsSelect->reset(Select::ORDER);
-            $idsSelect->reset(Select::LIMIT_COUNT);
-            $idsSelect->reset(Select::LIMIT_OFFSET);
-            $idsSelect->reset(Select::COLUMNS);
-            $idsSelect->columns($massActionIdField);
-            $idList = $allIdsCollection->getConnection()->fetchCol($idsSelect);
+        if ($all_ids_collection instanceof Abstract_Db) {
+            $ids_select = clone $all_ids_collection->get_select();
+            $ids_select->reset(Select::ORDER);
+            $ids_select->reset(Select::LIMIT_COUNT);
+            $ids_select->reset(Select::LIMIT_OFFSET);
+            $ids_select->reset(Select::COLUMNS);
+            $ids_select->columns($mass_action_id_field);
+            $id_list = $all_ids_collection->get_connection()->fetch_col($ids_select);
         } else {
-            $idList = $allIdsCollection->setPageSize(0)->getColumnValues($massActionIdField);
+            $id_list = $all_ids_collection->set_page_size(0)->get_column_values($mass_action_id_field);
         }
-
-        return implode(',', $idList);
+        return implode(',', $id_list);
     }
-
     /**
      * Retrieve massaction block js object name
      *
      * @return string
      */
-    public function getHtmlId()
+    public function get_html_id()
     {
-        return $this->getParentBlock()->getHtmlId() . '_massaction';
+        return $this->get_parent_block()->get_html_id() . '_massaction';
     }
-
     /**
      * Remove existing massaction item by its id
      *
      * @param string $itemId
      * @return $this
      */
-    public function removeItem($itemId)
+    public function remove_item($item_id)
     {
-        if (isset($this->_items[$itemId])) {
-            unset($this->_items[$itemId]);
+        if (isset($this->_items[$item_id])) {
+            unset($this->_items[$item_id]);
         }
-
         return $this;
     }
-
     /**
      * Retrieve select all functionality flag check
      *
      * @return boolean
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getUseSelectAll()
+    public function get_use_select_all()
     {
-        return $this->_getData('use_select_all') === null || $this->_getData('use_select_all');
+        return $this->_get_data('use_select_all') === null || $this->_get_data('use_select_all');
     }
-
     /**
      * Retrieve select all functionality flag check
      *
      * @param boolean $flag
      * @return $this
      */
-    public function setUseSelectAll($flag)
+    public function set_use_select_all($flag)
     {
-        $this->setData('use_select_all', (bool)$flag);
+        $this->set_data('use_select_all', (bool) $flag);
         return $this;
     }
 }

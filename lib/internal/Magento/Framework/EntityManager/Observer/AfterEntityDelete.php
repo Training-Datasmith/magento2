@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Observer;
+namespace Magento\Framework\Entity_Manager\Observer;
 
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Model\AbstractModel;
-
+use Magento\Framework\Event\Observer_Interface;
+use Magento\Framework\Model\Abstract_Model;
 /**
  * Class AfterEntityDelete
  */
-class AfterEntityDelete implements ObserverInterface
+class After_Entity_Delete implements Observer_Interface
 {
     /**
      * Apply model delete operation
@@ -26,12 +24,12 @@ class AfterEntityDelete implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $entity = $observer->getEvent()->getEntity();
-        if ($entity instanceof AbstractModel) {
-            $entity->getResource()->afterDelete($entity);
-            $entity->isDeleted(true);
-            $entity->afterDelete();
-            $entity->getResource()->addCommitCallback([$entity, 'afterDeleteCommit']);
+        $entity = $observer->get_event()->get_entity();
+        if ($entity instanceof Abstract_Model) {
+            $entity->get_resource()->after_delete($entity);
+            $entity->is_deleted(true);
+            $entity->after_delete();
+            $entity->get_resource()->add_commit_callback([$entity, 'afterDeleteCommit']);
         }
     }
 }

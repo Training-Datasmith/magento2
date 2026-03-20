@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml\DB;
 
-namespace Magento\Analytics\ReportXml\DB;
-
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Factory class for @see \Magento\Analytics\ReportXml\DB\SelectBuilder
  */
-class SelectBuilderFactory
+class Select_Builder_Factory
 {
     /**
      * SelectBuilderFactory constructor.
@@ -22,10 +20,10 @@ class SelectBuilderFactory
         /**
          * Object Manager instance
          */
-        private readonly ObjectManagerInterface $objectManager
-    ) {
+        private readonly Object_Manager_Interface $object_manager
+    )
+    {
     }
-
     /**
      * Create class instance with specified parameters
      *
@@ -33,6 +31,6 @@ class SelectBuilderFactory
      */
     public function create(array $data = [])
     {
-        return $this->objectManager->create(SelectBuilder::class, $data);
+        return $this->object_manager->create(Select_Builder::class, $data);
     }
 }

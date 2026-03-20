@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api\Data;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Catalog\Api\Data;
  * @api
  * @since 102.0.0
  */
-interface BasePriceInterface extends \Magento\Framework\Api\ExtensibleDataInterface
+interface Base_Price_Interface extends \Magento\Framework\Api\Extensible_Data_Interface
 {
     /**#@+
      * Constants
@@ -22,7 +21,6 @@ interface BasePriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     public const STORE_ID = 'store_id';
     public const SKU = 'sku';
     /**#@-*/
-
     /**
      * Set price.
      *
@@ -30,16 +28,14 @@ interface BasePriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setPrice($price);
-
+    public function set_price($price);
     /**
      * Get price.
      *
      * @return float
      * @since 102.0.0
      */
-    public function getPrice();
-
+    public function get_price();
     /**
      * Set store id.
      *
@@ -47,16 +43,14 @@ interface BasePriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setStoreId($storeId);
-
+    public function set_store_id($store_id);
     /**
      * Get store id.
      *
      * @return int
      * @since 102.0.0
      */
-    public function getStoreId();
-
+    public function get_store_id();
     /**
      * Set SKU.
      *
@@ -64,24 +58,21 @@ interface BasePriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setSku($sku);
-
+    public function set_sku($sku);
     /**
      * Get SKU.
      *
      * @return string
      * @since 102.0.0
      */
-    public function getSku();
-
+    public function get_sku();
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
      * @return \Magento\Catalog\Api\Data\BasePriceExtensionInterface|null
      * @since 102.0.0
      */
-    public function getExtensionAttributes();
-
+    public function get_extension_attributes();
     /**
      * Set an extension attributes object.
      *
@@ -89,7 +80,5 @@ interface BasePriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setExtensionAttributes(
-        \Magento\Catalog\Api\Data\BasePriceExtensionInterface $extensionAttributes
-    );
+    public function set_extension_attributes(\Magento\Catalog\Api\Data\Base_Price_Extension_Interface $extension_attributes);
 }

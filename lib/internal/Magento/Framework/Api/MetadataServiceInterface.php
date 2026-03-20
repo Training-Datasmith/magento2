@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Api;
  * @api
  * @since 100.0.2
  */
-interface MetadataServiceInterface
+interface Metadata_Service_Interface
 {
     /**
      * Get custom attribute metadata for the given class or interfaces it implements.
@@ -22,5 +21,5 @@ interface MetadataServiceInterface
      * @param string|null $dataObjectClassName Data object class name
      * @return \Magento\Framework\Api\MetadataObjectInterface[]
      */
-    public function getCustomAttributesMetadata($dataObjectClassName = null);
+    public function get_custom_attributes_metadata($data_object_class_name = null);
 }

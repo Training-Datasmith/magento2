@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Authorization;
 
 /**
  * @api
  * @since 100.0.2
  */
-class RoleLocator implements \Magento\Framework\Authorization\RoleLocatorInterface
+class Role_Locator implements \Magento\Framework\Authorization\Role_Locator_Interface
 {
     /**
      * Authentication service
@@ -20,7 +19,6 @@ class RoleLocator implements \Magento\Framework\Authorization\RoleLocatorInterfa
      * @var \Magento\Backend\Model\Auth\Session
      */
     protected $_session;
-
     /**
      * @param \Magento\Backend\Model\Auth\Session $session
      */
@@ -28,16 +26,15 @@ class RoleLocator implements \Magento\Framework\Authorization\RoleLocatorInterfa
     {
         $this->_session = $session;
     }
-
     /**
      * Retrieve current role
      *
      * @return string|null
      */
-    public function getAclRoleId()
+    public function get_acl_role_id()
     {
-        if ($this->_session->hasUser()) {
-            return $this->_session->getUser()->getAclRole();
+        if ($this->_session->has_user()) {
+            return $this->_session->get_user()->get_acl_role();
         }
         return null;
     }

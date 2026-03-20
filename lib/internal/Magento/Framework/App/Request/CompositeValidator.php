@@ -4,24 +4,20 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Request;
 
-use Magento\Framework\App\ActionInterface;
-use Magento\Framework\App\RequestInterface;
-
+use Magento\Framework\App\Action_Interface;
+use Magento\Framework\App\Request_Interface;
 /**
  * Use sequence of validators to validate requests.
  */
-class CompositeValidator implements ValidatorInterface
+class Composite_Validator implements Validator_Interface
 {
     /**
      * @var ValidatorInterface[]
      */
     private $validators;
-
     /**
      * @param ValidatorInterface[] $validators
      */
@@ -29,14 +25,11 @@ class CompositeValidator implements ValidatorInterface
     {
         $this->validators = $validators;
     }
-
     /**
      * @inheritDoc
      */
-    public function validate(
-        RequestInterface $request,
-        ActionInterface $action
-    ): void {
+    public function validate(Request_Interface $request, Action_Interface $action): void
+    {
         foreach ($this->validators as $validator) {
             $validator->validate($request, $action);
         }

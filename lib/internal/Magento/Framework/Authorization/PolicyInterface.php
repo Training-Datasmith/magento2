@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Authorization;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Authorization;
  * @api
  * @since 100.0.2
  */
-interface PolicyInterface
+interface Policy_Interface
 {
     /**
      * Check whether given role has access to given resource
@@ -25,5 +24,5 @@ interface PolicyInterface
      * @param string|null $privilege
      * @return bool
      */
-    public function isAllowed($roleId, $resourceId, $privilege = null);
+    public function is_allowed($role_id, $resource_id, $privilege = null);
 }

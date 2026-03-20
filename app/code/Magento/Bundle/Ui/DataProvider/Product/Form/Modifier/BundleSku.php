@@ -1,62 +1,43 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Bundle\Ui\Data_Provider\Product\Form\Modifier;
 
-namespace Magento\Bundle\Ui\DataProvider\Product\Form\Modifier;
-
-use Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\AbstractModifier;
-use Magento\Framework\Stdlib\ArrayManager;
-
+use Magento\Catalog\Ui\Data_Provider\Product\Form\Modifier\Abstract_Modifier;
+use Magento\Framework\Stdlib\Array_Manager;
 /**
  * Customize SKU field
  */
-class BundleSku extends AbstractModifier
+class Bundle_Sku extends Abstract_Modifier
 {
     public const CODE_SKU_TYPE = 'sku_type';
-
     /**
      * @var ArrayManager
      */
-    protected $arrayManager;
-
+    protected $array_manager;
     /**
      * @param ArrayManager $arrayManager
      */
-    public function __construct(ArrayManager $arrayManager)
+    public function __construct(Array_Manager $array_manager)
     {
-        $this->arrayManager = $arrayManager;
+        $this->array_manager = $array_manager;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function modifyMeta(array $meta)
+    public function modify_meta(array $meta)
     {
-        $meta = $this->arrayManager->merge(
-            $this->arrayManager->findPath(static::CODE_SKU_TYPE, $meta, null, 'children') . static::META_CONFIG_PATH,
-            $meta,
-            [
-                'valueMap' => [
-                    'false' => '1',
-                    'true' => '0',
-                ],
-                'validation' => [
-                    'required-entry' => false,
-                ],
-            ]
-        );
-
+        $meta = $this->array_manager->merge($this->array_manager->find_path(static::CODE_SKU_TYPE, $meta, null, 'children') . static::META_CONFIG_PATH, $meta, ['valueMap' => ['false' => '1', 'true' => '0'], 'validation' => ['required-entry' => false]]);
         return $meta;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function modifyData(array $data)
+    public function modify_data(array $data)
     {
         return $data;
     }

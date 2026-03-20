@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Controller\Adminhtml\Subscription;
 
-use Magento\Analytics\Model\Config\Backend\Enabled\SubscriptionHandler;
+use Magento\Analytics\Model\Config\Backend\Enabled\Subscription_Handler;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Controller\Result\Redirect;
-use Magento\Framework\Controller\ResultFactory;
-use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\Controller\Result_Factory;
+use Magento\Framework\Exception\Localized_Exception;
 /**
  * Retry subscription to Magento BI Advanced Reporting.
  * @SuppressWarnings(PHPMD.AllPurposeAction)
@@ -25,17 +23,16 @@ class Retry extends Action
      * @inheritdoc
      */
     public const ADMIN_RESOURCE = 'Magento_Analytics::analytics_settings';
-
     public function __construct(
         Context $context,
         /**
          * Resource for managing subscription to Magento Analytics.
          */
-        private readonly SubscriptionHandler $subscriptionHandler
-    ) {
+        private readonly Subscription_Handler $subscription_handler
+    )
+    {
         parent::__construct($context);
     }
-
     /**
      * Retry process of subscription.
      *
@@ -44,19 +41,15 @@ class Retry extends Action
     public function execute()
     {
         /** @var Redirect $resultRedirect */
-        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
+        $result_redirect = $this->result_factory->create(Result_Factory::TYPE_REDIRECT);
         try {
-            $resultRedirect->setPath('adminhtml');
-            $this->subscriptionHandler->processEnabled();
-        } catch (LocalizedException $e) {
-            $this->getMessageManager()->addExceptionMessage($e, $e->getMessage());
+            $result_redirect->set_path('adminhtml');
+            $this->subscription_handler->process_enabled();
+        } catch (Localized_Exception $e) {
+            $this->get_message_manager()->add_exception_message($e, $e->get_message());
         } catch (\Exception $e) {
-            $this->getMessageManager()->addExceptionMessage(
-                $e,
-                __('Sorry, there has been an error processing your request. Please try again later.')
-            );
+            $this->get_message_manager()->add_exception_message($e, __('Sorry, there has been an error processing your request. Please try again later.'));
         }
-
-        return $resultRedirect;
+        return $result_redirect;
     }
 }

@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface ProductAttributeManagementInterface
+interface Product_Attribute_Management_Interface
 {
     /**
      * Assign attribute to attribute set
@@ -25,8 +24,7 @@ interface ProductAttributeManagementInterface
      * @throws \Magento\Framework\Exception\InputException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function assign($attributeSetId, $attributeGroupId, $attributeCode, $sortOrder);
-
+    public function assign($attribute_set_id, $attribute_group_id, $attribute_code, $sort_order);
     /**
      * Remove attribute from attribute set
      *
@@ -37,8 +35,7 @@ interface ProductAttributeManagementInterface
      * @throws \Magento\Framework\Exception\StateException
      * @return bool
      */
-    public function unassign($attributeSetId, $attributeCode);
-
+    public function unassign($attribute_set_id, $attribute_code);
     /**
      * Retrieve related attributes based on given attribute set ID
      *
@@ -46,5 +43,5 @@ interface ProductAttributeManagementInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException If $attributeSetId is not found
      * @return \Magento\Catalog\Api\Data\ProductAttributeInterface[]
      */
-    public function getAttributes($attributeSetId);
+    public function get_attributes($attribute_set_id);
 }

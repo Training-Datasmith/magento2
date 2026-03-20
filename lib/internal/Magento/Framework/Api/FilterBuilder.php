@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -15,7 +14,7 @@ namespace Magento\Framework\Api;
  * @method Filter create()
  * @since 100.0.2
  */
-class FilterBuilder extends AbstractSimpleObjectBuilder
+class Filter_Builder extends Abstract_Simple_Object_Builder
 {
     /**
      * Set field
@@ -23,33 +22,31 @@ class FilterBuilder extends AbstractSimpleObjectBuilder
      * @param string $field
      * @return $this
      */
-    public function setField($field)
+    public function set_field($field)
     {
         $this->data['field'] = $field;
         return $this;
     }
-
     /**
      * Set value
      *
      * @param string|array $value
      * @return $this
      */
-    public function setValue($value)
+    public function set_value($value)
     {
         $this->data['value'] = $value;
         return $this;
     }
-
     /**
      * Set condition type
      *
      * @param string $conditionType
      * @return $this
      */
-    public function setConditionType($conditionType)
+    public function set_condition_type($condition_type)
     {
-        $this->data['condition_type'] = $conditionType;
+        $this->data['condition_type'] = $condition_type;
         return $this;
     }
 }

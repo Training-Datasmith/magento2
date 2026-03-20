@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB;
 
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\DB\Adapter\Adapter_Interface;
 use Magento\Framework\DB\Sql\Expression;
-
 /**
  * Class for SQL SELECT generation and results.
  *
@@ -40,22 +38,18 @@ class Select extends \Zend_Db_Select
      * Condition type
      */
     public const TYPE_CONDITION = 'TYPE_CONDITION';
-
     /**
      * Straight join key
      */
     public const STRAIGHT_JOIN = 'straightjoin';
-
     /**
      * Straight join SQL directive.
      */
     public const SQL_STRAIGHT_JOIN = 'STRAIGHT_JOIN';
-
     /**
      * @var Select\SelectRenderer
      */
-    private $selectRenderer;
-
+    private $select_renderer;
     /**
      * Class constructor
      * Add straight join support
@@ -64,20 +58,15 @@ class Select extends \Zend_Db_Select
      * @param Select\SelectRenderer $selectRenderer
      * @param array $parts
      */
-    public function __construct(
-        \Magento\Framework\DB\Adapter\Pdo\Mysql $adapter,
-        \Magento\Framework\DB\Select\SelectRenderer $selectRenderer,
-        $parts = []
-    ) {
-        self::$_partsInit = array_merge(self::$_partsInit, $parts);
-        if (!isset(self::$_partsInit[self::STRAIGHT_JOIN])) {
-            self::$_partsInit = [self::STRAIGHT_JOIN => false] + self::$_partsInit;
+    public function __construct(\Magento\Framework\DB\Adapter\Pdo\Mysql $adapter, \Magento\Framework\DB\Select\Select_Renderer $select_renderer, $parts = [])
+    {
+        self::$_parts_init = array_merge(self::$_parts_init, $parts);
+        if (!isset(self::$_parts_init[self::STRAIGHT_JOIN])) {
+            self::$_parts_init = [self::STRAIGHT_JOIN => false] + self::$_parts_init;
         }
-
-        $this->selectRenderer = $selectRenderer;
+        $this->select_renderer = $select_renderer;
         parent::__construct($adapter);
     }
-
     /**
      * Adds a WHERE condition to the query by AND.
      *
@@ -120,16 +109,15 @@ class Select extends \Zend_Db_Select
     {
         if ($value === null && $type === null) {
             $value = '';
-        } elseif ((string)$type === self::TYPE_CONDITION) {
+        } elseif ((string) $type === self::TYPE_CONDITION) {
             $type = null;
         }
         if (is_array($value)) {
-            $cond = $this->getConnection()->quoteInto($cond, $value, $type);
+            $cond = $this->get_connection()->quote_into($cond, $value, $type);
             $value = null;
         }
         return parent::where($cond, $value, $type);
     }
-
     /**
      * Reset unused LEFT JOIN(s)
      *
@@ -137,110 +125,77 @@ class Select extends \Zend_Db_Select
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function resetJoinLeft()
+    public function reset_join_left()
     {
-        foreach ($this->_parts[self::FROM] as $tableId => $tableProp) {
-            if ($tableProp['joinType'] == self::LEFT_JOIN) {
-                $useJoin = false;
-                foreach ($this->_parts[self::COLUMNS] as $columnEntry) {
-                    list($correlationName, $column) = $columnEntry;
+        foreach ($this->_parts[self::FROM] as $table_id => $table_prop) {
+            if ($table_prop['joinType'] == self::LEFT_JOIN) {
+                $use_join = false;
+                foreach ($this->_parts[self::COLUMNS] as $column_entry) {
+                    list($correlation_name, $column) = $column_entry;
                     if ($column instanceof \Zend_Db_Expr) {
-                        if ($this->_findTableInCond(
-                            $tableId,
-                            $column
-                        ) || $this->_findTableInCond(
-                            $tableProp['tableName'],
-                            $column
-                        )
-                        ) {
-                            $useJoin = true;
+                        if ($this->_find_table_in_cond($table_id, $column) || $this->_find_table_in_cond($table_prop['tableName'], $column)) {
+                            $use_join = true;
                         }
-                    } else {
-                        if ($correlationName == $tableId) {
-                            $useJoin = true;
-                        }
+                    } else if ($correlation_name == $table_id) {
+                        $use_join = true;
                     }
                 }
                 foreach ($this->_parts[self::WHERE] as $where) {
-                    if ($this->_findTableInCond(
-                        $tableId,
-                        $where
-                    ) || $this->_findTableInCond(
-                        $tableProp['tableName'],
-                        $where
-                    )
-                    ) {
-                        $useJoin = true;
+                    if ($this->_find_table_in_cond($table_id, $where) || $this->_find_table_in_cond($table_prop['tableName'], $where)) {
+                        $use_join = true;
                     }
                 }
-
-                $joinUseInCond = $useJoin;
-                $joinInTables = [];
-
-                foreach ($this->_parts[self::FROM] as $tableCorrelationName => $table) {
-                    if ($tableCorrelationName == $tableId) {
+                $join_use_in_cond = $use_join;
+                $join_in_tables = [];
+                foreach ($this->_parts[self::FROM] as $table_correlation_name => $table) {
+                    if ($table_correlation_name == $table_id) {
                         continue;
                     }
                     if (!empty($table['joinCondition'])) {
-                        if ($this->_findTableInCond(
-                            $tableId,
-                            $table['joinCondition']
-                        ) || $this->_findTableInCond(
-                            $tableProp['tableName'],
-                            $table['joinCondition']
-                        )
-                        ) {
-                            $useJoin = true;
-                            $joinInTables[] = $tableCorrelationName;
+                        if ($this->_find_table_in_cond($table_id, $table['joinCondition']) || $this->_find_table_in_cond($table_prop['tableName'], $table['joinCondition'])) {
+                            $use_join = true;
+                            $join_in_tables[] = $table_correlation_name;
                         }
                     }
                 }
-
-                if (!$useJoin) {
-                    unset($this->_parts[self::FROM][$tableId]);
+                if (!$use_join) {
+                    unset($this->_parts[self::FROM][$table_id]);
                 } else {
-                    $this->_parts[self::FROM][$tableId]['useInCond'] = $joinUseInCond;
-                    $this->_parts[self::FROM][$tableId]['joinInTables'] = $joinInTables;
+                    $this->_parts[self::FROM][$table_id]['useInCond'] = $join_use_in_cond;
+                    $this->_parts[self::FROM][$table_id]['joinInTables'] = $join_in_tables;
                 }
             }
         }
-
-        $this->_resetJoinLeft();
-
+        $this->_reset_join_left();
         return $this;
     }
-
     /**
      * Validate LEFT joins, and remove it if not exists
      *
      * @return $this
      */
-    protected function _resetJoinLeft()
+    protected function _reset_join_left()
     {
-        foreach ($this->_parts[self::FROM] as $tableId => $tableProp) {
-            if ($tableProp['joinType'] == self::LEFT_JOIN) {
-                if ($tableProp['useInCond']) {
+        foreach ($this->_parts[self::FROM] as $table_id => $table_prop) {
+            if ($table_prop['joinType'] == self::LEFT_JOIN) {
+                if ($table_prop['useInCond']) {
                     continue;
                 }
-
                 $used = false;
-                foreach ($tableProp['joinInTables'] as $table) {
+                foreach ($table_prop['joinInTables'] as $table) {
                     if (isset($this->_parts[self::FROM][$table])) {
                         $used = true;
                         break;
                     }
                 }
-
                 if (!$used) {
-                    unset($this->_parts[self::FROM][$tableId]);
-                    return $this->_resetJoinLeft();
+                    unset($this->_parts[self::FROM][$table_id]);
+                    return $this->_reset_join_left();
                 }
             }
         }
-
         return $this;
     }
-
     /**
      * Find table name in condition (where, column)
      *
@@ -248,31 +203,27 @@ class Select extends \Zend_Db_Select
      * @param string $cond
      * @return bool
      */
-    protected function _findTableInCond($table, $cond)
+    protected function _find_table_in_cond($table, $cond)
     {
-        $quote = $this->_adapter->getQuoteIdentifierSymbol();
-        $cond = (string)$cond;
-        $table = (string)$table;
+        $quote = $this->_adapter->get_quote_identifier_symbol();
+        $cond = (string) $cond;
+        $table = (string) $table;
         if (strpos($cond, $quote . $table . $quote . '.') !== false) {
             return true;
         }
-
         $position = 0;
         $result = 0;
         $needle = [];
         while (is_integer($result)) {
             $result = strpos($cond, $table . '.', $position);
-
             if (is_integer($result)) {
                 $needle[] = $result;
                 $position = $result + strlen($table) + 1;
             }
         }
-
         if (!$needle) {
             return false;
         }
-
         foreach ($needle as $position) {
             if ($position == 0) {
                 return true;
@@ -281,10 +232,8 @@ class Select extends \Zend_Db_Select
                 return true;
             }
         }
-
         return false;
     }
-
     /**
      * Populate the {@link $_parts} 'join' key
      *
@@ -308,7 +257,6 @@ class Select extends \Zend_Db_Select
         }
         return parent::_join($type, $name, $cond, $cols, $schema);
     }
-
     /**
      * Sets a limit count and offset to the query.
      *
@@ -321,27 +269,25 @@ class Select extends \Zend_Db_Select
         if ($count === null) {
             $this->reset(self::LIMIT_COUNT);
         } else {
-            $this->_parts[self::LIMIT_COUNT] = (int)$count;
+            $this->_parts[self::LIMIT_COUNT] = (int) $count;
         }
         if ($offset === null) {
             $this->reset(self::LIMIT_OFFSET);
         } else {
-            $this->_parts[self::LIMIT_OFFSET] = (int)$offset;
+            $this->_parts[self::LIMIT_OFFSET] = (int) $offset;
         }
         return $this;
     }
-
     /**
      * Cross Table Update From Current select
      *
      * @param string|array $table
      * @return string
      */
-    public function crossUpdateFromSelect($table)
+    public function cross_update_from_select($table)
     {
-        return $this->getConnection()->updateFromSelect($this, $table);
+        return $this->get_connection()->update_from_select($this, $table);
     }
-
     /**
      * Insert to table from current select
      *
@@ -350,12 +296,11 @@ class Select extends \Zend_Db_Select
      * @param bool $onDuplicate
      * @return string
      */
-    public function insertFromSelect($tableName, $fields = [], $onDuplicate = true)
+    public function insert_from_select($table_name, $fields = [], $on_duplicate = true)
     {
-        $mode = $onDuplicate ? AdapterInterface::INSERT_ON_DUPLICATE : false;
-        return $this->getConnection()->insertFromSelect($this, $tableName, $fields, $mode);
+        $mode = $on_duplicate ? Adapter_Interface::INSERT_ON_DUPLICATE : false;
+        return $this->get_connection()->insert_from_select($this, $table_name, $fields, $mode);
     }
-
     /**
      * Generate INSERT IGNORE query to the table from current select
      *
@@ -363,22 +308,20 @@ class Select extends \Zend_Db_Select
      * @param array $fields
      * @return string
      */
-    public function insertIgnoreFromSelect($tableName, $fields = [])
+    public function insert_ignore_from_select($table_name, $fields = [])
     {
-        return $this->getConnection()->insertFromSelect($this, $tableName, $fields, AdapterInterface::INSERT_IGNORE);
+        return $this->get_connection()->insert_from_select($this, $table_name, $fields, Adapter_Interface::INSERT_IGNORE);
     }
-
     /**
      * Retrieve DELETE query from select
      *
      * @param string $table The table name or alias
      * @return string
      */
-    public function deleteFromSelect($table)
+    public function delete_from_select($table)
     {
-        return $this->getConnection()->deleteFromSelect($this, $table);
+        return $this->get_connection()->delete_from_select($this, $table);
     }
-
     /**
      * Modify (hack) part of the structured information for the current query
      *
@@ -387,7 +330,7 @@ class Select extends \Zend_Db_Select
      * @return $this
      * @throws \Zend_Db_Select_Exception
      */
-    public function setPart($part, $value)
+    public function set_part($part, $value)
     {
         $part = $part !== null ? strtolower($part) : '';
         if (!array_key_exists($part, $this->_parts)) {
@@ -396,34 +339,30 @@ class Select extends \Zend_Db_Select
         $this->_parts[$part] = $value;
         return $this;
     }
-
     /**
      * Use a STRAIGHT_JOIN for the SQL Select
      *
      * @param bool $flag Whether or not the SELECT use STRAIGHT_JOIN (default true).
      * @return $this
      */
-    public function useStraightJoin($flag = true)
+    public function use_straight_join($flag = true)
     {
-        $this->_parts[self::STRAIGHT_JOIN] = (bool)$flag;
+        $this->_parts[self::STRAIGHT_JOIN] = (bool) $flag;
         return $this;
     }
-
     /**
      * Render STRAIGHT_JOIN clause
      *
      * @param string $sql SQL query
      * @return string
      */
-    protected function _renderStraightjoin($sql)
+    protected function _render_straightjoin($sql)
     {
-        if ($this->_adapter->supportStraightJoin() && !empty($this->_parts[self::STRAIGHT_JOIN])) {
+        if ($this->_adapter->support_straight_join() && !empty($this->_parts[self::STRAIGHT_JOIN])) {
             $sql .= ' ' . self::SQL_STRAIGHT_JOIN;
         }
-
         return $sql;
     }
-
     /**
      * Adds to the internal table-to-column mapping array.
      *
@@ -434,48 +373,42 @@ class Select extends \Zend_Db_Select
      *     a correlation name if it should be inserted
      * @return void
      */
-    protected function _tableCols($correlationName, $cols, $afterCorrelationName = null)
+    protected function _table_cols($correlation_name, $cols, $after_correlation_name = null)
     {
         if (!is_array($cols)) {
             $cols = [$cols];
         }
-
         foreach ($cols as $k => $v) {
             if ($v instanceof Select) {
                 $cols[$k] = new \Zend_Db_Expr(sprintf('(%s)', $v->assemble()));
             }
         }
-
-        parent::_tableCols($correlationName, $cols, $afterCorrelationName);
+        parent::_table_cols($correlation_name, $cols, $after_correlation_name);
     }
-
     /**
      * Adds the random order to query
      *
      * @param string $field     integer field name
      * @return $this
      */
-    public function orderRand($field = null)
+    public function order_rand($field = null)
     {
-        $this->_adapter->orderRand($this, $field);
+        $this->_adapter->order_rand($this, $field);
         return $this;
     }
-
     /**
      * Render FOR UPDATE clause
      *
      * @param string $sql SQL query
      * @return string
      */
-    protected function _renderForupdate($sql)
+    protected function _render_forupdate($sql)
     {
         if ($this->_parts[self::FOR_UPDATE]) {
-            $sql = $this->_adapter->forUpdate($sql);
+            $sql = $this->_adapter->for_update($sql);
         }
-
         return $sql;
     }
-
     /**
      * Add EXISTS clause
      *
@@ -484,31 +417,27 @@ class Select extends \Zend_Db_Select
      * @param bool $isExists
      * @return $this
      */
-    public function exists($select, $joinCondition, $isExists = true)
+    public function exists($select, $join_condition, $is_exists = true)
     {
-        if ($isExists) {
+        if ($is_exists) {
             $exists = 'EXISTS (%s)';
         } else {
             $exists = 'NOT EXISTS (%s)';
         }
-        $select->reset(self::COLUMNS)->columns([new \Zend_Db_Expr('1')])->where($joinCondition);
-
+        $select->reset(self::COLUMNS)->columns([new \Zend_Db_Expr('1')])->where($join_condition);
         $exists = sprintf($exists, $select->assemble());
-
         $this->where($exists);
         return $this;
     }
-
     /**
      * Get adapter
      *
      * @return \Magento\Framework\DB\Adapter\AdapterInterface
      */
-    public function getConnection()
+    public function get_connection()
     {
         return $this->_adapter;
     }
-
     /**
      * Converts this object to an SQL SELECT string.
      *
@@ -517,9 +446,8 @@ class Select extends \Zend_Db_Select
      */
     public function assemble()
     {
-        return $this->selectRenderer->render($this);
+        return $this->select_renderer->render($this);
     }
-
     /**
      * Remove links to other objects.
      *
@@ -529,16 +457,9 @@ class Select extends \Zend_Db_Select
     public function __sleep()
     {
         $properties = array_keys(get_object_vars($this));
-        $properties = array_diff(
-            $properties,
-            [
-                '_adapter',
-                'selectRenderer',
-            ]
-        );
+        $properties = array_diff($properties, ['_adapter', 'selectRenderer']);
         return $properties;
     }
-
     /**
      * Init not serializable fields
      *
@@ -547,8 +468,8 @@ class Select extends \Zend_Db_Select
      */
     public function __wakeup()
     {
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        $this->_adapter = $objectManager->get(ResourceConnection::class)->getConnection();
-        $this->selectRenderer = $objectManager->get(\Magento\Framework\DB\Select\SelectRenderer::class);
+        $object_manager = \Magento\Framework\App\Object_Manager::get_instance();
+        $this->_adapter = $object_manager->get(Resource_Connection::class)->get_connection();
+        $this->select_renderer = $object_manager->get(\Magento\Framework\DB\Select\Select_Renderer::class);
     }
 }

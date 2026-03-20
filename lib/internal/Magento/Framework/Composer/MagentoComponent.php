@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Composer;
 
 /**
  * Magento component.
  */
-class MagentoComponent
+class Magento_Component
 {
     /**
      * Get matched Magento component or empty array, if it's not a Magento component
@@ -21,13 +20,12 @@ class MagentoComponent
      *             Ex.: ['type' => 'module', 'name' => 'catalog']
      *                  ['type' => 'theme', 'area' => 'frontend', 'name' => 'blank']
      */
-    public static function matchMagentoComponent($key)
+    public static function match_magento_component($key)
     {
-        $typePattern = 'module|theme|language|framework';
-        $areaPattern = 'frontend|adminhtml';
-        $namePattern = '[a-z0-9_-]+';
-        $regex = '/^magento\/(?P<type>' . $typePattern . ')(?:-(?P<area>' . $areaPattern . '))?(?:-(?P<name>'
-            . $namePattern . '))?$/';
+        $type_pattern = 'module|theme|language|framework';
+        $area_pattern = 'frontend|adminhtml';
+        $name_pattern = '[a-z0-9_-]+';
+        $regex = '/^magento\/(?P<type>' . $type_pattern . ')(?:-(?P<area>' . $area_pattern . '))?(?:-(?P<name>' . $name_pattern . '))?$/';
         if (preg_match($regex, $key, $matches)) {
             return $matches;
         }

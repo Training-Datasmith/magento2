@@ -4,14 +4,12 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Block\Dashboard;
 
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Module\Manager;
-use Magento\Reports\Model\ResourceModel\Order\CollectionFactory;
-
+use Magento\Reports\Model\Resource_Model\Order\Collection_Factory;
 /**
  * Adminhtml dashboard sales statistics bar
  *
@@ -24,62 +22,45 @@ class Sales extends Bar
      * @var string
      */
     protected $_template = 'Magento_Backend::dashboard/salebar.phtml';
-
     /**
      * @var Manager
      */
-    protected $_moduleManager;
-
+    protected $_module_manager;
     /**
      * @param Context $context
      * @param CollectionFactory $collectionFactory
      * @param Manager $moduleManager
      * @param array $data
      */
-    public function __construct(
-        Context $context,
-        CollectionFactory $collectionFactory,
-        Manager $moduleManager,
-        array $data = []
-    ) {
-        $this->_moduleManager = $moduleManager;
-        parent::__construct($context, $collectionFactory, $data);
+    public function __construct(Context $context, Collection_Factory $collection_factory, Manager $module_manager, array $data = [])
+    {
+        $this->_module_manager = $module_manager;
+        parent::__construct($context, $collection_factory, $data);
     }
-
     /**
      * Prepare layout.
      *
      * @return $this|void
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
-        if (!$this->_moduleManager->isEnabled('Magento_Reports')) {
+        if (!$this->_module_manager->is_enabled('Magento_Reports')) {
             return $this;
         }
-        $isFilter = $this->getRequest()->getParam(
-            'store'
-        ) || $this->getRequest()->getParam(
-            'website'
-        ) || $this->getRequest()->getParam(
-            'group'
-        );
-
-        $collection = $this->_collectionFactory->create()->calculateSales($isFilter);
-
-        if ($this->getRequest()->getParam('store')) {
-            $collection->addFieldToFilter('store_id', $this->getRequest()->getParam('store'));
-        } elseif ($this->getRequest()->getParam('website')) {
-            $storeIds = $this->_storeManager->getWebsite($this->getRequest()->getParam('website'))->getStoreIds();
-            $collection->addFieldToFilter('store_id', ['in' => $storeIds]);
-        } elseif ($this->getRequest()->getParam('group')) {
-            $storeIds = $this->_storeManager->getGroup($this->getRequest()->getParam('group'))->getStoreIds();
-            $collection->addFieldToFilter('store_id', ['in' => $storeIds]);
+        $is_filter = $this->get_request()->get_param('store') || $this->get_request()->get_param('website') || $this->get_request()->get_param('group');
+        $collection = $this->_collection_factory->create()->calculate_sales($is_filter);
+        if ($this->get_request()->get_param('store')) {
+            $collection->add_field_to_filter('store_id', $this->get_request()->get_param('store'));
+        } elseif ($this->get_request()->get_param('website')) {
+            $store_ids = $this->_store_manager->get_website($this->get_request()->get_param('website'))->get_store_ids();
+            $collection->add_field_to_filter('store_id', ['in' => $store_ids]);
+        } elseif ($this->get_request()->get_param('group')) {
+            $store_ids = $this->_store_manager->get_group($this->get_request()->get_param('group'))->get_store_ids();
+            $collection->add_field_to_filter('store_id', ['in' => $store_ids]);
         }
-
         $collection->load();
-        $sales = $collection->getFirstItem();
-
-        $this->addTotal(__('Lifetime Sales'), $sales->getLifetime());
-        $this->addTotal(__('Average Order'), $sales->getAverage());
+        $sales = $collection->get_first_item();
+        $this->add_total(__('Lifetime Sales'), $sales->get_lifetime());
+        $this->add_total(__('Average Order'), $sales->get_average());
     }
 }

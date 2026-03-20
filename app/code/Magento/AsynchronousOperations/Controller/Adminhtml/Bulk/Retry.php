@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Asynchronous_Operations\Controller\Adminhtml\Bulk;
 
-namespace Magento\AsynchronousOperations\Controller\Adminhtml\Bulk;
-
-use Magento\AsynchronousOperations\Model\AccessValidator;
-use Magento\AsynchronousOperations\Model\BulkManagement;
-use Magento\AsynchronousOperations\Model\BulkNotificationManagement;
+use Magento\Asynchronous_Operations\Model\Access_Validator;
+use Magento\Asynchronous_Operations\Model\Bulk_Management;
+use Magento\Asynchronous_Operations\Model\Bulk_Notification_Management;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Model\View\Result\Redirect;
-use Magento\Framework\Controller\ResultFactory;
-
+use Magento\Framework\Controller\Result_Factory;
 /**
  * Class Bulk Retry Controller
  */
@@ -24,56 +22,45 @@ class Retry extends Action
     /**
      * Retry constructor.
      */
-    public function __construct(
-        Context $context,
-        private readonly BulkManagement $bulkManagement,
-        private readonly BulkNotificationManagement $notificationManagement,
-        private readonly AccessValidator $accessValidator
-    ) {
+    public function __construct(Context $context, private readonly Bulk_Management $bulk_management, private readonly Bulk_Notification_Management $notification_management, private readonly Access_Validator $access_validator)
+    {
         parent::__construct($context);
     }
-
     /**
      * @inheritDoc
      */
-    protected function _isAllowed(): bool
+    protected function _is_allowed(): bool
     {
-        return $this->_authorization->isAllowed('Magento_Logging::system_magento_logging_bulk_operations')
-            && $this->accessValidator->isAllowed($this->getRequest()->getParam('uuid'));
+        return $this->_authorization->is_allowed('Magento_Logging::system_magento_logging_bulk_operations') && $this->access_validator->is_allowed($this->get_request()->get_param('uuid'));
     }
-
     /**
      * {@inheritdoc}
      */
     public function execute()
     {
-        $bulkUuid = $this->getRequest()->getParam('uuid');
-        $isAjax = $this->getRequest()->getParam('isAjax');
-        $operationsToRetry = (array)$this->getRequest()->getParam('operations_to_retry', []);
-        $errorCodes = [];
-        foreach ($operationsToRetry as $operationData) {
-            if (isset($operationData['error_code'])) {
-                $errorCodes[] = (int)$operationData['error_code'];
+        $bulk_uuid = $this->get_request()->get_param('uuid');
+        $is_ajax = $this->get_request()->get_param('isAjax');
+        $operations_to_retry = (array) $this->get_request()->get_param('operations_to_retry', []);
+        $error_codes = [];
+        foreach ($operations_to_retry as $operation_data) {
+            if (isset($operation_data['error_code'])) {
+                $error_codes[] = (int) $operation_data['error_code'];
             }
         }
-
-        $affectedOperations = $this->bulkManagement->retryBulk($bulkUuid, $errorCodes);
-        $this->notificationManagement->ignoreBulks([$bulkUuid]);
-        if (!$isAjax) {
-            $this->messageManager->addSuccessMessage(
-                __('%1 item(s) have been scheduled for update."', $affectedOperations)
-            );
+        $affected_operations = $this->bulk_management->retry_bulk($bulk_uuid, $error_codes);
+        $this->notification_management->ignore_bulks([$bulk_uuid]);
+        if (!$is_ajax) {
+            $this->message_manager->add_success_message(__('%1 item(s) have been scheduled for update."', $affected_operations));
             /** @var Redirect $result */
-            $result = $this->resultRedirectFactory->create();
-            $result->setPath('bulk/index');
+            $result = $this->result_redirect_factory->create();
+            $result->set_path('bulk/index');
         } else {
             /** @var \Magento\Framework\Controller\Result\Json $result */
-            $result = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-            $result->setHttpResponseCode(200);
-            $response = new \Magento\Framework\DataObject();
-            $response->setError(0);
-
-            $result->setData($response);
+            $result = $this->result_factory->create(Result_Factory::TYPE_JSON);
+            $result->set_http_response_code(200);
+            $response = new \Magento\Framework\Data_Object();
+            $response->set_error(0);
+            $result->set_data($response);
         }
         return $result;
     }

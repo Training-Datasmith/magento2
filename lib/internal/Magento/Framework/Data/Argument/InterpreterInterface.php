@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Argument;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Data\Argument;
  * @api
  * @since 100.0.2
  */
-interface InterpreterInterface
+interface Interpreter_Interface
 {
     /**
      * Compute and return effective value of an argument

@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Rss;
 
 /**
@@ -13,11 +12,11 @@ namespace Magento\Framework\App\Rss;
  *
  * @api
  */
-interface UrlBuilderInterface
+interface Url_Builder_Interface
 {
     /**
      * @param array $queryParams
      * @return mixed
      */
-    public function getUrl(array $queryParams = []);
+    public function get_url(array $query_params = []);
 }

@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -13,13 +12,12 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface FeedFactoryInterface
+interface Feed_Factory_Interface
 {
     /**
      * RSS feed input format
      */
     public const FORMAT_RSS = 'rss';
-
     /**
      * Returns FeedInterface object from a custom array
      *
@@ -29,5 +27,5 @@ interface FeedFactoryInterface
      * @param string $format
      * @return FeedInterface
      */
-    public function create(array $data, string $format = self::FORMAT_RSS): FeedInterface;
+    public function create(array $data, string $format = self::FORMAT_RSS): Feed_Interface;
 }

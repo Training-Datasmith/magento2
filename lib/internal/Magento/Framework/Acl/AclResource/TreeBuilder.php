@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Acl\Acl_Resource;
 
-namespace Magento\Framework\Acl\AclResource;
-
-class TreeBuilder
+class Tree_Builder
 {
     /**
      * Transform resource list into sorted resource tree that includes only active resources
@@ -16,10 +15,10 @@ class TreeBuilder
      * @param array $resourceList
      * @return array
      */
-    public function build(array $resourceList)
+    public function build(array $resource_list)
     {
         $result = [];
-        foreach ($resourceList as $resource) {
+        foreach ($resource_list as $resource) {
             if ($resource['disabled']) {
                 continue;
             }
@@ -30,7 +29,6 @@ class TreeBuilder
         usort($result, [$this, '_sortTree']);
         return $result;
     }
-
     /**
      * Sort ACL resource nodes
      *
@@ -38,8 +36,8 @@ class TreeBuilder
      * @param array $nodeB
      * @return int
      */
-    protected function _sortTree(array $nodeA, array $nodeB)
+    protected function _sort_tree(array $node_a, array $node_b)
     {
-        return $nodeA['sortOrder'] < $nodeB['sortOrder'] ? -1 : ($nodeA['sortOrder'] > $nodeB['sortOrder'] ? 1 : 0);
+        return $node_a['sortOrder'] < $node_b['sortOrder'] ? -1 : ($node_a['sortOrder'] > $node_b['sortOrder'] ? 1 : 0);
     }
 }

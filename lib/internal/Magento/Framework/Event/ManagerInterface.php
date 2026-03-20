@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Event;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Event;
  *
  * @api
  */
-interface ManagerInterface
+interface Manager_Interface
 {
     /**
      * Dispatch event
@@ -25,5 +24,5 @@ interface ManagerInterface
      * @param array $data
      * @return void
      */
-    public function dispatch($eventName, array $data = []);
+    public function dispatch($event_name, array $data = []);
 }

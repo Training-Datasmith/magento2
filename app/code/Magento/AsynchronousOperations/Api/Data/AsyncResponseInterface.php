@@ -4,10 +4,8 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Api\Data;
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Api\Data;
 
 /**
  * Interface AsyncResponseInterface
@@ -16,20 +14,18 @@ namespace Magento\AsynchronousOperations\Api\Data;
  * @api
  * @since 100.2.3
  */
-interface AsyncResponseInterface
+interface Async_Response_Interface
 {
     public const BULK_UUID = 'bulk_uuid';
     public const REQUEST_ITEMS = 'request_items';
     public const ERRORS = 'errors';
-
     /**
      * Gets the bulk uuid.
      *
      * @return string Bulk Uuid.
      * @since 100.2.3
      */
-    public function getBulkUuid();
-
+    public function get_bulk_uuid();
     /**
      * Sets the bulk uuid.
      *
@@ -37,16 +33,14 @@ interface AsyncResponseInterface
      * @return $this
      * @since 100.2.3
      */
-    public function setBulkUuid($bulkUuid);
-
+    public function set_bulk_uuid($bulk_uuid);
     /**
      * Gets the list of request items with status data.
      *
      * @return \Magento\AsynchronousOperations\Api\Data\ItemStatusInterface[]
      * @since 100.2.3
      */
-    public function getRequestItems();
-
+    public function get_request_items();
     /**
      * Sets the list of request items with status data.
      *
@@ -54,38 +48,32 @@ interface AsyncResponseInterface
      * @return $this
      * @since 100.2.3
      */
-    public function setRequestItems($requestItems);
-
+    public function set_request_items($request_items);
     /**
      * @param bool $isErrors
      * @return $this
      * @since 100.2.3
      */
-    public function setErrors($isErrors = false);
-
+    public function set_errors($is_errors = false);
     /**
      * Is there errors during processing bulk
      *
      * @return boolean
      * @since 100.2.3
      */
-    public function isErrors();
-
+    public function is_errors();
     /**
      * Retrieve existing extension attributes object.
      *
      * @return \Magento\AsynchronousOperations\Api\Data\AsyncResponseExtensionInterface|null
      * @since 100.2.3
      */
-    public function getExtensionAttributes();
-
+    public function get_extension_attributes();
     /**
      * Set an extension attributes object.
      *
      * @return $this
      * @since 100.2.3
      */
-    public function setExtensionAttributes(
-        \Magento\AsynchronousOperations\Api\Data\AsyncResponseExtensionInterface $extensionAttributes
-    );
+    public function set_extension_attributes(\Magento\Asynchronous_Operations\Api\Data\Async_Response_Extension_Interface $extension_attributes);
 }

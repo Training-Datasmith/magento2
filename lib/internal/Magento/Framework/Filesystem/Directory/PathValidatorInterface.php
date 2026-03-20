@@ -4,19 +4,16 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Filesystem\Directory;
 
-use Magento\Framework\Exception\ValidatorException;
-
+use Magento\Framework\Exception\Validator_Exception;
 /**
  * Validate paths to be used with directories.
  *
  * @api
  */
-interface PathValidatorInterface
+interface Path_Validator_Interface
 {
     /**
      * Validate if path can be used with a directory.
@@ -29,10 +26,5 @@ interface PathValidatorInterface
      *
      * @return void
      */
-    public function validate(
-        string $directoryPath,
-        string $path,
-        ?string $scheme = null,
-        bool $absolutePath = false
-    ): void;
+    public function validate(string $directory_path, string $path, ?string $scheme = null, bool $absolute_path = false): void;
 }

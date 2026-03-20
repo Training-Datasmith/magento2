@@ -4,58 +4,50 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Model\Product;
 
-use Magento\Bundle\Api\Data\OptionInterface;
-use Magento\Bundle\Api\ProductLinkManagementInterface;
-use Magento\Bundle\Api\ProductOptionRepositoryInterface as OptionRepository;
-use Magento\Bundle\Model\Option\SaveAction;
-use Magento\Bundle\Model\ProductRelationsProcessorComposite;
-use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\Operation\ExtensionInterface;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Exception\NoSuchEntityException;
-
+use Magento\Bundle\Api\Data\Option_Interface;
+use Magento\Bundle\Api\Product_Link_Management_Interface;
+use Magento\Bundle\Api\Product_Option_Repository_Interface as OptionRepository;
+use Magento\Bundle\Model\Option\Save_Action;
+use Magento\Bundle\Model\Product_Relations_Processor_Composite;
+use Magento\Catalog\Api\Data\Product_Interface;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+use Magento\Framework\Entity_Manager\Operation\Extension_Interface;
+use Magento\Framework\Exception\Input_Exception;
+use Magento\Framework\Exception\No_Such_Entity_Exception;
 /**
  * Bundle product save handler
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class SaveHandler implements ExtensionInterface
+class Save_Handler implements Extension_Interface
 {
     /**
      * @var OptionRepository
      */
-    private $optionRepository;
-
+    private $option_repository;
     /**
      * @var ProductLinkManagementInterface
      */
-    private $productLinkManagement;
-
+    private $product_link_management;
     /**
      * @var SaveAction
      */
-    private $optionSave;
-
+    private $option_save;
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var CheckOptionLinkIfExist
      */
-    private $checkOptionLinkIfExist;
-
+    private $check_option_link_if_exist;
     /**
      * @var ProductRelationsProcessorComposite
      */
-    private $productRelationsProcessorComposite;
-
+    private $product_relations_processor_composite;
     /**
      * @param OptionRepository $optionRepository
      * @param ProductLinkManagementInterface $productLinkManagement
@@ -64,24 +56,15 @@ class SaveHandler implements ExtensionInterface
      * @param CheckOptionLinkIfExist|null $checkOptionLinkIfExist
      * @param ProductRelationsProcessorComposite|null $productRelationsProcessorComposite
      */
-    public function __construct(
-        OptionRepository $optionRepository,
-        ProductLinkManagementInterface $productLinkManagement,
-        SaveAction $optionSave,
-        MetadataPool $metadataPool,
-        ?CheckOptionLinkIfExist $checkOptionLinkIfExist = null,
-        ?ProductRelationsProcessorComposite $productRelationsProcessorComposite = null
-    ) {
-        $this->optionRepository = $optionRepository;
-        $this->productLinkManagement = $productLinkManagement;
-        $this->optionSave = $optionSave;
-        $this->metadataPool = $metadataPool;
-        $this->checkOptionLinkIfExist = $checkOptionLinkIfExist
-            ?? ObjectManager::getInstance()->get(CheckOptionLinkIfExist::class);
-        $this->productRelationsProcessorComposite = $productRelationsProcessorComposite
-            ?? ObjectManager::getInstance()->get(ProductRelationsProcessorComposite::class);
+    public function __construct(Option_Repository $option_repository, Product_Link_Management_Interface $product_link_management, Save_Action $option_save, Metadata_Pool $metadata_pool, ?Check_Option_Link_If_Exist $check_option_link_if_exist = null, ?Product_Relations_Processor_Composite $product_relations_processor_composite = null)
+    {
+        $this->option_repository = $option_repository;
+        $this->product_link_management = $product_link_management;
+        $this->option_save = $option_save;
+        $this->metadata_pool = $metadata_pool;
+        $this->check_option_link_if_exist = $check_option_link_if_exist ?? Object_Manager::get_instance()->get(Check_Option_Link_If_Exist::class);
+        $this->product_relations_processor_composite = $product_relations_processor_composite ?? Object_Manager::get_instance()->get(Product_Relations_Processor_Composite::class);
     }
-
     /**
      * Perform action on Bundle product relation/extension attribute
      *
@@ -95,38 +78,25 @@ class SaveHandler implements ExtensionInterface
     public function execute($entity, $arguments = [])
     {
         /** @var OptionInterface[] $bundleProductOptions */
-        $bundleProductOptions = $entity->getExtensionAttributes()->getBundleProductOptions() ?: [];
+        $bundle_product_options = $entity->get_extension_attributes()->get_bundle_product_options() ?: [];
         //Only processing bundle products.
-        if ($entity->getTypeId() !== Type::TYPE_CODE
-            || (empty($bundleProductOptions) && !$entity->getDropOptions())
-        ) {
+        if ($entity->get_type_id() !== Type::TYPE_CODE || empty($bundle_product_options) && !$entity->get_drop_options()) {
             return $entity;
         }
-
-        $existingBundleProductOptions = $this->optionRepository->getList($entity->getSku());
-        $existingOptionsIds = !empty($existingBundleProductOptions)
-            ? $this->getOptionIds($existingBundleProductOptions)
-            : [];
-        $optionIds = $this->getOptionIds($bundleProductOptions);
-
-        if (!$entity->getCopyFromView()) {
-            $this->processRemovedOptions($entity, $existingOptionsIds, $optionIds);
-            $this->saveOptions($entity, $bundleProductOptions, $existingBundleProductOptions);
+        $existing_bundle_product_options = $this->option_repository->get_list($entity->get_sku());
+        $existing_options_ids = !empty($existing_bundle_product_options) ? $this->get_option_ids($existing_bundle_product_options) : [];
+        $option_ids = $this->get_option_ids($bundle_product_options);
+        if (!$entity->get_copy_from_view()) {
+            $this->process_removed_options($entity, $existing_options_ids, $option_ids);
+            $this->save_options($entity, $bundle_product_options, $existing_bundle_product_options);
         } else {
             //save only labels and not selections + product links
-            $this->saveOptions($entity, $bundleProductOptions);
-            $entity->setCopyFromView(false);
+            $this->save_options($entity, $bundle_product_options);
+            $entity->set_copy_from_view(false);
         }
-
-        $this->productRelationsProcessorComposite->process(
-            $entity,
-            $existingBundleProductOptions,
-            $bundleProductOptions
-        );
-
+        $this->product_relations_processor_composite->process($entity, $existing_bundle_product_options, $bundle_product_options);
         return $entity;
     }
-
     /**
      * Remove option product links
      *
@@ -137,16 +107,15 @@ class SaveHandler implements ExtensionInterface
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    protected function removeOptionLinks($entitySku, $option)
+    protected function remove_option_links($entity_sku, $option)
     {
-        $links = $option->getProductLinks();
+        $links = $option->get_product_links();
         if (!empty($links)) {
             foreach ($links as $link) {
-                $this->productLinkManagement->removeChild($entitySku, $option->getId(), $link->getSku());
+                $this->product_link_management->remove_child($entity_sku, $option->get_id(), $link->get_sku());
             }
         }
     }
-
     /**
      * Perform save for all options entities.
      *
@@ -158,14 +127,10 @@ class SaveHandler implements ExtensionInterface
      * @throws NoSuchEntityException
      * @throws \Magento\Framework\Exception\CouldNotSaveException
      */
-    private function saveOptions(
-        ProductInterface $entity,
-        array $options,
-        array $existingBundleProductOptions = []
-    ): void {
-        $this->optionSave->saveBulk($entity, $options, $existingBundleProductOptions);
+    private function save_options(Product_Interface $entity, array $options, array $existing_bundle_product_options = []): void
+    {
+        $this->option_save->save_bulk($entity, $options, $existing_bundle_product_options);
     }
-
     /**
      * Get options ids from array of the options entities.
      *
@@ -173,22 +138,19 @@ class SaveHandler implements ExtensionInterface
      *
      * @return array
      */
-    private function getOptionIds(array $options): array
+    private function get_option_ids(array $options): array
     {
-        $optionIds = [];
-
+        $option_ids = [];
         if (!empty($options)) {
             /** @var OptionInterface $option */
             foreach ($options as $option) {
-                if ($option->getOptionId()) {
-                    $optionIds[] = (int)$option->getOptionId();
+                if ($option->get_option_id()) {
+                    $option_ids[] = (int) $option->get_option_id();
                 }
             }
         }
-
-        return $optionIds;
+        return $option_ids;
     }
-
     /**
      * Removes old options that no longer exists.
      *
@@ -198,15 +160,15 @@ class SaveHandler implements ExtensionInterface
      *
      * @return void
      */
-    private function processRemovedOptions(ProductInterface $entity, array $existingOptionsIds, array $optionIds): void
+    private function process_removed_options(Product_Interface $entity, array $existing_options_ids, array $option_ids): void
     {
-        $metadata = $this->metadataPool->getMetadata(ProductInterface::class);
-        $parentId = $entity->getData($metadata->getLinkField());
-        foreach (array_diff($existingOptionsIds, $optionIds) as $optionId) {
-            $option = $this->optionRepository->get($entity->getSku(), $optionId);
-            $option->setParentId($parentId);
-            $this->removeOptionLinks($entity->getSku(), $option);
-            $this->optionRepository->delete($option);
+        $metadata = $this->metadata_pool->get_metadata(Product_Interface::class);
+        $parent_id = $entity->get_data($metadata->get_link_field());
+        foreach (array_diff($existing_options_ids, $option_ids) as $option_id) {
+            $option = $this->option_repository->get($entity->get_sku(), $option_id);
+            $option->set_parent_id($parent_id);
+            $this->remove_option_links($entity->get_sku(), $option);
+            $this->option_repository->delete($option);
         }
     }
 }

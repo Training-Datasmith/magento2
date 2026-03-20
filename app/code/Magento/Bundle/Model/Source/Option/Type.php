@@ -1,19 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Model\Source\Option;
 
-use Magento\Framework\Api\AttributeValueFactory;
-use Magento\Framework\Api\ExtensionAttributesFactory;
-
-class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
-    \Magento\Framework\Option\ArrayInterface,
-    \Magento\Bundle\Api\Data\OptionTypeInterface
+use Magento\Framework\Api\Attribute_Value_Factory;
+use Magento\Framework\Api\Extension_Attributes_Factory;
+class Type extends \Magento\Framework\Model\Abstract_Extensible_Model implements \Magento\Framework\Option\Array_Interface, \Magento\Bundle\Api\Data\Option_Type_Interface
 {
     /**#@+
      * Constants
@@ -21,12 +17,10 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
     public const KEY_LABEL = 'label';
     public const KEY_CODE = 'code';
     /**#@-*/
-
     /**
      * @var array
      */
     protected $options = [];
-
     /**
      * @param \Magento\Framework\Model\Context $context
      * @param \Magento\Framework\Registry $registry
@@ -37,34 +31,17 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
      * @param \Magento\Framework\Data\Collection\AbstractDb|null $resourceCollection
      * @param array $data
      */
-    public function __construct(
-        \Magento\Framework\Model\Context $context,
-        \Magento\Framework\Registry $registry,
-        ExtensionAttributesFactory $extensionFactory,
-        AttributeValueFactory $customAttributeFactory,
-        array $options,
-        ?\Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
-        ?\Magento\Framework\Data\Collection\AbstractDb $resourceCollection = null,
-        array $data = []
-    ) {
+    public function __construct(\Magento\Framework\Model\Context $context, \Magento\Framework\Registry $registry, Extension_Attributes_Factory $extension_factory, Attribute_Value_Factory $custom_attribute_factory, array $options, ?\Magento\Framework\Model\Resource_Model\Abstract_Resource $resource = null, ?\Magento\Framework\Data\Collection\Abstract_Db $resource_collection = null, array $data = [])
+    {
         $this->options = $options;
-        parent::__construct(
-            $context,
-            $registry,
-            $extensionFactory,
-            $customAttributeFactory,
-            $resource,
-            $resourceCollection,
-            $data
-        );
+        parent::__construct($context, $registry, $extension_factory, $custom_attribute_factory, $resource, $resource_collection, $data);
     }
-
     /**
      * Get Bundle Option Type
      *
      * @return array
      */
-    public function toOptionArray()
+    public function to_option_array()
     {
         $types = [];
         foreach ($this->options as $value => $label) {
@@ -72,67 +49,59 @@ class Type extends \Magento\Framework\Model\AbstractExtensibleModel implements
         }
         return $types;
     }
-
     //@codeCoverageIgnoreStart
-
     /**
      * @inheritdoc
      */
-    public function getLabel()
+    public function get_label()
     {
-        return $this->getData(self::KEY_LABEL);
+        return $this->get_data(self::KEY_LABEL);
     }
-
     /**
      * @inheritdoc
      */
-    public function getCode()
+    public function get_code()
     {
-        return $this->getData(self::KEY_CODE);
+        return $this->get_data(self::KEY_CODE);
     }
-
     /**
      * Set type label
      *
      * @param string $label
      * @return $this
      */
-    public function setLabel($label)
+    public function set_label($label)
     {
-        return $this->setData(self::KEY_LABEL, $label);
+        return $this->set_data(self::KEY_LABEL, $label);
     }
-
     /**
      * Set type code
      *
      * @param string $code
      * @return $this
      */
-    public function setCode($code)
+    public function set_code($code)
     {
-        return $this->setData(self::KEY_CODE, $code);
+        return $this->set_data(self::KEY_CODE, $code);
     }
-
     /**
      * @inheritdoc
      *
      * @return \Magento\Bundle\Api\Data\OptionTypeExtensionInterface|null
      */
-    public function getExtensionAttributes()
+    public function get_extension_attributes()
     {
-        return $this->_getExtensionAttributes();
+        return $this->_get_extension_attributes();
     }
-
     /**
      * @inheritdoc
      *
      * @param \Magento\Bundle\Api\Data\OptionTypeExtensionInterface $extensionAttributes
      * @return $this
      */
-    public function setExtensionAttributes(\Magento\Bundle\Api\Data\OptionTypeExtensionInterface $extensionAttributes)
+    public function set_extension_attributes(\Magento\Bundle\Api\Data\Option_Type_Extension_Interface $extension_attributes)
     {
-        return $this->_setExtensionAttributes($extensionAttributes);
+        return $this->_set_extension_attributes($extension_attributes);
     }
-
     //@codeCoverageIgnoreEnd
 }

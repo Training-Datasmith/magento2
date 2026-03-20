@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Code;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Code;
  * @api
  * @since 100.0.2
  */
-class NameBuilder
+class Name_Builder
 {
     /**
      * Builds namespace + classname out of the parts array
@@ -25,12 +24,12 @@ class NameBuilder
      * @param string[] $parts
      * @return string
      */
-    public function buildClassName($parts)
+    public function build_class_name($parts)
     {
         $separator = '\\';
         $string = join($separator, $parts);
         $string = str_replace('_', $separator, $string);
-        $className = ucwords($string, $separator);
-        return $className;
+        $class_name = ucwords($string, $separator);
+        return $class_name;
     }
 }

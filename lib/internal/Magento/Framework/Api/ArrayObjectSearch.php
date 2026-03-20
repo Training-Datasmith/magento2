@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
  * Class to provide possibility to search for any object's property value by the name and value of another property
  */
-class ArrayObjectSearch
+class Array_Object_Search
 {
     /**
      * Search for the value's value by specified key's name-value pair in the object
@@ -46,14 +45,14 @@ class ArrayObjectSearch
      * @param string $valueName Name of the value property name
      * @return null|mixed
      */
-    public static function getArrayElementByName($data, $keyValue, $keyName = 'name', $valueName = 'value')
+    public static function get_array_element_by_name($data, $key_value, $key_name = 'name', $value_name = 'value')
     {
-        $getter = 'get' . ucfirst($keyName);
+        $getter = 'get' . ucfirst($key_name);
         if (is_array($data)) {
-            foreach ($data as $dataObject) {
-                if (is_object($dataObject) && $dataObject->$getter() == $keyValue) {
-                    $valueGetter = 'get' . ucfirst($valueName);
-                    return $dataObject->$valueGetter();
+            foreach ($data as $data_object) {
+                if (is_object($data_object) && $data_object->{$getter}() == $key_value) {
+                    $value_getter = 'get' . ucfirst($value_name);
+                    return $data_object->{$value_getter}();
                 }
             }
         }

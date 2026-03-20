@@ -1,35 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Sql;
 
 use Magento\Framework\DB\Select;
-
 /**
  * Class UnionExpression
  */
-class UnionExpression extends Expression
+class Union_Expression extends Expression
 {
     /**
      * @var Select[]
      */
     protected $parts;
-
     /**
      * @var string
      */
     protected $type;
-
     /**
      * @var string
      */
     protected $pattern;
-
     /**
      * @param Select[] $parts
      * @param string $type (optional)
@@ -41,7 +36,6 @@ class UnionExpression extends Expression
         $this->type = $type;
         $this->pattern = $pattern;
     }
-
     /**
      * @inheritdoc
      */

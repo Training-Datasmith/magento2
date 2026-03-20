@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Select;
 
 use Magento\Framework\DB\Select;
-
 /**
  * Class ForUpdateRenderer
  */
-class ForUpdateRenderer implements RendererInterface
+class For_Update_Renderer implements Renderer_Interface
 {
     /**
      * Render FOR UPDATE section
@@ -25,7 +23,7 @@ class ForUpdateRenderer implements RendererInterface
      */
     public function render(Select $select, $sql = '')
     {
-        if ($select->getPart(Select::FOR_UPDATE)) {
+        if ($select->get_part(Select::FOR_UPDATE)) {
             $sql .= ' ' . Select::SQL_FOR_UPDATE;
         }
         return $sql;

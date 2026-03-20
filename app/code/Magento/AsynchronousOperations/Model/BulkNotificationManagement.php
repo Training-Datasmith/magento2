@@ -1,115 +1,85 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Asynchronous_Operations\Model;
 
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterface;
-use Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory as BulkCollectionFactory;
-use Magento\Framework\App\ResourceConnection;
+use Magento\Asynchronous_Operations\Api\Data\Bulk_Summary_Interface;
+use Magento\Asynchronous_Operations\Model\Resource_Model\Bulk\Collection_Factory as BulkCollectionFactory;
+use Magento\Framework\App\Resource_Connection;
 use Magento\Framework\Data\Collection;
-use Magento\Framework\EntityManager\MetadataPool;
-
+use Magento\Framework\Entity_Manager\Metadata_Pool;
 /**
  * Class for bulk notification manager
  */
-class BulkNotificationManagement
+class Bulk_Notification_Management
 {
     /**
      * BulkManagement constructor.
      */
-    public function __construct(private readonly MetadataPool $metadataPool, private readonly ResourceConnection $resourceConnection, private readonly BulkCollectionFactory $bulkCollectionFactory, private readonly \Psr\Log\LoggerInterface $logger)
+    public function __construct(private readonly Metadata_Pool $metadata_pool, private readonly Resource_Connection $resource_connection, private readonly Bulk_Collection_Factory $bulk_collection_factory, private readonly \Psr\Log\Logger_Interface $logger)
     {
     }
-
     /**
      * Mark given bulks as acknowledged.
      * Notifications related to these bulks will not appear in notification area.
      *
      * @return bool true on success or false on failure
      */
-    public function acknowledgeBulks(array $bulkUuids): bool
+    public function acknowledge_bulks(array $bulk_uuids): bool
     {
-        $metadata = $this->metadataPool->getMetadata(BulkSummaryInterface::class);
-        $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
-
+        $metadata = $this->metadata_pool->get_metadata(Bulk_Summary_Interface::class);
+        $connection = $this->resource_connection->get_connection_by_name($metadata->get_entity_connection_name());
         try {
-            $connection->insertArray(
-                $this->resourceConnection->getTableName('magento_acknowledged_bulk'),
-                ['bulk_uuid'],
-                $bulkUuids
-            );
+            $connection->insert_array($this->resource_connection->get_table_name('magento_acknowledged_bulk'), ['bulk_uuid'], $bulk_uuids);
         } catch (\Exception $exception) {
-            $this->logger->critical($exception->getMessage());
+            $this->logger->critical($exception->get_message());
             return false;
         }
         return true;
     }
-
     /**
      * Remove given bulks from acknowledged list.
      * Notifications related to these bulks will appear again in notification area.
      *
      * @return bool true on success or false on failure
      */
-    public function ignoreBulks(array $bulkUuids): bool
+    public function ignore_bulks(array $bulk_uuids): bool
     {
-        $metadata = $this->metadataPool->getMetadata(BulkSummaryInterface::class);
-        $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
-
+        $metadata = $this->metadata_pool->get_metadata(Bulk_Summary_Interface::class);
+        $connection = $this->resource_connection->get_connection_by_name($metadata->get_entity_connection_name());
         try {
-            $connection->delete(
-                $this->resourceConnection->getTableName('magento_acknowledged_bulk'),
-                ['bulk_uuid IN(?)' => $bulkUuids]
-            );
+            $connection->delete($this->resource_connection->get_table_name('magento_acknowledged_bulk'), ['bulk_uuid IN(?)' => $bulk_uuids]);
         } catch (\Exception $exception) {
-            $this->logger->critical($exception->getMessage());
+            $this->logger->critical($exception->get_message());
             return false;
         }
         return true;
     }
-
     /**
      * Retrieve all bulks that were acknowledged by given user.
      *
      * @param int $userId
      * @return BulkSummaryInterface[]
      */
-    public function getAcknowledgedBulksByUser($userId)
+    public function get_acknowledged_bulks_by_user($user_id)
     {
-        return $this->bulkCollectionFactory->create()
-            ->join(
-                ['acknowledged_bulk' => $this->resourceConnection->getTableName('magento_acknowledged_bulk')],
-                'main_table.uuid = acknowledged_bulk.bulk_uuid',
-                []
-            )->addFieldToFilter('user_id', $userId)
-            ->addOrder('start_time', Collection::SORT_ORDER_DESC)
-            ->getItems();
+        return $this->bulk_collection_factory->create()->join(['acknowledged_bulk' => $this->resource_connection->get_table_name('magento_acknowledged_bulk')], 'main_table.uuid = acknowledged_bulk.bulk_uuid', [])->add_field_to_filter('user_id', $user_id)->add_order('start_time', Collection::SORT_ORDER_DESC)->get_items();
     }
-
     /**
      * Retrieve all bulks that were not acknowledged by given user.
      *
      * @param int $userId
      * @return BulkSummaryInterface[]
      */
-    public function getIgnoredBulksByUser($userId)
+    public function get_ignored_bulks_by_user($user_id)
     {
         /** @var \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\Collection $bulkCollection */
-        $bulkCollection = $this->bulkCollectionFactory->create();
-        $bulkCollection->getSelect()->joinLeft(
-            ['acknowledged_bulk' => $this->resourceConnection->getTableName('magento_acknowledged_bulk')],
-            'main_table.uuid = acknowledged_bulk.bulk_uuid',
-            ['acknowledged_bulk.bulk_uuid']
-        );
-
-        return $bulkCollection->addFieldToFilter('user_id', $userId)
-            ->addFieldToFilter('acknowledged_bulk.bulk_uuid', ['null' => true])
-            ->addOrder('start_time', Collection::SORT_ORDER_DESC)
-            ->getItems();
+        $bulk_collection = $this->bulk_collection_factory->create();
+        $bulk_collection->get_select()->join_left(['acknowledged_bulk' => $this->resource_connection->get_table_name('magento_acknowledged_bulk')], 'main_table.uuid = acknowledged_bulk.bulk_uuid', ['acknowledged_bulk.bulk_uuid']);
+        return $bulk_collection->add_field_to_filter('user_id', $user_id)->add_field_to_filter('acknowledged_bulk.bulk_uuid', ['null' => true])->add_order('start_time', Collection::SORT_ORDER_DESC)->get_items();
     }
 }

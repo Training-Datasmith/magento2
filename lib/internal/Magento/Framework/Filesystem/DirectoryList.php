@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Filesystem;
 
 /**
@@ -26,7 +25,7 @@ namespace Magento\Framework\Filesystem;
  *
  * @api
  */
-class DirectoryList
+class Directory_List
 {
     /**#@+
      * Keys of directory configuration
@@ -34,36 +33,31 @@ class DirectoryList
     public const PATH = 'path';
     public const URL_PATH = 'uri';
     /**#@- */
-
     /**
      * System base temporary directory
      */
     public const SYS_TMP = 'sys_tmp';
-
     /**
      * Root path
      *
      * @var string
      */
     private $root;
-
     /**
      * Directories configurations
      *
      * @var array
      */
     private $directories;
-
     /**
      * Predefined types/paths
      *
      * @return array
      */
-    public static function getDefaultConfig()
+    public static function get_default_config()
     {
         return [self::SYS_TMP => [self::PATH => '']];
     }
-
     /**
      * Validates format and contents of given configuration
      *
@@ -76,12 +70,12 @@ class DirectoryList
         if (!is_array($config)) {
             throw new \InvalidArgumentException('Unexpected value type.');
         }
-        $defaultConfig = static::getDefaultConfig();
+        $default_config = static::get_default_config();
         foreach ($config as $type => $row) {
             if (!is_array($row)) {
                 throw new \InvalidArgumentException('Unexpected value type.');
             }
-            if (!isset($defaultConfig[$type])) {
+            if (!isset($default_config[$type])) {
                 throw new \InvalidArgumentException("Unknown type: {$type}");
             }
             if (!isset($row[self::PATH]) && !isset($row[self::URL_PATH])) {
@@ -89,7 +83,6 @@ class DirectoryList
             }
         }
     }
-
     /**
      * Constructor
      *
@@ -99,11 +92,10 @@ class DirectoryList
     public function __construct($root, array $config = [])
     {
         static::validate($config);
-        $this->root = $this->normalizePath($root);
-        $this->directories = static::getDefaultConfig();
-        $sysTmpPath = get_cfg_var('upload_tmp_dir') ?: sys_get_temp_dir();
-        $this->directories[self::SYS_TMP] = [self::PATH => realpath($sysTmpPath)];
-
+        $this->root = $this->normalize_path($root);
+        $this->directories = static::get_default_config();
+        $sys_tmp_path = get_cfg_var('upload_tmp_dir') ?: sys_get_temp_dir();
+        $this->directories[self::SYS_TMP] = [self::PATH => realpath($sys_tmp_path)];
         // inject custom values from constructor
         foreach ($this->directories as $code => $dir) {
             foreach ([self::PATH, self::URL_PATH] as $key) {
@@ -112,32 +104,28 @@ class DirectoryList
                 }
             }
         }
-
         // filter/validate values
         foreach ($this->directories as $code => $dir) {
-            $path = $this->normalizePath($dir[self::PATH]);
-            if (!$this->isAbsolute($path)) {
-                $path = $this->prependRoot($path);
+            $path = $this->normalize_path($dir[self::PATH]);
+            if (!$this->is_absolute($path)) {
+                $path = $this->prepend_root($path);
             }
             $this->directories[$code][self::PATH] = $path;
-
             if (isset($dir[self::URL_PATH])) {
-                $this->assertUrlPath($dir[self::URL_PATH]);
+                $this->assert_url_path($dir[self::URL_PATH]);
             }
         }
     }
-
     /**
      * Converts slashes in path to a conventional unix-style
      *
      * @param string $path
      * @return string
      */
-    private function normalizePath($path)
+    private function normalize_path($path)
     {
         return $path !== null ? str_replace('\\', '/', $path) : '';
     }
-
     /**
      * Validates a URL path
      *
@@ -148,37 +136,32 @@ class DirectoryList
      * @return void
      * @throws \InvalidArgumentException
      */
-    private function assertUrlPath($urlPath)
+    private function assert_url_path($url_path)
     {
-        if (!preg_match('/^([a-z0-9_]+[a-z0-9\._]*(\/[a-z0-9_]+[a-z0-9\._]*)*)?$/', $urlPath)) {
-            throw new \InvalidArgumentException(
-                "URL path must be relative directory path in lowercase with '/' directory separator: '{$urlPath}'"
-            );
+        if (!preg_match('/^([a-z0-9_]+[a-z0-9\._]*(\/[a-z0-9_]+[a-z0-9\._]*)*)?$/', $url_path)) {
+            throw new \InvalidArgumentException("URL path must be relative directory path in lowercase with '/' directory separator: '{$url_path}'");
         }
     }
-
     /**
      * Concatenates root directory path with a relative path
      *
      * @param string $path
      * @return string
      */
-    protected function prependRoot($path)
+    protected function prepend_root($path)
     {
-        $root = $this->getRoot();
+        $root = $this->get_root();
         return $root . ($root && $path ? '/' : '') . $path;
     }
-
     /**
      * Determine if a path is absolute
      *
      * @param string $path
      * @return bool
      */
-    protected function isAbsolute($path)
+    protected function is_absolute($path)
     {
         $path = $path !== null ? strtr($path, '\\', '/') : '';
-
         if (strpos($path, '/') === 0) {
             //is UnixRoot
             return true;
@@ -189,20 +172,17 @@ class DirectoryList
             //is WindowsLetter
             return true;
         }
-
         return false;
     }
-
     /**
      * Gets a filesystem path of the root directory
      *
      * @return string
      */
-    public function getRoot()
+    public function get_root()
     {
         return $this->root;
     }
-
     /**
      * Gets a filesystem path of a directory
      *
@@ -210,27 +190,25 @@ class DirectoryList
      * @return string
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function getPath($code)
+    public function get_path($code)
     {
-        $this->assertCode($code);
+        $this->assert_code($code);
         return $this->directories[$code][self::PATH];
     }
-
     /**
      * Gets URL path of a directory
      *
      * @param string $code
      * @return string|bool
      */
-    public function getUrlPath($code)
+    public function get_url_path($code)
     {
-        $this->assertCode($code);
+        $this->assert_code($code);
         if (!isset($this->directories[$code][self::URL_PATH])) {
             return false;
         }
         return $this->directories[$code][self::URL_PATH];
     }
-
     /**
      * Asserts that specified directory code is in the registry
      *
@@ -238,15 +216,12 @@ class DirectoryList
      * @throws \Magento\Framework\Exception\FileSystemException
      * @return void
      */
-    private function assertCode($code)
+    private function assert_code($code)
     {
         if (!isset($this->directories[$code])) {
-            throw new \Magento\Framework\Exception\FileSystemException(
-                new \Magento\Framework\Phrase('Unknown directory type: \'%1\'', [$code])
-            );
+            throw new \Magento\Framework\Exception\File_System_Exception(new \Magento\Framework\Phrase('Unknown directory type: \'%1\'', [$code]));
         }
     }
-
     /**
      * Disable show ObjectManager internals with var_dump
      *

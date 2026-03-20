@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface CategoryLinkRepositoryInterface
+interface Category_Link_Repository_Interface
 {
     /**
      * Assign a product to the required category
@@ -24,8 +23,7 @@ interface CategoryLinkRepositoryInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\StateException
      */
-    public function save(\Magento\Catalog\Api\Data\CategoryProductLinkInterface $productLink);
-
+    public function save(\Magento\Catalog\Api\Data\Category_Product_Link_Interface $product_link);
     /**
      * Remove the product assignment from the category
      *
@@ -36,8 +34,7 @@ interface CategoryLinkRepositoryInterface
      * @throws \Magento\Framework\Exception\StateException
      * @throws \Magento\Framework\Exception\InputException
      */
-    public function delete(\Magento\Catalog\Api\Data\CategoryProductLinkInterface $productLink);
-
+    public function delete(\Magento\Catalog\Api\Data\Category_Product_Link_Interface $product_link);
     /**
      * Remove the product assignment from the category by category id and sku
      *
@@ -49,5 +46,5 @@ interface CategoryLinkRepositoryInterface
      * @throws \Magento\Framework\Exception\StateException
      * @throws \Magento\Framework\Exception\InputException
      */
-    public function deleteByIds($categoryId, $sku);
+    public function delete_by_ids($category_id, $sku);
 }

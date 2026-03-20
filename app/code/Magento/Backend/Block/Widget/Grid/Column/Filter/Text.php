@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Filter;
 
 /**
@@ -14,24 +13,14 @@ namespace Magento\Backend\Block\Widget\Grid\Column\Filter;
  * @api
  * @since 100.0.2
  */
-class Text extends \Magento\Backend\Block\Widget\Grid\Column\Filter\AbstractFilter
+class Text extends \Magento\Backend\Block\Widget\Grid\Column\Filter\Abstract_Filter
 {
     /**
      * @inheritDoc
      */
-    public function getHtml()
+    public function get_html()
     {
-        $html = '<input type="text" name="' .
-            $this->_getHtmlName() .
-            '" id="' .
-            $this->_getHtmlId() .
-            '" value="' .
-            $this->getEscapedValue() .
-            '" class="input-text admin__control-text no-changes"' .
-            $this->getUiId(
-                'filter',
-                $this->_getHtmlName()
-            ) . ' />';
+        $html = '<input type="text" name="' . $this->_get_html_name() . '" id="' . $this->_get_html_id() . '" value="' . $this->get_escaped_value() . '" class="input-text admin__control-text no-changes"' . $this->get_ui_id('filter', $this->_get_html_name()) . ' />';
         return $html;
     }
 }

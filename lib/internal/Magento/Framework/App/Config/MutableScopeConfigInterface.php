@@ -1,20 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Configuration interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface MutableScopeConfigInterface extends \Magento\Framework\App\Config\ScopeConfigInterface
+interface Mutable_Scope_Config_Interface extends \Magento\Framework\App\Config\Scope_Config_Interface
 {
     /**
      * Set config value in the corresponding config scope
@@ -25,10 +24,5 @@ interface MutableScopeConfigInterface extends \Magento\Framework\App\Config\Scop
      * @param null|string $scopeCode
      * @return void
      */
-    public function setValue(
-        $path,
-        $value,
-        $scopeType = \Magento\Framework\App\Config\ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
-        $scopeCode = null
-    );
+    public function set_value($path, $value, $scope_type = \Magento\Framework\App\Config\Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_code = null);
 }

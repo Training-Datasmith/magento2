@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api\Data;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Catalog\Api\Data;
  * @api
  * @since 102.0.0
  */
-interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterface
+interface Special_Price_Interface extends \Magento\Framework\Api\Extensible_Data_Interface
 {
     /**#@+
      * Constants
@@ -24,7 +23,6 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
     public const PRICE_FROM = 'price_from';
     public const PRICE_TO = 'price_to';
     /**#@-*/
-
     /**
      * Set product special price value.
      *
@@ -32,16 +30,14 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
      * @return $this
      * @since 102.0.0
      */
-    public function setPrice($price);
-
+    public function set_price($price);
     /**
      * Get product special price value.
      *
      * @return float
      * @since 102.0.0
      */
-    public function getPrice();
-
+    public function get_price();
     /**
      * Set ID of store, that contains special price value.
      *
@@ -49,16 +45,14 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
      * @return $this
      * @since 102.0.0
      */
-    public function setStoreId($storeId);
-
+    public function set_store_id($store_id);
     /**
      * Get ID of store, that contains special price value.
      *
      * @return int
      * @since 102.0.0
      */
-    public function getStoreId();
-
+    public function get_store_id();
     /**
      * Set SKU of product, that contains special price value.
      *
@@ -66,16 +60,14 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
      * @return $this
      * @since 102.0.0
      */
-    public function setSku($sku);
-
+    public function set_sku($sku);
     /**
      * Get SKU of product, that contains special price value.
      *
      * @return string
      * @since 102.0.0
      */
-    public function getSku();
-
+    public function get_sku();
     /**
      * Set start date for special price in Y-m-d H:i:s format.
      *
@@ -83,16 +75,14 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
      * @return $this
      * @since 102.0.0
      */
-    public function setPriceFrom($datetime);
-
+    public function set_price_from($datetime);
     /**
      * Get start date for special price in Y-m-d H:i:s format.
      *
      * @return string
      * @since 102.0.0
      */
-    public function getPriceFrom();
-
+    public function get_price_from();
     /**
      * Set end date for special price in Y-m-d H:i:s format.
      *
@@ -100,16 +90,14 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
      * @return $this
      * @since 102.0.0
      */
-    public function setPriceTo($datetime);
-
+    public function set_price_to($datetime);
     /**
      * Get end date for special price in Y-m-d H:i:s format.
      *
      * @return string
      * @since 102.0.0
      */
-    public function getPriceTo();
-
+    public function get_price_to();
     /**
      * Retrieve existing extension attributes object.
      * If extension attributes do not exist return null.
@@ -117,8 +105,7 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
      * @return \Magento\Catalog\Api\Data\SpecialPriceExtensionInterface|null
      * @since 102.0.0
      */
-    public function getExtensionAttributes();
-
+    public function get_extension_attributes();
     /**
      * Set an extension attributes object.
      *
@@ -126,7 +113,5 @@ interface SpecialPriceInterface extends \Magento\Framework\Api\ExtensibleDataInt
      * @return $this
      * @since 102.0.0
      */
-    public function setExtensionAttributes(
-        \Magento\Catalog\Api\Data\SpecialPriceExtensionInterface $extensionAttributes
-    );
+    public function set_extension_attributes(\Magento\Catalog\Api\Data\Special_Price_Extension_Interface $extension_attributes);
 }

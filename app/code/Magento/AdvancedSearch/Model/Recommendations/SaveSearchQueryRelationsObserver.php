@@ -1,44 +1,38 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Advanced_Search\Model\Recommendations;
 
-namespace Magento\AdvancedSearch\Model\Recommendations;
-
-use Magento\AdvancedSearch\Model\ResourceModel\RecommendationsFactory;
+use Magento\Advanced_Search\Model\Resource_Model\Recommendations_Factory;
 use Magento\Framework\Event\Observer as EventObserver;
-use Magento\Framework\Event\ObserverInterface;
-
-class SaveSearchQueryRelationsObserver implements ObserverInterface
+use Magento\Framework\Event\Observer_Interface;
+class Save_Search_Query_Relations_Observer implements Observer_Interface
 {
     /**
      * @var RecommendationsFactory
      */
-    private $recommendationsFactory;
-
-    public function __construct(RecommendationsFactory $recommendationsFactory)
+    private $recommendations_factory;
+    public function __construct(Recommendations_Factory $recommendations_factory)
     {
-        $this->recommendationsFactory = $recommendationsFactory;
+        $this->recommendations_factory = $recommendations_factory;
     }
-
     /**
      * Save search query relations after save search query
      */
-    public function execute(EventObserver $observer): void
+    public function execute(Event_Observer $observer): void
     {
-        $searchQueryModel = $observer->getEvent()->getDataObject();
-        $queryId = $searchQueryModel->getId();
-        $relatedQueries = $searchQueryModel->getSelectedQueriesGrid() ?? '';
-
-        if (strlen($relatedQueries) == 0) {
-            $relatedQueries = [];
+        $search_query_model = $observer->get_event()->get_data_object();
+        $query_id = $search_query_model->get_id();
+        $related_queries = $search_query_model->get_selected_queries_grid() ?? '';
+        if (strlen($related_queries) == 0) {
+            $related_queries = [];
         } else {
-            $relatedQueries = explode('&', $relatedQueries);
+            $related_queries = explode('&', $related_queries);
         }
-
-        $this->recommendationsFactory->create()->saveRelatedQueries($queryId, $relatedQueries);
+        $this->recommendations_factory->create()->save_related_queries($query_id, $related_queries);
     }
 }

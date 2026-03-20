@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Bulk;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Bulk;
  * @api
  * @since 103.0.0
  */
-interface OperationManagementInterface
+interface Operation_Management_Interface
 {
     /**
      * Used by consumer to change status after processing operation
@@ -27,5 +26,6 @@ interface OperationManagementInterface
      * @return boolean
      * @since 103.0.0
      */
-    public function changeOperationStatus($bulkUuid, $operationKey, $status, $errorCode = null, $message = null, $data = null); // @codingStandardsIgnoreLine
+    public function change_operation_status($bulk_uuid, $operation_key, $status, $error_code = null, $message = null, $data = null);
+    // @codingStandardsIgnoreLine
 }

@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data\Wysiwyg;
 
 /**
@@ -13,12 +12,12 @@ namespace Magento\Framework\Data\Wysiwyg;
  * @api
  * @since 102.0.0
  */
-interface ConfigProviderInterface
+interface Config_Provider_Interface
 {
     /**
      * @param \Magento\Framework\DataObject $config
      * @return \Magento\Framework\DataObject
      * @since 102.0.0
      */
-    public function getConfig(\Magento\Framework\DataObject $config): \Magento\Framework\DataObject;
+    public function get_config(\Magento\Framework\Data_Object $config): \Magento\Framework\Data_Object;
 }

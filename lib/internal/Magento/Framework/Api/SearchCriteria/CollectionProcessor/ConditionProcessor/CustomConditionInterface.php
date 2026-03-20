@@ -4,12 +4,10 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Framework\Api\SearchCriteria\CollectionProcessor\ConditionProcessor;
+declare (strict_types=1);
+namespace Magento\Framework\Api\Search_Criteria\Collection_Processor\Condition_Processor;
 
 use Magento\Framework\Api\Filter;
-
 /**
  * Implement it to build SQL conditions from Magento\Framework\Api\Filter
  *
@@ -26,7 +24,7 @@ use Magento\Framework\Api\Filter;
  *
  * @api
  */
-interface CustomConditionInterface
+interface Custom_Condition_Interface
 {
     /**
      * @param Filter $filter

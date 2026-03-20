@@ -4,31 +4,28 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Model\Sales\Order\Pdf\Items;
 
-use Magento\Framework\Data\Collection\AbstractDb;
-use Magento\Framework\DataObject;
+use Magento\Framework\Data\Collection\Abstract_Db;
+use Magento\Framework\Data_Object;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filter\FilterManager;
+use Magento\Framework\Filter\Filter_Manager;
 use Magento\Framework\Model\Context;
-use Magento\Framework\Model\ResourceModel\AbstractResource;
+use Magento\Framework\Model\Resource_Model\Abstract_Resource;
 use Magento\Framework\Registry;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\Stdlib\StringUtils;
+use Magento\Framework\Stdlib\String_Utils;
 use Magento\Tax\Helper\Data;
-
 /**
  * Order invoice pdf default items renderer
  */
-class Invoice extends AbstractItems
+class Invoice extends Abstract_Items
 {
     /**
      * @var StringUtils
      */
     protected $string;
-
     /**
      * Constructor
      *
@@ -44,32 +41,11 @@ class Invoice extends AbstractItems
      * @param array $data
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    public function __construct(
-        Context $context,
-        Registry $registry,
-        Data $taxData,
-        Filesystem $filesystem,
-        FilterManager $filterManager,
-        StringUtils $coreString,
-        Json $serializer,
-        ?AbstractResource $resource = null,
-        ?AbstractDb $resourceCollection = null,
-        array $data = []
-    ) {
-        $this->string = $coreString;
-        parent::__construct(
-            $context,
-            $registry,
-            $taxData,
-            $filesystem,
-            $filterManager,
-            $serializer,
-            $resource,
-            $resourceCollection,
-            $data
-        );
+    public function __construct(Context $context, Registry $registry, Data $tax_data, Filesystem $filesystem, Filter_Manager $filter_manager, String_Utils $core_string, Json $serializer, ?Abstract_Resource $resource = null, ?Abstract_Db $resource_collection = null, array $data = [])
+    {
+        $this->string = $core_string;
+        parent::__construct($context, $registry, $tax_data, $filesystem, $filter_manager, $serializer, $resource, $resource_collection, $data);
     }
-
     /**
      * Draw bundle product item line
      *
@@ -77,68 +53,52 @@ class Invoice extends AbstractItems
      */
     public function draw()
     {
-        $draw = $this->drawChildrenItems();
-        $draw = $this->drawCustomOptions($draw);
-
-        $page = $this->getPdf()->drawLineBlocks($this->getPage(), $draw, ['table_header' => true]);
-
-        $this->setPage($page);
+        $draw = $this->draw_children_items();
+        $draw = $this->draw_custom_options($draw);
+        $page = $this->get_pdf()->draw_line_blocks($this->get_page(), $draw, ['table_header' => true]);
+        $this->set_page($page);
     }
-
     /**
      * Draw bundle product children items
      *
      * @return array
      */
-    private function drawChildrenItems(): array
+    private function draw_children_items(): array
     {
-        $this->_setFontRegular();
-
-        $prevOptionId = '';
-        $drawItems = [];
-        $optionId = 0;
+        $this->_set_font_regular();
+        $prev_option_id = '';
+        $draw_items = [];
+        $option_id = 0;
         $lines = [];
-        foreach ($this->getChildren($this->getItem()) as $childItem) {
+        foreach ($this->get_children($this->get_item()) as $child_item) {
             $index = array_key_last($lines) !== null ? array_key_last($lines) + 1 : 0;
-            $attributes = $this->getSelectionAttributes($childItem);
+            $attributes = $this->get_selection_attributes($child_item);
             if (is_array($attributes)) {
-                $optionId = $attributes['option_id'];
+                $option_id = $attributes['option_id'];
             }
-
-            if (!isset($drawItems[$optionId])) {
-                $drawItems[$optionId] = ['lines' => [], 'height' => 20];
+            if (!isset($draw_items[$option_id])) {
+                $draw_items[$option_id] = ['lines' => [], 'height' => 20];
             }
-
-            if ($childItem->getOrderItem()->getParentItem() && $prevOptionId != $attributes['option_id']) {
-                $lines[$index][] = [
-                    'font' => 'italic',
-                    'text' => $this->string->split($attributes['option_label'], 45, true, true),
-                    'feed' => 35,
-                ];
-
+            if ($child_item->get_order_item()->get_parent_item() && $prev_option_id != $attributes['option_id']) {
+                $lines[$index][] = ['font' => 'italic', 'text' => $this->string->split($attributes['option_label'], 45, true, true), 'feed' => 35];
                 $index++;
-                $prevOptionId = $attributes['option_id'];
+                $prev_option_id = $attributes['option_id'];
             }
-
             /* in case Product name is longer than 80 chars - it is written in a few lines */
-            if ($childItem->getOrderItem()->getParentItem()) {
+            if ($child_item->get_order_item()->get_parent_item()) {
                 $feed = 40;
-                $name = $this->getValueHtml($childItem);
+                $name = $this->get_value_html($child_item);
             } else {
                 $feed = 35;
-                $name = $childItem->getName();
+                $name = $child_item->get_name();
             }
             $lines[$index][] = ['text' => $this->string->split($name, 35, true, true), 'feed' => $feed];
-
-            $lines = $this->drawSkus($childItem, $lines);
-
-            $lines = $this->drawPrices($childItem, $lines);
+            $lines = $this->draw_skus($child_item, $lines);
+            $lines = $this->draw_prices($child_item, $lines);
         }
-        $drawItems[$optionId]['lines'] = $lines;
-
-        return $drawItems;
+        $draw_items[$option_id]['lines'] = $lines;
+        return $draw_items;
     }
-
     /**
      * Draw sku parts
      *
@@ -146,24 +106,18 @@ class Invoice extends AbstractItems
      * @param array $lines
      * @return array
      */
-    private function drawSkus(DataObject $childItem, array $lines): array
+    private function draw_skus(Data_Object $child_item, array $lines): array
     {
         $index = array_key_last($lines);
-        if (!$childItem->getOrderItem()->getParentItem()) {
+        if (!$child_item->get_order_item()->get_parent_item()) {
             $text = [];
-            foreach ($this->string->split($this->getItem()->getSku(), 17) as $part) {
+            foreach ($this->string->split($this->get_item()->get_sku(), 17) as $part) {
                 $text[] = $part;
             }
-            $lines[$index][] = [
-                'text' => $text,
-                'feed' => 290,
-                'align' => 'right',
-            ];
+            $lines[$index][] = ['text' => $text, 'feed' => 290, 'align' => 'right'];
         }
-
         return $lines;
     }
-
     /**
      * Draw prices for bundle product children items
      *
@@ -171,90 +125,63 @@ class Invoice extends AbstractItems
      * @param array $lines
      * @return array
      */
-    private function drawPrices(DataObject $childItem, array $lines): array
+    private function draw_prices(Data_Object $child_item, array $lines): array
     {
         $index = array_key_last($lines);
-        if ($this->canShowPriceInfo($childItem)) {
-            $lines[$index][] = ['text' => $childItem->getQty() * 1, 'feed' => 435, 'align' => 'right'];
-
-            $tax = $this->getOrder()->formatPriceTxt($childItem->getTaxAmount());
+        if ($this->can_show_price_info($child_item)) {
+            $lines[$index][] = ['text' => $child_item->get_qty() * 1, 'feed' => 435, 'align' => 'right'];
+            $tax = $this->get_order()->format_price_txt($child_item->get_tax_amount());
             $lines[$index][] = ['text' => $tax, 'feed' => 495, 'font' => 'bold', 'align' => 'right'];
-
-            $item = $this->getItem();
-            $this->_item = $childItem;
-            $feedPrice = 395;
-            $feedSubtotal = $feedPrice + 170;
-            foreach ($this->getItemPricesForDisplay() as $priceData) {
-                if (isset($priceData['label'])) {
+            $item = $this->get_item();
+            $this->_item = $child_item;
+            $feed_price = 395;
+            $feed_subtotal = $feed_price + 170;
+            foreach ($this->get_item_prices_for_display() as $price_data) {
+                if (isset($price_data['label'])) {
                     // draw Price label
-                    $lines[$index][] = ['text' => $priceData['label'], 'feed' => $feedPrice, 'align' => 'right'];
+                    $lines[$index][] = ['text' => $price_data['label'], 'feed' => $feed_price, 'align' => 'right'];
                     // draw Subtotal label
-                    $lines[$index][] = ['text' => $priceData['label'], 'feed' => $feedSubtotal, 'align' => 'right'];
+                    $lines[$index][] = ['text' => $price_data['label'], 'feed' => $feed_subtotal, 'align' => 'right'];
                     $index++;
                 }
                 // draw Price
-                $lines[$index][] = [
-                    'text' => $priceData['price'],
-                    'feed' => $feedPrice,
-                    'font' => 'bold',
-                    'align' => 'right',
-                ];
+                $lines[$index][] = ['text' => $price_data['price'], 'feed' => $feed_price, 'font' => 'bold', 'align' => 'right'];
                 // draw Subtotal
-                $lines[$index][] = [
-                    'text' => $priceData['subtotal'],
-                    'feed' => $feedSubtotal,
-                    'font' => 'bold',
-                    'align' => 'right',
-                ];
+                $lines[$index][] = ['text' => $price_data['subtotal'], 'feed' => $feed_subtotal, 'font' => 'bold', 'align' => 'right'];
                 $index++;
             }
             $this->_item = $item;
         }
-
         return $lines;
     }
-
     /**
      * Draw bundle product custom options
      *
      * @param array $draw
      * @return array
      */
-    private function drawCustomOptions(array $draw): array
+    private function draw_custom_options(array $draw): array
     {
-        $options = $this->getItem()->getOrderItem()->getProductOptions();
+        $options = $this->get_item()->get_order_item()->get_product_options();
         if ($options && isset($options['options'])) {
             foreach ($options['options'] as $option) {
                 $lines = [];
-                $lines[][] = [
-                    'text' => $this->string->split(
-                        $this->filterManager->stripTags($option['label']),
-                        40,
-                        true,
-                        true
-                    ),
-                    'font' => 'italic',
-                    'feed' => 35,
-                ];
-
+                $lines[][] = ['text' => $this->string->split($this->filter_manager->strip_tags($option['label']), 40, true, true), 'font' => 'italic', 'feed' => 35];
                 if ($option['value']) {
                     $text = [];
-                    $printValue = $option['print_value'] ?? $this->filterManager->stripTags($option['value']);
-                    $printValue = str_replace(PHP_EOL, ', ', $printValue);
-                    $values = explode(', ', $printValue);
+                    $print_value = $option['print_value'] ?? $this->filter_manager->strip_tags($option['value']);
+                    $print_value = str_replace(PHP_EOL, ', ', $print_value);
+                    $values = explode(', ', $print_value);
                     foreach ($values as $value) {
-                        foreach ($this->string->split($value, 50, true, true) as $subValue) {
-                            $text[] = $subValue;
+                        foreach ($this->string->split($value, 50, true, true) as $sub_value) {
+                            $text[] = $sub_value;
                         }
                     }
-
                     $lines[][] = ['text' => $text, 'feed' => 40];
                 }
-
                 $draw[] = ['lines' => $lines, 'height' => 20, 'shift' => 5];
             }
         }
-
         return $draw;
     }
 }

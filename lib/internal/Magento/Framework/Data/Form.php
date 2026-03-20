@@ -1,78 +1,65 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
-use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Data\Form\Element\Abstract_Element;
 use Magento\Framework\Data\Form\Element\Collection as ElementCollection;
-use Magento\Framework\Data\Form\Element\CollectionFactory as ElementCollectionFactory;
+use Magento\Framework\Data\Form\Element\Collection_Factory as ElementCollectionFactory;
 use Magento\Framework\Data\Form\Element\Factory;
-use Magento\Framework\Data\Form\Element\Renderer\RendererInterface;
-use Magento\Framework\Data\Form\FormKey;
+use Magento\Framework\Data\Form\Element\Renderer\Renderer_Interface;
+use Magento\Framework\Data\Form\Form_Key;
 use Magento\Framework\Profiler;
-
 /**
  * @api
  * @since 100.0.2
  */
-class Form extends \Magento\Framework\Data\Form\AbstractForm
+class Form extends \Magento\Framework\Data\Form\Abstract_Form
 {
     /**
      * All form elements collection
      *
      * @var ElementCollection
      */
-    protected $_allElements;
-
+    protected $_all_elements;
     /**
      * form elements index
      *
      * @var array
      */
-    protected $_elementsIndex;
-
+    protected $_elements_index;
     /**
      * @var FormKey
      */
-    protected $formKey;
-
+    protected $form_key;
     /**
      * @var RendererInterface
      */
-    protected static $_defaultElementRenderer;
-
+    protected static $_default_element_renderer;
     /**
      * @var RendererInterface
      */
-    protected static $_defaultFieldsetRenderer;
-
+    protected static $_default_fieldset_renderer;
     /**
      * @var RendererInterface
      */
-    protected static $_defaultFieldsetElementRenderer;
-
+    protected static $_default_fieldset_element_renderer;
     /**
      * @param Factory $factoryElement
      * @param ElementCollectionFactory $factoryCollection
      * @param FormKey $formKey
      * @param array $data
      */
-    public function __construct(
-        Factory $factoryElement,
-        ElementCollectionFactory $factoryCollection,
-        FormKey $formKey,
-        $data = []
-    ) {
-        parent::__construct($factoryElement, $factoryCollection, $data);
-        $this->_allElements = $this->_factoryCollection->create(['container' => $this]);
-        $this->formKey = $formKey;
+    public function __construct(Factory $factory_element, Element_Collection_Factory $factory_collection, Form_Key $form_key, $data = [])
+    {
+        parent::__construct($factory_element, $factory_collection, $data);
+        $this->_all_elements = $this->_factory_collection->create(['container' => $this]);
+        $this->form_key = $form_key;
     }
-
     /**
      * Method to set element renderer.
      *
@@ -80,11 +67,10 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return void
      */
-    public static function setElementRenderer(?RendererInterface $renderer = null)
+    public static function set_element_renderer(?Renderer_Interface $renderer = null)
     {
-        self::$_defaultElementRenderer = $renderer;
+        self::$_default_element_renderer = $renderer;
     }
-
     /**
      * Method to set fieldset renderer.
      *
@@ -92,11 +78,10 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return void
      */
-    public static function setFieldsetRenderer(?RendererInterface $renderer = null)
+    public static function set_fieldset_renderer(?Renderer_Interface $renderer = null)
     {
-        self::$_defaultFieldsetRenderer = $renderer;
+        self::$_default_fieldset_renderer = $renderer;
     }
-
     /**
      * Method to set fieldset element renderer.
      *
@@ -104,51 +89,46 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return void
      */
-    public static function setFieldsetElementRenderer(?RendererInterface $renderer = null)
+    public static function set_fieldset_element_renderer(?Renderer_Interface $renderer = null)
     {
-        self::$_defaultFieldsetElementRenderer = $renderer;
+        self::$_default_fieldset_element_renderer = $renderer;
     }
-
     /**
      * Method to get element renderer.
      *
      * @return RendererInterface
      */
-    public static function getElementRenderer()
+    public static function get_element_renderer()
     {
-        return self::$_defaultElementRenderer;
+        return self::$_default_element_renderer;
     }
-
     /**
      * Method to get fieldset renderer.
      *
      * @return RendererInterface
      */
-    public static function getFieldsetRenderer()
+    public static function get_fieldset_renderer()
     {
-        return self::$_defaultFieldsetRenderer;
+        return self::$_default_fieldset_renderer;
     }
-
     /**
      * Method to get fieldset element renderer.
      *
      * @return RendererInterface
      */
-    public static function getFieldsetElementRenderer()
+    public static function get_fieldset_element_renderer()
     {
-        return self::$_defaultFieldsetElementRenderer;
+        return self::$_default_fieldset_element_renderer;
     }
-
     /**
      * Return allowed HTML form attributes
      *
      * @return string[]
      */
-    public function getHtmlAttributes()
+    public function get_html_attributes()
     {
         return ['id', 'name', 'method', 'action', 'enctype', 'class', 'onsubmit', 'target'];
     }
-
     /**
      * Add form element
      *
@@ -156,28 +136,26 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      * @param bool $after
      * @return $this
      */
-    public function addElement(AbstractElement $element, $after = false)
+    public function add_element(Abstract_Element $element, $after = false)
     {
-        $this->checkElementId($element->getId());
-        parent::addElement($element, $after);
-        $this->addElementToCollection($element);
+        $this->check_element_id($element->get_id());
+        parent::add_element($element, $after);
+        $this->add_element_to_collection($element);
         return $this;
     }
-
     /**
      * Check existing element
      *
      * @param   string $elementId
      * @return  bool
      */
-    protected function _elementIdExists($elementId)
+    protected function _element_id_exists($element_id)
     {
-        if ($elementId === null) {
+        if ($element_id === null) {
             return false;
         }
-        return isset($this->_elementsIndex[$elementId]);
+        return isset($this->_elements_index[$element_id]);
     }
-
     /**
      * Method to add element to collection.
      *
@@ -185,16 +163,15 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return $this
      */
-    public function addElementToCollection($element)
+    public function add_element_to_collection($element)
     {
-        $elementId = $element->getId();
-        if ($elementId !== null) {
-            $this->_elementsIndex[$elementId] = $element;
+        $element_id = $element->get_id();
+        if ($element_id !== null) {
+            $this->_elements_index[$element_id] = $element;
         }
-        $this->_allElements->add($element);
+        $this->_all_elements->add($element);
         return $this;
     }
-
     /**
      * Method to check element id.
      *
@@ -203,40 +180,35 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      * @return bool
      * @throws \Exception
      */
-    public function checkElementId($elementId)
+    public function check_element_id($element_id)
     {
-        if ($this->_elementIdExists($elementId)) {
-            throw new \InvalidArgumentException(
-                'An element with a "' . $elementId . '" ID already exists.'
-            );
+        if ($this->_element_id_exists($element_id)) {
+            throw new \InvalidArgumentException('An element with a "' . $element_id . '" ID already exists.');
         }
         return true;
     }
-
     /**
      * Method to get form.
      *
      * @return $this
      */
-    public function getForm()
+    public function get_form()
     {
         return $this;
     }
-
     /**
      * Retrieve form element by id
      *
      * @param string $elementId
      * @return null|AbstractElement
      */
-    public function getElement($elementId)
+    public function get_element($element_id)
     {
-        if ($this->_elementIdExists($elementId)) {
-            return $this->_elementsIndex[$elementId];
+        if ($this->_element_id_exists($element_id)) {
+            return $this->_elements_index[$element_id];
         }
         return null;
     }
-
     /**
      * Method to set values.
      *
@@ -244,18 +216,17 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return $this
      */
-    public function setValues($values)
+    public function set_values($values)
     {
-        foreach ($this->_allElements as $element) {
-            if (isset($values[$element->getId()])) {
-                $element->setValue($values[$element->getId()]);
+        foreach ($this->_all_elements as $element) {
+            if (isset($values[$element->get_id()])) {
+                $element->set_value($values[$element->get_id()]);
             } else {
-                $element->setValue(null);
+                $element->set_value(null);
             }
         }
         return $this;
     }
-
     /**
      * Method to add values.
      *
@@ -263,37 +234,35 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return $this
      */
-    public function addValues($values)
+    public function add_values($values)
     {
         if (!is_array($values)) {
             return $this;
         }
-        foreach ($values as $elementId => $value) {
-            $element = $this->getElement($elementId);
+        foreach ($values as $element_id => $value) {
+            $element = $this->get_element($element_id);
             if ($element) {
-                $element->setValue($value);
+                $element->set_value($value);
             }
         }
         return $this;
     }
-
     /**
      * Add suffix to name of all elements
      *
      * @param string $suffix
      * @return $this
      */
-    public function addFieldNameSuffix($suffix)
+    public function add_field_name_suffix($suffix)
     {
-        foreach ($this->_allElements as $element) {
-            $name = $element->getName();
+        foreach ($this->_all_elements as $element) {
+            $name = $element->get_name();
             if ($name) {
-                $element->setName($this->addSuffixToName($name, $suffix));
+                $element->set_name($this->add_suffix_to_name($name, $suffix));
             }
         }
         return $this;
     }
-
     /**
      * Method to add suffix to name.
      *
@@ -302,22 +271,21 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return string
      */
-    public function addSuffixToName($name, $suffix)
+    public function add_suffix_to_name($name, $suffix)
     {
         if (!$name) {
             return $suffix;
         }
         $vars = explode('[', $name);
-        $newName = $suffix;
+        $new_name = $suffix;
         foreach ($vars as $index => $value) {
-            $newName .= '[' . $value;
+            $new_name .= '[' . $value;
             if ($index == 0) {
-                $newName .= ']';
+                $new_name .= ']';
             }
         }
-        return $newName;
+        return $new_name;
     }
-
     /**
      * Method to remove field.
      *
@@ -325,14 +293,13 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return $this
      */
-    public function removeField($elementId)
+    public function remove_field($element_id)
     {
-        if ($this->_elementIdExists($elementId)) {
-            unset($this->_elementsIndex[$elementId]);
+        if ($this->_element_id_exists($element_id)) {
+            unset($this->_elements_index[$element_id]);
         }
         return $this;
     }
-
     /**
      * Method to set field container id prefix.
      *
@@ -340,61 +307,55 @@ class Form extends \Magento\Framework\Data\Form\AbstractForm
      *
      * @return $this
      */
-    public function setFieldContainerIdPrefix($prefix)
+    public function set_field_container_id_prefix($prefix)
     {
-        $this->setData('field_container_id_prefix', $prefix);
+        $this->set_data('field_container_id_prefix', $prefix);
         return $this;
     }
-
     /**
      * Method to get field container id prefix.
      *
      * @return string
      */
-    public function getFieldContainerIdPrefix()
+    public function get_field_container_id_prefix()
     {
-        return $this->getData('field_container_id_prefix');
+        return $this->get_data('field_container_id_prefix');
     }
-
     /**
      * Method to html.
      *
      * @return string
      */
-    public function toHtml()
+    public function to_html()
     {
         Profiler::start('form/toHtml');
         $html = '';
-        $useContainer = $this->getUseContainer();
-        if ($useContainer) {
-            $html .= '<form ' . $this->serialize($this->getHtmlAttributes()) . '>';
+        $use_container = $this->get_use_container();
+        if ($use_container) {
+            $html .= '<form ' . $this->serialize($this->get_html_attributes()) . '>';
             $html .= '<div>';
-            $method = is_string($this->getData('method')) ? strtolower($this->getData('method')) : '';
-
+            $method = is_string($this->get_data('method')) ? strtolower($this->get_data('method')) : '';
             if ($method == 'post') {
-                $html .= '<input name="form_key" type="hidden" value="' . $this->formKey->getFormKey() . '" />';
+                $html .= '<input name="form_key" type="hidden" value="' . $this->form_key->get_form_key() . '" />';
             }
             $html .= '</div>';
         }
-
-        foreach ($this->getElements() as $element) {
-            $html .= $element->toHtml();
+        foreach ($this->get_elements() as $element) {
+            $html .= $element->to_html();
         }
-
-        if ($useContainer) {
+        if ($use_container) {
             $html .= '</form>';
         }
         Profiler::stop('form/toHtml');
         return $html;
     }
-
     /**
      * Method to get Html.
      *
      * @return string
      */
-    public function getHtml()
+    public function get_html()
     {
-        return $this->toHtml();
+        return $this->to_html();
     }
 }

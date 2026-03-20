@@ -4,8 +4,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface ScopeValidatorInterface
+interface Scope_Validator_Interface
 {
     /**
      * Check that scope and scope id is exists
@@ -22,5 +21,5 @@ interface ScopeValidatorInterface
      * @param string $scopeId
      * @return bool
      */
-    public function isValidScope($scope, $scopeId = null);
+    public function is_valid_scope($scope, $scope_id = null);
 }

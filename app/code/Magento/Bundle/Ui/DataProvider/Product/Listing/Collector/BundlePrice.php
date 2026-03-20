@@ -1,54 +1,47 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Bundle\Ui\Data_Provider\Product\Listing\Collector;
 
-namespace Magento\Bundle\Ui\DataProvider\Product\Listing\Collector;
-
-use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Catalog\Api\Data\ProductRender\PriceInfoInterface;
-use Magento\Catalog\Api\Data\ProductRender\PriceInfoInterfaceFactory;
-use Magento\Catalog\Api\Data\ProductRenderInterface;
-use Magento\Catalog\Model\ProductRender\FormattedPriceInfoBuilder;
-use Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorInterface;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-
+use Magento\Catalog\Api\Data\Product_Interface;
+use Magento\Catalog\Api\Data\Product_Render\Price_Info_Interface;
+use Magento\Catalog\Api\Data\Product_Render\Price_Info_Interface_Factory;
+use Magento\Catalog\Api\Data\Product_Render_Interface;
+use Magento\Catalog\Model\Product_Render\Formatted_Price_Info_Builder;
+use Magento\Catalog\Ui\Data_Provider\Product\Product_Render_Collector_Interface;
+use Magento\Framework\Pricing\Price_Currency_Interface;
 /**
  * Collect information about bundle price
  *
  * This information can be used on front in order to render product list or product view
  * Price is collected always with VAT and fixed taxes
  */
-class BundlePrice implements ProductRenderCollectorInterface
+class Bundle_Price implements Product_Render_Collector_Interface
 {
     /**
      * Product type code
      */
     public const PRODUCT_TYPE = 'bundle';
-
     /**
      * @var PriceCurrencyInterface
      */
-    private $priceCurrency;
-
+    private $price_currency;
     /**
      * @var array
      */
-    private $excludeAdjustments;
-
+    private $exclude_adjustments;
     /**
      * @var PriceInfoInterfaceFactory
      */
-    private $priceInfoFactory;
-
+    private $price_info_factory;
     /**
      * @var FormattedPriceInfoBuilder
      */
-    private $formattedPriceInfoBuilder;
-
+    private $formatted_price_info_builder;
     /**
      * BundlePrice constructor.
      * @param PriceCurrencyInterface $priceCurrency
@@ -56,69 +49,30 @@ class BundlePrice implements ProductRenderCollectorInterface
      * @param FormattedPriceInfoBuilder $formattedPriceInfoBuilder
      * @param array $excludeAdjustments
      */
-    public function __construct(
-        PriceCurrencyInterface $priceCurrency,
-        PriceInfoInterfaceFactory $priceInfoFactory,
-        FormattedPriceInfoBuilder $formattedPriceInfoBuilder,
-        array $excludeAdjustments = []
-    ) {
-        $this->priceCurrency = $priceCurrency;
-        $this->excludeAdjustments = $excludeAdjustments;
-        $this->priceInfoFactory = $priceInfoFactory;
-        $this->formattedPriceInfoBuilder = $formattedPriceInfoBuilder;
+    public function __construct(Price_Currency_Interface $price_currency, Price_Info_Interface_Factory $price_info_factory, Formatted_Price_Info_Builder $formatted_price_info_builder, array $exclude_adjustments = [])
+    {
+        $this->price_currency = $price_currency;
+        $this->exclude_adjustments = $exclude_adjustments;
+        $this->price_info_factory = $price_info_factory;
+        $this->formatted_price_info_builder = $formatted_price_info_builder;
     }
-
     /**
      * @inheritdoc
      */
-    public function collect(ProductInterface $product, ProductRenderInterface $productRender)
+    public function collect(Product_Interface $product, Product_Render_Interface $product_render)
     {
-        if ($product->getTypeId() == self::PRODUCT_TYPE) {
-            $priceInfo = $productRender->getPriceInfo();
-
-            if (!$productRender->getPriceInfo()) {
+        if ($product->get_type_id() == self::PRODUCT_TYPE) {
+            $price_info = $product_render->get_price_info();
+            if (!$product_render->get_price_info()) {
                 /** @var PriceInfoInterface $priceInfo */
-                $priceInfo = $this->priceInfoFactory->create();
+                $price_info = $this->price_info_factory->create();
             }
-
-            $priceInfo->setMaxPrice(
-                $product
-                    ->getPriceInfo()
-                    ->getPrice('final_price')
-                    ->getMaximalPrice()
-                    ->getValue()
-            );
-
-            $priceInfo->setMaxRegularPrice(
-                $product
-                    ->getPriceInfo()
-                    ->getPrice('regular_price')
-                    ->getMaximalPrice()
-                    ->getValue()
-            );
-
-            $priceInfo->setMinimalPrice(
-                $product
-                    ->getPriceInfo()
-                    ->getPrice('final_price')
-                    ->getMinimalPrice()
-                    ->getValue()
-            );
-
-            $priceInfo->setMinimalRegularPrice(
-                $product
-                    ->getPriceInfo()
-                    ->getPrice('regular_price')
-                    ->getMinimalPrice()
-                    ->getValue()
-            );
-            $this->formattedPriceInfoBuilder->build(
-                $priceInfo,
-                $productRender->getStoreId(),
-                $productRender->getCurrencyCode()
-            );
-
-            $productRender->setPriceInfo($priceInfo);
+            $price_info->set_max_price($product->get_price_info()->get_price('final_price')->get_maximal_price()->get_value());
+            $price_info->set_max_regular_price($product->get_price_info()->get_price('regular_price')->get_maximal_price()->get_value());
+            $price_info->set_minimal_price($product->get_price_info()->get_price('final_price')->get_minimal_price()->get_value());
+            $price_info->set_minimal_regular_price($product->get_price_info()->get_price('regular_price')->get_minimal_price()->get_value());
+            $this->formatted_price_info_builder->build($price_info, $product_render->get_store_id(), $product_render->get_currency_code());
+            $product_render->set_price_info($price_info);
         }
     }
 }

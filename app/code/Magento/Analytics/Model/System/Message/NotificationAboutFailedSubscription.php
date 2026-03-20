@@ -1,62 +1,54 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model\System\Message;
 
-use Magento\Analytics\Model\SubscriptionStatusProvider;
-use Magento\Framework\Notification\MessageInterface;
-use Magento\Framework\UrlInterface;
-
+use Magento\Analytics\Model\Subscription_Status_Provider;
+use Magento\Framework\Notification\Message_Interface;
+use Magento\Framework\Url_Interface;
 /**
  * Represents an analytics notification about failed subscription.
  */
-class NotificationAboutFailedSubscription implements MessageInterface
+class Notification_About_Failed_Subscription implements Message_Interface
 {
-    public function __construct(private readonly SubscriptionStatusProvider $subscriptionStatusProvider, private readonly UrlInterface $urlBuilder)
+    public function __construct(private readonly Subscription_Status_Provider $subscription_status_provider, private readonly Url_Interface $url_builder)
     {
     }
-
     /**
      * @inheritdoc
      *
      * @codeCoverageIgnore
      */
-    public function getIdentity(): string
+    public function get_identity(): string
     {
         return hash('sha256', 'ANALYTICS_NOTIFICATION');
     }
-
     /**
      * @inheritdoc
      */
-    public function isDisplayed(): bool
+    public function is_displayed(): bool
     {
-        return $this->subscriptionStatusProvider->getStatus() === SubscriptionStatusProvider::FAILED;
+        return $this->subscription_status_provider->get_status() === Subscription_Status_Provider::FAILED;
     }
-
     /**
      * @inheritdoc
      */
-    public function getText(): string
+    public function get_text(): string
     {
-        $messageDetails = '';
-
-        $messageDetails .= __('Failed to synchronize data to the Magento Business Intelligence service. ');
-
-        return $messageDetails . ('<a href="' . $this->urlBuilder->getUrl('analytics/subscription/retry') . '">' . __('Retry Synchronization') . '</a>');
+        $message_details = '';
+        $message_details .= __('Failed to synchronize data to the Magento Business Intelligence service. ');
+        return $message_details . ('<a href="' . $this->url_builder->get_url('analytics/subscription/retry') . '">' . __('Retry Synchronization') . '</a>');
     }
-
     /**
      * @inheritdoc
      *
      * @codeCoverageIgnore
      */
-    public function getSeverity(): int
+    public function get_severity(): int
     {
         return self::SEVERITY_MAJOR;
     }

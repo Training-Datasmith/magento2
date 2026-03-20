@@ -1,32 +1,27 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Form;
 
-use Magento\Framework\Data\Form\Filter\FilterInterface;
-use Magento\Framework\ObjectManagerInterface;
-
-class FilterFactory
+use Magento\Framework\Data\Form\Filter\Filter_Interface;
+use Magento\Framework\Object_Manager_Interface;
+class Filter_Factory
 {
     /**
      * @var ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @param ObjectManagerInterface $objectManager
      */
-    public function __construct(
-        ObjectManagerInterface $objectManager
-    ) {
-        $this->objectManager = $objectManager;
+    public function __construct(Object_Manager_Interface $object_manager)
+    {
+        $this->object_manager = $object_manager;
     }
-
     /**
      * Create filter instance
      *
@@ -34,20 +29,13 @@ class FilterFactory
      * @param array $data
      * @return FilterInterface
      */
-    public function create($filterCode, array $data = [])
+    public function create($filter_code, array $data = [])
     {
-        $filterClass = 'Magento\\Framework\\Data\\Form\\Filter\\' . ucfirst($filterCode);
-
-        $filter = $this->objectManager->create($filterClass, $data);
-
-        if (!$filter instanceof FilterInterface) {
-            throw new \InvalidArgumentException(sprintf(
-                '%s class must implement %s',
-                $filterClass,
-                \Magento\Framework\Data\Form\Filter\FilterInterface::class
-            ));
+        $filter_class = 'Magento\Framework\Data\Form\Filter\\' . ucfirst($filter_code);
+        $filter = $this->object_manager->create($filter_class, $data);
+        if (!$filter instanceof Filter_Interface) {
+            throw new \InvalidArgumentException(sprintf('%s class must implement %s', $filter_class, \Magento\Framework\Data\Form\Filter\Filter_Interface::class));
         }
-
         return $filter;
     }
 }

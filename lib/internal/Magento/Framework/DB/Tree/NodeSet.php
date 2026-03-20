@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Tree;
 
 /**
@@ -13,28 +12,24 @@ namespace Magento\Framework\DB\Tree;
  *
  * @deprecated 102.0.0 Not used anymore.
  */
-class NodeSet implements \Iterator, \Countable
+class Node_Set implements \Iterator, \Countable
 {
     /**
      * @var Node[]
      */
     private $_nodes;
-
     /**
      * @var int
      */
     private $_current;
-
     /**
      * @var int
      */
-    private $_currentNode;
-
+    private $_current_node;
     /**
      * @var int
      */
     private $count;
-
     /**
      * Constructor
      *
@@ -44,10 +39,9 @@ class NodeSet implements \Iterator, \Countable
     {
         $this->_nodes = [];
         $this->_current = 0;
-        $this->_currentNode = 0;
+        $this->_current_node = 0;
         $this->count = 0;
     }
-
     /**
      * Adds a node to node list.
      *
@@ -56,13 +50,12 @@ class NodeSet implements \Iterator, \Countable
      *
      * @deprecated 102.0.0
      */
-    public function addNode(Node $node)
+    public function add_node(Node $node)
     {
-        $this->_nodes[$this->_currentNode] = $node;
+        $this->_nodes[$this->_current_node] = $node;
         $this->count++;
-        return ++$this->_currentNode;
+        return ++$this->_current_node;
     }
-
     /**
      * Retrieves count elements in node list.
      *
@@ -70,12 +63,11 @@ class NodeSet implements \Iterator, \Countable
      *
      * @deprecated 102.0.0
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function count()
     {
         return $this->count;
     }
-
     /**
      * Checks if current position is valid.
      *
@@ -83,12 +75,11 @@ class NodeSet implements \Iterator, \Countable
      *
      * @deprecated 102.0.0
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function valid()
     {
         return isset($this->_nodes[$this->_current]);
     }
-
     /**
      * Move forward to next element.
      *
@@ -96,16 +87,15 @@ class NodeSet implements \Iterator, \Countable
      *
      * @deprecated 102.0.0
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function next()
     {
-        if ($this->_current > $this->_currentNode) {
+        if ($this->_current > $this->_current_node) {
             return false;
         } else {
             return $this->_current++;
         }
     }
-
     /**
      * Retrieves the key of the current element.
      *
@@ -113,12 +103,11 @@ class NodeSet implements \Iterator, \Countable
      *
      * @deprecated 102.0.0
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function key()
     {
         return $this->_current;
     }
-
     /**
      * Retrieves the current node.
      *
@@ -126,12 +115,11 @@ class NodeSet implements \Iterator, \Countable
      *
      * @deprecated 102.0.0
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function current()
     {
         return $this->_nodes[$this->_current];
     }
-
     /**
      * Rewinds the Iterator to the first element.
      *
@@ -139,7 +127,7 @@ class NodeSet implements \Iterator, \Countable
      *
      * @deprecated 102.0.0
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function rewind()
     {
         $this->_current = 0;

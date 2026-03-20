@@ -4,19 +4,17 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Application_Performance_Monitor\Profiler;
 
-namespace Magento\ApplicationPerformanceMonitor\Profiler;
-
-use Magento\Framework\AppInterface as Application;
-
+use Magento\Framework\App_Interface as Application;
 /**
  * Interface for adding additional information.
  */
-interface InputInterface
+interface Input_Interface
 {
     /**
      * Input for other information
      */
-    public function doInput(Application $application): array;
+    public function do_input(Application $application): array;
 }

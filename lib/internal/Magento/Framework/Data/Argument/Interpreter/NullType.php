@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Argument\Interpreter;
 
-use Magento\Framework\Data\Argument\InterpreterInterface;
-
+use Magento\Framework\Data\Argument\Interpreter_Interface;
 /**
  * Interpreter of NULL data type
  */
-class NullType implements InterpreterInterface
+class Null_Type implements Interpreter_Interface
 {
     /**
      * {@inheritdoc}

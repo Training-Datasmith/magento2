@@ -1,51 +1,42 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Sequence;
 
-namespace Magento\Framework\EntityManager\Sequence;
-
-use Magento\Framework\DB\Sequence\SequenceInterface;
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\DB\Sequence\Sequence_Interface;
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Class SequenceFactory
  */
-class SequenceFactory
+class Sequence_Factory
 {
     /**
      * @var ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @var SequenceRegistry
      */
-    protected $sequenceRegistry;
-
+    protected $sequence_registry;
     /**
      * @var string
      */
-    protected $instanceName;
-
+    protected $instance_name;
     /**
      * @param SequenceRegistry $sequenceRegistry
      * @param ObjectManagerInterface $objectManager
      * @param string $instanceName
      */
-    public function __construct(
-        SequenceRegistry $sequenceRegistry,
-        ObjectManagerInterface $objectManager,
-        $instanceName = \Magento\Framework\EntityManager\Sequence\Sequence::class
-    ) {
-        $this->sequenceRegistry = $sequenceRegistry;
-        $this->objectManager = $objectManager;
-        $this->instanceName = $instanceName;
+    public function __construct(Sequence_Registry $sequence_registry, Object_Manager_Interface $object_manager, $instance_name = \Magento\Framework\Entity_Manager\Sequence\Sequence::class)
+    {
+        $this->sequence_registry = $sequence_registry;
+        $this->object_manager = $object_manager;
+        $this->instance_name = $instance_name;
     }
-
     /**
      * Creates sequence instance
      *
@@ -53,35 +44,22 @@ class SequenceFactory
      * @param array $config
      * @return SequenceInterface
      */
-    public function create($entityType, $config)
+    public function create($entity_type, $config)
     {
-        if ($this->sequenceRegistry->retrieve($entityType) === false) {
-            if (isset($config[$entityType]['sequence'])) {
-                $this->sequenceRegistry->register(
-                    $entityType,
-                    $config[$entityType]['sequence']
-                );
-            } elseif (isset($config[$entityType]['sequenceTable'])) {
-                if (isset($config[$entityType]['connectionName'])) {
-                    $connectionName = $config[$entityType]['connectionName'];
+        if ($this->sequence_registry->retrieve($entity_type) === false) {
+            if (isset($config[$entity_type]['sequence'])) {
+                $this->sequence_registry->register($entity_type, $config[$entity_type]['sequence']);
+            } elseif (isset($config[$entity_type]['sequenceTable'])) {
+                if (isset($config[$entity_type]['connectionName'])) {
+                    $connection_name = $config[$entity_type]['connectionName'];
                 } else {
-                    $connectionName = 'default';
+                    $connection_name = 'default';
                 }
-                $this->sequenceRegistry->register(
-                    $entityType,
-                    $this->objectManager->create(
-                        $this->instanceName,
-                        [
-                            'connectionName' => $connectionName,
-                            'sequenceTable' => $config[$entityType]['sequenceTable'],
-                        ]
-                    ),
-                    $config[$entityType]['sequenceTable']
-                );
+                $this->sequence_registry->register($entity_type, $this->object_manager->create($this->instance_name, ['connectionName' => $connection_name, 'sequenceTable' => $config[$entity_type]['sequenceTable']]), $config[$entity_type]['sequenceTable']);
             } else {
-                $this->sequenceRegistry->register($entityType);
+                $this->sequence_registry->register($entity_type);
             }
         }
-        return $this->sequenceRegistry->retrieve($entityType)['sequence'];
+        return $this->sequence_registry->retrieve($entity_type)['sequence'];
     }
 }

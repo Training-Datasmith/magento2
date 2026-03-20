@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\File;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Exception\File_System_Exception;
 use Magento\Framework\Filesystem;
-
 /**
  * Utility for mime type retrieval
  *
@@ -28,7 +26,7 @@ class Mime
      *
      * @deprecated
      */
-    protected $mimeTypes = [
+    protected $mime_types = [
         'txt' => 'text/plain',
         'htm' => 'text/html',
         'html' => 'text/html',
@@ -39,7 +37,6 @@ class Mime
         'xml' => 'application/xml',
         'swf' => 'application/x-shockwave-flash',
         'flv' => 'video/x-flv',
-
         // images
         'png' => 'image/png',
         'jpe' => 'image/jpeg',
@@ -52,19 +49,16 @@ class Mime
         'tif' => 'image/tiff',
         'svg' => 'image/svg+xml',
         'svgz' => 'image/svg+xml',
-
         // archives
         'zip' => 'application/zip',
         'rar' => 'application/x-rar-compressed',
         'exe' => 'application/x-msdownload',
         'msi' => 'application/x-msdownload',
         'cab' => 'application/vnd.ms-cab-compressed',
-
         // audio/video
         'mp3' => 'audio/mpeg',
         'qt' => 'video/quicktime',
         'mov' => 'video/quicktime',
-
         // adobe
         'pdf' => 'application/pdf',
         'psd' => 'image/vnd.adobe.photoshop',
@@ -72,20 +66,17 @@ class Mime
         'eps' => 'application/postscript',
         'ps' => 'application/postscript',
     ];
-
     /**
      * @var Filesystem
      */
     private $filesystem;
-
     /**
      * @param Filesystem|null $filesystem
      */
     public function __construct(?Filesystem $filesystem = null)
     {
-        $this->filesystem = $filesystem ?: ObjectManager::getInstance()->get(Filesystem::class);
+        $this->filesystem = $filesystem ?: Object_Manager::get_instance()->get(Filesystem::class);
     }
-
     /**
      * Get mime type of a file.
      *
@@ -95,32 +86,22 @@ class Mime
      *
      * @deprecated
      */
-    public function getMimeType($file)
+    public function get_mime_type($file)
     {
-        $driver = $this->filesystem->getDirectoryWrite(
-            DirectoryList::ROOT,
-            Filesystem\DriverPool::FILE
-        )->getDriver();
-
+        $driver = $this->filesystem->get_directory_write(Directory_List::ROOT, Filesystem\Driver_Pool::FILE)->get_driver();
         /**
          * Try with non-local driver.
          */
-        if (!$driver->isExists($file)) {
-            $driver = $this->filesystem->getDirectoryWrite(
-                DirectoryList::ROOT
-            )->getDriver();
+        if (!$driver->is_exists($file)) {
+            $driver = $this->filesystem->get_directory_write(Directory_List::ROOT)->get_driver();
         }
-
-        if (!$driver->isExists($file)) {
-            throw new FileSystemException(__("File '$file' doesn't exist"));
+        if (!$driver->is_exists($file)) {
+            throw new File_System_Exception(__("File '{$file}' doesn't exist"));
         }
-
-        if ($driver instanceof Filesystem\ExtendedDriverInterface) {
-            return $driver->getMetadata($file)['mimetype'];
+        if ($driver instanceof Filesystem\Extended_Driver_Interface) {
+            return $driver->get_metadata($file)['mimetype'];
         }
-
         $mime = new Filesystem\Driver\File\Mime();
-
-        return $mime->getMimeType($file);
+        return $mime->get_mime_type($file);
     }
 }

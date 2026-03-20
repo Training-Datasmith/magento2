@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Model\ResourceModel;
+namespace Magento\Admin_Notification\Model\Resource_Model;
 
 /**
  * Inbox resource model
@@ -14,7 +13,7 @@ namespace Magento\AdminNotification\Model\ResourceModel;
  * @api
  * @since 100.0.2
  */
-class Inbox extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Inbox extends \Magento\Framework\Model\Resource_Model\Db\Abstract_Db
 {
     /**
      * AdminNotification Resource initialization
@@ -25,90 +24,57 @@ class Inbox extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
     {
         $this->_init('adminnotification_inbox', 'notification_id');
     }
-
     /**
      * Load latest notice
      *
      * @return $this
      */
-    public function loadLatestNotice(\Magento\AdminNotification\Model\Inbox $object): static
+    public function load_latest_notice(\Magento\Admin_Notification\Model\Inbox $object): static
     {
-        $connection = $this->getConnection();
-        $select = $connection->select()->from(
-            $this->getMainTable()
-        )->order(
-            $this->getIdFieldName() . ' DESC'
-        )->where(
-            'is_read != 1'
-        )->where(
-            'is_remove != 1'
-        )->limit(
-            1
-        );
-        $data = $connection->fetchRow($select);
-
+        $connection = $this->get_connection();
+        $select = $connection->select()->from($this->get_main_table())->order($this->get_id_field_name() . ' DESC')->where('is_read != 1')->where('is_remove != 1')->limit(1);
+        $data = $connection->fetch_row($select);
         if ($data) {
-            $object->setData($data);
+            $object->set_data($data);
         }
-
-        $this->_afterLoad($object);
-
+        $this->_after_load($object);
         return $this;
     }
-
     /**
      * Get notifications grouped by severity
      *
      * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getNoticeStatus(\Magento\AdminNotification\Model\Inbox $object)
+    public function get_notice_status(\Magento\Admin_Notification\Model\Inbox $object)
     {
-        $connection = $this->getConnection();
-        $select = $connection->select()->from(
-            $this->getMainTable(),
-            [
-                'severity' => 'severity',
-                'count_notice' => new \Zend_Db_Expr('COUNT(' . $this->getIdFieldName() . ')'),
-            ]
-        )->group(
-            'severity'
-        )->where(
-            'is_remove=?',
-            0
-        )->where(
-            'is_read=?',
-            0
-        );
-        return $connection->fetchPairs($select);
+        $connection = $this->get_connection();
+        $select = $connection->select()->from($this->get_main_table(), ['severity' => 'severity', 'count_notice' => new \Zend_Db_Expr('COUNT(' . $this->get_id_field_name() . ')')])->group('severity')->where('is_remove=?', 0)->where('is_read=?', 0);
+        return $connection->fetch_pairs($select);
     }
-
     /**
      * Save notifications (if not exists)
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function parse(\Magento\AdminNotification\Model\Inbox $object, array $data): void
+    public function parse(\Magento\Admin_Notification\Model\Inbox $object, array $data): void
     {
-        $connection = $this->getConnection();
+        $connection = $this->get_connection();
         foreach ($data as $item) {
-            $select = $connection->select()->from($this->getMainTable())->where('title = ?', $item['title']);
-
+            $select = $connection->select()->from($this->get_main_table())->where('title = ?', $item['title']);
             if (empty($item['url'])) {
                 $select->where('url IS NULL');
             } else {
                 $select->where('url = ?', $item['url']);
             }
-
             if (isset($item['internal'])) {
                 $row = false;
                 unset($item['internal']);
             } else {
-                $row = $connection->fetchRow($select);
+                $row = $connection->fetch_row($select);
             }
-
             if (!$row) {
-                $connection->insert($this->getMainTable(), $item);
+                $connection->insert($this->get_main_table(), $item);
             }
         }
     }

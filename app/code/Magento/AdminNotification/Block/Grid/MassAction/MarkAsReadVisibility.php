@@ -4,28 +4,25 @@
  * Copyright 2024 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Admin_Notification\Block\Grid\Mass_Action;
 
-namespace Magento\AdminNotification\Block\Grid\MassAction;
-
-use Magento\AdminNotification\Controller\Adminhtml\Notification\MarkAsRead;
-use Magento\Backend\Block\Widget\Grid\Massaction\VisibilityCheckerInterface;
-use Magento\Framework\AuthorizationInterface;
-
+use Magento\Admin_Notification\Controller\Adminhtml\Notification\Mark_As_Read;
+use Magento\Backend\Block\Widget\Grid\Massaction\Visibility_Checker_Interface;
+use Magento\Framework\Authorization_Interface;
 /**
  * Class checks if mark as read action can be displayed on massaction list
  */
-class MarkAsReadVisibility implements VisibilityCheckerInterface
+class Mark_As_Read_Visibility implements Visibility_Checker_Interface
 {
-    public function __construct(private readonly AuthorizationInterface $authorization)
+    public function __construct(private readonly Authorization_Interface $authorization)
     {
     }
-
     /**
      * @inheritdoc
      */
-    public function isVisible()
+    public function is_visible()
     {
-        return $this->authorization->isAllowed(MarkAsRead::ADMIN_RESOURCE);
+        return $this->authorization->is_allowed(Mark_As_Read::ADMIN_RESOURCE);
     }
 }

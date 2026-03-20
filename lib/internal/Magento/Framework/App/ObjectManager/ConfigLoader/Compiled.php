@@ -1,50 +1,46 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\Object_Manager\Config_Loader;
 
-namespace Magento\Framework\App\ObjectManager\ConfigLoader;
-
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\ObjectManager\ConfigLoaderInterface;
-
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\Object_Manager\Config_Loader_Interface;
 /**
  * Load configuration files
  */
-class Compiled implements ConfigLoaderInterface
+class Compiled implements Config_Loader_Interface
 {
     /**
      * Global config
      *
      * @var array
      */
-    private $configCache = [];
-
+    private $config_cache = [];
     /**
      * @inheritdoc
      */
     public function load($area)
     {
-        if (isset($this->configCache[$area])) {
-            return $this->configCache[$area];
+        if (isset($this->config_cache[$area])) {
+            return $this->config_cache[$area];
         }
-        $diConfiguration = include(self::getFilePath($area));
-        $this->configCache[$area] = $diConfiguration;
-        return $this->configCache[$area];
+        $di_configuration = include self::get_file_path($area);
+        $this->config_cache[$area] = $di_configuration;
+        return $this->config_cache[$area];
     }
-
     /**
      * Returns path to compiled configuration
      *
      * @param string $area
      * @return string
      */
-    public static function getFilePath($area)
+    public static function get_file_path($area)
     {
-        $diPath = DirectoryList::getDefaultConfig()[DirectoryList::GENERATED_METADATA][DirectoryList::PATH];
-        return BP . '/' . $diPath . '/' . $area . '.php';
+        $di_path = Directory_List::get_default_config()[Directory_List::GENERATED_METADATA][Directory_List::PATH];
+        return BP . '/' . $di_path . '/' . $area . '.php';
     }
 }

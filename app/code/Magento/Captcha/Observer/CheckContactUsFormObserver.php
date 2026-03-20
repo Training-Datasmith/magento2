@@ -4,54 +4,46 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Captcha\Observer;
 
 use Magento\Captcha\Helper\Data;
 use Magento\Framework\App\Action\Action;
-use Magento\Framework\App\ActionFlag;
-use Magento\Framework\App\Request\DataPersistorInterface;
-use Magento\Framework\App\Response\RedirectInterface;
+use Magento\Framework\App\Action_Flag;
+use Magento\Framework\App\Request\Data_Persistor_Interface;
+use Magento\Framework\App\Response\Redirect_Interface;
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Message\ManagerInterface;
-
+use Magento\Framework\Event\Observer_Interface;
+use Magento\Framework\Message\Manager_Interface;
 /**
  * Check captcha on contact us form submit observer.
  */
-class CheckContactUsFormObserver implements ObserverInterface
+class Check_Contact_Us_Form_Observer implements Observer_Interface
 {
     /**
      * @var Data
      */
     protected $_helper;
-
     /**
      * @var ActionFlag
      */
-    protected $_actionFlag;
-
+    protected $_action_flag;
     /**
      * @var ManagerInterface
      */
-    protected $messageManager;
-
+    protected $message_manager;
     /**
      * @var RedirectInterface
      */
     protected $redirect;
-
     /**
      * @var CaptchaStringResolver
      */
-    protected $captchaStringResolver;
-
+    protected $captcha_string_resolver;
     /**
      * @var DataPersistorInterface
      */
-    private $dataPersistor;
-
+    private $data_persistor;
     /**
      * @param Data $helper
      * @param ActionFlag $actionFlag
@@ -60,22 +52,15 @@ class CheckContactUsFormObserver implements ObserverInterface
      * @param CaptchaStringResolver $captchaStringResolver
      * @param DataPersistorInterface $dataPersistor
      */
-    public function __construct(
-        Data $helper,
-        ActionFlag $actionFlag,
-        ManagerInterface $messageManager,
-        RedirectInterface $redirect,
-        CaptchaStringResolver $captchaStringResolver,
-        DataPersistorInterface $dataPersistor
-    ) {
+    public function __construct(Data $helper, Action_Flag $action_flag, Manager_Interface $message_manager, Redirect_Interface $redirect, Captcha_String_Resolver $captcha_string_resolver, Data_Persistor_Interface $data_persistor)
+    {
         $this->_helper = $helper;
-        $this->_actionFlag = $actionFlag;
-        $this->messageManager = $messageManager;
+        $this->_action_flag = $action_flag;
+        $this->message_manager = $message_manager;
         $this->redirect = $redirect;
-        $this->captchaStringResolver = $captchaStringResolver;
-        $this->dataPersistor = $dataPersistor;
+        $this->captcha_string_resolver = $captcha_string_resolver;
+        $this->data_persistor = $data_persistor;
     }
-
     /**
      * Check CAPTCHA on Contact Us page
      *
@@ -84,16 +69,16 @@ class CheckContactUsFormObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $formId = 'contact_us';
-        $captcha = $this->_helper->getCaptcha($formId);
-        if ($captcha->isRequired()) {
+        $form_id = 'contact_us';
+        $captcha = $this->_helper->get_captcha($form_id);
+        if ($captcha->is_required()) {
             /** @var Action $controller */
-            $controller = $observer->getControllerAction();
-            if (!$captcha->isCorrect($this->captchaStringResolver->resolve($controller->getRequest(), $formId))) {
-                $this->messageManager->addErrorMessage(__('Incorrect CAPTCHA.'));
-                $this->dataPersistor->set($formId, $controller->getRequest()->getPostValue());
-                $this->_actionFlag->set('', Action::FLAG_NO_DISPATCH, true);
-                $this->redirect->redirect($controller->getResponse(), 'contact/index/index');
+            $controller = $observer->get_controller_action();
+            if (!$captcha->is_correct($this->captcha_string_resolver->resolve($controller->get_request(), $form_id))) {
+                $this->message_manager->add_error_message(__('Incorrect CAPTCHA.'));
+                $this->data_persistor->set($form_id, $controller->get_request()->get_post_value());
+                $this->_action_flag->set('', Action::FLAG_NO_DISPATCH, true);
+                $this->redirect->redirect($controller->get_response(), 'contact/index/index');
             }
         }
     }

@@ -4,54 +4,47 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
-use Magento\Framework\Cache\CacheConstants;
-
+use Magento\Framework\Cache\Cache_Constants;
 /**
  * System cache model support id and tags prefix support.
  */
-class Cache implements CacheInterface
+class Cache implements Cache_Interface
 {
     /**
      * @var string
      */
-    protected $_frontendIdentifier = \Magento\Framework\App\Cache\Frontend\Pool::DEFAULT_FRONTEND_ID;
-
+    protected $_frontend_identifier = \Magento\Framework\App\Cache\Frontend\Pool::DEFAULT_FRONTEND_ID;
     /**
      * @var \Magento\Framework\App\Cache\Frontend\Pool
      */
-    protected $_frontendPool;
-
+    protected $_frontend_pool;
     /**
      * Cache frontend API
      *
      * @var \Magento\Framework\Cache\FrontendInterface
      */
     protected $_frontend;
-
     /**
      * @param Cache\Frontend\Pool $frontendPool
      * @param string|null $cacheIdentifier
      */
-    public function __construct(\Magento\Framework\App\Cache\Frontend\Pool $frontendPool, $cacheIdentifier = null)
+    public function __construct(\Magento\Framework\App\Cache\Frontend\Pool $frontend_pool, $cache_identifier = null)
     {
-        $this->_frontendPool = $frontendPool;
-        $this->_frontend = $frontendPool->get($cacheIdentifier ?? $this->_frontendIdentifier);
+        $this->_frontend_pool = $frontend_pool;
+        $this->_frontend = $frontend_pool->get($cache_identifier ?? $this->_frontend_identifier);
     }
-
     /**
      * Get cache frontend API object
      *
      * @return \Magento\Framework\Cache\FrontendInterface
      */
-    public function getFrontend()
+    public function get_frontend()
     {
         return $this->_frontend;
     }
-
     /**
      * Load data from cache by id
      *
@@ -62,7 +55,6 @@ class Cache implements CacheInterface
     {
         return $this->_frontend->load($identifier);
     }
-
     /**
      * Save data
      *
@@ -72,11 +64,10 @@ class Cache implements CacheInterface
      * @param int $lifeTime
      * @return bool
      */
-    public function save($data, $identifier, $tags = [], $lifeTime = null)
+    public function save($data, $identifier, $tags = [], $life_time = null)
     {
-        return $this->_frontend->save((string)$data, $identifier, $tags, $lifeTime);
+        return $this->_frontend->save((string) $data, $identifier, $tags, $life_time);
     }
-
     /**
      * Remove cached data by identifier
      *
@@ -87,7 +78,6 @@ class Cache implements CacheInterface
     {
         return $this->_frontend->remove($identifier);
     }
-
     /**
      * Clean cached data by specific tag
      *
@@ -97,13 +87,13 @@ class Cache implements CacheInterface
     public function clean($tags = [])
     {
         if ($tags) {
-            $result = $this->_frontend->clean(CacheConstants::CLEANING_MODE_MATCHING_ANY_TAG, (array)$tags);
+            $result = $this->_frontend->clean(Cache_Constants::CLEANING_MODE_MATCHING_ANY_TAG, (array) $tags);
         } else {
             /** @deprecated special case of cleaning by empty tags is deprecated after 2.0.0.0-dev42 */
             $result = false;
             /** @var $cacheFrontend \Magento\Framework\Cache\FrontendInterface */
-            foreach ($this->_frontendPool as $cacheFrontend) {
-                if ($cacheFrontend->clean()) {
+            foreach ($this->_frontend_pool as $cache_frontend) {
+                if ($cache_frontend->clean()) {
                     $result = true;
                 }
             }

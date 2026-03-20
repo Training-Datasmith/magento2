@@ -1,36 +1,27 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Amqp\Topology\Binding_Installer_Type;
 
-namespace Magento\Framework\Amqp\Topology\BindingInstallerType;
-
-use Magento\Framework\Amqp\Topology\ArgumentProcessor;
-use Magento\Framework\Amqp\Topology\BindingInstallerInterface;
-use Magento\Framework\MessageQueue\Topology\Config\ExchangeConfigItem\BindingInterface;
-use PhpAmqpLib\Channel\AMQPChannel;
-
+use Magento\Framework\Amqp\Topology\Argument_Processor;
+use Magento\Framework\Amqp\Topology\Binding_Installer_Interface;
+use Magento\Framework\Message_Queue\Topology\Config\Exchange_Config_Item\Binding_Interface;
+use Php_Amqp_Lib\Channel\Amqp_Channel;
 /**
  * {@inheritdoc}
  */
-class Queue implements BindingInstallerInterface
+class Queue implements Binding_Installer_Interface
 {
-    use ArgumentProcessor;
-
+    use Argument_Processor;
     /**
      * {@inheritdoc}
      */
-    public function install(AMQPChannel $channel, BindingInterface $binding, $exchangeName)
+    public function install(Amqp_Channel $channel, Binding_Interface $binding, $exchange_name)
     {
-        $channel->queue_bind(
-            $binding->getDestination(),
-            $exchangeName,
-            $binding->getTopic(),
-            false,
-            $this->processArguments($binding->getArguments())
-        );
+        $channel->queue_bind($binding->get_destination(), $exchange_name, $binding->get_topic(), false, $this->process_arguments($binding->get_arguments()));
     }
 }

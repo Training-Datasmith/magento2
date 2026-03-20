@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Serialize\SerializerInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Serialize\Serializer_Interface;
 /**
  * Represents loaded and cached configuration data, should be used to gain access to different types
  *
@@ -18,7 +16,7 @@ use Magento\Framework\Serialize\SerializerInterface;
  * @api
  * @since 100.0.2
  */
-class Data implements \Magento\Framework\Config\DataInterface
+class Data implements \Magento\Framework\Config\Data_Interface
 {
     /**
      * Configuration reader
@@ -26,53 +24,44 @@ class Data implements \Magento\Framework\Config\DataInterface
      * @var ReaderInterface
      */
     protected $_reader;
-
     /**
      * Configuration cache
      *
      * @var CacheInterface
      */
     protected $_cache;
-
     /**
      * Cache tag
      *
      * @var string
      */
-    protected $_cacheId;
-
+    protected $_cache_id;
     /**
      * @var array
      */
-    protected $cacheTags = [];
-
+    protected $cache_tags = [];
     /**
      * Config data
      *
      * @var array
      */
     protected $_data = [];
-
     /**
      * @var ReaderInterface
      */
     private $reader;
-
     /**
      * @var CacheInterface
      */
     private $cache;
-
     /**
      * @var string
      */
-    private $cacheId;
-
+    private $cache_id;
     /**
      * @var SerializerInterface
      */
     private $serializer;
-
     /**
      * Constructor
      *
@@ -82,41 +71,33 @@ class Data implements \Magento\Framework\Config\DataInterface
      * @param SerializerInterface|null $serializer
      * @param array|null $cacheTags
      */
-    public function __construct(
-        ReaderInterface $reader,
-        CacheInterface $cache,
-        $cacheId,
-        ?SerializerInterface $serializer = null,
-        ?array $cacheTags = null,
-    ) {
+    public function __construct(Reader_Interface $reader, Cache_Interface $cache, $cache_id, ?Serializer_Interface $serializer = null, ?array $cache_tags = null)
+    {
         $this->reader = $reader;
         $this->cache = $cache;
-        $this->cacheId = $cacheId;
-        $this->serializer = $serializer ?: ObjectManager::getInstance()->get(SerializerInterface::class);
-        if ($cacheTags) {
-            $this->cacheTags = $cacheTags;
+        $this->cache_id = $cache_id;
+        $this->serializer = $serializer ?: Object_Manager::get_instance()->get(Serializer_Interface::class);
+        if ($cache_tags) {
+            $this->cache_tags = $cache_tags;
         }
-        $this->initData();
+        $this->init_data();
     }
-
     /**
      * Initialise data for configuration
      *
      * @return void
      */
-    protected function initData()
+    protected function init_data()
     {
-        $data = $this->cache->load($this->cacheId);
+        $data = $this->cache->load($this->cache_id);
         if (false === $data) {
             $data = $this->reader->read();
-            $this->cache->save($this->serializer->serialize($data), $this->cacheId, $this->cacheTags);
+            $this->cache->save($this->serializer->serialize($data), $this->cache_id, $this->cache_tags);
         } else {
             $data = $this->serializer->unserialize($data);
         }
-
         $this->merge($data);
     }
-
     /**
      * Merge config data to the object
      *
@@ -127,7 +108,6 @@ class Data implements \Magento\Framework\Config\DataInterface
     {
         $this->_data = array_replace_recursive($this->_data, $config);
     }
-
     /**
      * Get config value by key
      *
@@ -151,7 +131,6 @@ class Data implements \Magento\Framework\Config\DataInterface
         }
         return $data;
     }
-
     /**
      * Clear cache data
      *
@@ -159,14 +138,13 @@ class Data implements \Magento\Framework\Config\DataInterface
      */
     public function reset()
     {
-        $this->cache->remove($this->cacheId);
+        $this->cache->remove($this->cache_id);
         $this->_data = [];
-        $configData = $this->reader->read();
-        if ($configData) {
-            $this->merge($configData);
+        $config_data = $this->reader->read();
+        if ($config_data) {
+            $this->merge($config_data);
         }
     }
-
     /**
      * Disable show internals with var_dump
      *

@@ -4,14 +4,13 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\ApplicationPerformanceMonitor\Profiler;
+declare (strict_types=1);
+namespace Magento\Application_Performance_Monitor\Profiler;
 
 /**
  * Type of metrics
  */
-class MetricType
+class Metric_Type
 {
     public const OTHER = 'Other';
     public const SECONDS_ELAPSED_FLOAT = 'SecondsElapsedFloat';

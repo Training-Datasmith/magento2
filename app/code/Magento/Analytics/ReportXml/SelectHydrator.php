@@ -1,55 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml;
 
-namespace Magento\Analytics\ReportXml;
-
-use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\App\Resource_Connection;
 use Magento\Framework\DB\Select;
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Hydrator for report select parts
  */
-class SelectHydrator
+class Select_Hydrator
 {
     /**
      * Array of supported Select parts
      */
-    private array $predefinedSelectParts =
-        [
-            Select::DISTINCT,
-            Select::COLUMNS,
-            Select::UNION,
-            Select::FROM,
-            Select::WHERE,
-            Select::GROUP,
-            Select::HAVING,
-            Select::ORDER,
-            Select::LIMIT_COUNT,
-            Select::LIMIT_OFFSET,
-            Select::FOR_UPDATE,
-        ];
-
+    private array $predefined_select_parts = [Select::DISTINCT, Select::COLUMNS, Select::UNION, Select::FROM, Select::WHERE, Select::GROUP, Select::HAVING, Select::ORDER, Select::LIMIT_COUNT, Select::LIMIT_OFFSET, Select::FOR_UPDATE];
     /**
      * @param array $selectParts
      */
-    public function __construct(private readonly ResourceConnection $resourceConnection, private readonly ObjectManagerInterface $objectManager, private $selectParts = [])
+    public function __construct(private readonly Resource_Connection $resource_connection, private readonly Object_Manager_Interface $object_manager, private $select_parts = [])
     {
     }
-
     /**
      * Perform merge of parts
      */
-    private function getSelectParts(): array
+    private function get_select_parts(): array
     {
-        return array_merge($this->predefinedSelectParts, $this->selectParts);
+        return array_merge($this->predefined_select_parts, $this->select_parts);
     }
-
     /**
      * Extracts Select metadata parts
      *
@@ -58,58 +40,47 @@ class SelectHydrator
     public function extract(Select $select): array
     {
         $parts = [];
-        foreach ($this->getSelectParts() as $partName) {
-            $parts[$partName] = $select->getPart($partName);
+        foreach ($this->get_select_parts() as $part_name) {
+            $parts[$part_name] = $select->get_part($part_name);
         }
         return $parts;
     }
-
     /**
      * Set parts to the select object
      *
      * @return Select
      */
-    public function recreate(array $selectParts)
+    public function recreate(array $select_parts)
     {
-        $select = $this->resourceConnection->getConnection()->select();
-
-        $select = $this->processColumns($select, $selectParts);
-
-        foreach ($selectParts as $partName => $partValue) {
-            $select->setPart($partName, $partValue);
+        $select = $this->resource_connection->get_connection()->select();
+        $select = $this->process_columns($select, $select_parts);
+        foreach ($select_parts as $part_name => $part_value) {
+            $select->set_part($part_name, $part_value);
         }
-
         return $select;
     }
-
     /**
      * Process COLUMNS part values and add this part into select.
      *
      * If each column contains information about select expression
      * an object with the type of this expression going to be created and assigned to this column.
      */
-    private function processColumns(Select $select, array &$selectParts): Select
+    private function process_columns(Select $select, array &$select_parts): Select
     {
-        if (!empty($selectParts[Select::COLUMNS]) && is_array($selectParts[Select::COLUMNS])) {
+        if (!empty($select_parts[Select::COLUMNS]) && is_array($select_parts[Select::COLUMNS])) {
             $part = [];
-
-            foreach ($selectParts[Select::COLUMNS] as $columnEntry) {
-                [$correlationName, $column, $alias] = $columnEntry;
+            foreach ($select_parts[Select::COLUMNS] as $column_entry) {
+                [$correlation_name, $column, $alias] = $column_entry;
                 if (!empty($column['class'])) {
-                    $expression = $this->objectManager->create(
-                        $column['class'],
-                        $column['arguments'] ?? []
-                    );
-                    $part[] = [$correlationName, $expression, $alias];
+                    $expression = $this->object_manager->create($column['class'], $column['arguments'] ?? []);
+                    $part[] = [$correlation_name, $expression, $alias];
                 } else {
-                    $part[] = $columnEntry;
+                    $part[] = $column_entry;
                 }
             }
-
-            $select->setPart(Select::COLUMNS, $part);
-            unset($selectParts[Select::COLUMNS]);
+            $select->set_part(Select::COLUMNS, $part);
+            unset($select_parts[Select::COLUMNS]);
         }
-
         return $select;
     }
 }

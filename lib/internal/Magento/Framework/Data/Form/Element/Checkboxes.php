@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\Escaper;
-
 /**
  * Form select element
  */
-class Checkboxes extends AbstractElement
+class Checkboxes extends Abstract_Element
 {
     /**
      * @param Factory $factoryElement
@@ -21,56 +19,38 @@ class Checkboxes extends AbstractElement
      * @param Escaper $escaper
      * @param array $data
      */
-    public function __construct(
-        Factory $factoryElement,
-        CollectionFactory $factoryCollection,
-        Escaper $escaper,
-        $data = []
-    ) {
-        parent::__construct($factoryElement, $factoryCollection, $escaper, $data);
-        $this->setType('checkbox');
-        $this->setExtType('checkboxes');
+    public function __construct(Factory $factory_element, Collection_Factory $factory_collection, Escaper $escaper, $data = [])
+    {
+        parent::__construct($factory_element, $factory_collection, $escaper, $data);
+        $this->set_type('checkbox');
+        $this->set_ext_type('checkboxes');
     }
-
     /**
      * Retrieve allow attributes
      *
      * @return string[]
      */
-    public function getHtmlAttributes()
+    public function get_html_attributes()
     {
-        return [
-            'type',
-            'name',
-            'class',
-            'style',
-            'checked',
-            'onclick',
-            'onchange',
-            'disabled',
-            'data-role',
-            'data-action',
-        ];
+        return ['type', 'name', 'class', 'style', 'checked', 'onclick', 'onchange', 'disabled', 'data-role', 'data-action'];
     }
-
     /**
      * Prepare value list
      *
      * @return array
      */
-    protected function _prepareValues()
+    protected function _prepare_values()
     {
         $options = [];
         $values = [];
-
-        if ($this->getValues()) {
-            if (!is_array($this->getValues())) {
-                $options = [$this->getValues()];
+        if ($this->get_values()) {
+            if (!is_array($this->get_values())) {
+                $options = [$this->get_values()];
             } else {
-                $options = $this->getValues();
+                $options = $this->get_values();
             }
-        } elseif ($this->getOptions() && is_array($this->getOptions())) {
-            $options = $this->getOptions();
+        } elseif ($this->get_options() && is_array($this->get_options())) {
+            $options = $this->get_options();
         }
         foreach ($options as $k => $v) {
             if (is_array($v)) {
@@ -84,133 +64,114 @@ class Checkboxes extends AbstractElement
                 $values[] = ['label' => $v, 'value' => $k];
             }
         }
-
         return $values;
     }
-
     /**
      * Retrieve HTML
      *
      * @return string
      */
-    public function getElementHtml()
+    public function get_element_html()
     {
-        $values = $this->_prepareValues();
-
+        $values = $this->_prepare_values();
         if (!$values) {
             return '';
         }
-
         $html = '<div class=nested>';
         foreach ($values as $value) {
-            $html .= $this->_optionToHtml($value);
+            $html .= $this->_option_to_html($value);
         }
-        $html .= '</div>' . $this->getAfterElementHtml();
-
+        $html .= '</div>' . $this->get_after_element_html();
         return $html;
     }
-
     /**
      * Was given value selected?
      *
      * @param string $value
      * @return string|null
      */
-    public function getChecked($value)
+    public function get_checked($value)
     {
-        $checked = $this->getValue() ?? $this->getData('checked');
+        $checked = $this->get_value() ?? $this->get_data('checked');
         if (!$checked) {
             return null;
         }
         if (!is_array($checked)) {
-            $checked = [(string)$checked];
+            $checked = [(string) $checked];
         } else {
             foreach ($checked as $k => $v) {
-                $checked[$k] = (string)$v;
+                $checked[$k] = (string) $v;
             }
         }
-        if (in_array((string)$value, $checked)) {
+        if (in_array((string) $value, $checked)) {
             return 'checked';
         }
         return null;
     }
-
     /**
      * Was value disabled for selection?
      *
      * @param string $value
      * @return string|null
      */
-    public function getDisabled($value)
+    public function get_disabled($value)
     {
-        if ($disabled = $this->getData('disabled')) {
+        if ($disabled = $this->get_data('disabled')) {
             if (!is_array($disabled)) {
-                $disabled = [(string)$disabled];
+                $disabled = [(string) $disabled];
             } else {
                 foreach ($disabled as $k => $v) {
-                    $disabled[$k] = (string)$v;
+                    $disabled[$k] = (string) $v;
                 }
             }
-            if (in_array((string)$value, $disabled)) {
+            if (in_array((string) $value, $disabled)) {
                 return 'disabled';
             }
         }
         return null;
     }
-
     /**
      * Get onclick event handler.
      *
      * @param string $value
      * @return string|null
      */
-    public function getOnclick($value = '$value')
+    public function get_onclick($value = '$value')
     {
-        if ($onclick = $this->getData('onclick')) {
+        if ($onclick = $this->get_data('onclick')) {
             return str_replace('$value', $value, $onclick);
         }
         return null;
     }
-
     /**
      * Get onchange event handler.
      *
      * @param string $value
      * @return string|null
      */
-    public function getOnchange($value = '$value')
+    public function get_onchange($value = '$value')
     {
-        if ($onchange = $this->getData('onchange')) {
+        if ($onchange = $this->get_data('onchange')) {
             return str_replace('$value', $value, $onchange);
         }
         return null;
     }
-
     /**
      * Render a checkbox.
      *
      * @param array $option
      * @return string
      */
-    protected function _optionToHtml($option)
+    protected function _option_to_html($option)
     {
-        $id = $this->getHtmlId() . '_' . $this->_escape($option['value']);
-
+        $id = $this->get_html_id() . '_' . $this->_escape($option['value']);
         $html = '<div class="field choice admin__field admin__field-option"><input id="' . $id . '"';
-        foreach ($this->getHtmlAttributes() as $attribute) {
-            if ($value = $this->getDataUsingMethod($attribute, $option['value'])) {
+        foreach ($this->get_html_attributes() as $attribute) {
+            if ($value = $this->get_data_using_method($attribute, $option['value'])) {
                 $html .= ' ' . $attribute . '="' . $value . '" class="admin__control-checkbox"';
             }
         }
-        $html .= ' value="' .
-            $option['value'] .
-            '" />' .
-            ' <label for="' .
-            $id .
-            '" class="admin__field-label"><span>' .
-            $option['label'] .
-            '</span></label></div>' .
-            "\n";
+        $html .= ' value="' . $option['value'] . '" />' . ' <label for="' . $id . '" class="admin__field-label"><span>' . $option['label'] . '</span></label></div>' . "\n";
         return $html;
     }
 }

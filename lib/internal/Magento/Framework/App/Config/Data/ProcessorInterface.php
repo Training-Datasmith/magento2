@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Data;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\App\Config\Data;
  * @api
  * @since 100.0.2
  */
-interface ProcessorInterface
+interface Processor_Interface
 {
     /**
      * Process config value
@@ -22,5 +21,5 @@ interface ProcessorInterface
      * @param string $value Raw value of the configuration field
      * @return string Processed value
      */
-    public function processValue($value);
+    public function process_value($value);
 }

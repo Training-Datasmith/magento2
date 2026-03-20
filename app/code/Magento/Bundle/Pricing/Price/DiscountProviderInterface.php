@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Pricing\Price;
 
 /**
@@ -13,10 +12,10 @@ namespace Magento\Bundle\Pricing\Price;
  * @api
  * @since 100.0.2
  */
-interface DiscountProviderInterface
+interface Discount_Provider_Interface
 {
     /**
      * @return float
      */
-    public function getDiscountPercent();
+    public function get_discount_percent();
 }

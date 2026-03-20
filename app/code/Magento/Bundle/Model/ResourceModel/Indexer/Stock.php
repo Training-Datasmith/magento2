@@ -4,41 +4,36 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Bundle\Model\ResourceModel\Indexer;
+declare (strict_types=1);
+namespace Magento\Bundle\Model\Resource_Model\Indexer;
 
 use Magento\Bundle\Model\Product\Type;
-use Magento\Catalog\Model\ResourceModel\Indexer\ActiveTableSwitcher;
-use Magento\CatalogInventory\Model\Indexer\Stock\Action\Full;
-use Magento\CatalogInventory\Model\ResourceModel\Indexer\Stock\DefaultStock;
+use Magento\Catalog\Model\Resource_Model\Indexer\Active_Table_Switcher;
+use Magento\Catalog_Inventory\Model\Indexer\Stock\Action\Full;
+use Magento\Catalog_Inventory\Model\Resource_Model\Indexer\Stock\Default_Stock;
 use Magento\Eav\Model\Config;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Indexer\Table\StrategyInterface;
-use Magento\Framework\Model\ResourceModel\Db\Context;
-
+use Magento\Framework\App\Config\Scope_Config_Interface;
+use Magento\Framework\Indexer\Table\Strategy_Interface;
+use Magento\Framework\Model\Resource_Model\Db\Context;
 /**
  * Bundle Stock Status Indexer Resource Model
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Stock extends DefaultStock
+class Stock extends Default_Stock
 {
     /**
      * @var ActiveTableSwitcher
      */
-    private $activeTableSwitcher;
-
+    private $active_table_switcher;
     /**
      * @var StockStatusSelectBuilder
      */
-    private $stockStatusSelectBuilder;
-
+    private $stock_status_select_builder;
     /**
      * @var BundleOptionStockDataSelectBuilder
      */
-    private $bundleOptionStockDataSelectBuilder;
-
+    private $bundle_option_stock_data_select_builder;
     /**
      * @param Context $context
      * @param StrategyInterface $tableStrategy
@@ -50,37 +45,24 @@ class Stock extends DefaultStock
      * @param OptionQtyExpressionProvider $optionQtyExpressionProvider
      * @param string $connectionName
      */
-    public function __construct(
-        Context $context,
-        StrategyInterface $tableStrategy,
-        Config $eavConfig,
-        ScopeConfigInterface $scopeConfig,
-        ActiveTableSwitcher $activeTableSwitcher,
-        StockStatusSelectBuilder $stockStatusSelectBuilder,
-        BundleOptionStockDataSelectBuilder $bundleOptionStockDataSelectBuilder,
-        private readonly OptionQtyExpressionProvider $optionQtyExpressionProvider,
-        $connectionName = null
-    ) {
-        parent::__construct($context, $tableStrategy, $eavConfig, $scopeConfig, $connectionName);
-
-        $this->_typeId = Type::TYPE_CODE;
-        $this->_isComposite = true;
-
-        $this->activeTableSwitcher = $activeTableSwitcher;
-        $this->stockStatusSelectBuilder = $stockStatusSelectBuilder;
-        $this->bundleOptionStockDataSelectBuilder = $bundleOptionStockDataSelectBuilder;
+    public function __construct(Context $context, Strategy_Interface $table_strategy, Config $eav_config, Scope_Config_Interface $scope_config, Active_Table_Switcher $active_table_switcher, Stock_Status_Select_Builder $stock_status_select_builder, Bundle_Option_Stock_Data_Select_Builder $bundle_option_stock_data_select_builder, private readonly Option_Qty_Expression_Provider $option_qty_expression_provider, $connection_name = null)
+    {
+        parent::__construct($context, $table_strategy, $eav_config, $scope_config, $connection_name);
+        $this->_type_id = Type::TYPE_CODE;
+        $this->_is_composite = true;
+        $this->active_table_switcher = $active_table_switcher;
+        $this->stock_status_select_builder = $stock_status_select_builder;
+        $this->bundle_option_stock_data_select_builder = $bundle_option_stock_data_select_builder;
     }
-
     /**
      * Retrieve table name for temporary bundle option stock index
      *
      * @return string
      */
-    protected function _getBundleOptionTable()
+    protected function _get_bundle_option_table()
     {
-        return $this->getTable('catalog_product_bundle_stock_index');
+        return $this->get_table('catalog_product_bundle_stock_index');
     }
-
     /**
      * Prepare stock status per Bundle options, website and stock
      *
@@ -89,37 +71,28 @@ class Stock extends DefaultStock
      *
      * @return $this
      */
-    protected function _prepareBundleOptionStockData($entityIds = null, $usePrimaryTable = false)
+    protected function _prepare_bundle_option_stock_data($entity_ids = null, $use_primary_table = false)
     {
-        $this->_cleanBundleOptionStockData();
-        $connection = $this->getConnection();
-        $table = $this->getActionType() === Full::ACTION_TYPE
-            ? $this->activeTableSwitcher->getAdditionalTableName($this->getMainTable())
-            : $this->getMainTable();
-        $idxTable = $usePrimaryTable ? $table : $this->getIdxTable();
-        $select = $this->bundleOptionStockDataSelectBuilder->buildSelect($idxTable);
-
-        $status = $this->getOptionsStatusExpression();
+        $this->_clean_bundle_option_stock_data();
+        $connection = $this->get_connection();
+        $table = $this->get_action_type() === Full::ACTION_TYPE ? $this->active_table_switcher->get_additional_table_name($this->get_main_table()) : $this->get_main_table();
+        $idx_table = $use_primary_table ? $table : $this->get_idx_table();
+        $select = $this->bundle_option_stock_data_select_builder->build_select($idx_table);
+        $status = $this->get_options_status_expression();
         $select->columns(['status' => $status]);
-
-        if ($entityIds !== null) {
-            $select->where('product.entity_id IN(?)', $entityIds);
+        if ($entity_ids !== null) {
+            $select->where('product.entity_id IN(?)', $entity_ids);
         }
-
         // clone select for bundle product without required bundle options
-        $selectNonRequired = clone $select;
-
+        $select_non_required = clone $select;
         $select->where('bo.required = ?', 1);
-        $selectNonRequired->where('bo.required = ?', 0)->having($status . ' = 1');
-        $query = $select->insertFromSelect($this->_getBundleOptionTable());
+        $select_non_required->where('bo.required = ?', 0)->having($status . ' = 1');
+        $query = $select->insert_from_select($this->_get_bundle_option_table());
         $connection->query($query);
-
-        $query = $selectNonRequired->insertFromSelect($this->_getBundleOptionTable());
+        $query = $select_non_required->insert_from_select($this->_get_bundle_option_table());
         $connection->query($query);
-
         return $this;
     }
-
     /**
      * Get the select object for get stock status by product ids
      *
@@ -128,49 +101,32 @@ class Stock extends DefaultStock
      *
      * @return \Magento\Framework\DB\Select
      */
-    protected function _getStockStatusSelect($entityIds = null, $usePrimaryTable = false)
+    protected function _get_stock_status_select($entity_ids = null, $use_primary_table = false)
     {
-        $this->_prepareBundleOptionStockData($entityIds, $usePrimaryTable);
-        $connection = $this->getConnection();
-
-        $select = parent::_getStockStatusSelect($entityIds, $usePrimaryTable);
-        $select = $this->stockStatusSelectBuilder->buildSelect($select);
-
-        $statusNotNullExpr = $connection->getCheckSql('o.stock_status IS NOT NULL', 'o.stock_status', '0');
-        $statusExpr = $this->getStatusExpression($connection);
-
-        $select->columns(
-            [
-                'status' => $connection->getLeastSql(
-                    [
-                        new \Zend_Db_Expr('MIN(' . $statusNotNullExpr . ')'),
-                        new \Zend_Db_Expr('MIN(' . $statusExpr . ')'),
-                    ]
-                ),
-            ]
-        );
-
-        if ($entityIds !== null) {
-            $select->where('e.entity_id IN(?)', $entityIds);
+        $this->_prepare_bundle_option_stock_data($entity_ids, $use_primary_table);
+        $connection = $this->get_connection();
+        $select = parent::_get_stock_status_select($entity_ids, $use_primary_table);
+        $select = $this->stock_status_select_builder->build_select($select);
+        $status_not_null_expr = $connection->get_check_sql('o.stock_status IS NOT NULL', 'o.stock_status', '0');
+        $status_expr = $this->get_status_expression($connection);
+        $select->columns(['status' => $connection->get_least_sql([new \Zend_Db_Expr('MIN(' . $status_not_null_expr . ')'), new \Zend_Db_Expr('MIN(' . $status_expr . ')')])]);
+        if ($entity_ids !== null) {
+            $select->where('e.entity_id IN(?)', $entity_ids);
         }
-
         return $select;
     }
-
     /**
      * Prepare stock status data in temporary index table
      *
      * @param int|array $entityIds  the product limitation
      * @return $this
      */
-    protected function _prepareIndexTable($entityIds = null)
+    protected function _prepare_index_table($entity_ids = null)
     {
-        parent::_prepareIndexTable($entityIds);
-        $this->_cleanBundleOptionStockData();
-
+        parent::_prepare_index_table($entity_ids);
+        $this->_clean_bundle_option_stock_data();
         return $this;
     }
-
     /**
      * Update Stock status index by product ids
      *
@@ -178,71 +134,42 @@ class Stock extends DefaultStock
      *
      * @return $this
      */
-    protected function _updateIndex($entityIds)
+    protected function _update_index($entity_ids)
     {
-        parent::_updateIndex($entityIds);
-        $this->_cleanBundleOptionStockData();
-
+        parent::_update_index($entity_ids);
+        $this->_clean_bundle_option_stock_data();
         return $this;
     }
-
     /**
      * Clean temporary bundle options stock data
      *
      * @return $this
      */
-    protected function _cleanBundleOptionStockData()
+    protected function _clean_bundle_option_stock_data()
     {
-        $this->getConnection()->delete($this->_getBundleOptionTable());
+        $this->get_connection()->delete($this->_get_bundle_option_table());
         return $this;
     }
-
     /**
      * Build expression for bundle options stock status
      *
      * @return \Zend_Db_Expr
      */
-    private function getOptionsStatusExpression(): \Zend_Db_Expr
+    private function get_options_status_expression(): \Zend_Db_Expr
     {
-        $connection = $this->getConnection();
-
-        $qtyExpr = $this->optionQtyExpressionProvider->getExpression();
-        $isAvailableExpr = $connection->getCheckSql(
-            'bs.selection_can_change_qty = 0 AND bs.selection_qty > ' . $qtyExpr,
-            '0',
-            'i.stock_status'
-        );
-
-        if ($this->stockConfiguration->getBackorders()) {
-            $backordersExpr = $connection->getCheckSql(
-                'cisi.use_config_backorders = 0 AND cisi.backorders = 0',
-                $isAvailableExpr,
-                'i.stock_status'
-            );
+        $connection = $this->get_connection();
+        $qty_expr = $this->option_qty_expression_provider->get_expression();
+        $is_available_expr = $connection->get_check_sql('bs.selection_can_change_qty = 0 AND bs.selection_qty > ' . $qty_expr, '0', 'i.stock_status');
+        if ($this->stock_configuration->get_backorders()) {
+            $backorders_expr = $connection->get_check_sql('cisi.use_config_backorders = 0 AND cisi.backorders = 0', $is_available_expr, 'i.stock_status');
         } else {
-            $backordersExpr = $connection->getCheckSql(
-                'cisi.use_config_backorders = 0 AND cisi.backorders > 0',
-                'i.stock_status',
-                $isAvailableExpr
-            );
+            $backorders_expr = $connection->get_check_sql('cisi.use_config_backorders = 0 AND cisi.backorders > 0', 'i.stock_status', $is_available_expr);
         }
-
-        if ($this->stockConfiguration->getManageStock()) {
-            $statusExpr = $connection->getCheckSql(
-                'cisi.use_config_manage_stock = 0 AND cisi.manage_stock = 0',
-                1,
-                $backordersExpr
-            );
+        if ($this->stock_configuration->get_manage_stock()) {
+            $status_expr = $connection->get_check_sql('cisi.use_config_manage_stock = 0 AND cisi.manage_stock = 0', 1, $backorders_expr);
         } else {
-            $statusExpr = $connection->getCheckSql(
-                'cisi.use_config_manage_stock = 0 AND cisi.manage_stock = 1',
-                $backordersExpr,
-                1
-            );
+            $status_expr = $connection->get_check_sql('cisi.use_config_manage_stock = 0 AND cisi.manage_stock = 1', $backorders_expr, 1);
         }
-
-        return new \Zend_Db_Expr(
-            'MAX(' . $connection->getCheckSql('e.required_options = 0', $statusExpr, '0') . ')'
-        );
+        return new \Zend_Db_Expr('MAX(' . $connection->get_check_sql('e.required_options = 0', $status_expr, '0') . ')');
     }
 }

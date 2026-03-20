@@ -1,39 +1,34 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
-use Magento\Framework\App\ScopeInterface;
-use Magento\Framework\App\ScopeResolverPool;
-
+use Magento\Framework\App\Scope_Interface;
+use Magento\Framework\App\Scope_Resolver_Pool;
 /**
  * Class for resolving scope code
  */
-class ScopeCodeResolver
+class Scope_Code_Resolver
 {
     /**
      * @var ScopeResolverPool
      */
-    private $scopeResolverPool;
-
+    private $scope_resolver_pool;
     /**
      * @var array
      */
-    private $resolvedScopeCodes = [];
-
+    private $resolved_scope_codes = [];
     /**
      * @param ScopeResolverPool $scopeResolverPool
      */
-    public function __construct(ScopeResolverPool $scopeResolverPool)
+    public function __construct(Scope_Resolver_Pool $scope_resolver_pool)
     {
-        $this->scopeResolverPool = $scopeResolverPool;
+        $this->scope_resolver_pool = $scope_resolver_pool;
     }
-
     /**
      * Resolve scope code
      *
@@ -41,32 +36,26 @@ class ScopeCodeResolver
      * @param string|null $scopeCode
      * @return string
      */
-    public function resolve($scopeType, $scopeCode)
+    public function resolve($scope_type, $scope_code)
     {
-        if (isset($scopeCode, $this->resolvedScopeCodes[$scopeType][$scopeCode])) {
-            return $this->resolvedScopeCodes[$scopeType][$scopeCode];
+        if (isset($scope_code, $this->resolved_scope_codes[$scope_type][$scope_code])) {
+            return $this->resolved_scope_codes[$scope_type][$scope_code];
         }
-
-        if ($scopeType !== ScopeConfigInterface::SCOPE_TYPE_DEFAULT) {
-            $scopeResolver = $this->scopeResolverPool->get($scopeType);
-            $resolverScopeCode = $scopeResolver->getScope($scopeCode);
+        if ($scope_type !== Scope_Config_Interface::SCOPE_TYPE_DEFAULT) {
+            $scope_resolver = $this->scope_resolver_pool->get($scope_type);
+            $resolver_scope_code = $scope_resolver->get_scope($scope_code);
         } else {
-            $resolverScopeCode = $scopeCode;
+            $resolver_scope_code = $scope_code;
         }
-
-        if ($resolverScopeCode instanceof ScopeInterface) {
-            $resolverScopeCode = $resolverScopeCode->getCode();
+        if ($resolver_scope_code instanceof Scope_Interface) {
+            $resolver_scope_code = $resolver_scope_code->get_code();
         }
-
-        if ($scopeCode === null) {
-            $scopeCode = $resolverScopeCode;
+        if ($scope_code === null) {
+            $scope_code = $resolver_scope_code;
         }
-
-        $this->resolvedScopeCodes[$scopeType][$scopeCode] = $resolverScopeCode;
-
-        return $resolverScopeCode;
+        $this->resolved_scope_codes[$scope_type][$scope_code] = $resolver_scope_code;
+        return $resolver_scope_code;
     }
-
     /**
      * Clean resolvedScopeCodes, store codes may have been renamed
      *
@@ -74,6 +63,6 @@ class ScopeCodeResolver
      */
     public function clean()
     {
-        $this->resolvedScopeCodes = [];
+        $this->resolved_scope_codes = [];
     }
 }

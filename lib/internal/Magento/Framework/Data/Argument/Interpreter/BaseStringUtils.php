@@ -1,36 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Argument\Interpreter;
 
-use Magento\Framework\Data\Argument\InterpreterInterface;
-use Magento\Framework\Stdlib\BooleanUtils;
-
+use Magento\Framework\Data\Argument\Interpreter_Interface;
+use Magento\Framework\Stdlib\Boolean_Utils;
 /**
  * Interpreter of string data type.
  */
-class BaseStringUtils implements InterpreterInterface
+class Base_String_Utils implements Interpreter_Interface
 {
     /**
      * @var BooleanUtils
      */
-    private $booleanUtils;
-
+    private $boolean_utils;
     /**
      * BaseStringUtils constructor.
      *
      * @param BooleanUtils $booleanUtils
      */
-    public function __construct(BooleanUtils $booleanUtils)
+    public function __construct(Boolean_Utils $boolean_utils)
     {
-        $this->booleanUtils = $booleanUtils;
+        $this->boolean_utils = $boolean_utils;
     }
-
     /**
      * {@inheritdoc}
      * @return string
@@ -46,7 +42,6 @@ class BaseStringUtils implements InterpreterInterface
         } else {
             $result = '';
         }
-
         return $result;
     }
 }

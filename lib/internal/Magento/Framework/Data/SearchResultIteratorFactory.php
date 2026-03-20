@@ -1,31 +1,28 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
 /**
  * Class SearchResultIteratorFactory
  */
-class SearchResultIteratorFactory
+class Search_Result_Iterator_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->objectManager = $objectManager;
+        $this->object_manager = $object_manager;
     }
-
     /**
      * Create SearchResultIterator object
      *
@@ -34,14 +31,12 @@ class SearchResultIteratorFactory
      * @return SearchResultIterator
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function create($className, array $arguments = [])
+    public function create($class_name, array $arguments = [])
     {
-        $resultIterator = $this->objectManager->create($className, $arguments);
-        if (!$resultIterator instanceof \Traversable) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                new \Magento\Framework\Phrase('%1 should be an iterator', [$className])
-            );
+        $result_iterator = $this->object_manager->create($class_name, $arguments);
+        if (!$result_iterator instanceof \Traversable) {
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('%1 should be an iterator', [$class_name]));
         }
-        return $resultIterator;
+        return $result_iterator;
     }
 }

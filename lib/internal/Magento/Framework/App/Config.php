@@ -1,89 +1,76 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
-use Magento\Framework\App\Config\ConfigTypeInterface;
-use Magento\Framework\App\Config\ScopeCodeResolver;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
+use Magento\Framework\App\Config\Config_Type_Interface;
+use Magento\Framework\App\Config\Scope_Code_Resolver;
+use Magento\Framework\App\Config\Scope_Config_Interface;
 /**
  * Application configuration object. Used to access configuration when application is initialized and installed.
  */
-class Config implements ScopeConfigInterface
+class Config implements Scope_Config_Interface
 {
     /**
      * Config cache tag
      */
     public const CACHE_TAG = 'CONFIG';
-
     /**
      * @var ScopeCodeResolver
      */
-    private $scopeCodeResolver;
-
+    private $scope_code_resolver;
     /**
      * @var ConfigTypeInterface[]
      */
     private $types;
-
     /**
      * Config constructor.
      *
      * @param ScopeCodeResolver $scopeCodeResolver
      * @param array $types
      */
-    public function __construct(
-        ScopeCodeResolver $scopeCodeResolver,
-        array $types = []
-    ) {
-        $this->scopeCodeResolver = $scopeCodeResolver;
+    public function __construct(Scope_Code_Resolver $scope_code_resolver, array $types = [])
+    {
+        $this->scope_code_resolver = $scope_code_resolver;
         $this->types = $types;
     }
-
     /**
      * @inheritDoc
      */
-    public function getValue(
-        $path = null,
-        $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
-        $scopeCode = null
-    ) {
+    public function get_value($path = null, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_code = null)
+    {
         if ($scope === 'store') {
             $scope = 'stores';
         } elseif ($scope === 'website') {
             $scope = 'websites';
         }
-        $configPath = $scope;
+        $config_path = $scope;
         if ($scope !== 'default') {
-            if (is_numeric($scopeCode) || $scopeCode === null) {
-                $scopeCode = $this->scopeCodeResolver->resolve($scope, $scopeCode);
-            } elseif ($scopeCode instanceof \Magento\Framework\App\ScopeInterface) {
-                $scopeCode = $scopeCode->getCode();
+            if (is_numeric($scope_code) || $scope_code === null) {
+                $scope_code = $this->scope_code_resolver->resolve($scope, $scope_code);
+            } elseif ($scope_code instanceof \Magento\Framework\App\Scope_Interface) {
+                $scope_code = $scope_code->get_code();
             }
-            if ($scopeCode) {
-                $configPath .= '/' . $scopeCode;
+            if ($scope_code) {
+                $config_path .= '/' . $scope_code;
             }
         }
         if ($path) {
-            $configPath .= '/' . $path;
+            $config_path .= '/' . $path;
         }
-        return $this->get('system', $configPath);
+        return $this->get('system', $config_path);
     }
-
     /**
      * @inheritDoc
      */
-    public function isSetFlag($path, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeCode = null)
+    public function is_set_flag($path, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_code = null)
     {
-        return !!$this->getValue($path, $scope, $scopeCode);
+        return !!$this->get_value($path, $scope, $scope_code);
     }
-
     /**
      * Invalidate cache by type
      *
@@ -96,9 +83,8 @@ class Config implements ScopeConfigInterface
         foreach ($this->types as $type) {
             $type->clean();
         }
-        $this->scopeCodeResolver->clean();
+        $this->scope_code_resolver->clean();
     }
-
     /**
      * Retrieve configuration.
      *
@@ -116,16 +102,14 @@ class Config implements ScopeConfigInterface
      * @param mixed|null $default
      * @return array
      */
-    public function get($configType, $path = '', $default = null)
+    public function get($config_type, $path = '', $default = null)
     {
         $result = null;
-        if (isset($this->types[$configType])) {
-            $result = $this->types[$configType]->get($path);
+        if (isset($this->types[$config_type])) {
+            $result = $this->types[$config_type]->get($path);
         }
-
         return $result !== null ? $result : $default;
     }
-
     /**
      * Disable show internals with var_dump
      *

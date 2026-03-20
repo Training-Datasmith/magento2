@@ -1,16 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Converter of resources configuration from \DOMDocument to array
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\Resource_Connection\Config;
 
-namespace Magento\Framework\App\ResourceConnection\Config;
-
-class Converter implements \Magento\Framework\Config\ConverterInterface
+class Converter implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * Convert dom node tree to array
@@ -23,15 +22,15 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     {
         $output = [];
         /** @var \DOMNodeList $resources */
-        $resources = $source->getElementsByTagName('resource');
+        $resources = $source->get_elements_by_tag_name('resource');
         /** @var \DOMNode $resourceConfig */
-        foreach ($resources as $resourceConfig) {
-            $resourceName = $resourceConfig->attributes->getNamedItem('name')->nodeValue;
-            $resourceData = [];
-            foreach ($resourceConfig->attributes as $attribute) {
-                $resourceData[$attribute->nodeName] = $attribute->nodeValue;
+        foreach ($resources as $resource_config) {
+            $resource_name = $resource_config->attributes->get_named_item('name')->node_value;
+            $resource_data = [];
+            foreach ($resource_config->attributes as $attribute) {
+                $resource_data[$attribute->node_name] = $attribute->node_value;
             }
-            $output[$resourceName] = $resourceData;
+            $output[$resource_name] = $resource_data;
         }
         return $output;
     }

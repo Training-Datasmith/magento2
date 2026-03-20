@@ -4,31 +4,26 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Captcha\Model\Filter;
 
-use Magento\Captcha\Api\CaptchaConfigPostProcessorInterface;
-
+use Magento\Captcha\Api\Captcha_Config_Post_Processor_Interface;
 /**
  * Class QuoteDataConfigFilter used for filtering config quote data based on filter list
  */
-class QuoteDataConfigFilter implements CaptchaConfigPostProcessorInterface
+class Quote_Data_Config_Filter implements Captcha_Config_Post_Processor_Interface
 {
     /**
      * @var array $filterList
      */
-    private $filterList;
-
+    private $filter_list;
     /**
      * @param array $filterList
      */
-    public function __construct(
-        array $filterList = []
-    ) {
-        $this->filterList = $filterList;
+    public function __construct(array $filter_list = [])
+    {
+        $this->filter_list = $filter_list;
     }
-
     /**
      * Filters the quote config with values from a filter list
      *
@@ -37,10 +32,10 @@ class QuoteDataConfigFilter implements CaptchaConfigPostProcessorInterface
      */
     public function process(array $config): array
     {
-        foreach ($this->filterList as $filterKey) {
+        foreach ($this->filter_list as $filter_key) {
             /** @var string $filterKey */
-            if (isset($config['quoteData']) && array_key_exists($filterKey, $config['quoteData'])) {
-                unset($config['quoteData'][$filterKey]);
+            if (isset($config['quoteData']) && array_key_exists($filter_key, $config['quoteData'])) {
+                unset($config['quoteData'][$filter_key]);
             }
         }
         return $config;

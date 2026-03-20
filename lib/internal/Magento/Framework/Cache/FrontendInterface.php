@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Cache;
  * @api
  * @since 100.0.2
  */
-interface FrontendInterface
+interface Frontend_Interface
 {
     /**
      * Test if a cache is available for the given id
@@ -23,7 +22,6 @@ interface FrontendInterface
      * @return int|bool Last modified time of cache entry if it is available, false otherwise
      */
     public function test($identifier);
-
     /**
      * Load cache record by its unique identifier
      *
@@ -31,7 +29,6 @@ interface FrontendInterface
      * @return string|bool
      */
     public function load($identifier);
-
     /**
      * Save cache record
      *
@@ -41,8 +38,7 @@ interface FrontendInterface
      * @param int|bool|null $lifeTime
      * @return bool
      */
-    public function save($data, $identifier, array $tags = [], $lifeTime = null);
-
+    public function save($data, $identifier, array $tags = [], $life_time = null);
     /**
      * Remove cache record by its unique identifier
      *
@@ -50,7 +46,6 @@ interface FrontendInterface
      * @return bool
      */
     public function remove($identifier);
-
     /**
      * Clean cache records matching specified tags
      *
@@ -58,19 +53,17 @@ interface FrontendInterface
      * @param array $tags
      * @return bool
      */
-    public function clean($mode = CacheConstants::CLEANING_MODE_ALL, array $tags = []);
-
+    public function clean($mode = Cache_Constants::CLEANING_MODE_ALL, array $tags = []);
     /**
      * Retrieve backend instance
      *
      * @return \Psr\Cache\CacheItemPoolInterface
      */
-    public function getBackend();
-
+    public function get_backend();
     /**
      * Retrieve low-level frontend instance for compatibility
      *
      * @return \Psr\Cache\CacheItemPoolInterface
      */
-    public function getLowLevelFrontend();
+    public function get_low_level_frontend();
 }

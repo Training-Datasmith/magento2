@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Form image file element
  */
-
 namespace Magento\Framework\Data\Form\Element;
 
-class Imagefile extends \Magento\Framework\Data\Form\Element\AbstractElement
+class Imagefile extends \Magento\Framework\Data\Form\Element\Abstract_Element
 {
     /**
      * @param \Magento\Framework\Data\Form\Element\Factory $factoryElement
@@ -20,16 +18,12 @@ class Imagefile extends \Magento\Framework\Data\Form\Element\AbstractElement
      * @param \Magento\Framework\Escaper $escaper
      * @param array $data
      */
-    public function __construct(
-        \Magento\Framework\Data\Form\Element\Factory $factoryElement,
-        \Magento\Framework\Data\Form\Element\CollectionFactory $factoryCollection,
-        \Magento\Framework\Escaper $escaper,
-        $data = []
-    ) {
-        parent::__construct($factoryElement, $factoryCollection, $escaper, $data);
-        $this->setType('file');
-        $this->setExtType('imagefile');
-        $this->setAutosubmit(false);
-        $this->setData('autoSubmit', false);
+    public function __construct(\Magento\Framework\Data\Form\Element\Factory $factory_element, \Magento\Framework\Data\Form\Element\Collection_Factory $factory_collection, \Magento\Framework\Escaper $escaper, $data = [])
+    {
+        parent::__construct($factory_element, $factory_collection, $escaper, $data);
+        $this->set_type('file');
+        $this->set_ext_type('imagefile');
+        $this->set_autosubmit(false);
+        $this->set_data('autoSubmit', false);
     }
 }

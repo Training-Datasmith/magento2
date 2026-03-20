@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
-use Magento\Framework\Data\Collection\EntityFactoryInterface;
-use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\Data\Collection\Entity_Factory_Interface;
+use Magento\Framework\Exception\Localized_Exception;
 /**
  * Base for service collections
  */
-abstract class AbstractServiceCollection extends \Magento\Framework\Data\Collection
+abstract class Abstract_Service_Collection extends \Magento\Framework\Data\Collection
 {
     /**
      * Filters on specific fields
@@ -30,41 +28,32 @@ abstract class AbstractServiceCollection extends \Magento\Framework\Data\Collect
      *
      * @var array
      */
-    protected $fieldFilters = [];
-
+    protected $field_filters = [];
     /**
      * @var FilterBuilder
      */
-    protected $filterBuilder;
-
+    protected $filter_builder;
     /**
      * @var SearchCriteriaBuilder
      */
-    protected $searchCriteriaBuilder;
-
+    protected $search_criteria_builder;
     /**
      * @var \Magento\Framework\Api\SortOrderBuilder
      */
-    protected $sortOrderBuilder;
-
+    protected $sort_order_builder;
     /**
      * @param EntityFactoryInterface $entityFactory
      * @param FilterBuilder $filterBuilder
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
      * @param \Magento\Framework\Api\SortOrderBuilder $sortOrderBuilder
      */
-    public function __construct(
-        EntityFactoryInterface $entityFactory,
-        FilterBuilder $filterBuilder,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
-        SortOrderBuilder $sortOrderBuilder
-    ) {
-        parent::__construct($entityFactory);
-        $this->filterBuilder = $filterBuilder;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
-        $this->sortOrderBuilder = $sortOrderBuilder;
+    public function __construct(Entity_Factory_Interface $entity_factory, Filter_Builder $filter_builder, Search_Criteria_Builder $search_criteria_builder, Sort_Order_Builder $sort_order_builder)
+    {
+        parent::__construct($entity_factory);
+        $this->filter_builder = $filter_builder;
+        $this->search_criteria_builder = $search_criteria_builder;
+        $this->sort_order_builder = $sort_order_builder;
     }
-
     /**
      * Add field filter to collection
      *
@@ -109,131 +98,114 @@ abstract class AbstractServiceCollection extends \Magento\Framework\Data\Collect
      * @throws LocalizedException if some error in the input could be detected.
      * @return $this
      */
-    public function addFieldToFilter($field, $condition)
+    public function add_field_to_filter($field, $condition)
     {
         if (is_array($field) && is_array($condition) && count($field) != count($condition)) {
-            throw new LocalizedException(
-                new \Magento\Framework\Phrase(
-                    'The field array failed to pass. The array must have a matching condition array.'
-                )
-            );
+            throw new Localized_Exception(new \Magento\Framework\Phrase('The field array failed to pass. The array must have a matching condition array.'));
         } elseif (is_array($field) && !count($field) > 0) {
-            throw new LocalizedException(
-                new \Magento\Framework\Phrase(
-                    'The array of fields failed to pass. The array must include at one field.'
-                )
-            );
+            throw new Localized_Exception(new \Magento\Framework\Phrase('The array of fields failed to pass. The array must include at one field.'));
         }
-        $this->processFilters($field, $condition);
+        $this->process_filters($field, $condition);
         return $this;
     }
-
     /**
      * Pre-process filters to create multiple groups in case of multiple conditions eg: from & to
      * @param string|array $field
      * @param string|int|array $condition
      * @return $this
      */
-    private function processFilters($field, $condition)
+    private function process_filters($field, $condition)
     {
         //test if we have multiple conditions per field
-        $requiresMultipleFilterGroups = false;
+        $requires_multiple_filter_groups = false;
         if (is_array($field) && is_array($condition)) {
             foreach ($condition as $cond) {
                 if (is_array($cond) && count($cond) > 1) {
-                    $requiresMultipleFilterGroups = true;
+                    $requires_multiple_filter_groups = true;
                     break;
                 }
             }
         } elseif (is_array($condition)) {
-            $requiresMultipleFilterGroups = true;
+            $requires_multiple_filter_groups = true;
         }
-
-        if ($requiresMultipleFilterGroups) {
-            $this->addFilterGroupsForMultipleConditions($field, $condition);
+        if ($requires_multiple_filter_groups) {
+            $this->add_filter_groups_for_multiple_conditions($field, $condition);
         } else {
-            $this->addFilterGroupsForSingleConditions($field, $condition);
+            $this->add_filter_groups_for_single_conditions($field, $condition);
         }
         return $this;
     }
-
     /**
      * Return a single filter group in case of single conditions
      * @param string|array $field
      * @param string|int|array $condition
      * @return $this
      */
-    private function addFilterGroupsForSingleConditions($field, $condition)
+    private function add_filter_groups_for_single_conditions($field, $condition)
     {
-        $this->fieldFilters[] = ['field' => $field, 'condition' => $condition];
+        $this->field_filters[] = ['field' => $field, 'condition' => $condition];
         return $this;
     }
-
     /**
      * Return multiple filters groups in case of multiple conditions eg: from & to
      * @param string|array $field
      * @param array $condition
      * @return $this
      */
-    private function addFilterGroupsForMultipleConditions($field, $condition)
+    private function add_filter_groups_for_multiple_conditions($field, $condition)
     {
         if (!is_array($field) && is_array($condition)) {
             foreach ($condition as $key => $value) {
-                $this->fieldFilters[] = ['field' => $field, 'condition' => [$key => $value]];
+                $this->field_filters[] = ['field' => $field, 'condition' => [$key => $value]];
             }
         } else {
             $cnt = 0;
             foreach ($condition as $cond) {
                 if (is_array($cond)) {
                     //we Do want multiple groups in this case
-                    foreach ($cond as $condKey => $condValue) {
-                        $this->fieldFilters[] = [
-                            'field' => array_slice($field, $cnt, 1, true),
-                            'condition' => [$condKey => $condValue],
-                        ];
+                    foreach ($cond as $cond_key => $cond_value) {
+                        $this->field_filters[] = ['field' => array_slice($field, $cnt, 1, true), 'condition' => [$cond_key => $cond_value]];
                     }
                 } else {
-                    $this->fieldFilters[] = ['field' => array_slice($field, $cnt, 1, true), 'condition' => $cond];
+                    $this->field_filters[] = ['field' => array_slice($field, $cnt, 1, true), 'condition' => $cond];
                 }
                 $cnt++;
             }
         }
         return $this;
     }
-
     /**
      * Creates a search criteria DTO based on the array of field filters.
      *
      * @return SearchCriteria
      */
-    protected function getSearchCriteria()
+    protected function get_search_criteria()
     {
-        foreach ($this->fieldFilters as $filter) {
+        foreach ($this->field_filters as $filter) {
             // array of fields, put filters in array to use 'or' group
             /** @var Filter[] $filterGroup */
-            $filterGroup = [];
+            $filter_group = [];
             if (!is_array($filter['field'])) {
                 // just one field
-                $filterGroup = [$this->createFilterData($filter['field'], $filter['condition'])];
+                $filter_group = [$this->create_filter_data($filter['field'], $filter['condition'])];
             } else {
                 foreach ($filter['field'] as $index => $field) {
-                    $filterGroup[] = $this->createFilterData($field, $filter['condition'][$index]);
+                    $filter_group[] = $this->create_filter_data($field, $filter['condition'][$index]);
                 }
             }
-            $this->searchCriteriaBuilder->addFilters($filterGroup);
+            $this->search_criteria_builder->add_filters($filter_group);
         }
         foreach ($this->_orders as $field => $direction) {
             /** @var SortOrder $sortOrder */
             /** @var string $direction */
-            $direction = ($direction == 'ASC') ? SortOrder::SORT_ASC : SortOrder::SORT_DESC;
-            $sortOrder = $this->sortOrderBuilder->setField($field)->setDirection($direction)->create();
-            $this->searchCriteriaBuilder->addSortOrder($sortOrder);
+            $direction = $direction == 'ASC' ? Sort_Order::SORT_ASC : Sort_Order::SORT_DESC;
+            $sort_order = $this->sort_order_builder->set_field($field)->set_direction($direction)->create();
+            $this->search_criteria_builder->add_sort_order($sort_order);
         }
-        $this->searchCriteriaBuilder->setCurrentPage($this->_curPage);
-        $this->searchCriteriaBuilder->setPageSize($this->_pageSize);
-        return $this->searchCriteriaBuilder->create();
+        $this->search_criteria_builder->set_current_page($this->_cur_page);
+        $this->search_criteria_builder->set_page_size($this->_page_size);
+        return $this->search_criteria_builder->create();
     }
-
     /**
      * Creates a filter DTO for given field/condition
      *
@@ -241,18 +213,17 @@ abstract class AbstractServiceCollection extends \Magento\Framework\Data\Collect
      * @param string|array $condition Condition for new filter.
      * @return Filter
      */
-    protected function createFilterData($field, $condition)
+    protected function create_filter_data($field, $condition)
     {
-        $this->filterBuilder->setField($field);
-
+        $this->filter_builder->set_field($field);
         if (is_array($condition)) {
-            $this->filterBuilder->setValue(reset($condition));
-            $this->filterBuilder->setConditionType(key($condition));
+            $this->filter_builder->set_value(reset($condition));
+            $this->filter_builder->set_condition_type(key($condition));
         } else {
             // not an array, just use eq as condition type and given value
-            $this->filterBuilder->setConditionType('eq');
-            $this->filterBuilder->setValue($condition);
+            $this->filter_builder->set_condition_type('eq');
+            $this->filter_builder->set_value($condition);
         }
-        return $this->filterBuilder->create();
+        return $this->filter_builder->create();
     }
 }

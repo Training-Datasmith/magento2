@@ -4,9 +4,7 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Encryption\Adapter;
 
 /**
@@ -14,14 +12,13 @@ namespace Magento\Framework\Encryption\Adapter;
  *
  * @api
  */
-interface EncryptionAdapterInterface
+interface Encryption_Adapter_Interface
 {
     /**
      * @param $data
      * @return string
      */
     public function encrypt(string $data): string;
-
     /**
      * @param string $data
      * @return string

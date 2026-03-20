@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework;
 
 /**
@@ -19,20 +18,18 @@ namespace Magento\Framework;
  * @api
  * @since 100.0.2
  */
-interface AppInterface
+interface App_Interface
 {
     /**
      * Default application locale
      */
     public const DISTRO_LOCALE_CODE = 'en_US';
-
     /**
      * Launch application
      *
      * @return \Magento\Framework\App\ResponseInterface
      */
     public function launch();
-
     /**
      * Ability to handle exceptions that may have occurred during bootstrap and launch
      *
@@ -44,5 +41,5 @@ interface AppInterface
      * @param \Exception $exception
      * @return bool
      */
-    public function catchException(App\Bootstrap $bootstrap, \Exception $exception);
+    public function catch_exception(App\Bootstrap $bootstrap, \Exception $exception);
 }

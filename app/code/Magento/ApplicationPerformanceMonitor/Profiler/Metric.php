@@ -4,9 +4,8 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\ApplicationPerformanceMonitor\Profiler;
+declare (strict_types=1);
+namespace Magento\Application_Performance_Monitor\Profiler;
 
 /**
  * A single metric. Type is currently either MEMORY or TIME.
@@ -14,42 +13,34 @@ namespace Magento\ApplicationPerformanceMonitor\Profiler;
  */
 class Metric
 {
-    public function __construct(
-        private readonly string $type,
-        private readonly string $name,
-        private readonly mixed $value,
-        private readonly bool $verbose,
-    ) {
+    public function __construct(private readonly string $type, private readonly string $name, private readonly mixed $value, private readonly bool $verbose)
+    {
     }
-
     /**
      * Gets type of metric
      */
-    public function getType(): string|int
+    public function get_type(): string|int
     {
         return $this->type;
     }
-
     /**
      * Gets a name
      */
-    public function getName(): string
+    public function get_name(): string
     {
         return $this->name;
     }
-
     /**
      * Gets a value
      */
-    public function getValue(): mixed
+    public function get_value(): mixed
     {
         return $this->value;
     }
-
     /**
      * Checks if verbose
      */
-    public function isVerbose(): bool
+    public function is_verbose(): bool
     {
         return $this->verbose;
     }

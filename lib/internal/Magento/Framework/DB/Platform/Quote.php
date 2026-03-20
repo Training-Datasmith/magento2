@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Platform;
 
 use Magento\Framework\DB\Select;
-
 class Quote
 {
     /**
@@ -18,11 +16,10 @@ class Quote
      * @param string $identifier
      * @return string
      */
-    public function quoteIdentifier($identifier)
+    public function quote_identifier($identifier)
     {
-        return $this->quoteIdentifierAs($identifier);
+        return $this->quote_identifier_as($identifier);
     }
-
     /**
      * Return quoted column with alias
      *
@@ -30,11 +27,10 @@ class Quote
      * @param string|null $alias
      * @return string
      */
-    public function quoteColumnAs($identifier, $alias = null)
+    public function quote_column_as($identifier, $alias = null)
     {
-        return $this->quoteIdentifierAs($identifier, $alias);
+        return $this->quote_identifier_as($identifier, $alias);
     }
-
     /**
      * Return quoted table with alias
      *
@@ -42,11 +38,10 @@ class Quote
      * @param string|null $alias
      * @return string
      */
-    public function quoteTableAs($identifier, $alias = null)
+    public function quote_table_as($identifier, $alias = null)
     {
-        return $this->quoteIdentifierAs($identifier, $alias);
+        return $this->quote_identifier_as($identifier, $alias);
     }
-
     /**
      * Return quoted identifier with alias
      *
@@ -55,7 +50,7 @@ class Quote
      * @return string
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    protected function quoteIdentifierAs($identifier, $alias = null)
+    protected function quote_identifier_as($identifier, $alias = null)
     {
         if ($identifier instanceof \Zend_Db_Expr) {
             $quoted = $identifier->__toString();
@@ -71,7 +66,7 @@ class Quote
                     if ($segment instanceof \Zend_Db_Expr) {
                         $segments[] = $segment->__toString();
                     } else {
-                        $segments[] = $this->replaceQuoteSymbol($segment);
+                        $segments[] = $this->replace_quote_symbol($segment);
                     }
                 }
                 if ($alias !== null && end($identifier) == $alias) {
@@ -79,33 +74,31 @@ class Quote
                 }
                 $quoted = implode('.', $segments);
             } else {
-                $quoted = $this->replaceQuoteSymbol($identifier);
+                $quoted = $this->replace_quote_symbol($identifier);
             }
         }
         if ($alias !== null) {
-            $quoted .= ' ' . Select::SQL_AS . ' ' . $this->replaceQuoteSymbol($alias);
+            $quoted .= ' ' . Select::SQL_AS . ' ' . $this->replace_quote_symbol($alias);
         }
         return $quoted;
     }
-
     /**
      * Replace quote symbol
      *
      * @param string $value
      * @return string
      */
-    protected function replaceQuoteSymbol($value)
+    protected function replace_quote_symbol($value)
     {
-        $symbol = $this->getQuoteIdentifierSymbol();
-        return ($symbol . str_replace("$symbol", "$symbol$symbol", (string)$value) . $symbol);
+        $symbol = $this->get_quote_identifier_symbol();
+        return $symbol . str_replace("{$symbol}", "{$symbol}{$symbol}", (string) $value) . $symbol;
     }
-
     /**
      * Get quote identifier symbol
      *
      * @return string
      */
-    protected function getQuoteIdentifierSymbol()
+    protected function get_quote_identifier_symbol()
     {
         return '`';
     }

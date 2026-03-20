@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdvancedSearch\Model\Adapter\DataMapper;
+namespace Magento\Advanced_Search\Model\Adapter\Data_Mapper;
 
 /**
  * Provide additional fields for data mapper during search indexer
@@ -14,7 +13,7 @@ namespace Magento\AdvancedSearch\Model\Adapter\DataMapper;
  * @api
  * @since 100.2.0
  */
-interface AdditionalFieldsProviderInterface
+interface Additional_Fields_Provider_Interface
 {
     /**
      * Get additional fields for data mapper during search indexer based on product ids and store id.
@@ -23,5 +22,5 @@ interface AdditionalFieldsProviderInterface
      * @return array
      * @since 100.2.0
      */
-    public function getFields(array $productIds, $storeId);
+    public function get_fields(array $product_ids, $store_id);
 }

@@ -4,9 +4,8 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters;
+declare (strict_types=1);
+namespace Magento\Framework\Cache\Frontend\Adapter\Symfony_Adapters;
 
 /**
  * Interface for backend-specific tag operations
@@ -19,7 +18,7 @@ namespace Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters;
  * - FilesystemTagAdapter: Uses file-based tag indices with array_intersect
  * - GenericTagAdapter: Fallback using namespace tags or best-effort logic
  */
-interface TagAdapterInterface
+interface Tag_Adapter_Interface
 {
     /**
      * Get cache IDs that match ALL given tags (AND logic)
@@ -29,8 +28,7 @@ interface TagAdapterInterface
      * @param array $tags Array of tags (must match ALL)
      * @return array Array of cache IDs
      */
-    public function getIdsMatchingTags(array $tags): array;
-
+    public function get_ids_matching_tags(array $tags): array;
     /**
      * Get cache IDs that match ANY of the given tags (OR logic)
      *
@@ -39,8 +37,7 @@ interface TagAdapterInterface
      * @param array $tags Array of tags (match ANY)
      * @return array Array of cache IDs
      */
-    public function getIdsMatchingAnyTags(array $tags): array;
-
+    public function get_ids_matching_any_tags(array $tags): array;
     /**
      * Get cache IDs that do NOT match any of the given tags
      *
@@ -49,16 +46,14 @@ interface TagAdapterInterface
      * @param array $tags Array of tags to exclude
      * @return array Array of cache IDs
      */
-    public function getIdsNotMatchingTags(array $tags): array;
-
+    public function get_ids_not_matching_tags(array $tags): array;
     /**
      * Delete cache items by their IDs
      *
      * @param array $ids Array of cache IDs to delete
      * @return bool True on success
      */
-    public function deleteByIds(array $ids): bool;
-
+    public function delete_by_ids(array $ids): bool;
     /**
      * Update tag-to-ID index when a cache item is saved
      *
@@ -66,20 +61,18 @@ interface TagAdapterInterface
      * @param array $tags Tags associated with this ID
      * @return void
      */
-    public function onSave(string $id, array $tags): void;
-
+    public function on_save(string $id, array $tags): void;
     /**
      * Update tag-to-ID index when a cache item is removed
      *
      * @param string $id Cache ID
      * @return void
      */
-    public function onRemove(string $id): void;
-
+    public function on_remove(string $id): void;
     /**
      * Clear all tag indices (used for CLEANING_MODE_ALL)
      *
      * @return void
      */
-    public function clearAllIndices(): void;
+    public function clear_all_indices(): void;
 }

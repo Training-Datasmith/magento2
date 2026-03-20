@@ -1,82 +1,72 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\Css\PreProcessor\Adapter;
+namespace Magento\Framework\Css\Pre_Processor\Adapter;
 
 use Magento\Framework\App\State;
-use Pelago\Emogrifier\CssInliner as EmogrifierCssInliner;
-use Symfony\Component\CssSelector\Exception\ParseException;
-
+use Pelago\Emogrifier\Css_Inliner as EmogrifierCssInliner;
+use Symfony\Component\Css_Selector\Exception\Parse_Exception;
 /**
  * This class will inline the css of an html to each tag to be used for applications such as a styled email.
  */
-class CssInliner
+class Css_Inliner
 {
     /**
      * @var State
      */
-    private $appState;
-
+    private $app_state;
     /**
      * @var string
      */
     private $html = '';
-
     /**
      * @var string
      */
     private $css = '';
-
     /**
      * @var bool
      */
-    private $disableStyleBlocksParsing = false;
-
+    private $disable_style_blocks_parsing = false;
     /**
      * @param State $appState
      */
-    public function __construct(State $appState)
+    public function __construct(State $app_state)
     {
-        $this->appState = $appState;
+        $this->app_state = $app_state;
     }
-
     /**
      * Sets the HTML to be used with the css. This method should be used with setCss.
      *
      * @param string $html
      * @return void
      */
-    public function setHtml($html)
+    public function set_html($html)
     {
         $this->html = $html;
     }
-
     /**
      * Sets the CSS to be merged with the HTML. This method should be used with setHtml.
      *
      * @param string $css
      * @return void
      */
-    public function setCss($css)
+    public function set_css($css)
     {
         $this->css = $css;
     }
-
     /**
      * Disables the parsing of <style> blocks.
      *
      * @return void
      */
-    public function disableStyleBlocksParsing()
+    public function disable_style_blocks_parsing()
     {
-        $this->disableStyleBlocksParsing = true;
+        $this->disable_style_blocks_parsing = true;
     }
-
     /**
      * Processes the html by placing the css inline. Set first the css by using setCss and html by using setHtml.
      *
@@ -86,15 +76,12 @@ class CssInliner
      */
     public function process()
     {
-        $emogrifier = EmogrifierCssInliner::fromHtml($this->html);
-        $emogrifier->setDebug($this->appState->getMode() === State::MODE_DEVELOPER);
-
-        if ($this->disableStyleBlocksParsing) {
-            $emogrifier->disableStyleBlocksParsing();
+        $emogrifier = Emogrifier_Css_Inliner::from_html($this->html);
+        $emogrifier->set_debug($this->app_state->get_mode() === State::MODE_DEVELOPER);
+        if ($this->disable_style_blocks_parsing) {
+            $emogrifier->disable_style_blocks_parsing();
         }
-
-        $emogrifier->inlineCss($this->css);
-
+        $emogrifier->inline_css($this->css);
         return $emogrifier->render();
     }
 }

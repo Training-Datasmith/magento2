@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\System\Account;
 
 /**
@@ -24,20 +23,18 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
     protected function _construct()
     {
         parent::_construct();
-
-        $this->_blockGroup = 'Magento_Backend';
+        $this->_block_group = 'Magento_Backend';
         $this->_controller = 'system_account';
-        $this->buttonList->update('save', 'label', __('Save Account'));
-        $this->buttonList->remove('delete');
-        $this->buttonList->remove('back');
+        $this->button_list->update('save', 'label', __('Save Account'));
+        $this->button_list->remove('delete');
+        $this->button_list->remove('back');
     }
-
     /**
      * Return a Phrase for the header text
      *
      * @return \Magento\Framework\Phrase
      */
-    public function getHeaderText()
+    public function get_header_text()
     {
         return __('My Account');
     }

@@ -4,34 +4,30 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Model\Product;
 
-use Magento\Bundle\Api\Data\OptionInterface;
-use Magento\Bundle\Api\ProductOptionRepositoryInterface as OptionRepository;
+use Magento\Bundle\Api\Data\Option_Interface;
+use Magento\Bundle\Api\Product_Option_Repository_Interface as OptionRepository;
 use Magento\Bundle\Model\Link;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Exception\NoSuchEntityException;
-
+use Magento\Framework\Exception\Input_Exception;
+use Magento\Framework\Exception\No_Such_Entity_Exception;
 /**
  * Check bundle product option link if exist
  */
-class CheckOptionLinkIfExist
+class Check_Option_Link_If_Exist
 {
     /**
      * @var OptionRepository
      */
-    private $optionRepository;
-
+    private $option_repository;
     /**
      * @param OptionRepository $optionRepository
      */
-    public function __construct(OptionRepository $optionRepository)
+    public function __construct(Option_Repository $option_repository)
     {
-        $this->optionRepository = $optionRepository;
+        $this->option_repository = $option_repository;
     }
-
     /**
      * Check if link is already exist in bundle product option
      *
@@ -42,17 +38,16 @@ class CheckOptionLinkIfExist
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    public function execute(string $sku, OptionInterface $optionToDelete, Link $link): bool
+    public function execute(string $sku, Option_Interface $option_to_delete, Link $link): bool
     {
-        $isLinkExist = true;
-        $availableOptions = $this->getAvailableOptionsAfterDelete($sku, $optionToDelete);
-        $optionLinkIds = $this->getLinkIds($availableOptions);
-        if (in_array($link->getEntityId(), $optionLinkIds)) {
-            $isLinkExist = false;
+        $is_link_exist = true;
+        $available_options = $this->get_available_options_after_delete($sku, $option_to_delete);
+        $option_link_ids = $this->get_link_ids($available_options);
+        if (in_array($link->get_entity_id(), $option_link_ids)) {
+            $is_link_exist = false;
         }
-        return $isLinkExist;
+        return $is_link_exist;
     }
-
     /**
      * Retrieve bundle product options after delete option
      *
@@ -62,33 +57,32 @@ class CheckOptionLinkIfExist
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    private function getAvailableOptionsAfterDelete(string $sku, OptionInterface $optionToDelete): array
+    private function get_available_options_after_delete(string $sku, Option_Interface $option_to_delete): array
     {
-        $bundleProductOptions = $this->optionRepository->getList($sku);
+        $bundle_product_options = $this->option_repository->get_list($sku);
         $options = [];
-        foreach ($bundleProductOptions as $bundleOption) {
-            if ($bundleOption->getOptionId() == $optionToDelete->getOptionId()) {
+        foreach ($bundle_product_options as $bundle_option) {
+            if ($bundle_option->get_option_id() == $option_to_delete->get_option_id()) {
                 continue;
             }
-            $options[] = $bundleOption;
+            $options[] = $bundle_option;
         }
         return $options;
     }
-
     /**
      * Retrieve bundle product link options
      *
      * @param array $options
      * @return array
      */
-    private function getLinkIds(array $options): array
+    private function get_link_ids(array $options): array
     {
         $ids = [];
         foreach ($options as $option) {
-            $links = $option->getProductLinks();
+            $links = $option->get_product_links();
             if (!empty($links)) {
                 foreach ($links as $link) {
-                    $ids[] = $link->getEntityId();
+                    $ids[] = $link->get_entity_id();
                 }
             }
         }

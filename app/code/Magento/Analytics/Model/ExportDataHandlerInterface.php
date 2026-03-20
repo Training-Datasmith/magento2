@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Analytics\Model;
 
 /**
@@ -13,12 +12,12 @@ namespace Magento\Analytics\Model;
  *
  * @api
  */
-interface ExportDataHandlerInterface
+interface Export_Data_Handler_Interface
 {
     /**
      * Execute collecting new data for MBI.
      *
      * @return bool
      */
-    public function prepareExportData();
+    public function prepare_export_data();
 }

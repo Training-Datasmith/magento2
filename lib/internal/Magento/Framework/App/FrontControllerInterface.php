@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -16,7 +15,7 @@ namespace Magento\Framework\App;
  * @api
  * @since 100.0.2
  */
-interface FrontControllerInterface
+interface Front_Controller_Interface
 {
     /**
      * Dispatch application action
@@ -24,5 +23,5 @@ interface FrontControllerInterface
      * @param RequestInterface $request
      * @return ResponseInterface
      */
-    public function dispatch(RequestInterface $request);
+    public function dispatch(Request_Interface $request);
 }

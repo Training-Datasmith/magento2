@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Block;
+namespace Magento\Admin_Notification\Block;
 
 /**
  * Admin notification window block
@@ -20,82 +19,76 @@ class Window extends \Magento\Backend\Block\Template
      * XML path of Severity icons url
      */
     public const XML_SEVERITY_ICONS_URL_PATH = 'system/adminnotification/severity_icons_url';
-
     /**
      * @var string
      */
-    protected $_severityIconsUrl;
-
+    protected $_severity_icons_url;
     /**
      * @var \Magento\AdminNotification\Model\Inbox
      */
-    protected $_latestItem;
-
+    protected $_latest_item;
     /**
      * The property is used to define content-scope of block. Can be private or public.
      * If it isn't defined then application considers it as false.
      *
      * @var bool
      */
-    protected $_isScopePrivate;
-
+    protected $_is_scope_private;
     public function __construct(
         \Magento\Backend\Block\Template\Context $context,
         /**
          * Authentication
          */
-        protected \Magento\Backend\Model\Auth\Session $_authSession,
+        protected \Magento\Backend\Model\Auth\Session $_auth_session,
         /**
          * Critical messages collection
          */
-        protected \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection\Critical $_criticalCollection,
+        protected \Magento\Admin_Notification\Model\Resource_Model\Inbox\Collection\Critical $_critical_collection,
         array $data = []
-    ) {
+    )
+    {
         parent::__construct($context, $data);
-        $this->_isScopePrivate = true;
+        $this->_is_scope_private = true;
     }
-
     /**
      * Render block
      *
      * @return string
      */
-    protected function _toHtml()
+    protected function _to_html()
     {
-        if ($this->canShow()) {
-            $this->setHeaderText($this->escapeHtml(__('Incoming Message')));
-            $this->setCloseText($this->escapeHtml(__('close')));
-            $this->setReadDetailsText($this->escapeHtml(__('Read Details')));
-            $this->setNoticeMessageText($this->escapeHtml($this->_getLatestItem()->getTitle()));
-            $this->setNoticeMessageUrl($this->escapeUrl($this->_getLatestItem()->getUrl()));
-            $this->setSeverityText('critical');
-            return parent::_toHtml();
+        if ($this->can_show()) {
+            $this->set_header_text($this->escape_html(__('Incoming Message')));
+            $this->set_close_text($this->escape_html(__('close')));
+            $this->set_read_details_text($this->escape_html(__('Read Details')));
+            $this->set_notice_message_text($this->escape_html($this->_get_latest_item()->get_title()));
+            $this->set_notice_message_url($this->escape_url($this->_get_latest_item()->get_url()));
+            $this->set_severity_text('critical');
+            return parent::_to_html();
         }
         return '';
     }
-
     /**
      * Retrieve latest critical item
      *
      * @return bool|\Magento\AdminNotification\Model\Inbox
      */
-    protected function _getLatestItem()
+    protected function _get_latest_item()
     {
-        if ($this->_latestItem == null) {
-            $items = array_values($this->_criticalCollection->getItems());
-            $this->_latestItem = false;
+        if ($this->_latest_item == null) {
+            $items = array_values($this->_critical_collection->get_items());
+            $this->_latest_item = false;
             if (count($items)) {
-                $this->_latestItem = $items[0];
+                $this->_latest_item = $items[0];
             }
         }
-        return $this->_latestItem;
+        return $this->_latest_item;
     }
-
     /**
      * Check whether block should be displayed
      */
-    public function canShow(): bool
+    public function can_show(): bool
     {
-        return $this->_authSession->isFirstPageAfterLogin() && $this->_getLatestItem();
+        return $this->_auth_session->is_first_page_after_login() && $this->_get_latest_item();
     }
 }

@@ -4,79 +4,68 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Model;
 
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\AsynchronousOperations\Api\Data\AsyncResponseInterface;
-use Magento\Framework\Api\ExtensibleDataInterface;
-use Magento\Framework\DataObject;
-
-class AsyncResponse extends DataObject implements AsyncResponseInterface, ExtensibleDataInterface
+use Magento\Asynchronous_Operations\Api\Data\Async_Response_Interface;
+use Magento\Framework\Api\Extensible_Data_Interface;
+use Magento\Framework\Data_Object;
+class Async_Response extends Data_Object implements Async_Response_Interface, Extensible_Data_Interface
 {
     /**
      * @inheritDoc
      */
-    public function getBulkUuid()
+    public function get_bulk_uuid()
     {
-        return $this->getData(self::BULK_UUID);
+        return $this->get_data(self::BULK_UUID);
     }
-
     /**
      * @inheritDoc
      */
-    public function setBulkUuid($bulkUuid)
+    public function set_bulk_uuid($bulk_uuid)
     {
-        return $this->setData(self::BULK_UUID, $bulkUuid);
+        return $this->set_data(self::BULK_UUID, $bulk_uuid);
     }
-
     /**
      * @inheritDoc
      */
-    public function getRequestItems()
+    public function get_request_items()
     {
-        return $this->getData(self::REQUEST_ITEMS);
+        return $this->get_data(self::REQUEST_ITEMS);
     }
-
     /**
      * @inheritDoc
      */
-    public function setRequestItems($requestItems)
+    public function set_request_items($request_items)
     {
-        return $this->setData(self::REQUEST_ITEMS, $requestItems);
+        return $this->set_data(self::REQUEST_ITEMS, $request_items);
     }
-
     /**
      * @inheritdoc
      */
-    public function setErrors($isErrors = false)
+    public function set_errors($is_errors = false)
     {
-        return $this->setData(self::ERRORS, $isErrors);
+        return $this->set_data(self::ERRORS, $is_errors);
     }
-
     /**
      * @inheritdoc
      */
-    public function isErrors()
+    public function is_errors()
     {
-        return $this->getData(self::ERRORS);
+        return $this->get_data(self::ERRORS);
     }
-
     /**
      * @inheritDoc
      */
-    public function getExtensionAttributes()
+    public function get_extension_attributes()
     {
-        return $this->getData(self::EXTENSION_ATTRIBUTES_KEY);
+        return $this->get_data(self::EXTENSION_ATTRIBUTES_KEY);
     }
-
     /**
      * @inheritDoc
      */
-    public function setExtensionAttributes(
-        \Magento\AsynchronousOperations\Api\Data\AsyncResponseExtensionInterface $extensionAttributes
-    ) {
-        return $this->setData(self::EXTENSION_ATTRIBUTES_KEY, $extensionAttributes);
+    public function set_extension_attributes(\Magento\Asynchronous_Operations\Api\Data\Async_Response_Extension_Interface $extension_attributes)
+    {
+        return $this->set_data(self::EXTENSION_ATTRIBUTES_KEY, $extension_attributes);
     }
 }

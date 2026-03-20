@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -17,30 +16,27 @@ namespace Magento\Framework\App;
  * @see \Magento\Framework\View\Result\Layout
  * @since 100.0.2
  */
-interface ViewInterface
+interface View_Interface
 {
     /**
      * Load layout updates
      *
      * @return ViewInterface
      */
-    public function loadLayoutUpdates();
-
+    public function load_layout_updates();
     /**
      * Rendering layout
      *
      * @param   string $output
      * @return  ViewInterface
      */
-    public function renderLayout($output = '');
-
+    public function render_layout($output = '');
     /**
      * Retrieve the default layout handle name for the current action
      *
      * @return string
      */
-    public function getDefaultLayoutHandle();
-
+    public function get_default_layout_handle();
     /**
      * Load layout by handles(s)
      *
@@ -51,15 +47,13 @@ interface ViewInterface
      * @return  ViewInterface
      * @throws  \RuntimeException
      */
-    public function loadLayout($handles = null, $generateBlocks = true, $generateXml = true, $addActionHandles = true);
-
+    public function load_layout($handles = null, $generate_blocks = true, $generate_xml = true, $add_action_handles = true);
     /**
      * Generate layout xml
      *
      * @return ViewInterface
      */
-    public function generateLayoutXml();
-
+    public function generate_layout_xml();
     /**
      * Add layout updates handles associated with the action page
      *
@@ -67,48 +61,42 @@ interface ViewInterface
      * @param string $defaultHandle
      * @return bool
      */
-    public function addPageLayoutHandles(array $parameters = [], $defaultHandle = null);
-
+    public function add_page_layout_handles(array $parameters = [], $default_handle = null);
     /**
      * Generate layout blocks
      *
      * @return ViewInterface
      */
-    public function generateLayoutBlocks();
-
+    public function generate_layout_blocks();
     /**
      * Retrieve current page object
      *
      * @return \Magento\Framework\View\Result\Page
      */
-    public function getPage();
-
+    public function get_page();
     /**
      * Retrieve current layout object
      *
      * @return \Magento\Framework\View\LayoutInterface
      */
-    public function getLayout();
-
+    public function get_layout();
     /**
      * Add layout handle by full controller action name
      *
      * @return ViewInterface
      */
-    public function addActionLayoutHandles();
-
+    public function add_action_layout_handles();
     /**
      * Set isLayoutLoaded flag
      *
      * @param bool $value
      * @return void
      */
-    public function setIsLayoutLoaded($value);
-
+    public function set_is_layout_loaded($value);
     /**
      * Returns is layout loaded
      *
      * @return bool
      */
-    public function isLayoutLoaded();
+    public function is_layout_loaded();
 }

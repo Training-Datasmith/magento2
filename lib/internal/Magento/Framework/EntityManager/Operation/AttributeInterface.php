@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Operation;
+namespace Magento\Framework\Entity_Manager\Operation;
 
 /**
  * Interface AttributeInterface
  */
-interface AttributeInterface
+interface Attribute_Interface
 {
     /**
      * @param string $entityType
@@ -19,5 +18,5 @@ interface AttributeInterface
      * @param array $arguments
      * @return array
      */
-    public function execute($entityType, $entityData, $arguments = []);
+    public function execute($entity_type, $entity_data, $arguments = []);
 }

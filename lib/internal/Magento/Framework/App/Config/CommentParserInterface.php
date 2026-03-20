@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
-use Magento\Framework\Exception\FileSystemException;
-
+use Magento\Framework\Exception\File_System_Exception;
 /**
  * Interface for parsing comments in the configuration file.
  *
  * @api
  */
-interface CommentParserInterface
+interface Comment_Parser_Interface
 {
     /**
      * Retrieve config list from file comments.
@@ -24,5 +22,5 @@ interface CommentParserInterface
      * @return array
      * @throws FileSystemException
      */
-    public function execute($fileName);
+    public function execute($file_name);
 }

@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
  * @api
  * @since 104.0.0
  */
-interface CategoryListDeleteBySkuInterface
+interface Category_List_Delete_By_Sku_Interface
 {
     /**
      * Delete by skus list
@@ -26,5 +25,5 @@ interface CategoryListDeleteBySkuInterface
      * @throws \Magento\Framework\Exception\InputException
      * @since 104.0.0
      */
-    public function deleteBySkus(int $categoryId, array $productSkuList): bool;
+    public function delete_by_skus(int $category_id, array $product_sku_list): bool;
 }

@@ -1,48 +1,41 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\App\Request;
 
 use Magento\Backend\Helper\Data as HelperData;
-use Magento\Framework\App\Request\PathInfoProcessorInterface;
-use Magento\Framework\App\RequestInterface;
-use Magento\Store\App\Request\PathInfoProcessor as AppPathInfoProcessor;
-
+use Magento\Framework\App\Request\Path_Info_Processor_Interface;
+use Magento\Framework\App\Request_Interface;
+use Magento\Store\App\Request\Path_Info_Processor as AppPathInfoProcessor;
 /**
  * Prevents path info processing for admin store
  *
  * @api
  * @since 100.0.2
  */
-class PathInfoProcessor implements PathInfoProcessorInterface
+class Path_Info_Processor implements Path_Info_Processor_Interface
 {
     /**
      * @var HelperData
      */
     private $_helper;
-
     /**
      * @var AppPathInfoProcessor
      */
     private $_subject;
-
     /**
      * @param AppPathInfoProcessor $subject
      * @param HelperData $helper
      */
-    public function __construct(
-        AppPathInfoProcessor $subject,
-        HelperData $helper
-    ) {
+    public function __construct(App_Path_Info_Processor $subject, Helper_Data $helper)
+    {
         $this->_helper = $helper;
         $this->_subject = $subject;
     }
-
     /**
      * Process path info
      *
@@ -50,13 +43,12 @@ class PathInfoProcessor implements PathInfoProcessorInterface
      * @param string $pathInfo
      * @return string
      */
-    public function process(RequestInterface $request, $pathInfo)
+    public function process(Request_Interface $request, $path_info)
     {
-        $firstPart = $pathInfo === null ? '' :
-            explode('/', ltrim($pathInfo, '/'), 2)[0];
-        if ($firstPart != $this->_helper->getAreaFrontName()) {
-            return $this->_subject->process($request, $pathInfo);
+        $first_part = $path_info === null ? '' : explode('/', ltrim($path_info, '/'), 2)[0];
+        if ($first_part != $this->_helper->get_area_front_name()) {
+            return $this->_subject->process($request, $path_info);
         }
-        return $pathInfo;
+        return $path_info;
     }
 }

@@ -4,16 +4,15 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Framework\App\DeploymentConfig\Writer;
+declare (strict_types=1);
+namespace Magento\Framework\App\Deployment_Config\Writer;
 
 /**
  * Interface \Magento\Framework\App\DeploymentConfig\Writer\FormatterInterface
  *
  * @api
  */
-interface FormatterInterface
+interface Formatter_Interface
 {
     /**
      * Format deployment configuration

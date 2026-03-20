@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Api\Search_Criteria;
 
-namespace Magento\Framework\Api\SearchCriteria;
-
-use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Data\Collection\AbstractDb;
-
+use Magento\Framework\Api\Search_Criteria_Interface;
+use Magento\Framework\Data\Collection\Abstract_Db;
 /**
  * @api
  * @since 101.0.0
  */
-interface CollectionProcessorInterface
+interface Collection_Processor_Interface
 {
     /**
      * Apply Search Criteria to Collection
@@ -26,5 +24,5 @@ interface CollectionProcessorInterface
      * @return void
      * @since 101.0.0
      */
-    public function process(SearchCriteriaInterface $searchCriteria, AbstractDb $collection);
+    public function process(Search_Criteria_Interface $search_criteria, Abstract_Db $collection);
 }

@@ -4,34 +4,30 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Bundle_Graph_Ql\Model\Order\Shipment;
 
-namespace Magento\BundleGraphQl\Model\Order\Shipment;
-
-use Magento\Catalog\Model\Product\Type\AbstractType;
-use Magento\Sales\Api\Data\ShipmentInterface;
-use Magento\Sales\Api\Data\ShipmentItemInterface;
-use Magento\SalesGraphQl\Model\Shipment\Item\FormatterInterface;
-use Magento\SalesGraphQl\Model\Shipment\Item\ShipmentItemFormatter;
-
+use Magento\Catalog\Model\Product\Type\Abstract_Type;
+use Magento\Sales\Api\Data\Shipment_Interface;
+use Magento\Sales\Api\Data\Shipment_Item_Interface;
+use Magento\Sales_Graph_Ql\Model\Shipment\Item\Formatter_Interface;
+use Magento\Sales_Graph_Ql\Model\Shipment\Item\Shipment_Item_Formatter;
 /**
  * Format Bundle shipment items for GraphQl output
  */
-class BundleShipmentItemFormatter implements FormatterInterface
+class Bundle_Shipment_Item_Formatter implements Formatter_Interface
 {
     /**
      * @var ShipmentItemFormatter
      */
-    private $itemFormatter;
-
+    private $item_formatter;
     /**
      * @param ShipmentItemFormatter $itemFormatter
      */
-    public function __construct(ShipmentItemFormatter $itemFormatter)
+    public function __construct(Shipment_Item_Formatter $item_formatter)
     {
-        $this->itemFormatter = $itemFormatter;
+        $this->item_formatter = $item_formatter;
     }
-
     /**
      * Format bundle product shipment item
      *
@@ -39,14 +35,14 @@ class BundleShipmentItemFormatter implements FormatterInterface
      * @param ShipmentItemInterface $item
      * @return array|null
      */
-    public function formatShipmentItem(ShipmentInterface $shipment, ShipmentItemInterface $item): ?array
+    public function format_shipment_item(Shipment_Interface $shipment, Shipment_Item_Interface $item): ?array
     {
-        $orderItem = $item->getOrderItem();
-        $shippingType = $orderItem->getProductOptions()['shipment_type'] ?? null;
-        if ($shippingType == AbstractType::SHIPMENT_SEPARATELY && !$orderItem->getParentItemId()) {
+        $order_item = $item->get_order_item();
+        $shipping_type = $order_item->get_product_options()['shipment_type'] ?? null;
+        if ($shipping_type == Abstract_Type::SHIPMENT_SEPARATELY && !$order_item->get_parent_item_id()) {
             //When bundle items are shipped separately the children are treated as their own items
             return null;
         }
-        return $this->itemFormatter->formatShipmentItem($shipment, $item);
+        return $this->item_formatter->format_shipment_item($shipment, $item);
     }
 }

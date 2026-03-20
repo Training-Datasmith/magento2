@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Config element model
  */
-
 namespace Magento\Framework\App\Config;
 
 /**
@@ -29,30 +27,27 @@ class Element extends \Magento\Framework\Simplexml\Element
     public function is($var, $value = true)
     {
         $flag = $this->{$var};
-
         if ($value === true) {
-            $flag = strtolower((string)$flag);
+            $flag = strtolower((string) $flag);
             if (!empty($flag) && 'false' !== $flag && 'off' !== $flag) {
                 return true;
             } else {
                 return false;
             }
         }
-
-        return !empty($flag) && 0 === strcasecmp($value, (string)$flag);
+        return !empty($flag) && 0 === strcasecmp($value, (string) $flag);
     }
-
     /**
      * Enter description here...
      *
      * @return string
      */
-    public function getClassName()
+    public function get_class_name()
     {
         if ($this->class) {
-            $model = (string)$this->class;
+            $model = (string) $this->class;
         } elseif ($this->model) {
-            $model = (string)$this->model;
+            $model = (string) $this->model;
         } else {
             return false;
         }

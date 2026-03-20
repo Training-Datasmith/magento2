@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Response;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\App\Response;
  *
  * @api
  */
-interface FileInterface extends HttpInterface
+interface File_Interface extends Http_Interface
 {
     /**
      * Set path to the file being sent
@@ -21,5 +20,5 @@ interface FileInterface extends HttpInterface
      * @param string $path
      * @return void
      */
-    public function setFilePath($path);
+    public function set_file_path($path);
 }

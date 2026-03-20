@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Analytics\Model\Connector;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Analytics\Model\Connector;
  *
  * @api
  */
-interface CommandInterface
+interface Command_Interface
 {
     /**
      * Execute call to external service

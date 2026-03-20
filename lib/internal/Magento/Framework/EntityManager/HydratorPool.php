@@ -1,52 +1,45 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager;
 
-namespace Magento\Framework\EntityManager;
-
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Class HydratorPool
  */
-class HydratorPool
+class Hydrator_Pool
 {
     /**
      * @var HydratorInterface[]
      */
     private $hydrators;
-
     /**
      * @var ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @param ObjectManagerInterface $objectManager
      * @param string[] $hydrators
      */
-    public function __construct(
-        ObjectManagerInterface $objectManager,
-        $hydrators = []
-    ) {
-        $this->objectManager = $objectManager;
+    public function __construct(Object_Manager_Interface $object_manager, $hydrators = [])
+    {
+        $this->object_manager = $object_manager;
         $this->hydrators = $hydrators;
     }
-
     /**
      * @param string $entityType
      * @return HydratorInterface
      */
-    public function getHydrator($entityType)
+    public function get_hydrator($entity_type)
     {
-        if (isset($this->hydrators[$entityType])) {
-            return $this->objectManager->get($this->hydrators[$entityType]);
+        if (isset($this->hydrators[$entity_type])) {
+            return $this->object_manager->get($this->hydrators[$entity_type]);
         } else {
-            return $this->objectManager->get(HydratorInterface::class);
+            return $this->object_manager->get(Hydrator_Interface::class);
         }
     }
 }

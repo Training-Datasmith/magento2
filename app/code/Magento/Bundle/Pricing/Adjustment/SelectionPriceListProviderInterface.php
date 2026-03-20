@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Pricing\Adjustment;
 
 use Magento\Catalog\Model\Product;
-
 /**
  * Provide list of bundle selection prices
  * @api
  * @since 100.2.0
  */
-interface SelectionPriceListProviderInterface
+interface Selection_Price_List_Provider_Interface
 {
     /**
      * @param Product $bundleProduct
@@ -24,5 +22,5 @@ interface SelectionPriceListProviderInterface
      * @return \Magento\Bundle\Pricing\Price\BundleSelectionPrice[]
      * @since 100.2.0
      */
-    public function getPriceList(Product $bundleProduct, $searchMin, $useRegularPrice);
+    public function get_price_list(Product $bundle_product, $search_min, $use_regular_price);
 }

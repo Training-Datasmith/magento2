@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Form radio element
  */
-
 namespace Magento\Framework\Data\Form\Element;
 
-class Radio extends \Magento\Framework\Data\Form\Element\AbstractElement
+class Radio extends \Magento\Framework\Data\Form\Element\Abstract_Element
 {
     /**
      * @param \Magento\Framework\Data\Form\Element\Factory $factoryElement
@@ -20,14 +18,10 @@ class Radio extends \Magento\Framework\Data\Form\Element\AbstractElement
      * @param \Magento\Framework\Escaper $escaper
      * @param array $data
      */
-    public function __construct(
-        \Magento\Framework\Data\Form\Element\Factory $factoryElement,
-        \Magento\Framework\Data\Form\Element\CollectionFactory $factoryCollection,
-        \Magento\Framework\Escaper $escaper,
-        $data = []
-    ) {
-        parent::__construct($factoryElement, $factoryCollection, $escaper, $data);
-        $this->setType('radio');
-        $this->setExtType('radio');
+    public function __construct(\Magento\Framework\Data\Form\Element\Factory $factory_element, \Magento\Framework\Data\Form\Element\Collection_Factory $factory_collection, \Magento\Framework\Escaper $escaper, $data = [])
+    {
+        parent::__construct($factory_element, $factory_collection, $escaper, $data);
+        $this->set_type('radio');
+        $this->set_ext_type('radio');
     }
 }

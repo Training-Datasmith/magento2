@@ -1,24 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Model\Connector\Response_Handler;
 
-namespace Magento\Analytics\Model\Connector\ResponseHandler;
-
-use Magento\Analytics\Model\Connector\Http\ResponseHandlerInterface;
-
+use Magento\Analytics\Model\Connector\Http\Response_Handler_Interface;
 /**
  * Return positive answer that request was finished successfully.
  */
-class Update implements ResponseHandlerInterface
+class Update implements Response_Handler_Interface
 {
     /**
      * @inheritdoc
      */
-    public function handleResponse(array $responseBody): bool
+    public function handle_response(array $response_body): bool
     {
         return true;
     }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Sql;
 
 /**
@@ -15,6 +14,6 @@ namespace Magento\Framework\DB\Sql;
  * @api
  * @since 100.1.8
  */
-class ColumnValueExpression extends Expression
+class Column_Value_Expression extends Expression
 {
 }

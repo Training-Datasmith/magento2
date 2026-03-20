@@ -1,58 +1,50 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Console\Command;
 
 use Magento\Framework\App\Cache\Manager;
 use Magento\Framework\Console\Cli;
-use Magento\Framework\Event\ManagerInterface as EventManagerInterface;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-
+use Magento\Framework\Event\Manager_Interface as EventManagerInterface;
+use Symfony\Component\Console\Input\Input_Interface;
+use Symfony\Component\Console\Output\Output_Interface;
 /**
  * phpcs:disable Magento2.Classes.AbstractApi
  * @api
  * @since 100.0.2
  */
-abstract class AbstractCacheTypeManageCommand extends AbstractCacheManageCommand
+abstract class Abstract_Cache_Type_Manage_Command extends Abstract_Cache_Manage_Command
 {
     /**
      * @var \Magento\Framework\Event\ManagerInterface
      */
-    protected $eventManager;
-
+    protected $event_manager;
     /**
      * @param Manager $cacheManager
      * @param EventManagerInterface $eventManager
      */
-    public function __construct(
-        Manager $cacheManager,
-        EventManagerInterface $eventManager
-    ) {
-        $this->eventManager = $eventManager;
-        parent::__construct($cacheManager);
+    public function __construct(Manager $cache_manager, Event_Manager_Interface $event_manager)
+    {
+        $this->event_manager = $event_manager;
+        parent::__construct($cache_manager);
     }
-
     /**
      * Perform a cache management action on cache types
      *
      * @param array $cacheTypes
      * @return void
      */
-    abstract protected function performAction(array $cacheTypes);
-
+    abstract protected function perform_action(array $cache_types);
     /**
      * Get display message
      *
      * @return string
      */
-    abstract protected function getDisplayMessage();
-
+    abstract protected function get_display_message();
     /**
      * Perform cache management action
      *
@@ -60,13 +52,12 @@ abstract class AbstractCacheTypeManageCommand extends AbstractCacheManageCommand
      * @param OutputInterface $output
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(Input_Interface $input, Output_Interface $output): int
     {
-        $types = $this->getRequestedTypes($input);
-        $this->performAction($types);
-        $output->writeln($this->getDisplayMessage());
+        $types = $this->get_requested_types($input);
+        $this->perform_action($types);
+        $output->writeln($this->get_display_message());
         $output->writeln(join(PHP_EOL, $types));
-
         return Cli::RETURN_SUCCESS;
     }
 }

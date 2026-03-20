@@ -4,74 +4,58 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Pricing\Price;
 
-use Magento\Bundle\Pricing\Adjustment\BundleCalculatorInterface;
+use Magento\Bundle\Pricing\Adjustment\Bundle_Calculator_Interface;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Framework\Pricing\Amount\AmountInterface;
-use Magento\Framework\Pricing\SaleableInterface;
-
+use Magento\Framework\Object_Manager\Reset_After_Request_Interface;
+use Magento\Framework\Pricing\Amount\Amount_Interface;
+use Magento\Framework\Pricing\Saleable_Interface;
 /**
  * Bundle option price calculation model.
  */
-class BundleOptions implements ResetAfterRequestInterface
+class Bundle_Options implements Reset_After_Request_Interface
 {
     /**
      * @var BundleCalculatorInterface
      */
     private $calculator;
-
     /**
      * @var BundleSelectionFactory
      */
-    private $selectionFactory;
-
+    private $selection_factory;
     /**
      * @var AmountInterface[]
      */
-    private $optionSelectionAmountCache = [];
-
+    private $option_selection_amount_cache = [];
     /**
      * @param BundleCalculatorInterface $calculator
      * @param BundleSelectionFactory $bundleSelectionFactory
      */
-    public function __construct(
-        BundleCalculatorInterface $calculator,
-        BundleSelectionFactory $bundleSelectionFactory
-    ) {
+    public function __construct(Bundle_Calculator_Interface $calculator, Bundle_Selection_Factory $bundle_selection_factory)
+    {
         $this->calculator = $calculator;
-        $this->selectionFactory = $bundleSelectionFactory;
+        $this->selection_factory = $bundle_selection_factory;
     }
-
     /**
      * Get Options with attached Selections collection.
      *
      * @param SaleableInterface $bundleProduct
      * @return \Magento\Bundle\Model\ResourceModel\Option\Collection|array
      */
-    public function getOptions(SaleableInterface $bundleProduct)
+    public function get_options(Saleable_Interface $bundle_product)
     {
         /** @var \Magento\Bundle\Model\Product\Type $typeInstance */
-        $typeInstance = $bundleProduct->getTypeInstance();
-        $typeInstance->setStoreFilter($bundleProduct->getStoreId(), $bundleProduct);
-
+        $type_instance = $bundle_product->get_type_instance();
+        $type_instance->set_store_filter($bundle_product->get_store_id(), $bundle_product);
         /** @var \Magento\Bundle\Model\ResourceModel\Option\Collection $optionCollection */
-        $optionCollection = $typeInstance->getOptionsCollection($bundleProduct);
-
+        $option_collection = $type_instance->get_options_collection($bundle_product);
         /** @var \Magento\Bundle\Model\ResourceModel\Selection\Collection $selectionCollection */
-        $selectionCollection = $typeInstance->getSelectionsCollection(
-            $typeInstance->getOptionsIds($bundleProduct),
-            $bundleProduct
-        );
-
-        $priceOptions = $optionCollection->appendSelections($selectionCollection, true, false);
-
-        return $priceOptions;
+        $selection_collection = $type_instance->get_selections_collection($type_instance->get_options_ids($bundle_product), $bundle_product);
+        $price_options = $option_collection->append_selections($selection_collection, true, false);
+        return $price_options;
     }
-
     /**
      * Calculate maximal or minimal options value.
      *
@@ -80,27 +64,23 @@ class BundleOptions implements ResetAfterRequestInterface
      *
      * @return float
      */
-    public function calculateOptions(
-        SaleableInterface $bundleProduct,
-        bool $searchMin = true
-    ): float {
-        $priceList = [];
+    public function calculate_options(Saleable_Interface $bundle_product, bool $search_min = true): float
+    {
+        $price_list = [];
         /* @var \Magento\Bundle\Model\Option $option */
-        foreach ($this->getOptions($bundleProduct) as $option) {
-            if ($searchMin && !$option->getRequired()) {
+        foreach ($this->get_options($bundle_product) as $option) {
+            if ($search_min && !$option->get_required()) {
                 continue;
             }
             /** @var \Magento\Bundle\Pricing\Price\BundleSelectionPrice $selectionPriceList */
-            $selectionPriceList = $this->calculator->createSelectionPriceList($option, $bundleProduct);
-            $selectionPriceList = $this->calculator->processOptions($option, $selectionPriceList, $searchMin);
+            $selection_price_list = $this->calculator->create_selection_price_list($option, $bundle_product);
+            $selection_price_list = $this->calculator->process_options($option, $selection_price_list, $search_min);
             // phpcs:ignore Magento2.Performance.ForeachArrayMerge
-            $priceList = array_merge($priceList, $selectionPriceList);
+            $price_list = array_merge($price_list, $selection_price_list);
         }
-        $amount = $this->calculator->calculateBundleAmount(0., $bundleProduct, $priceList);
-
-        return $amount->getValue();
+        $amount = $this->calculator->calculate_bundle_amount(0.0, $bundle_product, $price_list);
+        return $amount->get_value();
     }
-
     /**
      * Get selection amount.
      *
@@ -110,40 +90,20 @@ class BundleOptions implements ResetAfterRequestInterface
      *
      * @return AmountInterface
      */
-    public function getOptionSelectionAmount(
-        Product $bundleProduct,
-        $selection,
-        bool $useRegularPrice = false
-    ): AmountInterface {
-        $cacheKey = implode(
-            '_',
-            [
-                $bundleProduct->getId(),
-                $selection->getOptionId(),
-                $selection->getSelectionId(),
-                $useRegularPrice ? 1 : 0,
-            ]
-        );
-
-        if (!isset($this->optionSelectionAmountCache[$cacheKey])) {
-            $selectionPrice = $this->selectionFactory
-                ->create(
-                    $bundleProduct,
-                    $selection,
-                    $selection->getSelectionQty(),
-                    ['useRegularPrice' => $useRegularPrice]
-                );
-            $this->optionSelectionAmountCache[$cacheKey] =  $selectionPrice->getAmount();
+    public function get_option_selection_amount(Product $bundle_product, $selection, bool $use_regular_price = false): Amount_Interface
+    {
+        $cache_key = implode('_', [$bundle_product->get_id(), $selection->get_option_id(), $selection->get_selection_id(), $use_regular_price ? 1 : 0]);
+        if (!isset($this->option_selection_amount_cache[$cache_key])) {
+            $selection_price = $this->selection_factory->create($bundle_product, $selection, $selection->get_selection_qty(), ['useRegularPrice' => $use_regular_price]);
+            $this->option_selection_amount_cache[$cache_key] = $selection_price->get_amount();
         }
-
-        return $this->optionSelectionAmountCache[$cacheKey];
+        return $this->option_selection_amount_cache[$cache_key];
     }
-
     /**
      * @inheritDoc
      */
-    public function _resetState(): void
+    public function _reset_state(): void
     {
-        $this->optionSelectionAmountCache = [];
+        $this->option_selection_amount_cache = [];
     }
 }

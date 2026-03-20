@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Filesystem\Driver;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Exception\FileSystemException;
-use Magento\Framework\Filesystem\DriverInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Exception\File_System_Exception;
+use Magento\Framework\Filesystem\Driver_Interface;
 /**
  * Origin filesystem driver. Filesystem driver that uses the local filesystem.
  *
@@ -20,35 +18,30 @@ use Magento\Framework\Filesystem\DriverInterface;
  * @deprecated moved most of the functionality back to File
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
-class StatefulFile implements DriverInterface
+class Stateful_File implements Driver_Interface
 {
     /**
      * @var string
      */
     protected $scheme = '';
-
     /**
      * @var File
      */
-    private $driverFile;
-
+    private $driver_file;
     /**
      * StatefulFile constructor.
      * @param File $driverFile
      */
-    public function __construct(?File $driverFile = null)
+    public function __construct(?File $driver_file = null)
     {
-        $this->driverFile = $driverFile ?? ObjectManager::getInstance()->create(
-            File::class,
-            ['stateful' => true]
-        );
+        $this->driver_file = $driver_file ?? Object_Manager::get_instance()->create(File::class, ['stateful' => true]);
     }
     /**
      * Returns last warning message string
      *
      * @return string
      */
-    protected function getWarningMessage()
+    protected function get_warning_message()
     {
         $warning = error_get_last();
         if ($warning && $warning['type'] == E_WARNING) {
@@ -56,7 +49,6 @@ class StatefulFile implements DriverInterface
         }
         return null;
     }
-
     /**
      * Is file or directory exist in file system
      *
@@ -64,11 +56,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function isExists($path)
+    public function is_exists($path)
     {
-        return $this->driverFile->isExists($path);
+        return $this->driver_file->is_exists($path);
     }
-
     /**
      * Gathers the statistics of the given path
      *
@@ -78,9 +69,8 @@ class StatefulFile implements DriverInterface
      */
     public function stat($path)
     {
-        return $this->driverFile->stat($path);
+        return $this->driver_file->stat($path);
     }
-
     /**
      * Check permissions for reading file or directory
      *
@@ -88,11 +78,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function isReadable($path)
+    public function is_readable($path)
     {
-        return $this->driverFile->isReadable($path);
+        return $this->driver_file->is_readable($path);
     }
-
     /**
      * Tells whether the filename is a regular file
      *
@@ -100,11 +89,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function isFile($path)
+    public function is_file($path)
     {
-        return $this->driverFile->isFile($path);
+        return $this->driver_file->is_file($path);
     }
-
     /**
      * Tells whether the filename is a regular directory
      *
@@ -112,11 +100,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function isDirectory($path)
+    public function is_directory($path)
     {
-        return $this->driverFile->isDirectory($path);
+        return $this->driver_file->is_directory($path);
     }
-
     /**
      * Retrieve file contents from given path
      *
@@ -126,11 +113,10 @@ class StatefulFile implements DriverInterface
      * @return string
      * @throws FileSystemException
      */
-    public function fileGetContents($path, $flag = null, $context = null)
+    public function file_get_contents($path, $flag = null, $context = null)
     {
-        return $this->driverFile->fileGetContents($path, $flag, $context);
+        return $this->driver_file->file_get_contents($path, $flag, $context);
     }
-
     /**
      * Check if given path is writable
      *
@@ -138,22 +124,20 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function isWritable($path)
+    public function is_writable($path)
     {
-        return $this->driverFile->isWritable($path);
+        return $this->driver_file->is_writable($path);
     }
-
     /**
      * Returns parent directory's path
      *
      * @param string $path
      * @return string
      */
-    public function getParentDirectory($path)
+    public function get_parent_directory($path)
     {
-        return $this->driverFile->getParentDirectory($path);
+        return $this->driver_file->get_parent_directory($path);
     }
-
     /**
      * Create directory
      *
@@ -162,11 +146,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function createDirectory($path, $permissions = 0777)
+    public function create_directory($path, $permissions = 0777)
     {
-        return $this->driverFile->createDirectory($path, $permissions);
+        return $this->driver_file->create_directory($path, $permissions);
     }
-
     /**
      * Read directory
      *
@@ -174,11 +157,10 @@ class StatefulFile implements DriverInterface
      * @return string[]
      * @throws FileSystemException
      */
-    public function readDirectory($path)
+    public function read_directory($path)
     {
-        return $this->driverFile->readDirectory($path);
+        return $this->driver_file->read_directory($path);
     }
-
     /**
      * Search paths by given regex
      *
@@ -189,9 +171,8 @@ class StatefulFile implements DriverInterface
      */
     public function search($pattern, $path)
     {
-        return $this->driverFile->search($pattern, $path);
+        return $this->driver_file->search($pattern, $path);
     }
-
     /**
      * Renames a file or directory
      *
@@ -201,11 +182,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function rename($oldPath, $newPath, ?DriverInterface $targetDriver = null)
+    public function rename($old_path, $new_path, ?Driver_Interface $target_driver = null)
     {
-        return $this->driverFile->rename($oldPath, $newPath, $targetDriver);
+        return $this->driver_file->rename($old_path, $new_path, $target_driver);
     }
-
     /**
      * Copy source into destination
      *
@@ -215,11 +195,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function copy($source, $destination, ?DriverInterface $targetDriver = null)
+    public function copy($source, $destination, ?Driver_Interface $target_driver = null)
     {
-        return $this->driverFile->copy($source, $destination, $targetDriver);
+        return $this->driver_file->copy($source, $destination, $target_driver);
     }
-
     /**
      * Create symlink on source and place it into destination
      *
@@ -229,11 +208,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function symlink($source, $destination, ?DriverInterface $targetDriver = null)
+    public function symlink($source, $destination, ?Driver_Interface $target_driver = null)
     {
-        return $this->driverFile->symlink($source, $destination, $targetDriver);
+        return $this->driver_file->symlink($source, $destination, $target_driver);
     }
-
     /**
      * Delete file
      *
@@ -241,11 +219,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function deleteFile($path)
+    public function delete_file($path)
     {
-        return $this->driverFile->deleteFile($path);
+        return $this->driver_file->delete_file($path);
     }
-
     /**
      * Recursive delete directory
      *
@@ -253,11 +230,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function deleteDirectory($path)
+    public function delete_directory($path)
     {
-        return $this->driverFile->deleteDirectory($path);
+        return $this->driver_file->delete_directory($path);
     }
-
     /**
      * Change permissions of given path
      *
@@ -266,11 +242,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function changePermissions($path, $permissions)
+    public function change_permissions($path, $permissions)
     {
-        return $this->driverFile->changePermissions($path, $permissions);
+        return $this->driver_file->change_permissions($path, $permissions);
     }
-
     /**
      * Recursively change permissions of given path
      *
@@ -280,11 +255,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function changePermissionsRecursively($path, $dirPermissions, $filePermissions)
+    public function change_permissions_recursively($path, $dir_permissions, $file_permissions)
     {
-        return $this->driverFile->changePermissionsRecursively($path, $dirPermissions, $filePermissions);
+        return $this->driver_file->change_permissions_recursively($path, $dir_permissions, $file_permissions);
     }
-
     /**
      * Sets access and modification time of file.
      *
@@ -293,11 +267,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function touch($path, $modificationTime = null)
+    public function touch($path, $modification_time = null)
     {
-        return $this->driverFile->touch($path, $modificationTime);
+        return $this->driver_file->touch($path, $modification_time);
     }
-
     /**
      * Write contents to file in given path
      *
@@ -307,11 +280,10 @@ class StatefulFile implements DriverInterface
      * @return int The number of bytes that were written.
      * @throws FileSystemException
      */
-    public function filePutContents($path, $content, $mode = null)
+    public function file_put_contents($path, $content, $mode = null)
     {
-        return $this->driverFile->filePutContents($path, $content, $mode);
+        return $this->driver_file->file_put_contents($path, $content, $mode);
     }
-
     /**
      * Open file
      *
@@ -320,11 +292,10 @@ class StatefulFile implements DriverInterface
      * @return resource file
      * @throws FileSystemException
      */
-    public function fileOpen($path, $mode)
+    public function file_open($path, $mode)
     {
-        return $this->driverFile->fileOpen($path, $mode);
+        return $this->driver_file->file_open($path, $mode);
     }
-
     /**
      * Reads the line content from file pointer (with specified number of bytes from the current position).
      *
@@ -334,11 +305,10 @@ class StatefulFile implements DriverInterface
      * @return string
      * @throws FileSystemException
      */
-    public function fileReadLine($resource, $length, $ending = null)
+    public function file_read_line($resource, $length, $ending = null)
     {
-        return $this->driverFile->fileReadLine($resource, $length, $ending);
+        return $this->driver_file->file_read_line($resource, $length, $ending);
     }
-
     /**
      * Reads the specified number of bytes from the current position.
      *
@@ -347,11 +317,10 @@ class StatefulFile implements DriverInterface
      * @return string
      * @throws FileSystemException
      */
-    public function fileRead($resource, $length)
+    public function file_read($resource, $length)
     {
-        return $this->driverFile->fileRead($resource, $length);
+        return $this->driver_file->file_read($resource, $length);
     }
-
     /**
      * Reads one CSV row from the file
      *
@@ -363,11 +332,10 @@ class StatefulFile implements DriverInterface
      * @return array|bool|null
      * @throws FileSystemException
      */
-    public function fileGetCsv($resource, $length = 0, $delimiter = ',', $enclosure = '"', $escape = "\0")
+    public function file_get_csv($resource, $length = 0, $delimiter = ',', $enclosure = '"', $escape = "\x00")
     {
-        return $this->driverFile->fileGetCsv($resource, $length, $delimiter, $enclosure, $escape);
+        return $this->driver_file->file_get_csv($resource, $length, $delimiter, $enclosure, $escape);
     }
-
     /**
      * Returns position of read/write pointer
      *
@@ -375,11 +343,10 @@ class StatefulFile implements DriverInterface
      * @return int
      * @throws FileSystemException
      */
-    public function fileTell($resource)
+    public function file_tell($resource)
     {
-        return $this->driverFile->fileTell($resource);
+        return $this->driver_file->file_tell($resource);
     }
-
     /**
      * Seeks to the specified offset
      *
@@ -389,22 +356,20 @@ class StatefulFile implements DriverInterface
      * @return int
      * @throws FileSystemException
      */
-    public function fileSeek($resource, $offset, $whence = SEEK_SET)
+    public function file_seek($resource, $offset, $whence = SEEK_SET)
     {
-        return $this->driverFile->fileSeek($resource, $offset, $whence);
+        return $this->driver_file->file_seek($resource, $offset, $whence);
     }
-
     /**
      * Returns true if pointer at the end of file or in case of exception
      *
      * @param resource $resource
      * @return bool
      */
-    public function endOfFile($resource)
+    public function end_of_file($resource)
     {
-        return $this->driverFile->endOfFile($resource);
+        return $this->driver_file->end_of_file($resource);
     }
-
     /**
      * Close file
      *
@@ -412,11 +377,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function fileClose($resource)
+    public function file_close($resource)
     {
-        return $this->driverFile->fileClose($resource);
+        return $this->driver_file->file_close($resource);
     }
-
     /**
      * Writes data to file
      *
@@ -425,11 +389,10 @@ class StatefulFile implements DriverInterface
      * @return int
      * @throws FileSystemException
      */
-    public function fileWrite($resource, $data)
+    public function file_write($resource, $data)
     {
-        return $this->driverFile->fileWrite($resource, $data);
+        return $this->driver_file->file_write($resource, $data);
     }
-
     /**
      * Writes one CSV row to the file.
      *
@@ -440,11 +403,10 @@ class StatefulFile implements DriverInterface
      * @return int
      * @throws FileSystemException
      */
-    public function filePutCsv($resource, array $data, $delimiter = ',', $enclosure = '"')
+    public function file_put_csv($resource, array $data, $delimiter = ',', $enclosure = '"')
     {
-        return $this->driverFile->filePutCsv($resource, $data, $delimiter, $enclosure);
+        return $this->driver_file->file_put_csv($resource, $data, $delimiter, $enclosure);
     }
-
     /**
      * Flushes the output
      *
@@ -452,11 +414,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function fileFlush($resource)
+    public function file_flush($resource)
     {
-        return $this->driverFile->fileFlush($resource);
+        return $this->driver_file->file_flush($resource);
     }
-
     /**
      * Lock file in selected mode
      *
@@ -465,11 +426,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function fileLock($resource, $lockMode = LOCK_EX)
+    public function file_lock($resource, $lock_mode = LOCK_EX)
     {
-        return $this->driverFile->fileLock($resource, $lockMode);
+        return $this->driver_file->file_lock($resource, $lock_mode);
     }
-
     /**
      * Unlock file
      *
@@ -477,11 +437,10 @@ class StatefulFile implements DriverInterface
      * @return bool
      * @throws FileSystemException
      */
-    public function fileUnlock($resource)
+    public function file_unlock($resource)
     {
-        return $this->driverFile->fileUnlock($resource);
+        return $this->driver_file->file_unlock($resource);
     }
-
     /**
      * Returns an absolute path for the given one.
      *
@@ -490,11 +449,10 @@ class StatefulFile implements DriverInterface
      * @param string|null $scheme
      * @return string
      */
-    public function getAbsolutePath($basePath, $path, $scheme = null)
+    public function get_absolute_path($base_path, $path, $scheme = null)
     {
-        return $this->driverFile->getAbsolutePath($basePath, $path, $scheme);
+        return $this->driver_file->get_absolute_path($base_path, $path, $scheme);
     }
-
     /**
      * Retrieves relative path
      *
@@ -502,11 +460,10 @@ class StatefulFile implements DriverInterface
      * @param string $path
      * @return string
      */
-    public function getRelativePath($basePath, $path = null)
+    public function get_relative_path($base_path, $path = null)
     {
-        return $this->driverFile->getRelativePath($basePath, $path);
+        return $this->driver_file->get_relative_path($base_path, $path);
     }
-
     /**
      * Fixes path separator.
      *
@@ -515,22 +472,20 @@ class StatefulFile implements DriverInterface
      * @param string $path
      * @return string
      */
-    protected function fixSeparator($path)
+    protected function fix_separator($path)
     {
         return $path !== null ? str_replace('\\', '/', $path) : '';
     }
-
     /**
      * Return path with scheme
      *
      * @param null|string $scheme
      * @return string
      */
-    protected function getScheme($scheme = null)
+    protected function get_scheme($scheme = null)
     {
         return $scheme ? $scheme . '://' : '';
     }
-
     /**
      * Read directory recursively
      *
@@ -538,11 +493,10 @@ class StatefulFile implements DriverInterface
      * @return string[]
      * @throws FileSystemException
      */
-    public function readDirectoryRecursively($path = null)
+    public function read_directory_recursively($path = null)
     {
-        return $this->driverFile->readDirectoryRecursively($path);
+        return $this->driver_file->read_directory_recursively($path);
     }
-
     /**
      * Get real path
      *
@@ -550,19 +504,18 @@ class StatefulFile implements DriverInterface
      *
      * @return string|bool
      */
-    public function getRealPath($path)
+    public function get_real_path($path)
     {
-        return $this->driverFile->getRealPath($path);
+        return $this->driver_file->get_real_path($path);
     }
-
     /**
      * Return correct path for link
      *
      * @param string $path
      * @return mixed
      */
-    public function getRealPathSafety($path)
+    public function get_real_path_safety($path)
     {
-        return $this->driverFile->getRealPathSafety($path);
+        return $this->driver_file->get_real_path_safety($path);
     }
 }

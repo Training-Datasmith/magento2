@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml\DB;
 
-namespace Magento\Analytics\ReportXml\DB;
-
-use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\App\Resource_Connection;
 use Magento\Framework\DB\Select;
-
 /**
  * Responsible for Select object creation, works as a builder. Returns Select as result;
  *
@@ -18,184 +16,159 @@ use Magento\Framework\DB\Select;
  *
  * @api
  */
-class SelectBuilder
+class Select_Builder
 {
     /**
      * @var string
      */
-    private $connectionName;
-
+    private $connection_name;
     /**
      * @var array
      */
     private $from;
-
     /**
      * @var array
      */
     private $group = [];
-
     /**
      * @var array
      */
     private $columns = [];
-
     /**
      * @var array
      */
     private $filters = [];
-
     /**
      * @var array
      */
     private $joins = [];
-
     /**
      * @var array
      */
     private $params = [];
-
     /**
      * @var array
      */
     private $having = [];
-
     /**
      * SelectBuilder constructor.
      */
-    public function __construct(private readonly ResourceConnection $resourceConnection)
+    public function __construct(private readonly Resource_Connection $resource_connection)
     {
     }
-
     /**
      * Get join condition
      *
      * @return array
      */
-    public function getJoins()
+    public function get_joins()
     {
         return $this->joins;
     }
-
     /**
      * Set joins conditions
      *
      * @param array $joins
      * @return $this
      */
-    public function setJoins($joins): static
+    public function set_joins($joins): static
     {
         $this->joins = $joins;
-
         return $this;
     }
-
     /**
      * Get connection name
      *
      * @return string
      */
-    public function getConnectionName()
+    public function get_connection_name()
     {
-        return $this->connectionName;
+        return $this->connection_name;
     }
-
     /**
      * Set connection name
      *
      * @param string $connectionName
      * @return $this
      */
-    public function setConnectionName($connectionName): static
+    public function set_connection_name($connection_name): static
     {
-        $this->connectionName = $connectionName;
-
+        $this->connection_name = $connection_name;
         return $this;
     }
-
     /**
      * Get columns
      *
      * @return array
      */
-    public function getColumns()
+    public function get_columns()
     {
         return $this->columns;
     }
-
     /**
      * Set columns
      *
      * @param array $columns
      * @return $this
      */
-    public function setColumns($columns): static
+    public function set_columns($columns): static
     {
         $this->columns = $columns;
-
         return $this;
     }
-
     /**
      * Get filters
      *
      * @return array
      */
-    public function getFilters()
+    public function get_filters()
     {
         return $this->filters;
     }
-
     /**
      * Set filters
      *
      * @param array $filters
      * @return $this
      */
-    public function setFilters($filters): static
+    public function set_filters($filters): static
     {
         $this->filters = $filters;
-
         return $this;
     }
-
     /**
      * Get from condition
      *
      * @return array
      */
-    public function getFrom()
+    public function get_from()
     {
         return $this->from;
     }
-
     /**
      * Set from condition
      *
      * @param array $from
      * @return $this
      */
-    public function setFrom($from): static
+    public function set_from($from): static
     {
         $this->from = $from;
-
         return $this;
     }
-
     /**
      * Process JOIN conditions
      */
-    private function processJoin(Select $select, array $joinConfig): Select
+    private function process_join(Select $select, array $join_config): Select
     {
-        match ($joinConfig['link-type']) {
-            'left' => $select->joinLeft($joinConfig['table'], $joinConfig['condition'], []),
-            'inner' => $select->joinInner($joinConfig['table'], $joinConfig['condition'], []),
-            'right' => $select->joinRight($joinConfig['table'], $joinConfig['condition'], []),
+        match ($join_config['link-type']) {
+            'left' => $select->join_left($join_config['table'], $join_config['condition'], []),
+            'inner' => $select->join_inner($join_config['table'], $join_config['condition'], []),
+            'right' => $select->join_right($join_config['table'], $join_config['condition'], []),
             default => $select,
         };
         return $select;
     }
-
     /**
      * Creates Select object
      *
@@ -203,88 +176,79 @@ class SelectBuilder
      */
     public function create()
     {
-        $connection = $this->resourceConnection->getConnection($this->getConnectionName());
+        $connection = $this->resource_connection->get_connection($this->get_connection_name());
         $select = $connection->select();
-        $select->from($this->getFrom(), []);
-        $select->columns($this->getColumns());
-        foreach ($this->getFilters() as $filter) {
+        $select->from($this->get_from(), []);
+        $select->columns($this->get_columns());
+        foreach ($this->get_filters() as $filter) {
             $select->where($filter);
         }
-        foreach ($this->getJoins() as $joinConfig) {
-            $select = $this->processJoin($select, $joinConfig);
+        foreach ($this->get_joins() as $join_config) {
+            $select = $this->process_join($select, $join_config);
         }
-        if (!empty($this->getGroup())) {
-            $select->group(implode(', ', $this->getGroup()));
+        if (!empty($this->get_group())) {
+            $select->group(implode(', ', $this->get_group()));
         }
         return $select;
     }
-
     /**
      * Returns group
      *
      * @return array
      */
-    public function getGroup()
+    public function get_group()
     {
         return $this->group;
     }
-
     /**
      * Set group
      *
      * @param array $group
      * @return $this
      */
-    public function setGroup($group): static
+    public function set_group($group): static
     {
         $this->group = $group;
-
         return $this;
     }
-
     /**
      * Get parameters
      *
      * @return array
      */
-    public function getParams()
+    public function get_params()
     {
         return $this->params;
     }
-
     /**
      * Set parameters
      *
      * @param array $params
      * @return $this
      */
-    public function setParams($params): static
+    public function set_params($params): static
     {
         $this->params = $params;
-
         return $this;
     }
-
     /**
      * Get having condition
      *
      * @return array
      */
-    public function getHaving()
+    public function get_having()
     {
         return $this->having;
     }
-
     /**
      * Set having condition
      *
      * @param array $having
      * @return $this
      */
-    public function setHaving($having): static
+    public function set_having($having): static
     {
         $this->having = $having;
-
         return $this;
     }
 }

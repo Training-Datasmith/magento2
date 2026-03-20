@@ -1,61 +1,52 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\Deployment_Config;
 
-namespace Magento\Framework\App\DeploymentConfig;
-
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Config\File\ConfigFilePool;
-use Magento\Framework\Exception\FileSystemException;
-use Magento\Framework\Filesystem\DriverPool;
-
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\Config\File\Config_File_Pool;
+use Magento\Framework\Exception\File_System_Exception;
+use Magento\Framework\Filesystem\Driver_Pool;
 /**
  * Allows to read configurations from different config files.
  *
  * @see Reader The reader for merged configurations
  */
-class FileReader
+class File_Reader
 {
     /**
      * The list of directories.
      *
      * @var DirectoryList
      */
-    private $dirList;
-
+    private $dir_list;
     /**
      * The pool of config files.
      *
      * @var ConfigFilePool
      */
-    private $configFilePool;
-
+    private $config_file_pool;
     /**
      * The pool of stream drivers.
      *
      * @var DriverPool
      */
-    private $driverPool;
-
+    private $driver_pool;
     /**
      * @param DirectoryList $dirList The list of directories
      * @param DriverPool $driverPool The pool of config files
      * @param ConfigFilePool $configFilePool The pool of stream drivers
      */
-    public function __construct(
-        DirectoryList $dirList,
-        DriverPool $driverPool,
-        ConfigFilePool $configFilePool
-    ) {
-        $this->dirList = $dirList;
-        $this->configFilePool = $configFilePool;
-        $this->driverPool = $driverPool;
+    public function __construct(Directory_List $dir_list, Driver_Pool $driver_pool, Config_File_Pool $config_file_pool)
+    {
+        $this->dir_list = $dir_list;
+        $this->config_file_pool = $config_file_pool;
+        $this->driver_pool = $driver_pool;
     }
-
     /**
      * Loads the configuration file.
      *
@@ -64,16 +55,14 @@ class FileReader
      * @throws FileSystemException If file can not be read
      * @throws \Exception If file key is not correct
      */
-    public function load($fileKey)
+    public function load($file_key)
     {
-        $path = $this->dirList->getPath(DirectoryList::CONFIG);
-        $fileDriver = $this->driverPool->getDriver(DriverPool::FILE);
-        $filePath = $path . '/' . $this->configFilePool->getPath($fileKey);
-
-        if ($fileDriver->isExists($filePath)) {
-            return include $filePath;
+        $path = $this->dir_list->get_path(Directory_List::CONFIG);
+        $file_driver = $this->driver_pool->get_driver(Driver_Pool::FILE);
+        $file_path = $path . '/' . $this->config_file_pool->get_path($file_key);
+        if ($file_driver->is_exists($file_path)) {
+            return include $file_path;
         }
-
         return [];
     }
 }

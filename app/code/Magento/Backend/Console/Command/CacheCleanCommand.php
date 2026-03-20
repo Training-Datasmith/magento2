@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Console\Command;
 
 /**
@@ -14,37 +13,34 @@ namespace Magento\Backend\Console\Command;
  * @api
  * @since 100.0.2
  */
-class CacheCleanCommand extends AbstractCacheTypeManageCommand
+class Cache_Clean_Command extends Abstract_Cache_Type_Manage_Command
 {
     /**
      * @inheritdoc
      */
     protected function configure()
     {
-        $this->setName('cache:clean');
-        $this->setDescription('Cleans cache type(s)');
+        $this->set_name('cache:clean');
+        $this->set_description('Cleans cache type(s)');
         parent::configure();
     }
-
     /**
      * Cleans cache types
      *
      * @param array $cacheTypes
      * @return void
      */
-    protected function performAction(array $cacheTypes)
+    protected function perform_action(array $cache_types)
     {
-        if ($cacheTypes === [] || in_array('full_page', $cacheTypes)) {
-            $this->eventManager->dispatch('adminhtml_cache_flush_system');
+        if ($cache_types === [] || in_array('full_page', $cache_types)) {
+            $this->event_manager->dispatch('adminhtml_cache_flush_system');
         }
-
-        $this->cacheManager->clean($cacheTypes);
+        $this->cache_manager->clean($cache_types);
     }
-
     /**
      * @inheritdoc
      */
-    protected function getDisplayMessage()
+    protected function get_display_message()
     {
         return 'Cleaned cache types:';
     }

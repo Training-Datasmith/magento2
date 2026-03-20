@@ -1,38 +1,33 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\Communication\Config\Reader\XmlReader;
+namespace Magento\Framework\Communication\Config\Reader\Xml_Reader;
 
 use Magento\Framework\Communication\Config\Validator as ConfigValidator;
-use Magento\Framework\Reflection\MethodsMap;
-use Magento\Framework\Reflection\TypeProcessor;
-use Magento\Framework\Stdlib\BooleanUtils;
-
+use Magento\Framework\Reflection\Methods_Map;
+use Magento\Framework\Reflection\Type_Processor;
+use Magento\Framework\Stdlib\Boolean_Utils;
 /**
  * Communication configuration validator.
  */
-class Validator extends ConfigValidator
+class Validator extends Config_Validator
 {
     /**
      * @var TypeProcessor
      */
-    private $typeProcessor;
-
+    private $type_processor;
     /**
      * @var MethodsMap
      */
-    private $methodsMap;
-
+    private $methods_map;
     /**
      * @var BooleanUtils
      */
-    private $booleanUtils;
-
+    private $boolean_utils;
     /**
      * Initialize dependencies
      *
@@ -40,17 +35,13 @@ class Validator extends ConfigValidator
      * @param MethodsMap $methodsMap
      * @param BooleanUtils $booleanUtils
      */
-    public function __construct(
-        TypeProcessor $typeProcessor,
-        MethodsMap $methodsMap,
-        BooleanUtils $booleanUtils
-    ) {
-        $this->booleanUtils = $booleanUtils;
-        $this->typeProcessor = $typeProcessor;
-        $this->methodsMap = $methodsMap;
-        parent::__construct($typeProcessor, $methodsMap);
+    public function __construct(Type_Processor $type_processor, Methods_Map $methods_map, Boolean_Utils $boolean_utils)
+    {
+        $this->boolean_utils = $boolean_utils;
+        $this->type_processor = $type_processor;
+        $this->methods_map = $methods_map;
+        parent::__construct($type_processor, $methods_map);
     }
-
     /**
      * Validate service method
      *
@@ -60,21 +51,14 @@ class Validator extends ConfigValidator
      * @param string $methodName
      * @return void
      */
-    public function validateServiceMethod($serviceMethod, $topicName, $className, $methodName)
+    public function validate_service_method($service_method, $topic_name, $class_name, $method_name)
     {
         try {
-            $this->methodsMap->getMethodParams($className, $methodName);
+            $this->methods_map->get_method_params($class_name, $method_name);
         } catch (\Exception $e) {
-            throw new \LogicException(
-                sprintf(
-                    'Service method specified in the definition of topic "%s" is not available. Given "%s"',
-                    $topicName,
-                    $serviceMethod
-                )
-            );
+            throw new \LogicException(sprintf('Service method specified in the definition of topic "%s" is not available. Given "%s"', $topic_name, $service_method));
         }
     }
-
     /**
      * Validate response request
      *
@@ -85,34 +69,16 @@ class Validator extends ConfigValidator
      * @param array $handlers
      * @return void
      */
-    public function validateResponseRequest(
-        $requestResponseSchema,
-        $requestSchema,
-        $topicName,
-        $responseSchema,
-        $handlers
-    ) {
+    public function validate_response_request($request_response_schema, $request_schema, $topic_name, $response_schema, $handlers)
+    {
         /** Validate schema attributes */
-        if (!$requestResponseSchema && !$requestSchema) {
-            throw new \LogicException(
-                sprintf(
-                    'Either "request" or "schema" attribute must be specified for topic "%s"',
-                    $topicName
-                )
-            );
+        if (!$request_response_schema && !$request_schema) {
+            throw new \LogicException(sprintf('Either "request" or "schema" attribute must be specified for topic "%s"', $topic_name));
         }
-        if (($requestResponseSchema || $responseSchema) && (count($handlers) >= 2)) {
-            throw new \LogicException(
-                sprintf(
-                    'Topic "%s" is configured for synchronous requests, that is why it must have exactly one '
-                    . 'response handler declared. The following handlers declared: %s',
-                    $topicName,
-                    implode(', ', array_keys($handlers))
-                )
-            );
+        if (($request_response_schema || $response_schema) && count($handlers) >= 2) {
+            throw new \LogicException(sprintf('Topic "%s" is configured for synchronous requests, that is why it must have exactly one ' . 'response handler declared. The following handlers declared: %s', $topic_name, implode(', ', array_keys($handlers))));
         }
     }
-
     /**
      * Validate declaration of the topic
      *
@@ -122,19 +88,10 @@ class Validator extends ConfigValidator
      * @param string $responseSchema
      * @return void
      */
-    public function validateDeclarationOfTopic(
-        $requestResponseSchema,
-        $topicName,
-        $requestSchema,
-        $responseSchema
-    ) {
-        if (!$requestResponseSchema && !($requestSchema && $responseSchema) && !$requestSchema) {
-            throw new \LogicException(
-                sprintf(
-                    'Declaration of topic "%s" is invalid. Specify at least "request" or "schema".',
-                    $topicName
-                )
-            );
+    public function validate_declaration_of_topic($request_response_schema, $topic_name, $request_schema, $response_schema)
+    {
+        if (!$request_response_schema && !($request_schema && $response_schema) && !$request_schema) {
+            throw new \LogicException(sprintf('Declaration of topic "%s" is invalid. Specify at least "request" or "schema".', $topic_name));
         }
     }
 }

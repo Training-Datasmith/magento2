@@ -1,36 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * System / Cache Management / Cache type "Blocks HTML output"
  *
  * @todo utilize the class for all manipulations with the cache type
  */
-
 namespace Magento\Framework\App\Cache\Type;
 
-class Block extends \Magento\Framework\Cache\Frontend\Decorator\TagScope
+class Block extends \Magento\Framework\Cache\Frontend\Decorator\Tag_Scope
 {
     /**
      * Cache type code unique among all cache types
      */
     public const TYPE_IDENTIFIER = 'block_html';
-
     /**
      * Cache tag used to distinguish the cache type from all other cache
      */
     public const CACHE_TAG = 'BLOCK_HTML';
-
     /**
      * @param \Magento\Framework\App\Cache\Type\FrontendPool $cacheFrontendPool
      */
-    public function __construct(\Magento\Framework\App\Cache\Type\FrontendPool $cacheFrontendPool)
+    public function __construct(\Magento\Framework\App\Cache\Type\Frontend_Pool $cache_frontend_pool)
     {
-        parent::__construct($cacheFrontendPool->get(self::TYPE_IDENTIFIER), self::CACHE_TAG);
+        parent::__construct($cache_frontend_pool->get(self::TYPE_IDENTIFIER), self::CACHE_TAG);
     }
 }

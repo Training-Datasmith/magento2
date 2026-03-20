@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config\Converter\Dom;
 
-use Magento\Framework\Config\Dom\ArrayNodeConfig;
-
+use Magento\Framework\Config\Dom\Array_Node_Config;
 /**
  * Universal converter of any XML data to an array representation with no data loss
  *
@@ -21,18 +19,16 @@ class Flat
     /**
      * @var ArrayNodeConfig
      */
-    protected $arrayNodeConfig;
-
+    protected $array_node_config;
     /**
      * Constructor
      *
      * @param ArrayNodeConfig $arrayNodeConfig
      */
-    public function __construct(ArrayNodeConfig $arrayNodeConfig)
+    public function __construct(Array_Node_Config $array_node_config)
     {
-        $this->arrayNodeConfig = $arrayNodeConfig;
+        $this->array_node_config = $array_node_config;
     }
-
     /**
      * Convert dom node tree to array in general case or to string in a case of a text node
      *
@@ -56,78 +52,65 @@ class Flat
      * @throws \UnexpectedValueException
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function convert(\DOMNode $source, $basePath = '')
+    public function convert(\Dom_Node $source, $base_path = '')
     {
         $value = [];
         /** @var \DOMNode $node */
-        foreach ($source->childNodes as $node) {
-            if ($node->nodeType == XML_ELEMENT_NODE) {
-                $nodeName = $node->nodeName;
-                $nodePath = $basePath . '/' . $nodeName;
-
-                $arrayKeyAttribute = $this->arrayNodeConfig->getAssocArrayKeyAttribute($nodePath);
-                $isNumericArrayNode = $this->arrayNodeConfig->isNumericArray($nodePath);
-                $isArrayNode = $isNumericArrayNode || $arrayKeyAttribute;
-
-                if (isset($value[$nodeName]) && !$isArrayNode) {
-                    throw new \UnexpectedValueException(
-                        "Node path '{$nodePath}' is not unique, but it has not been marked as array."
-                    );
+        foreach ($source->child_nodes as $node) {
+            if ($node->node_type == XML_ELEMENT_NODE) {
+                $node_name = $node->node_name;
+                $node_path = $base_path . '/' . $node_name;
+                $array_key_attribute = $this->array_node_config->get_assoc_array_key_attribute($node_path);
+                $is_numeric_array_node = $this->array_node_config->is_numeric_array($node_path);
+                $is_array_node = $is_numeric_array_node || $array_key_attribute;
+                if (isset($value[$node_name]) && !$is_array_node) {
+                    throw new \UnexpectedValueException("Node path '{$node_path}' is not unique, but it has not been marked as array.");
                 }
-
-                $nodeData = $this->convert($node, $nodePath);
-
-                if ($isArrayNode) {
-                    if ($isNumericArrayNode) {
-                        $value[$nodeName][] = $nodeData;
-                    } elseif (isset($nodeData[$arrayKeyAttribute])) {
-                        $arrayKeyValue = $nodeData[$arrayKeyAttribute];
-                        $value[$nodeName][$arrayKeyValue] = $nodeData;
+                $node_data = $this->convert($node, $node_path);
+                if ($is_array_node) {
+                    if ($is_numeric_array_node) {
+                        $value[$node_name][] = $node_data;
+                    } elseif (isset($node_data[$array_key_attribute])) {
+                        $array_key_value = $node_data[$array_key_attribute];
+                        $value[$node_name][$array_key_value] = $node_data;
                     } else {
-                        throw new \UnexpectedValueException(
-                            "Array is expected to contain value for key '{$arrayKeyAttribute}'."
-                        );
+                        throw new \UnexpectedValueException("Array is expected to contain value for key '{$array_key_attribute}'.");
                     }
                 } else {
-                    $value[$nodeName] = $nodeData;
+                    $value[$node_name] = $node_data;
                 }
-            } elseif ($node->nodeType == XML_CDATA_SECTION_NODE
-                || ($node->nodeType == XML_TEXT_NODE && trim($node->nodeValue) != '')
-            ) {
-                $value = $node->nodeValue;
+            } elseif ($node->node_type == XML_CDATA_SECTION_NODE || $node->node_type == XML_TEXT_NODE && trim($node->node_value) != '') {
+                $value = $node->node_value;
                 break;
             }
         }
-        $result = $this->getNodeAttributes($source);
+        $result = $this->get_node_attributes($source);
         if (is_array($value)) {
             $result = array_merge($result, $value);
             if (!$result) {
                 $result = '';
             }
+        } else if ($result) {
+            $result['value'] = trim($value);
         } else {
-            if ($result) {
-                $result['value'] = trim($value);
-            } else {
-                $result = trim($value);
-            }
+            $result = trim($value);
         }
         return $result;
     }
-
     /**
      * Retrieve key-value pairs of node attributes
      *
      * @param \DOMNode $node
      * @return array
      */
-    protected function getNodeAttributes(\DOMNode $node)
+    protected function get_node_attributes(\Dom_Node $node)
     {
         $result = [];
         $attributes = $node->attributes ?: [];
         /** @var \DOMNode $attribute */
         foreach ($attributes as $attribute) {
-            if ($attribute->nodeType == XML_ATTRIBUTE_NODE) {
-                $result[$attribute->nodeName] = $attribute->nodeValue;
+            if ($attribute->node_type == XML_ATTRIBUTE_NODE) {
+                $result[$attribute->node_name] = $attribute->node_value;
             }
         }
         return $result;

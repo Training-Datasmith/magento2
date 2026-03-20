@@ -1,82 +1,67 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager;
 
-namespace Magento\Framework\EntityManager;
-
-use Magento\Framework\Api\DataObjectHelper;
-use Magento\Framework\Reflection\DataObjectProcessor;
-
+use Magento\Framework\Api\Data_Object_Helper;
+use Magento\Framework\Reflection\Data_Object_Processor;
 /**
  * Class Hydrator
  */
-class Hydrator implements HydratorInterface
+class Hydrator implements Hydrator_Interface
 {
     /**
      * @var DataObjectProcessor
      */
-    private $dataObjectProcessor;
-
+    private $data_object_processor;
     /**
      * @var DataObjectHelper
      */
-    private $dataObjectHelper;
-
+    private $data_object_helper;
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @var MapperPool
      */
-    private $mapperPool;
-
+    private $mapper_pool;
     /**
      * @param DataObjectProcessor $dataObjectProcessor
      * @param DataObjectHelper $dataObjectHelper
      * @param TypeResolver $typeResolver
      * @param MapperPool $mapperPool
      */
-    public function __construct(
-        DataObjectProcessor $dataObjectProcessor,
-        DataObjectHelper $dataObjectHelper,
-        TypeResolver $typeResolver,
-        MapperPool $mapperPool
-    ) {
-        $this->dataObjectProcessor = $dataObjectProcessor;
-        $this->dataObjectHelper = $dataObjectHelper;
-        $this->typeResolver = $typeResolver;
-        $this->mapperPool = $mapperPool;
+    public function __construct(Data_Object_Processor $data_object_processor, Data_Object_Helper $data_object_helper, Type_Resolver $type_resolver, Mapper_Pool $mapper_pool)
+    {
+        $this->data_object_processor = $data_object_processor;
+        $this->data_object_helper = $data_object_helper;
+        $this->type_resolver = $type_resolver;
+        $this->mapper_pool = $mapper_pool;
     }
-
     /**
      * {@inheritdoc}
      */
     public function extract($entity)
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $data = $this->dataObjectProcessor->buildOutputDataArray($entity, $entityType);
-        $mapper = $this->mapperPool->getMapper($entityType);
-        return $mapper->entityToDatabase($entityType, $data);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $data = $this->data_object_processor->build_output_data_array($entity, $entity_type);
+        $mapper = $this->mapper_pool->get_mapper($entity_type);
+        return $mapper->entity_to_database($entity_type, $data);
     }
-
     /**
      * {@inheritdoc}
      */
     public function hydrate($entity, array $data)
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $mapper = $this->mapperPool->getMapper($entityType);
-        $data = $mapper->databaseToEntity(
-            $entityType,
-            array_merge($this->extract($entity), $data)
-        );
-        $this->dataObjectHelper->populateWithArray($entity, $data, $entityType);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $mapper = $this->mapper_pool->get_mapper($entity_type);
+        $data = $mapper->database_to_entity($entity_type, array_merge($this->extract($entity), $data));
+        $this->data_object_helper->populate_with_array($entity, $data, $entity_type);
         return $entity;
     }
 }

@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backup\Controller\Adminhtml\Index;
 
-use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\App\Filesystem\DirectoryList;
+use Magento\Framework\App\Action\Http_Post_Action_Interface;
+use Magento\Framework\App\Filesystem\Directory_List;
 use Magento\Framework\Filesystem;
-
 /**
  * Backup rollback controller.
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Rollback extends \Magento\Backup\Controller\Adminhtml\Index implements HttpPostActionInterface
+class Rollback extends \Magento\Backup\Controller\Adminhtml\Index implements Http_Post_Action_Interface
 {
     /**
      * Rollback Action
@@ -29,129 +27,73 @@ class Rollback extends \Magento\Backup\Controller\Adminhtml\Index implements Htt
      */
     public function execute()
     {
-        if (!$this->_objectManager->get(\Magento\Backup\Helper\Data::class)->isRollbackAllowed()) {
+        if (!$this->_object_manager->get(\Magento\Backup\Helper\Data::class)->is_rollback_allowed()) {
             $this->_forward('denied');
         }
-
-        if (!$this->getRequest()->isAjax()) {
+        if (!$this->get_request()->is_ajax()) {
             return $this->_redirect('*/*/index');
         }
-
-        $helper = $this->_objectManager->get(\Magento\Backup\Helper\Data::class);
-        $response = new \Magento\Framework\DataObject();
-
+        $helper = $this->_object_manager->get(\Magento\Backup\Helper\Data::class);
+        $response = new \Magento\Framework\Data_Object();
         try {
             /* @var $backup \Magento\Backup\Model\Backup */
-            $backup = $this->_backupModelFactory->create(
-                $this->getRequest()->getParam('time'),
-                $this->getRequest()->getParam('type')
-            );
-
-            if (!$backup->getTime() || !$backup->exists()) {
+            $backup = $this->_backup_model_factory->create($this->get_request()->get_param('time'), $this->get_request()->get_param('type'));
+            if (!$backup->get_time() || !$backup->exists()) {
                 return $this->_redirect('backup/*');
             }
-
-            if (!$backup->getTime()) {
-                throw new \Magento\Framework\Backup\Exception\CantLoadSnapshot(__('Can\'t load snapshot archive'));
+            if (!$backup->get_time()) {
+                throw new \Magento\Framework\Backup\Exception\Cant_Load_Snapshot(__('Can\'t load snapshot archive'));
             }
-
-            $type = $backup->getType();
-
-            $backupManager = $this->_backupFactory->create(
-                $type
-            )->setBackupExtension(
-                $helper->getExtensionByType($type)
-            )->setTime(
-                $backup->getTime()
-            )->setBackupsDir(
-                $helper->getBackupsDir()
-            )->setName(
-                $backup->getName(),
-                false
-            )->setResourceModel(
-                $this->_objectManager->create(\Magento\Backup\Model\ResourceModel\Db::class)
-            );
-
-            $this->_coreRegistry->register('backup_manager', $backupManager);
-
-            $passwordValid = $this->_objectManager->create(
-                \Magento\Backup\Model\Backup::class
-            )->validateUserPassword(
-                $this->getRequest()->getParam('password')
-            );
-
-            if (!$passwordValid) {
-                $response->setError(__('Please correct the password.'));
-                $backupManager->setErrorMessage(__('Please correct the password.'));
-                return $this->getResponse()->representJson($response->toJson());
+            $type = $backup->get_type();
+            $backup_manager = $this->_backup_factory->create($type)->set_backup_extension($helper->get_extension_by_type($type))->set_time($backup->get_time())->set_backups_dir($helper->get_backups_dir())->set_name($backup->get_name(), false)->set_resource_model($this->_object_manager->create(\Magento\Backup\Model\Resource_Model\Db::class));
+            $this->_core_registry->register('backup_manager', $backup_manager);
+            $password_valid = $this->_object_manager->create(\Magento\Backup\Model\Backup::class)->validate_user_password($this->get_request()->get_param('password'));
+            if (!$password_valid) {
+                $response->set_error(__('Please correct the password.'));
+                $backup_manager->set_error_message(__('Please correct the password.'));
+                return $this->get_response()->represent_json($response->to_json());
             }
-
-            if ($this->getRequest()->getParam('maintenance_mode')) {
-                $this->maintenanceMode->set(true);
-
-                if (!$this->maintenanceMode->isOn()) {
-                    $response->setError(
-                        __(
-                            'You need more permissions to activate maintenance mode right now.'
-                        ) . ' ' . __(
-                            'To complete the rollback, please deselect '
-                            . '"Put store into maintenance mode" or update your permissions.'
-                        )
-                    );
-                    $backupManager->setErrorMessage(
-                        __('Something went wrong while putting your store into maintenance mode.')
-                    );
-                    return $this->getResponse()->representJson($response->toJson());
+            if ($this->get_request()->get_param('maintenance_mode')) {
+                $this->maintenance_mode->set(true);
+                if (!$this->maintenance_mode->is_on()) {
+                    $response->set_error(__('You need more permissions to activate maintenance mode right now.') . ' ' . __('To complete the rollback, please deselect ' . '"Put store into maintenance mode" or update your permissions.'));
+                    $backup_manager->set_error_message(__('Something went wrong while putting your store into maintenance mode.'));
+                    return $this->get_response()->represent_json($response->to_json());
                 }
             }
-
             if ($type != \Magento\Framework\Backup\Factory::TYPE_DB) {
                 /** @var Filesystem $filesystem */
-                $filesystem = $this->_objectManager->get(\Magento\Framework\Filesystem::class);
-                $backupManager->setRootDir($filesystem->getDirectoryRead(DirectoryList::ROOT)->getAbsolutePath())
-                    ->addIgnorePaths($helper->getRollbackIgnorePaths());
-
-                if ($this->getRequest()->getParam('use_ftp', false)) {
-                    $backupManager->setUseFtp(
-                        $this->getRequest()->getParam('ftp_host', ''),
-                        $this->getRequest()->getParam('ftp_user', ''),
-                        $this->getRequest()->getParam('ftp_pass', ''),
-                        $this->getRequest()->getParam('ftp_path', '')
-                    );
+                $filesystem = $this->_object_manager->get(\Magento\Framework\Filesystem::class);
+                $backup_manager->set_root_dir($filesystem->get_directory_read(Directory_List::ROOT)->get_absolute_path())->add_ignore_paths($helper->get_rollback_ignore_paths());
+                if ($this->get_request()->get_param('use_ftp', false)) {
+                    $backup_manager->set_use_ftp($this->get_request()->get_param('ftp_host', ''), $this->get_request()->get_param('ftp_user', ''), $this->get_request()->get_param('ftp_pass', ''), $this->get_request()->get_param('ftp_path', ''));
                 }
             }
-
-            $backupManager->rollback();
-
-            $helper->invalidateCache();
-
-            $adminSession = $this->_getSession();
-            $adminSession->destroy();
-
-            $response->setRedirectUrl($this->getUrl('*'));
-        } catch (\Magento\Framework\Backup\Exception\CantLoadSnapshot $e) {
-            $errorMsg = __('We can\'t find the backup file.');
-        } catch (\Magento\Framework\Backup\Exception\FtpConnectionFailed $e) {
-            $errorMsg = __('We can\'t connect to the FTP right now.');
-        } catch (\Magento\Framework\Backup\Exception\FtpValidationFailed $e) {
-            $errorMsg = __('Failed to validate FTP.');
-        } catch (\Magento\Framework\Backup\Exception\NotEnoughPermissions $e) {
-            $this->_objectManager->get(\Psr\Log\LoggerInterface::class)->info($e->getMessage());
-            $errorMsg = __('You need more permissions to perform a rollback.');
+            $backup_manager->rollback();
+            $helper->invalidate_cache();
+            $admin_session = $this->_get_session();
+            $admin_session->destroy();
+            $response->set_redirect_url($this->get_url('*'));
+        } catch (\Magento\Framework\Backup\Exception\Cant_Load_Snapshot $e) {
+            $error_msg = __('We can\'t find the backup file.');
+        } catch (\Magento\Framework\Backup\Exception\Ftp_Connection_Failed $e) {
+            $error_msg = __('We can\'t connect to the FTP right now.');
+        } catch (\Magento\Framework\Backup\Exception\Ftp_Validation_Failed $e) {
+            $error_msg = __('Failed to validate FTP.');
+        } catch (\Magento\Framework\Backup\Exception\Not_Enough_Permissions $e) {
+            $this->_object_manager->get(\Psr\Log\Logger_Interface::class)->info($e->get_message());
+            $error_msg = __('You need more permissions to perform a rollback.');
         } catch (\Exception $e) {
-            $this->_objectManager->get(\Psr\Log\LoggerInterface::class)->info($e->getMessage());
-            $errorMsg = __('Failed to rollback.');
+            $this->_object_manager->get(\Psr\Log\Logger_Interface::class)->info($e->get_message());
+            $error_msg = __('Failed to rollback.');
         }
-
-        if (!empty($errorMsg)) {
-            $response->setError($errorMsg);
-            $backupManager->setErrorMessage($errorMsg);
+        if (!empty($error_msg)) {
+            $response->set_error($error_msg);
+            $backup_manager->set_error_message($error_msg);
         }
-
-        if ($this->getRequest()->getParam('maintenance_mode')) {
-            $this->maintenanceMode->set(false);
+        if ($this->get_request()->get_param('maintenance_mode')) {
+            $this->maintenance_mode->set(false);
         }
-
-        $this->getResponse()->representJson($response->toJson());
+        $this->get_response()->represent_json($response->to_json());
     }
 }

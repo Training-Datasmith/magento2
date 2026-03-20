@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Asynchronous_Operations\Model\Resource_Model\Operation;
 
-namespace Magento\AsynchronousOperations\Model\ResourceModel\Operation;
-
-use Magento\Framework\EntityManager\Operation\CheckIfExistsInterface;
-
+use Magento\Framework\Entity_Manager\Operation\Check_If_Exists_Interface;
 /**
  * CheckIfExists operation for list of bulk operations.
  */
-class CheckIfExists implements CheckIfExistsInterface
+class Check_If_Exists implements Check_If_Exists_Interface
 {
     /**
      * Always returns false because all operations will be saved using insertOnDuplicate query.

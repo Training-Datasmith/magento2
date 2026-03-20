@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Authorization\Model;
 
 /**
@@ -24,16 +23,15 @@ namespace Magento\Authorization\Model;
  * @api
  * @since 100.0.2
  */
-class Rules extends \Magento\Framework\Model\AbstractModel
+class Rules extends \Magento\Framework\Model\Abstract_Model
 {
     /**
      * @inheritdoc
      */
     protected function _construct()
     {
-        $this->_init(\Magento\Authorization\Model\ResourceModel\Rules::class);
+        $this->_init(\Magento\Authorization\Model\Resource_Model\Rules::class);
     }
-
     /**
      * Obsolete method of update
      *
@@ -44,18 +42,16 @@ class Rules extends \Magento\Framework\Model\AbstractModel
     {
         // phpcs:disable Magento2.Functions.DiscouragedFunction
         trigger_error('Method was never implemented and used.', E_USER_DEPRECATED);
-
         return $this;
     }
-
     /**
      * Save authorization rule relation
      *
      * @return $this
      */
-    public function saveRel(): static
+    public function save_rel(): static
     {
-        $this->getResource()->saveRel($this);
+        $this->get_resource()->save_rel($this);
         return $this;
     }
 }

@@ -4,9 +4,8 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Framework\DataObject;
+declare (strict_types=1);
+namespace Magento\Framework\Data_Object;
 
 /**
  * Interface for
@@ -15,12 +14,12 @@ namespace Magento\Framework\DataObject;
  *
  * @api
  */
-interface IdentityInterface
+interface Identity_Interface
 {
     /**
      * Return unique ID(s) for each object in system
      *
      * @return string[]
      */
-    public function getIdentities();
+    public function get_identities();
 }

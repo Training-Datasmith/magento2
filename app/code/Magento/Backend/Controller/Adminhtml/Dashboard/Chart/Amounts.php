@@ -4,32 +4,28 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Controller\Adminhtml\Dashboard\Chart;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Backend\Controller\Adminhtml\Dashboard;
 use Magento\Backend\Model\Dashboard\Chart;
-use Magento\Framework\App\Action\HttpPostActionInterface;
+use Magento\Framework\App\Action\Http_Post_Action_Interface;
 use Magento\Framework\Controller\Result\Json;
-use Magento\Framework\Controller\Result\JsonFactory;
-
+use Magento\Framework\Controller\Result\Json_Factory;
 /**
  * Get order amounts chart data controller
  */
-class Amounts extends Dashboard implements HttpPostActionInterface
+class Amounts extends Dashboard implements Http_Post_Action_Interface
 {
     /**
      * @var JsonFactory
      */
-    private $resultJsonFactory;
-
+    private $result_json_factory;
     /**
      * @var Chart
      */
     private $chart;
-
     /**
      * Amounts constructor.
      *
@@ -37,16 +33,12 @@ class Amounts extends Dashboard implements HttpPostActionInterface
      * @param JsonFactory $resultJsonFactory
      * @param Chart $chart
      */
-    public function __construct(
-        Context $context,
-        JsonFactory $resultJsonFactory,
-        Chart $chart
-    ) {
+    public function __construct(Context $context, Json_Factory $result_json_factory, Chart $chart)
+    {
         parent::__construct($context);
-        $this->resultJsonFactory = $resultJsonFactory;
+        $this->result_json_factory = $result_json_factory;
         $this->chart = $chart;
     }
-
     /**
      * Get chart data
      *
@@ -54,18 +46,7 @@ class Amounts extends Dashboard implements HttpPostActionInterface
      */
     public function execute(): Json
     {
-        $data = [
-            'data' => $this->chart->getByPeriod(
-                $this->_request->getParam('period'),
-                'revenue',
-                $this->_request->getParam('store'),
-                $this->_request->getParam('website'),
-                $this->_request->getParam('group')
-            ),
-            'label' => __('Revenue'),
-        ];
-
-        return $this->resultJsonFactory->create()
-            ->setData($data);
+        $data = ['data' => $this->chart->get_by_period($this->_request->get_param('period'), 'revenue', $this->_request->get_param('store'), $this->_request->get_param('website'), $this->_request->get_param('group')), 'label' => __('Revenue')];
+        return $this->result_json_factory->create()->set_data($data);
     }
 }

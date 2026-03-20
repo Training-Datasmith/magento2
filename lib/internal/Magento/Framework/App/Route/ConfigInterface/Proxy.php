@@ -1,50 +1,43 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Routes configuration model proxy
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\App\Route\ConfigInterface;
+namespace Magento\Framework\App\Route\Config_Interface;
 
 /**
  * Proxy class for \Magento\Framework\App\ResourceConnection
  */
-class Proxy implements
-    \Magento\Framework\App\Route\ConfigInterface,
-    \Magento\Framework\ObjectManager\NoninterceptableInterface
+class Proxy implements \Magento\Framework\App\Route\Config_Interface, \Magento\Framework\Object_Manager\Noninterceptable_Interface
 {
     /**
      * Object Manager instance
      *
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager = null;
-
+    protected $_object_manager = null;
     /**
      * Proxied instance name
      *
      * @var string
      */
-    protected $_instanceName = null;
-
+    protected $_instance_name = null;
     /**
      * Proxied instance
      *
      * @var \Magento\Framework\App\ResourceConnection
      */
     protected $_subject = null;
-
     /**
      * Instance shareability flag
      *
      * @var bool
      */
-    protected $_isShared = null;
-
+    protected $_is_shared = null;
     /**
      * Proxy constructor
      *
@@ -52,16 +45,12 @@ class Proxy implements
      * @param string $instanceName
      * @param bool $shared
      */
-    public function __construct(
-        \Magento\Framework\ObjectManagerInterface $objectManager,
-        $instanceName = \Magento\Framework\App\Route\ConfigInterface::class,
-        $shared = true
-    ) {
-        $this->_objectManager = $objectManager;
-        $this->_instanceName = $instanceName;
-        $this->_isShared = $shared;
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager, $instance_name = \Magento\Framework\App\Route\Config_Interface::class, $shared = true)
+    {
+        $this->_object_manager = $object_manager;
+        $this->_instance_name = $instance_name;
+        $this->_is_shared = $shared;
     }
-
     /**
      * Remove links to other objects.
      *
@@ -71,7 +60,6 @@ class Proxy implements
     {
         return ['_subject', '_isShared'];
     }
-
     /**
      * Retrieve ObjectManager from global scope
      *
@@ -79,9 +67,8 @@ class Proxy implements
      */
     public function __wakeup()
     {
-        $this->_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $this->_object_manager = \Magento\Framework\App\Object_Manager::get_instance();
     }
-
     /**
      * Clone proxied instance
      *
@@ -89,24 +76,20 @@ class Proxy implements
      */
     public function __clone()
     {
-        $this->_subject = clone $this->_getSubject();
+        $this->_subject = clone $this->_get_subject();
     }
-
     /**
      * Get proxied instance
      *
      * @return \Magento\Framework\App\Route\ConfigInterface
      */
-    protected function _getSubject()
+    protected function _get_subject()
     {
         if (!$this->_subject) {
-            $this->_subject = true === $this->_isShared
-                ? $this->_objectManager->get($this->_instanceName)
-                : $this->_objectManager->create($this->_instanceName);
+            $this->_subject = true === $this->_is_shared ? $this->_object_manager->get($this->_instance_name) : $this->_object_manager->create($this->_instance_name);
         }
         return $this->_subject;
     }
-
     /**
      * Retrieve route front name
      *
@@ -114,11 +97,10 @@ class Proxy implements
      * @param string $scope
      * @return string
      */
-    public function getRouteFrontName($routeId, $scope = null)
+    public function get_route_front_name($route_id, $scope = null)
     {
-        return $this->_getSubject()->getRouteFrontName($routeId, $scope);
+        return $this->_get_subject()->get_route_front_name($route_id, $scope);
     }
-
     /**
      * Get route id by route front name
      *
@@ -126,11 +108,10 @@ class Proxy implements
      * @param string $scope
      * @return string
      */
-    public function getRouteByFrontName($frontName, $scope = null)
+    public function get_route_by_front_name($front_name, $scope = null)
     {
-        return $this->_getSubject()->getRouteByFrontName($frontName, $scope);
+        return $this->_get_subject()->get_route_by_front_name($front_name, $scope);
     }
-
     /**
      * Retrieve list of modules by route front name
      *
@@ -138,8 +119,8 @@ class Proxy implements
      * @param string $scope
      * @return array
      */
-    public function getModulesByFrontName($frontName, $scope = null)
+    public function get_modules_by_front_name($front_name, $scope = null)
     {
-        $this->_getSubject()->getModulesByFrontName($frontName, $scope);
+        $this->_get_subject()->get_modules_by_front_name($front_name, $scope);
     }
 }

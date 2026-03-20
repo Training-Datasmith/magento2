@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid;
 
 /**
@@ -14,91 +13,78 @@ namespace Magento\Backend\Block\Widget\Grid;
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @since 100.0.2
  */
-class ColumnSet extends \Magento\Framework\View\Element\Template
+class Column_Set extends \Magento\Framework\View\Element\Template
 {
     /**
      * @var \Magento\Backend\Model\Widget\Grid\Row\UrlGenerator
      */
-    protected $_rowUrlGenerator;
-
+    protected $_row_url_generator;
     /**
      * Column headers visibility
      *
      * @var boolean
      */
-    protected $_headersVisibility = true;
-
+    protected $_headers_visibility = true;
     /**
      * Filter visibility
      *
      * @var boolean
      */
-    protected $_filterVisibility = true;
-
+    protected $_filter_visibility = true;
     /**
      * Empty grid text
      *
      * @var string|null
      */
-    protected $_emptyText;
-
+    protected $_empty_text;
     /**
      * Empty grid text CSS class
      *
      * @var string
      */
-    protected $_emptyTextCss = 'empty-text';
-
+    protected $_empty_text_css = 'empty-text';
     /**
      * Label for empty cell
      *
      * @var string
      */
-    protected $_emptyCellLabel = '';
-
+    protected $_empty_cell_label = '';
     /**
      * Count subtotals
      *
      * @var boolean
      */
-    protected $_countSubTotals = false;
-
+    protected $_count_sub_totals = false;
     /**
      * Count totals
      *
      * @var boolean
      */
-    protected $_countTotals = false;
-
+    protected $_count_totals = false;
     /**
      * Columns to group by
      *
      * @var string[]
      */
-    protected $_groupedColumn = [];
-
+    protected $_grouped_column = [];
     /**
      * @var boolean
      */
-    protected $_isCollapsed;
-
+    protected $_is_collapsed;
     /**
      * Path to template file in theme
      *
      * @var string
      */
     protected $_template = 'Magento_Backend::widget/grid/column_set.phtml';
-
     /**
      * @var \Magento\Backend\Model\Widget\Grid\SubTotals
      */
-    protected $_subTotals = null;
-
+    protected $_sub_totals = null;
     /**
      * @var \Magento\Backend\Model\Widget\Grid\Totals
      */
     protected $_totals = null;
-
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Backend\Model\Widget\Grid\Row\UrlGeneratorFactory $generatorFactory
@@ -107,86 +93,64 @@ class ColumnSet extends \Magento\Framework\View\Element\Template
      * @param array $data
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Backend\Model\Widget\Grid\Row\UrlGeneratorFactory $generatorFactory,
-        \Magento\Backend\Model\Widget\Grid\SubTotals $subtotals,
-        \Magento\Backend\Model\Widget\Grid\Totals $totals,
-        array $data = []
-    ) {
-        $generatorClassName = \Magento\Backend\Model\Widget\Grid\Row\UrlGenerator::class;
+    public function __construct(\Magento\Framework\View\Element\Template\Context $context, \Magento\Backend\Model\Widget\Grid\Row\Url_Generator_Factory $generator_factory, \Magento\Backend\Model\Widget\Grid\Sub_Totals $subtotals, \Magento\Backend\Model\Widget\Grid\Totals $totals, array $data = [])
+    {
+        $generator_class_name = \Magento\Backend\Model\Widget\Grid\Row\Url_Generator::class;
         if (isset($data['rowUrl'])) {
-            $rowUrlParams = $data['rowUrl'];
-            if (isset($rowUrlParams['generatorClass'])) {
-                $generatorClassName = $rowUrlParams['generatorClass'];
+            $row_url_params = $data['rowUrl'];
+            if (isset($row_url_params['generatorClass'])) {
+                $generator_class_name = $row_url_params['generatorClass'];
             }
-            $this->_rowUrlGenerator = $generatorFactory->createUrlGenerator(
-                $generatorClassName,
-                ['args' => $rowUrlParams]
-            );
+            $this->_row_url_generator = $generator_factory->create_url_generator($generator_class_name, ['args' => $row_url_params]);
         }
-
-        $this->setFilterVisibility(
-            array_key_exists('filter_visibility', $data) ? (bool)$data['filter_visibility'] : true
-        );
-
+        $this->set_filter_visibility(array_key_exists('filter_visibility', $data) ? (bool) $data['filter_visibility'] : true);
         parent::__construct($context, $data);
-
-        $this->setEmptyText(isset($data['empty_text']) ? $data['empty_text'] : __('We couldn\'t find any records.'));
-
-        $this->setEmptyCellLabel(
-            isset($data['empty_cell_label']) ? $data['empty_cell_label'] : __('We couldn\'t find any records.')
-        );
-
-        $this->setCountSubTotals(isset($data['count_subtotals']) ? (bool)$data['count_subtotals'] : false);
-        $this->_subTotals = $subtotals;
-
-        $this->setCountTotals(isset($data['count_totals']) ? (bool)$data['count_totals'] : false);
+        $this->set_empty_text(isset($data['empty_text']) ? $data['empty_text'] : __('We couldn\'t find any records.'));
+        $this->set_empty_cell_label(isset($data['empty_cell_label']) ? $data['empty_cell_label'] : __('We couldn\'t find any records.'));
+        $this->set_count_sub_totals(isset($data['count_subtotals']) ? (bool) $data['count_subtotals'] : false);
+        $this->_sub_totals = $subtotals;
+        $this->set_count_totals(isset($data['count_totals']) ? (bool) $data['count_totals'] : false);
         $this->_totals = $totals;
     }
-
     /**
      * Retrieve the list of columns
      *
      * @return array
      */
-    public function getColumns()
+    public function get_columns()
     {
-        $columns = $this->getLayout()->getChildBlocks($this->getNameInLayout());
+        $columns = $this->get_layout()->get_child_blocks($this->get_name_in_layout());
         foreach ($columns as $key => $column) {
-            if (!$column->isDisplayed()) {
+            if (!$column->is_displayed()) {
                 unset($columns[$key]);
             }
         }
         return $columns;
     }
-
     /**
      * Count columns
      *
      * @return int
      */
-    public function getColumnCount()
+    public function get_column_count()
     {
-        return count($this->getColumns());
+        return count($this->get_columns());
     }
-
     /**
      * Set sortability flag for columns
      *
      * @param bool $value
      * @return $this
      */
-    public function setSortable($value)
+    public function set_sortable($value)
     {
         if ($value === false) {
-            foreach ($this->getColumns() as $column) {
-                $column->setSortable(false);
+            foreach ($this->get_columns() as $column) {
+                $column->set_sortable(false);
             }
         }
         return $this;
     }
-
     /**
      * Set custom renderer type for columns
      *
@@ -194,14 +158,13 @@ class ColumnSet extends \Magento\Framework\View\Element\Template
      * @param string $className
      * @return $this
      */
-    public function setRendererType($type, $className)
+    public function set_renderer_type($type, $class_name)
     {
-        foreach ($this->getColumns() as $column) {
-            $column->setRendererType($type, $className);
+        foreach ($this->get_columns() as $column) {
+            $column->set_renderer_type($type, $class_name);
         }
         return $this;
     }
-
     /**
      * Set custom filter type for columns
      *
@@ -209,107 +172,99 @@ class ColumnSet extends \Magento\Framework\View\Element\Template
      * @param string $className
      * @return $this
      */
-    public function setFilterType($type, $className)
+    public function set_filter_type($type, $class_name)
     {
-        foreach ($this->getColumns() as $column) {
-            $column->setFilterType($type, $className);
+        foreach ($this->get_columns() as $column) {
+            $column->set_filter_type($type, $class_name);
         }
         return $this;
     }
-
     /**
      * Prepare block for rendering
      *
      * @return void
      */
-    protected function _beforeToHtml()
+    protected function _before_to_html()
     {
-        $columns = $this->getColumns();
-        foreach ($columns as $columnId => $column) {
-            $column->setId($columnId);
-            $column->setGrid($this->getGrid());
-            if ($column->isGrouped()) {
-                $this->isColumnGrouped($column->getIndex(), true);
+        $columns = $this->get_columns();
+        foreach ($columns as $column_id => $column) {
+            $column->set_id($column_id);
+            $column->set_grid($this->get_grid());
+            if ($column->is_grouped()) {
+                $this->is_column_grouped($column->get_index(), true);
             }
         }
         $last = array_pop($columns);
         if ($last) {
-            $last->addHeaderCssClass('last');
+            $last->add_header_css_class('last');
         }
     }
-
     /**
      * Return row url for js event handlers
      *
      * @param \Magento\Framework\DataObject $item
      * @return string
      */
-    public function getRowUrl($item)
+    public function get_row_url($item)
     {
         $url = '#';
-        if (null !== $this->_rowUrlGenerator) {
-            $url = $this->_rowUrlGenerator->getUrl($item);
+        if (null !== $this->_row_url_generator) {
+            $url = $this->_row_url_generator->get_url($item);
         }
         return $url;
     }
-
     /**
      * Get children of specified item
      *
      * @param \Magento\Framework\DataObject $item
      * @return array
      */
-    public function getMultipleRows($item)
+    public function get_multiple_rows($item)
     {
-        $children = $item->getChildren();
+        $children = $item->get_children();
         return $children ?: [];
     }
-
     /**
      * Has children of specified item
      *
      * @param \Magento\Framework\DataObject $item
      * @return bool
      */
-    public function hasMultipleRows($item)
+    public function has_multiple_rows($item)
     {
-        return $item->hasChildren() && count($item->getChildren()) > 0;
+        return $item->has_children() && count($item->get_children()) > 0;
     }
-
     /**
      * Retrieve columns for multiple rows
      * @return array
      */
-    public function getMultipleRowColumns()
+    public function get_multiple_row_columns()
     {
-        $columns = $this->getColumns();
-        foreach ($this->_groupedColumn as $column) {
+        $columns = $this->get_columns();
+        foreach ($this->_grouped_column as $column) {
             unset($columns[$column]);
         }
         return $columns;
     }
-
     /**
      * Check whether subtotal should be rendered
      *
      * @param \Magento\Framework\DataObject $item
      * @return boolean
      */
-    public function shouldRenderSubTotal($item)
+    public function should_render_sub_total($item)
     {
-        return $this->getCountSubTotals() && count($this->getMultipleRows($item)) > 0;
+        return $this->get_count_sub_totals() && count($this->get_multiple_rows($item)) > 0;
     }
-
     /**
      * Check whether total should be rendered
      *
      * @return boolean
      */
-    public function shouldRenderTotal()
+    public function should_render_total()
     {
-        return $this->getCountTotals() && count($this->getCollection()) > 0;
+        return $this->get_count_totals() && count($this->get_collection()) > 0;
     }
-
     /**
      * Retrieve rowspan number
      *
@@ -317,20 +272,13 @@ class ColumnSet extends \Magento\Framework\View\Element\Template
      * @param \Magento\Backend\Block\Widget\Grid\Column $column
      * @return int|false
      */
-    public function getRowspan($item, $column)
+    public function get_rowspan($item, $column)
     {
-        if ($this->isColumnGrouped($column)) {
-            return count(
-                $this->getMultipleRows($item)
-            ) + count(
-                $this->_groupedColumn
-            ) - 1 + (int)$this->shouldRenderSubTotal(
-                $item
-            );
+        if ($this->is_column_grouped($column)) {
+            return count($this->get_multiple_rows($item)) + count($this->_grouped_column) - 1 + (int) $this->should_render_sub_total($item);
         }
         return false;
     }
-
     /**
      * Check whether given column is grouped
      *
@@ -338,18 +286,17 @@ class ColumnSet extends \Magento\Framework\View\Element\Template
      * @param string $value
      * @return bool|$this
      */
-    public function isColumnGrouped($column, $value = null)
+    public function is_column_grouped($column, $value = null)
     {
         if (null === $value) {
             if (is_object($column)) {
-                return in_array($column->getIndex(), $this->_groupedColumn);
+                return in_array($column->get_index(), $this->_grouped_column);
             }
-            return in_array($column, $this->_groupedColumn);
+            return in_array($column, $this->_grouped_column);
         }
-        $this->_groupedColumn[] = $column;
+        $this->_grouped_column[] = $column;
         return $this;
     }
-
     /**
      * Check whether should render empty cell
      *
@@ -357,21 +304,19 @@ class ColumnSet extends \Magento\Framework\View\Element\Template
      * @param \Magento\Backend\Block\Widget\Grid\Column $column
      * @return boolean
      */
-    public function shouldRenderEmptyCell($item, $column)
+    public function should_render_empty_cell($item, $column)
     {
-        return $item->getIsEmpty() && in_array($column['index'], $this->_groupedColumn);
+        return $item->get_is_empty() && in_array($column['index'], $this->_grouped_column);
     }
-
     /**
      * Retrieve colspan for empty cell
      *
      * @return int
      */
-    public function getEmptyCellColspan()
+    public function get_empty_cell_colspan()
     {
-        return $this->getColumnCount() - count($this->_groupedColumn);
+        return $this->get_column_count() - count($this->_grouped_column);
     }
-
     /**
      * Check whether should render cell
      *
@@ -379,264 +324,243 @@ class ColumnSet extends \Magento\Framework\View\Element\Template
      * @param \Magento\Backend\Block\Widget\Grid\Column $column
      * @return boolean
      */
-    public function shouldRenderCell($item, $column)
+    public function should_render_cell($item, $column)
     {
-        if ($this->isColumnGrouped($column) && $item->getIsEmpty()) {
+        if ($this->is_column_grouped($column) && $item->get_is_empty()) {
             return true;
         }
-        if (!$item->getIsEmpty()) {
+        if (!$item->get_is_empty()) {
             return true;
         }
         return false;
     }
-
     /**
      * Set visibility of column headers
      *
      * @param boolean $visible
      * @return void
      */
-    public function setHeadersVisibility($visible = true)
+    public function set_headers_visibility($visible = true)
     {
-        $this->_headersVisibility = $visible;
+        $this->_headers_visibility = $visible;
     }
-
     /**
      * Return visibility of column headers
      *
      * @return boolean
      */
-    public function isHeaderVisible()
+    public function is_header_visible()
     {
-        return $this->_headersVisibility;
+        return $this->_headers_visibility;
     }
-
     /**
      * Set visibility of filter
      *
      * @param bool $visible
      * @return void
      */
-    public function setFilterVisibility($visible = true)
+    public function set_filter_visibility($visible = true)
     {
-        $this->_filterVisibility = $visible;
+        $this->_filter_visibility = $visible;
     }
-
     /**
      * Return visibility of filter
      *
      * @return boolean
      */
-    public function isFilterVisible()
+    public function is_filter_visible()
     {
-        return $this->_filterVisibility;
+        return $this->_filter_visibility;
     }
-
     /**
      * Set empty text CSS class
      *
      * @param string $cssClass
      * @return $this
      */
-    public function setEmptyTextClass($cssClass)
+    public function set_empty_text_class($css_class)
     {
-        $this->_emptyTextCss = $cssClass;
+        $this->_empty_text_css = $css_class;
         return $this;
     }
-
     /**
      * Return empty text CSS class
      *
      * @return string
      */
-    public function getEmptyTextClass()
+    public function get_empty_text_class()
     {
-        return $this->_emptyTextCss;
+        return $this->_empty_text_css;
     }
-
     /**
      * Retrieve label for empty cell
      *
      * @return string
      */
-    public function getEmptyCellLabel()
+    public function get_empty_cell_label()
     {
-        return $this->_emptyCellLabel;
+        return $this->_empty_cell_label;
     }
-
     /**
      * Set label for empty cell
      *
      * @param string $label
      * @return $this
      */
-    public function setEmptyCellLabel($label)
+    public function set_empty_cell_label($label)
     {
-        $this->_emptyCellLabel = $label;
+        $this->_empty_cell_label = $label;
         return $this;
     }
-
     /**
      * Set flag whether is collapsed
      *
      * @param bool $isCollapsed
      * @return $this
      */
-    public function setIsCollapsed($isCollapsed)
+    public function set_is_collapsed($is_collapsed)
     {
-        $this->_isCollapsed = $isCollapsed;
+        $this->_is_collapsed = $is_collapsed;
         return $this;
     }
-
     /**
      * Retrieve flag is collapsed
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getIsCollapsed()
+    public function get_is_collapsed()
     {
-        return $this->_isCollapsed;
+        return $this->_is_collapsed;
     }
-
     /**
      * Return grid of current column set
      *
      * @return \Magento\Backend\Block\Widget\Grid
      */
-    public function getGrid()
+    public function get_grid()
     {
-        return $this->getParentBlock();
+        return $this->get_parent_block();
     }
-
     /**
      * Return collection of current grid
      *
      * @return \Magento\Framework\Data\Collection
      */
-    public function getCollection()
+    public function get_collection()
     {
-        return $this->getGrid()->getCollection();
+        return $this->get_grid()->get_collection();
     }
-
     /**
      * Set subtotals
      *
      * @param bool $flag
      * @return $this
      */
-    public function setCountSubTotals($flag = true)
+    public function set_count_sub_totals($flag = true)
     {
-        $this->_countSubTotals = $flag;
+        $this->_count_sub_totals = $flag;
         return $this;
     }
-
     /**
      * Return count subtotals
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getCountSubTotals()
+    public function get_count_sub_totals()
     {
-        return $this->_countSubTotals;
+        return $this->_count_sub_totals;
     }
-
     /**
      * Set totals
      *
      * @param bool $flag
      * @return $this
      */
-    public function setCountTotals($flag = true)
+    public function set_count_totals($flag = true)
     {
-        $this->_countTotals = $flag;
+        $this->_count_totals = $flag;
         return $this;
     }
-
     /**
      * Return count totals
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getCountTotals()
+    public function get_count_totals()
     {
-        return $this->_countTotals;
+        return $this->_count_totals;
     }
-
     /**
      * Retrieve subtotal for item
      *
      * @param \Magento\Framework\DataObject $item
      * @return \Magento\Framework\DataObject
      */
-    public function getSubTotals($item)
+    public function get_sub_totals($item)
     {
-        $this->_prepareSubTotals();
-        $this->_subTotals->reset();
-        return $this->_subTotals->countTotals($item->getChildren());
+        $this->_prepare_sub_totals();
+        $this->_sub_totals->reset();
+        return $this->_sub_totals->count_totals($item->get_children());
     }
-
     /**
      * Retrieve subtotal items
      *
      * @return \Magento\Framework\DataObject
      */
-    public function getTotals()
+    public function get_totals()
     {
-        $this->_prepareTotals();
+        $this->_prepare_totals();
         $this->_totals->reset();
-        return $this->_totals->countTotals($this->getCollection());
+        return $this->_totals->count_totals($this->get_collection());
     }
-
     /**
      * Update item with first sub-item data
      *
      * @param \Magento\Framework\DataObject $item
      * @return void
      */
-    public function updateItemByFirstMultiRow(\Magento\Framework\DataObject $item)
+    public function update_item_by_first_multi_row(\Magento\Framework\Data_Object $item)
     {
-        $multiRows = $this->getMultipleRows($item);
-        if (is_object($multiRows) && $multiRows instanceof \Magento\Framework\Data\Collection) {
+        $multi_rows = $this->get_multiple_rows($item);
+        if (is_object($multi_rows) && $multi_rows instanceof \Magento\Framework\Data\Collection) {
             /** @var $multiRows \Magento\Framework\Data\Collection */
-            $item->addData($multiRows->getFirstItem()->getData());
-        } elseif (is_array($multiRows)) {
-            $firstItem = $multiRows[0];
-            $item->addData($firstItem);
+            $item->add_data($multi_rows->get_first_item()->get_data());
+        } elseif (is_array($multi_rows)) {
+            $first_item = $multi_rows[0];
+            $item->add_data($first_item);
         }
     }
-
     /**
      * Prepare sub-total object for counting sub-totals
      *
      * @return void
      */
-    public function _prepareSubTotals()
+    public function _prepare_sub_totals()
     {
-        $columns = $this->_subTotals->getColumns();
+        $columns = $this->_sub_totals->get_columns();
         if (empty($columns)) {
-            foreach ($this->getMultipleRowColumns() as $column) {
-                if ($column->getTotal()) {
-                    $this->_subTotals->setColumn($column->getIndex(), $column->getTotal());
+            foreach ($this->get_multiple_row_columns() as $column) {
+                if ($column->get_total()) {
+                    $this->_sub_totals->set_column($column->get_index(), $column->get_total());
                 }
             }
         }
     }
-
     /**
      * Prepare total object for counting totals
      *
      * @return void
      */
-    public function _prepareTotals()
+    public function _prepare_totals()
     {
-        $columns = $this->_totals->getColumns();
+        $columns = $this->_totals->get_columns();
         if (empty($columns)) {
-            foreach ($this->getColumns() as $column) {
-                if ($column->getTotal()) {
-                    $this->_totals->setColumn($column->getIndex(), $column->getTotal());
+            foreach ($this->get_columns() as $column) {
+                if ($column->get_total()) {
+                    $this->_totals->set_column($column->get_index(), $column->get_total());
                 }
             }
         }

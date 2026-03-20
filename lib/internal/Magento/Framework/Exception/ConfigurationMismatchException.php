@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Exception;
 
 /**
  * @api
  * @since 100.1.0
  */
-class ConfigurationMismatchException extends LocalizedException
+class Configuration_Mismatch_Exception extends Localized_Exception
 {
     /**
      * @deprecated

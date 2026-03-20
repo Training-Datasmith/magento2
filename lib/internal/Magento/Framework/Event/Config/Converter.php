@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Event\Config;
 
 /**
  * Converter of event observers configuration from \DOMDocument to tree array.
  */
-class Converter implements \Magento\Framework\Config\ConverterInterface
+class Converter implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * Convert dom node tree to array
@@ -24,62 +23,57 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     {
         $output = [];
         /** @var \DOMNodeList $events */
-        $events = $source->getElementsByTagName('event');
+        $events = $source->get_elements_by_tag_name('event');
         /** @var \DOMNode $eventConfig */
-        foreach ($events as $eventConfig) {
-            $eventName = $eventConfig->attributes->getNamedItem('name')->nodeValue;
-            $eventObservers = [];
+        foreach ($events as $event_config) {
+            $event_name = $event_config->attributes->get_named_item('name')->node_value;
+            $event_observers = [];
             /** @var \DOMNode $observerConfig */
-            foreach ($eventConfig->childNodes as $observerConfig) {
-                if ($observerConfig->nodeName != 'observer' || $observerConfig->nodeType != XML_ELEMENT_NODE) {
+            foreach ($event_config->child_nodes as $observer_config) {
+                if ($observer_config->node_name != 'observer' || $observer_config->node_type != XML_ELEMENT_NODE) {
                     continue;
                 }
-                $observerNameNode = $observerConfig->attributes->getNamedItem('name');
-                if (!$observerNameNode) {
+                $observer_name_node = $observer_config->attributes->get_named_item('name');
+                if (!$observer_name_node) {
                     throw new \InvalidArgumentException('Attribute name is missed');
                 }
-                $config = $this->_convertObserverConfig($observerConfig);
-                $config['name'] = $observerNameNode->nodeValue;
-                $eventObservers[$observerNameNode->nodeValue] = $config;
+                $config = $this->_convert_observer_config($observer_config);
+                $config['name'] = $observer_name_node->node_value;
+                $event_observers[$observer_name_node->node_value] = $config;
             }
-            $output[mb_strtolower($eventName ?? '')] = $eventObservers;
+            $output[mb_strtolower($event_name ?? '')] = $event_observers;
         }
         return $output;
     }
-
     /**
      * Convert observer configuration
      *
      * @param \DOMNode $observerConfig
      * @return array
      */
-    public function _convertObserverConfig($observerConfig)
+    public function _convert_observer_config($observer_config)
     {
         $output = [];
         /** Parse instance configuration */
-        $instanceAttribute = $observerConfig->attributes->getNamedItem('instance');
-        if ($instanceAttribute) {
-            $output['instance'] = $instanceAttribute->nodeValue;
+        $instance_attribute = $observer_config->attributes->get_named_item('instance');
+        if ($instance_attribute) {
+            $output['instance'] = $instance_attribute->node_value;
         }
-
         /** Parse instance method configuration */
-        $methodAttribute = $observerConfig->attributes->getNamedItem('method');
-        if ($methodAttribute) {
-            $output['method'] = $methodAttribute->nodeValue;
+        $method_attribute = $observer_config->attributes->get_named_item('method');
+        if ($method_attribute) {
+            $output['method'] = $method_attribute->node_value;
         }
-
         /** Parse disabled/enabled configuration */
-        $disabledAttribute = $observerConfig->attributes->getNamedItem('disabled');
-        if ($disabledAttribute && $disabledAttribute->nodeValue == 'true') {
+        $disabled_attribute = $observer_config->attributes->get_named_item('disabled');
+        if ($disabled_attribute && $disabled_attribute->node_value == 'true') {
             $output['disabled'] = true;
         }
-
         /** Parse shareability configuration */
-        $shredAttribute = $observerConfig->attributes->getNamedItem('shared');
-        if ($shredAttribute && $shredAttribute->nodeValue == 'false') {
+        $shred_attribute = $observer_config->attributes->get_named_item('shared');
+        if ($shred_attribute && $shred_attribute->node_value == 'false') {
             $output['shared'] = false;
         }
-
         return $output;
     }
 }

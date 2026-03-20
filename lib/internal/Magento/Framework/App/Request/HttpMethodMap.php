@@ -4,29 +4,25 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Request;
 
 /**
  * Map of HTTP methods and interfaces that an action implements in order to process them.
  */
-class HttpMethodMap
+class Http_Method_Map
 {
     /**
      * @var string[]
      */
     private $map;
-
     /**
      * @param string[] $map
      */
     public function __construct(array $map)
     {
-        $this->map = $this->processMap($map);
+        $this->map = $this->process_map($map);
     }
-
     /**
      * Filter given map.
      *
@@ -35,26 +31,21 @@ class HttpMethodMap
      *
      * @return string[]
      */
-    private function processMap(array $map): array
+    private function process_map(array $map): array
     {
         $filtered = [];
         foreach ($map as $method => $interface) {
-            $interface = trim(preg_replace('/^\\\+/', '', $interface));
+            $interface = trim(preg_replace('/^\\\\+/', '', $interface));
             if (!(interface_exists($interface) || class_exists($interface))) {
-                throw new \InvalidArgumentException(
-                    "Interface '$interface' does not exist"
-                );
+                throw new \InvalidArgumentException("Interface '{$interface}' does not exist");
             }
             if (!$method) {
                 throw new \InvalidArgumentException('Invalid method given');
             }
-
             $filtered[$method] = $interface;
         }
-
         return $filtered;
     }
-
     /**
      * Where keys are methods' names and values are interfaces' names.
      *
@@ -62,7 +53,7 @@ class HttpMethodMap
      *
      * @see \Laminas\Http\Request Has list of methods as METHOD_* constants.
      */
-    public function getMap(): array
+    public function get_map(): array
     {
         return $this->map;
     }

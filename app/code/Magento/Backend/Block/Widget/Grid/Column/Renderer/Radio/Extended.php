@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer\Radio;
 
 class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Radio
@@ -15,8 +14,8 @@ class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Radio
      *
      * @return array
      */
-    protected function _getValues()
+    protected function _get_values()
     {
-        return $this->getColumn()->getValues();
+        return $this->get_column()->get_values();
     }
 }

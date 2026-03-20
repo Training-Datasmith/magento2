@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model\Config\Source;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Analytics\Model\Config\Source;
  * Prepares and provides options for a selector of verticals which is located
  * in the corresponding configuration menu of the Admin area.
  */
-class Vertical implements \Magento\Framework\Option\ArrayInterface
+class Vertical implements \Magento\Framework\Option\Array_Interface
 {
     public function __construct(
         /**
@@ -26,23 +25,19 @@ class Vertical implements \Magento\Framework\Option\ArrayInterface
          * It is supposed that the list may be changed in each Magento release.
          */
         private readonly array $verticals
-    ) {
+    )
+    {
     }
-
     /**
      * @inheritdoc
      * @return mixed[]
      */
-    public function toOptionArray(): array
+    public function to_option_array(): array
     {
-        $result = [
-            ['value' => '', 'label' => __('--Please Select--')],
-        ];
-
+        $result = [['value' => '', 'label' => __('--Please Select--')]];
         foreach ($this->verticals as $vertical) {
             $result[] = ['value' => $vertical, 'label' => __($vertical)];
         }
-
         return $result;
     }
 }

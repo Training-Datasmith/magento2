@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Exception;
 
 /**
@@ -15,7 +14,7 @@ namespace Magento\Framework\Exception;
  * @api
  * @since 101.0.7
  */
-interface AggregateExceptionInterface
+interface Aggregate_Exception_Interface
 {
     /**
      * Returns LocalizedException[] array to be compatible with current Implementation in Web API which relies on
@@ -26,5 +25,5 @@ interface AggregateExceptionInterface
      * @return LocalizedException[]
      * @since 101.0.7
      */
-    public function getErrors();
+    public function get_errors();
 }

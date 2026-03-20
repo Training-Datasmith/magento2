@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Class to work with gz archives
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-
 namespace Magento\Framework\Archive;
 
-class Gz extends \Magento\Framework\Archive\AbstractArchive implements \Magento\Framework\Archive\ArchiveInterface
+class Gz extends \Magento\Framework\Archive\Abstract_Archive implements \Magento\Framework\Archive\Archive_Interface
 {
     /**
      * Pack file by GZ compressor.
@@ -25,22 +23,17 @@ class Gz extends \Magento\Framework\Archive\AbstractArchive implements \Magento\
      */
     public function pack($source, $destination)
     {
-        $fileReader = new \Magento\Framework\Archive\Helper\File($source);
-        $fileReader->open('r');
-
-        $archiveWriter = new \Magento\Framework\Archive\Helper\File\Gz($destination);
-        $archiveWriter->open('wb9');
-
-        while (!$fileReader->eof()) {
-            $archiveWriter->write($fileReader->read());
+        $file_reader = new \Magento\Framework\Archive\Helper\File($source);
+        $file_reader->open('r');
+        $archive_writer = new \Magento\Framework\Archive\Helper\File\Gz($destination);
+        $archive_writer->open('wb9');
+        while (!$file_reader->eof()) {
+            $archive_writer->write($file_reader->read());
         }
-
-        $fileReader->close();
-        $archiveWriter->close();
-
+        $file_reader->close();
+        $archive_writer->close();
         return $destination;
     }
-
     /**
      * Unpack file by GZ compressor.
      *
@@ -51,20 +44,16 @@ class Gz extends \Magento\Framework\Archive\AbstractArchive implements \Magento\
     public function unpack($source, $destination)
     {
         if (is_dir($destination)) {
-            $file = $this->getFilename($source);
+            $file = $this->get_filename($source);
             $destination = $destination . $file;
         }
-
-        $archiveReader = new \Magento\Framework\Archive\Helper\File\Gz($source);
-        $archiveReader->open('r');
-
-        $fileWriter = new \Magento\Framework\Archive\Helper\File($destination);
-        $fileWriter->open('w');
-
-        while (!$archiveReader->eof()) {
-            $fileWriter->write($archiveReader->read());
+        $archive_reader = new \Magento\Framework\Archive\Helper\File\Gz($source);
+        $archive_reader->open('r');
+        $file_writer = new \Magento\Framework\Archive\Helper\File($destination);
+        $file_writer->open('w');
+        while (!$archive_reader->eof()) {
+            $file_writer->write($archive_reader->read());
         }
-
         return $destination;
     }
 }

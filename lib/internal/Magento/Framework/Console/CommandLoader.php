@@ -4,39 +4,34 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Console;
 
-use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Object_Manager_Interface;
 use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\CommandLoader\CommandLoaderInterface;
-use Symfony\Component\Console\Exception\CommandNotFoundException;
-
+use Symfony\Component\Console\Command_Loader\Command_Loader_Interface;
+use Symfony\Component\Console\Exception\Command_Not_Found_Exception;
 /**
  * Class CommandLoader allows for deferred initialization of Symfony Commands
  */
-class CommandLoader implements CommandLoaderInterface
+class Command_Loader implements Command_Loader_Interface
 {
     /**
      * List of commands in the format [ 'command:name' => 'Fully\Qualified\ClassName' ]
      * @var array
      */
     private array $commands;
-
     /** @var ObjectManagerInterface */
-    private ObjectManagerInterface $objectManager;
-
+    private Object_Manager_Interface $object_manager;
     /**
      * @param ObjectManagerInterface $objectManager
      * @param array $commands
      */
-    public function __construct(ObjectManagerInterface $objectManager, array $commands = [])
+    public function __construct(Object_Manager_Interface $object_manager, array $commands = [])
     {
-        $this->objectManager = $objectManager;
+        $this->object_manager = $object_manager;
         $this->commands = array_combine(array_column($commands, 'name'), array_column($commands, 'class'));
     }
-
     /**
      * Using the ObjectManager, instantiate the requested command.
      *
@@ -49,11 +44,10 @@ class CommandLoader implements CommandLoaderInterface
     public function get(string $name): Command
     {
         if ($this->has($name)) {
-            return $this->objectManager->create($this->commands[$name]);
+            return $this->object_manager->create($this->commands[$name]);
         }
-        throw new CommandNotFoundException(sprintf('Command "%s" does not exist.', $name));
+        throw new Command_Not_Found_Exception(sprintf('Command "%s" does not exist.', $name));
     }
-
     /**
      * Return whether the requested $name is present in the commands array
      *
@@ -64,13 +58,12 @@ class CommandLoader implements CommandLoaderInterface
     {
         return isset($this->commands[$name]);
     }
-
     /**
      * Return an array of the available command names
      *
      * @return string[]
      */
-    public function getNames(): array
+    public function get_names(): array
     {
         return array_keys($this->commands);
     }

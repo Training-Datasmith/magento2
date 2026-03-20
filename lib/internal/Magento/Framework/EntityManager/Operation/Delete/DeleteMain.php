@@ -1,52 +1,43 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation\Delete;
 
-namespace Magento\Framework\EntityManager\Operation\Delete;
-
-use Magento\Framework\EntityManager\Db\DeleteRow;
-use Magento\Framework\EntityManager\HydratorPool;
-use Magento\Framework\EntityManager\TypeResolver;
-
+use Magento\Framework\Entity_Manager\Db\Delete_Row;
+use Magento\Framework\Entity_Manager\Hydrator_Pool;
+use Magento\Framework\Entity_Manager\Type_Resolver;
 /**
  * Class DeleteMain
  */
-class DeleteMain
+class Delete_Main
 {
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @var HydratorPool
      */
-    private $hydratorPool;
-
+    private $hydrator_pool;
     /**
      * @var DeleteRow
      */
-    private $deleteRow;
-
+    private $delete_row;
     /**
      * @param TypeResolver $typeResolver
      * @param HydratorPool $hydratorPool
      * @param DeleteRow $deleteRow
      */
-    public function __construct(
-        TypeResolver $typeResolver,
-        HydratorPool $hydratorPool,
-        DeleteRow $deleteRow
-    ) {
-        $this->typeResolver = $typeResolver;
-        $this->hydratorPool = $hydratorPool;
-        $this->deleteRow = $deleteRow;
+    public function __construct(Type_Resolver $type_resolver, Hydrator_Pool $hydrator_pool, Delete_Row $delete_row)
+    {
+        $this->type_resolver = $type_resolver;
+        $this->hydrator_pool = $hydrator_pool;
+        $this->delete_row = $delete_row;
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -55,10 +46,10 @@ class DeleteMain
      */
     public function execute($entity, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $hydrator = $this->hydratorPool->getHydrator($entityType);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $hydrator = $this->hydrator_pool->get_hydrator($entity_type);
         $arguments = array_merge($hydrator->extract($entity), $arguments);
-        $this->deleteRow->execute($entityType, $arguments);
+        $this->delete_row->execute($entity_type, $arguments);
         return $entity;
     }
 }

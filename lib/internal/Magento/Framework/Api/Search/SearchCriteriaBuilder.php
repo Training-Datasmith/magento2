@@ -1,55 +1,46 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api\Search;
 
-use Magento\Framework\Api\AbstractSimpleObjectBuilder;
-use Magento\Framework\Api\ObjectFactory;
-use Magento\Framework\Api\SortOrderBuilder;
-
+use Magento\Framework\Api\Abstract_Simple_Object_Builder;
+use Magento\Framework\Api\Object_Factory;
+use Magento\Framework\Api\Sort_Order_Builder;
 /**
  * Builder for SearchCriteria Service Data Object
  *
  * @api
  * @since 100.0.2
  */
-class SearchCriteriaBuilder extends AbstractSimpleObjectBuilder
+class Search_Criteria_Builder extends Abstract_Simple_Object_Builder
 {
     /**
      * @var SortOrderBuilder
      */
-    protected $sortOrderBuilder;
-
+    protected $sort_order_builder;
     /**
      * @var FilterGroupBuilder
      */
-    protected $filterGroupBuilder;
-
+    protected $filter_group_builder;
     /**
      * @var array
      */
     private $filters = [];
-
     /**
      * @param ObjectFactory $objectFactory
      * @param FilterGroupBuilder $filterGroupBuilder
      * @param SortOrderBuilder $sortOrderBuilder
      */
-    public function __construct(
-        ObjectFactory $objectFactory,
-        FilterGroupBuilder $filterGroupBuilder,
-        SortOrderBuilder $sortOrderBuilder
-    ) {
-        parent::__construct($objectFactory);
-        $this->sortOrderBuilder = $sortOrderBuilder;
-        $this->filterGroupBuilder = $filterGroupBuilder;
+    public function __construct(Object_Factory $object_factory, Filter_Group_Builder $filter_group_builder, Sort_Order_Builder $sort_order_builder)
+    {
+        parent::__construct($object_factory);
+        $this->sort_order_builder = $sort_order_builder;
+        $this->filter_group_builder = $filter_group_builder;
     }
-
     /**
      * Builds the SearchCriteria Data Object
      *
@@ -58,57 +49,50 @@ class SearchCriteriaBuilder extends AbstractSimpleObjectBuilder
     public function create()
     {
         foreach ($this->filters as $filter) {
-            $this->data[SearchCriteria::FILTER_GROUPS][] = $this->filterGroupBuilder->setFilters([])
-                ->addFilter($filter)
-                ->create();
+            $this->data[Search_Criteria::FILTER_GROUPS][] = $this->filter_group_builder->set_filters([])->add_filter($filter)->create();
         }
-        $this->data[SearchCriteria::SORT_ORDERS] = [$this->sortOrderBuilder->create()];
+        $this->data[Search_Criteria::SORT_ORDERS] = [$this->sort_order_builder->create()];
         return parent::create();
     }
-
     /**
      * Create a filter group based on the filter array provided and add to the filter groups
      *
      * @param \Magento\Framework\Api\Filter $filter
      * @return $this
      */
-    public function addFilter(\Magento\Framework\Api\Filter $filter)
+    public function add_filter(\Magento\Framework\Api\Filter $filter)
     {
         $this->filters[] = $filter;
         return $this;
     }
-
     /**
      * @param string $field
      * @param string $direction
      * @return $this
      */
-    public function addSortOrder($field, $direction)
+    public function add_sort_order($field, $direction)
     {
-        $this->sortOrderBuilder->setDirection($direction)
-            ->setField($field);
+        $this->sort_order_builder->set_direction($direction)->set_field($field);
         return $this;
     }
-
     /**
      * Set page size
      *
      * @param int $pageSize
      * @return $this
      */
-    public function setPageSize($pageSize)
+    public function set_page_size($page_size)
     {
-        return $this->_set(SearchCriteria::PAGE_SIZE, $pageSize);
+        return $this->_set(Search_Criteria::PAGE_SIZE, $page_size);
     }
-
     /**
      * Set current page
      *
      * @param int $currentPage
      * @return $this
      */
-    public function setCurrentPage($currentPage)
+    public function set_current_page($current_page)
     {
-        return $this->_set(SearchCriteria::CURRENT_PAGE, $currentPage);
+        return $this->_set(Search_Criteria::CURRENT_PAGE, $current_page);
     }
 }

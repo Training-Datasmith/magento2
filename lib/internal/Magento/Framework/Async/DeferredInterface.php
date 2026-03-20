@@ -4,8 +4,7 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Async;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Async;
  *
  * @api
  */
-interface DeferredInterface
+interface Deferred_Interface
 {
     /**
      * Wait for and return the value.
@@ -22,11 +21,10 @@ interface DeferredInterface
      * @throws \Throwable When it was impossible to get the value.
      */
     public function get();
-
     /**
      * Is the process of getting the value is done?
      *
      * @return bool
      */
-    public function isDone(): bool;
+    public function is_done(): bool;
 }

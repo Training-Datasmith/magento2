@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -13,47 +12,42 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface HttpRequestInterface
+interface Http_Request_Interface
 {
     /**
      * Returned true if POST request
      *
      * @return boolean
      */
-    public function isPost();
-
+    public function is_post();
     /**
      * Returned true if GET request
      *
      * @return boolean
      */
-    public function isGet();
-
+    public function is_get();
     /**
      * Returned true if PATCH request
      *
      * @return boolean
      */
-    public function isPatch();
-
+    public function is_patch();
     /**
      * Returned true if DELETE request
      *
      * @return boolean
      */
-    public function isDelete();
-
+    public function is_delete();
     /**
      * Returned true if PUT request
      *
      * @return boolean
      */
-    public function isPut();
-
+    public function is_put();
     /**
      * Returned true if Ajax request
      *
      * @return boolean
      */
-    public function isAjax();
+    public function is_ajax();
 }

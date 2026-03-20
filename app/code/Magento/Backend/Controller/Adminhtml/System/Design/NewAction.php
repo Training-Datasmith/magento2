@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Controller\Adminhtml\System\Design;
 
-class NewAction extends \Magento\Backend\Controller\Adminhtml\System\Design
+class New_Action extends \Magento\Backend\Controller\Adminhtml\System\Design
 {
     /**
      * @return \Magento\Backend\Model\View\Result\Forward
@@ -16,7 +15,7 @@ class NewAction extends \Magento\Backend\Controller\Adminhtml\System\Design
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Forward $resultForward */
-        $resultForward = $this->resultForwardFactory->create();
-        return $resultForward->forward('edit');
+        $result_forward = $this->result_forward_factory->create();
+        return $result_forward->forward('edit');
     }
 }

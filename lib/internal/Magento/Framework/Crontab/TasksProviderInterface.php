@@ -4,8 +4,7 @@
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Crontab;
 
 /**
@@ -13,12 +12,12 @@ namespace Magento\Framework\Crontab;
  *
  * @api
  */
-interface TasksProviderInterface
+interface Tasks_Provider_Interface
 {
     /**
      * Get list of tasks
      *
      * @return array
      */
-    public function getTasks();
+    public function get_tasks();
 }

@@ -4,14 +4,13 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Api;
 
 /**
  * Interface for Bulk children addition
  */
-interface ProductLinkManagementAddChildrenInterface
+interface Product_Link_Management_Add_Children_Interface
 {
     /**
      * Bulk add children operation
@@ -24,9 +23,5 @@ interface ProductLinkManagementAddChildrenInterface
      * @throws \Magento\Framework\Exception\InputException
      * @return void
      */
-    public function addChildren(
-        \Magento\Catalog\Api\Data\ProductInterface $product,
-        int $optionId,
-        array $linkedProducts
-    );
+    public function add_children(\Magento\Catalog\Api\Data\Product_Interface $product, int $option_id, array $linked_products);
 }

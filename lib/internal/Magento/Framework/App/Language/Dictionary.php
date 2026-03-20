@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Language;
 
-use Magento\Framework\Component\ComponentRegistrar;
-use Magento\Framework\Filesystem\Directory\ReadFactory;
-
+use Magento\Framework\Component\Component_Registrar;
+use Magento\Framework\Filesystem\Directory\Read_Factory;
 /**
  * A service for reading language package dictionaries
  *
@@ -25,46 +23,37 @@ class Dictionary
      * @var string[]
      */
     private $paths;
-
     /**
      * Creates directory read objects
      *
      * @var ReadFactory
      */
-    private $directoryReadFactory;
-
+    private $directory_read_factory;
     /**
      * Component Registrar
      *
      * @var ReadFactory
      */
-    private $componentRegistrar;
-
+    private $component_registrar;
     /**
      * @var ConfigFactory
      */
-    private $configFactory;
-
+    private $config_factory;
     /**
      * @var array
      */
-    private $packList = [];
-
+    private $pack_list = [];
     /**
      * @param ReadFactory $directoryReadFactory
      * @param ComponentRegistrar $componentRegistrar
      * @param ConfigFactory $configFactory
      */
-    public function __construct(
-        ReadFactory $directoryReadFactory,
-        ComponentRegistrar $componentRegistrar,
-        ConfigFactory $configFactory
-    ) {
-        $this->directoryReadFactory = $directoryReadFactory;
-        $this->componentRegistrar = $componentRegistrar;
-        $this->configFactory = $configFactory;
+    public function __construct(Read_Factory $directory_read_factory, Component_Registrar $component_registrar, Config_Factory $config_factory)
+    {
+        $this->directory_read_factory = $directory_read_factory;
+        $this->component_registrar = $component_registrar;
+        $this->config_factory = $config_factory;
     }
-
     /**
      * Load and merge all phrases from language packs by specified code
      *
@@ -75,54 +64,44 @@ class Dictionary
      * @return array
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function getDictionary($languageCode)
+    public function get_dictionary($language_code)
     {
         $languages = [];
-        $this->paths = $this->componentRegistrar->getPaths(ComponentRegistrar::LANGUAGE);
+        $this->paths = $this->component_registrar->get_paths(Component_Registrar::LANGUAGE);
         foreach ($this->paths as $path) {
-            $directoryRead = $this->directoryReadFactory->create($path);
-            if ($directoryRead->isExist('language.xml')) {
-                $xmlSource = $directoryRead->readFile('language.xml');
+            $directory_read = $this->directory_read_factory->create($path);
+            if ($directory_read->is_exist('language.xml')) {
+                $xml_source = $directory_read->read_file('language.xml');
                 try {
-                    $languageConfig = $this->configFactory->create(['source' => $xmlSource]);
-                } catch (\Magento\Framework\Config\Dom\ValidationException $e) {
-                    throw new \Magento\Framework\Exception\LocalizedException(
-                        new \Magento\Framework\Phrase(
-                            'The XML in file "%1" is invalid:' . "\n%2\nVerify the XML and try again.",
-                            [$path . '/language.xml', $e->getMessage()]
-                        ),
-                        $e
-                    );
+                    $language_config = $this->config_factory->create(['source' => $xml_source]);
+                } catch (\Magento\Framework\Config\Dom\Validation_Exception $e) {
+                    throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('The XML in file "%1" is invalid:' . "\n%2\nVerify the XML and try again.", [$path . '/language.xml', $e->get_message()]), $e);
                 }
-                $this->packList[$languageConfig->getVendor()][$languageConfig->getPackage()] = $languageConfig;
-                if ($languageConfig->getCode() === $languageCode) {
-                    $languages[] = $languageConfig;
+                $this->pack_list[$language_config->get_vendor()][$language_config->get_package()] = $language_config;
+                if ($language_config->get_code() === $language_code) {
+                    $languages[] = $language_config;
                 }
             }
         }
-
         // Collect the inherited packages with meta-information of sorting
         $packs = [];
-        foreach ($languages as $languageConfig) {
-            $this->collectInheritedPacks($languageConfig, $packs);
+        foreach ($languages as $language_config) {
+            $this->collect_inherited_packs($language_config, $packs);
         }
-
         // Get sorted packs
-        $packs = $this->getSortedPacks($packs);
-
+        $packs = $this->get_sorted_packs($packs);
         // Merge all packages of translation to one dictionary
         $result = [];
-        foreach ($packs as $packInfo) {
+        foreach ($packs as $pack_info) {
             /** @var Config $languageConfig */
-            $languageConfig = $packInfo['language'];
-            $dictionary = $this->readPackCsv($languageConfig->getVendor(), $languageConfig->getPackage());
+            $language_config = $pack_info['language'];
+            $dictionary = $this->read_pack_csv($language_config->get_vendor(), $language_config->get_package());
             foreach ($dictionary as $key => $value) {
                 $result[$key] = $value;
             }
         }
         return $result;
     }
-
     /**
      * Get sorted packs
      *
@@ -133,27 +112,21 @@ class Dictionary
      *
      * @return array
      */
-    private function getSortedPacks($allPacks)
+    private function get_sorted_packs($all_packs)
     {
         // Get first level (inheritance_level) packs and sort by provided sort order (descending)
-        $firstLevelPacks = array_filter(
-            $allPacks,
-            function ($pack) {
-                return $pack['inheritance_level'] === 0;
-            }
-        );
-        uasort($firstLevelPacks, [$this, 'sortPacks']);
-
+        $first_level_packs = array_filter($all_packs, function ($pack) {
+            return $pack['inheritance_level'] === 0;
+        });
+        uasort($first_level_packs, [$this, 'sortPacks']);
         // Add inherited packs
-        $sortedPacks = [];
-        foreach ($firstLevelPacks as $pack) {
-            $this->addInheritedPacks($allPacks, $pack, $sortedPacks);
+        $sorted_packs = [];
+        foreach ($first_level_packs as $pack) {
+            $this->add_inherited_packs($all_packs, $pack, $sorted_packs);
         }
-
         // Reverse array: the first element has the lowest priority, the last one - the highest
-        return array_reverse($sortedPacks, true);
+        return array_reverse($sorted_packs, true);
     }
-
     /**
      * Line up (flatten) a tree of inheritance of language packs
      *
@@ -165,28 +138,20 @@ class Dictionary
      * @param array $visitedPacks
      * @return void
      */
-    private function collectInheritedPacks($languageConfig, &$result, $level = 0, array &$visitedPacks = [])
+    private function collect_inherited_packs($language_config, &$result, $level = 0, array &$visited_packs = [])
     {
-        $packKey = implode('|', [$languageConfig->getVendor(), $languageConfig->getPackage()]);
-        if (!isset($visitedPacks[$packKey]) &&
-            (!isset($result[$packKey]) || $result[$packKey]['inheritance_level'] < $level)
-        ) {
-            $visitedPacks[$packKey] = true;
-            $result[$packKey] = [
-                'inheritance_level' => $level,
-                'sort_order'        => $languageConfig->getSortOrder(),
-                'language'          => $languageConfig,
-                'key'               => $packKey,
-            ];
-            foreach ($languageConfig->getUses() as $reuse) {
-                if (isset($this->packList[$reuse['vendor']][$reuse['package']])) {
-                    $parentLanguageConfig = $this->packList[$reuse['vendor']][$reuse['package']];
-                    $this->collectInheritedPacks($parentLanguageConfig, $result, $level + 1, $visitedPacks);
+        $pack_key = implode('|', [$language_config->get_vendor(), $language_config->get_package()]);
+        if (!isset($visited_packs[$pack_key]) && (!isset($result[$pack_key]) || $result[$pack_key]['inheritance_level'] < $level)) {
+            $visited_packs[$pack_key] = true;
+            $result[$pack_key] = ['inheritance_level' => $level, 'sort_order' => $language_config->get_sort_order(), 'language' => $language_config, 'key' => $pack_key];
+            foreach ($language_config->get_uses() as $reuse) {
+                if (isset($this->pack_list[$reuse['vendor']][$reuse['package']])) {
+                    $parent_language_config = $this->pack_list[$reuse['vendor']][$reuse['package']];
+                    $this->collect_inherited_packs($parent_language_config, $result, $level + 1, $visited_packs);
                 }
             }
         }
     }
-
     /**
      * Add inherited packs to sorted packs
      *
@@ -196,21 +161,19 @@ class Dictionary
      *
      * @return void
      */
-    private function addInheritedPacks($packs, $pack, &$sortedPacks)
+    private function add_inherited_packs($packs, $pack, &$sorted_packs)
     {
-        if (isset($sortedPacks[$pack['key']])) {
+        if (isset($sorted_packs[$pack['key']])) {
             return;
         }
-
-        $sortedPacks[$pack['key']] = $pack;
-        foreach ($pack['language']->getUses() as $reuse) {
-            $packKey = implode('|', [$reuse['vendor'], $reuse['package']]);
-            if (isset($packs[$packKey])) {
-                $this->addInheritedPacks($packs, $packs[$packKey], $sortedPacks);
+        $sorted_packs[$pack['key']] = $pack;
+        foreach ($pack['language']->get_uses() as $reuse) {
+            $pack_key = implode('|', [$reuse['vendor'], $reuse['package']]);
+            if (isset($packs[$pack_key])) {
+                $this->add_inherited_packs($packs, $packs[$pack_key], $sorted_packs);
             }
         }
     }
-
     /**
      * Sub-routine for custom sorting packs using sort order (descending)
      *
@@ -220,7 +183,7 @@ class Dictionary
      * @return int
      * @SuppressWarnings(PHPMD.UnusedPrivateMethod)
      */
-    private function sortPacks($current, $next)
+    private function sort_packs($current, $next)
     {
         if ($current['sort_order'] > $next['sort_order']) {
             return -1;
@@ -229,7 +192,6 @@ class Dictionary
         }
         return strcmp($next['key'], $current['key']);
     }
-
     /**
      * Read the CSV-files in a language package
      *
@@ -239,16 +201,16 @@ class Dictionary
      * @param string $package
      * @return array
      */
-    private function readPackCsv($vendor, $package)
+    private function read_pack_csv($vendor, $package)
     {
-        $path = $this->componentRegistrar->getPath(ComponentRegistrar::LANGUAGE, strtolower($vendor . '_' . $package));
+        $path = $this->component_registrar->get_path(Component_Registrar::LANGUAGE, strtolower($vendor . '_' . $package));
         $result = [];
         if (isset($path)) {
-            $directoryRead = $this->directoryReadFactory->create($path);
-            $foundCsvFiles = $directoryRead->search('*.csv');
-            foreach ($foundCsvFiles as $foundCsvFile) {
-                $file = $directoryRead->openFile($foundCsvFile);
-                while (($row = $file->readCsv()) !== false) {
+            $directory_read = $this->directory_read_factory->create($path);
+            $found_csv_files = $directory_read->search('*.csv');
+            foreach ($found_csv_files as $found_csv_file) {
+                $file = $directory_read->open_file($found_csv_file);
+                while (($row = $file->read_csv()) !== false) {
                     if (is_array($row) && count($row) > 1) {
                         $result[$row[0]] = $row[1];
                     }

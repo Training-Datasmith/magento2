@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer\Options;
 
 class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Options
@@ -14,29 +13,24 @@ class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Option
      * @var \Magento\Backend\Block\Widget\Grid\Column\Renderer\Options\Converter
      */
     protected $_converter;
-
     /**
      * @param \Magento\Backend\Block\Context $context
      * @param \Magento\Backend\Block\Widget\Grid\Column\Renderer\Options\Converter $converter
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Context $context,
-        \Magento\Backend\Block\Widget\Grid\Column\Renderer\Options\Converter $converter,
-        array $data = []
-    ) {
+    public function __construct(\Magento\Backend\Block\Context $context, \Magento\Backend\Block\Widget\Grid\Column\Renderer\Options\Converter $converter, array $data = [])
+    {
         parent::__construct($context, $data);
         $this->_converter = $converter;
     }
-
     /**
      * Prepare data for renderer
      *
      * @return array
      */
-    public function _getOptions()
+    public function _get_options()
     {
-        $options = $this->getColumn()->getOptions();
-        return $this->_converter->toTreeArray($options);
+        $options = $this->get_column()->get_options();
+        return $this->_converter->to_tree_array($options);
     }
 }

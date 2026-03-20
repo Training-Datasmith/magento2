@@ -4,8 +4,7 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Catalog\Api;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Catalog\Api;
  *
  * @api
  */
-interface ProductAttributeIsFilterableManagementInterface
+interface Product_Attribute_Is_Filterable_Management_Interface
 {
     /**
      * Retrieve 'is_filterable' property for specific attribute as integer
@@ -22,8 +21,7 @@ interface ProductAttributeIsFilterableManagementInterface
      * @return int
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function get(string $attributeCode): int;
-
+    public function get(string $attribute_code): int;
     /**
      * Set 'is_filterable' property for specific attribute as integer
      *
@@ -34,5 +32,5 @@ interface ProductAttributeIsFilterableManagementInterface
      * @throws \Magento\Framework\Exception\InputException
      * @throws \Magento\Framework\Exception\StateException
      */
-    public function set(string $attributeCode, int $isFilterable): bool;
+    public function set(string $attribute_code, int $is_filterable): bool;
 }

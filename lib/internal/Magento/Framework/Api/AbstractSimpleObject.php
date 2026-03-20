@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Api;
 
 /**
@@ -14,13 +13,12 @@ namespace Magento\Framework\Api;
  *
  * @api
  */
-abstract class AbstractSimpleObject
+abstract class Abstract_Simple_Object
 {
     /**
      * @var array
      */
     protected $_data;
-
     /**
      * Initialize internal storage
      *
@@ -30,7 +28,6 @@ abstract class AbstractSimpleObject
     {
         $this->_data = $data;
     }
-
     /**
      * Retrieves a value from the data array if set, or null otherwise.
      *
@@ -41,7 +38,6 @@ abstract class AbstractSimpleObject
     {
         return $this->_data[$key] ?? null;
     }
-
     /**
      * Set value for the given key
      *
@@ -49,30 +45,29 @@ abstract class AbstractSimpleObject
      * @param mixed $value
      * @return $this
      */
-    public function setData($key, $value)
+    public function set_data($key, $value)
     {
         $this->_data[$key] = $value;
         return $this;
     }
-
     /**
      * Return Data Object data in array format.
      *
      * @return array
      */
-    public function __toArray()
+    public function __to_array()
     {
         $data = $this->_data;
-        $hasToArray = function ($model) {
+        $has_to_array = function ($model) {
             return is_object($model) && method_exists($model, '__toArray') && is_callable([$model, '__toArray']);
         };
         foreach ($data as $key => $value) {
-            if ($hasToArray($value)) {
-                $data[$key] = $value->__toArray();
+            if ($has_to_array($value)) {
+                $data[$key] = $value->__to_array();
             } elseif (is_array($value)) {
-                foreach ($value as $nestedKey => $nestedValue) {
-                    if ($hasToArray($nestedValue)) {
-                        $value[$nestedKey] = $nestedValue->__toArray();
+                foreach ($value as $nested_key => $nested_value) {
+                    if ($has_to_array($nested_value)) {
+                        $value[$nested_key] = $nested_value->__to_array();
                     }
                 }
                 $data[$key] = $value;

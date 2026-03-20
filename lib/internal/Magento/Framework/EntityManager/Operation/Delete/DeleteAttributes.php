@@ -1,52 +1,43 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation\Delete;
 
-namespace Magento\Framework\EntityManager\Operation\Delete;
-
-use Magento\Framework\EntityManager\HydratorPool;
-use Magento\Framework\EntityManager\Operation\AttributePool;
-use Magento\Framework\EntityManager\TypeResolver;
-
+use Magento\Framework\Entity_Manager\Hydrator_Pool;
+use Magento\Framework\Entity_Manager\Operation\Attribute_Pool;
+use Magento\Framework\Entity_Manager\Type_Resolver;
 /**
  * Class DeleteAttributes
  */
-class DeleteAttributes
+class Delete_Attributes
 {
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @var HydratorPool
      */
-    private $hydratorPool;
-
+    private $hydrator_pool;
     /**
      * @var AttributePool
      */
-    private $attributePool;
-
+    private $attribute_pool;
     /**
      * @param TypeResolver $typeResolver
      * @param HydratorPool $hydratorPool
      * @param AttributePool $attributePool
      */
-    public function __construct(
-        TypeResolver $typeResolver,
-        HydratorPool $hydratorPool,
-        AttributePool $attributePool
-    ) {
-        $this->typeResolver = $typeResolver;
-        $this->hydratorPool = $hydratorPool;
-        $this->attributePool = $attributePool;
+    public function __construct(Type_Resolver $type_resolver, Hydrator_Pool $hydrator_pool, Attribute_Pool $attribute_pool)
+    {
+        $this->type_resolver = $type_resolver;
+        $this->hydrator_pool = $hydrator_pool;
+        $this->attribute_pool = $attribute_pool;
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -54,14 +45,14 @@ class DeleteAttributes
      */
     public function execute($entity, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $hydrator = $this->hydratorPool->getHydrator($entityType);
-        $entityData = array_merge($hydrator->extract($entity), $arguments);
-        $actions = $this->attributePool->getActions($entityType, 'delete');
+        $entity_type = $this->type_resolver->resolve($entity);
+        $hydrator = $this->hydrator_pool->get_hydrator($entity_type);
+        $entity_data = array_merge($hydrator->extract($entity), $arguments);
+        $actions = $this->attribute_pool->get_actions($entity_type, 'delete');
         foreach ($actions as $action) {
-            $action->execute($entityType, $entityData, $arguments);
+            $action->execute($entity_type, $entity_data, $arguments);
         }
-        $entity = $hydrator->hydrate($entity, $entityData);
+        $entity = $hydrator->hydrate($entity, $entity_data);
         return $entity;
     }
 }

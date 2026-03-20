@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Class to work with archives
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-
 namespace Magento\Framework\Archive;
 
-class AbstractArchive
+class Abstract_Archive
 {
     /**
      * Write data to file. If file can't be opened - throw exception
@@ -24,7 +22,7 @@ class AbstractArchive
      * @return true
      * @throws \Exception
      */
-    protected function _writeFile($destination, $data)
+    protected function _write_file($destination, $data)
     {
         $destination = $destination !== null ? trim($destination) : '';
         if (false === file_put_contents($destination, $data)) {
@@ -33,7 +31,6 @@ class AbstractArchive
         }
         return true;
     }
-
     /**
      * Read data from file. If file can't be opened, throw to exception.
      *
@@ -41,20 +38,17 @@ class AbstractArchive
      * @return string
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    protected function _readFile($source)
+    protected function _read_file($source)
     {
         $data = '';
         if (is_file($source) && is_readable($source)) {
             $data = @file_get_contents($source);
             if ($data === false) {
-                throw new \Magento\Framework\Exception\LocalizedException(
-                    new \Magento\Framework\Phrase("Can't get contents from: %1", [$source])
-                );
+                throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase("Can't get contents from: %1", [$source]));
             }
         }
         return $data;
     }
-
     /**
      * Get file name from source (URI) without last extension.
      *
@@ -62,10 +56,10 @@ class AbstractArchive
      * @param bool $withExtension
      * @return string
      */
-    public function getFilename($source, $withExtension = false)
+    public function get_filename($source, $with_extension = false)
     {
         $file = $source !== null ? str_replace(dirname($source) . '/', '', $source) : '';
-        if (!$withExtension) {
+        if (!$with_extension) {
             $file = substr($file, 0, strrpos($file, '.'));
         }
         return $file;

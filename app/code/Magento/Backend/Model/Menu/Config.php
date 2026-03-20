@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Menu;
 
 /**
@@ -16,61 +15,49 @@ namespace Magento\Backend\Model\Menu;
 class Config
 {
     public const CACHE_ID = 'backend_menu_config';
-
     public const CACHE_MENU_OBJECT = 'backend_menu_object';
-
     /**
      * @var \Magento\Framework\App\Cache\Type\Config
      */
-    protected $_configCacheType;
-
+    protected $_config_cache_type;
     /**
      * @var \Magento\Framework\Event\ManagerInterface
      */
-    protected $_eventManager;
-
+    protected $_event_manager;
     /**
      * @var \Magento\Backend\Model\MenuFactory
      */
-    protected $_menuFactory;
-
+    protected $_menu_factory;
     /**
      * Menu model
      *
      * @var \Magento\Backend\Model\Menu
      */
     protected $_menu;
-
     /**
      * @var \Psr\Log\LoggerInterface
      */
     protected $_logger;
-
     /**
      * @var \Magento\Backend\Model\Menu\Config\Reader
      */
-    protected $_configReader;
-
+    protected $_config_reader;
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
-    protected $_scopeConfig;
-
+    protected $_scope_config;
     /**
      * @var \Magento\Backend\Model\Menu\AbstractDirector
      */
     protected $_director;
-
     /**
      * @var \Magento\Framework\App\State
      */
-    protected $_appState;
-
+    protected $_app_state;
     /**
      * @var Builder
      */
-    private $_menuBuilder;
-
+    private $_menu_builder;
     /**
      * @param \Magento\Backend\Model\Menu\Builder $menuBuilder
      * @param \Magento\Backend\Model\Menu\AbstractDirector $menuDirector
@@ -82,28 +69,18 @@ class Config
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Framework\App\State $appState
      */
-    public function __construct(
-        \Magento\Backend\Model\Menu\Builder $menuBuilder,
-        \Magento\Backend\Model\Menu\AbstractDirector $menuDirector,
-        \Magento\Backend\Model\MenuFactory $menuFactory,
-        \Magento\Backend\Model\Menu\Config\Reader $configReader,
-        \Magento\Framework\App\Cache\Type\Config $configCacheType,
-        \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\App\State $appState
-    ) {
-        $this->_menuBuilder = $menuBuilder;
-        $this->_director = $menuDirector;
-        $this->_configCacheType = $configCacheType;
-        $this->_eventManager = $eventManager;
+    public function __construct(\Magento\Backend\Model\Menu\Builder $menu_builder, \Magento\Backend\Model\Menu\Abstract_Director $menu_director, \Magento\Backend\Model\Menu_Factory $menu_factory, \Magento\Backend\Model\Menu\Config\Reader $config_reader, \Magento\Framework\App\Cache\Type\Config $config_cache_type, \Magento\Framework\Event\Manager_Interface $event_manager, \Psr\Log\Logger_Interface $logger, \Magento\Framework\App\Config\Scope_Config_Interface $scope_config, \Magento\Framework\App\State $app_state)
+    {
+        $this->_menu_builder = $menu_builder;
+        $this->_director = $menu_director;
+        $this->_config_cache_type = $config_cache_type;
+        $this->_event_manager = $event_manager;
         $this->_logger = $logger;
-        $this->_menuFactory = $menuFactory;
-        $this->_configReader = $configReader;
-        $this->_scopeConfig = $scopeConfig;
-        $this->_appState = $appState;
+        $this->_menu_factory = $menu_factory;
+        $this->_config_reader = $config_reader;
+        $this->_scope_config = $scope_config;
+        $this->_app_state = $app_state;
     }
-
     /**
      * Build menu model from config
      *
@@ -113,10 +90,10 @@ class Config
      * @throws \BadMethodCallException|\Exception
      * @throws \Exception|\OutOfRangeException
      */
-    public function getMenu()
+    public function get_menu()
     {
         try {
-            $this->_initMenu();
+            $this->_init_menu();
             return $this->_menu;
         } catch (\InvalidArgumentException $e) {
             $this->_logger->critical($e);
@@ -131,31 +108,23 @@ class Config
             throw $e;
         }
     }
-
     /**
      * Initialize menu object
      *
      * @return void
      */
-    protected function _initMenu()
+    protected function _init_menu()
     {
         if (!$this->_menu) {
-            $this->_menu = $this->_menuFactory->create();
-
-            $cache = $this->_configCacheType->load(self::CACHE_MENU_OBJECT);
+            $this->_menu = $this->_menu_factory->create();
+            $cache = $this->_config_cache_type->load(self::CACHE_MENU_OBJECT);
             if ($cache) {
                 $this->_menu->unserialize($cache);
                 return;
             }
-
-            $this->_director->direct(
-                $this->_configReader->read($this->_appState->getAreaCode()),
-                $this->_menuBuilder,
-                $this->_logger
-            );
-            $this->_menu = $this->_menuBuilder->getResult($this->_menu);
-
-            $this->_configCacheType->save($this->_menu->serialize(), self::CACHE_MENU_OBJECT);
+            $this->_director->direct($this->_config_reader->read($this->_app_state->get_area_code()), $this->_menu_builder, $this->_logger);
+            $this->_menu = $this->_menu_builder->get_result($this->_menu);
+            $this->_config_cache_type->save($this->_menu->serialize(), self::CACHE_MENU_OBJECT);
         }
     }
 }

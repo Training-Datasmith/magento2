@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -14,12 +13,12 @@ namespace Magento\Framework\App;
  * @api
  * @since 100.0.2
  */
-interface RequestSafetyInterface
+interface Request_Safety_Interface
 {
     /**
      * Check that this is safe request
      *
      * @return bool
      */
-    public function isSafeMethod();
+    public function is_safe_method();
 }

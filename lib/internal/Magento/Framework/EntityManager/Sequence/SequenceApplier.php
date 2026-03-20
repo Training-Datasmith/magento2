@@ -1,43 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Sequence;
+namespace Magento\Framework\Entity_Manager\Sequence;
 
 /**
  * Applier of sequence identifier.
  */
-class SequenceApplier
+class Sequence_Applier
 {
     /**
      * @var \Magento\Framework\EntityManager\MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var \Magento\Framework\EntityManager\TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @var \Magento\Framework\EntityManager\Sequence\SequenceManager
      */
-    private $sequenceManager;
-
+    private $sequence_manager;
     /**
      * @var \Magento\Framework\EntityManager\Sequence\SequenceRegistry
      */
-    private $sequenceRegistry;
-
+    private $sequence_registry;
     /**
      * @var \Magento\Framework\EntityManager\HydratorPool
      */
-    private $hydratorPool;
-
+    private $hydrator_pool;
     /**
      * @param \Magento\Framework\EntityManager\MetadataPool $metadataPool
      * @param \Magento\Framework\EntityManager\TypeResolver $typeResolver
@@ -45,20 +39,14 @@ class SequenceApplier
      * @param \Magento\Framework\EntityManager\Sequence\SequenceRegistry $sequenceRegistry
      * @param \Magento\Framework\EntityManager\HydratorPool $hydratorPool
      */
-    public function __construct(
-        \Magento\Framework\EntityManager\MetadataPool $metadataPool,
-        \Magento\Framework\EntityManager\TypeResolver $typeResolver,
-        \Magento\Framework\EntityManager\Sequence\SequenceManager $sequenceManager,
-        \Magento\Framework\EntityManager\Sequence\SequenceRegistry $sequenceRegistry,
-        \Magento\Framework\EntityManager\HydratorPool $hydratorPool
-    ) {
-        $this->metadataPool = $metadataPool;
-        $this->typeResolver = $typeResolver;
-        $this->sequenceManager = $sequenceManager;
-        $this->sequenceRegistry = $sequenceRegistry;
-        $this->hydratorPool = $hydratorPool;
+    public function __construct(\Magento\Framework\Entity_Manager\Metadata_Pool $metadata_pool, \Magento\Framework\Entity_Manager\Type_Resolver $type_resolver, \Magento\Framework\Entity_Manager\Sequence\Sequence_Manager $sequence_manager, \Magento\Framework\Entity_Manager\Sequence\Sequence_Registry $sequence_registry, \Magento\Framework\Entity_Manager\Hydrator_Pool $hydrator_pool)
+    {
+        $this->metadata_pool = $metadata_pool;
+        $this->type_resolver = $type_resolver;
+        $this->sequence_manager = $sequence_manager;
+        $this->sequence_registry = $sequence_registry;
+        $this->hydrator_pool = $hydrator_pool;
     }
-
     /**
      * Applies sequence identifier to given entity.
      *
@@ -71,28 +59,21 @@ class SequenceApplier
      */
     public function apply($entity)
     {
-        $entityType = $this->typeResolver->resolve($entity);
-
+        $entity_type = $this->type_resolver->resolve($entity);
         /** @var \Magento\Framework\DB\Sequence\SequenceInterface|null $sequence */
-        $sequence = $this->sequenceRegistry->retrieve($entityType) ?
-            $this->sequenceRegistry->retrieve($entityType)['sequence'] : null;
-
+        $sequence = $this->sequence_registry->retrieve($entity_type) ? $this->sequence_registry->retrieve($entity_type)['sequence'] : null;
         if ($sequence) {
-            $metadata = $this->metadataPool->getMetadata($entityType);
-            $hydrator = $this->hydratorPool->getHydrator($entityType);
-
-            $entityData = $hydrator->extract($entity);
-
+            $metadata = $this->metadata_pool->get_metadata($entity_type);
+            $hydrator = $this->hydrator_pool->get_hydrator($entity_type);
+            $entity_data = $hydrator->extract($entity);
             // Object already has identifier.
-            if (isset($entityData[$metadata->getIdentifierField()]) && $entityData[$metadata->getIdentifierField()]) {
-                $this->sequenceManager->force($entityType, $entityData[$metadata->getIdentifierField()]);
+            if (isset($entity_data[$metadata->get_identifier_field()]) && $entity_data[$metadata->get_identifier_field()]) {
+                $this->sequence_manager->force($entity_type, $entity_data[$metadata->get_identifier_field()]);
             } else {
-                $entityData[$metadata->getIdentifierField()] = $sequence->getNextValue();
-
-                $entity = $hydrator->hydrate($entity, $entityData);
+                $entity_data[$metadata->get_identifier_field()] = $sequence->get_next_value();
+                $entity = $hydrator->hydrate($entity, $entity_data);
             }
         }
-
         return $entity;
     }
 }

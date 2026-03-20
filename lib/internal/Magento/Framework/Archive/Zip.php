@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Archive;
 
 /**
  * Zip compressed file archive.
  */
-class Zip extends AbstractArchive implements ArchiveInterface
+class Zip extends Abstract_Archive implements Archive_Interface
 {
     /**
      * @throws \Magento\Framework\Exception\LocalizedException
@@ -20,12 +19,9 @@ class Zip extends AbstractArchive implements ArchiveInterface
     {
         $type = 'Zip';
         if (!class_exists('\ZipArchive')) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                new \Magento\Framework\Phrase('\'%1\' file extension is not supported', [$type])
-            );
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('\'%1\' file extension is not supported', [$type]));
         }
     }
-
     /**
      * Pack file.
      *
@@ -36,13 +32,12 @@ class Zip extends AbstractArchive implements ArchiveInterface
      */
     public function pack($source, $destination)
     {
-        $zip = new \ZipArchive();
-        $zip->open($destination, \ZipArchive::CREATE);
-        $zip->addFile($source);
+        $zip = new \Zip_Archive();
+        $zip->open($destination, \Zip_Archive::CREATE);
+        $zip->add_file($source);
         $zip->close();
         return $destination;
     }
-
     /**
      * Unpack file.
      *
@@ -53,13 +48,12 @@ class Zip extends AbstractArchive implements ArchiveInterface
      */
     public function unpack($source, $destination)
     {
-        $zip = new \ZipArchive();
+        $zip = new \Zip_Archive();
         if ($zip->open($source) === true) {
-            $baseName = basename($destination);
-            $filename = $this->getFilenameFromZip($zip, $baseName);
-
+            $base_name = basename($destination);
+            $filename = $this->get_filename_from_zip($zip, $base_name);
             if ($filename) {
-                $zip->extractTo(dirname($destination), $filename);
+                $zip->extract_to(dirname($destination), $filename);
             } else {
                 $destination = '';
             }
@@ -67,10 +61,8 @@ class Zip extends AbstractArchive implements ArchiveInterface
         } else {
             $destination = '';
         }
-
         return $destination;
     }
-
     /**
      * Retrieve filename for import from zip archive.
      *
@@ -79,16 +71,14 @@ class Zip extends AbstractArchive implements ArchiveInterface
      *
      * @return string
      */
-    private function getFilenameFromZip(\ZipArchive $zip, string $baseName): string
+    private function get_filename_from_zip(\Zip_Archive $zip, string $base_name): string
     {
         $index = 0;
-
         do {
-            $zip->renameIndex($index, $baseName);
-            $filename = $zip->getNameIndex($index);
+            $zip->rename_index($index, $base_name);
+            $filename = $zip->get_name_index($index);
             $index++;
-        } while ($baseName !== $filename && $filename !== false);
-
-        return $filename === $baseName ? $filename : '';
+        } while ($base_name !== $filename && $filename !== false);
+        return $filename === $base_name ? $filename : '';
     }
 }

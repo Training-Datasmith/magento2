@@ -4,8 +4,7 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Block\Dashboard;
 
 /**
@@ -13,58 +12,49 @@ namespace Magento\Backend\Block\Dashboard;
  * @deprecated dashboard graphs were migrated to dynamic chart.js solution
  * @see dashboard.chart.amounts and dashboard.chart.orders in adminhtml_dashboard_index.xml
  */
-class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
+class Graph extends \Magento\Backend\Block\Dashboard\Abstract_Dashboard
 {
     public const API_URL = 'https://image-charts.com/chart';
-
     /**
      * @var array
      */
-    protected $_allSeries = [];
-
+    protected $_all_series = [];
     /**
      * @var array
      */
-    protected $_axisLabels = [];
-
+    protected $_axis_labels = [];
     /**
      * @var array
      */
-    protected $_axisMaps = [];
-
+    protected $_axis_maps = [];
     /**
      * @var array
      */
-    protected $_dataRows = [];
-
+    protected $_data_rows = [];
     /**
      * Simple encoding chars
      *
      * @var string
      */
-    protected $_simpleEncoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
+    protected $_simple_encoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     /**
      * Extended encoding chars
      *
      * @var string
      */
-    protected $_extendedEncoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.';
-
+    protected $_extended_encoding = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-.';
     /**
      * Chart width
      *
      * @var string
      */
     protected $_width = '780';
-
     /**
      * Chart height
      *
      * @var string
      */
     protected $_height = '384';
-
     /**
      * Google chart api data encoding
      *
@@ -73,63 +63,52 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
      * @var string
      */
     protected $_encoding = 'e';
-
     /**
      * Html identifier
      *
      * @var string
      */
-    protected $_htmlId = '';
-
+    protected $_html_id = '';
     /**
      * @var string
      */
     protected $_template = 'Magento_Backend::dashboard/graph.phtml';
-
     /**
      * Adminhtml dashboard data
      *
      * @var \Magento\Backend\Helper\Dashboard\Data
      */
-    protected $_dashboardData = null;
-
+    protected $_dashboard_data = null;
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Reports\Model\ResourceModel\Order\CollectionFactory $collectionFactory
      * @param \Magento\Backend\Helper\Dashboard\Data $dashboardData
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Reports\Model\ResourceModel\Order\CollectionFactory $collectionFactory,
-        \Magento\Backend\Helper\Dashboard\Data $dashboardData,
-        array $data = []
-    ) {
-        parent::__construct($context, $collectionFactory, $data);
-        $this->_dashboardData = $dashboardData;
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Reports\Model\Resource_Model\Order\Collection_Factory $collection_factory, \Magento\Backend\Helper\Dashboard\Data $dashboard_data, array $data = [])
+    {
+        parent::__construct($context, $collection_factory, $data);
+        $this->_dashboard_data = $dashboard_data;
     }
-
     /**
      * Get tab template
      *
      * @return string
      */
-    protected function _getTabTemplate()
+    protected function _get_tab_template()
     {
         return 'dashboard/graph.phtml';
     }
-
     /**
      * Set data rows
      *
      * @param string $rows
      * @return void
      */
-    public function setDataRows($rows)
+    public function set_data_rows($rows)
     {
-        $this->_dataRows = (array)$rows;
+        $this->_data_rows = (array) $rows;
     }
-
     /**
      * Add series
      *
@@ -137,35 +116,32 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
      * @param array $options
      * @return void
      */
-    public function addSeries($seriesId, array $options)
+    public function add_series($series_id, array $options)
     {
-        $this->_allSeries[$seriesId] = $options;
+        $this->_all_series[$series_id] = $options;
     }
-
     /**
      * Get series
      *
      * @param string $seriesId
      * @return array|bool
      */
-    public function getSeries($seriesId)
+    public function get_series($series_id)
     {
-        if (isset($this->_allSeries[$seriesId])) {
-            return $this->_allSeries[$seriesId];
+        if (isset($this->_all_series[$series_id])) {
+            return $this->_all_series[$series_id];
         }
         return false;
     }
-
     /**
      * Get all series
      *
      * @return array
      */
-    public function getAllSeries()
+    public function get_all_series()
     {
-        return $this->_allSeries;
+        return $this->_all_series;
     }
-
     /**
      * Get chart url
      *
@@ -176,85 +152,61 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    public function getChartUrl($directUrl = true)
+    public function get_chart_url($direct_url = true)
     {
-        $params = [
-            'cht' => 'lc',
-            'chls' => '7',
-            'chf' => 'bg,s,f4f4f4|c,lg,90,ffffff,0.1,ededed,0',
-            'chm' => 'B,f4d4b2,0,0,0',
-            'chco' => 'db4814',
-            'chxs' => '0,0,11|1,0,11',
-            'chma' => '15,15,15,15',
-        ];
-
-        $this->_allSeries = $this->getRowsData($this->_dataRows);
-
-        foreach ($this->_axisMaps as $axis => $attr) {
-            $this->setAxisLabels($axis, $this->getRowsData($attr, true));
+        $params = ['cht' => 'lc', 'chls' => '7', 'chf' => 'bg,s,f4f4f4|c,lg,90,ffffff,0.1,ededed,0', 'chm' => 'B,f4d4b2,0,0,0', 'chco' => 'db4814', 'chxs' => '0,0,11|1,0,11', 'chma' => '15,15,15,15'];
+        $this->_all_series = $this->get_rows_data($this->_data_rows);
+        foreach ($this->_axis_maps as $axis => $attr) {
+            $this->set_axis_labels($axis, $this->get_rows_data($attr, true));
         }
-
-        $timezoneLocal = $this->_localeDate->getConfigTimezone();
-
+        $timezone_local = $this->_locale_date->get_config_timezone();
         /** @var \DateTime $dateStart */
         /** @var \DateTime $dateEnd */
-        list($dateStart, $dateEnd) = $this->_collectionFactory->create()->getDateRange(
-            $this->getDataHelper()->getParam('period'),
-            '',
-            '',
-            true
-        );
-
-        $dateStart->setTimezone(new \DateTimeZone($timezoneLocal));
-        $dateEnd->setTimezone(new \DateTimeZone($timezoneLocal));
-
-        if ($this->getDataHelper()->getParam('period') == '24h') {
-            $dateEnd->modify('-1 hour');
+        list($date_start, $date_end) = $this->_collection_factory->create()->get_date_range($this->get_data_helper()->get_param('period'), '', '', true);
+        $date_start->set_timezone(new \DateTimeZone($timezone_local));
+        $date_end->set_timezone(new \DateTimeZone($timezone_local));
+        if ($this->get_data_helper()->get_param('period') == '24h') {
+            $date_end->modify('-1 hour');
         } else {
-            $dateEnd->setTime(23, 59, 59);
-            $dateStart->setTime(0, 0, 0);
+            $date_end->set_time(23, 59, 59);
+            $date_start->set_time(0, 0, 0);
         }
-
         $dates = [];
         $datas = [];
-
-        while ($dateStart <= $dateEnd) {
-            switch ($this->getDataHelper()->getParam('period')) {
+        while ($date_start <= $date_end) {
+            switch ($this->get_data_helper()->get_param('period')) {
                 case '7d':
                 case '1m':
-                    $d = $dateStart->format('Y-m-d');
-                    $dateStart->modify('+1 day');
+                    $d = $date_start->format('Y-m-d');
+                    $date_start->modify('+1 day');
                     break;
                 case '1y':
                 case '2y':
-                    $d = $dateStart->format('Y-m');
-                    $dateStart->modify('first day of next month');
+                    $d = $date_start->format('Y-m');
+                    $date_start->modify('first day of next month');
                     break;
                 default:
-                    $d = $dateStart->format('Y-m-d H:00');
-                    $dateStart->modify('+1 hour');
+                    $d = $date_start->format('Y-m-d H:00');
+                    $date_start->modify('+1 hour');
             }
-            foreach ($this->getAllSeries() as $index => $serie) {
-                if (in_array($d, $this->_axisLabels['x'])) {
-                    $datas[$index][] = (float)array_shift($this->_allSeries[$index]);
+            foreach ($this->get_all_series() as $index => $serie) {
+                if (in_array($d, $this->_axis_labels['x'])) {
+                    $datas[$index][] = (float) array_shift($this->_all_series[$index]);
                 } else {
                     $datas[$index][] = 0;
                 }
             }
             $dates[] = $d;
         }
-
         /**
          * setting skip step
          */
         if (count($dates) > 8 && count($dates) < 15) {
             $c = 1;
+        } else if (count($dates) >= 15) {
+            $c = 2;
         } else {
-            if (count($dates) >= 15) {
-                $c = 2;
-            } else {
-                $c = 0;
-            }
+            $c = 0;
         }
         /**
          * skipping some x labels for good reading
@@ -269,96 +221,82 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
                 $i++;
             }
         }
-
-        $this->_axisLabels['x'] = $dates;
-        $this->_allSeries = $datas;
-
+        $this->_axis_labels['x'] = $dates;
+        $this->_all_series = $datas;
         // Image-Charts Awesome data format values
         $params['chd'] = 'a:';
-        $dataDelimiter = ',';
-        $dataSetdelimiter = '|';
-        $dataMissing = '_';
-
+        $data_delimiter = ',';
+        $data_setdelimiter = '|';
+        $data_missing = '_';
         // process each string in the array, and find the max length
         $localmaxvalue = [0];
         $localminvalue = [0];
-        foreach ($this->getAllSeries() as $index => $serie) {
+        foreach ($this->get_all_series() as $index => $serie) {
             $localmaxvalue[$index] = max($serie);
             $localminvalue[$index] = min($serie);
         }
-
         $maxvalue = max($localmaxvalue);
         $minvalue = min($localminvalue);
-
         // default values
         $miny = 0;
         $maxy = 0;
         $yorigin = 0;
-        $xAxis = 'x';
-        $xAxisIndex = 0;
-        $yAxisIndex = 1;
-
+        $x_axis = 'x';
+        $x_axis_index = 0;
+        $y_axis_index = 1;
         if ($minvalue >= 0 && $maxvalue >= 0) {
             if ($maxvalue > 10) {
-                $p = pow(10, $this->_getPow((int)$maxvalue));
+                $p = pow(10, $this->_get_pow((int) $maxvalue));
                 $maxy = ceil($maxvalue / $p) * $p;
-                $yRange = "$yAxisIndex,$miny,$maxy,$p";
+                $y_range = "{$y_axis_index},{$miny},{$maxy},{$p}";
             } else {
                 $maxy = ceil($maxvalue + 1);
-                $yRange = "$yAxisIndex,$miny,$maxy,1";
+                $y_range = "{$y_axis_index},{$miny},{$maxy},1";
             }
-            $params['chxr'] = $yRange;
+            $params['chxr'] = $y_range;
             $yorigin = 0;
         }
-
         $chartdata = [];
-
-        foreach ($this->getAllSeries() as $index => $serie) {
+        foreach ($this->get_all_series() as $index => $serie) {
             $thisdataarray = $serie;
             $count = count($thisdataarray);
             for ($j = 0; $j < $count; $j++) {
                 $currentvalue = $thisdataarray[$j];
                 if (is_numeric($currentvalue)) {
                     $ylocation = $yorigin + $currentvalue;
-                    $chartdata[] = $ylocation . $dataDelimiter;
+                    $chartdata[] = $ylocation . $data_delimiter;
                 } else {
-                    $chartdata[] = $dataMissing . $dataDelimiter;
+                    $chartdata[] = $data_missing . $data_delimiter;
                 }
             }
-            $chartdata[] = $dataSetdelimiter;
+            $chartdata[] = $data_setdelimiter;
         }
         $buffer = implode('', $chartdata);
-
-        $buffer = rtrim($buffer, $dataSetdelimiter);
-        $buffer = rtrim($buffer, $dataDelimiter);
-        $buffer = str_replace($dataDelimiter . $dataSetdelimiter, $dataSetdelimiter, $buffer);
-
+        $buffer = rtrim($buffer, $data_setdelimiter);
+        $buffer = rtrim($buffer, $data_delimiter);
+        $buffer = str_replace($data_delimiter . $data_setdelimiter, $data_setdelimiter, $buffer);
         $params['chd'] .= $buffer;
-
-        if (count($this->_axisLabels) > 0) {
-            $params['chxt'] = implode(',', array_keys($this->_axisLabels));
-            $this->formatAxisLabelDate($xAxis, (string)$timezoneLocal);
-            $customAxisLabels = $xAxisIndex . ':|' . implode('|', $this->_axisLabels[$xAxis]);
-            $params['chxl'] = $customAxisLabels . $dataSetdelimiter;
+        if (count($this->_axis_labels) > 0) {
+            $params['chxt'] = implode(',', array_keys($this->_axis_labels));
+            $this->format_axis_label_date($x_axis, (string) $timezone_local);
+            $custom_axis_labels = $x_axis_index . ':|' . implode('|', $this->_axis_labels[$x_axis]);
+            $params['chxl'] = $custom_axis_labels . $data_setdelimiter;
         }
-
         // chart size
-        $params['chs'] = $this->getWidth() . 'x' . $this->getHeight();
-
+        $params['chs'] = $this->get_width() . 'x' . $this->get_height();
         // return the encoded data
-        if ($directUrl) {
+        if ($direct_url) {
             $p = [];
             foreach ($params as $name => $value) {
                 $p[] = $name . '=' . urlencode($value);
             }
-            return (string)self::API_URL . '?' . implode('&', $p);
+            return (string) self::API_URL . '?' . implode('&', $p);
         }
-        $gaData = urlencode(base64_encode(json_encode($params)));
-        $gaHash = $this->_dashboardData->getChartDataHash($gaData);
-        $params = ['ga' => $gaData, 'h' => $gaHash];
-        return $this->getUrl('adminhtml/*/tunnel', ['_query' => $params]);
+        $ga_data = urlencode(base64_encode(json_encode($params)));
+        $ga_hash = $this->_dashboard_data->get_chart_data_hash($ga_data);
+        $params = ['ga' => $ga_data, 'h' => $ga_hash];
+        return $this->get_url('adminhtml/*/tunnel', ['_query' => $params]);
     }
-
     /**
      * Format dates for axis labels
      *
@@ -367,38 +305,29 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
      *
      * @return void
      */
-    private function formatAxisLabelDate($idx, $timezoneLocal)
+    private function format_axis_label_date($idx, $timezone_local)
     {
-        foreach ($this->_axisLabels[$idx] as $_index => $_label) {
+        foreach ($this->_axis_labels[$idx] as $_index => $_label) {
             if ($_label != '') {
-                $period = new \DateTime($_label, new \DateTimeZone($timezoneLocal));
-                switch ($this->getDataHelper()->getParam('period')) {
+                $period = new \DateTime($_label, new \DateTimeZone($timezone_local));
+                switch ($this->get_data_helper()->get_param('period')) {
                     case '24h':
-                        $this->_axisLabels[$idx][$_index] = $this->_localeDate->formatDateTime(
-                            $period->setTime((int)$period->format('H'), 0, 0),
-                            \IntlDateFormatter::NONE,
-                            \IntlDateFormatter::SHORT
-                        );
+                        $this->_axis_labels[$idx][$_index] = $this->_locale_date->format_date_time($period->set_time((int) $period->format('H'), 0, 0), \Intl_Date_Formatter::NONE, \Intl_Date_Formatter::SHORT);
                         break;
                     case '7d':
                     case '1m':
-                        $this->_axisLabels[$idx][$_index] = $this->_localeDate->formatDateTime(
-                            $period,
-                            \IntlDateFormatter::SHORT,
-                            \IntlDateFormatter::NONE
-                        );
+                        $this->_axis_labels[$idx][$_index] = $this->_locale_date->format_date_time($period, \Intl_Date_Formatter::SHORT, \Intl_Date_Formatter::NONE);
                         break;
                     case '1y':
                     case '2y':
-                        $this->_axisLabels[$idx][$_index] = date('m/Y', strtotime($_label));
+                        $this->_axis_labels[$idx][$_index] = date('m/Y', strtotime($_label));
                         break;
                 }
             } else {
-                $this->_axisLabels[$idx][$_index] = '';
+                $this->_axis_labels[$idx][$_index] = '';
             }
         }
     }
-
     /**
      * Get rows data
      *
@@ -406,22 +335,21 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
      * @param bool $single
      * @return array
      */
-    protected function getRowsData($attributes, $single = false)
+    protected function get_rows_data($attributes, $single = false)
     {
-        $items = $this->getCollection()->getItems();
+        $items = $this->get_collection()->get_items();
         $options = [];
         foreach ($items as $item) {
             if ($single) {
-                $options[] = max(0, $item->getData($attributes));
+                $options[] = max(0, $item->get_data($attributes));
             } else {
-                foreach ((array)$attributes as $attr) {
-                    $options[$attr][] = max(0, $item->getData($attr));
+                foreach ((array) $attributes as $attr) {
+                    $options[$attr][] = max(0, $item->get_data($attr));
                 }
             }
         }
         return $options;
     }
-
     /**
      * Set axis labels
      *
@@ -429,39 +357,36 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
      * @param array $labels
      * @return void
      */
-    public function setAxisLabels($axis, $labels)
+    public function set_axis_labels($axis, $labels)
     {
-        $this->_axisLabels[$axis] = $labels;
+        $this->_axis_labels[$axis] = $labels;
     }
-
     /**
      * Set html id
      *
      * @param string $htmlId
      * @return void
      */
-    public function setHtmlId($htmlId)
+    public function set_html_id($html_id)
     {
-        $this->_htmlId = $htmlId;
+        $this->_html_id = $html_id;
     }
-
     /**
      * Get html id
      *
      * @return string
      */
-    public function getHtmlId()
+    public function get_html_id()
     {
-        return $this->_htmlId;
+        return $this->_html_id;
     }
-
     /**
      * Return pow
      *
      * @param int $number
      * @return int
      */
-    protected function _getPow($number)
+    protected function _get_pow($number)
     {
         $pow = 0;
         while ($number >= 10) {
@@ -470,52 +395,45 @@ class Graph extends \Magento\Backend\Block\Dashboard\AbstractDashboard
         }
         return $pow;
     }
-
     /**
      * Return chart width
      *
      * @return string
      */
-    protected function getWidth()
+    protected function get_width()
     {
         return $this->_width;
     }
-
     /**
      * Return chart height
      *
      * @return string
      */
-    protected function getHeight()
+    protected function get_height()
     {
         return $this->_height;
     }
-
     /**
      * Sets data helper
      *
      * @param \Magento\Backend\Helper\Dashboard\AbstractDashboard $dataHelper
      * @return void
      */
-    public function setDataHelper(\Magento\Backend\Helper\Dashboard\AbstractDashboard $dataHelper)
+    public function set_data_helper(\Magento\Backend\Helper\Dashboard\Abstract_Dashboard $data_helper)
     {
-        $this->_dataHelper = $dataHelper;
+        $this->_data_helper = $data_helper;
     }
-
     /**
      * Prepare chart data
      *
      * @return void
      */
-    protected function _prepareData()
+    protected function _prepare_data()
     {
-        if ($this->_dataHelper !== null) {
-            $availablePeriods = array_keys($this->_dashboardData->getDatePeriods());
-            $period = $this->getRequest()->getParam('period');
-            $this->getDataHelper()->setParam(
-                'period',
-                $period && in_array($period, $availablePeriods) ? $period : '24h'
-            );
+        if ($this->_data_helper !== null) {
+            $available_periods = array_keys($this->_dashboard_data->get_date_periods());
+            $period = $this->get_request()->get_param('period');
+            $this->get_data_helper()->set_param('period', $period && in_array($period, $available_periods) ? $period : '24h');
         }
     }
 }

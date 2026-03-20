@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Observer;
+namespace Magento\Framework\Entity_Manager\Observer;
 
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Model\AbstractModel;
-
+use Magento\Framework\Event\Observer_Interface;
+use Magento\Framework\Model\Abstract_Model;
 /**
  * Class BeforeEntityDelete
  */
-class BeforeEntityDelete implements ObserverInterface
+class Before_Entity_Delete implements Observer_Interface
 {
     /**
      * Apply model save operation
@@ -26,10 +24,10 @@ class BeforeEntityDelete implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $entity = $observer->getEvent()->getEntity();
-        if ($entity instanceof AbstractModel) {
-            $entity->beforeDelete();
-            $entity->getResource()->beforeDelete($entity);
+        $entity = $observer->get_event()->get_entity();
+        if ($entity instanceof Abstract_Model) {
+            $entity->before_delete();
+            $entity->get_resource()->before_delete($entity);
         }
     }
 }

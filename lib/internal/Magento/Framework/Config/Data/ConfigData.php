@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config\Data;
 
 /**
@@ -13,55 +12,49 @@ namespace Magento\Framework\Config\Data;
  * @api
  * @since 100.0.2
  */
-class ConfigData
+class Config_Data
 {
     /**
      * @var string
      */
-    private $fileKey;
-
+    private $file_key;
     /**
      * @var array
      */
     private $data = [];
-
     /**
      * Override previous config options when save
      *
      * @var bool
      */
-    private $overrideWhenSave = false;
-
+    private $override_when_save = false;
     /**
      * Constructor
      *
      * @param string $fileKey
      */
-    public function __construct($fileKey)
+    public function __construct($file_key)
     {
-        $this->fileKey = $fileKey;
+        $this->file_key = $file_key;
     }
-
     /**
      * Gets File Key
      *
      * @return string
      */
-    public function getFileKey()
+    public function get_file_key()
     {
-        return $this->fileKey;
+        return $this->file_key;
     }
-
     /**
      * Gets Data
      *
      * @return array
      */
-    public function getData()
+    public function get_data()
     {
         return $this->data;
     }
-
     /**
      * Sets override when save flag
      *
@@ -69,22 +62,20 @@ class ConfigData
      * @return void
      * @since 100.0.5
      */
-    public function setOverrideWhenSave($overrideWhenSave)
+    public function set_override_when_save($override_when_save)
     {
-        $this->overrideWhenSave = $overrideWhenSave;
+        $this->override_when_save = $override_when_save;
     }
-
     /**
      * Gets override when save flag
      *
      * @return bool
      * @since 100.0.5
      */
-    public function isOverrideWhenSave()
+    public function is_override_when_save()
     {
-        return $this->overrideWhenSave;
+        return $this->override_when_save;
     }
-
     /**
      * Updates a value in ConfigData configuration by specified path
      *
@@ -96,21 +87,18 @@ class ConfigData
     {
         $chunks = $this->expand($path);
         $data = [];
-        $element = &$data;
-
+        $element =& $data;
         while ($chunks) {
             $key = array_shift($chunks);
             if ($chunks) {
                 $element[$key] = [];
-                $element = &$element[$key];
+                $element =& $element[$key];
             } else {
                 $element[$key] = $value;
             }
         }
-
         $this->data = array_replace_recursive($this->data, $data);
     }
-
     /**
      * Expands a path into chunks
      *
@@ -123,15 +111,11 @@ class ConfigData
     private function expand($path)
     {
         $chunks = explode('/', $path ?: '');
-
         foreach ($chunks as $chunk) {
             if ('' == $chunk) {
-                throw new \InvalidArgumentException(
-                    "Path '$path' is invalid. It cannot be empty nor start or end with '/'"
-                );
+                throw new \InvalidArgumentException("Path '{$path}' is invalid. It cannot be empty nor start or end with '/'");
             }
         }
-
         return $chunks;
     }
 }

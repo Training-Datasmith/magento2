@@ -1,34 +1,29 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Cron;
 
-use Magento\Framework\Cache\CacheConstants;
-
+use Magento\Framework\Cache\Cache_Constants;
 /**
  * Backend event observer
  */
-class CleanCache
+class Clean_Cache
 {
     /**
      * @var \Magento\Framework\App\Cache\Frontend\Pool
      */
-    private $cacheFrontendPool;
-
+    private $cache_frontend_pool;
     /**
      * @param \Magento\Framework\App\Cache\Frontend\Pool $cacheFrontendPool
      */
-    public function __construct(
-        \Magento\Framework\App\Cache\Frontend\Pool $cacheFrontendPool
-    ) {
-        $this->cacheFrontendPool = $cacheFrontendPool;
+    public function __construct(\Magento\Framework\App\Cache\Frontend\Pool $cache_frontend_pool)
+    {
+        $this->cache_frontend_pool = $cache_frontend_pool;
     }
-
     /**
      * Cron job method to clean old cache resources
      *
@@ -37,9 +32,9 @@ class CleanCache
     public function execute()
     {
         /** @var $cacheFrontend \Magento\Framework\Cache\FrontendInterface */
-        foreach ($this->cacheFrontendPool as $cacheFrontend) {
+        foreach ($this->cache_frontend_pool as $cache_frontend) {
             // Clean old/expired cache entries - Symfony cache handles this automatically
-            $cacheFrontend->clean(CacheConstants::CLEANING_MODE_OLD);
+            $cache_frontend->clean(Cache_Constants::CLEANING_MODE_OLD);
         }
     }
 }

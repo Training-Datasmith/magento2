@@ -6,8 +6,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Router;
 
 /**
@@ -16,111 +15,92 @@ namespace Magento\Framework\App\Router;
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Base implements \Magento\Framework\App\RouterInterface
+class Base implements \Magento\Framework\App\Router_Interface
 {
     /**
      * No route constant used for request
      */
     public const NO_ROUTE = 'noroute';
-
     /**
      * @var \Magento\Framework\App\ActionFactory
      */
-    protected $actionFactory;
-
+    protected $action_factory;
     /**
      * @var string
      */
-    protected $actionInterface = \Magento\Framework\App\ActionInterface::class;
-
+    protected $action_interface = \Magento\Framework\App\Action_Interface::class;
     /**
      * @var array
      */
     protected $_modules = [];
-
     /**
      * @var array
      */
-    protected $_dispatchData = [];
-
+    protected $_dispatch_data = [];
     /**
      * List of required request parameters
      * Order sensitive
      * @var string[]
      */
-    protected $_requiredParams = ['moduleFrontName', 'actionPath', 'actionName'];
-
+    protected $_required_params = ['moduleFrontName', 'actionPath', 'actionName'];
     /**
      * @var \Magento\Framework\App\Route\ConfigInterface
      */
-    protected $_routeConfig;
-
+    protected $_route_config;
     /**
      * Url security information.
      *
      * @var \Magento\Framework\Url\SecurityInfoInterface
      */
-    protected $_urlSecurityInfo;
-
+    protected $_url_security_info;
     /**
      * Core store config
      *
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
-    protected $_scopeConfig;
-
+    protected $_scope_config;
     /**
      * @var \Magento\Framework\UrlInterface
      */
     protected $_url;
-
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $_storeManager;
-
+    protected $_store_manager;
     /**
      * @var \Magento\Framework\App\ResponseFactory
      */
-    protected $_responseFactory;
-
+    protected $_response_factory;
     /**
      * @var \Magento\Framework\App\DefaultPathInterface
      */
-    protected $_defaultPath;
-
+    protected $_default_path;
     /**
      * @var \Magento\Framework\Code\NameBuilder
      */
-    protected $nameBuilder;
-
+    protected $name_builder;
     /**
      * @var array
      */
-    protected $reservedNames = ['new', 'print', 'switch', 'return'];
-
+    protected $reserved_names = ['new', 'print', 'switch', 'return'];
     /**
      * Allows to control if we need to enable no route functionality in current router
      *
      * @var bool
      */
-    protected $applyNoRoute = false;
-
+    protected $apply_no_route = false;
     /**
      * @var string
      */
-    protected $pathPrefix = null;
-
+    protected $path_prefix = null;
     /**
      * @var \Magento\Framework\App\Router\ActionList
      */
-    protected $actionList;
-
+    protected $action_list;
     /**
      * @var \Magento\Framework\App\Router\PathConfigInterface
      */
-    protected $pathConfig;
-
+    protected $path_config;
     /**
      * @param \Magento\Framework\App\Router\ActionList $actionList
      * @param \Magento\Framework\App\ActionFactory $actionFactory
@@ -135,62 +115,47 @@ class Base implements \Magento\Framework\App\RouterInterface
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function __construct(
-        \Magento\Framework\App\Router\ActionList $actionList,
-        \Magento\Framework\App\ActionFactory $actionFactory,
-        \Magento\Framework\App\DefaultPathInterface $defaultPath,
-        \Magento\Framework\App\ResponseFactory $responseFactory,
-        \Magento\Framework\App\Route\ConfigInterface $routeConfig,
-        \Magento\Framework\UrlInterface $url,
-        \Magento\Framework\Code\NameBuilder $nameBuilder,
-        \Magento\Framework\App\Router\PathConfigInterface $pathConfig
-    ) {
-        $this->actionList = $actionList;
-        $this->actionFactory = $actionFactory;
-        $this->_responseFactory = $responseFactory;
-        $this->_defaultPath = $defaultPath;
-        $this->_routeConfig = $routeConfig;
+    public function __construct(\Magento\Framework\App\Router\Action_List $action_list, \Magento\Framework\App\Action_Factory $action_factory, \Magento\Framework\App\Default_Path_Interface $default_path, \Magento\Framework\App\Response_Factory $response_factory, \Magento\Framework\App\Route\Config_Interface $route_config, \Magento\Framework\Url_Interface $url, \Magento\Framework\Code\Name_Builder $name_builder, \Magento\Framework\App\Router\Path_Config_Interface $path_config)
+    {
+        $this->action_list = $action_list;
+        $this->action_factory = $action_factory;
+        $this->_response_factory = $response_factory;
+        $this->_default_path = $default_path;
+        $this->_route_config = $route_config;
         $this->_url = $url;
-        $this->nameBuilder = $nameBuilder;
-        $this->pathConfig = $pathConfig;
+        $this->name_builder = $name_builder;
+        $this->path_config = $path_config;
     }
-
     /**
      * Match provided request and if matched - return corresponding controller
      *
      * @param \Magento\Framework\App\RequestInterface $request
      * @return \Magento\Framework\App\ActionInterface|null
      */
-    public function match(\Magento\Framework\App\RequestInterface $request)
+    public function match(\Magento\Framework\App\Request_Interface $request)
     {
-        $params = $this->parseRequest($request);
-
-        return $this->matchAction($request, $params);
+        $params = $this->parse_request($request);
+        return $this->match_action($request, $params);
     }
-
     /**
      * Parse request URL params
      *
      * @param \Magento\Framework\App\RequestInterface $request
      * @return array
      */
-    protected function parseRequest(\Magento\Framework\App\RequestInterface $request)
+    protected function parse_request(\Magento\Framework\App\Request_Interface $request)
     {
         $output = [];
-
-        $path = trim($request->getPathInfo(), '/');
-
-        $params = explode('/', strlen($path) ? $path : $this->pathConfig->getDefaultPath());
-        foreach ($this->_requiredParams as $paramName) {
-            $output[$paramName] = array_shift($params);
+        $path = trim($request->get_path_info(), '/');
+        $params = explode('/', strlen($path) ? $path : $this->path_config->get_default_path());
+        foreach ($this->_required_params as $param_name) {
+            $output[$param_name] = array_shift($params);
         }
-
         for ($i = 0, $l = count($params); $i < $l; $i += 2) {
             $output['variables'][$params[$i]] = isset($params[$i + 1]) ? urldecode($params[$i + 1]) : '';
         }
         return $output;
     }
-
     /**
      * Match module front name
      *
@@ -198,24 +163,22 @@ class Base implements \Magento\Framework\App\RouterInterface
      * @param string $param
      * @return string|null
      */
-    protected function matchModuleFrontName(\Magento\Framework\App\RequestInterface $request, $param)
+    protected function match_module_front_name(\Magento\Framework\App\Request_Interface $request, $param)
     {
         // get module name
-        if ($request->getModuleName()) {
-            $moduleFrontName = $request->getModuleName();
+        if ($request->get_module_name()) {
+            $module_front_name = $request->get_module_name();
         } elseif (strlen((string) $param)) {
-            $moduleFrontName = $param;
+            $module_front_name = $param;
         } else {
-            $moduleFrontName = $this->_defaultPath->getPart('module');
-            $request->setAlias(\Magento\Framework\Url::REWRITE_REQUEST_PATH_ALIAS, '');
-            if (!$moduleFrontName) {
+            $module_front_name = $this->_default_path->get_part('module');
+            $request->set_alias(\Magento\Framework\Url::REWRITE_REQUEST_PATH_ALIAS, '');
+            if (!$module_front_name) {
                 return null;
             }
         }
-
-        return $moduleFrontName;
+        return $module_front_name;
     }
-
     /**
      * Match controller name
      *
@@ -223,43 +186,36 @@ class Base implements \Magento\Framework\App\RouterInterface
      * @param string $param
      * @return string
      */
-    protected function matchActionPath(\Magento\Framework\App\RequestInterface $request, $param)
+    protected function match_action_path(\Magento\Framework\App\Request_Interface $request, $param)
     {
-        if ($request->getControllerName()) {
-            $actionPath = $request->getControllerName();
+        if ($request->get_controller_name()) {
+            $action_path = $request->get_controller_name();
         } elseif (!empty($param)) {
-            $actionPath = $param;
+            $action_path = $param;
         } else {
-            $actionPath = $this->_defaultPath->getPart('controller');
-            $request->setAlias(
-                \Magento\Framework\Url::REWRITE_REQUEST_PATH_ALIAS,
-                ltrim($request->getOriginalPathInfo(), '/')
-            );
+            $action_path = $this->_default_path->get_part('controller');
+            $request->set_alias(\Magento\Framework\Url::REWRITE_REQUEST_PATH_ALIAS, ltrim($request->get_original_path_info(), '/'));
         }
-        return $actionPath;
+        return $action_path;
     }
-
     /**
      * Get not found controller instance
      *
      * @param string $currentModuleName
      * @return \Magento\Framework\App\ActionInterface|null
      */
-    protected function getNotFoundAction($currentModuleName)
+    protected function get_not_found_action($current_module_name)
     {
-        if (!$this->applyNoRoute) {
+        if (!$this->apply_no_route) {
             return null;
         }
-
-        $actionClassName = $this->getActionClassName($currentModuleName, 'noroute');
-        if (!$actionClassName || !is_subclass_of($actionClassName, $this->actionInterface)) {
+        $action_class_name = $this->get_action_class_name($current_module_name, 'noroute');
+        if (!$action_class_name || !is_subclass_of($action_class_name, $this->action_interface)) {
             return null;
         }
-
         // instantiate action class
-        return $this->actionFactory->create($actionClassName);
+        return $this->action_factory->create($action_class_name);
     }
-
     /**
      * Create matched controller instance
      *
@@ -269,65 +225,56 @@ class Base implements \Magento\Framework\App\RouterInterface
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    protected function matchAction(\Magento\Framework\App\RequestInterface $request, array $params)
+    protected function match_action(\Magento\Framework\App\Request_Interface $request, array $params)
     {
-        $moduleFrontName = $this->matchModuleFrontName($request, $params['moduleFrontName']);
-        if (!strlen((string) $moduleFrontName)) {
+        $module_front_name = $this->match_module_front_name($request, $params['moduleFrontName']);
+        if (!strlen((string) $module_front_name)) {
             return null;
         }
-
         /**
          * Searching router args by module name from route using it as key
          */
-        $modules = $this->_routeConfig->getModulesByFrontName($moduleFrontName);
+        $modules = $this->_route_config->get_modules_by_front_name($module_front_name);
         if (empty($modules) === true) {
             return null;
         }
-
         /**
          * Going through modules to find appropriate controller
          */
-        $currentModuleName = null;
-        $actionPath = null;
+        $current_module_name = null;
+        $action_path = null;
         $action = null;
-        $actionInstance = null;
-
-        $actionPath = $this->matchActionPath($request, $params['actionPath']);
-        $action = $request->getActionName() ?: ($params['actionName'] ?: $this->_defaultPath->getPart('action'));
-        $this->_checkShouldBeSecure($request, '/' . $moduleFrontName . '/' . $actionPath . '/' . $action);
-
-        foreach ($modules as $moduleName) {
-            $currentModuleName = $moduleName;
-
-            $actionClassName = $this->actionList->get($moduleName, $this->pathPrefix, $actionPath, $action);
-            if (!$actionClassName || !is_subclass_of($actionClassName, $this->actionInterface)) {
+        $action_instance = null;
+        $action_path = $this->match_action_path($request, $params['actionPath']);
+        $action = $request->get_action_name() ?: ($params['actionName'] ?: $this->_default_path->get_part('action'));
+        $this->_check_should_be_secure($request, '/' . $module_front_name . '/' . $action_path . '/' . $action);
+        foreach ($modules as $module_name) {
+            $current_module_name = $module_name;
+            $action_class_name = $this->action_list->get($module_name, $this->path_prefix, $action_path, $action);
+            if (!$action_class_name || !is_subclass_of($action_class_name, $this->action_interface)) {
                 continue;
             }
-
-            $actionInstance = $this->actionFactory->create($actionClassName);
+            $action_instance = $this->action_factory->create($action_class_name);
             break;
         }
-
-        if (null == $actionInstance) {
-            $actionInstance = $this->getNotFoundAction($currentModuleName);
-            if ($actionInstance === null) {
+        if (null == $action_instance) {
+            $action_instance = $this->get_not_found_action($current_module_name);
+            if ($action_instance === null) {
                 return null;
             }
             $action = self::NO_ROUTE;
         }
-
         // set values only after all the checks are done
-        $request->setModuleName($moduleFrontName);
-        $request->setControllerName($actionPath);
-        $request->setActionName($action);
-        $request->setControllerModule($currentModuleName);
-        $request->setRouteName($this->_routeConfig->getRouteByFrontName($moduleFrontName));
+        $request->set_module_name($module_front_name);
+        $request->set_controller_name($action_path);
+        $request->set_action_name($action);
+        $request->set_controller_module($current_module_name);
+        $request->set_route_name($this->_route_config->get_route_by_front_name($module_front_name));
         if (isset($params['variables'])) {
-            $request->setParams($params['variables']);
+            $request->set_params($params['variables']);
         }
-        return $actionInstance;
+        return $action_instance;
     }
-
     /**
      * Build controller class name
      *
@@ -335,12 +282,11 @@ class Base implements \Magento\Framework\App\RouterInterface
      * @param string $actionPath
      * @return string
      */
-    public function getActionClassName($module, $actionPath)
+    public function get_action_class_name($module, $action_path)
     {
-        $prefix = $this->pathPrefix ? 'Controller\\' . $this->pathPrefix : 'Controller';
-        return $this->nameBuilder->buildClassName([$module, $prefix, $actionPath]);
+        $prefix = $this->path_prefix ? 'Controller\\' . $this->path_prefix : 'Controller';
+        return $this->name_builder->build_class_name([$module, $prefix, $action_path]);
     }
-
     /**
      * Check that request uses https protocol if it should.
      *
@@ -350,30 +296,27 @@ class Base implements \Magento\Framework\App\RouterInterface
      * @param string $path
      * @return void
      */
-    protected function _checkShouldBeSecure(\Magento\Framework\App\RequestInterface $request, $path = '')
+    protected function _check_should_be_secure(\Magento\Framework\App\Request_Interface $request, $path = '')
     {
-        if ($request->getPostValue()) {
+        if ($request->get_post_value()) {
             return;
         }
-
-        if ($this->pathConfig->shouldBeSecure($path) && !$request->isSecure()) {
-            $url = $this->pathConfig->getCurrentSecureUrl($request);
-            if ($this->_shouldRedirectToSecure()) {
-                $url = $this->_url->getRedirectUrl($url);
+        if ($this->path_config->should_be_secure($path) && !$request->is_secure()) {
+            $url = $this->path_config->get_current_secure_url($request);
+            if ($this->_should_redirect_to_secure()) {
+                $url = $this->_url->get_redirect_url($url);
             }
-
-            $this->_responseFactory->create()->setRedirect($url)->sendResponse();
+            $this->_response_factory->create()->set_redirect($url)->send_response();
             // phpcs:ignore Magento2.Security.LanguageConstruct.ExitUsage
             exit;
         }
     }
-
     /**
      * Check whether redirect url should be used for secure routes
      *
      * @return bool
      */
-    protected function _shouldRedirectToSecure()
+    protected function _should_redirect_to_secure()
     {
         return false;
     }

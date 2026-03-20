@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -14,11 +13,11 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface DefaultPathInterface
+interface Default_Path_Interface
 {
     /**
      * @param string $code
      * @return string
      */
-    public function getPart($code);
+    public function get_part($code);
 }

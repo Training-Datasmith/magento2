@@ -1,55 +1,52 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml\Config\Converter;
 
-namespace Magento\Analytics\ReportXml\Config\Converter;
-
-use Magento\Framework\Config\ConverterInterface;
-
+use Magento\Framework\Config\Converter_Interface;
 /**
  * A converter of reports configuration.
  *
  * Converts configuration data stored in XML format into corresponding PHP array.
  */
-class Xml implements ConverterInterface
+class Xml implements Converter_Interface
 {
     /**
      * Converts XML node into corresponding array.
      *
      * @return array|string
      */
-    private function convertNode(\DOMNode $source)
+    private function convert_node(\Dom_Node $source)
     {
         $result = [];
-        if ($source->hasAttributes()) {
+        if ($source->has_attributes()) {
             $attrs = $source->attributes;
             foreach ($attrs as $attr) {
                 $result[$attr->name] = $attr->value;
             }
         }
-        if ($source->hasChildNodes()) {
-            $children = $source->childNodes;
+        if ($source->has_child_nodes()) {
+            $children = $source->child_nodes;
             if ($children->length == 1) {
                 $child = $children->item(0);
-                if ($child->nodeType == XML_TEXT_NODE) {
-                    $result['_value'] = $child->nodeValue;
+                if ($child->node_type == XML_TEXT_NODE) {
+                    $result['_value'] = $child->node_value;
                     return count($result) == 1 ? $result['_value'] : $result;
                 }
             }
             foreach ($children as $child) {
-                if ($child instanceof \DOMCharacterData) {
+                if ($child instanceof \Dom_Character_Data) {
                     continue;
                 }
-                $result[$child->nodeName][] = $this->convertNode($child);
+                $result[$child->node_name][] = $this->convert_node($child);
             }
         }
         return $result;
     }
-
     /**
      * Converts XML document into corresponding array.
      *
@@ -58,6 +55,6 @@ class Xml implements ConverterInterface
      */
     public function convert($source)
     {
-        return $this->convertNode($source);
+        return $this->convert_node($source);
     }
 }

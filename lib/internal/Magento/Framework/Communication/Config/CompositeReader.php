@@ -1,25 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Communication\Config;
 
-use Magento\Framework\Config\ReaderInterface;
-
+use Magento\Framework\Config\Reader_Interface;
 /**
  * Composite reader for communication config.
  */
-class CompositeReader implements ReaderInterface
+class Composite_Reader implements Reader_Interface
 {
     /**
      * @var ReaderInterface[]
      */
     private $readers;
-
     /**
      * Initialize dependencies.
      *
@@ -27,24 +24,20 @@ class CompositeReader implements ReaderInterface
      */
     public function __construct(array $readers)
     {
-        usort(
-            $readers,
-            function ($firstItem, $secondItem) {
-                if (!isset($firstItem['sortOrder']) || !isset($secondItem['sortOrder'])) {
-                    return 0;
-                }
-                return $firstItem['sortOrder'] <=> $secondItem['sortOrder'];
+        usort($readers, function ($first_item, $second_item) {
+            if (!isset($first_item['sortOrder']) || !isset($second_item['sortOrder'])) {
+                return 0;
             }
-        );
+            return $first_item['sortOrder'] <=> $second_item['sortOrder'];
+        });
         $this->readers = [];
-        foreach ($readers as $readerInfo) {
-            if (!isset($readerInfo['reader'])) {
+        foreach ($readers as $reader_info) {
+            if (!isset($reader_info['reader'])) {
                 continue;
             }
-            $this->readers[] = $readerInfo['reader'];
+            $this->readers[] = $reader_info['reader'];
         }
     }
-
     /**
      * Read config.
      *

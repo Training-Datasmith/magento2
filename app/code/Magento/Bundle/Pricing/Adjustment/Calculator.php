@@ -4,66 +4,57 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Pricing\Adjustment;
 
 use Magento\Bundle\Model\Option;
 use Magento\Bundle\Model\Product\Price;
-use Magento\Bundle\Pricing\Price\BundleSelectionFactory;
-use Magento\Bundle\Pricing\Price\BundleSelectionPrice;
+use Magento\Bundle\Pricing\Price\Bundle_Selection_Factory;
+use Magento\Bundle\Pricing\Price\Bundle_Selection_Price;
 use Magento\Catalog\Model\Product;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
+use Magento\Framework\Object_Manager\Reset_After_Request_Interface;
 use Magento\Framework\Pricing\Adjustment\Calculator as CalculatorBase;
-use Magento\Framework\Pricing\Amount\AmountFactory;
-use Magento\Framework\Pricing\Amount\AmountInterface;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\Pricing\SaleableInterface;
+use Magento\Framework\Pricing\Amount\Amount_Factory;
+use Magento\Framework\Pricing\Amount\Amount_Interface;
+use Magento\Framework\Pricing\Price_Currency_Interface;
+use Magento\Framework\Pricing\Saleable_Interface;
 use Magento\Tax\Helper\Data as TaxHelper;
-
 /**
  * Bundle price calculator
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterface
+class Calculator implements Bundle_Calculator_Interface, Reset_After_Request_Interface
 {
     /**
      * @var CalculatorBase
      */
     protected $calculator;
-
     /**
      * @var AmountFactory
      */
-    protected $amountFactory;
-
+    protected $amount_factory;
     /**
      * @var BundleSelectionFactory
      */
-    protected $selectionFactory;
-
+    protected $selection_factory;
     /**
      * Tax helper, needed to get rounding setting
      *
      * @var TaxHelper
      */
-    protected $taxHelper;
-
+    protected $tax_helper;
     /**
      * @var PriceCurrencyInterface
      */
-    protected $priceCurrency;
-
+    protected $price_currency;
     /**
      * @var AmountInterface[]
      */
-    private $optionAmount = [];
-
+    private $option_amount = [];
     /**
      * @var SelectionPriceListProviderInterface
      */
-    private $selectionPriceListProvider;
-
+    private $selection_price_list_provider;
     /**
      * @param CalculatorBase $calculator
      * @param AmountFactory $amountFactory
@@ -72,22 +63,15 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @param PriceCurrencyInterface $priceCurrency
      * @param SelectionPriceListProviderInterface $selectionPriceListProvider
      */
-    public function __construct(
-        CalculatorBase $calculator,
-        AmountFactory $amountFactory,
-        BundleSelectionFactory $bundleSelectionFactory,
-        TaxHelper $taxHelper,
-        PriceCurrencyInterface $priceCurrency,
-        SelectionPriceListProviderInterface $selectionPriceListProvider
-    ) {
+    public function __construct(Calculator_Base $calculator, Amount_Factory $amount_factory, Bundle_Selection_Factory $bundle_selection_factory, Tax_Helper $tax_helper, Price_Currency_Interface $price_currency, Selection_Price_List_Provider_Interface $selection_price_list_provider)
+    {
         $this->calculator = $calculator;
-        $this->amountFactory = $amountFactory;
-        $this->selectionFactory = $bundleSelectionFactory;
-        $this->taxHelper = $taxHelper;
-        $this->priceCurrency = $priceCurrency;
-        $this->selectionPriceListProvider = $selectionPriceListProvider;
+        $this->amount_factory = $amount_factory;
+        $this->selection_factory = $bundle_selection_factory;
+        $this->tax_helper = $tax_helper;
+        $this->price_currency = $price_currency;
+        $this->selection_price_list_provider = $selection_price_list_provider;
     }
-
     /**
      * Get amount for current product which is included price of existing options with minimal price
      *
@@ -100,11 +84,10 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getAmount($amount, SaleableInterface $saleableItem, $exclude = null, $context = [])
+    public function get_amount($amount, Saleable_Interface $saleable_item, $exclude = null, $context = [])
     {
-        return $this->getOptionsAmount($saleableItem, $exclude, true, $amount);
+        return $this->get_options_amount($saleable_item, $exclude, true, $amount);
     }
-
     /**
      * Get amount for current product which is included price of existing options with maximal price
      *
@@ -114,11 +97,10 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      *
      * @return AmountInterface
      */
-    public function getMinRegularAmount($amount, Product $saleableItem, $exclude = null)
+    public function get_min_regular_amount($amount, Product $saleable_item, $exclude = null)
     {
-        return $this->getOptionsAmount($saleableItem, $exclude, true, $amount, true);
+        return $this->get_options_amount($saleable_item, $exclude, true, $amount, true);
     }
-
     /**
      * Get amount for current product which is included price of existing options with maximal price
      *
@@ -128,11 +110,10 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      *
      * @return AmountInterface
      */
-    public function getMaxAmount($amount, Product $saleableItem, $exclude = null)
+    public function get_max_amount($amount, Product $saleable_item, $exclude = null)
     {
-        return $this->getOptionsAmount($saleableItem, $exclude, false, $amount);
+        return $this->get_options_amount($saleable_item, $exclude, false, $amount);
     }
-
     /**
      * Get amount for current product which is included price of existing options with maximal price
      *
@@ -142,11 +123,10 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      *
      * @return AmountInterface
      */
-    public function getMaxRegularAmount($amount, Product $saleableItem, $exclude = null)
+    public function get_max_regular_amount($amount, Product $saleable_item, $exclude = null)
     {
-        return $this->getOptionsAmount($saleableItem, $exclude, false, $amount, true);
+        return $this->get_options_amount($saleable_item, $exclude, false, $amount, true);
     }
-
     /**
      * Option amount calculation for bundle product
      *
@@ -158,26 +138,14 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      *
      * @return AmountInterface
      */
-    public function getOptionsAmount(
-        Product $saleableItem,
-        $exclude = null,
-        $searchMin = true,
-        $baseAmount = 0.,
-        $useRegularPrice = false
-    ) {
-        $cacheKey = implode('-', [$saleableItem->getId(), $exclude, $searchMin, $baseAmount, $useRegularPrice]);
-        if (!isset($this->optionAmount[$cacheKey])) {
-            $this->optionAmount[$cacheKey] = $this->calculateBundleAmount(
-                $baseAmount,
-                $saleableItem,
-                $this->getSelectionAmounts($saleableItem, $searchMin, $useRegularPrice),
-                $exclude
-            );
+    public function get_options_amount(Product $saleable_item, $exclude = null, $search_min = true, $base_amount = 0.0, $use_regular_price = false)
+    {
+        $cache_key = implode('-', [$saleable_item->get_id(), $exclude, $search_min, $base_amount, $use_regular_price]);
+        if (!isset($this->option_amount[$cache_key])) {
+            $this->option_amount[$cache_key] = $this->calculate_bundle_amount($base_amount, $saleable_item, $this->get_selection_amounts($saleable_item, $search_min, $use_regular_price), $exclude);
         }
-
-        return $this->optionAmount[$cacheKey];
+        return $this->option_amount[$cache_key];
     }
-
     /**
      * Get base amount without option
      *
@@ -186,15 +154,10 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      *
      * @return AmountInterface|void
      */
-    public function getAmountWithoutOption($amount, Product $saleableItem)
+    public function get_amount_without_option($amount, Product $saleable_item)
     {
-        return $this->calculateBundleAmount(
-            $amount,
-            $saleableItem,
-            []
-        );
+        return $this->calculate_bundle_amount($amount, $saleable_item, []);
     }
-
     /**
      * Filter all options for bundle product
      *
@@ -203,11 +166,10 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @param bool $useRegularPrice
      * @return array
      */
-    protected function getSelectionAmounts(Product $bundleProduct, $searchMin, $useRegularPrice = false)
+    protected function get_selection_amounts(Product $bundle_product, $search_min, $use_regular_price = false)
     {
-        return $this->selectionPriceListProvider->getPriceList($bundleProduct, $searchMin, $useRegularPrice);
+        return $this->selection_price_list_provider->get_price_list($bundle_product, $search_min, $use_regular_price);
     }
-
     /**
      * Check this option if it should be skipped
      *
@@ -217,11 +179,10 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @deprecated 100.2.0 Not used anymore.
      * @see Nothing
      */
-    protected function canSkipOption($option, $canSkipRequiredOption)
+    protected function can_skip_option($option, $can_skip_required_option)
     {
-        return !$option->getSelections() || ($canSkipRequiredOption && !$option->getRequired());
+        return !$option->get_selections() || $can_skip_required_option && !$option->get_required();
     }
-
     /**
      * Check the bundle product for availability of required options
      *
@@ -230,17 +191,13 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @deprecated 100.2.0 Not used anymore.
      * @see Nothing
      */
-    protected function hasRequiredOption($bundleProduct)
+    protected function has_required_option($bundle_product)
     {
-        $options = array_filter(
-            $this->getBundleOptions($bundleProduct),
-            function ($item) {
-                return $item->getRequired();
-            }
-        );
+        $options = array_filter($this->get_bundle_options($bundle_product), function ($item) {
+            return $item->get_required();
+        });
         return !empty($options);
     }
-
     /**
      * Get bundle options
      *
@@ -249,15 +206,12 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @deprecated 100.2.0
      * @see Nothing
      */
-    protected function getBundleOptions(Product $saleableItem)
+    protected function get_bundle_options(Product $saleable_item)
     {
         /** @var \Magento\Bundle\Pricing\Price\BundleOptionPrice $bundlePrice */
-        $bundlePrice = $saleableItem->getPriceInfo()->getPrice(
-            \Magento\Bundle\Pricing\Price\BundleOptionPrice::PRICE_CODE
-        );
-        return $bundlePrice->getOptions();
+        $bundle_price = $saleable_item->get_price_info()->get_price(\Magento\Bundle\Pricing\Price\Bundle_Option_Price::PRICE_CODE);
+        return $bundle_price->get_options();
     }
-
     /**
      * Calculate amount for bundle product with all selection prices
      *
@@ -267,14 +221,13 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @param null|bool|string|array $exclude
      * @return AmountInterface
      */
-    public function calculateBundleAmount($basePriceValue, $bundleProduct, $selectionPriceList, $exclude = null)
+    public function calculate_bundle_amount($base_price_value, $bundle_product, $selection_price_list, $exclude = null)
     {
-        if ($bundleProduct->getPriceType() == Price::PRICE_TYPE_FIXED) {
-            return $this->calculateFixedBundleAmount($basePriceValue, $bundleProduct, $selectionPriceList, $exclude);
+        if ($bundle_product->get_price_type() == Price::PRICE_TYPE_FIXED) {
+            return $this->calculate_fixed_bundle_amount($base_price_value, $bundle_product, $selection_price_list, $exclude);
         }
-        return $this->calculateDynamicBundleAmount($basePriceValue, $bundleProduct, $selectionPriceList, $exclude);
+        return $this->calculate_dynamic_bundle_amount($base_price_value, $bundle_product, $selection_price_list, $exclude);
     }
-
     /**
      * Calculate amount for fixed bundle product
      *
@@ -284,16 +237,15 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @param null|bool|string|array $exclude
      * @return AmountInterface
      */
-    protected function calculateFixedBundleAmount($basePriceValue, $bundleProduct, $selectionPriceList, $exclude)
+    protected function calculate_fixed_bundle_amount($base_price_value, $bundle_product, $selection_price_list, $exclude)
     {
-        $fullAmount = $basePriceValue;
+        $full_amount = $base_price_value;
         /** @var $option Option */
-        foreach ($selectionPriceList as $selectionPrice) {
-            $fullAmount += ($selectionPrice->getValue() * $selectionPrice->getQuantity());
+        foreach ($selection_price_list as $selection_price) {
+            $full_amount += $selection_price->get_value() * $selection_price->get_quantity();
         }
-        return $this->calculator->getAmount($fullAmount, $bundleProduct, $exclude);
+        return $this->calculator->get_amount($full_amount, $bundle_product, $exclude);
     }
-
     /**
      * Calculate amount for dynamic bundle product
      *
@@ -304,51 +256,47 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @return AmountInterface
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    protected function calculateDynamicBundleAmount($basePriceValue, $bundleProduct, $selectionPriceList, $exclude)
+    protected function calculate_dynamic_bundle_amount($base_price_value, $bundle_product, $selection_price_list, $exclude)
     {
-        $fullAmount = 0.;
+        $full_amount = 0.0;
         $adjustments = [];
         $i = 0;
-
-        $amountList[$i]['amount'] = $this->calculator->getAmount($basePriceValue, $bundleProduct, $exclude);
-        $amountList[$i]['quantity'] = 1;
-
-        foreach ($selectionPriceList as $selectionPrice) {
+        $amount_list[$i]['amount'] = $this->calculator->get_amount($base_price_value, $bundle_product, $exclude);
+        $amount_list[$i]['quantity'] = 1;
+        foreach ($selection_price_list as $selection_price) {
             ++$i;
-            if ($selectionPrice) {
-                $amountList[$i]['amount'] = $selectionPrice->getAmount();
+            if ($selection_price) {
+                $amount_list[$i]['amount'] = $selection_price->get_amount();
                 // always honor the quantity given
-                $amountList[$i]['quantity'] = $selectionPrice->getQuantity();
+                $amount_list[$i]['quantity'] = $selection_price->get_quantity();
             }
         }
-
-        foreach ($amountList as $amountInfo) {
+        foreach ($amount_list as $amount_info) {
             /** @var AmountInterface $itemAmount */
-            $itemAmount = $amountInfo['amount'];
-            $qty = $amountInfo['quantity'];
+            $item_amount = $amount_info['amount'];
+            $qty = $amount_info['quantity'];
             //We need to round the individual selection first
-            $fullAmount += ($this->priceCurrency->round($itemAmount->getValue()) * $qty);
-            foreach ($itemAmount->getAdjustmentAmounts() as $code => $adjustment) {
-                $adjustment = $this->priceCurrency->round($adjustment) * $qty;
+            $full_amount += $this->price_currency->round($item_amount->get_value()) * $qty;
+            foreach ($item_amount->get_adjustment_amounts() as $code => $adjustment) {
+                $adjustment = $this->price_currency->round($adjustment) * $qty;
                 $adjustments[$code] = isset($adjustments[$code]) ? $adjustments[$code] + $adjustment : $adjustment;
             }
         }
         if (is_array($exclude) == false) {
             if ($exclude && isset($adjustments[$exclude])) {
-                $fullAmount -= $adjustments[$exclude];
+                $full_amount -= $adjustments[$exclude];
                 unset($adjustments[$exclude]);
             }
         } else {
-            foreach ($exclude as $oneExclusion) {
-                if ($oneExclusion && isset($adjustments[$oneExclusion])) {
-                    $fullAmount -= $adjustments[$oneExclusion];
-                    unset($adjustments[$oneExclusion]);
+            foreach ($exclude as $one_exclusion) {
+                if ($one_exclusion && isset($adjustments[$one_exclusion])) {
+                    $full_amount -= $adjustments[$one_exclusion];
+                    unset($adjustments[$one_exclusion]);
                 }
             }
         }
-        return $this->amountFactory->create($fullAmount, $adjustments);
+        return $this->amount_factory->create($full_amount, $adjustments);
     }
-
     /**
      * Create selection price list for the retrieved options
      *
@@ -357,31 +305,23 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @param bool $useRegularPrice
      * @return BundleSelectionPrice[]
      */
-    public function createSelectionPriceList($option, $bundleProduct, $useRegularPrice = false)
+    public function create_selection_price_list($option, $bundle_product, $use_regular_price = false)
     {
-        $priceList = [];
-        $selections = $option->getSelections();
+        $price_list = [];
+        $selections = $option->get_selections();
         if ($selections === null) {
-            return $priceList;
+            return $price_list;
         }
         /* @var $selection \Magento\Bundle\Model\Selection|\Magento\Catalog\Model\Product */
         foreach ($selections as $selection) {
-            if (!$selection->isSalable()) {
+            if (!$selection->is_salable()) {
                 // @todo CatalogInventory Show out of stock Products
                 continue;
             }
-            $priceList[] = $this->selectionFactory->create(
-                $bundleProduct,
-                $selection,
-                $selection->getSelectionQty(),
-                [
-                    'useRegularPrice' => $useRegularPrice,
-                ]
-            );
+            $price_list[] = $this->selection_factory->create($bundle_product, $selection, $selection->get_selection_qty(), ['useRegularPrice' => $use_regular_price]);
         }
-        return $priceList;
+        return $price_list;
     }
-
     /**
      * Find minimal or maximal price for existing options
      *
@@ -391,37 +331,33 @@ class Calculator implements BundleCalculatorInterface, ResetAfterRequestInterfac
      * @return BundleSelectionPrice[]
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function processOptions($option, $selectionPriceList, $searchMin = true)
+    public function process_options($option, $selection_price_list, $search_min = true)
     {
         $result = [];
-        foreach ($selectionPriceList as $current) {
-            $qty = $current->getQuantity();
-            $currentValue = $current->getAmount()->getValue() * $qty;
+        foreach ($selection_price_list as $current) {
+            $qty = $current->get_quantity();
+            $current_value = $current->get_amount()->get_value() * $qty;
             if (empty($result)) {
                 $result = [$current];
             } else {
-                $lastSelectionPrice = end($result);
-                $lastValue = $lastSelectionPrice->getAmount()->getValue() * $lastSelectionPrice->getQuantity();
-                if ($searchMin && $lastValue > $currentValue) {
+                $last_selection_price = end($result);
+                $last_value = $last_selection_price->get_amount()->get_value() * $last_selection_price->get_quantity();
+                if ($search_min && $last_value > $current_value) {
                     $result = [$current];
-                } elseif (!$searchMin && $option->isMultiSelection()) {
+                } elseif (!$search_min && $option->is_multi_selection()) {
                     $result[] = $current;
-                } elseif (!$searchMin
-                    && !$option->isMultiSelection()
-                    && $lastValue < $currentValue
-                ) {
+                } elseif (!$search_min && !$option->is_multi_selection() && $last_value < $current_value) {
                     $result = [$current];
                 }
             }
         }
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    public function _resetState(): void
+    public function _reset_state(): void
     {
-        $this->optionAmount = [];
+        $this->option_amount = [];
     }
 }

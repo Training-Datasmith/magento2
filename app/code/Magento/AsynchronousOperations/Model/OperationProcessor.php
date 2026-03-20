@@ -4,146 +4,115 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Model;
 
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\AsynchronousOperations\Api\Data\OperationInterface;
-use Magento\AsynchronousOperations\Model\ConfigInterface as AsyncConfig;
-use Magento\Framework\Bulk\OperationManagementInterface;
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfig;
-use Magento\Framework\DB\Adapter\ConnectionException;
-use Magento\Framework\DB\Adapter\DeadlockException;
-use Magento\Framework\DB\Adapter\LockWaitException;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\MessageQueue\ConsumerConfigurationInterface;
-use Magento\Framework\MessageQueue\MessageEncoder;
-use Magento\Framework\MessageQueue\MessageValidator;
+use Magento\Asynchronous_Operations\Api\Data\Operation_Interface;
+use Magento\Asynchronous_Operations\Model\Config_Interface as AsyncConfig;
+use Magento\Framework\Bulk\Operation_Management_Interface;
+use Magento\Framework\Communication\Config_Interface as CommunicationConfig;
+use Magento\Framework\DB\Adapter\Connection_Exception;
+use Magento\Framework\DB\Adapter\Deadlock_Exception;
+use Magento\Framework\DB\Adapter\Lock_Wait_Exception;
+use Magento\Framework\Exception\Localized_Exception;
+use Magento\Framework\Exception\No_Such_Entity_Exception;
+use Magento\Framework\Message_Queue\Consumer_Configuration_Interface;
+use Magento\Framework\Message_Queue\Message_Encoder;
+use Magento\Framework\Message_Queue\Message_Validator;
 use Magento\Framework\Serialize\Serializer\Json;
-use Magento\Framework\Webapi\ServiceOutputProcessor;
-use Psr\Log\LoggerInterface;
-
+use Magento\Framework\Webapi\Service_Output_Processor;
+use Psr\Log\Logger_Interface;
 /**
  * Proccess operation
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class OperationProcessor
+class Operation_Processor
 {
     /**
      * OperationProcessor constructor.
      */
-    public function __construct(private readonly MessageValidator $messageValidator, private readonly MessageEncoder $messageEncoder, private readonly ConsumerConfigurationInterface $configuration, private readonly Json $jsonHelper, private readonly OperationManagementInterface $operationManagement, private readonly ServiceOutputProcessor $serviceOutputProcessor, private readonly CommunicationConfig $communicationConfig, private readonly LoggerInterface $logger)
+    public function __construct(private readonly Message_Validator $message_validator, private readonly Message_Encoder $message_encoder, private readonly Consumer_Configuration_Interface $configuration, private readonly Json $json_helper, private readonly Operation_Management_Interface $operation_management, private readonly Service_Output_Processor $service_output_processor, private readonly Communication_Config $communication_config, private readonly Logger_Interface $logger)
     {
     }
-
     /**
      * Process topic-based encoded message
      */
-    public function process(string $encodedMessage): void
+    public function process(string $encoded_message): void
     {
-        $operation = $this->messageEncoder->decode(AsyncConfig::SYSTEM_TOPIC_NAME, $encodedMessage);
-        $this->messageValidator->validate(AsyncConfig::SYSTEM_TOPIC_NAME, $operation);
-
-        $status = OperationInterface::STATUS_TYPE_COMPLETE;
-        $errorCode = null;
+        $operation = $this->message_encoder->decode(Async_Config::SYSTEM_TOPIC_NAME, $encoded_message);
+        $this->message_validator->validate(Async_Config::SYSTEM_TOPIC_NAME, $operation);
+        $status = Operation_Interface::STATUS_TYPE_COMPLETE;
+        $error_code = null;
         $messages = [];
-        $entityParams = [];
-        $topicName = $operation->getTopicName();
-        $handlers = $this->configuration->getHandlers($topicName);
+        $entity_params = [];
+        $topic_name = $operation->get_topic_name();
+        $handlers = $this->configuration->get_handlers($topic_name);
         try {
-            $data = $this->jsonHelper->unserialize($operation->getSerializedData());
-            $entityParams = $this->messageEncoder->decode($topicName, $data['meta_information']);
-            $this->messageValidator->validate($topicName, $entityParams);
+            $data = $this->json_helper->unserialize($operation->get_serialized_data());
+            $entity_params = $this->message_encoder->decode($topic_name, $data['meta_information']);
+            $this->message_validator->validate($topic_name, $entity_params);
         } catch (\Exception $e) {
-            $this->logger->error($e->getMessage());
-            $status = OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
-            $errorCode = $e->getCode();
-            $messages[] = [$e->getMessage()];
+            $this->logger->error($e->get_message());
+            $status = Operation_Interface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
+            $error_code = $e->get_code();
+            $messages[] = [$e->get_message()];
         }
-
-        $outputData = null;
-        if ($errorCode === null) {
+        $output_data = null;
+        if ($error_code === null) {
             foreach ($handlers as $callback) {
-                $result = $this->executeHandler($callback, $entityParams);
+                $result = $this->execute_handler($callback, $entity_params);
                 $status = $result['status'];
-                $errorCode = $result['error_code'];
+                $error_code = $result['error_code'];
                 $messages[] = $result['messages'];
-                $outputData = $result['output_data'];
+                $output_data = $result['output_data'];
             }
         }
-
-        if (isset($outputData)) {
+        if (isset($output_data)) {
             try {
-                $communicationConfig = $this->communicationConfig->getTopic($topicName);
-                $asyncHandler =
-                    $communicationConfig[CommunicationConfig::TOPIC_HANDLERS][AsyncConfig::DEFAULT_HANDLER_NAME];
-                $serviceClass = $asyncHandler[CommunicationConfig::HANDLER_TYPE];
-                $serviceMethod = $asyncHandler[CommunicationConfig::HANDLER_METHOD];
-                $outputData = $this->serviceOutputProcessor->process(
-                    $outputData,
-                    $serviceClass,
-                    $serviceMethod
-                );
-                $outputData = $this->jsonHelper->serialize($outputData);
+                $communication_config = $this->communication_config->get_topic($topic_name);
+                $async_handler = $communication_config[Communication_Config::TOPIC_HANDLERS][Async_Config::DEFAULT_HANDLER_NAME];
+                $service_class = $async_handler[Communication_Config::HANDLER_TYPE];
+                $service_method = $async_handler[Communication_Config::HANDLER_METHOD];
+                $output_data = $this->service_output_processor->process($output_data, $service_class, $service_method);
+                $output_data = $this->json_helper->serialize($output_data);
             } catch (\Exception $e) {
-                $messages[] = [$e->getMessage()];
+                $messages[] = [$e->get_message()];
             }
         }
-
-        $serializedData = (isset($errorCode)) ? $operation->getSerializedData() : null;
-        $this->operationManagement->changeOperationStatus(
-            $operation->getBulkUuid(),
-            $operation->getId(),
-            $status,
-            $errorCode,
-            implode('; ', array_merge([], ...$messages)),
-            $serializedData,
-            $outputData
-        );
+        $serialized_data = isset($error_code) ? $operation->get_serialized_data() : null;
+        $this->operation_management->change_operation_status($operation->get_bulk_uuid(), $operation->get_id(), $status, $error_code, implode('; ', array_merge([], ...$messages)), $serialized_data, $output_data);
     }
-
     /**
      * Execute topic handler
      *
      * @param callable $callback
      * @param array $entityParams
      */
-    private function executeHandler($callback, $entityParams): array
+    private function execute_handler($callback, $entity_params): array
     {
-        $result = [
-            'status' => OperationInterface::STATUS_TYPE_COMPLETE,
-            'error_code' => null,
-            'messages' => [],
-            'output_data' => null,
-        ];
+        $result = ['status' => Operation_Interface::STATUS_TYPE_COMPLETE, 'error_code' => null, 'messages' => [], 'output_data' => null];
         try {
             // phpcs:disable Magento2.Functions.DiscouragedFunction
-            $result['output_data'] = call_user_func_array($callback, $entityParams);
+            $result['output_data'] = call_user_func_array($callback, $entity_params);
             // phpcs:enable Magento2.Functions.DiscouragedFunction
             $result['messages'][] = sprintf('Service execution success %s::%s', $callback[0]::class, $callback[1]);
-        } catch (\Zend_Db_Adapter_Exception  $e) {
-            $this->logger->critical($e->getMessage());
-            if ($e instanceof LockWaitException
-                || $e instanceof DeadlockException
-                || $e instanceof ConnectionException
-            ) {
-                $result['status'] = OperationInterface::STATUS_TYPE_RETRIABLY_FAILED;
-                $result['error_code'] = $e->getCode();
-                $result['messages'][] = __($e->getMessage());
+        } catch (\Zend_Db_Adapter_Exception $e) {
+            $this->logger->critical($e->get_message());
+            if ($e instanceof Lock_Wait_Exception || $e instanceof Deadlock_Exception || $e instanceof Connection_Exception) {
+                $result['status'] = Operation_Interface::STATUS_TYPE_RETRIABLY_FAILED;
+                $result['error_code'] = $e->get_code();
+                $result['messages'][] = __($e->get_message());
             } else {
-                $result['status'] = OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
-                $result['error_code'] = $e->getCode();
-                $result['messages'][] =
-                    __('Sorry, something went wrong during product prices update. Please see log for details.');
+                $result['status'] = Operation_Interface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
+                $result['error_code'] = $e->get_code();
+                $result['messages'][] = __('Sorry, something went wrong during product prices update. Please see log for details.');
             }
-        } catch (NoSuchEntityException|LocalizedException|\Exception $e) {
-            $this->logger->error($e->getMessage());
-            $result['status'] = OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
-            $result['error_code'] = $e->getCode();
-            $result['messages'][] = $e->getMessage();
+        } catch (No_Such_Entity_Exception|Localized_Exception|\Exception $e) {
+            $this->logger->error($e->get_message());
+            $result['status'] = Operation_Interface::STATUS_TYPE_NOT_RETRIABLY_FAILED;
+            $result['error_code'] = $e->get_code();
+            $result['messages'][] = $e->get_message();
         }
         return $result;
     }

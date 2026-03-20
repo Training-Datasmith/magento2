@@ -1,48 +1,41 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Css\Pre_Processor\File\Collector;
 
-namespace Magento\Framework\Css\PreProcessor\File\Collector;
-
-use Magento\Framework\View\Design\ThemeInterface;
-use Magento\Framework\View\File\CollectorInterface;
-use Magento\Framework\View\File\FileList\Factory;
-use Psr\Log\LoggerInterface;
-
+use Magento\Framework\View\Design\Theme_Interface;
+use Magento\Framework\View\File\Collector_Interface;
+use Magento\Framework\View\File\File_List\Factory;
+use Psr\Log\Logger_Interface;
 /**
  * Source of layout files aggregated from a theme and its parents according to merging and overriding conventions
  */
-class Aggregated implements CollectorInterface
+class Aggregated implements Collector_Interface
 {
     /**
      * @var Factory
      */
-    protected $fileListFactory;
-
+    protected $file_list_factory;
     /**
      * @var \Magento\Framework\View\File\CollectorInterface
      */
-    protected $libraryFiles;
-
+    protected $library_files;
     /**
      * @var \Magento\Framework\View\File\CollectorInterface
      */
-    protected $baseFiles;
-
+    protected $base_files;
     /**
      * @var \Magento\Framework\View\File\CollectorInterface
      */
-    protected $overriddenBaseFiles;
-
+    protected $overridden_base_files;
     /**
      * @var LoggerInterface
      */
     protected $logger;
-
     /**
      * @param Factory $fileListFactory
      * @param CollectorInterface $libraryFiles
@@ -50,20 +43,14 @@ class Aggregated implements CollectorInterface
      * @param CollectorInterface $overriddenBaseFiles
      * @param LoggerInterface $logger
      */
-    public function __construct(
-        Factory $fileListFactory,
-        CollectorInterface $libraryFiles,
-        CollectorInterface $baseFiles,
-        CollectorInterface $overriddenBaseFiles,
-        LoggerInterface $logger
-    ) {
-        $this->fileListFactory = $fileListFactory;
-        $this->libraryFiles = $libraryFiles;
-        $this->baseFiles = $baseFiles;
-        $this->overriddenBaseFiles = $overriddenBaseFiles;
+    public function __construct(Factory $file_list_factory, Collector_Interface $library_files, Collector_Interface $base_files, Collector_Interface $overridden_base_files, Logger_Interface $logger)
+    {
+        $this->file_list_factory = $file_list_factory;
+        $this->library_files = $library_files;
+        $this->base_files = $base_files;
+        $this->overridden_base_files = $overridden_base_files;
         $this->logger = $logger;
     }
-
     /**
      * Retrieve files
      *
@@ -74,21 +61,18 @@ class Aggregated implements CollectorInterface
      * @return \Magento\Framework\View\File[]
      * @throws \LogicException
      */
-    public function getFiles(ThemeInterface $theme, $filePath)
+    public function get_files(Theme_Interface $theme, $file_path)
     {
-        $list = $this->fileListFactory->create(\Magento\Framework\Css\PreProcessor\File\FileList\Collator::class);
-        $list->add($this->libraryFiles->getFiles($theme, $filePath));
-        $list->add($this->baseFiles->getFiles($theme, $filePath));
-
-        foreach ($theme->getInheritedThemes() as $currentTheme) {
-            $files = $this->overriddenBaseFiles->getFiles($currentTheme, $filePath);
+        $list = $this->file_list_factory->create(\Magento\Framework\Css\Pre_Processor\File\File_List\Collator::class);
+        $list->add($this->library_files->get_files($theme, $file_path));
+        $list->add($this->base_files->get_files($theme, $file_path));
+        foreach ($theme->get_inherited_themes() as $current_theme) {
+            $files = $this->overridden_base_files->get_files($current_theme, $file_path);
             $list->replace($files);
         }
-        $result = $list->getAll();
+        $result = $list->get_all();
         if (empty($result)) {
-            $this->logger->notice(
-                'magento_import returns empty result by path ' . $filePath . ' for theme ' . $theme->getCode()
-            );
+            $this->logger->notice('magento_import returns empty result by path ' . $file_path . ' for theme ' . $theme->get_code());
         }
         return $result;
     }

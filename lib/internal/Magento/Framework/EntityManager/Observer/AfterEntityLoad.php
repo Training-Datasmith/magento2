@@ -1,22 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Observer;
+namespace Magento\Framework\Entity_Manager\Observer;
 
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Model\AbstractModel;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-
+use Magento\Framework\Event\Observer_Interface;
+use Magento\Framework\Model\Abstract_Model;
+use Magento\Framework\Model\Resource_Model\Db\Abstract_Db;
 /**
  * Class AfterEntityLoad
  */
-class AfterEntityLoad implements ObserverInterface
+class After_Entity_Load implements Observer_Interface
 {
     /**
      * Apply model save operation
@@ -27,15 +25,15 @@ class AfterEntityLoad implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
-        $entity = $observer->getEvent()->getEntity();
-        if ($entity instanceof AbstractModel) {
-            if ($entity->getResource() instanceof  AbstractDb) {
-                $entity->getResource()->unserializeFields($entity);
+        $entity = $observer->get_event()->get_entity();
+        if ($entity instanceof Abstract_Model) {
+            if ($entity->get_resource() instanceof Abstract_Db) {
+                $entity->get_resource()->unserialize_fields($entity);
             }
-            $entity->getResource()->afterLoad($entity);
-            $entity->afterLoad();
-            $entity->setOrigData();
-            $entity->setHasDataChanges(false);
+            $entity->get_resource()->after_load($entity);
+            $entity->after_load();
+            $entity->set_orig_data();
+            $entity->set_has_data_changes(false);
         }
     }
 }

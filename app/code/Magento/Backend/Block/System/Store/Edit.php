@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\System\Store;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Serialize\SerializerInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Serialize\Serializer_Interface;
 /**
  * @api
  *
@@ -24,30 +22,23 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      *
      * @var \Magento\Framework\Registry
      */
-    protected $_coreRegistry = null;
-
+    protected $_core_registry = null;
     /**
      * @var SerializerInterface
      */
     private $serializer;
-
     /**
      * @param \Magento\Backend\Block\Widget\Context $context
      * @param \Magento\Framework\Registry $registry
      * @param array $data
      * @param SerializerInterface|null $serializer
      */
-    public function __construct(
-        \Magento\Backend\Block\Widget\Context $context,
-        \Magento\Framework\Registry $registry,
-        array $data = [],
-        ?SerializerInterface $serializer = null
-    ) {
-        $this->_coreRegistry = $registry;
-        $this->serializer = $serializer ?: ObjectManager::getInstance()->get(SerializerInterface::class);
+    public function __construct(\Magento\Backend\Block\Widget\Context $context, \Magento\Framework\Registry $registry, array $data = [], ?Serializer_Interface $serializer = null)
+    {
+        $this->_core_registry = $registry;
+        $this->serializer = $serializer ?: Object_Manager::get_instance()->get(Serializer_Interface::class);
         parent::__construct($context, $data);
     }
-
     /**
      * Init class
      *
@@ -55,106 +46,89 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
      */
     protected function _construct()
     {
-        switch ($this->_coreRegistry->registry('store_type')) {
+        switch ($this->_core_registry->registry('store_type')) {
             case 'website':
-                $this->_objectId = 'website_id';
-                $saveLabel = __('Save Web Site');
-                $deleteLabel = __('Delete Web Site');
-                $deleteUrl = $this->getUrl(
-                    '*/*/deleteWebsite',
-                    ['item_id' => $this->_coreRegistry->registry('store_data')->getId()]
-                );
+                $this->_object_id = 'website_id';
+                $save_label = __('Save Web Site');
+                $delete_label = __('Delete Web Site');
+                $delete_url = $this->get_url('*/*/deleteWebsite', ['item_id' => $this->_core_registry->registry('store_data')->get_id()]);
                 break;
             case 'group':
-                $this->_objectId = 'group_id';
-                $saveLabel = __('Save Store');
-                $deleteLabel = __('Delete Store');
-                $deleteUrl = $this->getUrl(
-                    '*/*/deleteGroup',
-                    ['item_id' => $this->_coreRegistry->registry('store_data')->getId()]
-                );
+                $this->_object_id = 'group_id';
+                $save_label = __('Save Store');
+                $delete_label = __('Delete Store');
+                $delete_url = $this->get_url('*/*/deleteGroup', ['item_id' => $this->_core_registry->registry('store_data')->get_id()]);
                 break;
             case 'store':
-                $this->_objectId = 'store_id';
-                $saveLabel = __('Save Store View');
-                $deleteLabel = __('Delete Store View');
-                $deleteUrl = $this->getUrl(
-                    '*/*/deleteStore',
-                    ['item_id' => $this->_coreRegistry->registry('store_data')->getId()]
-                );
+                $this->_object_id = 'store_id';
+                $save_label = __('Save Store View');
+                $delete_label = __('Delete Store View');
+                $delete_url = $this->get_url('*/*/deleteStore', ['item_id' => $this->_core_registry->registry('store_data')->get_id()]);
                 break;
             default:
-                $saveLabel = '';
-                $deleteLabel = '';
-                $deleteUrl = '';
+                $save_label = '';
+                $delete_label = '';
+                $delete_url = '';
         }
-        $this->_blockGroup = 'Magento_Backend';
+        $this->_block_group = 'Magento_Backend';
         $this->_controller = 'system_store';
-
         parent::_construct();
-
-        $this->buttonList->update('save', 'label', $saveLabel);
-        $this->buttonList->update('delete', 'label', $deleteLabel);
-        $this->buttonList->update('delete', 'onclick', 'setLocation(\'' . $deleteUrl . '\');');
-
-        if (!$this->_coreRegistry->registry('store_data')) {
+        $this->button_list->update('save', 'label', $save_label);
+        $this->button_list->update('delete', 'label', $delete_label);
+        $this->button_list->update('delete', 'onclick', 'setLocation(\'' . $delete_url . '\');');
+        if (!$this->_core_registry->registry('store_data')) {
             return;
         }
-
-        if (!$this->_coreRegistry->registry('store_data')->isCanDelete()) {
-            $this->buttonList->remove('delete');
+        if (!$this->_core_registry->registry('store_data')->is_can_delete()) {
+            $this->button_list->remove('delete');
         }
-        if ($this->_coreRegistry->registry('store_data')->isReadOnly()) {
-            $this->buttonList->remove('save');
-            $this->buttonList->remove('reset');
+        if ($this->_core_registry->registry('store_data')->is_read_only()) {
+            $this->button_list->remove('save');
+            $this->button_list->remove('reset');
         }
     }
-
     /**
      * Get Header text
      *
      * @return string
      */
-    public function getHeaderText()
+    public function get_header_text()
     {
-        $addLabel = '';
-        $editLabel = '';
-        switch ($this->_coreRegistry->registry('store_type')) {
+        $add_label = '';
+        $edit_label = '';
+        switch ($this->_core_registry->registry('store_type')) {
             case 'website':
-                $editLabel = __('Edit Web Site');
-                $addLabel = __('New Web Site');
+                $edit_label = __('Edit Web Site');
+                $add_label = __('New Web Site');
                 break;
             case 'group':
-                $editLabel = __('Edit Store');
-                $addLabel = __('New Store');
+                $edit_label = __('Edit Store');
+                $add_label = __('New Store');
                 break;
             case 'store':
-                $editLabel = __('Edit Store View');
-                $addLabel = __('New Store View');
+                $edit_label = __('Edit Store View');
+                $add_label = __('New Store View');
                 break;
         }
-
-        return $this->_coreRegistry->registry('store_action') == 'add' ? $addLabel : $editLabel;
+        return $this->_core_registry->registry('store_action') == 'add' ? $add_label : $edit_label;
     }
-
     /**
      * Build child form class form name based on value of store_type in registry
      *
      * @return string
      */
-    protected function _buildFormClassName()
+    protected function _build_form_class_name()
     {
-        return parent::_buildFormClassName() . '\\' . ucwords($this->_coreRegistry->registry('store_type'));
+        return parent::_build_form_class_name() . '\\' . ucwords($this->_core_registry->registry('store_type'));
     }
-
     /**
      * Get data for store edit
      *
      * @return string
      * @since 100.2.0
      */
-    public function getStoreData()
+    public function get_store_data()
     {
-        return $this->serializer->serialize($this->_coreRegistry->registry('store_data')->getData());
+        return $this->serializer->serialize($this->_core_registry->registry('store_data')->get_data());
     }
 }

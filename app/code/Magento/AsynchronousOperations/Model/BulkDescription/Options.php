@@ -1,59 +1,47 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Asynchronous_Operations\Model\Bulk_Description;
 
-namespace Magento\AsynchronousOperations\Model\BulkDescription;
-
-use Magento\Framework\Bulk\BulkSummaryInterface;
-
+use Magento\Framework\Bulk\Bulk_Summary_Interface;
 /**
  * Class for grid options
  */
-class Options implements \Magento\Framework\Data\OptionSourceInterface
+class Options implements \Magento\Framework\Data\Option_Source_Interface
 {
     /**
      * @var \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory
      */
-    private $bulkCollectionFactory;
-
+    private $bulk_collection_factory;
     /**
      * Options constructor.
      */
-    public function __construct(
-        \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\CollectionFactory $bulkCollection,
-        private readonly \Magento\Authorization\Model\UserContextInterface $userContext
-    ) {
-        $this->bulkCollectionFactory = $bulkCollection;
+    public function __construct(\Magento\Asynchronous_Operations\Model\Resource_Model\Bulk\Collection_Factory $bulk_collection, private readonly \Magento\Authorization\Model\User_Context_Interface $user_context)
+    {
+        $this->bulk_collection_factory = $bulk_collection;
     }
-
     /**
      * {@inheritdoc}
      * @return array{value: mixed, label: mixed}[]
      */
-    public function toOptionArray(): array
+    public function to_option_array(): array
     {
         /** @var \Magento\AsynchronousOperations\Model\ResourceModel\Bulk\Collection $collection */
-        $collection = $this->bulkCollectionFactory->create();
-
+        $collection = $this->bulk_collection_factory->create();
         /** @var \Magento\Framework\DB\Select $select */
-        $select = $collection->getSelect();
+        $select = $collection->get_select();
         $select->reset();
         $select->distinct(true);
-        $select->from($collection->getMainTable(), ['description']);
-        $select->where('user_id = ?', $this->userContext->getUserId());
-
+        $select->from($collection->get_main_table(), ['description']);
+        $select->where('user_id = ?', $this->user_context->get_user_id());
         $options = [];
-
         /** @var BulkSummaryInterface $item */
-        foreach ($collection->getItems() as $item) {
-            $options[] = [
-                'value' => $item->getDescription(),
-                'label' => $item->getDescription(),
-            ];
+        foreach ($collection->get_items() as $item) {
+            $options[] = ['value' => $item->get_description(), 'label' => $item->get_description()];
         }
         return $options;
     }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -14,15 +13,14 @@ namespace Magento\Framework\App;
  * @api
  * @since 100.0.2
  */
-interface CacheInterface
+interface Cache_Interface
 {
     /**
      * Get cache frontend API object
      *
      * @return \Magento\Framework\Cache\FrontendInterface
      */
-    public function getFrontend();
-
+    public function get_frontend();
     /**
      * Load data from cache by id
      *
@@ -30,7 +28,6 @@ interface CacheInterface
      * @return string
      */
     public function load($identifier);
-
     /**
      * Save data
      *
@@ -40,8 +37,7 @@ interface CacheInterface
      * @param int $lifeTime
      * @return bool
      */
-    public function save($data, $identifier, $tags = [], $lifeTime = null);
-
+    public function save($data, $identifier, $tags = [], $life_time = null);
     /**
      * Remove cached data by identifier
      *
@@ -49,7 +45,6 @@ interface CacheInterface
      * @return bool
      */
     public function remove($identifier);
-
     /**
      * Clean cached data by specific tag
      *

@@ -1,32 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Collection of unread notifications
  */
-
-namespace Magento\AdminNotification\Model\ResourceModel\Inbox\Collection;
+namespace Magento\Admin_Notification\Model\Resource_Model\Inbox\Collection;
 
 /**
  * @api
  * @since 100.0.2
  */
-class Unread extends \Magento\AdminNotification\Model\ResourceModel\Inbox\Collection
+class Unread extends \Magento\Admin_Notification\Model\Resource_Model\Inbox\Collection
 {
     /**
      * Init collection select
      */
-    protected function _initSelect(): static
+    protected function _init_select(): static
     {
-        parent::_initSelect();
-        $this->addFilter('is_remove', 0);
-        $this->addFilter('is_read', 0);
-        $this->setOrder('date_added');
+        parent::_init_select();
+        $this->add_filter('is_remove', 0);
+        $this->add_filter('is_read', 0);
+        $this->set_order('date_added');
         return $this;
     }
 }

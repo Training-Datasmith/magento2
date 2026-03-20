@@ -1,43 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Amqp\Bulk;
 
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfigInterface;
-use Magento\Framework\MessageQueue\Bulk\ExchangeInterface;
-use Magento\Framework\MessageQueue\Publisher\ConfigInterface as PublisherConfig;
-use PhpAmqpLib\Message\AMQPMessage;
-
+use Magento\Framework\Communication\Config_Interface as CommunicationConfigInterface;
+use Magento\Framework\Message_Queue\Bulk\Exchange_Interface;
+use Magento\Framework\Message_Queue\Publisher\Config_Interface as PublisherConfig;
+use Php_Amqp_Lib\Message\Amqp_Message;
 /**
  * Used to send messages in bulk in AMQP queue.
  */
-class Exchange implements ExchangeInterface
+class Exchange implements Exchange_Interface
 {
     /**
      * @var \Magento\Framework\Amqp\Config
      */
-    private $amqpConfig;
-
+    private $amqp_config;
     /**
      * @var CommunicationConfigInterface
      */
-    private $communicationConfig;
-
+    private $communication_config;
     /**
      * @var PublisherConfig
      */
-    private $publisherConfig;
-
+    private $publisher_config;
     /**
      * @var \Magento\Framework\Amqp\Exchange
      */
     private $exchange;
-
     /**
      * Initialize dependencies.
      *
@@ -46,49 +40,37 @@ class Exchange implements ExchangeInterface
      * @param CommunicationConfigInterface $communicationConfig
      * @param \Magento\Framework\Amqp\Exchange $exchange
      */
-    public function __construct(
-        \Magento\Framework\Amqp\Config $amqpConfig,
-        PublisherConfig $publisherConfig,
-        CommunicationConfigInterface $communicationConfig,
-        \Magento\Framework\Amqp\Exchange $exchange
-    ) {
-        $this->amqpConfig = $amqpConfig;
-        $this->communicationConfig = $communicationConfig;
-        $this->publisherConfig = $publisherConfig;
+    public function __construct(\Magento\Framework\Amqp\Config $amqp_config, Publisher_Config $publisher_config, Communication_Config_Interface $communication_config, \Magento\Framework\Amqp\Exchange $exchange)
+    {
+        $this->amqp_config = $amqp_config;
+        $this->communication_config = $communication_config;
+        $this->publisher_config = $publisher_config;
         $this->exchange = $exchange;
     }
-
     /**
      * @inheritdoc
      */
     public function enqueue($topic, array $envelopes)
     {
-        $topicData = $this->communicationConfig->getTopic($topic);
-        $isSync = $topicData[CommunicationConfigInterface::TOPIC_IS_SYNCHRONOUS];
-
-        if ($isSync) {
+        $topic_data = $this->communication_config->get_topic($topic);
+        $is_sync = $topic_data[Communication_Config_Interface::TOPIC_IS_SYNCHRONOUS];
+        if ($is_sync) {
             $responses = [];
             foreach ($envelopes as $envelope) {
                 $responses[] = $this->exchange->enqueue($topic, $envelope);
             }
             return $responses;
         }
-
-        $channel = $this->amqpConfig->getChannel();
-        $publisher = $this->publisherConfig->getPublisher($topic);
-        $exchange = $publisher->getConnection()->getExchange();
-
+        $channel = $this->amqp_config->get_channel();
+        $publisher = $this->publisher_config->get_publisher($topic);
+        $exchange = $publisher->get_connection()->get_exchange();
         foreach ($envelopes as $envelope) {
             // @codingStandardsIgnoreStart
-            $msg = new AMQPMessage(
-                $envelope->getBody(),
-                array_merge(['delivery_mode' => 2], $envelope->getProperties())
-            );
+            $msg = new Amqp_Message($envelope->get_body(), array_merge(['delivery_mode' => 2], $envelope->get_properties()));
             // @codingStandardsIgnoreEnd
             $channel->batch_basic_publish($msg, $exchange, $topic);
         }
         $channel->publish_batch();
-
         return null;
     }
 }

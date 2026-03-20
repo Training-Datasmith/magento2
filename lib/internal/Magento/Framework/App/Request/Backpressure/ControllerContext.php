@@ -4,45 +4,37 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Request\Backpressure;
 
-use Magento\Framework\App\ActionInterface;
-use Magento\Framework\App\Backpressure\ContextInterface;
-use Magento\Framework\App\RequestInterface;
-
+use Magento\Framework\App\Action_Interface;
+use Magento\Framework\App\Backpressure\Context_Interface;
+use Magento\Framework\App\Request_Interface;
 /**
  * Controller request context
  */
-class ControllerContext implements ContextInterface
+class Controller_Context implements Context_Interface
 {
     /**
      * @var RequestInterface
      */
-    private RequestInterface $request;
-
+    private Request_Interface $request;
     /**
      * @var string
      */
     private string $identity;
-
     /**
      * @var int
      */
-    private int $identityType;
-
+    private int $identity_type;
     /**
      * @var string
      */
-    private string $typeId;
-
+    private string $type_id;
     /**
      * @var ActionInterface
      */
-    private ActionInterface $action;
-
+    private Action_Interface $action;
     /**
      * @param RequestInterface $request
      * @param string $identity
@@ -50,58 +42,48 @@ class ControllerContext implements ContextInterface
      * @param string $typeId
      * @param ActionInterface $action
      */
-    public function __construct(
-        RequestInterface $request,
-        string $identity,
-        int $identityType,
-        string $typeId,
-        ActionInterface $action
-    ) {
+    public function __construct(Request_Interface $request, string $identity, int $identity_type, string $type_id, Action_Interface $action)
+    {
         $this->request = $request;
         $this->identity = $identity;
-        $this->identityType = $identityType;
-        $this->typeId = $typeId;
+        $this->identity_type = $identity_type;
+        $this->type_id = $type_id;
         $this->action = $action;
     }
-
     /**
      * @inheritDoc
      */
-    public function getRequest(): RequestInterface
+    public function get_request(): Request_Interface
     {
         return $this->request;
     }
-
     /**
      * @inheritDoc
      */
-    public function getIdentity(): string
+    public function get_identity(): string
     {
         return $this->identity;
     }
-
     /**
      * @inheritDoc
      */
-    public function getIdentityType(): int
+    public function get_identity_type(): int
     {
-        return $this->identityType;
+        return $this->identity_type;
     }
-
     /**
      * @inheritDoc
      */
-    public function getTypeId(): string
+    public function get_type_id(): string
     {
-        return $this->typeId;
+        return $this->type_id;
     }
-
     /**
      * Controller instance
      *
      * @return ActionInterface
      */
-    public function getAction(): ActionInterface
+    public function get_action(): Action_Interface
     {
         return $this->action;
     }

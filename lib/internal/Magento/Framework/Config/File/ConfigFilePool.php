@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config\File;
 
 /**
@@ -13,68 +12,49 @@ namespace Magento\Framework\Config\File;
  * @api
  * @since 100.0.2
  */
-class ConfigFilePool
+class Config_File_Pool
 {
     public const APP_CONFIG = 'app_config';
     public const APP_ENV = 'app_env';
-
     /**
      * @deprecated Magento does not support custom config file pools since 2.2.0 version
      */
     public const LOCAL = 'local';
-
     /**
      * @deprecated Magento does not support custom config file pools since 2.2.0 version
      */
     public const DIST = 'dist';
-
     /**
      * Default files for configuration
      *
      * @var array
      */
-    private $applicationConfigFiles = [
-        self::APP_CONFIG => 'config.php',
-        self::APP_ENV => 'env.php',
-    ];
-
+    private $application_config_files = [self::APP_CONFIG => 'config.php', self::APP_ENV => 'env.php'];
     /**
      * Initial files for configuration
      *
      * @var array
      * @deprecated 101.0.0 Magento does not support custom config file pools since 2.2.0 version
      */
-    private $initialConfigFiles = [
-        self::DIST => [
-            self::APP_CONFIG => 'config.dist.php',
-            self::APP_ENV => 'env.dist.php',
-        ],
-        self::LOCAL => [
-            self::APP_CONFIG => 'config.local.php',
-            self::APP_ENV => 'env.local.php',
-        ],
-    ];
-
+    private $initial_config_files = [self::DIST => [self::APP_CONFIG => 'config.dist.php', self::APP_ENV => 'env.dist.php'], self::LOCAL => [self::APP_CONFIG => 'config.local.php', self::APP_ENV => 'env.local.php']];
     /**
      * Constructor
      *
      * @param array $additionalConfigFiles
      */
-    public function __construct($additionalConfigFiles = [])
+    public function __construct($additional_config_files = [])
     {
-        $this->applicationConfigFiles = array_merge($this->applicationConfigFiles, $additionalConfigFiles);
+        $this->application_config_files = array_merge($this->application_config_files, $additional_config_files);
     }
-
     /**
      * Returns application config files.
      *
      * @return array
      */
-    public function getPaths()
+    public function get_paths()
     {
-        return $this->applicationConfigFiles;
+        return $this->application_config_files;
     }
-
     /**
      * Returns file path by config key
      *
@@ -82,14 +62,13 @@ class ConfigFilePool
      * @return string
      * @throws \Exception
      */
-    public function getPath($fileKey)
+    public function get_path($file_key)
     {
-        if (!isset($this->applicationConfigFiles[$fileKey])) {
+        if (!isset($this->application_config_files[$file_key])) {
             throw new \Exception('File config key does not exist.');
         }
-        return $this->applicationConfigFiles[$fileKey];
+        return $this->application_config_files[$file_key];
     }
-
     /**
      * Returns application initial config files.
      *
@@ -97,11 +76,10 @@ class ConfigFilePool
      * @deprecated 101.0.0 Magento does not support custom config file pools since 2.2.0 version
      * @since 100.1.3
      */
-    public function getInitialFilePools()
+    public function get_initial_file_pools()
     {
-        return $this->initialConfigFiles;
+        return $this->initial_config_files;
     }
-
     /**
      * Retrieve all config file pools.
      *
@@ -110,8 +88,8 @@ class ConfigFilePool
      * @deprecated 101.0.0 Magento does not support custom config file pools since 2.2.0 version
      * @since 100.1.3
      */
-    public function getPathsByPool($pool)
+    public function get_paths_by_pool($pool)
     {
-        return $this->initialConfigFiles[$pool];
+        return $this->initial_config_files[$pool];
     }
 }

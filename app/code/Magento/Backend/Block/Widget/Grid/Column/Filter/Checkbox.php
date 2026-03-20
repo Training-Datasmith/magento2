@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Filter;
 
 /**
@@ -18,36 +17,30 @@ class Checkbox extends \Magento\Backend\Block\Widget\Grid\Column\Filter\Select
      *
      * @return string
      */
-    public function getHtml()
+    public function get_html()
     {
-        return '<span class="head-massaction">' . parent::getHtml() . '</span>';
+        return '<span class="head-massaction">' . parent::get_html() . '</span>';
     }
-
     /**
      * Return an array of options
      *
      * @return array
      */
-    protected function _getOptions()
+    protected function _get_options()
     {
-        return [
-            ['label' => __('Any'), 'value' => ''],
-            ['label' => __('Yes'), 'value' => 1],
-            ['label' => __('No'), 'value' => 0],
-        ];
+        return [['label' => __('Any'), 'value' => ''], ['label' => __('Yes'), 'value' => 1], ['label' => __('No'), 'value' => 0]];
     }
-
     /**
      * Return expression for SQL 'where' clause
      *
      * @return array
      */
-    public function getCondition()
+    public function get_condition()
     {
-        if ($this->getValue()) {
-            return $this->getColumn()->getValue();
+        if ($this->get_value()) {
+            return $this->get_column()->get_value();
         } else {
-            return [['neq' => $this->getColumn()->getValue()], ['is' => new \Zend_Db_Expr('NULL')]];
+            return [['neq' => $this->get_column()->get_value()], ['is' => new \Zend_Db_Expr('NULL')]];
         }
     }
 }

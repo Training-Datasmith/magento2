@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api\Data;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Catalog\Api\Data;
  * @api
  * @since 102.0.0
  */
-interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterface
+interface Tier_Price_Interface extends \Magento\Framework\Api\Extensible_Data_Interface
 {
     /**#@+
      * Constants
@@ -27,7 +26,6 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
     public const PRICE_TYPE_FIXED = 'fixed';
     public const PRICE_TYPE_DISCOUNT = 'discount';
     /**#@-*/
-
     /**
      * Set tier price.
      *
@@ -35,16 +33,14 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setPrice($price);
-
+    public function set_price($price);
     /**
      * Get tier price.
      *
      * @return float
      * @since 102.0.0
      */
-    public function getPrice();
-
+    public function get_price();
     /**
      * Set tier price type.
      *
@@ -52,16 +48,14 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setPriceType($type);
-
+    public function set_price_type($type);
     /**
      * Get tier price type.
      *
      * @return string
      * @since 102.0.0
      */
-    public function getPriceType();
-
+    public function get_price_type();
     /**
      * Set website id.
      *
@@ -69,16 +63,14 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setWebsiteId($websiteId);
-
+    public function set_website_id($website_id);
     /**
      * Get website id.
      *
      * @return int
      * @since 102.0.0
      */
-    public function getWebsiteId();
-
+    public function get_website_id();
     /**
      * Set SKU.
      *
@@ -86,16 +78,14 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setSku($sku);
-
+    public function set_sku($sku);
     /**
      * Get SKU.
      *
      * @return string
      * @since 102.0.0
      */
-    public function getSku();
-
+    public function get_sku();
     /**
      * Set customer group.
      *
@@ -103,16 +93,14 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setCustomerGroup($group);
-
+    public function set_customer_group($group);
     /**
      * Get customer group.
      *
      * @return string
      * @since 102.0.0
      */
-    public function getCustomerGroup();
-
+    public function get_customer_group();
     /**
      * Set quantity.
      *
@@ -120,24 +108,21 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setQuantity($quantity);
-
+    public function set_quantity($quantity);
     /**
      * Get quantity.
      *
      * @return float
      * @since 102.0.0
      */
-    public function getQuantity();
-
+    public function get_quantity();
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
      * @return \Magento\Catalog\Api\Data\TierPriceExtensionInterface|null
      * @since 102.0.0
      */
-    public function getExtensionAttributes();
-
+    public function get_extension_attributes();
     /**
      * Set an extension attributes object.
      *
@@ -145,7 +130,5 @@ interface TierPriceInterface extends \Magento\Framework\Api\ExtensibleDataInterf
      * @return $this
      * @since 102.0.0
      */
-    public function setExtensionAttributes(
-        \Magento\Catalog\Api\Data\TierPriceExtensionInterface $extensionAttributes
-    );
+    public function set_extension_attributes(\Magento\Catalog\Api\Data\Tier_Price_Extension_Interface $extension_attributes);
 }

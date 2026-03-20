@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 /**
@@ -15,7 +14,7 @@ namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
  * @deprecated 100.2.0 in favour of UI component implementation
  * @since 100.0.2
  */
-class Ip extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
+class Ip extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract_Renderer
 {
     /**
      * Render the grid cell value
@@ -23,8 +22,8 @@ class Ip extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRend
      * @param \Magento\Framework\DataObject $row
      * @return string
      */
-    public function render(\Magento\Framework\DataObject $row)
+    public function render(\Magento\Framework\Data_Object $row)
     {
-        return long2ip($row->getData($this->getColumn()->getIndex()));
+        return long2ip($row->get_data($this->get_column()->get_index()));
     }
 }

@@ -4,9 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\DB;
 
 /**
@@ -24,73 +22,66 @@ class Transaction
      * @var array
      */
     protected $_objects = [];
-
     /**
      * Transaction objects array with alias key
      *
      * @var array
      */
-    protected $_objectsByAlias = [];
-
+    protected $_objects_by_alias = [];
     /**
      * Callbacks array.
      *
      * @var array
      */
-    protected $_beforeCommitCallbacks = [];
-
+    protected $_before_commit_callbacks = [];
     /**
      * Begin transaction for all involved object resources
      *
      * @return $this
      */
-    protected function _startTransaction()
+    protected function _start_transaction()
     {
         foreach ($this->_objects as $object) {
-            $object->getResource()->beginTransaction();
+            $object->get_resource()->begin_transaction();
         }
         return $this;
     }
-
     /**
      * Commit transaction for all resources
      *
      * @return $this
      */
-    protected function _commitTransaction()
+    protected function _commit_transaction()
     {
         foreach ($this->_objects as $object) {
-            $object->getResource()->commit();
+            $object->get_resource()->commit();
         }
         return $this;
     }
-
     /**
      * Rollback transaction
      *
      * @return $this
      */
-    protected function _rollbackTransaction()
+    protected function _rollback_transaction()
     {
         foreach ($this->_objects as $object) {
-            $object->getResource()->rollBack();
+            $object->get_resource()->roll_back();
         }
         return $this;
     }
-
     /**
      * Run all configured object callbacks
      *
      * @return $this
      */
-    protected function _runCallbacks()
+    protected function _run_callbacks()
     {
-        foreach ($this->_beforeCommitCallbacks as $callback) {
+        foreach ($this->_before_commit_callbacks as $callback) {
             call_user_func($callback);
         }
         return $this;
     }
-
     /**
      * Adding object for using in transaction
      *
@@ -98,27 +89,25 @@ class Transaction
      * @param string $alias
      * @return $this
      */
-    public function addObject(\Magento\Framework\Model\AbstractModel $object, $alias = '')
+    public function add_object(\Magento\Framework\Model\Abstract_Model $object, $alias = '')
     {
         $this->_objects[] = $object;
         if (!empty($alias)) {
-            $this->_objectsByAlias[$alias] = $object;
+            $this->_objects_by_alias[$alias] = $object;
         }
         return $this;
     }
-
     /**
      * Add callback function which will be called before commit transactions
      *
      * @param callable $callback
      * @return $this
      */
-    public function addCommitCallback($callback)
+    public function add_commit_callback($callback)
     {
-        $this->_beforeCommitCallbacks[] = $callback;
+        $this->_before_commit_callbacks[] = $callback;
         return $this;
     }
-
     /**
      * Initialize objects save transaction
      *
@@ -127,9 +116,8 @@ class Transaction
      */
     public function save()
     {
-        $this->_startTransaction();
+        $this->_start_transaction();
         $error = false;
-
         try {
             foreach ($this->_objects as $object) {
                 $object->save();
@@ -137,25 +125,21 @@ class Transaction
         } catch (\Exception $e) {
             $error = $e;
         }
-
         if ($error === false) {
             try {
-                $this->_runCallbacks();
+                $this->_run_callbacks();
             } catch (\Exception $e) {
                 $error = $e;
             }
         }
-
         if ($error) {
-            $this->_rollbackTransaction();
+            $this->_rollback_transaction();
             throw $error;
         } else {
-            $this->_commitTransaction();
+            $this->_commit_transaction();
         }
-
         return $this;
     }
-
     /**
      * Initialize objects delete transaction
      *
@@ -164,9 +148,8 @@ class Transaction
      */
     public function delete()
     {
-        $this->_startTransaction();
+        $this->_start_transaction();
         $error = false;
-
         try {
             foreach ($this->_objects as $object) {
                 $object->delete();
@@ -174,20 +157,18 @@ class Transaction
         } catch (\Exception $e) {
             $error = $e;
         }
-
         if ($error === false) {
             try {
-                $this->_runCallbacks();
+                $this->_run_callbacks();
             } catch (\Exception $e) {
                 $error = $e;
             }
         }
-
         if ($error) {
-            $this->_rollbackTransaction();
+            $this->_rollback_transaction();
             throw $error;
         } else {
-            $this->_commitTransaction();
+            $this->_commit_transaction();
         }
         return $this;
     }

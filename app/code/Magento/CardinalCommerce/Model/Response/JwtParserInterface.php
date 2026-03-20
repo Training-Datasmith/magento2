@@ -4,16 +4,15 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\CardinalCommerce\Model\Response;
+declare (strict_types=1);
+namespace Magento\Cardinal_Commerce\Model\Response;
 
 /**
  * Parses content of CardinalCommerce response JWT.
  *
  * @api
  */
-interface JwtParserInterface
+interface Jwt_Parser_Interface
 {
     /**
      * Returns response JWT content.

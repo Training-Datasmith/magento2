@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block;
 
 /**
@@ -22,49 +21,45 @@ class Widget extends \Magento\Backend\Block\Template
      *
      * @return string
      */
-    public function getId()
+    public function get_id()
     {
-        if (null === $this->getData('id')) {
-            $this->setData('id', $this->mathRandom->getUniqueHash('id_'));
+        if (null === $this->get_data('id')) {
+            $this->set_data('id', $this->math_random->get_unique_hash('id_'));
         }
-        return $this->getData('id');
+        return $this->get_data('id');
     }
-
     /**
      * Get HTML ID with specified suffix
      *
      * @param string $suffix
      * @return string
      */
-    public function getSuffixId($suffix)
+    public function get_suffix_id($suffix)
     {
-        return "{$this->getId()}_{$suffix}";
+        return "{$this->get_id()}_{$suffix}";
     }
-
     /**
      * Get HTML ID
      *
      * @return string
      */
-    public function getHtmlId()
+    public function get_html_id()
     {
-        return $this->getId();
+        return $this->get_id();
     }
-
     /**
      * Get current url
      *
      * @param array $params url parameters
      * @return string current url
      */
-    public function getCurrentUrl($params = [])
+    public function get_current_url($params = [])
     {
         if (!isset($params['_current'])) {
             $params['_current'] = true;
         }
-        return $this->getUrl('*/*/*', $params);
+        return $this->get_url('*/*/*', $params);
     }
-
     /**
      * Prepare Breadcrumbs
      *
@@ -73,11 +68,10 @@ class Widget extends \Magento\Backend\Block\Template
      * @param string|null $link
      * @return void
      */
-    protected function _addBreadcrumb($label, $title = null, $link = null)
+    protected function _add_breadcrumb($label, $title = null, $link = null)
     {
-        $this->getLayout()->getBlock('breadcrumbs')->addLink($label, $title, $link);
+        $this->get_layout()->get_block('breadcrumbs')->add_link($label, $title, $link);
     }
-
     /**
      * Create button and return its html
      *
@@ -88,20 +82,8 @@ class Widget extends \Magento\Backend\Block\Template
      * @param array $dataAttr
      * @return string
      */
-    public function getButtonHtml($label, $onclick, $class = '', $buttonId = null, $dataAttr = [])
+    public function get_button_html($label, $onclick, $class = '', $button_id = null, $data_attr = [])
     {
-        return $this->getLayout()->createBlock(
-            \Magento\Backend\Block\Widget\Button::class
-        )->setData(
-            [
-                'label' => $label,
-                'onclick' => $onclick,
-                'class' => $class,
-                'type' => 'button',
-                'id' => $buttonId,
-            ]
-        )->setDataAttribute(
-            $dataAttr
-        )->toHtml();
+        return $this->get_layout()->create_block(\Magento\Backend\Block\Widget\Button::class)->set_data(['label' => $label, 'onclick' => $onclick, 'class' => $class, 'type' => 'button', 'id' => $button_id])->set_data_attribute($data_attr)->to_html();
     }
 }

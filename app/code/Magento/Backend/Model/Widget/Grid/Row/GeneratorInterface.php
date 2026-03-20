@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Widget\Grid\Row;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface GeneratorInterface
+interface Generator_Interface
 {
     /**
      * Generate row url
@@ -20,5 +19,5 @@ interface GeneratorInterface
      * @param \Magento\Framework\DataObject $item
      * @return string
      */
-    public function getUrl($item);
+    public function get_url($item);
 }

@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Controller\Adminhtml\Cache;
 
-use Magento\Framework\App\Action\HttpGetActionInterface as HttpGetActionInterface;
-
-class Index extends \Magento\Backend\Controller\Adminhtml\Cache implements HttpGetActionInterface
+use Magento\Framework\App\Action\Http_Get_Action_Interface as HttpGetActionInterface;
+class Index extends \Magento\Backend\Controller\Adminhtml\Cache implements Http_Get_Action_Interface
 {
     /**
      * Display cache management grid
@@ -20,9 +18,9 @@ class Index extends \Magento\Backend\Controller\Adminhtml\Cache implements HttpG
     public function execute()
     {
         /** @var \Magento\Backend\Model\View\Result\Page $resultPage */
-        $resultPage = $this->resultPageFactory->create();
-        $resultPage->setActiveMenu('Magento_Backend::system_cache');
-        $resultPage->getConfig()->getTitle()->prepend(__('Cache Management'));
-        return $resultPage;
+        $result_page = $this->result_page_factory->create();
+        $result_page->set_active_menu('Magento_Backend::system_cache');
+        $result_page->get_config()->get_title()->prepend(__('Cache Management'));
+        return $result_page;
     }
 }

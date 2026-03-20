@@ -1,19 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdvancedSearch\Block\Adminhtml\System\Config;
+namespace Magento\Advanced_Search\Block\Adminhtml\System\Config;
 
 /**
  * Search engine test connection block
  * @api
  * @since 100.1.0
  */
-class TestConnection extends \Magento\Config\Block\System\Config\Form\Field
+class Test_Connection extends \Magento\Config\Block\System\Config\Form\Field
 {
     /**
      * Set template to itself
@@ -21,53 +20,42 @@ class TestConnection extends \Magento\Config\Block\System\Config\Form\Field
      * @return $this
      * @since 100.1.0
      */
-    protected function _prepareLayout(): static
+    protected function _prepare_layout(): static
     {
-        parent::_prepareLayout();
-        $this->setTemplate('Magento_AdvancedSearch::system/config/testconnection.phtml');
+        parent::_prepare_layout();
+        $this->set_template('Magento_AdvancedSearch::system/config/testconnection.phtml');
         return $this;
     }
-
     /**
      * Unset some non-related element parameters
      *
      * @return string
      * @since 100.1.0
      */
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    public function render(\Magento\Framework\Data\Form\Element\Abstract_Element $element)
     {
         $element = clone $element;
-        $element->unsScope()->unsCanUseWebsiteValue()->unsCanUseDefaultValue();
+        $element->uns_scope()->uns_can_use_website_value()->uns_can_use_default_value();
         return parent::render($element);
     }
-
     /**
      * Get the button and scripts contents
      *
      * @return string
      * @since 100.1.0
      */
-    protected function _getElementHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    protected function _get_element_html(\Magento\Framework\Data\Form\Element\Abstract_Element $element)
     {
-        $originalData = $element->getOriginalData();
-        $this->addData(
-            [
-                'button_label' => __($originalData['button_label']),
-                'html_id' => $element->getHtmlId(),
-                'ajax_url' => $this->_urlBuilder->getUrl('catalog/search_system_config/testconnection'),
-                'field_mapping' => str_replace('"', '\\"', json_encode($this->_getFieldMapping())),
-            ]
-        );
-
-        return $this->_toHtml();
+        $original_data = $element->get_original_data();
+        $this->add_data(['button_label' => __($original_data['button_label']), 'html_id' => $element->get_html_id(), 'ajax_url' => $this->_url_builder->get_url('catalog/search_system_config/testconnection'), 'field_mapping' => str_replace('"', '\"', json_encode($this->_get_field_mapping()))]);
+        return $this->_to_html();
     }
-
     /**
      * Returns configuration fields required to perform the ping request
      *
      * @since 100.1.0
      */
-    protected function _getFieldMapping(): array
+    protected function _get_field_mapping(): array
     {
         return ['engine' => 'catalog_search_engine'];
     }

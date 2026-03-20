@@ -1,41 +1,34 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Css\Pre_Processor\File;
 
-namespace Magento\Framework\Css\PreProcessor\File;
-
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\Css\PreProcessor\Config;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\Css\Pre_Processor\Config;
 use Magento\Framework\Filesystem;
-
 class Temporary
 {
     /**
      * @var Config
      */
     private $config;
-
     /**
      * @var Filesystem\Directory\WriteInterface
      */
-    private $tmpDirectory;
-
+    private $tmp_directory;
     /**
      * @param Filesystem $filesystem
      * @param Config $config
      */
-    public function __construct(
-        Filesystem $filesystem,
-        Config $config
-    ) {
-        $this->tmpDirectory = $filesystem->getDirectoryWrite(DirectoryList::VAR_DIR);
+    public function __construct(Filesystem $filesystem, Config $config)
+    {
+        $this->tmp_directory = $filesystem->get_directory_write(Directory_List::VAR_DIR);
         $this->config = $config;
     }
-
     /**
      * Write down contents to a temporary file and return its absolute path
      *
@@ -43,13 +36,12 @@ class Temporary
      * @param string $contents
      * @return string
      */
-    public function createFile($relativePath, $contents)
+    public function create_file($relative_path, $contents)
     {
-        $filePath =  $this->config->getMaterializationRelativePath() . '/' . $relativePath;
-
-        if (!$this->tmpDirectory->isExist($filePath)) {
-            $this->tmpDirectory->writeFile($filePath, $contents);
+        $file_path = $this->config->get_materialization_relative_path() . '/' . $relative_path;
+        if (!$this->tmp_directory->is_exist($file_path)) {
+            $this->tmp_directory->write_file($file_path, $contents);
         }
-        return $this->tmpDirectory->getAbsolutePath($filePath);
+        return $this->tmp_directory->get_absolute_path($file_path);
     }
 }

@@ -4,12 +4,10 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Aws_S3\Model;
 
-namespace Magento\AwsS3\Model;
-
-use Magento\Framework\App\DeploymentConfig;
-
+use Magento\Framework\App\Deployment_Config;
 /**
  * Configuration for AWS S3.
  */
@@ -22,64 +20,56 @@ class Config
     public const PATH_SECRET_KEY = 'remote_storage/secret_key';
     public const PATH_PREFIX = 'remote_storage/prefix';
     public const PATH_PATH_STYLE = 'remote_storage/path_style';
-
-    public function __construct(private readonly DeploymentConfig $config)
+    public function __construct(private readonly Deployment_Config $config)
     {
     }
-
     /**
      * Retrieves endpoint.
      */
-    public function getEndpoint(): string
+    public function get_endpoint(): string
     {
-        return (string)$this->config->get(self::PATH_ENDPOINT);
+        return (string) $this->config->get(self::PATH_ENDPOINT);
     }
-
     /**
      * Retrieves region.
      */
-    public function getRegion(): string
+    public function get_region(): string
     {
-        return (string)$this->config->get(self::PATH_REGION);
+        return (string) $this->config->get(self::PATH_REGION);
     }
-
     /**
      * Retrieves bucket.
      */
-    public function getBucket(): string
+    public function get_bucket(): string
     {
-        return (string)$this->config->get(self::PATH_BUCKET);
+        return (string) $this->config->get(self::PATH_BUCKET);
     }
-
     /**
      * Retrieves access key.
      */
-    public function getAccessKey(): string
+    public function get_access_key(): string
     {
-        return (string)$this->config->get(self::PATH_ACCESS_KEY);
+        return (string) $this->config->get(self::PATH_ACCESS_KEY);
     }
-
     /**
      * Retrieves secret key.
      */
-    public function getSecretKey(): string
+    public function get_secret_key(): string
     {
-        return (string)$this->config->get(self::PATH_SECRET_KEY);
+        return (string) $this->config->get(self::PATH_SECRET_KEY);
     }
-
     /**
      * Retrieves prefix.
      */
-    public function getPrefix(): string
+    public function get_prefix(): string
     {
-        return (string)$this->config->get(self::PATH_PREFIX, '');
+        return (string) $this->config->get(self::PATH_PREFIX, '');
     }
-
     /**
      * Retrieves endpoint.
      */
-    public function getPathStyle(): string
+    public function get_path_style(): string
     {
-        return (string)$this->config->get(self::PATH_PATH_STYLE, '0');
+        return (string) $this->config->get(self::PATH_PATH_STYLE, '0');
     }
 }

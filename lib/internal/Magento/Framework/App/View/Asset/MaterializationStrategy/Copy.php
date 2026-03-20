@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\View\Asset\Materialization_Strategy;
 
-namespace Magento\Framework\App\View\Asset\MaterializationStrategy;
-
-use Magento\Framework\Filesystem\Directory\WriteInterface;
+use Magento\Framework\Filesystem\Directory\Write_Interface;
 use Magento\Framework\View\Asset;
-
-class Copy implements StrategyInterface
+class Copy implements Strategy_Interface
 {
     /**
      * Publish file
@@ -22,15 +20,10 @@ class Copy implements StrategyInterface
      * @param string $destinationPath
      * @return bool
      */
-    public function publishFile(
-        WriteInterface $sourceDir,
-        WriteInterface $targetDir,
-        $sourcePath,
-        $destinationPath
-    ) {
-        return $sourceDir->copyFile($sourcePath, $destinationPath, $targetDir);
+    public function publish_file(Write_Interface $source_dir, Write_Interface $target_dir, $source_path, $destination_path)
+    {
+        return $source_dir->copy_file($source_path, $destination_path, $target_dir);
     }
-
     /**
      * Whether the strategy can be applied
      *
@@ -39,7 +32,7 @@ class Copy implements StrategyInterface
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function isSupported(Asset\LocalInterface $asset)
+    public function is_supported(Asset\Local_Interface $asset)
     {
         return true;
     }

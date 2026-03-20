@@ -1,47 +1,41 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\App\AreaList;
+namespace Magento\Framework\App\Area_List;
 
 /**
  * Proxy for area list.
  */
-class Proxy extends \Magento\Framework\App\AreaList implements
-    \Magento\Framework\ObjectManager\NoninterceptableInterface
+class Proxy extends \Magento\Framework\App\Area_List implements \Magento\Framework\Object_Manager\Noninterceptable_Interface
 {
     /**
      * Object Manager instance
      *
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager = null;
-
+    protected $_object_manager = null;
     /**
      * Proxied instance name
      *
      * @var string
      */
-    protected $_instanceName = null;
-
+    protected $_instance_name = null;
     /**
      * Proxied instance
      *
      * @var \Magento\Framework\Locale\Resolver
      */
     protected $_subject = null;
-
     /**
      * Instance shareability flag
      *
      * @var bool
      */
-    protected $_isShared = null;
-
+    protected $_is_shared = null;
     /**
      * Proxy constructor
      *
@@ -49,16 +43,12 @@ class Proxy extends \Magento\Framework\App\AreaList implements
      * @param string $instanceName
      * @param bool $shared
      */
-    public function __construct(
-        \Magento\Framework\ObjectManagerInterface $objectManager,
-        $instanceName = \Magento\Framework\App\AreaList::class,
-        $shared = true
-    ) {
-        $this->_objectManager = $objectManager;
-        $this->_instanceName = $instanceName;
-        $this->_isShared = $shared;
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager, $instance_name = \Magento\Framework\App\Area_List::class, $shared = true)
+    {
+        $this->_object_manager = $object_manager;
+        $this->_instance_name = $instance_name;
+        $this->_is_shared = $shared;
     }
-
     /**
      * Remove links to other objects.
      *
@@ -68,7 +58,6 @@ class Proxy extends \Magento\Framework\App\AreaList implements
     {
         return ['_subject', '_isShared'];
     }
-
     /**
      * Retrieve ObjectManager from global scope
      *
@@ -76,9 +65,8 @@ class Proxy extends \Magento\Framework\App\AreaList implements
      */
     public function __wakeup()
     {
-        $this->_objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $this->_object_manager = \Magento\Framework\App\Object_Manager::get_instance();
     }
-
     /**
      * Clone proxied instance
      *
@@ -86,75 +74,67 @@ class Proxy extends \Magento\Framework\App\AreaList implements
      */
     public function __clone()
     {
-        $this->_subject = clone $this->_getSubject();
+        $this->_subject = clone $this->_get_subject();
     }
-
     /**
      * Get proxied instance
      *
      * @return \Magento\Framework\Locale\Resolver
      */
-    protected function _getSubject()
+    protected function _get_subject()
     {
         if (!$this->_subject) {
-            $this->_subject = true === $this->_isShared
-                ? $this->_objectManager->get($this->_instanceName)
-                : $this->_objectManager->create($this->_instanceName);
+            $this->_subject = true === $this->_is_shared ? $this->_object_manager->get($this->_instance_name) : $this->_object_manager->create($this->_instance_name);
         }
         return $this->_subject;
     }
-
     /**
      * Retrieve area code by front name
      *
      * @param string $frontName
      * @return null|string
      */
-    public function getCodeByFrontName($frontName)
+    public function get_code_by_front_name($front_name)
     {
-        return $this->_getSubject()->getCodeByFrontName($frontName);
+        return $this->_get_subject()->get_code_by_front_name($front_name);
     }
-
     /**
      * Retrieve area front name by code
      *
      * @param string $areaCode
      * @return string
      */
-    public function getFrontName($areaCode)
+    public function get_front_name($area_code)
     {
-        return $this->_getSubject()->getFrontName($areaCode);
+        return $this->_get_subject()->get_front_name($area_code);
     }
-
     /**
      * Retrieve area codes
      *
      * @return string[]
      */
-    public function getCodes()
+    public function get_codes()
     {
-        return $this->_getSubject()->getCodes();
+        return $this->_get_subject()->get_codes();
     }
-
     /**
      * Retrieve default area router id
      *
      * @param string $areaCode
      * @return string
      */
-    public function getDefaultRouter($areaCode)
+    public function get_default_router($area_code)
     {
-        return $this->_getSubject()->getDefaultRouter($areaCode);
+        return $this->_get_subject()->get_default_router($area_code);
     }
-
     /**
      * Retrieve application area
      *
      * @param   string $code
      * @return  \Magento\Framework\App\Area
      */
-    public function getArea($code)
+    public function get_area($code)
     {
-        return $this->_getSubject()->getArea($code);
+        return $this->_get_subject()->get_area($code);
     }
 }

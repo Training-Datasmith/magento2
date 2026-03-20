@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Authorization\Model;
 
-use Magento\Authorization\Model\ResourceModel\Role\Collection;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Model\AbstractModel;
-
+use Magento\Authorization\Model\Resource_Model\Role\Collection;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Model\Abstract_Model;
 /**
  * Admin Role Model
  *
@@ -32,18 +30,16 @@ use Magento\Framework\Model\AbstractModel;
  * @api
  * @since 100.0.2
  */
-class Role extends AbstractModel
+class Role extends Abstract_Model
 {
     /**
      * @var string
      */
-    protected $_eventPrefix = 'authorization_roles';
-
+    protected $_event_prefix = 'authorization_roles';
     /**
      * @var string
      */
-    protected $_cacheTag = 'user_assigned_role';
-
+    protected $_cache_tag = 'user_assigned_role';
     /**
      * @inheritDoc
      */
@@ -52,26 +48,23 @@ class Role extends AbstractModel
         $properties = parent::__sleep();
         return array_diff($properties, ['_resource', '_resourceCollection']);
     }
-
     /**
      * @inheritDoc
      */
     public function __wakeup()
     {
         parent::__wakeup();
-        $objectManager = ObjectManager::getInstance();
-        $this->_resource = $objectManager->get(ResourceModel\Role::class);
-        $this->_resourceCollection = $objectManager->get(Collection::class);
+        $object_manager = Object_Manager::get_instance();
+        $this->_resource = $object_manager->get(Resource_Model\Role::class);
+        $this->_resource_collection = $object_manager->get(Collection::class);
     }
-
     /**
      * @inheritdoc
      */
     protected function _construct()
     {
-        $this->_init(ResourceModel\Role::class);
+        $this->_init(Resource_Model\Role::class);
     }
-
     /**
      * Obsolete method of update
      *
@@ -82,17 +75,15 @@ class Role extends AbstractModel
     {
         // phpcs:disable Magento2.Functions.DiscouragedFunction
         trigger_error('Method was never implemented and used.', E_USER_DEPRECATED);
-
         return $this;
     }
-
     /**
      * Return users for role
      *
      * @return array
      */
-    public function getRoleUsers()
+    public function get_role_users()
     {
-        return $this->getResource()->getRoleUsers($this);
+        return $this->get_resource()->get_role_users($this);
     }
 }

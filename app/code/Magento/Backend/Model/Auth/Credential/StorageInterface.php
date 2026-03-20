@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Auth\Credential;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Backend\Model\Auth\Credential;
  * @api
  * @since 100.0.2
  */
-interface StorageInterface
+interface Storage_Interface
 {
     /**
      * Authenticate process.
@@ -24,7 +23,6 @@ interface StorageInterface
      * @return bool
      */
     public function authenticate($username, $password);
-
     /**
      * Login action. Check if given username and password are valid
      *
@@ -34,7 +32,6 @@ interface StorageInterface
      * @abstract
      */
     public function login($username, $password);
-
     /**
      * Reload loaded (already authenticated) credential storage
      *
@@ -42,15 +39,13 @@ interface StorageInterface
      * @abstract
      */
     public function reload();
-
     /**
      * Check if user has available resources
      *
      * @return bool
      * @abstract
      */
-    public function hasAvailableResources();
-
+    public function has_available_resources();
     /**
      * Set user has available resources
      *
@@ -58,5 +53,5 @@ interface StorageInterface
      * @return $this
      * @abstract
      */
-    public function setHasAvailableResources($hasResources);
+    public function set_has_available_resources($has_resources);
 }

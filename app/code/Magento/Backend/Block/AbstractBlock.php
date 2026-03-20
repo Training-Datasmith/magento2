@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block;
 
 /**
@@ -17,20 +16,19 @@ namespace Magento\Backend\Block;
  * @api
  * @since 100.0.2
  */
-class AbstractBlock extends \Magento\Framework\View\Element\AbstractBlock
+class Abstract_Block extends \Magento\Framework\View\Element\Abstract_Block
 {
     /**
      * @var \Magento\Framework\AuthorizationInterface
      */
     protected $_authorization;
-
     /**
      * @param Context $context
      * @param array $data
      */
     public function __construct(Context $context, array $data = [])
     {
-        $this->_authorization = $context->getAuthorization();
+        $this->_authorization = $context->get_authorization();
         parent::__construct($context, $data);
     }
 }

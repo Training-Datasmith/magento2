@@ -4,8 +4,7 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Model\Image;
 
 /**
@@ -15,26 +14,24 @@ namespace Magento\Backend\Model\Image;
  *
  * @api
  */
-interface UploadResizeConfigInterface
+interface Upload_Resize_Config_Interface
 {
     /**
      * Get maximal width value for resized image
      *
      * @return int
      */
-    public function getMaxWidth(): int;
-
+    public function get_max_width(): int;
     /**
      * Get maximal height value for resized image
      *
      * @return int
      */
-    public function getMaxHeight(): int;
-
+    public function get_max_height(): int;
     /**
      * Get config value for frontend resize
      *
      * @return bool
      */
-    public function isResizeEnabled(): bool;
+    public function is_resize_enabled(): bool;
 }

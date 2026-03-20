@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget;
 
 use Magento\Backend\Block\Template\Context;
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Object_Manager;
 use Magento\Framework\Math\Random;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
-
+use Magento\Framework\View\Helper\Secure_Html_Renderer;
 /**
  * Button widget
  *
@@ -25,29 +23,22 @@ class Button extends \Magento\Backend\Block\Widget
      * @var Random
      */
     private $random;
-
     /**
      * @var SecureHtmlRenderer
      */
-    private $secureRenderer;
-
+    private $secure_renderer;
     /**
      * @param Context $context
      * @param array $data
      * @param Random|null $random
      * @param SecureHtmlRenderer|null $htmlRenderer
      */
-    public function __construct(
-        Context $context,
-        array $data = [],
-        ?Random $random = null,
-        ?SecureHtmlRenderer $htmlRenderer = null
-    ) {
+    public function __construct(Context $context, array $data = [], ?Random $random = null, ?Secure_Html_Renderer $html_renderer = null)
+    {
         parent::__construct($context, $data);
-        $this->random = $random ?? ObjectManager::getInstance()->get(Random::class);
-        $this->secureRenderer = $htmlRenderer ?? ObjectManager::getInstance()->get(SecureHtmlRenderer::class);
+        $this->random = $random ?? Object_Manager::get_instance()->get(Random::class);
+        $this->secure_renderer = $html_renderer ?? Object_Manager::get_instance()->get(Secure_Html_Renderer::class);
     }
-
     /**
      * Define block template
      *
@@ -55,58 +46,53 @@ class Button extends \Magento\Backend\Block\Widget
      */
     protected function _construct()
     {
-        $this->setTemplate('Magento_Backend::widget/button.phtml');
+        $this->set_template('Magento_Backend::widget/button.phtml');
         parent::_construct();
     }
-
     /**
      * Retrieve button type
      *
      * @return string
      */
-    public function getType()
+    public function get_type()
     {
-        if (in_array($this->getData('type'), ['reset', 'submit'])) {
-            return $this->getData('type');
+        if (in_array($this->get_data('type'), ['reset', 'submit'])) {
+            return $this->get_data('type');
         }
         return 'button';
     }
-
     /**
      * Retrieve onclick handler
      *
      * @return null|string
      */
-    public function getOnClick()
+    public function get_on_click()
     {
-        return $this->getData('on_click') ?: $this->getData('onclick');
+        return $this->get_data('on_click') ?: $this->get_data('onclick');
     }
-
     /**
      * Retrieve attributes html
      *
      * @return string
      */
-    public function getAttributesHtml()
+    public function get_attributes_html()
     {
-        $disabled = $this->getDisabled() ? 'disabled' : '';
-        $title = $this->getTitle();
+        $disabled = $this->get_disabled() ? 'disabled' : '';
+        $title = $this->get_title();
         if (!$title) {
-            $title = $this->getLabel();
+            $title = $this->get_label();
         }
         $classes = [];
         $classes[] = 'action-default';
         $classes[] = 'scalable';
-        if ($this->getClass()) {
-            $classes[] = $this->getClass();
+        if ($this->get_class()) {
+            $classes[] = $this->get_class();
         }
         if ($disabled) {
             $classes[] = $disabled;
         }
-
-        return $this->_attributesToHtml($this->_prepareAttributes($title, $classes, $disabled));
+        return $this->_attributes_to_html($this->_prepare_attributes($title, $classes, $disabled));
     }
-
     /**
      * Prepare attributes
      *
@@ -115,73 +101,55 @@ class Button extends \Magento\Backend\Block\Widget
      * @param string $disabled
      * @return array
      */
-    protected function _prepareAttributes($title, $classes, $disabled)
+    protected function _prepare_attributes($title, $classes, $disabled)
     {
-        $attributes = [
-            'id' => $this->getId(),
-            'name' => $this->getElementName(),
-            'title' => $title,
-            'type' => $this->getType(),
-            'class' => join(' ', $classes),
-            'value' => $this->getValue(),
-            'disabled' => $disabled,
-        ];
-        if ($this->hasData('onclick_attribute')) {
-            $attributes['onclick'] = $this->getData('onclick_attribute');
+        $attributes = ['id' => $this->get_id(), 'name' => $this->get_element_name(), 'title' => $title, 'type' => $this->get_type(), 'class' => join(' ', $classes), 'value' => $this->get_value(), 'disabled' => $disabled];
+        if ($this->has_data('onclick_attribute')) {
+            $attributes['onclick'] = $this->get_data('onclick_attribute');
         }
-        if ($this->hasData('backend_button_widget_hook_id')) {
-            $attributes['backend-button-widget-hook-id'] = $this->getData('backend_button_widget_hook_id');
+        if ($this->has_data('backend_button_widget_hook_id')) {
+            $attributes['backend-button-widget-hook-id'] = $this->get_data('backend_button_widget_hook_id');
         }
-        if ($this->getDataAttribute()) {
-            foreach ($this->getDataAttribute() as $key => $attr) {
+        if ($this->get_data_attribute()) {
+            foreach ($this->get_data_attribute() as $key => $attr) {
                 $attributes['data-' . $key] = is_scalar($attr) ? $attr : json_encode($attr);
             }
         }
         return $attributes;
     }
-
     /**
      * Attributes list to html
      *
      * @param array $attributes
      * @return string
      */
-    protected function _attributesToHtml($attributes)
+    protected function _attributes_to_html($attributes)
     {
         $html = '';
-        foreach ($attributes as $attributeKey => $attributeValue) {
-            if ($attributeValue === null || $attributeValue == '') {
+        foreach ($attributes as $attribute_key => $attribute_value) {
+            if ($attribute_value === null || $attribute_value == '') {
                 continue;
             }
-            $html .= $attributeKey . '="' . $this->escapeHtmlAttr($attributeValue, false) . '" ';
+            $html .= $attribute_key . '="' . $this->escape_html_attr($attribute_value, false) . '" ';
         }
-
         return $html;
     }
-
     /**
      * @inheritDoc
      */
-    protected function _beforeToHtml()
+    protected function _before_to_html()
     {
-        parent::_beforeToHtml();
-
-        $buttonId = 'buttonId' .$this->random->getRandomString(10);
-        $this->setData('backend_button_widget_hook_id', $buttonId);
-
-        $afterHtml = $this->getAfterHtml();
-        if ($this->getOnClick()) {
-            $afterHtml .= $this->secureRenderer->renderEventListenerAsTag(
-                'onclick',
-                $this->getOnClick(),
-                "*[backend-button-widget-hook-id='$buttonId']"
-            );
+        parent::_before_to_html();
+        $button_id = 'buttonId' . $this->random->get_random_string(10);
+        $this->set_data('backend_button_widget_hook_id', $button_id);
+        $after_html = $this->get_after_html();
+        if ($this->get_on_click()) {
+            $after_html .= $this->secure_renderer->render_event_listener_as_tag('onclick', $this->get_on_click(), "*[backend-button-widget-hook-id='{$button_id}']");
         }
-        if ($this->getStyle()) {
-            $afterHtml .= $this->secureRenderer->renderStyleAsTag($this->getStyle(), "#{$this->getId()}");
+        if ($this->get_style()) {
+            $after_html .= $this->secure_renderer->render_style_as_tag($this->get_style(), "#{$this->get_id()}");
         }
-        $this->setAfterHtml($afterHtml);
-
+        $this->set_after_html($after_html);
         return $this;
     }
 }

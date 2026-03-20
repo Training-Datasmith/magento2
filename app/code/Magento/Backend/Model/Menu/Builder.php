@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Menu;
 
 /**
@@ -20,36 +19,32 @@ class Builder
      * @var \Magento\Backend\Model\Menu\Builder\AbstractCommand[]
      */
     protected $_commands = [];
-
     /**
      * @var \Magento\Backend\Model\Menu\Item\Factory
      */
-    protected $_itemFactory;
-
+    protected $_item_factory;
     /**
      * @param \Magento\Backend\Model\Menu\Item\Factory $menuItemFactory
      */
-    public function __construct(\Magento\Backend\Model\Menu\Item\Factory $menuItemFactory)
+    public function __construct(\Magento\Backend\Model\Menu\Item\Factory $menu_item_factory)
     {
-        $this->_itemFactory = $menuItemFactory;
+        $this->_item_factory = $menu_item_factory;
     }
-
     /**
      * Process provided command object
      *
      * @param \Magento\Backend\Model\Menu\Builder\AbstractCommand $command
      * @return $this
      */
-    public function processCommand(\Magento\Backend\Model\Menu\Builder\AbstractCommand $command)
+    public function process_command(\Magento\Backend\Model\Menu\Builder\Abstract_Command $command)
     {
-        if (!isset($this->_commands[$command->getId()])) {
-            $this->_commands[$command->getId()] = $command;
+        if (!isset($this->_commands[$command->get_id()])) {
+            $this->_commands[$command->get_id()] = $command;
         } else {
-            $this->_commands[$command->getId()]->chain($command);
+            $this->_commands[$command->get_id()]->chain($command);
         }
         return $this;
     }
-
     /**
      * Populate menu object
      *
@@ -57,44 +52,39 @@ class Builder
      * @return \Magento\Backend\Model\Menu
      * @throws \OutOfRangeException in case given parent id does not exists
      */
-    public function getResult(\Magento\Backend\Model\Menu $menu)
+    public function get_result(\Magento\Backend\Model\Menu $menu)
     {
         /** @var $items \Magento\Backend\Model\Menu\Item[] */
         $params = [];
         $items = [];
-
         // Create menu items
         foreach ($this->_commands as $id => $command) {
             $params[$id] = $command->execute();
-            $item = $this->_itemFactory->create($params[$id]);
+            $item = $this->_item_factory->create($params[$id]);
             $items[$id] = $item;
         }
-
         // Build menu tree based on "parent" param
         foreach ($items as $id => $item) {
-            $sortOrder = $this->_getParam($params[$id], 'sortOrder');
-            $parentId = $this->_getParam($params[$id], 'parent');
-            $isRemoved = isset($params[$id]['removed']);
-
-            if ($isRemoved) {
+            $sort_order = $this->_get_param($params[$id], 'sortOrder');
+            $parent_id = $this->_get_param($params[$id], 'parent');
+            $is_removed = isset($params[$id]['removed']);
+            if ($is_removed) {
                 continue;
             }
-            if (!$parentId) {
-                $menu->add($item, null, $sortOrder);
+            if (!$parent_id) {
+                $menu->add($item, null, $sort_order);
             } else {
-                if (!isset($items[$parentId])) {
-                    throw new \OutOfRangeException(sprintf('Specified invalid parent id (%s)', $parentId));
+                if (!isset($items[$parent_id])) {
+                    throw new \OutOfRangeException(sprintf('Specified invalid parent id (%s)', $parent_id));
                 }
-                if (isset($params[$parentId]['removed'])) {
+                if (isset($params[$parent_id]['removed'])) {
                     continue;
                 }
-                $items[$parentId]->getChildren()->add($item, null, $sortOrder);
+                $items[$parent_id]->get_children()->add($item, null, $sort_order);
             }
         }
-
         return $menu;
     }
-
     /**
      * Retrieve param by name or default value
      *
@@ -103,8 +93,8 @@ class Builder
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function _getParam($params, $paramName, $defaultValue = null)
+    protected function _get_param($params, $param_name, $default_value = null)
     {
-        return $params[$paramName] ?? $defaultValue;
+        return $params[$param_name] ?? $default_value;
     }
 }

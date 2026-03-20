@@ -1,16 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Routes configuration converter
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Route\Config;
 
-class Converter implements \Magento\Framework\Config\ConverterInterface
+class Converter implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * Convert config
@@ -21,70 +20,61 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     public function convert($source)
     {
         $output = [];
-
         /** @var \DOMNodeList $routers */
-        $routers = $source->getElementsByTagName('router');
-
+        $routers = $source->get_elements_by_tag_name('router');
         /** @var \DOMNode $router */
         foreach ($routers as $router) {
-            $routerConfig = [];
+            $router_config = [];
             foreach ($router->attributes as $attribute) {
-                $routerConfig[$attribute->nodeName] = $attribute->nodeValue;
+                $router_config[$attribute->node_name] = $attribute->node_value;
             }
-
             /** @var \DOMNode $routeData */
-            foreach ($router->getElementsByTagName('route') as $routeData) {
-                $routeConfig = [];
-                foreach ($routeData->attributes as $routeAttribute) {
-                    $routeConfig[$routeAttribute->nodeName] = $routeAttribute->nodeValue;
+            foreach ($router->get_elements_by_tag_name('route') as $route_data) {
+                $route_config = [];
+                foreach ($route_data->attributes as $route_attribute) {
+                    $route_config[$route_attribute->node_name] = $route_attribute->node_value;
                 }
-
                 /** @var \DOMNode $module */
-                foreach ($routeData->getElementsByTagName('module') as $moduleData) {
-                    $moduleConfig = [];
-                    foreach ($moduleData->attributes as $moduleAttribute) {
-                        $moduleConfig[$moduleAttribute->nodeName] = $moduleAttribute->nodeValue;
+                foreach ($route_data->get_elements_by_tag_name('module') as $module_data) {
+                    $module_config = [];
+                    foreach ($module_data->attributes as $module_attribute) {
+                        $module_config[$module_attribute->node_name] = $module_attribute->node_value;
                     }
-                    $routeConfig['modules'][] = $moduleConfig;
+                    $route_config['modules'][] = $module_config;
                 }
-                $routeConfig['modules'] = $this->_sortModulesList($routeConfig['modules']);
-                $routerConfig['routes'][$routeData->attributes->getNamedItem('id')->nodeValue] = $routeConfig;
+                $route_config['modules'] = $this->_sort_modules_list($route_config['modules']);
+                $router_config['routes'][$route_data->attributes->get_named_item('id')->node_value] = $route_config;
             }
-
-            $output[$router->attributes->getNamedItem('id')->nodeValue] = $routerConfig;
+            $output[$router->attributes->get_named_item('id')->node_value] = $router_config;
         }
-
         return $output;
     }
-
     /**
      * Sort modules list according to before/after attributes
      *
      * @param array $modulesList
      * @return array
      */
-    protected function _sortModulesList($modulesList)
+    protected function _sort_modules_list($modules_list)
     {
-        $sortedModulesList = [];
-
-        foreach ($modulesList as $moduleData) {
-            if (isset($moduleData['before'])) {
-                $position = array_search($moduleData['before'], $sortedModulesList);
+        $sorted_modules_list = [];
+        foreach ($modules_list as $module_data) {
+            if (isset($module_data['before'])) {
+                $position = array_search($module_data['before'], $sorted_modules_list);
                 if ($position === false) {
                     $position = 0;
                 }
-                array_splice($sortedModulesList, $position, 0, $moduleData['name']);
-            } elseif (isset($moduleData['after'])) {
-                $position = array_search($moduleData['after'], $sortedModulesList);
+                array_splice($sorted_modules_list, $position, 0, $module_data['name']);
+            } elseif (isset($module_data['after'])) {
+                $position = array_search($module_data['after'], $sorted_modules_list);
                 if ($position === false) {
-                    $position = count($modulesList);
+                    $position = count($modules_list);
                 }
-                array_splice($sortedModulesList, $position + 1, 0, $moduleData['name']);
+                array_splice($sorted_modules_list, $position + 1, 0, $module_data['name']);
             } else {
-                $sortedModulesList[] = $moduleData['name'];
+                $sorted_modules_list[] = $module_data['name'];
             }
         }
-
-        return $sortedModulesList;
+        return $sorted_modules_list;
     }
 }

@@ -4,8 +4,7 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Backend;
 
 /**
@@ -13,22 +12,20 @@ namespace Magento\Framework\Cache\Backend;
  *
  * Adds advanced cache operations like querying IDs and tags.
  */
-interface ExtendedBackendInterface extends BackendInterface
+interface Extended_Backend_Interface extends Backend_Interface
 {
     /**
      * Return an array of stored cache ids
      *
      * @return array Array of stored cache ids (string)
      */
-    public function getIds();
-
+    public function get_ids();
     /**
      * Return an array of stored tags
      *
      * @return array Array of stored tags (string)
      */
-    public function getTags();
-
+    public function get_tags();
     /**
      * Return an array of stored cache ids which match given tags
      *
@@ -37,8 +34,7 @@ interface ExtendedBackendInterface extends BackendInterface
      * @param array $tags Array of tags
      * @return array Array of matching cache ids (string)
      */
-    public function getIdsMatchingTags($tags = []);
-
+    public function get_ids_matching_tags($tags = []);
     /**
      * Return an array of stored cache ids which don't match given tags
      *
@@ -47,8 +43,7 @@ interface ExtendedBackendInterface extends BackendInterface
      * @param array $tags Array of tags
      * @return array Array of not matching cache ids (string)
      */
-    public function getIdsNotMatchingTags($tags = []);
-
+    public function get_ids_not_matching_tags($tags = []);
     /**
      * Return an array of stored cache ids which match any given tags
      *
@@ -57,15 +52,13 @@ interface ExtendedBackendInterface extends BackendInterface
      * @param array $tags Array of tags
      * @return array Array of matching cache ids (string)
      */
-    public function getIdsMatchingAnyTags($tags = []);
-
+    public function get_ids_matching_any_tags($tags = []);
     /**
      * Return the filling percentage of the backend storage
      *
      * @return int An integer between 0 and 100
      */
-    public function getFillingPercentage();
-
+    public function get_filling_percentage();
     /**
      * Return an associative array of metadatas for the given cache id
      *
@@ -77,8 +70,7 @@ interface ExtendedBackendInterface extends BackendInterface
      * @param string $id Cache id
      * @return array|false Associative array of metadatas or false if cache doesn't exist
      */
-    public function getMetadatas($id);
-
+    public function get_metadatas($id);
     /**
      * Give (if possible) an extra lifetime to the given cache id
      *
@@ -86,8 +78,7 @@ interface ExtendedBackendInterface extends BackendInterface
      * @param int $extraLifetime Extra lifetime (in seconds)
      * @return bool True if ok
      */
-    public function touch($id, $extraLifetime);
-
+    public function touch($id, $extra_lifetime);
     /**
      * Return an associative array of capabilities of the backend
      *
@@ -101,5 +92,5 @@ interface ExtendedBackendInterface extends BackendInterface
      *
      * @return array Associative array of capabilities
      */
-    public function getCapabilities();
+    public function get_capabilities();
 }

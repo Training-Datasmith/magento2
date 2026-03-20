@@ -1,67 +1,57 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
-use Psr\Log\LoggerInterface as Logger;
-
+use Psr\Log\Logger_Interface as Logger;
 /**
  * Class AbstractSearchCriteriaBuilder
  *
  * @package Magento\Framework\Data
  */
-abstract class AbstractSearchCriteriaBuilder
+abstract class Abstract_Search_Criteria_Builder
 {
     /**
      * @var ObjectFactory
      */
-    protected $objectFactory;
-
+    protected $object_factory;
     /**
      * @var string
      */
-    protected $resultObjectInterface;
-
+    protected $result_object_interface;
     /**
      * @var Logger
      */
     private $logger;
-
     /**
      * @param Logger $logger
      * @param ObjectFactory $objectFactory
      */
-    public function __construct(
-        Logger $logger,
-        ObjectFactory $objectFactory
-    ) {
-        $this->objectFactory = $objectFactory;
+    public function __construct(Logger $logger, Object_Factory $object_factory)
+    {
+        $this->object_factory = $object_factory;
         $this->logger = $logger;
         $this->init();
     }
-
     /**
      * Initialization
      *
      * @return string
      */
     abstract protected function init();
-
     /**
      * Retrieve interface for result
      *
      * @return string
      */
-    protected function getResultObjectInterface()
+    protected function get_result_object_interface()
     {
-        return $this->resultObjectInterface;
+        return $this->result_object_interface;
     }
-
     /**
      * Create result object
      *
@@ -69,6 +59,6 @@ abstract class AbstractSearchCriteriaBuilder
      */
     public function make()
     {
-        return $this->objectFactory->create($this->getResultObjectInterface(), ['queryBuilder' => $this]);
+        return $this->object_factory->create($this->get_result_object_interface(), ['queryBuilder' => $this]);
     }
 }

@@ -1,33 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application language config factory
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Language;
 
 /**
  * @codeCoverageIgnore
  */
-class ConfigFactory
+class Config_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager;
-
+    protected $_object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->_objectManager = $objectManager;
+        $this->_object_manager = $object_manager;
     }
-
     /**
      * Create config
      *
@@ -36,6 +33,6 @@ class ConfigFactory
      */
     public function create(array $arguments = [])
     {
-        return $this->_objectManager->create(\Magento\Framework\App\Language\Config::class, $arguments);
+        return $this->_object_manager->create(\Magento\Framework\App\Language\Config::class, $arguments);
     }
 }

@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface AttributeSetRepositoryInterface
+interface Attribute_Set_Repository_Interface
 {
     /**
      * Save attribute set data
@@ -23,16 +22,14 @@ interface AttributeSetRepositoryInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\LocalizedException If attribute set is not found
      */
-    public function save(\Magento\Eav\Api\Data\AttributeSetInterface $attributeSet);
-
+    public function save(\Magento\Eav\Api\Data\Attribute_Set_Interface $attribute_set);
     /**
      * Retrieve list of Attribute Sets
      *
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Magento\Eav\Api\Data\AttributeSetSearchResultsInterface
      */
-    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
-
+    public function get_list(\Magento\Framework\Api\Search_Criteria_Interface $search_criteria);
     /**
      * Retrieve attribute set information based on given ID
      *
@@ -40,8 +37,7 @@ interface AttributeSetRepositoryInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException If $attributeSetId is not found
      * @return \Magento\Eav\Api\Data\AttributeSetInterface
      */
-    public function get($attributeSetId);
-
+    public function get($attribute_set_id);
     /**
      * Remove given attribute set
      *
@@ -50,8 +46,7 @@ interface AttributeSetRepositoryInterface
      * @throws \Magento\Framework\Exception\InputException
      * @return bool
      */
-    public function delete(\Magento\Eav\Api\Data\AttributeSetInterface $attributeSet);
-
+    public function delete(\Magento\Eav\Api\Data\Attribute_Set_Interface $attribute_set);
     /**
      * Remove attribute set by given ID
      *
@@ -60,5 +55,5 @@ interface AttributeSetRepositoryInterface
      * @throws \Magento\Framework\Exception\InputException
      * @return bool
      */
-    public function deleteById($attributeSetId);
+    public function delete_by_id($attribute_set_id);
 }

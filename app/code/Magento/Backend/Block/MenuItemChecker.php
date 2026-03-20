@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block;
 
 use Magento\Backend\Model\Menu\Item;
-
 /**
  * Class MenuItemChecker
  */
-class MenuItemChecker
+class Menu_Item_Checker
 {
     /**
      * Check whether given menu item is currently selected.
@@ -26,27 +24,21 @@ class MenuItemChecker
      * @param int $level
      * @return bool
      */
-    public function isItemActive($activeItem, Item $item, $level)
+    public function is_item_active($active_item, Item $item, $level)
     {
         $output = false;
-
-        if ($level == 0
-            && $activeItem instanceof \Magento\Backend\Model\Menu\Item
-            && $this->isActiveItemEqualOrChild($activeItem, $item)
-        ) {
+        if ($level == 0 && $active_item instanceof \Magento\Backend\Model\Menu\Item && $this->is_active_item_equal_or_child($active_item, $item)) {
             $output = true;
         }
         return $output;
     }
-
     /**
      * @param Item $activeItem,
      * @param Item $item
      * @return bool
      */
-    private function isActiveItemEqualOrChild($activeItem, $item)
+    private function is_active_item_equal_or_child($active_item, $item)
     {
-        return ($activeItem->getId() == $item->getId())
-        || ($item->getChildren()->get($activeItem->getId()) !== null);
+        return $active_item->get_id() == $item->get_id() || $item->get_children()->get($active_item->get_id()) !== null;
     }
 }

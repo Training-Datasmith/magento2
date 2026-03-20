@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Controller\Adminhtml\System\Design;
 
-use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\Filter\FilterInput;
-
+use Magento\Framework\App\Action\Http_Post_Action_Interface;
+use Magento\Framework\Filter\Filter_Input;
 /**
  * Save design action.
  */
-class Save extends \Magento\Backend\Controller\Adminhtml\System\Design implements HttpPostActionInterface
+class Save extends \Magento\Backend\Controller\Adminhtml\System\Design implements Http_Post_Action_Interface
 {
     /**
      * Filtering posted data. Converting localized data if needed
@@ -22,17 +20,11 @@ class Save extends \Magento\Backend\Controller\Adminhtml\System\Design implement
      * @param array $data
      * @return array|null
      */
-    protected function _filterPostData($data)
+    protected function _filter_post_data($data)
     {
-        $inputFilter = new FilterInput(
-            ['date_from' => $this->dateFilter, 'date_to' => $this->dateFilter],
-            [],
-            $data
-        );
-
-        return $inputFilter->getUnescaped();
+        $input_filter = new Filter_Input(['date_from' => $this->date_filter, 'date_to' => $this->date_filter], [], $data);
+        return $input_filter->get_unescaped();
     }
-
     /**
      * Save design action.
      *
@@ -40,34 +32,30 @@ class Save extends \Magento\Backend\Controller\Adminhtml\System\Design implement
      */
     public function execute()
     {
-        $data = $this->getRequest()->getPostValue();
+        $data = $this->get_request()->get_post_value();
         /** @var \Magento\Backend\Model\View\Result\Redirect $resultRedirect */
-        $resultRedirect = $this->resultRedirectFactory->create();
-
+        $result_redirect = $this->result_redirect_factory->create();
         if ($data) {
-            $data['design'] = $this->_filterPostData($data['design']);
-            $id = (int)$this->getRequest()->getParam('id');
-
-            $design = $this->_objectManager->create(\Magento\Framework\App\DesignInterface::class);
+            $data['design'] = $this->_filter_post_data($data['design']);
+            $id = (int) $this->get_request()->get_param('id');
+            $design = $this->_object_manager->create(\Magento\Framework\App\Design_Interface::class);
             if ($id) {
                 $design->load($id);
             }
-
-            $design->setData($data['design']);
+            $design->set_data($data['design']);
             if ($id) {
-                $design->setId($id);
+                $design->set_id($id);
             }
             try {
                 $design->save();
-                $this->_eventManager->dispatch('theme_save_after');
-                $this->messageManager->addSuccessMessage(__('You saved the design change.'));
+                $this->_event_manager->dispatch('theme_save_after');
+                $this->message_manager->add_success_message(__('You saved the design change.'));
             } catch (\Exception $e) {
-                $this->messageManager->addErrorMessage($e->getMessage());
-                $this->_objectManager->get(\Magento\Backend\Model\Session::class)->setDesignData($data);
-                return $resultRedirect->setPath('*/*/edit', ['id' => $design->getId()]);
+                $this->message_manager->add_error_message($e->get_message());
+                $this->_object_manager->get(\Magento\Backend\Model\Session::class)->set_design_data($data);
+                return $result_redirect->set_path('*/*/edit', ['id' => $design->get_id()]);
             }
         }
-
-        return $resultRedirect->setPath('*/*/');
+        return $result_redirect->set_path('*/*/');
     }
 }

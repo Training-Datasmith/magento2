@@ -4,51 +4,44 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Frontend\Adapter\Symfony;
 
-use Magento\Framework\App\ResourceConnection;
+use Magento\Framework\App\Resource_Connection;
 use Magento\Framework\Cache\Backend\Database;
-use Magento\Framework\Cache\CacheConstants;
+use Magento\Framework\Cache\Cache_Constants;
 use Magento\Framework\Serialize\Serializer\Serialize;
-use Psr\Cache\CacheItemInterface;
-use Symfony\Component\Cache\Adapter\AdapterInterface;
-use Symfony\Component\Cache\CacheItem;
-
+use Psr\Cache\Cache_Item_Interface;
+use Symfony\Component\Cache\Adapter\Adapter_Interface;
+use Symfony\Component\Cache\Cache_Item;
 /**
  * PSR-6 adapter for Magento's Database backend
  *
  * Wraps Magento\Framework\Cache\Backend\Database to make it PSR-6 compliant.
  * Allows using Magento's existing cache/cache_tag tables with Symfony architecture.
  */
-class MagentoDatabaseAdapter implements AdapterInterface
+class Magento_Database_Adapter implements Adapter_Interface
 {
     /**
      * @var Database
      */
     private Database $backend;
-
     /**
      * @var Serialize PHP native serializer (required for binary tag versions)
      */
     private Serialize $serializer;
-
     /**
      * @var array Deferred items to save
      */
     private array $deferred = [];
-
     /**
      * @var string Namespace prefix for cache keys
      */
     private string $namespace;
-
     /**
      * @var int Default lifetime in seconds
      */
-    private int $defaultLifetime;
-
+    private int $default_lifetime;
     /**
      * Constructor
      *
@@ -57,172 +50,144 @@ class MagentoDatabaseAdapter implements AdapterInterface
      * @param string $namespace
      * @param int $defaultLifetime
      */
-    public function __construct(
-        ResourceConnection $resource,
-        Serialize $serializer,
-        string $namespace = '',
-        int $defaultLifetime = 0
-    ) {
+    public function __construct(Resource_Connection $resource, Serialize $serializer, string $namespace = '', int $default_lifetime = 0)
+    {
         $this->serializer = $serializer;
         $this->namespace = $namespace;
-        $this->defaultLifetime = $defaultLifetime;
-
+        $this->default_lifetime = $default_lifetime;
         // Create Database backend with Magento's resource connection
-        $this->backend = new Database([
-            'adapter' => $resource->getConnection(),
-            'data_table' => $resource->getTableName('cache'),
-            'tags_table' => $resource->getTableName('cache_tag'),
-            'store_data' => true,
-        ]);
+        $this->backend = new Database(['adapter' => $resource->get_connection(), 'data_table' => $resource->get_table_name('cache'), 'tags_table' => $resource->get_table_name('cache_tag'), 'store_data' => true]);
     }
-
     /**
      * @inheritDoc
      */
-    public function getItem(mixed $key): CacheItem
+    public function get_item(mixed $key): Cache_Item
     {
-        $prefixedKey = $this->getPrefixedKey($key);
-        $serializedData = $this->backend->load($prefixedKey);
-
+        $prefixed_key = $this->get_prefixed_key($key);
+        $serialized_data = $this->backend->load($prefixed_key);
         // Database backend returns serialized strings - we need to unserialize them
         $value = null;
-        $isHit = false;
-        $tagVersions = [];
+        $is_hit = false;
+        $tag_versions = [];
         $expiry = null;
-
-        if ($serializedData !== false) {
+        if ($serialized_data !== false) {
             // Unserialize the data structure using Magento's serializer
-            $unserialized = $this->serializer->unserialize($serializedData);
-
+            $unserialized = $this->serializer->unserialize($serialized_data);
             if ($unserialized !== false && is_array($unserialized)) {
                 // New format with tag_versions
                 if (isset($unserialized['data'])) {
                     $value = $unserialized['data'];
-                    $tagVersions = $unserialized['tag_versions'] ?? [];
+                    $tag_versions = $unserialized['tag_versions'] ?? [];
                     if (isset($unserialized['expire'])) {
-                        $expiry = (float)$unserialized['expire'];
+                        $expiry = (float) $unserialized['expire'];
                     }
-                    $isHit = true;
+                    $is_hit = true;
                 } else {
                     // Fallback for old format (backward compatibility)
                     $value = $unserialized;
                     if (isset($unserialized['tags'])) {
                         // Old format stores tags, create tag name => tag name mapping
                         $tags = is_array($unserialized['tags']) ? $unserialized['tags'] : [];
-                        $tagVersions = array_combine($tags, $tags);
+                        $tag_versions = array_combine($tags, $tags);
                     }
                     if (isset($unserialized['expire'])) {
-                        $expiry = (float)$unserialized['expire'];
+                        $expiry = (float) $unserialized['expire'];
                     }
-                    $isHit = true;
+                    $is_hit = true;
                 }
             } else {
                 // Simple value (non-array)
                 $value = $unserialized;
-                $isHit = true;
+                $is_hit = true;
             }
         }
-
-        $item = new CacheItem();
-        $this->setCacheItemState($item, $key, $value, $isHit, $tagVersions, $expiry);
-
+        $item = new Cache_Item();
+        $this->set_cache_item_state($item, $key, $value, $is_hit, $tag_versions, $expiry);
         return $item;
     }
-
     /**
      * @inheritDoc
      */
-    public function getItems(array $keys = []): iterable
+    public function get_items(array $keys = []): iterable
     {
         $items = [];
         foreach ($keys as $key) {
-            $items[$key] = $this->getItem($key);
+            $items[$key] = $this->get_item($key);
         }
         return $items;
     }
-
     /**
      * @inheritDoc
      */
-    public function hasItem(string $key): bool
+    public function has_item(string $key): bool
     {
-        $prefixedKey = $this->getPrefixedKey($key);
-        return $this->backend->test($prefixedKey) !== false;
+        $prefixed_key = $this->get_prefixed_key($key);
+        return $this->backend->test($prefixed_key) !== false;
     }
-
     /**
      * @inheritDoc
      */
     public function clear(string $prefix = ''): bool
     {
-        return $this->backend->clean(CacheConstants::CLEANING_MODE_ALL);
+        return $this->backend->clean(Cache_Constants::CLEANING_MODE_ALL);
     }
-
     /**
      * @inheritDoc
      */
-    public function deleteItem(string $key): bool
+    public function delete_item(string $key): bool
     {
-        $prefixedKey = $this->getPrefixedKey($key);
-        return $this->backend->remove($prefixedKey) !== false;
+        $prefixed_key = $this->get_prefixed_key($key);
+        return $this->backend->remove($prefixed_key) !== false;
     }
-
     /**
      * @inheritDoc
      */
-    public function deleteItems(array $keys): bool
+    public function delete_items(array $keys): bool
     {
         $success = true;
         foreach ($keys as $key) {
-            $success = $this->deleteItem($key) && $success;
+            $success = $this->delete_item($key) && $success;
         }
         return $success;
     }
-
     /**
      * @inheritDoc
      */
-    public function save(CacheItemInterface $item): bool
+    public function save(Cache_Item_Interface $item): bool
     {
-        $key = $item->getKey();
-        $prefixedKey = $this->getPrefixedKey($key);
-
+        $key = $item->get_key();
+        $prefixed_key = $this->get_prefixed_key($key);
         // Get value
-        $value = $this->getCacheItemValue($item);
-
+        $value = $this->get_cache_item_value($item);
         // Get tag versions from newMetadata (set by TagAwareAdapter)
         // TagAwareAdapter stores actual tag versions in newMetadata, not metadata
-        $tagVersions = $this->extractTagVersions($item);
-
+        $tag_versions = $this->extract_tag_versions($item);
         // Create data structure with value, tags, and expiry
-        $expiration = $this->getCacheItemExpiration($item);
-        $lifetime = $expiration !== null ? ($expiration - time()) : $this->defaultLifetime;
-        $expiryTime = $lifetime ? (time() + $lifetime) : 0;
-
-        $dataStructure = [
+        $expiration = $this->get_cache_item_expiration($item);
+        $lifetime = $expiration !== null ? $expiration - time() : $this->default_lifetime;
+        $expiry_time = $lifetime ? time() + $lifetime : 0;
+        $data_structure = [
             'data' => $value,
-            'tags' => array_keys($tagVersions), // Tag names for Database backend
-            'tag_versions' => $tagVersions,      // Actual tag versions with random bytes
+            'tags' => array_keys($tag_versions),
+            // Tag names for Database backend
+            'tag_versions' => $tag_versions,
+            // Actual tag versions with random bytes
             'mtime' => time(),
-            'expire' => $expiryTime,
+            'expire' => $expiry_time,
         ];
-
         // Serialize the complete structure using Magento's serializer
-        $serializedData = $this->serializer->serialize($dataStructure);
-
+        $serialized_data = $this->serializer->serialize($data_structure);
         // Save to database backend
-        return $this->backend->save($serializedData, $prefixedKey, array_keys($tagVersions), $lifetime);
+        return $this->backend->save($serialized_data, $prefixed_key, array_keys($tag_versions), $lifetime);
     }
-
     /**
      * @inheritDoc
      */
-    public function saveDeferred(CacheItemInterface $item): bool
+    public function save_deferred(Cache_Item_Interface $item): bool
     {
-        $this->deferred[$item->getKey()] = $item;
+        $this->deferred[$item->get_key()] = $item;
         return true;
     }
-
     /**
      * @inheritDoc
      */
@@ -235,28 +200,25 @@ class MagentoDatabaseAdapter implements AdapterInterface
         $this->deferred = [];
         return $success;
     }
-
     /**
      * Get Magento's Database backend
      *
      * @return Database
      */
-    public function getBackend(): Database
+    public function get_backend(): Database
     {
         return $this->backend;
     }
-
     /**
      * Get prefixed cache key
      *
      * @param string $key
      * @return string
      */
-    private function getPrefixedKey(string $key): string
+    private function get_prefixed_key(string $key): string
     {
         return $this->namespace !== '' ? $this->namespace . $key : $key;
     }
-
     /**
      * Extract tag versions from CacheItem's newMetadata
      *
@@ -266,40 +228,34 @@ class MagentoDatabaseAdapter implements AdapterInterface
      * @param CacheItemInterface $item
      * @return array Tag versions in format ['TAG1' => 'version_bytes', 'TAG2' => 'version_bytes']
      */
-    private function extractTagVersions(CacheItemInterface $item): array
+    private function extract_tag_versions(Cache_Item_Interface $item): array
     {
-        if (!$item instanceof CacheItem) {
+        if (!$item instanceof Cache_Item) {
             return [];
         }
-
         try {
             $reflection = new \ReflectionClass($item);
-
             // Try newMetadata first (set by TagAwareAdapter during save)
-            if ($reflection->hasProperty('newMetadata')) {
-                $newMetadataProperty = $reflection->getProperty('newMetadata');
-                $newMetadata = $newMetadataProperty->getValue($item);
-
-                if (isset($newMetadata[CacheItem::METADATA_TAGS]) && is_array($newMetadata[CacheItem::METADATA_TAGS])) {
-                    return $newMetadata[CacheItem::METADATA_TAGS];
+            if ($reflection->has_property('newMetadata')) {
+                $new_metadata_property = $reflection->get_property('newMetadata');
+                $new_metadata = $new_metadata_property->get_value($item);
+                if (isset($new_metadata[Cache_Item::METADATA_TAGS]) && is_array($new_metadata[Cache_Item::METADATA_TAGS])) {
+                    return $new_metadata[Cache_Item::METADATA_TAGS];
                 }
             }
-
             // Fallback to regular metadata
-            $metadata = $item->getMetadata();
-            if (isset($metadata[CacheItem::METADATA_TAGS]) && is_array($metadata[CacheItem::METADATA_TAGS])) {
-                return $metadata[CacheItem::METADATA_TAGS];
+            $metadata = $item->get_metadata();
+            if (isset($metadata[Cache_Item::METADATA_TAGS]) && is_array($metadata[Cache_Item::METADATA_TAGS])) {
+                return $metadata[Cache_Item::METADATA_TAGS];
             }
             // phpcs:disable Magento2.CodeAnalysis.EmptyBlock
-        } catch (\ReflectionException $e) {
+        } catch (\Reflection_Exception $e) {
             // Unable to access metadata - silently fail and return empty array
             // This can happen if CacheItem structure changes in future Symfony versions
         }
         // phpcs:enable Magento2.CodeAnalysis.EmptyBlock
-
         return [];
     }
-
     /**
      * Set cache item state using reflection
      *
@@ -310,76 +266,60 @@ class MagentoDatabaseAdapter implements AdapterInterface
      * @param array $tagVersions Tag versions in format ['TAG1' => 'version_bytes']
      * @param float|null $expiry Expiration timestamp
      */
-    private function setCacheItemState(
-        CacheItem $item,
-        string $key,
-        $value,
-        bool $isHit,
-        array $tagVersions = [],
-        ?float $expiry = null
-    ): void {
+    private function set_cache_item_state(Cache_Item $item, string $key, $value, bool $is_hit, array $tag_versions = [], ?float $expiry = null): void
+    {
         $reflection = new \ReflectionClass($item);
-
         // Set key
-        $keyProperty = $reflection->getProperty('key');
-        $keyProperty->setValue($item, $key);
-
+        $key_property = $reflection->get_property('key');
+        $key_property->set_value($item, $key);
         // Set value
-        $valueProperty = $reflection->getProperty('value');
-        $valueProperty->setValue($item, $value);
-
+        $value_property = $reflection->get_property('value');
+        $value_property->set_value($item, $value);
         // Set isHit
-        $isHitProperty = $reflection->getProperty('isHit');
-        $isHitProperty->setValue($item, $isHit);
-
+        $is_hit_property = $reflection->get_property('isHit');
+        $is_hit_property->set_value($item, $is_hit);
         // Set expiry
         if ($expiry !== null && $expiry > 0) {
-            $expiryProperty = $reflection->getProperty('expiry');
-            $expiryProperty->setValue($item, $expiry);
+            $expiry_property = $reflection->get_property('expiry');
+            $expiry_property->set_value($item, $expiry);
         }
-
         // Set metadata with tag versions for TagAwareAdapter compatibility
         // TagAwareAdapter expects metadata[METADATA_TAGS] = ['TAG1' => 'version', 'TAG2' => 'version']
-        if (!empty($tagVersions)) {
-            $metadataProperty = $reflection->getProperty('metadata');
-
+        if (!empty($tag_versions)) {
+            $metadata_property = $reflection->get_property('metadata');
             // Store tag versions exactly as provided (with actual version bytes)
-            $metadata = [
-                \Symfony\Component\Cache\CacheItem::METADATA_TAGS => $tagVersions,
-            ];
-            $metadataProperty->setValue($item, $metadata);
+            $metadata = [\Symfony\Component\Cache\Cache_Item::METADATA_TAGS => $tag_versions];
+            $metadata_property->set_value($item, $metadata);
         }
     }
-
     /**
      * Get cache item value using reflection
      *
      * @param CacheItemInterface $item
      * @return mixed
      */
-    private function getCacheItemValue(CacheItemInterface $item)
+    private function get_cache_item_value(Cache_Item_Interface $item)
     {
-        if ($item instanceof CacheItem) {
+        if ($item instanceof Cache_Item) {
             $reflection = new \ReflectionClass($item);
-            $valueProperty = $reflection->getProperty('value');
-            return $valueProperty->getValue($item);
+            $value_property = $reflection->get_property('value');
+            return $value_property->get_value($item);
         }
         return $item->get();
     }
-
     /**
      * Get cache item expiration using reflection
      *
      * @param CacheItemInterface $item
      * @return int|null
      */
-    private function getCacheItemExpiration(CacheItemInterface $item): ?int
+    private function get_cache_item_expiration(Cache_Item_Interface $item): ?int
     {
-        if ($item instanceof CacheItem) {
+        if ($item instanceof Cache_Item) {
             $reflection = new \ReflectionClass($item);
-            $expiryProperty = $reflection->getProperty('expiry');
-            $expiry = $expiryProperty->getValue($item);
-            return $expiry !== null ? (int)$expiry : null;
+            $expiry_property = $reflection->get_property('expiry');
+            $expiry = $expiry_property->get_value($item);
+            return $expiry !== null ? (int) $expiry : null;
         }
         return null;
     }

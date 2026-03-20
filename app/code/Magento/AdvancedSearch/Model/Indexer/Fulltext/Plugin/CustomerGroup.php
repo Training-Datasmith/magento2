@@ -1,44 +1,36 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Advanced_Search\Model\Indexer\Fulltext\Plugin;
 
-namespace Magento\AdvancedSearch\Model\Indexer\Fulltext\Plugin;
-
-use Magento\Catalog\Model\ResourceModel\Attribute;
-use Magento\CatalogSearch\Model\Indexer\Fulltext;
-use Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\AbstractPlugin;
-use Magento\Customer\Model\ResourceModel\Group;
-use Magento\Framework\Indexer\IndexerRegistry;
-use Magento\Framework\Model\AbstractModel;
-
-class CustomerGroup extends AbstractPlugin
+use Magento\Catalog\Model\Resource_Model\Attribute;
+use Magento\Catalog_Search\Model\Indexer\Fulltext;
+use Magento\Catalog_Search\Model\Indexer\Fulltext\Plugin\Abstract_Plugin;
+use Magento\Customer\Model\Resource_Model\Group;
+use Magento\Framework\Indexer\Indexer_Registry;
+use Magento\Framework\Model\Abstract_Model;
+class Customer_Group extends Abstract_Plugin
 {
-    public function __construct(
-        IndexerRegistry $indexerRegistry,
-        protected \Magento\AdvancedSearch\Model\Client\ClientOptionsInterface $clientOptions
-    ) {
-        parent::__construct($indexerRegistry);
+    public function __construct(Indexer_Registry $indexer_registry, protected \Magento\Advanced_Search\Model\Client\Client_Options_Interface $client_options)
+    {
+        parent::__construct($indexer_registry);
     }
-
     /**
      * Invalidate indexer on customer group save
      *
      * @return Attribute
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function aroundSave(
-        Group $subject,
-        \Closure $proceed,
-        AbstractModel $group
-    ) {
-        $needInvalidation = $group->isObjectNew() || $group->dataHasChangedFor('tax_class_id');
+    public function around_save(Group $subject, \Closure $proceed, Abstract_Model $group)
+    {
+        $need_invalidation = $group->is_object_new() || $group->data_has_changed_for('tax_class_id');
         $result = $proceed($group);
-        if ($needInvalidation) {
-            $this->indexerRegistry->get(Fulltext::INDEXER_ID)->invalidate();
+        if ($need_invalidation) {
+            $this->indexer_registry->get(Fulltext::INDEXER_ID)->invalidate();
         }
         return $result;
     }

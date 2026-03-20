@@ -4,8 +4,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Router;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\App\Router;
  *
  * @api
  */
-interface PathConfigInterface
+interface Path_Config_Interface
 {
     /**
      * Retrieve secure url for current request
@@ -21,8 +20,7 @@ interface PathConfigInterface
      * @param \Magento\Framework\App\RequestInterface $request
      * @return string
      */
-    public function getCurrentSecureUrl(\Magento\Framework\App\RequestInterface $request);
-
+    public function get_current_secure_url(\Magento\Framework\App\Request_Interface $request);
     /**
      * Check whether given path should be secure according to configuration security requirements for URL
      * "Secure" should not be confused with https protocol, it is about web/secure/*_url settings usage only
@@ -30,12 +28,11 @@ interface PathConfigInterface
      * @param string $path
      * @return bool
      */
-    public function shouldBeSecure($path);
-
+    public function should_be_secure($path);
     /**
      * Get router default request path
      *
      * @return string
      */
-    public function getDefaultPath();
+    public function get_default_path();
 }

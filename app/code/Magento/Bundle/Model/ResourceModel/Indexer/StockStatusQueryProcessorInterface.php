@@ -4,13 +4,11 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Bundle\Model\ResourceModel\Indexer;
+declare (strict_types=1);
+namespace Magento\Bundle\Model\Resource_Model\Indexer;
 
 use Magento\Framework\DB\Select;
-
-interface StockStatusQueryProcessorInterface
+interface Stock_Status_Query_Processor_Interface
 {
     /**
      * Process stock status select query for bundle products

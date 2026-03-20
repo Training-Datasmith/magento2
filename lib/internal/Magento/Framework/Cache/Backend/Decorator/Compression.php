@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache\Backend\Decorator;
 
 /**
@@ -17,19 +16,17 @@ namespace Magento\Framework\Cache\Backend\Decorator;
  *
  * @todo re-implement as a cache frontend decorator similarly to \Magento\Framework\Cache\Frontend\Decorator\*
  */
-class Compression extends \Magento\Framework\Cache\Backend\Decorator\AbstractDecorator
+class Compression extends \Magento\Framework\Cache\Backend\Decorator\Abstract_Decorator
 {
     /**
      * Prefix of compressed strings
      */
     public const COMPRESSION_PREFIX = 'CACHE_COMPRESSION';
-
     /**
      * Array of specific options. Made in separate array to distinguish from parent options
      * @var array
      */
-    protected $_decoratorOptions = ['compression_threshold' => 512];
-
+    protected $_decorator_options = ['compression_threshold' => 512];
     /**
      * Test if a cache is available for the given id and (if yes) return it (false else)
      *
@@ -39,17 +36,14 @@ class Compression extends \Magento\Framework\Cache\Backend\Decorator\AbstractDec
      * @param  boolean $noTestCacheValidity    If set to true, the cache validity won't be tested
      * @return string|false cached datas
      */
-    public function load($cacheId, $noTestCacheValidity = false)
+    public function load($cache_id, $no_test_cache_validity = false)
     {
-        $data = $this->_backend->load($cacheId, $noTestCacheValidity);
-
-        if ($data && $this->_isDecompressionNeeded($data)) {
-            $data = self::_decompressData($data);
+        $data = $this->_backend->load($cache_id, $no_test_cache_validity);
+        if ($data && $this->_is_decompression_needed($data)) {
+            $data = self::_decompress_data($data);
         }
-
         return $data;
     }
-
     /**
      * Save some string datas into a cache record
      *
@@ -64,55 +58,50 @@ class Compression extends \Magento\Framework\Cache\Backend\Decorator\AbstractDec
      * @param int $priority integer between 0 (very low priority) and 10 (max priority) used by some particular backends
      * @return bool true if no problem
      */
-    public function save($data, $cacheId, $tags = [], $specificLifetime = false, $priority = 8)
+    public function save($data, $cache_id, $tags = [], $specific_lifetime = false, $priority = 8)
     {
-        if ($data !== null && $this->_isCompressionNeeded($data)) {
-            $data = self::_compressData($data);
+        if ($data !== null && $this->_is_compression_needed($data)) {
+            $data = self::_compress_data($data);
         }
-
-        return $this->_backend->save($data, $cacheId, $tags, $specificLifetime, $priority);
+        return $this->_backend->save($data, $cache_id, $tags, $specific_lifetime, $priority);
     }
-
     /**
      * Compress data and add specific prefix to distinguish compressed and non-compressed data
      *
      * @param string $data
      * @return string
      */
-    protected static function _compressData($data)
+    protected static function _compress_data($data)
     {
         return self::COMPRESSION_PREFIX . gzcompress($data);
     }
-
     /**
      * Get whether compression is needed
      *
      * @param string $data
      * @return bool
      */
-    protected function _isCompressionNeeded($data)
+    protected function _is_compression_needed($data)
     {
-        return strlen($data) > (int)$this->_decoratorOptions['compression_threshold'];
+        return strlen($data) > (int) $this->_decorator_options['compression_threshold'];
     }
-
     /**
      * Remove special prefix and decompress data
      *
      * @param string $data
      * @return string
      */
-    protected static function _decompressData($data)
+    protected static function _decompress_data($data)
     {
         return gzuncompress(substr($data, strlen(self::COMPRESSION_PREFIX)));
     }
-
     /**
      * Get whether decompression is needed
      *
      * @param string $data
      * @return bool
      */
-    protected function _isDecompressionNeeded($data)
+    protected function _is_decompression_needed($data)
     {
         return strpos($data, self::COMPRESSION_PREFIX) === 0;
     }

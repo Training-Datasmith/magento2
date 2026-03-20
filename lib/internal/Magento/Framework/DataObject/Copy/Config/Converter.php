@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Data_Object\Copy\Config;
 
-namespace Magento\Framework\DataObject\Copy\Config;
-
-class Converter implements \Magento\Framework\Config\ConverterInterface
+class Converter implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * Convert dom node tree to array
@@ -19,71 +18,68 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     public function convert($source)
     {
         $fieldsets = [];
-        $xpath = new \DOMXPath($source);
+        $xpath = new \Domx_Path($source);
         /** @var \DOMNode $fieldset */
         foreach ($xpath->query('/config/scope') as $scope) {
-            $scopeId = $scope->attributes->getNamedItem('id')->nodeValue;
-            $fieldsets[$scopeId] = $this->_convertScope($scope);
+            $scope_id = $scope->attributes->get_named_item('id')->node_value;
+            $fieldsets[$scope_id] = $this->_convert_scope($scope);
         }
         return $fieldsets;
     }
-
     /**
      * Convert Scope node to Magento array
      *
      * @param \DOMNode $scope
      * @return array
      */
-    protected function _convertScope($scope)
+    protected function _convert_scope($scope)
     {
         $result = [];
-        foreach ($scope->childNodes as $fieldset) {
-            if (!$fieldset instanceof \DOMElement) {
+        foreach ($scope->child_nodes as $fieldset) {
+            if (!$fieldset instanceof \Dom_Element) {
                 continue;
             }
-            $fieldsetName = $fieldset->attributes->getNamedItem('id')->nodeValue;
-            $result[$fieldsetName] = $this->_convertFieldset($fieldset);
+            $fieldset_name = $fieldset->attributes->get_named_item('id')->node_value;
+            $result[$fieldset_name] = $this->_convert_fieldset($fieldset);
         }
         return $result;
     }
-
     /**
      * Convert Fieldset node to Magento array
      *
      * @param \DOMNode $fieldset
      * @return array
      */
-    protected function _convertFieldset($fieldset)
+    protected function _convert_fieldset($fieldset)
     {
         $result = [];
-        foreach ($fieldset->childNodes as $field) {
-            if (!$field instanceof \DOMElement) {
+        foreach ($fieldset->child_nodes as $field) {
+            if (!$field instanceof \Dom_Element) {
                 continue;
             }
-            $fieldName = $field->attributes->getNamedItem('name')->nodeValue;
-            $result[$fieldName] = $this->_convertField($field);
+            $field_name = $field->attributes->get_named_item('name')->node_value;
+            $result[$field_name] = $this->_convert_field($field);
         }
         return $result;
     }
-
     /**
      * Convert Field node to Magento array
      *
      * @param \DOMNode $field
      * @return array
      */
-    protected function _convertField($field)
+    protected function _convert_field($field)
     {
         $result = [];
-        foreach ($field->childNodes as $aspect) {
-            if (!$aspect instanceof \DOMElement) {
+        foreach ($field->child_nodes as $aspect) {
+            if (!$aspect instanceof \Dom_Element) {
                 continue;
             }
             /** @var \DOMNamedNodeMap $aspectAttributes */
-            $aspectAttributes = $aspect->attributes;
-            $aspectName = $aspectAttributes->getNamedItem('name')->nodeValue;
-            $targetField = $aspectAttributes->getNamedItem('targetField');
-            $result[$aspectName] = $targetField === null ? '*' : $targetField->nodeValue;
+            $aspect_attributes = $aspect->attributes;
+            $aspect_name = $aspect_attributes->get_named_item('name')->node_value;
+            $target_field = $aspect_attributes->get_named_item('targetField');
+            $result[$aspect_name] = $target_field === null ? '*' : $target_field->node_value;
         }
         return $result;
     }

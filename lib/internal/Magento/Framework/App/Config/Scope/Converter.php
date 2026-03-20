@@ -1,16 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Configuration data converter. Converts associative array to tree array
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Scope;
 
-class Converter implements \Magento\Framework\Config\ConverterInterface
+class Converter implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * Convert config data
@@ -22,11 +21,10 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     {
         $output = [];
         foreach ($source as $key => $value) {
-            $this->_setArrayValue($output, $key, $value);
+            $this->_set_array_value($output, $key, $value);
         }
         return $output;
     }
-
     /**
      * Set array value by path
      *
@@ -35,16 +33,16 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
      * @param string $value
      * @return void
      */
-    protected function _setArrayValue(array &$container, $path, $value)
+    protected function _set_array_value(array &$container, $path, $value)
     {
         $segments = explode('/', $path);
-        $currentPointer = & $container;
+        $current_pointer =& $container;
         foreach ($segments as $segment) {
-            if (!isset($currentPointer[$segment])) {
-                $currentPointer[$segment] = [];
+            if (!isset($current_pointer[$segment])) {
+                $current_pointer[$segment] = [];
             }
-            $currentPointer = & $currentPointer[$segment];
+            $current_pointer =& $current_pointer[$segment];
         }
-        $currentPointer = $value;
+        $current_pointer = $value;
     }
 }

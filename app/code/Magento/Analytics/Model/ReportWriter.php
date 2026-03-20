@@ -4,109 +4,98 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Analytics\Model;
 
-use Magento\Analytics\ReportXml\DB\ReportValidator;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-use Magento\Framework\Filesystem\File\WriteInterface as FileWriteInterface;
-
+use Magento\Analytics\Report_Xml\DB\Report_Validator;
+use Magento\Framework\Filesystem\Directory\Write_Interface;
+use Magento\Framework\Filesystem\File\Write_Interface as FileWriteInterface;
 /**
  * Writes reports in files in csv format
  */
-class ReportWriter implements ReportWriterInterface
+class Report_Writer implements Report_Writer_Interface
 {
     /**
      * File name for error reporting file in archive
      */
-    private string $errorsFileName = 'errors.csv';
-
+    private string $errors_file_name = 'errors.csv';
     /**
      * ReportWriter constructor.
      */
-    public function __construct(private readonly ConfigInterface $config, private readonly ReportValidator $reportValidator, private readonly ProviderFactory $providerFactory)
+    public function __construct(private readonly Config_Interface $config, private readonly Report_Validator $report_validator, private readonly Provider_Factory $provider_factory)
     {
     }
-
     /**
      * @inheritdoc
      */
-    public function write(WriteInterface $directory, $path): bool
+    public function write(Write_Interface $directory, $path): bool
     {
-        $errorsList = [];
+        $errors_list = [];
         foreach ($this->config->get() as $file) {
             $provider = reset($file['providers']);
             if (isset($provider['parameters']['name'])) {
-                $error = $this->reportValidator->validate($provider['parameters']['name']);
+                $error = $this->report_validator->validate($provider['parameters']['name']);
                 if ($error) {
-                    $errorsList[] = $error;
+                    $errors_list[] = $error;
                     continue;
                 }
             }
-            $this->prepareData($provider, $directory, $path);
+            $this->prepare_data($provider, $directory, $path);
         }
-        if ($errorsList) {
-            $errorStream = $directory->openFile($path . $this->errorsFileName, 'w+');
-            foreach ($errorsList as $error) {
-                $errorStream->lock();
-                $errorStream->writeCsv($error);
-                $errorStream->unlock();
+        if ($errors_list) {
+            $error_stream = $directory->open_file($path . $this->errors_file_name, 'w+');
+            foreach ($errors_list as $error) {
+                $error_stream->lock();
+                $error_stream->write_csv($error);
+                $error_stream->unlock();
             }
-            $errorStream->close();
+            $error_stream->close();
         }
-
         return true;
     }
-
     /**
      * Prepare report data
      *
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    private function prepareData(array $provider, WriteInterface $directory, string $path): void
+    private function prepare_data(array $provider, Write_Interface $directory, string $path): void
     {
         /** @var  $providerObject */
-        $providerObject = $this->providerFactory->create($provider['class']);
-        $fileName = $provider['parameters'] ? $provider['parameters']['name'] : $provider['name'];
-        $fileFullPath = $path . $fileName . '.csv';
-
-        $stream = $directory->openFile($fileFullPath, 'w+');
+        $provider_object = $this->provider_factory->create($provider['class']);
+        $file_name = $provider['parameters'] ? $provider['parameters']['name'] : $provider['name'];
+        $file_full_path = $path . $file_name . '.csv';
+        $stream = $directory->open_file($file_full_path, 'w+');
         $stream->lock();
-
-        if ($providerObject instanceof \Magento\Analytics\ReportXml\BatchReportProviderInterface) {
-            $writeHeaders = true;
-            $fileData = $providerObject->getBatchReport(...array_values($provider['parameters']));
+        if ($provider_object instanceof \Magento\Analytics\Report_Xml\Batch_Report_Provider_Interface) {
+            $write_headers = true;
+            $file_data = $provider_object->get_batch_report(...array_values($provider['parameters']));
             do {
-                $this->doWrite($fileData, $stream, $writeHeaders);
-                $writeHeaders = false;
-                $fileData = $providerObject->getBatchReport(...array_values($provider['parameters']));
-                $fileData->rewind();
-            } while ($fileData->valid());
+                $this->do_write($file_data, $stream, $write_headers);
+                $write_headers = false;
+                $file_data = $provider_object->get_batch_report(...array_values($provider['parameters']));
+                $file_data->rewind();
+            } while ($file_data->valid());
         } else {
-            $fileData = $providerObject->getReport(...array_values($provider['parameters']));
-            $this->doWrite($fileData, $stream);
+            $file_data = $provider_object->get_report(...array_values($provider['parameters']));
+            $this->do_write($file_data, $stream);
         }
-
         $stream->unlock();
         $stream->close();
     }
-
     /**
      * Write data to file
      */
-    private function doWrite(\Traversable $fileData, FileWriteInterface $stream, bool $writeHeaders = true): void
+    private function do_write(\Traversable $file_data, File_Write_Interface $stream, bool $write_headers = true): void
     {
-        foreach ($fileData as $row) {
-            if ($writeHeaders) {
+        foreach ($file_data as $row) {
+            if ($write_headers) {
                 $headers = array_keys($row);
-                $stream->writeCsv($headers);
-                $writeHeaders = false;
+                $stream->write_csv($headers);
+                $write_headers = false;
             }
-            $stream->writeCsv($this->prepareRow($row));
+            $stream->write_csv($this->prepare_row($row));
         }
     }
-
     /**
      * Replace wrong symbols in row
      *
@@ -114,8 +103,8 @@ class ReportWriter implements ReportWriterInterface
      *
      * @see fputcsv()
      */
-    private function prepareRow(array $row): array
+    private function prepare_row(array $row): array
     {
-        return preg_replace('/\\\+(?=\")/', '', $row);
+        return preg_replace('/\\\\+(?=\")/', '', $row);
     }
 }

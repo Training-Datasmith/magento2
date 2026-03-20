@@ -4,13 +4,10 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\File;
 
 use Magento\Framework\Filesystem\Driver\File;
-
 /**
  * Csv parse
  *
@@ -21,28 +18,23 @@ class Csv
     /**
      * @var int
      */
-    protected $_lineLength = 0;
-
+    protected $_line_length = 0;
     /**
      * @var string
      */
     protected $_delimiter = ',';
-
     /**
      * @var string
      */
     protected $_enclosure = '"';
-
     /**
      * @var string
      */
-    private $escape = "\0";
-
+    private $escape = "\x00";
     /**
      * @var File
      */
     protected $file;
-
     /**
      * Constructor
      *
@@ -52,43 +44,39 @@ class Csv
     {
         $this->file = $file;
     }
-
     /**
      * Set max file line length
      *
      * @param   int $length
      * @return  \Magento\Framework\File\Csv
      */
-    public function setLineLength($length)
+    public function set_line_length($length)
     {
-        $this->_lineLength = $length;
+        $this->_line_length = $length;
         return $this;
     }
-
     /**
      * Set CSV column delimiter
      *
      * @param   string $delimiter
      * @return  \Magento\Framework\File\Csv
      */
-    public function setDelimiter($delimiter)
+    public function set_delimiter($delimiter)
     {
         $this->_delimiter = $delimiter;
         return $this;
     }
-
     /**
      * Set CSV column value enclosure
      *
      * @param   string $enclosure
      * @return  \Magento\Framework\File\Csv
      */
-    public function setEnclosure($enclosure)
+    public function set_enclosure($enclosure)
     {
         $this->_enclosure = $enclosure;
         return $this;
     }
-
     /**
      * Retrieve CSV file data as array
      *
@@ -96,21 +84,19 @@ class Csv
      * @return  array
      * @throws \Exception
      */
-    public function getData($file)
+    public function get_data($file)
     {
         $data = [];
         if (!file_exists($file)) {
             throw new \Exception('File "' . $file . '" does not exist');
         }
-
         $fh = fopen($file, 'r');
-        while ($rowData = fgetcsv($fh, $this->_lineLength, $this->_delimiter, $this->_enclosure, $this->escape)) {
-            $data[] = $rowData;
+        while ($row_data = fgetcsv($fh, $this->_line_length, $this->_delimiter, $this->_enclosure, $this->escape)) {
+            $data[] = $row_data;
         }
         fclose($fh);
         return $data;
     }
-
     /**
      * Retrieve CSV file data as pairs
      *
@@ -119,18 +105,17 @@ class Csv
      * @param   int $valueIndex
      * @return  array
      */
-    public function getDataPairs($file, $keyIndex = 0, $valueIndex = 1)
+    public function get_data_pairs($file, $key_index = 0, $value_index = 1)
     {
         $data = [];
-        $csvData = $this->getData($file);
-        foreach ($csvData as $rowData) {
-            if (isset($rowData[$keyIndex])) {
-                $data[$rowData[$keyIndex]] = isset($rowData[$valueIndex]) ? $rowData[$valueIndex] : null;
+        $csv_data = $this->get_data($file);
+        foreach ($csv_data as $row_data) {
+            if (isset($row_data[$key_index])) {
+                $data[$row_data[$key_index]] = isset($row_data[$value_index]) ? $row_data[$value_index] : null;
             }
         }
         return $data;
     }
-
     /**
      * Saving data row array into file
      *
@@ -141,11 +126,10 @@ class Csv
      * @deprecated 102.0.0
      * @see appendData
      */
-    public function saveData($file, $data)
+    public function save_data($file, $data)
     {
-        return $this->appendData($file, $data, 'w');
+        return $this->append_data($file, $data, 'w');
     }
-
     /**
      * Replace the saveData method by allowing to select the input mode
      *
@@ -157,14 +141,13 @@ class Csv
      *
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function appendData($file, $data, $mode = 'w')
+    public function append_data($file, $data, $mode = 'w')
     {
-        $fileHandler = fopen($file, $mode);
-        foreach ($data as $dataRow) {
-            $this->file->filePutCsv($fileHandler, $dataRow, $this->_delimiter, $this->_enclosure);
+        $file_handler = fopen($file, $mode);
+        foreach ($data as $data_row) {
+            $this->file->file_put_csv($file_handler, $data_row, $this->_delimiter, $this->_enclosure);
         }
-        fclose($fileHandler);
-
+        fclose($file_handler);
         return $this;
     }
 }

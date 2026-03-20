@@ -1,52 +1,45 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Console\Question_Performer;
 
-namespace Magento\Framework\Console\QuestionPerformer;
-
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\Localized_Exception;
 use Magento\Framework\Phrase;
-use Symfony\Component\Console\Helper\QuestionHelper;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Helper\Question_Helper;
+use Symfony\Component\Console\Input\Input_Interface;
+use Symfony\Component\Console\Output\Output_Interface;
 use Symfony\Component\Console\Question\Question;
-use Symfony\Component\Console\Question\QuestionFactory;
-
+use Symfony\Component\Console\Question\Question_Factory;
 /**
  * Asks a questions to the user.
  */
-class YesNo
+class Yes_No
 {
     /**
      * Provides helpers to interact with the user.
      *
      * @var QuestionHelper
      */
-    private $questionHelper;
-
+    private $question_helper;
     /**
      * The factory for creating Question objects.
      *
      * @var QuestionFactory
      */
-    private $questionFactory;
-
+    private $question_factory;
     /**
      * @param QuestionHelper $questionHelper Provides helpers to interact with the user
      * @param QuestionFactory $questionFactory The factory for creating Question objects
      */
-    public function __construct(
-        QuestionHelper $questionHelper,
-        QuestionFactory $questionFactory
-    ) {
-        $this->questionHelper = $questionHelper;
-        $this->questionFactory = $questionFactory;
+    public function __construct(Question_Helper $question_helper, Question_Factory $question_factory)
+    {
+        $this->question_helper = $question_helper;
+        $this->question_factory = $question_factory;
     }
-
     /**
      * Asks a question to the user. The question is generates from given array of messages.
      *
@@ -55,18 +48,15 @@ class YesNo
      * @param OutputInterface $output An OutputInterface instance
      * @return bool
      */
-    public function execute(array $messages, InputInterface $input, OutputInterface $output): bool
+    public function execute(array $messages, Input_Interface $input, Output_Interface $output): bool
     {
-        if (!$input->isInteractive()) {
+        if (!$input->is_interactive()) {
             return true;
         }
-
-        $question = $this->getConfirmationQuestion($messages);
-        $answer = $this->questionHelper->ask($input, $output, $question);
-
+        $question = $this->get_confirmation_question($messages);
+        $answer = $this->question_helper->ask($input, $output, $question);
         return in_array(strtolower($answer ?? ''), ['yes', 'y']);
     }
-
     /**
      * Creates Question object from given array of messages.
      *
@@ -74,23 +64,16 @@ class YesNo
      * @return Question
      * @throws LocalizedException is thrown when a user entered a wrong answer
      */
-    private function getConfirmationQuestion(array $messages)
+    private function get_confirmation_question(array $messages)
     {
         /** @var Question $question */
-        $question = $this->questionFactory->create([
-            'question' => implode(PHP_EOL, $messages) . PHP_EOL,
-        ]);
-
-        $question->setValidator(function ($answer) {
+        $question = $this->question_factory->create(['question' => implode(PHP_EOL, $messages) . PHP_EOL]);
+        $question->set_validator(function ($answer) {
             if (!in_array(strtolower($answer ?? ''), ['yes', 'y', 'no', 'n'])) {
-                throw new LocalizedException(
-                    new Phrase('A [y]es or [n]o selection needs to be made. Select and try again.')
-                );
+                throw new Localized_Exception(new Phrase('A [y]es or [n]o selection needs to be made. Select and try again.'));
             }
-
             return $answer;
         });
-
         return $question;
     }
 }

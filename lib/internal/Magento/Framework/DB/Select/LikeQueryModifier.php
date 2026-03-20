@@ -1,37 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Select;
 
 use Magento\Framework\DB\Select;
-
 /**
  * Add LIKE condition to select
  */
-class LikeQueryModifier implements QueryModifierInterface
+class Like_Query_Modifier implements Query_Modifier_Interface
 {
     /**
      * @var array
      */
     private $values;
-
     /**
      * Constructor
      *
      * @param array $values array of field and pattern pairs of Like Clause,
      *                      for example: [<field1> => <pattern1>, <field2> => <pattern2>, ...]
      */
-    public function __construct(
-        $values = []
-    ) {
+    public function __construct($values = [])
+    {
         $this->values = $values;
     }
-
     /**
      * {@inheritdoc}
      */

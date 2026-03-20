@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Search\Config\Result;
 
-use Magento\Backend\Model\Search\Config\Structure\ElementBuilderInterface;
-use Magento\Backend\Model\UrlInterface;
-use Magento\Config\Model\Config\StructureElementInterface;
-
+use Magento\Backend\Model\Search\Config\Structure\Element_Builder_Interface;
+use Magento\Backend\Model\Url_Interface;
+use Magento\Config\Model\Config\Structure_Element_Interface;
 /**
  * Config SearchResult Builder
  * @SuppressWarnings(PHPMD.LongVariable)
@@ -22,60 +20,46 @@ class Builder
      * @var array
      */
     private $results = [];
-
     /**
      * @var UrlInterface
      */
-    private $urlBuilder;
-
+    private $url_builder;
     /**
      * @var ElementBuilderInterface[]
      */
-    private $structureElementTypes;
-
+    private $structure_element_types;
     /**
      * @param UrlInterface $urlBuilder
      * @param array $structureElementTypes
      */
-    public function __construct(UrlInterface $urlBuilder, array $structureElementTypes)
+    public function __construct(Url_Interface $url_builder, array $structure_element_types)
     {
-        $this->urlBuilder = $urlBuilder;
-        $this->structureElementTypes = $structureElementTypes;
+        $this->url_builder = $url_builder;
+        $this->structure_element_types = $structure_element_types;
     }
-
     /**
      * @return array
      */
-    public function getAll()
+    public function get_all()
     {
         return $this->results;
     }
-
     /**
      * @param StructureElementInterface $structureElement
      * @param string $elementPathLabel
      * @return void
      */
-    public function add(StructureElementInterface $structureElement, $elementPathLabel)
+    public function add(Structure_Element_Interface $structure_element, $element_path_label)
     {
-        $urlParams = [];
-        $elementData = $structureElement->getData();
-
-        if (!in_array($elementData['_elementType'], array_keys($this->structureElementTypes))) {
+        $url_params = [];
+        $element_data = $structure_element->get_data();
+        if (!in_array($element_data['_elementType'], array_keys($this->structure_element_types))) {
             return;
         }
-
-        if (isset($this->structureElementTypes[$elementData['_elementType']])) {
-            $urlParamsBuilder = $this->structureElementTypes[$elementData['_elementType']];
-            $urlParams = $urlParamsBuilder->build($structureElement);
+        if (isset($this->structure_element_types[$element_data['_elementType']])) {
+            $url_params_builder = $this->structure_element_types[$element_data['_elementType']];
+            $url_params = $url_params_builder->build($structure_element);
         }
-
-        $this->results[] = [
-            'id'          => $structureElement->getPath(),
-            'type'        => null,
-            'name'        => (string)$structureElement->getLabel(),
-            'description' => $elementPathLabel,
-            'url'         => $this->urlBuilder->getUrl('*/system_config/edit', $urlParams),
-        ];
+        $this->results[] = ['id' => $structure_element->get_path(), 'type' => null, 'name' => (string) $structure_element->get_label(), 'description' => $element_path_label, 'url' => $this->url_builder->get_url('*/system_config/edit', $url_params)];
     }
 }

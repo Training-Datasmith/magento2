@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application config storage writer interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Storage;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
+use Magento\Framework\App\Config\Scope_Config_Interface;
 /**
  * Interface \Magento\Framework\App\Config\Storage\WriterInterface
  * @api
  * @since 100.0.2
  */
-interface WriterInterface
+interface Writer_Interface
 {
     /**
      * Delete config value from storage
@@ -27,8 +25,7 @@ interface WriterInterface
      * @param   int $scopeId
      * @return void
      */
-    public function delete($path, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeId = 0);
-
+    public function delete($path, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_id = 0);
     /**
      * Save config value to storage
      *
@@ -38,5 +35,5 @@ interface WriterInterface
      * @param int $scopeId
      * @return void
      */
-    public function save($path, $value, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeId = 0);
+    public function save($path, $value, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_id = 0);
 }

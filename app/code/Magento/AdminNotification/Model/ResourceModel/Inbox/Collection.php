@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Model\ResourceModel\Inbox;
+namespace Magento\Admin_Notification\Model\Resource_Model\Inbox;
 
 /**
  * AdminNotification Inbox model
@@ -14,7 +13,7 @@ namespace Magento\AdminNotification\Model\ResourceModel\Inbox;
  * @api
  * @since 100.0.2
  */
-class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+class Collection extends \Magento\Framework\Model\Resource_Model\Db\Collection\Abstract_Collection
 {
     /**
      * Resource collection initialization
@@ -23,20 +22,16 @@ class Collection extends \Magento\Framework\Model\ResourceModel\Db\Collection\Ab
      */
     protected function _construct()
     {
-        $this->_init(
-            \Magento\AdminNotification\Model\Inbox::class,
-            \Magento\AdminNotification\Model\ResourceModel\Inbox::class
-        );
+        $this->_init(\Magento\Admin_Notification\Model\Inbox::class, \Magento\Admin_Notification\Model\Resource_Model\Inbox::class);
     }
-
     /**
      * Add remove filter
      *
      * @return $this
      */
-    public function addRemoveFilter(): static
+    public function add_remove_filter(): static
     {
-        $this->getSelect()->where('is_remove=?', 0);
+        $this->get_select()->where('is_remove=?', 0);
         return $this;
     }
 }

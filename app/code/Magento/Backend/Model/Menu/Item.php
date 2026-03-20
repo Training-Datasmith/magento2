@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Menu;
 
 use Magento\Backend\Model\Menu;
-use Magento\Store\Model\ScopeInterface;
-
+use Magento\Store\Model\Scope_Interface;
 /**
  * Menu item. Should be used to create nested menu structures with \Magento\Backend\Model\Menu
  *
@@ -26,138 +24,117 @@ class Item
      * @var string
      */
     protected $_id;
-
     /**
      * Menu item title
      *
      * @var string
      */
     protected $_title;
-
     /**
      * Module of menu item
      *
      * @var string
      */
-    protected $_moduleName;
-
+    protected $_module_name;
     /**
      * Menu item sort index in list
      *
      * @var string
      */
-    protected $_sortIndex = null;
-
+    protected $_sort_index = null;
     /**
      * Menu item action
      *
      * @var string
      */
     protected $_action = null;
-
     /**
      * Parent menu item id
      *
      * @var string
      */
-    protected $_parentId = null;
-
+    protected $_parent_id = null;
     /**
      * Acl resource of menu item
      *
      * @var string
      */
     protected $_resource;
-
     /**
      * Item tooltip text
      *
      * @var string
      */
     protected $_tooltip;
-
     /**
      * Path from root element in tree
      *
      * @var string
      */
     protected $_path = '';
-
     /**
      * Acl
      *
      * @var \Magento\Framework\AuthorizationInterface
      */
     protected $_acl;
-
     /**
      * Module that item is dependent on
      *
      * @var string|null
      */
-    protected $_dependsOnModule;
-
+    protected $_depends_on_module;
     /**
      * Global config option that item is dependent on
      *
      * @var string|null
      */
-    protected $_dependsOnConfig;
-
+    protected $_depends_on_config;
     /**
      * Submenu item list
      *
      * @var Menu
      */
     protected $_submenu;
-
     /**
      * @var \Magento\Backend\Model\MenuFactory
      */
-    protected $_menuFactory;
-
+    protected $_menu_factory;
     /**
      * @var \Magento\Backend\Model\UrlInterface
      */
-    protected $_urlModel;
-
+    protected $_url_model;
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface
      */
-    protected $_scopeConfig;
-
+    protected $_scope_config;
     /**
      * @var \Magento\Backend\Model\Menu\Item\Validator
      */
     protected $_validator;
-
     /**
      * Serialized submenu string
      *
      * @var string
      * @deprecated 100.2.0
      */
-    protected $_serializedSubmenu;
-
+    protected $_serialized_submenu;
     /**
      * Module list
      *
      * @var \Magento\Framework\Module\ModuleListInterface
      */
-    protected $_moduleList;
-
+    protected $_module_list;
     /**
      * @var \Magento\Framework\Module\Manager
      */
-    private $_moduleManager;
-
+    private $_module_manager;
     /**
      * Menu item target
      *
      * @var string|null
      */
     private $target;
-
     /**
      * @param Item\Validator $validator
      * @param \Magento\Framework\AuthorizationInterface $authorization
@@ -168,27 +145,18 @@ class Item
      * @param \Magento\Framework\Module\Manager $moduleManager
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Model\Menu\Item\Validator $validator,
-        \Magento\Framework\AuthorizationInterface $authorization,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Backend\Model\MenuFactory $menuFactory,
-        \Magento\Backend\Model\UrlInterface $urlModel,
-        \Magento\Framework\Module\ModuleListInterface $moduleList,
-        \Magento\Framework\Module\Manager $moduleManager,
-        array $data = []
-    ) {
+    public function __construct(\Magento\Backend\Model\Menu\Item\Validator $validator, \Magento\Framework\Authorization_Interface $authorization, \Magento\Framework\App\Config\Scope_Config_Interface $scope_config, \Magento\Backend\Model\Menu_Factory $menu_factory, \Magento\Backend\Model\Url_Interface $url_model, \Magento\Framework\Module\Module_List_Interface $module_list, \Magento\Framework\Module\Manager $module_manager, array $data = [])
+    {
         $this->_validator = $validator;
         $this->_validator->validate($data);
-        $this->_moduleManager = $moduleManager;
+        $this->_module_manager = $module_manager;
         $this->_acl = $authorization;
-        $this->_scopeConfig = $scopeConfig;
-        $this->_menuFactory = $menuFactory;
-        $this->_urlModel = $urlModel;
-        $this->_moduleList = $moduleList;
-        $this->populateFromArray($data);
+        $this->_scope_config = $scope_config;
+        $this->_menu_factory = $menu_factory;
+        $this->_url_model = $url_model;
+        $this->_module_list = $module_list;
+        $this->populate_from_array($data);
     }
-
     /**
      * Retrieve argument element, or default value
      *
@@ -197,78 +165,71 @@ class Item
      * @param mixed $defaultValue
      * @return mixed
      */
-    protected function _getArgument(array $array, $key, $defaultValue = null)
+    protected function _get_argument(array $array, $key, $default_value = null)
     {
-        return isset($array[$key]) ? $array[$key] : $defaultValue;
+        return isset($array[$key]) ? $array[$key] : $default_value;
     }
-
     /**
      * Retrieve item id
      *
      * @return string
      */
-    public function getId()
+    public function get_id()
     {
         return $this->_id;
     }
-
     /**
      * Retrieve item target
      *
      * @return string|null
      * @since 100.2.0
      */
-    public function getTarget()
+    public function get_target()
     {
         return $this->target;
     }
-
     /**
      * Check whether item has subnodes
      *
      * @return bool
      */
-    public function hasChildren()
+    public function has_children()
     {
-        return (null !== $this->_submenu) && (bool)$this->_submenu->count();
+        return null !== $this->_submenu && (bool) $this->_submenu->count();
     }
-
     /**
      * Retrieve submenu
      *
      * @return Menu
      */
-    public function getChildren()
+    public function get_children()
     {
         if (!$this->_submenu) {
-            $this->_submenu = $this->_menuFactory->create();
+            $this->_submenu = $this->_menu_factory->create();
         }
         return $this->_submenu;
     }
-
     /**
      * Retrieve menu item url
      *
      * @return string
      */
-    public function getUrl()
+    public function get_url()
     {
-        if ((bool)$this->_action) {
-            return $this->_urlModel->getUrl((string)$this->_action, ['_cache_secret_key' => true]);
+        if ((bool) $this->_action) {
+            return $this->_url_model->get_url((string) $this->_action, ['_cache_secret_key' => true]);
         }
         return '#';
     }
-
     /**
      * Retrieve menu item action
      *
      * @return string
      */
-    public function getAction()
+    public function get_action()
     {
         return $this->_action;
     }
-
     /**
      * Set Item action
      *
@@ -276,46 +237,42 @@ class Item
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function setAction($action)
+    public function set_action($action)
     {
-        $this->_validator->validateParam('action', $action);
+        $this->_validator->validate_param('action', $action);
         $this->_action = $action;
         return $this;
     }
-
     /**
      * Check whether item has javascript callback on click
      *
      * @return bool
      */
-    public function hasClickCallback()
+    public function has_click_callback()
     {
-        return $this->getUrl() == '#';
+        return $this->get_url() == '#';
     }
-
     /**
      * Retrieve item click callback
      *
      * @return string
      */
-    public function getClickCallback()
+    public function get_click_callback()
     {
-        if ($this->getUrl() == '#') {
+        if ($this->get_url() == '#') {
             return 'return false;';
         }
         return '';
     }
-
     /**
      * Retrieve tooltip text title
      *
      * @return string
      */
-    public function getTitle()
+    public function get_title()
     {
         return $this->_title;
     }
-
     /**
      * Set Item title
      *
@@ -323,33 +280,30 @@ class Item
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function setTitle($title)
+    public function set_title($title)
     {
-        $this->_validator->validateParam('title', $title);
+        $this->_validator->validate_param('title', $title);
         $this->_title = $title;
         return $this;
     }
-
     /**
      * Check whether item has tooltip text
      *
      * @return bool
      */
-    public function hasTooltip()
+    public function has_tooltip()
     {
-        return (bool)$this->_tooltip;
+        return (bool) $this->_tooltip;
     }
-
     /**
      * Retrieve item tooltip text
      *
      * @return string
      */
-    public function getTooltip()
+    public function get_tooltip()
     {
         return $this->_tooltip;
     }
-
     /**
      * Set Item tooltip
      *
@@ -357,13 +311,12 @@ class Item
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function setTooltip($tooltip)
+    public function set_tooltip($tooltip)
     {
-        $this->_validator->validateParam('toolTip', $tooltip);
+        $this->_validator->validate_param('toolTip', $tooltip);
         $this->_tooltip = $tooltip;
         return $this;
     }
-
     /**
      * Set Item module
      *
@@ -371,13 +324,12 @@ class Item
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function setModule($module)
+    public function set_module($module)
     {
-        $this->_validator->validateParam('module', $module);
-        $this->_moduleName = $module;
+        $this->_validator->validate_param('module', $module);
+        $this->_module_name = $module;
         return $this;
     }
-
     /**
      * Set Item module dependency
      *
@@ -385,13 +337,12 @@ class Item
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function setModuleDependency($moduleName)
+    public function set_module_dependency($module_name)
     {
-        $this->_validator->validateParam('dependsOnModule', $moduleName);
-        $this->_dependsOnModule = $moduleName;
+        $this->_validator->validate_param('dependsOnModule', $module_name);
+        $this->_depends_on_module = $module_name;
         return $this;
     }
-
     /**
      * Set Item config dependency
      *
@@ -399,91 +350,69 @@ class Item
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function setConfigDependency($configPath)
+    public function set_config_dependency($config_path)
     {
-        $this->_validator->validateParam('dependsOnConfig', $configPath);
-        $this->_dependsOnConfig = $configPath;
+        $this->_validator->validate_param('dependsOnConfig', $config_path);
+        $this->_depends_on_config = $config_path;
         return $this;
     }
-
     /**
      * Check whether item is disabled. Disabled items are not shown to user
      *
      * @return bool
      */
-    public function isDisabled()
+    public function is_disabled()
     {
-        return !$this->_moduleManager->isOutputEnabled(
-            $this->_moduleName
-        ) || !$this->_isModuleDependenciesAvailable() || !$this->_isConfigDependenciesAvailable();
+        return !$this->_module_manager->is_output_enabled($this->_module_name) || !$this->_is_module_dependencies_available() || !$this->_is_config_dependencies_available();
     }
-
     /**
      * Check whether module that item depends on is active
      *
      * @return bool
      */
-    protected function _isModuleDependenciesAvailable()
+    protected function _is_module_dependencies_available()
     {
-        if ($this->_dependsOnModule) {
-            $module = $this->_dependsOnModule;
-            return $this->_moduleList->has($module);
+        if ($this->_depends_on_module) {
+            $module = $this->_depends_on_module;
+            return $this->_module_list->has($module);
         }
         return true;
     }
-
     /**
      * Check whether config dependency is available
      *
      * @return bool
      */
-    protected function _isConfigDependenciesAvailable()
+    protected function _is_config_dependencies_available()
     {
-        if ($this->_dependsOnConfig) {
-            return $this->_scopeConfig->isSetFlag((string)$this->_dependsOnConfig, ScopeInterface::SCOPE_STORE);
+        if ($this->_depends_on_config) {
+            return $this->_scope_config->is_set_flag((string) $this->_depends_on_config, Scope_Interface::SCOPE_STORE);
         }
         return true;
     }
-
     /**
      * Check whether item is allowed to the user
      *
      * @return bool
      */
-    public function isAllowed()
+    public function is_allowed()
     {
         try {
-            return $this->_acl->isAllowed((string)$this->_resource);
+            return $this->_acl->is_allowed((string) $this->_resource);
         } catch (\Exception $e) {
             return false;
         }
     }
-
     /**
      * Get menu item data represented as an array
      *
      * @return array
      * @since 100.2.0
      */
-    public function toArray()
+    public function to_array()
     {
-        return [
-            'parent_id' => $this->_parentId,
-            'module' => $this->_moduleName,
-            'sort_index' => $this->_sortIndex,
-            'dependsOnConfig' => $this->_dependsOnConfig,
-            'id' => $this->_id,
-            'resource' => $this->_resource,
-            'path' => $this->_path,
-            'action' => $this->_action,
-            'dependsOnModule' => $this->_dependsOnModule,
-            'toolTip' => $this->_tooltip,
-            'title' => $this->_title,
-            'target' => $this->target,
-            'sub_menu' => isset($this->_submenu) ? $this->_submenu->toArray() : null,
-        ];
+        return ['parent_id' => $this->_parent_id, 'module' => $this->_module_name, 'sort_index' => $this->_sort_index, 'dependsOnConfig' => $this->_depends_on_config, 'id' => $this->_id, 'resource' => $this->_resource, 'path' => $this->_path, 'action' => $this->_action, 'dependsOnModule' => $this->_depends_on_module, 'toolTip' => $this->_tooltip, 'title' => $this->_title, 'target' => $this->target, 'sub_menu' => isset($this->_submenu) ? $this->_submenu->to_array() : null];
     }
-
     /**
      * Populate the menu item with data from array
      *
@@ -491,24 +420,24 @@ class Item
      * @return void
      * @since 100.2.0
      */
-    public function populateFromArray(array $data)
+    public function populate_from_array(array $data)
     {
-        $this->_parentId = $this->_getArgument($data, 'parent_id');
-        $this->_moduleName = $this->_getArgument($data, 'module', 'Magento_Backend');
-        $this->_sortIndex = $this->_getArgument($data, 'sort_index');
-        $this->_dependsOnConfig = $this->_getArgument($data, 'dependsOnConfig');
-        $this->_id = $this->_getArgument($data, 'id');
-        $this->_resource = $this->_getArgument($data, 'resource');
-        $this->_path = $this->_getArgument($data, 'path', '');
-        $this->_action = $this->_getArgument($data, 'action');
-        $this->_dependsOnModule = $this->_getArgument($data, 'dependsOnModule');
-        $this->_tooltip = $this->_getArgument($data, 'toolTip');
-        $this->_title = $this->_getArgument($data, 'title');
-        $this->target = $this->_getArgument($data, 'target');
+        $this->_parent_id = $this->_get_argument($data, 'parent_id');
+        $this->_module_name = $this->_get_argument($data, 'module', 'Magento_Backend');
+        $this->_sort_index = $this->_get_argument($data, 'sort_index');
+        $this->_depends_on_config = $this->_get_argument($data, 'dependsOnConfig');
+        $this->_id = $this->_get_argument($data, 'id');
+        $this->_resource = $this->_get_argument($data, 'resource');
+        $this->_path = $this->_get_argument($data, 'path', '');
+        $this->_action = $this->_get_argument($data, 'action');
+        $this->_depends_on_module = $this->_get_argument($data, 'dependsOnModule');
+        $this->_tooltip = $this->_get_argument($data, 'toolTip');
+        $this->_title = $this->_get_argument($data, 'title');
+        $this->target = $this->_get_argument($data, 'target');
         $this->_submenu = null;
         if (isset($data['sub_menu'])) {
-            $menu = $this->_menuFactory->create();
-            $menu->populateFromArray($data['sub_menu']);
+            $menu = $this->_menu_factory->create();
+            $menu->populate_from_array($data['sub_menu']);
             $this->_submenu = $menu;
         }
     }

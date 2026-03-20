@@ -4,8 +4,7 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Block;
 
 /**
@@ -22,22 +21,20 @@ class Dashboard extends Template
      * Location of the "Enable Chart" config param
      */
     public const XML_PATH_ENABLE_CHARTS = 'admin/dashboard/enable_charts';
-
     /**
      * @var string
      */
     protected $_template = 'Magento_Backend::dashboard/index.phtml';
-
     /**
      * Get url for switch action
      *
      * @return string
      */
-    public function getSwitchUrl()
+    public function get_switch_url()
     {
-        if ($url = $this->getData('switch_url')) {
+        if ($url = $this->get_data('switch_url')) {
             return $url;
         }
-        return $this->getUrl('adminhtml/*/*', ['_current' => true, 'period' => null]);
+        return $this->get_url('adminhtml/*/*', ['_current' => true, 'period' => null]);
     }
 }

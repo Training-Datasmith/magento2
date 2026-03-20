@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Acl;
 
 /**
@@ -17,7 +16,7 @@ namespace Magento\Framework\Acl;
  * @api
  * @since 100.0.2
  */
-interface LoaderInterface
+interface Loader_Interface
 {
     /**
      * Populate ACL with data from external storage
@@ -26,5 +25,5 @@ interface LoaderInterface
      * @return void
      * @abstract
      */
-    public function populateAcl(\Magento\Framework\Acl $acl);
+    public function populate_acl(\Magento\Framework\Acl $acl);
 }

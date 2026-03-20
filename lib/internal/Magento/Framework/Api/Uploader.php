@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -21,7 +20,6 @@ class Uploader extends \Magento\Framework\File\Uploader
     public function __construct()
     {
     }
-
     /**
      * Explicitly set the file attributes instead of setting it via constructor
      *
@@ -29,16 +27,15 @@ class Uploader extends \Magento\Framework\File\Uploader
      * @return void
      * @throws \Exception
      */
-    public function processFileAttributes($fileAttributes)
+    public function process_file_attributes($file_attributes)
     {
-        $this->_file = $fileAttributes;
+        $this->_file = $file_attributes;
         if (!file_exists($this->_file['tmp_name'])) {
             $code = empty($this->_file['tmp_name']) ? self::TMP_NAME_EMPTY : 0;
-
             // phpcs:ignore Magento2.Exceptions.DirectThrow.FoundDirectThrow
             throw new \Exception('File was not processed correctly.', $code);
         } else {
-            $this->_fileExists = true;
+            $this->_file_exists = true;
         }
     }
 }

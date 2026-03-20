@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB;
 
-use Psr\Log\LoggerInterface as Logger;
-
+use Psr\Log\Logger_Interface as Logger;
 /**
  * Class Query
  */
-class Query implements QueryInterface
+class Query implements Query_Interface
 {
     /**
      * Select object
@@ -21,107 +19,85 @@ class Query implements QueryInterface
      * @var \Magento\Framework\DB\Select
      */
     protected $select;
-
     /**
      * @var \Magento\Framework\Api\CriteriaInterface
      */
     protected $criteria;
-
     /**
      * Resource instance
      *
      * @var \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
     protected $resource;
-
     /**
      * Database's statement for fetch item one by one
      *
      * @var \Zend_Db_Statement_Pdo
      */
-    protected $fetchStmt = null;
-
+    protected $fetch_stmt = null;
     /**
      * @var Logger
      */
     protected $logger;
-
     /**
      * @var \Magento\Framework\Data\Collection\Db\FetchStrategyInterface
      */
-    private $fetchStrategy;
-
+    private $fetch_strategy;
     /**
      * @var array
      */
-    protected $bindParams = [];
-
+    protected $bind_params = [];
     /**
      * @var int
      */
-    protected $totalRecords;
-
+    protected $total_records;
     /**
      * @var mixed
      */
     protected $data;
-
     /**
      * Query Select Parts to be skipped when prepare query for count
      *
      * @var array
      */
-    protected $countSqlSkipParts = [
-        \Magento\Framework\DB\Select::ORDER => true,
-        \Magento\Framework\DB\Select::LIMIT_COUNT => true,
-        \Magento\Framework\DB\Select::LIMIT_OFFSET => true,
-        \Magento\Framework\DB\Select::COLUMNS => true,
-    ];
-
+    protected $count_sql_skip_parts = [\Magento\Framework\DB\Select::ORDER => true, \Magento\Framework\DB\Select::LIMIT_COUNT => true, \Magento\Framework\DB\Select::LIMIT_OFFSET => true, \Magento\Framework\DB\Select::COLUMNS => true];
     /**
      * @param \Magento\Framework\DB\Select $select
      * @param \Magento\Framework\Api\CriteriaInterface $criteria
      * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
      * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
      */
-    public function __construct(
-        \Magento\Framework\DB\Select $select,
-        \Magento\Framework\Api\CriteriaInterface $criteria,
-        \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource,
-        \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
-    ) {
+    public function __construct(\Magento\Framework\DB\Select $select, \Magento\Framework\Api\Criteria_Interface $criteria, \Magento\Framework\Model\Resource_Model\Db\Abstract_Db $resource, \Magento\Framework\Data\Collection\Db\Fetch_Strategy_Interface $fetch_strategy)
+    {
         $this->select = $select;
         $this->criteria = $criteria;
         $this->resource = $resource;
-        $this->fetchStrategy = $fetchStrategy;
+        $this->fetch_strategy = $fetch_strategy;
     }
-
     /**
      * Retrieve source Criteria object
      *
      * @return \Magento\Framework\Api\CriteriaInterface
      */
-    public function getCriteria()
+    public function get_criteria()
     {
         return $this->criteria;
     }
-
     /**
      * Retrieve all ids for query
      *
      * @return array
      */
-    public function getAllIds()
+    public function get_all_ids()
     {
-        $idsSelect = clone $this->getSelect();
-        $idsSelect->reset(\Magento\Framework\DB\Select::ORDER);
-        $idsSelect->reset(\Magento\Framework\DB\Select::LIMIT_COUNT);
-        $idsSelect->reset(\Magento\Framework\DB\Select::LIMIT_OFFSET);
-        $idsSelect->reset(\Magento\Framework\DB\Select::COLUMNS);
-        $idsSelect->columns($this->getResource()->getIdFieldName(), 'main_table');
-        return $this->getConnection()->fetchCol($idsSelect, $this->bindParams);
+        $ids_select = clone $this->get_select();
+        $ids_select->reset(\Magento\Framework\DB\Select::ORDER);
+        $ids_select->reset(\Magento\Framework\DB\Select::LIMIT_COUNT);
+        $ids_select->reset(\Magento\Framework\DB\Select::LIMIT_OFFSET);
+        $ids_select->reset(\Magento\Framework\DB\Select::COLUMNS);
+        $ids_select->columns($this->get_resource()->get_id_field_name(), 'main_table');
+        return $this->get_connection()->fetch_col($ids_select, $this->bind_params);
     }
-
     /**
      * Add variable to bind list
      *
@@ -129,39 +105,36 @@ class Query implements QueryInterface
      * @param mixed $value
      * @return void
      */
-    public function addBindParam($name, $value)
+    public function add_bind_param($name, $value)
     {
-        $this->bindParams[$name] = $value;
+        $this->bind_params[$name] = $value;
     }
-
     /**
      * Get collection size
      *
      * @return int
      */
-    public function getSize()
+    public function get_size()
     {
-        if ($this->totalRecords === null) {
-            $sql = $this->getSelectCountSql();
-            $this->totalRecords = $this->getConnection()->fetchOne($sql, $this->bindParams);
+        if ($this->total_records === null) {
+            $sql = $this->get_select_count_sql();
+            $this->total_records = $this->get_connection()->fetch_one($sql, $this->bind_params);
         }
-        return (int)$this->totalRecords;
+        return (int) $this->total_records;
     }
-
     /**
      * Get sql select string or object
      *
      * @param bool $stringMode
      * @return string || Select
      */
-    public function getSelectSql($stringMode = false)
+    public function get_select_sql($string_mode = false)
     {
-        if ($stringMode) {
+        if ($string_mode) {
             return $this->select->__toString();
         }
         return $this->select;
     }
-
     /**
      * Reset Statement object
      *
@@ -169,71 +142,65 @@ class Query implements QueryInterface
      */
     public function reset()
     {
-        $this->fetchStmt = null;
+        $this->fetch_stmt = null;
         $this->data = null;
     }
-
     /**
      * Fetch all statement
      *
      * @return array
      */
-    public function fetchAll()
+    public function fetch_all()
     {
         if ($this->data === null) {
-            $select = $this->getSelect();
-            $this->data = $this->fetchStrategy->fetchAll($select, $this->bindParams);
+            $select = $this->get_select();
+            $this->data = $this->fetch_strategy->fetch_all($select, $this->bind_params);
         }
         return $this->data;
     }
-
     /**
      * Fetch statement
      *
      * @return mixed
      */
-    public function fetchItem()
+    public function fetch_item()
     {
-        if (null === $this->fetchStmt) {
-            $this->fetchStmt = $this->getConnection()->query($this->getSelect(), $this->bindParams);
+        if (null === $this->fetch_stmt) {
+            $this->fetch_stmt = $this->get_connection()->query($this->get_select(), $this->bind_params);
         }
-        $data = $this->fetchStmt->fetch();
+        $data = $this->fetch_stmt->fetch();
         if (!$data) {
             $data = [];
         }
         return $data;
     }
-
     /**
      * Get Identity Field Name
      *
      * @return string
      */
-    public function getIdFieldName()
+    public function get_id_field_name()
     {
-        return $this->getResource()->getIdFieldName();
+        return $this->get_resource()->get_id_field_name();
     }
-
     /**
      * Retrieve connection object
      *
      * @return \Magento\Framework\DB\Adapter\AdapterInterface
      */
-    public function getConnection()
+    public function get_connection()
     {
-        return $this->getSelect()->getConnection();
+        return $this->get_select()->get_connection();
     }
-
     /**
      * Get resource instance
      *
      * @return \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
-    public function getResource()
+    public function get_resource()
     {
         return $this->resource;
     }
-
     /**
      * Add Select Part to skip from count query
      *
@@ -241,45 +208,41 @@ class Query implements QueryInterface
      * @param bool $toSkip
      * @return void
      */
-    public function addCountSqlSkipPart($name, $toSkip = true)
+    public function add_count_sql_skip_part($name, $to_skip = true)
     {
-        $this->countSqlSkipParts[$name] = $toSkip;
+        $this->count_sql_skip_parts[$name] = $to_skip;
     }
-
     /**
      * Get SQL for get record count
      *
      * @return Select
      */
-    protected function getSelectCountSql()
+    protected function get_select_count_sql()
     {
-        $countSelect = clone $this->getSelect();
-        foreach ($this->getCountSqlSkipParts() as $part => $toSkip) {
-            if ($toSkip) {
-                $countSelect->reset($part);
+        $count_select = clone $this->get_select();
+        foreach ($this->get_count_sql_skip_parts() as $part => $to_skip) {
+            if ($to_skip) {
+                $count_select->reset($part);
             }
         }
-        $countSelect->columns('COUNT(*)');
-
-        return $countSelect;
+        $count_select->columns('COUNT(*)');
+        return $count_select;
     }
-
     /**
      * Returned count SQL skip parts
      *
      * @return array
      */
-    protected function getCountSqlSkipParts()
+    protected function get_count_sql_skip_parts()
     {
-        return $this->countSqlSkipParts;
+        return $this->count_sql_skip_parts;
     }
-
     /**
      * Get \Magento\Framework\DB\Select object instance
      *
      * @return Select
      */
-    protected function getSelect()
+    protected function get_select()
     {
         return $this->select;
     }

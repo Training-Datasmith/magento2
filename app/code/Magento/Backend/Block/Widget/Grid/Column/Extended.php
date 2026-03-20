@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column;
 
 /**
@@ -21,13 +20,11 @@ class Extended extends \Magento\Backend\Block\Widget\Grid\Column
      */
     public function __construct(\Magento\Backend\Block\Template\Context $context, array $data = [])
     {
-        $this->_rendererTypes['options'] = \Magento\Backend\Block\Widget\Grid\Column\Renderer\Options\Extended::class;
-        $this->_filterTypes['options'] = \Magento\Backend\Block\Widget\Grid\Column\Filter\Select\Extended::class;
-        $this->_rendererTypes['select'] = \Magento\Backend\Block\Widget\Grid\Column\Renderer\Select\Extended::class;
-        $this->_rendererTypes['checkbox'] =
-            \Magento\Backend\Block\Widget\Grid\Column\Renderer\Checkboxes\Extended::class;
-        $this->_rendererTypes['radio'] = \Magento\Backend\Block\Widget\Grid\Column\Renderer\Radio\Extended::class;
-
+        $this->_renderer_types['options'] = \Magento\Backend\Block\Widget\Grid\Column\Renderer\Options\Extended::class;
+        $this->_filter_types['options'] = \Magento\Backend\Block\Widget\Grid\Column\Filter\Select\Extended::class;
+        $this->_renderer_types['select'] = \Magento\Backend\Block\Widget\Grid\Column\Renderer\Select\Extended::class;
+        $this->_renderer_types['checkbox'] = \Magento\Backend\Block\Widget\Grid\Column\Renderer\Checkboxes\Extended::class;
+        $this->_renderer_types['radio'] = \Magento\Backend\Block\Widget\Grid\Column\Renderer\Radio\Extended::class;
         parent::__construct($context, $data);
     }
 }

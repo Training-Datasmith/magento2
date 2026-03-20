@@ -4,18 +4,15 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Utility;
 
 use ReflectionClass;
-use ReflectionException;
-
+use Reflection_Exception;
 /**
  * Factory for \ReflectionClass
  */
-class ReflectionClassFactory
+class Reflection_Class_Factory
 {
     /**
      * Create a reflection class object
@@ -25,8 +22,8 @@ class ReflectionClassFactory
      * @return ReflectionClass
      * @throws ReflectionException
      */
-    public function create($objectOrClass): ReflectionClass
+    public function create($object_or_class): ReflectionClass
     {
-        return new ReflectionClass($objectOrClass);
+        return new ReflectionClass($object_or_class);
     }
 }

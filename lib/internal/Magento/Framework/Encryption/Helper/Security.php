@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Encryption\Helper;
 
 /**
@@ -21,7 +20,7 @@ class Security
      * @param string $actual
      * @return bool
      */
-    public static function compareStrings($expected, $actual)
+    public static function compare_strings($expected, $actual)
     {
         return hash_equals((string) $expected, (string) $actual);
     }

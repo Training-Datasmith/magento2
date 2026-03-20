@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backup\Controller\Adminhtml\Index;
 
-class MassDelete extends \Magento\Backup\Controller\Adminhtml\Index
+class Mass_Delete extends \Magento\Backup\Controller\Adminhtml\Index
 {
     /**
      * Delete backups mass action
@@ -17,49 +16,38 @@ class MassDelete extends \Magento\Backup\Controller\Adminhtml\Index
      */
     public function execute()
     {
-        $backupIds = $this->getRequest()->getParam('ids', []);
-
-        if (!is_array($backupIds) || !count($backupIds)) {
+        $backup_ids = $this->get_request()->get_param('ids', []);
+        if (!is_array($backup_ids) || !count($backup_ids)) {
             return $this->_redirect('backup/*/index');
         }
-
-        $resultData = new \Magento\Framework\DataObject();
-        $resultData->setIsSuccess(false);
-        $resultData->setDeleteResult([]);
-        $this->_coreRegistry->register('backup_manager', $resultData);
-
-        $deleteFailMessage = __('We can\'t delete one or more backups.');
-
+        $result_data = new \Magento\Framework\Data_Object();
+        $result_data->set_is_success(false);
+        $result_data->set_delete_result([]);
+        $this->_core_registry->register('backup_manager', $result_data);
+        $delete_fail_message = __('We can\'t delete one or more backups.');
         try {
-            $allBackupsDeleted = true;
-
-            foreach ($backupIds as $id) {
+            $all_backups_deleted = true;
+            foreach ($backup_ids as $id) {
                 list($time, $type) = explode('_', $id);
-                $backupModel = $this->_backupModelFactory->create($time, $type)->deleteFile();
-
-                if ($backupModel->exists()) {
-                    $allBackupsDeleted = false;
+                $backup_model = $this->_backup_model_factory->create($time, $type)->delete_file();
+                if ($backup_model->exists()) {
+                    $all_backups_deleted = false;
                     $result = __('failed');
                 } else {
                     $result = __('successful');
                 }
-
-                $resultData->setDeleteResult(
-                    array_merge($resultData->getDeleteResult(), [$backupModel->getFileName() . ' ' . $result])
-                );
+                $result_data->set_delete_result(array_merge($result_data->get_delete_result(), [$backup_model->get_file_name() . ' ' . $result]));
             }
-
-            $resultData->setIsSuccess(true);
-            if ($allBackupsDeleted) {
-                $this->messageManager->addSuccessMessage(__('You deleted the selected backup(s).'));
+            $result_data->set_is_success(true);
+            if ($all_backups_deleted) {
+                $this->message_manager->add_success_message(__('You deleted the selected backup(s).'));
             } else {
-                throw new \Exception($deleteFailMessage);
+                throw new \Exception($delete_fail_message);
             }
         } catch (\Exception $e) {
-            $resultData->setIsSuccess(false);
-            $this->messageManager->addErrorMessage($deleteFailMessage);
+            $result_data->set_is_success(false);
+            $this->message_manager->add_error_message($delete_fail_message);
         }
-
         return $this->_redirect('backup/*/index');
     }
 }

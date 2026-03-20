@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Amqp\Model;
 
-use Magento\Framework\Communication\ConfigInterface as CommunicationConfigInterface;
-use Magento\Framework\MessageQueue\ConfigInterface as QueueConfig;
-use Magento\Framework\MessageQueue\Publisher\ConfigInterface as PublisherConfig;
-use Magento\Framework\MessageQueue\Rpc\ResponseQueueNameBuilder;
-
+use Magento\Framework\Communication\Config_Interface as CommunicationConfigInterface;
+use Magento\Framework\Message_Queue\Config_Interface as QueueConfig;
+use Magento\Framework\Message_Queue\Publisher\Config_Interface as PublisherConfig;
+use Magento\Framework\Message_Queue\Rpc\Response_Queue_Name_Builder;
 /**
  * {@inheritdoc}
  *
@@ -28,21 +26,10 @@ class Exchange extends \Magento\Framework\Amqp\Exchange
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function __construct(
-        Config $amqpConfig,
-        QueueConfig $queueConfig,
-        CommunicationConfigInterface $communicationConfig,
-        $rpcConnectionTimeout = self::RPC_CONNECTION_TIMEOUT
-    ) {
-        parent::__construct(
-            $amqpConfig,
-            $this->getPublisherConfig(),
-            $this->getResponseQueueNameBuilder(),
-            $communicationConfig,
-            $rpcConnectionTimeout
-        );
+    public function __construct(Config $amqp_config, Queue_Config $queue_config, Communication_Config_Interface $communication_config, $rpc_connection_timeout = self::RPC_CONNECTION_TIMEOUT)
+    {
+        parent::__construct($amqp_config, $this->get_publisher_config(), $this->get_response_queue_name_builder(), $communication_config, $rpc_connection_timeout);
     }
-
     /**
      * Get publisher config.
      *
@@ -51,11 +38,10 @@ class Exchange extends \Magento\Framework\Amqp\Exchange
      * @deprecated 100.2.0
      * @see it's a private method, not used anymore
      */
-    private function getPublisherConfig()
+    private function get_publisher_config()
     {
-        return \Magento\Framework\App\ObjectManager::getInstance()->get(PublisherConfig::class);
+        return \Magento\Framework\App\Object_Manager::get_instance()->get(Publisher_Config::class);
     }
-
     /**
      * Get response queue name builder.
      *
@@ -64,8 +50,8 @@ class Exchange extends \Magento\Framework\Amqp\Exchange
      * @deprecated 100.2.0
      * @see it's a private method, not used anymore
      */
-    private function getResponseQueueNameBuilder()
+    private function get_response_queue_name_builder()
     {
-        return \Magento\Framework\App\ObjectManager::getInstance()->get(ResponseQueueNameBuilder::class);
+        return \Magento\Framework\App\Object_Manager::get_instance()->get(Response_Queue_Name_Builder::class);
     }
 }

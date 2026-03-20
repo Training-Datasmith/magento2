@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Csv parse
  */
-
 namespace Magento\Framework\File;
 
-class CsvMulty extends \Magento\Framework\File\Csv
+class Csv_Multy extends \Magento\Framework\File\Csv
 {
     /**
      * Retrieve CSV file data as pairs with duplicates
@@ -22,28 +20,28 @@ class CsvMulty extends \Magento\Framework\File\Csv
      * @param   int $valueIndex
      * @return  array
      */
-    public function getDataPairs($file, $keyIndex = 0, $valueIndex = 1)
+    public function get_data_pairs($file, $key_index = 0, $value_index = 1)
     {
         $data = [];
-        $csvData = $this->getData($file);
-        $lineNumber = 0;
-        foreach ($csvData as $rowData) {
-            $lineNumber++;
-            if (isset($rowData[$keyIndex])) {
-                if (isset($data[$rowData[$keyIndex]])) {
-                    if (isset($data[$rowData[$keyIndex]]['duplicate'])) {
-                        $data[$rowData[$keyIndex]]['duplicate']['line'] .= ', ' . $lineNumber;
+        $csv_data = $this->get_data($file);
+        $line_number = 0;
+        foreach ($csv_data as $row_data) {
+            $line_number++;
+            if (isset($row_data[$key_index])) {
+                if (isset($data[$row_data[$key_index]])) {
+                    if (isset($data[$row_data[$key_index]]['duplicate'])) {
+                        $data[$row_data[$key_index]]['duplicate']['line'] .= ', ' . $line_number;
                     } else {
-                        $tmpValue = $data[$rowData[$keyIndex]]['value'];
-                        $tmpLine = $data[$rowData[$keyIndex]]['line'];
-                        $data[$rowData[$keyIndex]]['duplicate'] = [];
-                        $data[$rowData[$keyIndex]]['duplicate']['line'] = $tmpLine . ' ,' . $lineNumber;
-                        $data[$rowData[$keyIndex]]['duplicate']['value'] = $tmpValue;
+                        $tmp_value = $data[$row_data[$key_index]]['value'];
+                        $tmp_line = $data[$row_data[$key_index]]['line'];
+                        $data[$row_data[$key_index]]['duplicate'] = [];
+                        $data[$row_data[$key_index]]['duplicate']['line'] = $tmp_line . ' ,' . $line_number;
+                        $data[$row_data[$key_index]]['duplicate']['value'] = $tmp_value;
                     }
                 } else {
-                    $data[$rowData[$keyIndex]] = [];
-                    $data[$rowData[$keyIndex]]['line'] = $lineNumber;
-                    $data[$rowData[$keyIndex]]['value'] = isset($rowData[$valueIndex]) ? $rowData[$valueIndex] : null;
+                    $data[$row_data[$key_index]] = [];
+                    $data[$row_data[$key_index]]['line'] = $line_number;
+                    $data[$row_data[$key_index]]['value'] = isset($row_data[$value_index]) ? $row_data[$value_index] : null;
                 }
             }
         }

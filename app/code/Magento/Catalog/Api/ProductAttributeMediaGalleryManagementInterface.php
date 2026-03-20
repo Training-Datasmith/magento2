@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Catalog\Api;
  * @api
  * @since 100.0.2
  */
-interface ProductAttributeMediaGalleryManagementInterface
+interface Product_Attribute_Media_Gallery_Management_Interface
 {
     /**
      * Create new gallery entry
@@ -26,11 +25,7 @@ interface ProductAttributeMediaGalleryManagementInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\StateException
      */
-    public function create(
-        $sku,
-        \Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface $entry
-    );
-
+    public function create($sku, \Magento\Catalog\Api\Data\Product_Attribute_Media_Gallery_Entry_Interface $entry);
     /**
      * Update gallery entry
      *
@@ -40,11 +35,7 @@ interface ProductAttributeMediaGalleryManagementInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\StateException
      */
-    public function update(
-        $sku,
-        \Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface $entry
-    );
-
+    public function update($sku, \Magento\Catalog\Api\Data\Product_Attribute_Media_Gallery_Entry_Interface $entry);
     /**
      * Remove gallery entry
      *
@@ -54,8 +45,7 @@ interface ProductAttributeMediaGalleryManagementInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\StateException
      */
-    public function remove($sku, $entryId);
-
+    public function remove($sku, $entry_id);
     /**
      * Return information about gallery entry
      *
@@ -64,13 +54,12 @@ interface ProductAttributeMediaGalleryManagementInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @return \Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface
      */
-    public function get($sku, $entryId);
-
+    public function get($sku, $entry_id);
     /**
      * Retrieve the list of gallery entries associated with given product
      *
      * @param string $sku
      * @return \Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface[]
      */
-    public function getList($sku);
+    public function get_list($sku);
 }

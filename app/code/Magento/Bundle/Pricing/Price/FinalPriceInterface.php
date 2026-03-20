@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Pricing\Price;
 
 /**
@@ -13,10 +12,10 @@ namespace Magento\Bundle\Pricing\Price;
  * @api
  * @since 100.0.2
  */
-interface FinalPriceInterface extends \Magento\Catalog\Pricing\Price\FinalPriceInterface
+interface Final_Price_Interface extends \Magento\Catalog\Pricing\Price\Final_Price_Interface
 {
     /**
      * @return \Magento\Framework\Pricing\Amount\AmountInterface
      */
-    public function getPriceWithoutOption();
+    public function get_price_without_option();
 }

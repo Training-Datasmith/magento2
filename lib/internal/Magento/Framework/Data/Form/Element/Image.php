@@ -4,38 +4,33 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data\Form\Element;
 
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Object_Manager;
 use Magento\Framework\Escaper;
 use Magento\Framework\Math\Random;
-use Magento\Framework\UrlInterface;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
-
+use Magento\Framework\Url_Interface;
+use Magento\Framework\View\Helper\Secure_Html_Renderer;
 /**
  * Category form input image element
  *
  * @api
  */
-class Image extends AbstractElement
+class Image extends Abstract_Element
 {
     /**
      * @var UrlInterface
      */
-    protected $_urlBuilder;
-
+    protected $_url_builder;
     /**
      * @var SecureHtmlRenderer
      */
-    private $secureRenderer;
-
+    private $secure_renderer;
     /**
      * @var Random
      */
     private $random;
-
     /**
      * @param Factory $factoryElement
      * @param CollectionFactory $factoryCollection
@@ -45,133 +40,81 @@ class Image extends AbstractElement
      * @param SecureHtmlRenderer|null $secureRenderer
      * @param Random|null $random
      */
-    public function __construct(
-        Factory $factoryElement,
-        CollectionFactory $factoryCollection,
-        Escaper $escaper,
-        UrlInterface $urlBuilder,
-        $data = [],
-        ?SecureHtmlRenderer $secureRenderer = null,
-        ?Random $random = null
-    ) {
-        $secureRenderer = $secureRenderer ?? ObjectManager::getInstance()->get(SecureHtmlRenderer::class);
-        $random = $random ?? ObjectManager::getInstance()->get(Random::class);
-        $this->_urlBuilder = $urlBuilder;
-        parent::__construct($factoryElement, $factoryCollection, $escaper, $data, $secureRenderer, $random);
-        $this->setType('file');
-        $this->secureRenderer = $secureRenderer;
+    public function __construct(Factory $factory_element, Collection_Factory $factory_collection, Escaper $escaper, Url_Interface $url_builder, $data = [], ?Secure_Html_Renderer $secure_renderer = null, ?Random $random = null)
+    {
+        $secure_renderer = $secure_renderer ?? Object_Manager::get_instance()->get(Secure_Html_Renderer::class);
+        $random = $random ?? Object_Manager::get_instance()->get(Random::class);
+        $this->_url_builder = $url_builder;
+        parent::__construct($factory_element, $factory_collection, $escaper, $data, $secure_renderer, $random);
+        $this->set_type('file');
+        $this->secure_renderer = $secure_renderer;
         $this->random = $random;
     }
-
     /**
      * Return element html code
      *
      * @return string
      */
-    public function getElementHtml()
+    public function get_element_html()
     {
         $html = '';
-
-        if ((string)$this->getEscapedValue()) {
-            $url = $this->_getUrl();
-
-            if (!preg_match("/^http\:\/\/|https\:\/\//", $url)) {
-                $url = $this->_urlBuilder->getBaseUrl(['_type' => UrlInterface::URL_TYPE_MEDIA]) . $url;
+        if ((string) $this->get_escaped_value()) {
+            $url = $this->_get_url();
+            if (!preg_match("/^http\\:\\/\\/|https\\:\\/\\//", $url)) {
+                $url = $this->_url_builder->get_base_url(['_type' => Url_Interface::URL_TYPE_MEDIA]) . $url;
             }
-
-            $linkId = 'linkId' .$this->random->getRandomString(8);
-            $html = '<a previewlinkid="' .$linkId  .'" href="' .
-                $url . '" ' .
-                $this->_getUiId(
-                    'link'
-                ) .
-                '>' .
-                '<img src="' . $url . '" id="' .
-                $this->getHtmlId() .
-                '_image" title="' .
-                $this->getEscapedValue() .
-                '"' .
-                ' alt="' .
-                $this->getEscapedValue() .
-                '" height="22" width="22" class="small-image-preview v-middle"  ' .
-                $this->_getUiId() .
-                ' />' .
-                '</a> ';
-            $html .= $this->secureRenderer->renderEventListenerAsTag(
-                'onclick',
-                "imagePreview('{$this->getHtmlId()}_image');\nreturn false;",
-                "*[previewlinkid='{$linkId}']"
-            );
+            $link_id = 'linkId' . $this->random->get_random_string(8);
+            $html = '<a previewlinkid="' . $link_id . '" href="' . $url . '" ' . $this->_get_ui_id('link') . '>' . '<img src="' . $url . '" id="' . $this->get_html_id() . '_image" title="' . $this->get_escaped_value() . '"' . ' alt="' . $this->get_escaped_value() . '" height="22" width="22" class="small-image-preview v-middle"  ' . $this->_get_ui_id() . ' />' . '</a> ';
+            $html .= $this->secure_renderer->render_event_listener_as_tag('onclick', "imagePreview('{$this->get_html_id()}_image');\nreturn false;", "*[previewlinkid='{$link_id}']");
         }
-        $this->setClass('input-file');
-        $html .= parent::getElementHtml();
-        $html .= $this->_getDeleteCheckbox();
-
+        $this->set_class('input-file');
+        $html .= parent::get_element_html();
+        $html .= $this->_get_delete_checkbox();
         return $html;
     }
-
     /**
      * Return html code of delete checkbox element
      *
      * @return string
      */
-    protected function _getDeleteCheckbox()
+    protected function _get_delete_checkbox()
     {
         $html = '';
-        if ($this->getEscapedValue()) {
-            $label = (string)new \Magento\Framework\Phrase('Delete Image');
+        if ($this->get_escaped_value()) {
+            $label = (string) new \Magento\Framework\Phrase('Delete Image');
             $html .= '<span class="delete-image">';
-            $html .= '<input type="checkbox"' .
-                ' name="' .
-                parent::getName() .
-                '[delete]" value="1" class="checkbox"' .
-                ' id="' .
-                $this->getHtmlId() .
-                '_delete"' .
-                ($this->getDisabled() ? ' disabled="disabled"' : '') .
-                '/>';
-            $html .= '<label for="' .
-                $this->getHtmlId() .
-                '_delete"' .
-                ($this->getDisabled() ? ' class="disabled"' : '') .
-                '> ' .
-                $label .
-                '</label>';
-            $html .= $this->_getHiddenInput();
+            $html .= '<input type="checkbox"' . ' name="' . parent::get_name() . '[delete]" value="1" class="checkbox"' . ' id="' . $this->get_html_id() . '_delete"' . ($this->get_disabled() ? ' disabled="disabled"' : '') . '/>';
+            $html .= '<label for="' . $this->get_html_id() . '_delete"' . ($this->get_disabled() ? ' class="disabled"' : '') . '> ' . $label . '</label>';
+            $html .= $this->_get_hidden_input();
             $html .= '</span>';
         }
-
         return $html;
     }
-
     /**
      * Return html code of hidden element
      *
      * @return string
      */
-    protected function _getHiddenInput()
+    protected function _get_hidden_input()
     {
-        return '<input type="hidden" name="' . parent::getName() .
-            '[value]" value="' . $this->getEscapedValue() . '" />';
+        return '<input type="hidden" name="' . parent::get_name() . '[value]" value="' . $this->get_escaped_value() . '" />';
     }
-
     /**
      * Get image preview url
      *
      * @return string
      */
-    protected function _getUrl()
+    protected function _get_url()
     {
-        return $this->getEscapedValue();
+        return $this->get_escaped_value();
     }
-
     /**
      * Return name
      *
      * @return string
      */
-    public function getName()
+    public function get_name()
     {
-        return $this->getData('name');
+        return $this->get_data('name');
     }
 }

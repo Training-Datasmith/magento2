@@ -1,50 +1,43 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager;
 
-namespace Magento\Framework\EntityManager;
-
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Class MapperPool
  */
-class MapperPool
+class Mapper_Pool
 {
     /**
      * @var string[]
      */
     private $mappers;
-
     /**
      * @var ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @param ObjectManagerInterface $objectManager
      * @param string[] $mappers
      */
-    public function __construct(
-        ObjectManagerInterface $objectManager,
-        $mappers = []
-    ) {
-        $this->objectManager = $objectManager;
+    public function __construct(Object_Manager_Interface $object_manager, $mappers = [])
+    {
+        $this->object_manager = $object_manager;
         $this->mappers = $mappers;
     }
-
     /**
      * Get mapper for entity type
      * @param string $entityType
      * @return MapperInterface
      */
-    public function getMapper($entityType)
+    public function get_mapper($entity_type)
     {
-        $className = isset($this->mappers[$entityType]) ? $this->mappers[$entityType] : MapperInterface::class;
-        return $this->objectManager->get($className);
+        $class_name = isset($this->mappers[$entity_type]) ? $this->mappers[$entity_type] : Mapper_Interface::class;
+        return $this->object_manager->get($class_name);
     }
 }

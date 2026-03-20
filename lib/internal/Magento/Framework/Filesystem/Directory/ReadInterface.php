@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Filesystem\Directory;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Filesystem\Directory;
  * @api
  * @since 100.0.2
  */
-interface ReadInterface
+interface Read_Interface
 {
     /**
      * Get absolute path
@@ -21,16 +20,14 @@ interface ReadInterface
      * @param string $path [optional]
      * @return string
      */
-    public function getAbsolutePath($path = null);
-
+    public function get_absolute_path($path = null);
     /**
      * Get relative path
      *
      * @param string $path
      * @return string
      */
-    public function getRelativePath($path = null);
-
+    public function get_relative_path($path = null);
     /**
      * Retrieve list of all entities in given path
      *
@@ -38,7 +35,6 @@ interface ReadInterface
      * @return array
      */
     public function read($path = null);
-
     /**
      * Search all entries for given regex pattern
      *
@@ -47,15 +43,13 @@ interface ReadInterface
      * @return array
      */
     public function search($pattern, $path = null);
-
     /**
      * Check a file or directory exists
      *
      * @param string $path [optional]
      * @return bool
      */
-    public function isExist($path = null);
-
+    public function is_exist($path = null);
     /**
      * Gathers the statistics of the given path
      *
@@ -63,31 +57,27 @@ interface ReadInterface
      * @return array
      */
     public function stat($path);
-
     /**
      * Check permissions for reading file or directory
      *
      * @param string $path [optional]
      * @return bool
      */
-    public function isReadable($path = null);
-
+    public function is_readable($path = null);
     /**
      * Check whether given path is file
      *
      * @param string $path
      * @return bool
      */
-    public function isFile($path);
-
+    public function is_file($path);
     /**
      * Check whether given path is directory
      *
      * @param string $path [optional]
      * @return bool
      */
-    public function isDirectory($path = null);
-
+    public function is_directory($path = null);
     /**
      * Open file in read mode
      *
@@ -95,8 +85,7 @@ interface ReadInterface
      * @return \Magento\Framework\Filesystem\File\ReadInterface
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function openFile($path);
-
+    public function open_file($path);
     /**
      * Retrieve file contents from given path
      *
@@ -106,5 +95,5 @@ interface ReadInterface
      * @return string
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function readFile($path, $flag = null, $context = null);
+    public function read_file($path, $flag = null, $context = null);
 }

@@ -1,58 +1,47 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation\Read;
 
-namespace Magento\Framework\EntityManager\Operation\Read;
-
-use Magento\Framework\EntityManager\Db\ReadRow;
-use Magento\Framework\EntityManager\HydratorPool;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\TypeResolver;
-
-class ReadMain
+use Magento\Framework\Entity_Manager\Db\Read_Row;
+use Magento\Framework\Entity_Manager\Hydrator_Pool;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+use Magento\Framework\Entity_Manager\Type_Resolver;
+class Read_Main
 {
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var HydratorPool
      */
-    private $hydratorPool;
-
+    private $hydrator_pool;
     /**
      * @var ReadRow
      */
-    private $readRow;
-
+    private $read_row;
     /**
      * @param TypeResolver $typeResolver
      * @param MetadataPool $metadataPool
      * @param HydratorPool $hydratorPool
      * @param ReadRow $readRow
      */
-    public function __construct(
-        TypeResolver $typeResolver,
-        MetadataPool $metadataPool,
-        HydratorPool $hydratorPool,
-        ReadRow $readRow
-    ) {
-        $this->typeResolver = $typeResolver;
-        $this->metadataPool = $metadataPool;
-        $this->hydratorPool = $hydratorPool;
-        $this->readRow = $readRow;
+    public function __construct(Type_Resolver $type_resolver, Metadata_Pool $metadata_pool, Hydrator_Pool $hydrator_pool, Read_Row $read_row)
+    {
+        $this->type_resolver = $type_resolver;
+        $this->metadata_pool = $metadata_pool;
+        $this->hydrator_pool = $hydrator_pool;
+        $this->read_row = $read_row;
     }
-
     /**
      * @param object $entity
      * @param string $identifier
@@ -60,10 +49,10 @@ class ReadMain
      */
     public function execute($entity, $identifier)
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $hydrator = $this->hydratorPool->getHydrator($entityType);
-        $entityData = $this->readRow->execute($entityType, $identifier);
-        $entity = $hydrator->hydrate($entity, $entityData);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $hydrator = $this->hydrator_pool->get_hydrator($entity_type);
+        $entity_data = $this->read_row->execute($entity_type, $identifier);
+        $entity = $hydrator->hydrate($entity, $entity_data);
         return $entity;
     }
 }

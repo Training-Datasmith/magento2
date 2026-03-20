@@ -4,16 +4,14 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data\Collection;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\App\Object_Manager;
 use Magento\Framework\Data\Collection;
-use Magento\Framework\Exception\FileSystemException;
-use Magento\Framework\Filesystem\Directory\WriteInterface;
-
+use Magento\Framework\Exception\File_System_Exception;
+use Magento\Framework\Filesystem\Directory\Write_Interface;
 /**
  * Filesystem items collection
  *
@@ -39,57 +37,49 @@ class Filesystem extends \Magento\Framework\Data\Collection
      *
      * @var string
      */
-    protected $_targetDirs = [];
-
+    protected $_target_dirs = [];
     /**
      * Whether to collect files.
      *
      * @var bool
      */
-    protected $_collectFiles = true;
-
+    protected $_collect_files = true;
     /**
      * Whether to collect directories before files.
      *
      * @var bool
      */
-    protected $_dirsFirst = true;
-
+    protected $_dirs_first = true;
     /**
      * Whether to collect recursively.
      *
      * @var bool
      */
-    protected $_collectRecursively = true;
-
+    protected $_collect_recursively = true;
     /**
      * Whether to collect dirs.
      *
      * @var bool
      */
-    protected $_collectDirs = false;
-
+    protected $_collect_dirs = false;
     /**
      * \Directory names regex pre-filter.
      *
      * @var string
      */
-    protected $_allowedDirsMask = '/^[a-z0-9\.\-\_]+$/i';
-
+    protected $_allowed_dirs_mask = '/^[a-z0-9\.\-\_]+$/i';
     /**
      * Filenames regex pre-filter.
      *
      * @var string
      */
-    protected $_allowedFilesMask = '/^[a-z0-9\.\-\_]+\.[a-z0-9]+$/i';
-
+    protected $_allowed_files_mask = '/^[a-z0-9\.\-\_]+\.[a-z0-9]+$/i';
     /**
      * Disallowed filenames regex pre-filter match for better versatility.
      *
      * @var string
      */
-    protected $_disallowedFilesMask = '';
-
+    protected $_disallowed_files_mask = '';
     /**
      * Filter rendering helper variable.
      *
@@ -97,8 +87,7 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see Collection::$_filter
      * @see Collection::$_isFiltersRendered
      */
-    private $_filterIncrement = 0;
-
+    private $_filter_increment = 0;
     /**
      * Filter rendering helper variable.
      *
@@ -106,8 +95,7 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see Collection::$_filter
      * @see Collection::$_isFiltersRendered
      */
-    private $_filterBrackets = [];
-
+    private $_filter_brackets = [];
     /**
      * Filter rendering helper variable.
      *
@@ -115,114 +103,100 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see Collection::$_filter
      * @see Collection::$_isFiltersRendered
      */
-    private $_filterEvalRendered = '';
-
+    private $_filter_eval_rendered = '';
     /**
      * Collecting items helper variable.
      *
      * @var array
      */
-    protected $_collectedDirs = [];
-
+    protected $_collected_dirs = [];
     /**
      * Collecting items helper variable.
      *
      * @var array
      */
-    protected $_collectedFiles = [];
-
+    protected $_collected_files = [];
     /**
      * @var WriteInterface
      */
-    private $rootDirectory;
-
+    private $root_directory;
     /**
      * @param EntityFactoryInterface|null $_entityFactory
      * @param \Magento\Framework\Filesystem $filesystem
      */
-    public function __construct(
-        ?EntityFactoryInterface $_entityFactory = null,
-        ?\Magento\Framework\Filesystem $filesystem = null
-    ) {
-        $this->_entityFactory = $_entityFactory ?? ObjectManager::getInstance()->get(EntityFactoryInterface::class);
-
-        $filesystem = $filesystem ?? ObjectManager::getInstance()->get(\Magento\Framework\Filesystem::class);
-        $this->rootDirectory = $filesystem->getDirectoryWrite(DirectoryList::ROOT);
-        parent::__construct($this->_entityFactory);
+    public function __construct(?Entity_Factory_Interface $_entity_factory = null, ?\Magento\Framework\Filesystem $filesystem = null)
+    {
+        $this->_entity_factory = $_entity_factory ?? Object_Manager::get_instance()->get(Entity_Factory_Interface::class);
+        $filesystem = $filesystem ?? Object_Manager::get_instance()->get(\Magento\Framework\Filesystem::class);
+        $this->root_directory = $filesystem->get_directory_write(Directory_List::ROOT);
+        parent::__construct($this->_entity_factory);
     }
-
     /**
      * Allowed dirs mask setter. Set empty to not filter.
      *
      * @param string $regex
      * @return $this
      */
-    public function setDirsFilter($regex)
+    public function set_dirs_filter($regex)
     {
-        $this->_allowedDirsMask = (string)$regex;
+        $this->_allowed_dirs_mask = (string) $regex;
         return $this;
     }
-
     /**
      * Allowed files mask setter. Set empty to not filter.
      *
      * @param string $regex
      * @return $this
      */
-    public function setFilesFilter($regex)
+    public function set_files_filter($regex)
     {
-        $this->_allowedFilesMask = (string)$regex;
+        $this->_allowed_files_mask = (string) $regex;
         return $this;
     }
-
     /**
      * Disallowed files mask setter. Set empty value to not use this filter.
      *
      * @param string $regex
      * @return $this
      */
-    public function setDisallowedFilesFilter($regex)
+    public function set_disallowed_files_filter($regex)
     {
-        $this->_disallowedFilesMask = (string)$regex;
+        $this->_disallowed_files_mask = (string) $regex;
         return $this;
     }
-
     /**
      * Set whether to collect dirs.
      *
      * @param bool $value
      * @return $this
      */
-    public function setCollectDirs($value)
+    public function set_collect_dirs($value)
     {
-        $this->_collectDirs = (bool)$value;
+        $this->_collect_dirs = (bool) $value;
         return $this;
     }
-
     /**
      * Set whether to collect files.
      *
      * @param bool $value
      * @return $this
      */
-    public function setCollectFiles($value)
+    public function set_collect_files($value)
     {
-        $this->_collectFiles = (bool)$value;
+        $this->_collect_files = (bool) $value;
         return $this;
     }
-
     /**
      * Set whether to collect recursively.
      *
      * @param bool $value
      * @return $this
      */
-    public function setCollectRecursively($value)
+    public function set_collect_recursively($value)
     {
-        $this->_collectRecursively = (bool)$value;
+        $this->_collect_recursively = (bool) $value;
         return $this;
     }
-
     /**
      * Target directory setter. Adds directory to be scanned.
      *
@@ -230,28 +204,26 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @return $this
      * @throws \Exception
      */
-    public function addTargetDir($value)
+    public function add_target_dir($value)
     {
-        $value = (string)$value;
-        if (!$this->rootDirectory->isDirectory($value)) {
-            throw new FileSystemException(__('Unable to set target directory.'));
+        $value = (string) $value;
+        if (!$this->root_directory->is_directory($value)) {
+            throw new File_System_Exception(__('Unable to set target directory.'));
         }
-        $this->_targetDirs[$value] = $value;
+        $this->_target_dirs[$value] = $value;
         return $this;
     }
-
     /**
      * Set whether to collect directories before files. Works *before* sorting.
      *
      * @param bool $value
      * @return $this
      */
-    public function setDirsFirst($value)
+    public function set_dirs_first($value)
     {
-        $this->_dirsFirst = (bool)$value;
+        $this->_dirs_first = (bool) $value;
         return $this;
     }
-
     /**
      * Get files from specified directory recursively (if needed).
      *
@@ -261,52 +233,39 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @SuppressWarnings(PHPMD.NPathComplexity)
      * @throws FileSystemException
      */
-    protected function _collectRecursive($dir)
+    protected function _collect_recursive($dir)
     {
-        $collectedResult = [];
+        $collected_result = [];
         if (!is_array($dir)) {
             $dir = [$dir];
         }
         foreach ($dir as $folder) {
-            if ($nodes = $this->rootDirectory->search('/*', $folder)) {
+            if ($nodes = $this->root_directory->search('/*', $folder)) {
                 foreach ($nodes as $node) {
-                    $collectedResult[] = $this->rootDirectory->getAbsolutePath($node);
+                    $collected_result[] = $this->root_directory->get_absolute_path($node);
                 }
             }
         }
-        if (empty($collectedResult)) {
+        if (empty($collected_result)) {
             return;
         }
-
-        foreach ($collectedResult as $item) {
-            if ($this->rootDirectory->isDirectory($item)
-                && (!$this->_allowedDirsMask || preg_match($this->_allowedDirsMask, basename($item)))
-            ) {
-                if ($this->_collectDirs) {
-                    if ($this->_dirsFirst) {
-                        $this->_collectedDirs[] = $item;
+        foreach ($collected_result as $item) {
+            if ($this->root_directory->is_directory($item) && (!$this->_allowed_dirs_mask || preg_match($this->_allowed_dirs_mask, basename($item)))) {
+                if ($this->_collect_dirs) {
+                    if ($this->_dirs_first) {
+                        $this->_collected_dirs[] = $item;
                     } else {
-                        $this->_collectedFiles[] = $item;
+                        $this->_collected_files[] = $item;
                     }
                 }
-                if ($this->_collectRecursively) {
-                    $this->_collectRecursive($item);
+                if ($this->_collect_recursively) {
+                    $this->_collect_recursive($item);
                 }
-            } elseif ($this->_collectFiles && $this->rootDirectory->isFile(
-                $item
-            ) && (!$this->_allowedFilesMask || preg_match(
-                $this->_allowedFilesMask,
-                basename($item)
-            )) && (!$this->_disallowedFilesMask || !preg_match(
-                $this->_disallowedFilesMask,
-                basename($item)
-            ))
-            ) {
-                $this->_collectedFiles[] = $item;
+            } elseif ($this->_collect_files && $this->root_directory->is_file($item) && (!$this->_allowed_files_mask || preg_match($this->_allowed_files_mask, basename($item))) && (!$this->_disallowed_files_mask || !preg_match($this->_disallowed_files_mask, basename($item)))) {
+                $this->_collected_files[] = $item;
             }
         }
     }
-
     /**
      * Launch data collecting.
      *
@@ -316,50 +275,44 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @throws \Exception
      */
-    public function loadData($printQuery = false, $logQuery = false)
+    public function load_data($print_query = false, $log_query = false)
     {
-        if ($this->isLoaded()) {
+        if ($this->is_loaded()) {
             return $this;
         }
-        if (empty($this->_targetDirs)) {
+        if (empty($this->_target_dirs)) {
             // phpcs:disable Magento2.Exceptions.DirectThrow
             throw new \Exception('Please specify at least one target directory.');
         }
-
-        $this->_collectedFiles = [];
-        $this->_collectedDirs = [];
-        $this->_collectRecursive($this->_targetDirs);
-        $this->_generateAndFilterAndSort('_collectedFiles');
-        if ($this->_dirsFirst) {
-            $this->_generateAndFilterAndSort('_collectedDirs');
-            $this->_collectedFiles = array_merge($this->_collectedDirs, $this->_collectedFiles);
+        $this->_collected_files = [];
+        $this->_collected_dirs = [];
+        $this->_collect_recursive($this->_target_dirs);
+        $this->_generate_and_filter_and_sort('_collectedFiles');
+        if ($this->_dirs_first) {
+            $this->_generate_and_filter_and_sort('_collectedDirs');
+            $this->_collected_files = array_merge($this->_collected_dirs, $this->_collected_files);
         }
-
         // calculate totals
-        $this->_totalRecords = count($this->_collectedFiles);
-        $this->_setIsLoaded();
-
+        $this->_total_records = count($this->_collected_files);
+        $this->_set_is_loaded();
         // paginate and add items
-        $from = ($this->getCurPage() - 1) * $this->getPageSize();
-        $to = $from + $this->getPageSize() - 1;
-        $isPaginated = $this->getPageSize() > 0;
-
+        $from = ($this->get_cur_page() - 1) * $this->get_page_size();
+        $to = $from + $this->get_page_size() - 1;
+        $is_paginated = $this->get_page_size() > 0;
         $cnt = 0;
-        foreach ($this->_collectedFiles as $row) {
+        foreach ($this->_collected_files as $row) {
             $cnt++;
-            if ($isPaginated && ($cnt < $from || $cnt > $to)) {
+            if ($is_paginated && ($cnt < $from || $cnt > $to)) {
                 continue;
             }
-            $item = new $this->_itemObjectClass();
-            $this->addItem($item->addData($row));
-            if (!$item->hasId()) {
-                $item->setId($cnt);
+            $item = new $this->_item_object_class();
+            $this->add_item($item->add_data($row));
+            if (!$item->has_id()) {
+                $item->set_id($cnt);
             }
         }
-
         return $this;
     }
-
     /**
      * With specified collected items:
      *  - generate data
@@ -369,28 +322,25 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @param string $attributeName '_collectedFiles' | '_collectedDirs'
      * @return void
      */
-    private function _generateAndFilterAndSort($attributeName)
+    private function _generate_and_filter_and_sort($attribute_name)
     {
         // generate custom data (as rows with columns) basing on the filenames
-        foreach ($this->{$attributeName} as $key => $filename) {
-            $this->{$attributeName}[$key] = $this->_generateRow($filename);
+        foreach ($this->{$attribute_name} as $key => $filename) {
+            $this->{$attribute_name}[$key] = $this->_generate_row($filename);
         }
-
         // apply filters on generated data
         if (!empty($this->_filters)) {
-            foreach ($this->{$attributeName} as $key => $row) {
-                if (!$this->_filterRow($row)) {
-                    unset($this->{$attributeName}[$key]);
+            foreach ($this->{$attribute_name} as $key => $row) {
+                if (!$this->_filter_row($row)) {
+                    unset($this->{$attribute_name}[$key]);
                 }
             }
         }
-
         // sort (keys are lost!)
         if (!empty($this->_orders)) {
-            usort($this->{$attributeName}, [$this, '_usort']);
+            usort($this->{$attribute_name}, [$this, '_usort']);
         }
     }
-
     /**
      * Callback for sorting items. Currently supports only sorting by one column.
      *
@@ -405,7 +355,6 @@ class Filesystem extends \Magento\Framework\Data\Collection
             return self::SORT_ORDER_ASC === strtoupper($direction) ? $result : -$result;
         }
     }
-
     /**
      * Set select order. Currently supports only sorting by one column.
      *
@@ -413,23 +362,21 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @param   string $direction
      * @return  Collection
      */
-    public function setOrder($field, $direction = self::SORT_ORDER_DESC)
+    public function set_order($field, $direction = self::SORT_ORDER_DESC)
     {
         $this->_orders = [$field => $direction];
         return $this;
     }
-
     /**
      * Generate item row basing on the filename.
      *
      * @param string $filename
      * @return array
      */
-    protected function _generateRow($filename)
+    protected function _generate_row($filename)
     {
         return ['filename' => $filename, 'basename' => basename($filename)];
     }
-
     /**
      * Set a custom filter with callback
      * The callback must take 3 params:
@@ -444,19 +391,12 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @param bool $isInverted
      * @return $this
      */
-    public function addCallbackFilter($field, $value, $type, $callback, $isInverted = false)
+    public function add_callback_filter($field, $value, $type, $callback, $is_inverted = false)
     {
-        $this->_filters[$this->_filterIncrement] = [
-            'field' => $field,
-            'value' => $value,
-            'is_and' => 'and' === $type,
-            'callback' => $callback,
-            'is_inverted' => $isInverted,
-        ];
-        $this->_filterIncrement++;
+        $this->_filters[$this->_filter_increment] = ['field' => $field, 'value' => $value, 'is_and' => 'and' === $type, 'callback' => $callback, 'is_inverted' => $is_inverted];
+        $this->_filter_increment++;
         return $this;
     }
-
     /**
      * The filters renderer and caller. Applies to each row, renders once.
      *
@@ -464,40 +404,29 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @return bool
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    protected function _filterRow($row)
+    protected function _filter_row($row)
     {
         // render filters once
-        if (!$this->_isFiltersRendered) {
+        if (!$this->_is_filters_rendered) {
             $eval = '';
-            for ($i = 0; $i < $this->_filterIncrement; $i++) {
-                if (isset($this->_filterBrackets[$i])) {
-                    $eval .= $this->_renderConditionBeforeFilterElement(
-                        $i,
-                        $this->_filterBrackets[$i]['is_and']
-                    ) . $this->_filterBrackets[$i]['value'];
+            for ($i = 0; $i < $this->_filter_increment; $i++) {
+                if (isset($this->_filter_brackets[$i])) {
+                    $eval .= $this->_render_condition_before_filter_element($i, $this->_filter_brackets[$i]['is_and']) . $this->_filter_brackets[$i]['value'];
                 } else {
                     $f = '$this->_filters[' . $i . ']';
-                    $eval .= $this->_renderConditionBeforeFilterElement(
-                        $i,
-                        $this->_filters[$i]['is_and']
-                    ) .
-                        ($this->_filters[$i]['is_inverted'] ? '!' : '') .
-                        '$this->_invokeFilter(' .
-                        "{$f}['callback'], array({$f}['field'], {$f}['value'], " .
-                        '$row))';
+                    $eval .= $this->_render_condition_before_filter_element($i, $this->_filters[$i]['is_and']) . ($this->_filters[$i]['is_inverted'] ? '!' : '') . '$this->_invokeFilter(' . "{$f}['callback'], array({$f}['field'], {$f}['value'], " . '$row))';
                 }
             }
-            $this->_filterEvalRendered = $eval;
-            $this->_isFiltersRendered = true;
+            $this->_filter_eval_rendered = $eval;
+            $this->_is_filters_rendered = true;
         }
         $result = false;
-        if ($this->_filterEvalRendered) {
+        if ($this->_filter_eval_rendered) {
             // phpcs:ignore Squiz.PHP.Eval
-            eval('$result = ' . $this->_filterEvalRendered . ';');
+            eval('$result = ' . $this->_filter_eval_rendered . ';');
         }
         return $result;
     }
-
     /**
      * Invokes specified callback. Skips, if there is no filtered key in the row.
      *
@@ -506,15 +435,14 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @return bool
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    protected function _invokeFilter($callback, $callbackParams)
+    protected function _invoke_filter($callback, $callback_params)
     {
-        list($field, $value, $row) = $callbackParams;
+        list($field, $value, $row) = $callback_params;
         if (!array_key_exists($field, $row)) {
             return false;
         }
-        return call_user_func_array($callback, $callbackParams);
+        return call_user_func_array($callback, $callback_params);
     }
-
     /**
      * Fancy field filter.
      *
@@ -527,127 +455,75 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @SuppressWarnings(PHPMD.NPathComplexity)
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public function addFieldToFilter($field, $cond, $type = 'and')
+    public function add_field_to_filter($field, $cond, $type = 'and')
     {
         $inverted = true;
-
         // simply check whether equals
         if (!is_array($cond)) {
-            return $this->addCallbackFilter($field, $cond, $type, [$this, 'filterCallbackEq']);
+            return $this->add_callback_filter($field, $cond, $type, [$this, 'filterCallbackEq']);
         }
-
         // versatile filters
         if (isset($cond['from']) || isset($cond['to'])) {
-            $this->_addFilterBracket('(', 'and' === $type);
+            $this->_add_filter_bracket('(', 'and' === $type);
             if (isset($cond['from'])) {
-                $this->addCallbackFilter(
-                    $field,
-                    $cond['from'],
-                    'and',
-                    [$this, 'filterCallbackIsLessThan'],
-                    $inverted
-                );
+                $this->add_callback_filter($field, $cond['from'], 'and', [$this, 'filterCallbackIsLessThan'], $inverted);
             }
             if (isset($cond['to'])) {
-                $this->addCallbackFilter(
-                    $field,
-                    $cond['to'],
-                    'and',
-                    [$this, 'filterCallbackIsMoreThan'],
-                    $inverted
-                );
+                $this->add_callback_filter($field, $cond['to'], 'and', [$this, 'filterCallbackIsMoreThan'], $inverted);
             }
-            return $this->_addFilterBracket(')');
+            return $this->_add_filter_bracket(')');
         }
         if (isset($cond['eq'])) {
-            return $this->addCallbackFilter($field, $cond['eq'], $type, [$this, 'filterCallbackEq']);
+            return $this->add_callback_filter($field, $cond['eq'], $type, [$this, 'filterCallbackEq']);
         }
         if (isset($cond['neq'])) {
-            return $this->addCallbackFilter($field, $cond['neq'], $type, [$this, 'filterCallbackEq'], $inverted);
+            return $this->add_callback_filter($field, $cond['neq'], $type, [$this, 'filterCallbackEq'], $inverted);
         }
         if (isset($cond['like'])) {
-            return $this->addCallbackFilter($field, $cond['like'], $type, [$this, 'filterCallbackLike']);
+            return $this->add_callback_filter($field, $cond['like'], $type, [$this, 'filterCallbackLike']);
         }
         if (isset($cond['nlike'])) {
-            return $this->addCallbackFilter(
-                $field,
-                $cond['nlike'],
-                $type,
-                [$this, 'filterCallbackLike'],
-                $inverted
-            );
+            return $this->add_callback_filter($field, $cond['nlike'], $type, [$this, 'filterCallbackLike'], $inverted);
         }
         if (isset($cond['in'])) {
-            return $this->addCallbackFilter($field, $cond['in'], $type, [$this, 'filterCallbackInArray']);
+            return $this->add_callback_filter($field, $cond['in'], $type, [$this, 'filterCallbackInArray']);
         }
         if (isset($cond['nin'])) {
-            return $this->addCallbackFilter(
-                $field,
-                $cond['nin'],
-                $type,
-                [$this, 'filterCallbackInArray'],
-                $inverted
-            );
+            return $this->add_callback_filter($field, $cond['nin'], $type, [$this, 'filterCallbackInArray'], $inverted);
         }
         if (isset($cond['notnull'])) {
-            return $this->addCallbackFilter(
-                $field,
-                $cond['notnull'],
-                $type,
-                [$this, 'filterCallbackIsNull'],
-                $inverted
-            );
+            return $this->add_callback_filter($field, $cond['notnull'], $type, [$this, 'filterCallbackIsNull'], $inverted);
         }
         if (isset($cond['null'])) {
-            return $this->addCallbackFilter($field, $cond['null'], $type, [$this, 'filterCallbackIsNull']);
+            return $this->add_callback_filter($field, $cond['null'], $type, [$this, 'filterCallbackIsNull']);
         }
         if (isset($cond['moreq'])) {
-            return $this->addCallbackFilter(
-                $field,
-                $cond['moreq'],
-                $type,
-                [$this, 'filterCallbackIsLessThan'],
-                $inverted
-            );
+            return $this->add_callback_filter($field, $cond['moreq'], $type, [$this, 'filterCallbackIsLessThan'], $inverted);
         }
         if (isset($cond['gt'])) {
-            return $this->addCallbackFilter($field, $cond['gt'], $type, [$this, 'filterCallbackIsMoreThan']);
+            return $this->add_callback_filter($field, $cond['gt'], $type, [$this, 'filterCallbackIsMoreThan']);
         }
         if (isset($cond['lt'])) {
-            return $this->addCallbackFilter($field, $cond['lt'], $type, [$this, 'filterCallbackIsLessThan']);
+            return $this->add_callback_filter($field, $cond['lt'], $type, [$this, 'filterCallbackIsLessThan']);
         }
         if (isset($cond['gteq'])) {
-            return $this->addCallbackFilter(
-                $field,
-                $cond['gteq'],
-                $type,
-                [$this, 'filterCallbackIsLessThan'],
-                $inverted
-            );
+            return $this->add_callback_filter($field, $cond['gteq'], $type, [$this, 'filterCallbackIsLessThan'], $inverted);
         }
         if (isset($cond['lteq'])) {
-            return $this->addCallbackFilter(
-                $field,
-                $cond['lteq'],
-                $type,
-                [$this, 'filterCallbackIsMoreThan'],
-                $inverted
-            );
+            return $this->add_callback_filter($field, $cond['lteq'], $type, [$this, 'filterCallbackIsMoreThan'], $inverted);
         }
         if (isset($cond['finset'])) {
-            $filterValue = $cond['finset'] ? explode(',', $cond['finset']) : [];
-            return $this->addCallbackFilter($field, $filterValue, $type, [$this, 'filterCallbackInArray']);
+            $filter_value = $cond['finset'] ? explode(',', $cond['finset']) : [];
+            return $this->add_callback_filter($field, $filter_value, $type, [$this, 'filterCallbackInArray']);
         }
-
         // add OR recursively
-        foreach ($cond as $orCond) {
-            $this->_addFilterBracket('(', 'and' === $type);
-            $this->addFieldToFilter($field, $orCond, 'or');
-            $this->_addFilterBracket(')');
+        foreach ($cond as $or_cond) {
+            $this->_add_filter_bracket('(', 'and' === $type);
+            $this->add_field_to_filter($field, $or_cond, 'or');
+            $this->_add_filter_bracket(')');
         }
         return $this;
     }
-
     /**
      * Prepare a bracket into filters.
      *
@@ -655,16 +531,12 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @param bool $isAnd
      * @return $this
      */
-    protected function _addFilterBracket($bracket = '(', $isAnd = true)
+    protected function _add_filter_bracket($bracket = '(', $is_and = true)
     {
-        $this->_filterBrackets[$this->_filterIncrement] = [
-            'value' => $bracket === ')' ? ')' : '(',
-            'is_and' => $isAnd,
-        ];
-        $this->_filterIncrement++;
+        $this->_filter_brackets[$this->_filter_increment] = ['value' => $bracket === ')' ? ')' : '(', 'is_and' => $is_and];
+        $this->_filter_increment++;
         return $this;
     }
-
     /**
      * Render condition sign before element, if required.
      *
@@ -672,22 +544,21 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @param bool $isAnd
      * @return string
      */
-    protected function _renderConditionBeforeFilterElement($increment, $isAnd)
+    protected function _render_condition_before_filter_element($increment, $is_and)
     {
-        if (isset($this->_filterBrackets[$increment]) && ')' === $this->_filterBrackets[$increment]['value']) {
+        if (isset($this->_filter_brackets[$increment]) && ')' === $this->_filter_brackets[$increment]['value']) {
             return '';
         }
-        $prevIncrement = $increment - 1;
-        $prevBracket = false;
-        if (isset($this->_filterBrackets[$prevIncrement])) {
-            $prevBracket = $this->_filterBrackets[$prevIncrement]['value'];
+        $prev_increment = $increment - 1;
+        $prev_bracket = false;
+        if (isset($this->_filter_brackets[$prev_increment])) {
+            $prev_bracket = $this->_filter_brackets[$prev_increment]['value'];
         }
-        if ($prevIncrement < 0 || $prevBracket === '(') {
+        if ($prev_increment < 0 || $prev_bracket === '(') {
             return '';
         }
-        return $isAnd ? ' && ' : ' || ';
+        return $is_and ? ' && ' : ' || ';
     }
-
     /**
      * Does nothing. Intentionally disabled parent method.
      *
@@ -697,21 +568,19 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function addFilter($field, $value, $type = 'and')
+    public function add_filter($field, $value, $type = 'and')
     {
         return $this;
     }
-
     /**
      * Get all ids of collected items.
      *
      * @return array
      */
-    public function getAllIds()
+    public function get_all_ids()
     {
         return array_keys($this->_items);
     }
-
     /**
      * Callback method for 'like' fancy filter.
      *
@@ -722,18 +591,16 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see addFieldToFilter()
      * @see addCallbackFilter()
      */
-    public function filterCallbackLike($field, $filterValue, $row)
+    public function filter_callback_like($field, $filter_value, $row)
     {
         // Forced to do this in order to keep backward compatibility for @api class.
         // Strict typing must be added to this method next major release.
-        $filterValue = (string)$filterValue;
-        $filterValue = trim(stripslashes($filterValue), '\'');
-        $filterValue = trim($filterValue, '%');
-        $filterValueRegex = '(.*?)' . preg_quote($filterValue, '/') . '(.*?)';
-
-        return (bool)preg_match("/^{$filterValueRegex}\$/i", $row[$field]);
+        $filter_value = (string) $filter_value;
+        $filter_value = trim(stripslashes($filter_value), '\'');
+        $filter_value = trim($filter_value, '%');
+        $filter_value_regex = '(.*?)' . preg_quote($filter_value, '/') . '(.*?)';
+        return (bool) preg_match("/^{$filter_value_regex}\$/i", $row[$field]);
     }
-
     /**
      * Callback method for 'eq' fancy filter.
      *
@@ -744,11 +611,10 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see addFieldToFilter()
      * @see addCallbackFilter()
      */
-    public function filterCallbackEq($field, $filterValue, $row)
+    public function filter_callback_eq($field, $filter_value, $row)
     {
-        return $filterValue == $row[$field];
+        return $filter_value == $row[$field];
     }
-
     /**
      * Callback method for 'in' fancy filter.
      *
@@ -759,11 +625,10 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see addFieldToFilter()
      * @see addCallbackFilter()
      */
-    public function filterCallbackInArray($field, $filterValue, $row)
+    public function filter_callback_in_array($field, $filter_value, $row)
     {
-        return in_array($row[$field], $filterValue);
+        return in_array($row[$field], $filter_value);
     }
-
     /**
      * Callback method for 'isnull' fancy filter.
      *
@@ -775,11 +640,10 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see addCallbackFilter()
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function filterCallbackIsNull($field, $filterValue, $row)
+    public function filter_callback_is_null($field, $filter_value, $row)
     {
         return null === $row[$field];
     }
-
     /**
      * Callback method for 'moreq' fancy filter.
      *
@@ -790,11 +654,10 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see addFieldToFilter()
      * @see addCallbackFilter()
      */
-    public function filterCallbackIsMoreThan($field, $filterValue, $row)
+    public function filter_callback_is_more_than($field, $filter_value, $row)
     {
-        return $row[$field] > $filterValue;
+        return $row[$field] > $filter_value;
     }
-
     /**
      * Callback method for 'lteq' fancy filter.
      *
@@ -805,8 +668,8 @@ class Filesystem extends \Magento\Framework\Data\Collection
      * @see addFieldToFilter()
      * @see addCallbackFilter()
      */
-    public function filterCallbackIsLessThan($field, $filterValue, $row)
+    public function filter_callback_is_less_than($field, $filter_value, $row)
     {
-        return $row[$field] < $filterValue;
+        return $row[$field] < $filter_value;
     }
 }

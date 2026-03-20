@@ -1,44 +1,36 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Validator;
 
-use Magento\Framework\App\Utility\IPAddress;
-
+use Magento\Framework\App\Utility\Ip_Address;
 /**
  * Class to validate list of IPs for maintenance commands
  */
-class IpValidator
+class Ip_Validator
 {
     /**
      * @var string[]
      */
     private $none;
-
     /**
      * @var string[]
      */
-    private $validIps;
-
+    private $valid_ips;
     /**
      * @var string[]
      */
-    private $invalidIps;
-
+    private $invalid_ips;
     /**
      * @param IPAddress $ipAddress
      */
-    public function __construct(
-        private readonly IPAddress $ipAddress,
-    ) {
+    public function __construct(private readonly Ip_Address $ip_address)
+    {
     }
-
     /**
      * Validates list of ips
      *
@@ -49,32 +41,26 @@ class IpValidator
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function validateIps(array $ips, $noneAllowed)
+    public function validate_ips(array $ips, $none_allowed)
     {
         $this->none = [];
-        $this->validIps = [];
-        $this->invalidIps = [];
+        $this->valid_ips = [];
+        $this->invalid_ips = [];
         $messages = [];
-
-        $this->filterIps($ips);
-
-        if (count($this->none) > 0 && !$noneAllowed) {
+        $this->filter_ips($ips);
+        if (count($this->none) > 0 && !$none_allowed) {
             $messages[] = "'none' is not allowed";
-        } elseif ($noneAllowed && count($this->none) > 1) {
+        } elseif ($none_allowed && count($this->none) > 1) {
             $messages[] = "'none' can be only used once";
-        } elseif ($noneAllowed && count($this->none) > 0 &&
-            (count($this->validIps) > 0 || count($this->invalidIps) > 0)
-        ) {
+        } elseif ($none_allowed && count($this->none) > 0 && (count($this->valid_ips) > 0 || count($this->invalid_ips) > 0)) {
             $messages[] = "Multiple values are not allowed when 'none' is used";
         } else {
-            foreach ($this->invalidIps as $invalidIp) {
-                $messages[] = "Invalid IP $invalidIp";
+            foreach ($this->invalid_ips as $invalid_ip) {
+                $messages[] = "Invalid IP {$invalid_ip}";
             }
         }
-
         return $messages;
     }
-
     /**
      * Filter ips into 'none', valid and invalid ips
      *
@@ -82,17 +68,17 @@ class IpValidator
      *
      * @return void
      */
-    private function filterIps(array $ips)
+    private function filter_ips(array $ips)
     {
         foreach ($ips as $ip) {
             if ($ip === 'none') {
                 $this->none[] = $ip;
-            } elseif ($this->ipAddress->isValidAddress($ip)) {
-                $this->validIps[] = $ip;
-            } elseif ($this->ipAddress->isValidRange($ip)) {
-                $this->validIps[] = $ip;
+            } elseif ($this->ip_address->is_valid_address($ip)) {
+                $this->valid_ips[] = $ip;
+            } elseif ($this->ip_address->is_valid_range($ip)) {
+                $this->valid_ips[] = $ip;
             } else {
-                $this->invalidIps[] = $ip;
+                $this->invalid_ips[] = $ip;
             }
         }
     }

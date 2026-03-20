@@ -4,16 +4,15 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Framework\App\ObjectManager;
+declare (strict_types=1);
+namespace Magento\Framework\App\Object_Manager;
 
 /**
  * Write compiled object manager configuration to storage
  *
  * @api
  */
-interface ConfigWriterInterface
+interface Config_Writer_Interface
 {
     /**
      * Writes config in storage

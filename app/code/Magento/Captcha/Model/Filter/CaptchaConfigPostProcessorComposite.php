@@ -4,31 +4,26 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Captcha\Model\Filter;
 
-use Magento\Captcha\Api\CaptchaConfigPostProcessorInterface;
-
+use Magento\Captcha\Api\Captcha_Config_Post_Processor_Interface;
 /**
  * Composite class for post processing captcha configuration
  */
-class CaptchaConfigPostProcessorComposite implements CaptchaConfigPostProcessorInterface
+class Captcha_Config_Post_Processor_Composite implements Captcha_Config_Post_Processor_Interface
 {
     /**
      * @var CaptchaConfigPostProcessorInterface[] $processors
      */
     private $processors = [];
-
     /**
      * @param CaptchaConfigPostProcessorInterface[] $processors
      */
-    public function __construct(
-        $processors = []
-    ) {
+    public function __construct($processors = [])
+    {
         $this->processors = $processors;
     }
-
     /**
      * Loops through all leafs of the composite and calls process method
      *

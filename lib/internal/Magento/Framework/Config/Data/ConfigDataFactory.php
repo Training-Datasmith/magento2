@@ -1,46 +1,42 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config\Data;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Factory for ConfigData.
  *
  * @api
  */
-class ConfigDataFactory
+class Config_Data_Factory
 {
     /**
      * @var ObjectManager
      */
-    private $objectManager;
-
+    private $object_manager;
     /**
      * Factory constructor.
      *
      * @param ObjectManagerInterface $objectManager
      */
-    public function __construct(ObjectManagerInterface $objectManager)
+    public function __construct(Object_Manager_Interface $object_manager)
     {
-        $this->objectManager = $objectManager;
+        $this->object_manager = $object_manager;
     }
-
     /**
      * Returns a new instance of ConfigData on every call.
      *
      * @param string $fileKey
      * @return ConfigData
      */
-    public function create($fileKey)
+    public function create($file_key)
     {
-        return $this->objectManager->create(ConfigData::class, ['fileKey' => $fileKey]);
+        return $this->object_manager->create(Config_Data::class, ['fileKey' => $file_key]);
     }
 }

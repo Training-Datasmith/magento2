@@ -4,9 +4,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Config;
 
 /**
@@ -14,7 +12,7 @@ namespace Magento\Framework\Config;
  * @api
  * @since 100.0.2
  */
-class ConfigOptionsListConstants
+class Config_Options_List_Constants
 {
     /**#@+
      * Path to the values in the deployment config
@@ -43,30 +41,25 @@ class ConfigOptionsListConstants
     public const CONFIG_PATH_DB_LOGGER_INCLUDE_STACKTRACE = 'db_logger/include_stacktrace';
     public const CONFIG_PATH_DB_LOGGER_INCLUDE_INDEX_CHECK = 'db_logger/include_index_check';
     /**#@-*/
-
     /**
      * Parameter for disabling/enabling static content deployment on demand in production mode
      * Can contains 0/1 value
      */
     public const CONFIG_PATH_SCD_ON_DEMAND_IN_PRODUCTION = 'static_content_on_demand_in_production';
-
     /**
      * Parameter for forcing HTML minification even if file is already minified.
      */
     public const CONFIG_PATH_FORCE_HTML_MINIFICATION = 'force_html_minification';
-
     /**
      * Default limiting input array size for synchronous Web API
      */
     public const CONFIG_PATH_WEBAPI_SYNC_DEFAULT_INPUT_ARRAY_SIZE_LIMIT = 'webapi/sync/default_input_array_size_limit';
-
     /**
      * Default limiting input array size for asynchronous Web API
      * phpcs:disable
      */
     public const CONFIG_PATH_WEBAPI_ASYNC_DEFAULT_INPUT_ARRAY_SIZE_LIMIT = 'webapi/async/default_input_array_size_limit';
     //phpcs:enable
-
     /**#@+
      * Input keys for the options
      */
@@ -88,18 +81,15 @@ class ConfigOptionsListConstants
     public const INPUT_KEY_SKIP_DB_VALIDATION = 'skip-db-validation';
     public const INPUT_KEY_CACHE_HOSTS = 'http-cache-hosts';
     /**#@-*/
-
     /**#@+
      * Input keys for cache configuration
      */
     public const KEY_CACHE_FRONTEND = 'cache/frontend';
     public const CONFIG_PATH_BACKEND_OPTIONS = 'backend_options';
-
     /**
      * Definition format constant.
      */
     public const INPUT_KEY_DEFINITION_FORMAT = 'definition-format';
-
     /**#@+
      * Values for session-save
      */
@@ -108,12 +98,10 @@ class ConfigOptionsListConstants
     public const SESSION_SAVE_REDIS = 'redis';
     public const SESSION_SAVE_VALKEY = 'valkey';
     /**#@-*/
-
     /**
      * Array Key for session save method
      */
     public const KEY_SAVE = 'save';
-
     /**#@+
      * Array keys for Database configuration
      */
@@ -129,7 +117,6 @@ class ConfigOptionsListConstants
     public const KEY_ACTIVE = 'active';
     public const KEY_DRIVER_OPTIONS = 'driver_options';
     /**#@-*/
-
     /**#@+
      * Array keys for database driver options configurations
      *
@@ -140,41 +127,34 @@ class ConfigOptionsListConstants
     public const KEY_MYSQL_SSL_KEY = \PHP_VERSION_ID >= 80400 ? \Pdo\Mysql::ATTR_SSL_KEY : \PDO::MYSQL_ATTR_SSL_KEY;
     public const KEY_MYSQL_SSL_CERT = \PHP_VERSION_ID >= 80400 ? \Pdo\Mysql::ATTR_SSL_CERT : \PDO::MYSQL_ATTR_SSL_CERT;
     public const KEY_MYSQL_SSL_CA = \PHP_VERSION_ID >= 80400 ? \Pdo\Mysql::ATTR_SSL_CA : \PDO::MYSQL_ATTR_SSL_CA;
-
     /**
      * Constant \PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT cannot be used as it was introduced in PHP 7.1.4
      * and Magento 2 is currently supporting PHP 7.1.3.
      */
     public const KEY_MYSQL_SSL_VERIFY = 1014;
     /**#@-*/
-
     /**
      * Db config key
      */
     public const KEY_DB = 'db';
-
     /**
      * Array Key for encryption key in deployment config file
      */
     public const KEY_ENCRYPTION_KEY = 'key';
-
     /**
      * Resource config key
      */
     public const KEY_RESOURCE = 'resource';
-
     /**
      * Key for modules
      */
     public const KEY_MODULES = 'modules';
-
     /**
      * Size of random string generated for store's encryption key
      * phpcs:disable
      */
     public const STORE_KEY_RANDOM_STRING_SIZE = SODIUM_CRYPTO_AEAD_CHACHA20POLY1305_KEYBYTES;
     //phpcs:enable
-
     /**
      * Prefix of encoded random string
      */

@@ -1,39 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Select;
 
 use Magento\Framework\DB\Select;
-
 /**
  * Phrase renderer interface
  */
-class SelectRenderer implements RendererInterface
+class Select_Renderer implements Renderer_Interface
 {
-    private const MANDATORY_SELECT_PARTS = [
-        Select::COLUMNS => true,
-        Select::FROM    => true,
-    ];
-
+    private const MANDATORY_SELECT_PARTS = [Select::COLUMNS => true, Select::FROM => true];
     /**
      * @var RendererInterface[]
      */
     protected $renderers;
-
     /**
      * @param RendererInterface[] $renderers
      */
-    public function __construct(
-        array $renderers
-    ) {
+    public function __construct(array $renderers)
+    {
         $this->renderers = $this->sort($renderers);
     }
-
     /**
      * Sort renderers
      *
@@ -55,15 +46,9 @@ class SelectRenderer implements RendererInterface
                     $right[] = $render;
                 }
             }
-
-            return array_merge(
-                $this->sort($left),
-                [$pivot],
-                $this->sort($right)
-            );
+            return array_merge($this->sort($left), [$pivot], $this->sort($right));
         }
     }
-
     /**
      * Render SELECT statement
      *
@@ -76,7 +61,7 @@ class SelectRenderer implements RendererInterface
         $sql = Select::SQL_SELECT;
         foreach ($this->renderers as $renderer) {
             $part = $renderer['part'];
-            if (isset(self::MANDATORY_SELECT_PARTS[$part]) || $select->getPart($part)) {
+            if (isset(self::MANDATORY_SELECT_PARTS[$part]) || $select->get_part($part)) {
                 $sql = $renderer['renderer']->render($select, $sql);
             }
         }

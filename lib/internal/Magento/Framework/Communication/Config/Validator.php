@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Communication\Config;
 
-use Magento\Framework\Reflection\MethodsMap;
-use Magento\Framework\Reflection\TypeProcessor;
-
+use Magento\Framework\Reflection\Methods_Map;
+use Magento\Framework\Reflection\Type_Processor;
 /**
  * Communication configuration validator.
  */
@@ -19,27 +17,22 @@ class Validator
     /**
      * @var TypeProcessor
      */
-    private $typeProcessor;
-
+    private $type_processor;
     /**
      * @var MethodsMap
      */
-    private $methodsMap;
-
+    private $methods_map;
     /**
      * Initialize dependencies.
      *
      * @param TypeProcessor $typeProcessor
      * @param MethodsMap $methodsMap
      */
-    public function __construct(
-        TypeProcessor $typeProcessor,
-        MethodsMap $methodsMap
-    ) {
-        $this->typeProcessor = $typeProcessor;
-        $this->methodsMap = $methodsMap;
+    public function __construct(Type_Processor $type_processor, Methods_Map $methods_map)
+    {
+        $this->type_processor = $type_processor;
+        $this->methods_map = $methods_map;
     }
-
     /**
      * Validate response schema definition for topic
      *
@@ -47,28 +40,16 @@ class Validator
      * @param string $topicName
      * @return void
      */
-    public function validateResponseSchemaType($responseSchema, $topicName)
+    public function validate_response_schema_type($response_schema, $topic_name)
     {
         try {
-            $this->validateType($responseSchema);
+            $this->validate_type($response_schema);
         } catch (\InvalidArgumentException $e) {
-            throw new \LogicException(
-                'Response schema definition has service class with wrong annotated methods',
-                $e->getCode(),
-                $e
-            );
+            throw new \LogicException('Response schema definition has service class with wrong annotated methods', $e->get_code(), $e);
         } catch (\Exception $e) {
-            throw new \LogicException(
-                sprintf(
-                    'Response schema definition for topic "%s" should reference existing type or service class. '
-                    . 'Given "%s"',
-                    $topicName,
-                    $responseSchema
-                )
-            );
+            throw new \LogicException(sprintf('Response schema definition for topic "%s" should reference existing type or service class. ' . 'Given "%s"', $topic_name, $response_schema));
         }
     }
-
     /**
      * Validate request schema definition for topic
      *
@@ -76,28 +57,16 @@ class Validator
      * @param string $topicName
      * @return void
      */
-    public function validateRequestSchemaType($requestSchema, $topicName)
+    public function validate_request_schema_type($request_schema, $topic_name)
     {
         try {
-            $this->validateType($requestSchema);
+            $this->validate_type($request_schema);
         } catch (\InvalidArgumentException $e) {
-            throw new \LogicException(
-                'Request schema definition has service class with wrong annotated methods',
-                $e->getCode(),
-                $e
-            );
+            throw new \LogicException('Request schema definition has service class with wrong annotated methods', $e->get_code(), $e);
         } catch (\Exception $e) {
-            throw new \LogicException(
-                sprintf(
-                    'Request schema definition for topic "%s" should reference existing service class. '
-                    . 'Given "%s"',
-                    $topicName,
-                    $requestSchema
-                )
-            );
+            throw new \LogicException(sprintf('Request schema definition for topic "%s" should reference existing service class. ' . 'Given "%s"', $topic_name, $request_schema));
         }
     }
-
     /**
      * Validate service method specified in the definition of handler
      *
@@ -107,23 +76,14 @@ class Validator
      * @param string $topicName
      * @return void
      */
-    public function validateResponseHandlersType($serviceName, $methodName, $handlerName, $topicName)
+    public function validate_response_handlers_type($service_name, $method_name, $handler_name, $topic_name)
     {
         try {
-            $this->methodsMap->getMethodParams($serviceName, $methodName);
+            $this->methods_map->get_method_params($service_name, $method_name);
         } catch (\Exception $e) {
-            throw new \LogicException(
-                sprintf(
-                    'Service method specified in the definition of handler "%s" for topic "%s"'
-                    . ' is not available. Given "%s"',
-                    $handlerName,
-                    $topicName,
-                    $serviceName . '::' . $methodName
-                )
-            );
+            throw new \LogicException(sprintf('Service method specified in the definition of handler "%s" for topic "%s"' . ' is not available. Given "%s"', $handler_name, $topic_name, $service_name . '::' . $method_name));
         }
     }
-
     /**
      * Ensure that specified type is either a simple type or a valid service data type.
      *
@@ -132,16 +92,16 @@ class Validator
      * @throws \Exception In case when type is invalid
      * @throws \InvalidArgumentException if methods don't have annotation
      */
-    protected function validateType($typeName)
+    protected function validate_type($type_name)
     {
-        if ($this->typeProcessor->isTypeSimple($typeName)) {
+        if ($this->type_processor->is_type_simple($type_name)) {
             return $this;
         }
-        if ($this->typeProcessor->isArrayType($typeName)) {
-            $arrayItemType = $this->typeProcessor->getArrayItemType($typeName);
-            $this->methodsMap->getMethodsMap($arrayItemType);
+        if ($this->type_processor->is_array_type($type_name)) {
+            $array_item_type = $this->type_processor->get_array_item_type($type_name);
+            $this->methods_map->get_methods_map($array_item_type);
         } else {
-            $this->methodsMap->getMethodsMap($typeName);
+            $this->methods_map->get_methods_map($type_name);
         }
         return $this;
     }

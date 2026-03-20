@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Widget\Grid;
 
 /**
  * @api
  * @since 100.0.2
  */
-class Totals extends \Magento\Backend\Model\Widget\Grid\AbstractTotals
+class Totals extends \Magento\Backend\Model\Widget\Grid\Abstract_Totals
 {
     /**
      * Count collection column sum based on column index
@@ -21,19 +20,18 @@ class Totals extends \Magento\Backend\Model\Widget\Grid\AbstractTotals
      * @param \Magento\Framework\Data\Collection $collection
      * @return float|int
      */
-    protected function _countSum($index, $collection)
+    protected function _count_sum($index, $collection)
     {
         $sum = 0;
         foreach ($collection as $item) {
-            if (!$item->hasChildren()) {
+            if (!$item->has_children()) {
                 $sum += $item[$index];
             } else {
-                $sum += $this->_countSum($index, $item->getChildren());
+                $sum += $this->_count_sum($index, $item->get_children());
             }
         }
         return $sum;
     }
-
     /**
      * Count collection column average based on column index
      *
@@ -41,17 +39,16 @@ class Totals extends \Magento\Backend\Model\Widget\Grid\AbstractTotals
      * @param \Magento\Framework\Data\Collection $collection
      * @return float|int
      */
-    protected function _countAverage($index, $collection)
+    protected function _count_average($index, $collection)
     {
-        $itemsCount = 0;
+        $items_count = 0;
         foreach ($collection as $item) {
-            if (!$item->hasChildren()) {
-                $itemsCount += 1;
+            if (!$item->has_children()) {
+                $items_count += 1;
             } else {
-                $itemsCount += count($item->getChildren());
+                $items_count += count($item->get_children());
             }
         }
-
-        return $itemsCount ? $this->_countSum($index, $collection) / $itemsCount : $itemsCount;
+        return $items_count ? $this->_count_sum($index, $collection) / $items_count : $items_count;
     }
 }

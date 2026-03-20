@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\View\Asset\Materialization_Strategy;
 
-namespace Magento\Framework\App\View\Asset\MaterializationStrategy;
-
-use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Object_Manager_Interface;
 use Magento\Framework\View\Asset;
-
 class Factory
 {
     /**
@@ -18,30 +16,26 @@ class Factory
      *
      * @var ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * Strategies list
      *
      * @var array
      */
-    protected $strategiesList;
-
+    protected $strategies_list;
     /**
      * Default strategy key
      */
-    public const DEFAULT_STRATEGY = \Magento\Framework\App\View\Asset\MaterializationStrategy\Copy::class;
-
+    public const DEFAULT_STRATEGY = \Magento\Framework\App\View\Asset\Materialization_Strategy\Copy::class;
     /**
      * @param ObjectManagerInterface $objectManager
      * @param StrategyInterface[] $strategiesList
      */
-    public function __construct(ObjectManagerInterface $objectManager, $strategiesList = [])
+    public function __construct(Object_Manager_Interface $object_manager, $strategies_list = [])
     {
-        $this->objectManager = $objectManager;
-        $this->strategiesList = $strategiesList;
+        $this->object_manager = $object_manager;
+        $this->strategies_list = $strategies_list;
     }
-
     /**
      * Create materialization strategy basing on asset
      *
@@ -50,18 +44,16 @@ class Factory
      *
      * @throws \LogicException
      */
-    public function create(Asset\LocalInterface $asset)
+    public function create(Asset\Local_Interface $asset)
     {
-        if (empty($this->strategiesList)) {
-            $this->strategiesList[] = $this->objectManager->get(self::DEFAULT_STRATEGY);
+        if (empty($this->strategies_list)) {
+            $this->strategies_list[] = $this->object_manager->get(self::DEFAULT_STRATEGY);
         }
-
-        foreach ($this->strategiesList as $strategy) {
-            if ($strategy->isSupported($asset)) {
+        foreach ($this->strategies_list as $strategy) {
+            if ($strategy->is_supported($asset)) {
                 return $strategy;
             }
         }
-
         throw new \LogicException('No materialization strategy is supported');
     }
 }

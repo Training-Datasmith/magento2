@@ -1,32 +1,27 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Select;
 
 use Magento\Framework\DB\Platform\Quote;
 use Magento\Framework\DB\Select;
-
-class FromRenderer implements RendererInterface
+class From_Renderer implements Renderer_Interface
 {
     /**
      * @var Quote
      */
     protected $quote;
-
     /**
      * @param Quote $quote
      */
-    public function __construct(
-        Quote $quote
-    ) {
+    public function __construct(Quote $quote)
+    {
         $this->quote = $quote;
     }
-
     /**
      * Render FROM & JOIN's section
      *
@@ -41,21 +36,20 @@ class FromRenderer implements RendererInterface
          * If no table specified, use RDBMS-dependent solution
          * for table-less query.  e.g. DUAL in Oracle.
          */
-        $source = $select->getPart(Select::FROM);
+        $source = $select->get_part(Select::FROM);
         if (empty($source)) {
             $source = [];
         }
         $from = [];
-        foreach ($source as $correlationName => $table) {
+        foreach ($source as $correlation_name => $table) {
             $tmp = '';
-            $joinType = ($table['joinType'] == Select::FROM) ? Select::INNER_JOIN : $table['joinType'];
+            $join_type = $table['joinType'] == Select::FROM ? Select::INNER_JOIN : $table['joinType'];
             // Add join clause (if applicable)
             if (!empty($from)) {
-                $tmp .= ' ' . strtoupper($joinType) . ' ';
+                $tmp .= ' ' . strtoupper($join_type) . ' ';
             }
-            $tmp .= $this->getQuotedSchema($table['schema']);
-            $tmp .= $this->getQuotedTable($table['tableName'], $correlationName);
-
+            $tmp .= $this->get_quoted_schema($table['schema']);
+            $tmp .= $this->get_quoted_table($table['tableName'], $correlation_name);
             // Add join conditions (if applicable)
             if (!empty($from) && !empty($table['joinCondition'])) {
                 $tmp .= ' ' . Select::SQL_ON . ' ' . $table['joinCondition'];
@@ -69,21 +63,19 @@ class FromRenderer implements RendererInterface
         }
         return $sql;
     }
-
     /**
      * Return a quoted schema name
      *
      * @param string   $schema  The schema name OPTIONAL
      * @return string|null
      */
-    protected function getQuotedSchema($schema = null)
+    protected function get_quoted_schema($schema = null)
     {
         if ($schema === null) {
             return null;
         }
-        return $this->quote->quoteIdentifier($schema) . '.';
+        return $this->quote->quote_identifier($schema) . '.';
     }
-
     /**
      * Return a quoted table name
      *
@@ -91,8 +83,8 @@ class FromRenderer implements RendererInterface
      * @param string   $correlationName  The correlation name OPTIONAL
      * @return string
      */
-    protected function getQuotedTable($tableName, $correlationName = null)
+    protected function get_quoted_table($table_name, $correlation_name = null)
     {
-        return $this->quote->quoteTableAs($tableName, $correlationName);
+        return $this->quote->quote_table_as($table_name, $correlation_name);
     }
 }

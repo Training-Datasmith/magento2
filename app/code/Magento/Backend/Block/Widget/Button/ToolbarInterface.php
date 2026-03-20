@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Button;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Backend\Block\Widget\Button;
  *
  * @api
  */
-interface ToolbarInterface
+interface Toolbar_Interface
 {
     /**
      * Push buttons into toolbar
@@ -22,8 +21,5 @@ interface ToolbarInterface
      * @param \Magento\Backend\Block\Widget\Button\ButtonList $buttonList
      * @return void
      */
-    public function pushButtons(
-        \Magento\Framework\View\Element\AbstractBlock $context,
-        \Magento\Backend\Block\Widget\Button\ButtonList $buttonList
-    );
+    public function push_buttons(\Magento\Framework\View\Element\Abstract_Block $context, \Magento\Backend\Block\Widget\Button\Button_List $button_list);
 }

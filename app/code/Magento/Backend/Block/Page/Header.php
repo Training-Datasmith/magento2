@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Page;
 
 /**
@@ -20,74 +19,60 @@ class Header extends \Magento\Backend\Block\Template
      * @var string
      */
     protected $_template = 'Magento_Backend::page/header.phtml';
-
     /**
      * @var \Magento\Backend\Helper\Data
      */
-    protected $_backendData = null;
-
+    protected $_backend_data = null;
     /**
      * @var \Magento\Backend\Model\Auth\Session
      */
-    protected $_authSession;
-
+    protected $_auth_session;
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backend\Model\Auth\Session $authSession
      * @param \Magento\Backend\Helper\Data $backendData
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Backend\Model\Auth\Session $authSession,
-        \Magento\Backend\Helper\Data $backendData,
-        array $data = []
-    ) {
-        $this->_backendData = $backendData;
-        $this->_authSession = $authSession;
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Backend\Model\Auth\Session $auth_session, \Magento\Backend\Helper\Data $backend_data, array $data = [])
+    {
+        $this->_backend_data = $backend_data;
+        $this->_auth_session = $auth_session;
         parent::__construct($context, $data);
     }
-
     /**
      * Return URL to homepage
      *
      * @return string
      */
-    public function getHomeLink()
+    public function get_home_link()
     {
-        return $this->_backendData->getHomePageUrl();
+        return $this->_backend_data->get_home_page_url();
     }
-
     /**
      * Return the current user
      *
      * @return \Magento\User\Model\User|null
      */
-    public function getUser()
+    public function get_user()
     {
-        return $this->_authSession->getUser();
+        return $this->_auth_session->get_user();
     }
-
     /**
      * Return URL to log out from admin
      *
      * @return string
      */
-    public function getLogoutLink()
+    public function get_logout_link()
     {
-        return $this->getUrl('adminhtml/auth/logout');
+        return $this->get_url('adminhtml/auth/logout');
     }
-
     /**
      * Check if noscript notice should be displayed
      *
      * @return boolean
      */
-    public function displayNoscriptNotice()
+    public function display_noscript_notice()
     {
-        return $this->_scopeConfig->getValue(
-            'web/browser_capabilities/javascript',
-            \Magento\Store\Model\ScopeInterface::SCOPE_STORE
-        );
+        return $this->_scope_config->get_value('web/browser_capabilities/javascript', \Magento\Store\Model\Scope_Interface::SCOPE_STORE);
     }
 }

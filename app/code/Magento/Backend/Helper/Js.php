@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Adminhtml JavaScript helper
  */
-
 namespace Magento\Backend\Helper;
 
 /**
@@ -36,15 +34,15 @@ class Js
      * @param   string $encoded
      * @return  array
      */
-    public function decodeGridSerializedInput($encoded)
+    public function decode_grid_serialized_input($encoded)
     {
-        $isSimplified = false === strpos($encoded, '=');
+        $is_simplified = false === strpos($encoded, '=');
         $result = [];
         // phpcs:ignore Magento2.Functions.DiscouragedFunction.Discouraged
         parse_str($encoded, $decoded);
         foreach ($decoded as $key => $value) {
             if (is_numeric($key)) {
-                if ($isSimplified) {
+                if ($is_simplified) {
                     $result[] = $key;
                 } else {
                     $result[$key] = null;

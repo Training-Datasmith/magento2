@@ -4,14 +4,13 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Backend\Model\Validator\UrlKey;
+declare (strict_types=1);
+namespace Magento\Backend\Model\Validator\Url_Key;
 
 /**
  * Interface UrlKeyValidatorInterface is responsive for validating urlKeys
  */
-interface UrlKeyValidatorInterface
+interface Url_Key_Validator_Interface
 {
     /**
      * Validates urlKey
@@ -19,5 +18,5 @@ interface UrlKeyValidatorInterface
      * @param string $urlKey
      * @return array
      */
-    public function validate(string $urlKey): array;
+    public function validate(string $url_key): array;
 }

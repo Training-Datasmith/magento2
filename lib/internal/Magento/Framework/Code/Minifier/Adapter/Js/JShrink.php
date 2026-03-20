@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Code\Minifier\Adapter\Js;
 
-use JShrink\Minifier;
-use Magento\Framework\Code\Minifier\AdapterInterface;
-
+use J_Shrink\Minifier;
+use Magento\Framework\Code\Minifier\Adapter_Interface;
 /**
  * Adapter for JShrink library
  */
-class JShrink implements AdapterInterface
+class J_Shrink implements Adapter_Interface
 {
     /**
      * Takes a string containing javascript and removes unneeded characters in

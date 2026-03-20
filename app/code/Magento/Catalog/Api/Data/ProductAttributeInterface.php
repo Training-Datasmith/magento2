@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api\Data;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface ProductAttributeInterface extends \Magento\Catalog\Api\Data\EavAttributeInterface
+interface Product_Attribute_Interface extends \Magento\Catalog\Api\Data\Eav_Attribute_Interface
 {
     public const ENTITY_TYPE_CODE = 'catalog_product';
     public const CODE_HAS_WEIGHT = 'product_has_weight';
@@ -34,10 +33,9 @@ interface ProductAttributeInterface extends \Magento\Catalog\Api\Data\EavAttribu
     public const CODE_TIER_PRICE_FIELD_VALUE_TYPE = 'value_type';
     public const CODE_SEO_FIELD_META_DESCRIPTION = 'meta_description';
     public const CODE_WEIGHT = 'weight';
-
     /**
      * @return \Magento\Eav\Api\Data\AttributeExtensionInterface|null
      * @since 103.0.0
      */
-    public function getExtensionAttributes();
+    public function get_extension_attributes();
 }

@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Grid column block that is displayed only if rollback allowed
  */
-
 namespace Magento\Backup\Block\Adminhtml\Grid\Column;
 
 /**
@@ -21,29 +19,24 @@ class Rollback extends \Magento\Backend\Block\Widget\Grid\Column
     /**
      * @var \Magento\Backup\Helper\Data
      */
-    protected $_backupHelper;
-
+    protected $_backup_helper;
     /**
      * @param \Magento\Backend\Block\Template\Context $context
      * @param \Magento\Backup\Helper\Data $backupHelper
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Backup\Helper\Data $backupHelper,
-        array $data = []
-    ) {
-        $this->_backupHelper = $backupHelper;
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Backup\Helper\Data $backup_helper, array $data = [])
+    {
+        $this->_backup_helper = $backup_helper;
         parent::__construct($context, $data);
     }
-
     /**
      * Check permission for rollback
      *
      * @return bool
      */
-    public function isDisplayed()
+    public function is_displayed()
     {
-        return $this->_backupHelper->isRollbackAllowed();
+        return $this->_backup_helper->is_rollback_allowed();
     }
 }

@@ -1,148 +1,132 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Analytics\ReportXml;
+namespace Magento\Analytics\Report_Xml;
 
 use PDO;
-
 /**
  * Providers for reports data
  */
-class ReportProvider implements BatchReportProviderInterface
+class Report_Provider implements Batch_Report_Provider_Interface
 {
-    private int $currentPosition = 0;
-
+    private int $current_position = 0;
     /**
      * @var int
      */
-    private $countTotal = 0;
-
+    private $count_total = 0;
     /**
      * @var \Magento\Framework\DB\Adapter\AdapterInterface
      */
     private $connection;
-
     /**
      * @var Query
      */
-    private $dataSelect;
-
+    private $data_select;
     /**
      * @var int|null Last cursor value for cursor-based pagination
      */
-    private ?int $lastCursor = null;
-
+    private ?int $last_cursor = null;
     /**
      * @var string|null Cursor column name for cursor-based pagination
      */
-    private ?string $cursorColumn = null;
-
+    private ?string $cursor_column = null;
     /**
      * ReportProvider constructor.
      */
-    public function __construct(private readonly QueryFactory $queryFactory, private readonly ConnectionFactory $connectionFactory, private readonly IteratorFactory $iteratorFactory)
+    public function __construct(private readonly Query_Factory $query_factory, private readonly Connection_Factory $connection_factory, private readonly Iterator_Factory $iterator_factory)
     {
     }
-
     /**
      * Returns custom iterator name for report. Null for default
      *
      * @return string|null
      */
-    private function getIteratorName(Query $query)
+    private function get_iterator_name(Query $query)
     {
-        $config = $query->getConfig();
+        $config = $query->get_config();
         return $config['iterator'] ?? null;
     }
-
     /**
      * Returns report data by name and criteria
      *
      * @param string $name
      * @return \IteratorIterator
      */
-    public function getReport($name)
+    public function get_report($name)
     {
-        $query = $this->queryFactory->create($name);
-        $connection = $this->connectionFactory->getConnection($query->getConnectionName());
-        $statement = $connection->query($query->getSelect());
-        return $this->iteratorFactory->create($statement, $this->getIteratorName($query));
+        $query = $this->query_factory->create($name);
+        $connection = $this->connection_factory->get_connection($query->get_connection_name());
+        $statement = $connection->query($query->get_select());
+        return $this->iterator_factory->create($statement, $this->get_iterator_name($query));
     }
-
     /**
      * @inheritdoc
      */
-    public function getBatchReport(string $name): \IteratorIterator
+    public function get_batch_report(string $name): \Iterator_Iterator
     {
-        if (!$this->dataSelect || $this->dataSelect->getConfig()['name'] !== $name) {
-            $this->dataSelect = $this->queryFactory->create($name);
-            $this->lastCursor = null;
-            $this->currentPosition = 0;
-            $this->countTotal = 0;
-            $this->connection = $this->connectionFactory->getConnection($this->dataSelect->getConnectionName());
-            $this->cursorColumn = $this->getCursorColumn();
-            if (!$this->cursorColumn) {
-                $this->countTotal = $this->connection->fetchOne($this->dataSelect->getSelectCountSql());
+        if (!$this->data_select || $this->data_select->get_config()['name'] !== $name) {
+            $this->data_select = $this->query_factory->create($name);
+            $this->last_cursor = null;
+            $this->current_position = 0;
+            $this->count_total = 0;
+            $this->connection = $this->connection_factory->get_connection($this->data_select->get_connection_name());
+            $this->cursor_column = $this->get_cursor_column();
+            if (!$this->cursor_column) {
+                $this->count_total = $this->connection->fetch_one($this->data_select->get_select_count_sql());
             }
         }
-        if (!$this->cursorColumn) {
-            return $this->getBatchReportWithOffset();
+        if (!$this->cursor_column) {
+            return $this->get_batch_report_with_offset();
         }
-
-        $select = clone $this->dataSelect->getSelect();
-        $cursorValue = $this->lastCursor ?? 0;
-        $select->where(sprintf('%s > ?', $this->cursorColumn), $cursorValue);
-        $select->order(sprintf('%s ASC', $this->cursorColumn));
+        $select = clone $this->data_select->get_select();
+        $cursor_value = $this->last_cursor ?? 0;
+        $select->where(sprintf('%s > ?', $this->cursor_column), $cursor_value);
+        $select->order(sprintf('%s ASC', $this->cursor_column));
         $select->limit(self::BATCH_SIZE);
         $statement = $this->connection->query($select);
-        $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $rows = $statement->fetch_all(PDO::FETCH_ASSOC);
         if (empty($rows)) {
-            return $this->iteratorFactory->create(new \ArrayIterator([]), $this->getIteratorName($this->dataSelect));
+            return $this->iterator_factory->create(new \ArrayIterator([]), $this->get_iterator_name($this->data_select));
         }
-        $lastRow = $rows[count($rows) - 1];
-        $this->lastCursor = $lastRow[$this->cursorColumn] ?? null;
-        return $this->iteratorFactory->create(new \ArrayIterator($rows), $this->getIteratorName($this->dataSelect));
+        $last_row = $rows[count($rows) - 1];
+        $this->last_cursor = $last_row[$this->cursor_column] ?? null;
+        return $this->iterator_factory->create(new \ArrayIterator($rows), $this->get_iterator_name($this->data_select));
     }
-
     /**
      * Detect cursor column based on the source table's primary key
      *
      * @return string|null Returns the primary key column name, or null if not found
      */
-    private function getCursorColumn(): ?string
+    private function get_cursor_column(): ?string
     {
-        $config = $this->dataSelect->getConfig();
-        $tableName = $config['source']['name'] ?? null;
-        $analyticTables = ['customer_entity', 'sales_order', 'sales_order_address', 'quote', 'catalog_product_entity'];
-        if (!$tableName) {
+        $config = $this->data_select->get_config();
+        $table_name = $config['source']['name'] ?? null;
+        $analytic_tables = ['customer_entity', 'sales_order', 'sales_order_address', 'quote', 'catalog_product_entity'];
+        if (!$table_name) {
             return null;
         }
-        if (in_array($tableName, $analyticTables)) {
+        if (in_array($table_name, $analytic_tables)) {
             return 'entity_id';
         }
-        if ($tableName == 'sales_order_item') {
+        if ($table_name == 'sales_order_item') {
             return 'item_id';
         }
         return null;
     }
-
     /**
      * Fallback to offset-based pagination when cursor column cannot be detected
      */
-    private function getBatchReportWithOffset(): \IteratorIterator
+    private function get_batch_report_with_offset(): \Iterator_Iterator
     {
-        if ($this->currentPosition >= $this->countTotal) {
-            return $this->iteratorFactory->create(new \ArrayIterator([]), $this->getIteratorName($this->dataSelect));
+        if ($this->current_position >= $this->count_total) {
+            return $this->iterator_factory->create(new \ArrayIterator([]), $this->get_iterator_name($this->data_select));
         }
-        $statement = $this->connection->query(
-            $this->dataSelect->getSelect()->limit(self::BATCH_SIZE, $this->currentPosition)
-        );
-        $this->currentPosition += self::BATCH_SIZE;
-        return $this->iteratorFactory->create($statement, $this->getIteratorName($this->dataSelect));
+        $statement = $this->connection->query($this->data_select->get_select()->limit(self::BATCH_SIZE, $this->current_position));
+        $this->current_position += self::BATCH_SIZE;
+        return $this->iterator_factory->create($statement, $this->get_iterator_name($this->data_select));
     }
 }

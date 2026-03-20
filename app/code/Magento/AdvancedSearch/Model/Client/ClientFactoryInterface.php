@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdvancedSearch\Model\Client;
+namespace Magento\Advanced_Search\Model\Client;
 
 /**
  * @api
  * @since 100.1.0
  */
-interface ClientFactoryInterface
+interface Client_Factory_Interface
 {
     /**
      * Return search client

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework;
 
 /**
@@ -13,23 +12,21 @@ namespace Magento\Framework;
  *
  * @api
  */
-class AclFactory
+class Acl_Factory
 {
     /**
      * Object manager
      *
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    private $_objectManager;
-
+    private $_object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->_objectManager = $objectManager;
+        $this->_object_manager = $object_manager;
     }
-
     /**
      * Create new magento acl instance
      *
@@ -37,6 +34,6 @@ class AclFactory
      */
     public function create()
     {
-        return $this->_objectManager->create(Acl::class);
+        return $this->_object_manager->create(Acl::class);
     }
 }

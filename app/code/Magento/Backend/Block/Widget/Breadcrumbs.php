@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget;
 
 /**
@@ -22,12 +21,10 @@ class Breadcrumbs extends \Magento\Backend\Block\Template
      * @var array
      */
     protected $_links = [];
-
     /**
      * @var string
      */
     protected $_template = 'Magento_Backend::widget/breadcrumbs.phtml';
-
     /**
      * Add homepage to breadcrumbs
      *
@@ -35,9 +32,8 @@ class Breadcrumbs extends \Magento\Backend\Block\Template
      */
     protected function _construct()
     {
-        $this->addLink(__('Home'), __('Home'), $this->getUrl('*'));
+        $this->add_link(__('Home'), __('Home'), $this->get_url('*'));
     }
-
     /**
      * Add a link to the breadcrumbs
      *
@@ -46,7 +42,7 @@ class Breadcrumbs extends \Magento\Backend\Block\Template
      * @param string|null $url
      * @return $this
      */
-    public function addLink($label, $title = null, $url = null)
+    public function add_link($label, $title = null, $url = null)
     {
         if (empty($title)) {
             $title = $label;

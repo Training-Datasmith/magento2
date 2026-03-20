@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Backup\Model\ResourceModel;
+namespace Magento\Backup\Model\Resource_Model;
 
 /**
  * Database backup resource model
@@ -21,36 +20,30 @@ class Db
      * @var \Magento\Framework\DB\Adapter\AdapterInterface
      */
     protected $connection;
-
     /**
      * Tables foreign key data array
      * [tbl_name] = array(create foreign key strings)
      *
      * @var array
      */
-    protected $_foreignKeys = [];
-
+    protected $_foreign_keys = [];
     /**
      * Backup resource helper
      *
      * @var \Magento\Backup\Model\ResourceModel\Helper
      */
-    protected $_resourceHelper;
-
+    protected $_resource_helper;
     /**
      * Initialize Backup DB resource model
      *
      * @param \Magento\Backup\Model\ResourceModel\HelperFactory $resHelperFactory
      * @param \Magento\Framework\App\ResourceConnection $resource
      */
-    public function __construct(
-        \Magento\Backup\Model\ResourceModel\HelperFactory $resHelperFactory,
-        \Magento\Framework\App\ResourceConnection $resource
-    ) {
-        $this->_resourceHelper = $resHelperFactory->create();
-        $this->connection = $resource->getConnection('backup');
+    public function __construct(\Magento\Backup\Model\Resource_Model\Helper_Factory $res_helper_factory, \Magento\Framework\App\Resource_Connection $resource)
+    {
+        $this->_resource_helper = $res_helper_factory->create();
+        $this->connection = $resource->get_connection('backup');
     }
-
     /**
      * Clear data
      *
@@ -58,30 +51,27 @@ class Db
      */
     public function clear()
     {
-        $this->_foreignKeys = [];
+        $this->_foreign_keys = [];
     }
-
     /**
      * Retrieve table list
      *
      * @return array
      */
-    public function getTables()
+    public function get_tables()
     {
-        return $this->connection->listTables();
+        return $this->connection->list_tables();
     }
-
     /**
      * Retrieve SQL fragment for drop table
      *
      * @param string $tableName
      * @return string
      */
-    public function getTableDropSql($tableName)
+    public function get_table_drop_sql($table_name)
     {
-        return $this->_resourceHelper->getTableDropSql($tableName);
+        return $this->_resource_helper->get_table_drop_sql($table_name);
     }
-
     /**
      * Retrieve SQL fragment for create table
      *
@@ -89,34 +79,32 @@ class Db
      * @param bool $withForeignKeys
      * @return string
      */
-    public function getTableCreateSql($tableName, $withForeignKeys = false)
+    public function get_table_create_sql($table_name, $with_foreign_keys = false)
     {
-        return $this->_resourceHelper->getTableCreateSql($tableName, $withForeignKeys = false);
+        return $this->_resource_helper->get_table_create_sql($table_name, $with_foreign_keys = false);
     }
-
     /**
      * Retrieve foreign keys for table(s)
      *
      * @param string|null $tableName
      * @return string
      */
-    public function getTableForeignKeysSql($tableName = null)
+    public function get_table_foreign_keys_sql($table_name = null)
     {
-        $fkScript = '';
-        if (!$tableName) {
-            $tables = $this->getTables();
+        $fk_script = '';
+        if (!$table_name) {
+            $tables = $this->get_tables();
             foreach ($tables as $table) {
-                $tableFkScript = $this->_resourceHelper->getTableForeignKeysSql($table);
-                if (!empty($tableFkScript)) {
-                    $fkScript .= "\n" . $tableFkScript;
+                $table_fk_script = $this->_resource_helper->get_table_foreign_keys_sql($table);
+                if (!empty($table_fk_script)) {
+                    $fk_script .= "\n" . $table_fk_script;
                 }
             }
         } else {
-            $fkScript = $this->getTableForeignKeysSql($tableName);
+            $fk_script = $this->get_table_foreign_keys_sql($table_name);
         }
-        return $fkScript;
+        return $fk_script;
     }
-
     /**
      * Return triggers for table(s).
      *
@@ -125,49 +113,42 @@ class Db
      * @return string
      * @since 100.2.3
      */
-    public function getTableTriggersSql($tableName = null, $addDropIfExists = true)
+    public function get_table_triggers_sql($table_name = null, $add_drop_if_exists = true)
     {
-        $triggerScript = '';
-        if (!$tableName) {
-            $tables = $this->getTables();
+        $trigger_script = '';
+        if (!$table_name) {
+            $tables = $this->get_tables();
             foreach ($tables as $table) {
-                $tableTriggerScript = $this->_resourceHelper->getTableTriggersSql($table, $addDropIfExists);
-                if (!empty($tableTriggerScript)) {
-                    $triggerScript .= "\n" . $tableTriggerScript;
+                $table_trigger_script = $this->_resource_helper->get_table_triggers_sql($table, $add_drop_if_exists);
+                if (!empty($table_trigger_script)) {
+                    $trigger_script .= "\n" . $table_trigger_script;
                 }
             }
         } else {
-            $triggerScript = $this->getTableTriggersSql($tableName, $addDropIfExists);
+            $trigger_script = $this->get_table_triggers_sql($table_name, $add_drop_if_exists);
         }
-
-        return $triggerScript;
+        return $trigger_script;
     }
-
     /**
      * Retrieve table status
      *
      * @param string $tableName
      * @return \Magento\Framework\DataObject|bool
      */
-    public function getTableStatus($tableName)
+    public function get_table_status($table_name)
     {
-        $row = $this->connection->showTableStatus($tableName);
-
+        $row = $this->connection->show_table_status($table_name);
         if ($row) {
-            $statusObject = new \Magento\Framework\DataObject();
+            $status_object = new \Magento\Framework\Data_Object();
             foreach ($row as $field => $value) {
-                $statusObject->setData(strtolower($field), $value);
+                $status_object->set_data(strtolower($field), $value);
             }
-
-            $cntRow = $this->connection->fetchRow($this->connection->select()->from($tableName, 'COUNT(1) as rows'));
-            $statusObject->setRows($cntRow['rows']);
-
-            return $statusObject;
+            $cnt_row = $this->connection->fetch_row($this->connection->select()->from($table_name, 'COUNT(1) as rows'));
+            $status_object->set_rows($cnt_row['rows']);
+            return $status_object;
         }
-
         return false;
     }
-
     /**
      * Retrieve table partial data SQL insert
      *
@@ -176,11 +157,10 @@ class Db
      * @param null|int $offset
      * @return string
      */
-    public function getTableDataSql($tableName, $count = null, $offset = null)
+    public function get_table_data_sql($table_name, $count = null, $offset = null)
     {
-        return $this->_resourceHelper->getPartInsertSql($tableName, $count, $offset);
+        return $this->_resource_helper->get_part_insert_sql($table_name, $count, $offset);
     }
-
     /**
      * Enter description here...
      *
@@ -188,23 +168,21 @@ class Db
      * @param bool $addDropIfExists
      * @return string
      */
-    public function getTableCreateScript($tableName, $addDropIfExists = false)
+    public function get_table_create_script($table_name, $add_drop_if_exists = false)
     {
-        return $this->_resourceHelper->getTableCreateScript($tableName, $addDropIfExists);
+        return $this->_resource_helper->get_table_create_script($table_name, $add_drop_if_exists);
     }
-
     /**
      * Retrieve table header comment
      *
      * @param string $tableName
      * @return string
      */
-    public function getTableHeader($tableName)
+    public function get_table_header($table_name)
     {
-        $quotedTableName = $this->connection->quoteIdentifier($tableName);
-        return "\n--\n" . "-- Table structure for table {$quotedTableName}\n" . "--\n\n";
+        $quoted_table_name = $this->connection->quote_identifier($table_name);
+        return "\n--\n" . "-- Table structure for table {$quoted_table_name}\n" . "--\n\n";
     }
-
     /**
      * Return table data dump
      *
@@ -213,98 +191,90 @@ class Db
      * @return string
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getTableDataDump($tableName, $step = false)
+    public function get_table_data_dump($table_name, $step = false)
     {
-        return $this->getTableDataSql($tableName);
+        return $this->get_table_data_sql($table_name);
     }
-
     /**
      * Returns SQL header data
      *
      * @return string
      */
-    public function getHeader()
+    public function get_header()
     {
-        return $this->_resourceHelper->getHeader();
+        return $this->_resource_helper->get_header();
     }
-
     /**
      * Returns SQL footer data
      *
      * @return string
      */
-    public function getFooter()
+    public function get_footer()
     {
-        return $this->_resourceHelper->getFooter();
+        return $this->_resource_helper->get_footer();
     }
-
     /**
      * Retrieve before insert data SQL fragment
      *
      * @param string $tableName
      * @return string
      */
-    public function getTableDataBeforeSql($tableName)
+    public function get_table_data_before_sql($table_name)
     {
-        return $this->_resourceHelper->getTableDataBeforeSql($tableName);
+        return $this->_resource_helper->get_table_data_before_sql($table_name);
     }
-
     /**
      * Retrieve after insert data SQL fragment
      *
      * @param string $tableName
      * @return string
      */
-    public function getTableDataAfterSql($tableName)
+    public function get_table_data_after_sql($table_name)
     {
-        return $this->_resourceHelper->getTableDataAfterSql($tableName);
+        return $this->_resource_helper->get_table_data_after_sql($table_name);
     }
-
     /**
      * Start transaction mode
      *
      * @return $this
      */
-    public function beginTransaction()
+    public function begin_transaction()
     {
-        $this->_resourceHelper->prepareTransactionIsolationLevel();
-        $this->connection->beginTransaction();
+        $this->_resource_helper->prepare_transaction_isolation_level();
+        $this->connection->begin_transaction();
         return $this;
     }
-
     /**
      * Commit transaction
      *
      * @return $this
      */
-    public function commitTransaction()
+    public function commit_transaction()
     {
         $this->connection->commit();
-        $this->_resourceHelper->restoreTransactionIsolationLevel();
+        $this->_resource_helper->restore_transaction_isolation_level();
         return $this;
     }
-
     /**
      * Rollback transaction
      *
      * @return $this
      */
-    public function rollBackTransaction()
+    public function roll_back_transaction()
     {
-        $this->connection->rollBack();
-        $this->_resourceHelper->restoreTransactionIsolationLevel();
+        $this->connection->roll_back();
+        $this->_resource_helper->restore_transaction_isolation_level();
         return $this;
     }
-
     /**
      * Run sql code
      *
      * @param string $command
      * @return $this
      */
-    public function runCommand($command)
+    public function run_command($command)
     {
-        $this->connection->multiQuery($command);
+        $this->connection->multi_query($command);
         return $this;
     }
 }

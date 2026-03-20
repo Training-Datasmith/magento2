@@ -4,15 +4,13 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Amqp\Connection;
 
-use Magento\Framework\App\ObjectManager;
-use PhpAmqpLib\Connection\AbstractConnection;
-use PhpAmqpLib\Connection\AMQPConnectionConfig;
-use PhpAmqpLib\Connection\AMQPConnectionFactory;
-
+use Magento\Framework\App\Object_Manager;
+use Php_Amqp_Lib\Connection\Abstract_Connection;
+use Php_Amqp_Lib\Connection\Amqp_Connection_Config;
+use Php_Amqp_Lib\Connection\Amqp_Connection_Factory;
 /**
  * Create connection based on options.
  */
@@ -26,52 +24,49 @@ class Factory
      * @param FactoryOptions $options
      * @return AbstractConnection
      */
-    public function create(FactoryOptions $options): AbstractConnection
+    public function create(Factory_Options $options): Abstract_Connection
     {
-        $config = ObjectManager::getInstance()->create(AMQPConnectionConfig::class);
-
+        $config = Object_Manager::get_instance()->create(Amqp_Connection_Config::class);
         // Set host, port, user, password, and vhost from options
-        $config->setHost($options->getHost());
-        $config->setPort((int)$options->getPort());
-        $config->setUser($options->getUsername());
-        $config->setPassword($options->getPassword());
-        $config->setVhost($options->getVirtualHost() !== null ? $options->getVirtualHost() : '/');
-
+        $config->set_host($options->get_host());
+        $config->set_port((int) $options->get_port());
+        $config->set_user($options->get_username());
+        $config->set_password($options->get_password());
+        $config->set_vhost($options->get_virtual_host() !== null ? $options->get_virtual_host() : '/');
         // Set SSL options if SSL is enabled
-        if ($options->isSslEnabled()) {
-            $config->setIsSecure(true);
-            $sslOptions = $options->getSslOptions();
-            if ($sslOptions) {
-                if (isset($sslOptions['cafile'])) {
-                    $config->setSslCaCert($sslOptions['cafile']);
+        if ($options->is_ssl_enabled()) {
+            $config->set_is_secure(true);
+            $ssl_options = $options->get_ssl_options();
+            if ($ssl_options) {
+                if (isset($ssl_options['cafile'])) {
+                    $config->set_ssl_ca_cert($ssl_options['cafile']);
                 }
-                if (isset($sslOptions['local_cert'])) {
-                    $config->setSslCert($sslOptions['local_cert']);
+                if (isset($ssl_options['local_cert'])) {
+                    $config->set_ssl_cert($ssl_options['local_cert']);
                 }
-                if (isset($sslOptions['local_pk'])) {
-                    $config->setSslKey($sslOptions['local_pk']);
+                if (isset($ssl_options['local_pk'])) {
+                    $config->set_ssl_key($ssl_options['local_pk']);
                 }
-                if (isset($sslOptions['verify_peer'])) {
-                    $config->setSslVerify($sslOptions['verify_peer']);
+                if (isset($ssl_options['verify_peer'])) {
+                    $config->set_ssl_verify($ssl_options['verify_peer']);
                 }
-                if (isset($sslOptions['verify_peer_name'])) {
-                    $config->setSslVerifyName($sslOptions['verify_peer_name']);
+                if (isset($ssl_options['verify_peer_name'])) {
+                    $config->set_ssl_verify_name($ssl_options['verify_peer_name']);
                 }
-                if (isset($sslOptions['passphrase'])) {
-                    $config->setSslPassPhrase($sslOptions['passphrase']);
+                if (isset($ssl_options['passphrase'])) {
+                    $config->set_ssl_pass_phrase($ssl_options['passphrase']);
                 }
-                if (isset($sslOptions['ciphers'])) {
-                    $config->setSslCiphers($sslOptions['ciphers']);
+                if (isset($ssl_options['ciphers'])) {
+                    $config->set_ssl_ciphers($ssl_options['ciphers']);
                 }
             } else {
                 // Default SSL verification option
-                $config->setSslVerify(true);
+                $config->set_ssl_verify(true);
             }
         } else {
-            $config->setIsSecure(false);
+            $config->set_is_secure(false);
         }
-
         // Use the connection factory to create the connection
-        return AMQPConnectionFactory::create($config);
+        return Amqp_Connection_Factory::create($config);
     }
 }

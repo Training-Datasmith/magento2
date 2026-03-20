@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Block;
+namespace Magento\Admin_Notification\Block;
 
 /**
  * @api
@@ -20,9 +19,9 @@ class Inbox extends \Magento\Backend\Block\Widget\Grid\Container
     protected function _construct()
     {
         $this->_controller = 'adminhtml';
-        $this->_blockGroup = 'Magento_AdminNotification';
-        $this->_headerText = __('Messages Inbox');
+        $this->_block_group = 'Magento_AdminNotification';
+        $this->_header_text = __('Messages Inbox');
         parent::_construct();
-        $this->buttonList->remove('add');
+        $this->button_list->remove('add');
     }
 }

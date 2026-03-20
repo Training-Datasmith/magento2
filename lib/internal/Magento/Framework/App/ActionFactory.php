@@ -1,34 +1,31 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Action Factory
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
  * @api
  * @since 100.0.2
  */
-class ActionFactory
+class Action_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager;
-
+    protected $_object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->_objectManager = $objectManager;
+        $this->_object_manager = $object_manager;
     }
-
     /**
      * Create action
      *
@@ -36,13 +33,11 @@ class ActionFactory
      * @return ActionInterface
      * @throws \InvalidArgumentException
      */
-    public function create($actionName)
+    public function create($action_name)
     {
-        if (!is_subclass_of($actionName, \Magento\Framework\App\ActionInterface::class)) {
-            throw new \InvalidArgumentException(
-                'The action name provided is invalid. Verify the action name and try again.'
-            );
+        if (!is_subclass_of($action_name, \Magento\Framework\App\Action_Interface::class)) {
+            throw new \InvalidArgumentException('The action name provided is invalid. Verify the action name and try again.');
         }
-        return $this->_objectManager->create($actionName);
+        return $this->_object_manager->create($action_name);
     }
 }

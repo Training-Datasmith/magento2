@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Backup;
 
 /**
@@ -13,20 +12,19 @@ namespace Magento\Framework\Backup;
  *
  * @api
  */
-interface SourceFileInterface
+interface Source_File_Interface
 {
     /**
      * Check if keep files of backup
      *
      * @return bool
      */
-    public function keepSourceFile();
-
+    public function keep_source_file();
     /**
      * Set if keep files of backup
      *
      * @param bool $keepSourceFile
      * @return $this
      */
-    public function setKeepSourceFile(bool $keepSourceFile);
+    public function set_keep_source_file(bool $keep_source_file);
 }

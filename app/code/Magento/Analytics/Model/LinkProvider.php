@@ -1,67 +1,53 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model;
 
-use Magento\Analytics\Api\Data\LinkInterfaceFactory;
-use Magento\Analytics\Api\LinkProviderInterface;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\UrlInterface;
-use Magento\Store\Model\StoreManagerInterface;
-
+use Magento\Analytics\Api\Data\Link_Interface_Factory;
+use Magento\Analytics\Api\Link_Provider_Interface;
+use Magento\Framework\Exception\No_Such_Entity_Exception;
+use Magento\Framework\Url_Interface;
+use Magento\Store\Model\Store_Manager_Interface;
 /**
  * Provides link to file with collected report data.
  */
-class LinkProvider implements LinkProviderInterface
+class Link_Provider implements Link_Provider_Interface
 {
     /**
      * @var LinkInterfaceFactory
      */
-    private $linkFactory;
-
-    public function __construct(
-        LinkInterfaceFactory $linkFactory,
-        private readonly FileInfoManager $fileInfoManager,
-        private readonly StoreManagerInterface $storeManager
-    ) {
-        $this->linkFactory = $linkFactory;
+    private $link_factory;
+    public function __construct(Link_Interface_Factory $link_factory, private readonly File_Info_Manager $file_info_manager, private readonly Store_Manager_Interface $store_manager)
+    {
+        $this->link_factory = $link_factory;
     }
-
     /**
      * Returns base url to file according to store configuration
      */
-    private function getBaseUrl(FileInfo $fileInfo): string
+    private function get_base_url(File_Info $file_info): string
     {
-        return $this->storeManager->getStore()->getBaseUrl(UrlInterface::URL_TYPE_MEDIA) . $fileInfo->getPath();
+        return $this->store_manager->get_store()->get_base_url(Url_Interface::URL_TYPE_MEDIA) . $file_info->get_path();
     }
-
     /**
      * Verify is requested file ready
      */
-    private function isFileReady(FileInfo $fileInfo): bool
+    private function is_file_ready(File_Info $file_info): bool
     {
-        return $fileInfo->getPath() && $fileInfo->getInitializationVector();
+        return $file_info->get_path() && $file_info->get_initialization_vector();
     }
-
     /**
      * @inheritdoc
      */
     public function get()
     {
-        $fileInfo = $this->fileInfoManager->load();
-        if (!$this->isFileReady($fileInfo)) {
-            throw new NoSuchEntityException(__('File is not ready yet.'));
+        $file_info = $this->file_info_manager->load();
+        if (!$this->is_file_ready($file_info)) {
+            throw new No_Such_Entity_Exception(__('File is not ready yet.'));
         }
-        return $this->linkFactory->create(
-            [
-                'url' => $this->getBaseUrl($fileInfo),
-                'initializationVector' => base64_encode($fileInfo->getInitializationVector()),
-            ]
-        );
+        return $this->link_factory->create(['url' => $this->get_base_url($file_info), 'initializationVector' => base64_encode($file_info->get_initialization_vector())]);
     }
 }

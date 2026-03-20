@@ -1,32 +1,29 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB;
 
 /**
  * Class MapperFactory
  * @package Magento\Framework\DB
  */
-class MapperFactory
+class Mapper_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->objectManager = $objectManager;
+        $this->object_manager = $object_manager;
     }
-
     /**
      * Create Mapper object
      *
@@ -35,16 +32,11 @@ class MapperFactory
      * @return MapperInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function create($className, array $arguments = [])
+    public function create($class_name, array $arguments = [])
     {
-        $mapper = $this->objectManager->create($className, $arguments);
-        if (!$mapper instanceof MapperInterface) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                new \Magento\Framework\Phrase(
-                    '%1 doesn\'t implement \Magento\Framework\DB\MapperInterface',
-                    [$className]
-                )
-            );
+        $mapper = $this->object_manager->create($class_name, $arguments);
+        if (!$mapper instanceof Mapper_Interface) {
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('%1 doesn\'t implement \Magento\Framework\DB\MapperInterface', [$class_name]));
         }
         return $mapper;
     }

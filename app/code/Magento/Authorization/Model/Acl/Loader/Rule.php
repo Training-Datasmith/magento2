@@ -4,101 +4,76 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Authorization\Model\Acl\Loader;
 
 use Magento\Framework\Acl;
-use Magento\Framework\Acl\Data\CacheInterface;
-use Magento\Framework\Acl\LoaderInterface;
-use Magento\Framework\Acl\Role\CurrentRoleContext;
-use Magento\Framework\Acl\RootResource;
+use Magento\Framework\Acl\Data\Cache_Interface;
+use Magento\Framework\Acl\Loader_Interface;
+use Magento\Framework\Acl\Role\Current_Role_Context;
+use Magento\Framework\Acl\Root_Resource;
 use Magento\Framework\Serialize\Serializer\Json;
-
 /**
  * Acl Rule Loader
  */
-class Rule implements LoaderInterface
+class Rule implements Loader_Interface
 {
     /**
      * Rules array cache key
      */
     public const ACL_RULE_CACHE_KEY = 'authorization_rule_cached_data';
-
     /**
      * Allow everything resource id
      */
     private const ALLOW_EVERYTHING = 'Magento_Backend::all';
-
-    private readonly string $cacheKey;
-
+    private readonly string $cache_key;
     /**
      * @var CurrentRoleContext
      */
-    private $roleContext;
-
+    private $role_context;
     /**
      * @param array $data
      * @param string $cacheKey
      * @SuppressWarnings(PHPMD.UnusedFormalParameter):
      */
-    public function __construct(
-        private readonly RootResource        $_rootResource,
-        protected \Magento\Framework\App\ResourceConnection  $_resource,
-        private readonly CacheInterface      $aclDataCache,
-        private readonly Json                $serializer,
-        ?array              $data = [],
-        ?string             $cacheKey = self::ACL_RULE_CACHE_KEY,
-        ?CurrentRoleContext $roleContext = null
-    ) {
-        $this->cacheKey = $cacheKey ?? self::ACL_RULE_CACHE_KEY;
-
-        $this->roleContext = $roleContext ?? \Magento\Framework\App\ObjectManager::getInstance()
-            ->get(CurrentRoleContext::class);
+    public function __construct(private readonly Root_Resource $_root_resource, protected \Magento\Framework\App\Resource_Connection $_resource, private readonly Cache_Interface $acl_data_cache, private readonly Json $serializer, ?array $data = [], ?string $cache_key = self::ACL_RULE_CACHE_KEY, ?Current_Role_Context $role_context = null)
+    {
+        $this->cache_key = $cache_key ?? self::ACL_RULE_CACHE_KEY;
+        $this->role_context = $role_context ?? \Magento\Framework\App\Object_Manager::get_instance()->get(Current_Role_Context::class);
     }
-
     /**
      * Populate ACL with rules from external storage
      */
-    public function populateAcl(Acl $acl): void
+    public function populate_acl(Acl $acl): void
     {
-        $roleId = $this->roleContext->getRoleId();
-        $result = ($roleId)
-            ? $this->applyPermissionsForRole($acl, (int)$roleId)
-            : $this->applyPermissionsAccordingToRules($acl);
-        $this->denyPermissionsForMissingRules($acl, $result);
+        $role_id = $this->role_context->get_role_id();
+        $result = $role_id ? $this->apply_permissions_for_role($acl, (int) $role_id) : $this->apply_permissions_according_to_rules($acl);
+        $this->deny_permissions_for_missing_rules($acl, $result);
     }
-
     /**
      * Apply permissions for a specific role
      */
-    private function applyPermissionsForRole(Acl $acl, int $roleId): array
+    private function apply_permissions_for_role(Acl $acl, int $role_id): array
     {
-        $appliedRolePermissionsPerResource = [];
-        foreach ($this->getRulesArrayForRole($roleId) as $rule) {
-            $appliedRolePermissionsPerResource =
-                $this->getAppliedRolePermissionsPerResource($rule, $acl, $appliedRolePermissionsPerResource);
+        $applied_role_permissions_per_resource = [];
+        foreach ($this->get_rules_array_for_role($role_id) as $rule) {
+            $applied_role_permissions_per_resource = $this->get_applied_role_permissions_per_resource($rule, $acl, $applied_role_permissions_per_resource);
         }
-
-        return $appliedRolePermissionsPerResource;
+        return $applied_role_permissions_per_resource;
     }
-
     /**
      * Apply ACL with rules
      *
      * @return array[]
      */
-    private function applyPermissionsAccordingToRules(Acl $acl): array
+    private function apply_permissions_according_to_rules(Acl $acl): array
     {
-        $appliedRolePermissionsPerResource = [];
-        foreach ($this->getRulesArray() as $rule) {
-            $appliedRolePermissionsPerResource =
-                $this->getAppliedRolePermissionsPerResource($rule, $acl, $appliedRolePermissionsPerResource);
+        $applied_role_permissions_per_resource = [];
+        foreach ($this->get_rules_array() as $rule) {
+            $applied_role_permissions_per_resource = $this->get_applied_role_permissions_per_resource($rule, $acl, $applied_role_permissions_per_resource);
         }
-
-        return $appliedRolePermissionsPerResource;
+        return $applied_role_permissions_per_resource;
     }
-
     /**
      * Deny permissions for missing rules
      *
@@ -106,146 +81,105 @@ class Rule implements LoaderInterface
      * when adding a new module and without re-saving all roles,
      * consider not present rules with deny permissions
      */
-    private function denyPermissionsForMissingRules(
-        Acl   $acl,
-        array $appliedRolePermissionsPerResource,
-    ): void {
-        $consolidatedDeniedRoleIds = array_unique(
-            array_merge(
-                ...array_column($appliedRolePermissionsPerResource, 'deny')
-            )
-        );
-
-        $hasAppliedPermissions = count($appliedRolePermissionsPerResource) > 0;
-        $hasDeniedRoles = count($consolidatedDeniedRoleIds) > 0;
-        $allAllowed = count($appliedRolePermissionsPerResource) === 1
-            && isset($appliedRolePermissionsPerResource[static::ALLOW_EVERYTHING]);
-
-        if ($hasAppliedPermissions && $hasDeniedRoles && !$allAllowed) {
+    private function deny_permissions_for_missing_rules(Acl $acl, array $applied_role_permissions_per_resource): void
+    {
+        $consolidated_denied_role_ids = array_unique(array_merge(...array_column($applied_role_permissions_per_resource, 'deny')));
+        $has_applied_permissions = count($applied_role_permissions_per_resource) > 0;
+        $has_denied_roles = count($consolidated_denied_role_ids) > 0;
+        $all_allowed = count($applied_role_permissions_per_resource) === 1 && isset($applied_role_permissions_per_resource[static::ALLOW_EVERYTHING]);
+        if ($has_applied_permissions && $has_denied_roles && !$all_allowed) {
             // Add the resources that are not present in the rules at all,
             // assuming that they must be denied for all roles by default
-            $resourcesUndefinedInAuthorizationRules =
-                array_diff($acl->getResources(), array_keys($appliedRolePermissionsPerResource));
-            $assumeDeniedRoleListPerResource =
-                array_fill_keys($resourcesUndefinedInAuthorizationRules, $consolidatedDeniedRoleIds);
-
+            $resources_undefined_in_authorization_rules = array_diff($acl->get_resources(), array_keys($applied_role_permissions_per_resource));
+            $assume_denied_role_list_per_resource = array_fill_keys($resources_undefined_in_authorization_rules, $consolidated_denied_role_ids);
             // Add the resources that are permitted for one role and not present in others at all,
             // assuming that they must be denied for all other roles by default
-            foreach ($appliedRolePermissionsPerResource as $resource => $permissions) {
-                $allowedRoles = $permissions['allow'];
-                $deniedRoles = $permissions['deny'];
-                $assumedDeniedRoles = array_diff($consolidatedDeniedRoleIds, $allowedRoles, $deniedRoles);
-                if ($assumedDeniedRoles) {
-                    $assumeDeniedRoleListPerResource[$resource] = $assumedDeniedRoles;
+            foreach ($applied_role_permissions_per_resource as $resource => $permissions) {
+                $allowed_roles = $permissions['allow'];
+                $denied_roles = $permissions['deny'];
+                $assumed_denied_roles = array_diff($consolidated_denied_role_ids, $allowed_roles, $denied_roles);
+                if ($assumed_denied_roles) {
+                    $assume_denied_role_list_per_resource[$resource] = $assumed_denied_roles;
                 }
             }
-
             // Deny permissions for missing rules
-            foreach ($assumeDeniedRoleListPerResource as $resource => $denyRoles) {
-                $acl->deny($denyRoles, $resource, null);
+            foreach ($assume_denied_role_list_per_resource as $resource => $deny_roles) {
+                $acl->deny($deny_roles, $resource, null);
             }
         }
     }
-
     /**
      * Get application ACL rules array.
      *
      * @return array
      */
-    private function getRulesArray()
+    private function get_rules_array()
     {
-        $rulesCachedData = $this->aclDataCache->load($this->cacheKey);
-        if ($rulesCachedData) {
-            return $this->serializer->unserialize($rulesCachedData);
+        $rules_cached_data = $this->acl_data_cache->load($this->cache_key);
+        if ($rules_cached_data) {
+            return $this->serializer->unserialize($rules_cached_data);
         }
-
-        $ruleTable = $this->_resource->getTableName('authorization_rule');
-        $connection = $this->_resource->getConnection();
-        $select = $connection->select()
-            ->from(['r' => $ruleTable]);
-
-        $rulesArr = $connection->fetchAll($select);
-
-        $this->aclDataCache->save($this->serializer->serialize($rulesArr), $this->cacheKey);
-
-        return $rulesArr;
+        $rule_table = $this->_resource->get_table_name('authorization_rule');
+        $connection = $this->_resource->get_connection();
+        $select = $connection->select()->from(['r' => $rule_table]);
+        $rules_arr = $connection->fetch_all($select);
+        $this->acl_data_cache->save($this->serializer->serialize($rules_arr), $this->cache_key);
+        return $rules_arr;
     }
-
     /**
      * Get application ACL rules array for a specific role.
      */
-    private function getRulesArrayForRole(int $roleId): array
+    private function get_rules_array_for_role(int $role_id): array
     {
-        $groupRoleId = $this->resolveGroupRoleId($roleId);
-        $cacheKey = hash('sha256', self::ACL_RULE_CACHE_KEY . '_' . $groupRoleId);
-        $rulesCachedData = $this->aclDataCache->load($cacheKey);
-        if ($rulesCachedData) {
-            return $this->serializer->unserialize($rulesCachedData);
+        $group_role_id = $this->resolve_group_role_id($role_id);
+        $cache_key = hash('sha256', self::ACL_RULE_CACHE_KEY . '_' . $group_role_id);
+        $rules_cached_data = $this->acl_data_cache->load($cache_key);
+        if ($rules_cached_data) {
+            return $this->serializer->unserialize($rules_cached_data);
         }
-
-        $ruleTable = $this->_resource->getTableName('authorization_rule');
-        $connection = $this->_resource->getConnection();
-        $select = $connection->select()
-            ->from(['r' => $ruleTable])
-            ->where('role_id = ?', $groupRoleId)
-            ->order('rule_id ASC');
-
-        $rulesArr = $connection->fetchAll($select);
-
-        $this->aclDataCache->save($this->serializer->serialize($rulesArr), $cacheKey);
-
-        return $rulesArr;
+        $rule_table = $this->_resource->get_table_name('authorization_rule');
+        $connection = $this->_resource->get_connection();
+        $select = $connection->select()->from(['r' => $rule_table])->where('role_id = ?', $group_role_id)->order('rule_id ASC');
+        $rules_arr = $connection->fetch_all($select);
+        $this->acl_data_cache->save($this->serializer->serialize($rules_arr), $cache_key);
+        return $rules_arr;
     }
-
     /**
      * Resolve the group role id for a given role id
      */
-    private function resolveGroupRoleId(int $roleId): int
+    private function resolve_group_role_id(int $role_id): int
     {
-        $roleTable = $this->_resource->getTableName('authorization_role');
-        $connection = $this->_resource->getConnection();
-        $select = $connection->select()
-            ->from($roleTable, ['role_type', 'parent_id'])
-            ->where('role_id = ?', $roleId)
-            ->limit(1);
-
-        $row = $connection->fetchRow($select);
-        if (is_array($row) && isset($row['role_type']) && $row['role_type'] === 'U'
-            && (int)($row['parent_id'] ?? 0) > 0
-        ) {
-            return (int)$row['parent_id'];
+        $role_table = $this->_resource->get_table_name('authorization_role');
+        $connection = $this->_resource->get_connection();
+        $select = $connection->select()->from($role_table, ['role_type', 'parent_id'])->where('role_id = ?', $role_id)->limit(1);
+        $row = $connection->fetch_row($select);
+        if (is_array($row) && isset($row['role_type']) && $row['role_type'] === 'U' && (int) ($row['parent_id'] ?? 0) > 0) {
+            return (int) $row['parent_id'];
         }
-        return $roleId;
+        return $role_id;
     }
-
     /**
      * Apply rule to ACL and return applied permissions per resource
      */
-    private function getAppliedRolePermissionsPerResource(
-        array $rule,
-        Acl $acl,
-        array $appliedRolePermissionsPerResource
-    ): array {
+    private function get_applied_role_permissions_per_resource(array $rule, Acl $acl, array $applied_role_permissions_per_resource): array
+    {
         $role = $rule['role_id'];
         $resource = $rule['resource_id'];
         $privileges = !empty($rule['privileges']) ? explode(',', (string) $rule['privileges']) : null;
-
-        if ($acl->hasResource($resource)) {
-
-            $appliedRolePermissionsPerResource[$resource]['allow'] ??= [];
-            $appliedRolePermissionsPerResource[$resource]['deny'] ??= [];
-
+        if ($acl->has_resource($resource)) {
+            $applied_role_permissions_per_resource[$resource]['allow'] ??= [];
+            $applied_role_permissions_per_resource[$resource]['deny'] ??= [];
             if ($rule['permission'] == 'allow') {
-                if ($resource === $this->_rootResource->getId()) {
+                if ($resource === $this->_root_resource->get_id()) {
                     $acl->allow($role, null, $privileges);
                 }
                 $acl->allow($role, $resource, $privileges);
-                $appliedRolePermissionsPerResource[$resource]['allow'][] = $role;
+                $applied_role_permissions_per_resource[$resource]['allow'][] = $role;
             } elseif ($rule['permission'] == 'deny') {
                 $acl->deny($role, $resource, $privileges);
-                $appliedRolePermissionsPerResource[$resource]['deny'][] = $role;
+                $applied_role_permissions_per_resource[$resource]['deny'][] = $role;
             }
         }
-        return $appliedRolePermissionsPerResource;
+        return $applied_role_permissions_per_resource;
     }
 }

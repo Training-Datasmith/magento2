@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Event;
 
 /**
  * Event manager used to dispatch global events.
  */
-class Manager implements ManagerInterface
+class Manager implements Manager_Interface
 {
     /**
      * Events cache
@@ -19,29 +18,25 @@ class Manager implements ManagerInterface
      * @var array
      */
     protected $_events = [];
-
     /**
      * Event invoker
      *
      * @var InvokerInterface
      */
     protected $_invoker;
-
     /**
      * @var ConfigInterface
      */
-    protected $_eventConfig;
-
+    protected $_event_config;
     /**
      * @param InvokerInterface $invoker
      * @param ConfigInterface $eventConfig
      */
-    public function __construct(InvokerInterface $invoker, ConfigInterface $eventConfig)
+    public function __construct(Invoker_Interface $invoker, Config_Interface $event_config)
     {
         $this->_invoker = $invoker;
-        $this->_eventConfig = $eventConfig;
+        $this->_event_config = $event_config;
     }
-
     /**
      * Dispatch event
      *
@@ -52,22 +47,20 @@ class Manager implements ManagerInterface
      * @param array $data
      * @return void
      */
-    public function dispatch($eventName, array $data = [])
+    public function dispatch($event_name, array $data = [])
     {
-        $eventName = $eventName !== null ? mb_strtolower($eventName) : '';
-        \Magento\Framework\Profiler::start('EVENT:' . $eventName, ['group' => 'EVENT', 'name' => $eventName]);
-        foreach ($this->_eventConfig->getObservers($eventName) as $observerConfig) {
+        $event_name = $event_name !== null ? mb_strtolower($event_name) : '';
+        \Magento\Framework\Profiler::start('EVENT:' . $event_name, ['group' => 'EVENT', 'name' => $event_name]);
+        foreach ($this->_event_config->get_observers($event_name) as $observer_config) {
             $event = new \Magento\Framework\Event($data);
-            $event->setName($eventName);
-
+            $event->set_name($event_name);
             $wrapper = new Observer();
             // phpcs:ignore Magento2.Performance.ForeachArrayMerge
-            $wrapper->setData(array_merge(['event' => $event], $data));
-
-            \Magento\Framework\Profiler::start('OBSERVER:' . $observerConfig['name']);
-            $this->_invoker->dispatch($observerConfig, $wrapper);
-            \Magento\Framework\Profiler::stop('OBSERVER:' . $observerConfig['name']);
+            $wrapper->set_data(array_merge(['event' => $event], $data));
+            \Magento\Framework\Profiler::start('OBSERVER:' . $observer_config['name']);
+            $this->_invoker->dispatch($observer_config, $wrapper);
+            \Magento\Framework\Profiler::stop('OBSERVER:' . $observer_config['name']);
         }
-        \Magento\Framework\Profiler::stop('EVENT:' . $eventName);
+        \Magento\Framework\Profiler::stop('EVENT:' . $event_name);
     }
 }

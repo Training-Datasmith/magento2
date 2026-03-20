@@ -1,76 +1,60 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Scope;
 
 use InvalidArgumentException;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\App\ScopeResolverPool;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\App\Config\Scope_Config_Interface;
+use Magento\Framework\App\Scope_Resolver_Pool;
+use Magento\Framework\Exception\Localized_Exception;
+use Magento\Framework\Exception\No_Such_Entity_Exception;
 use Magento\Framework\Phrase;
-
 /**
  * Class Validator validates scope and scope code.
  */
-class Validator implements ValidatorInterface
+class Validator implements Validator_Interface
 {
     /**
      * @var ScopeResolverPool
      */
-    private $scopeResolverPool;
-
+    private $scope_resolver_pool;
     /**
      * @param ScopeResolverPool $scopeResolverPool
      */
-    public function __construct(ScopeResolverPool $scopeResolverPool)
+    public function __construct(Scope_Resolver_Pool $scope_resolver_pool)
     {
-        $this->scopeResolverPool = $scopeResolverPool;
+        $this->scope_resolver_pool = $scope_resolver_pool;
     }
-
     /**
      * @inheritdoc
      */
-    public function isValid($scope, $scopeCode = null)
+    public function is_valid($scope, $scope_code = null)
     {
-        if ($scope === ScopeConfigInterface::SCOPE_TYPE_DEFAULT && empty($scopeCode)) {
+        if ($scope === Scope_Config_Interface::SCOPE_TYPE_DEFAULT && empty($scope_code)) {
             return true;
         }
-
-        if ($scope === ScopeConfigInterface::SCOPE_TYPE_DEFAULT && !empty($scopeCode)) {/** @phpstan-ignore-line */
-            throw new LocalizedException(new Phrase(
-                'The "%1" scope can\'t include a scope code. Try again without entering a scope code.',
-                [ScopeConfigInterface::SCOPE_TYPE_DEFAULT]
-            ));
+        if ($scope === Scope_Config_Interface::SCOPE_TYPE_DEFAULT && !empty($scope_code)) {
+            /** @phpstan-ignore-line */
+            throw new Localized_Exception(new Phrase('The "%1" scope can\'t include a scope code. Try again without entering a scope code.', [Scope_Config_Interface::SCOPE_TYPE_DEFAULT]));
         }
-
         if (empty($scope)) {
-            throw new LocalizedException(new Phrase('A scope is missing. Enter a scope and try again.'));
+            throw new Localized_Exception(new Phrase('A scope is missing. Enter a scope and try again.'));
         }
-
-        $this->validateScopeCode($scopeCode);
-
+        $this->validate_scope_code($scope_code);
         try {
-            $scopeResolver = $this->scopeResolverPool->get($scope);
-            $scopeResolver->getScope($scopeCode)->getId();
+            $scope_resolver = $this->scope_resolver_pool->get($scope);
+            $scope_resolver->get_scope($scope_code)->get_id();
         } catch (InvalidArgumentException $e) {
-            throw new LocalizedException(
-                new Phrase('The "%1" value doesn\'t exist. Enter another value and try again.', [$scope])
-            );
-        } catch (NoSuchEntityException $e) {
-            throw new LocalizedException(
-                new Phrase('The "%1" value doesn\'t exist. Enter another value and try again.', [$scopeCode])
-            );
+            throw new Localized_Exception(new Phrase('The "%1" value doesn\'t exist. Enter another value and try again.', [$scope]));
+        } catch (No_Such_Entity_Exception $e) {
+            throw new Localized_Exception(new Phrase('The "%1" value doesn\'t exist. Enter another value and try again.', [$scope_code]));
         }
-
         return true;
     }
-
     /**
      * Validate scope code and throw exception if not valid.
      *
@@ -78,17 +62,13 @@ class Validator implements ValidatorInterface
      * @return void
      * @throws LocalizedException if scope code is empty or has a wrong format
      */
-    private function validateScopeCode($scopeCode)
+    private function validate_scope_code($scope_code)
     {
-        if (empty($scopeCode)) {
-            throw new LocalizedException(new Phrase('A scope code is missing. Enter a code and try again.'));
+        if (empty($scope_code)) {
+            throw new Localized_Exception(new Phrase('A scope code is missing. Enter a code and try again.'));
         }
-
-        if (!preg_match('/^[a-z]+[a-z0-9_]*$/i', $scopeCode)) {
-            throw new LocalizedException(new Phrase(
-                'The scope code can include only letters (a-z), numbers (0-9) and underscores (_). '
-                . 'Also, the first character must be a letter.'
-            ));
+        if (!preg_match('/^[a-z]+[a-z0-9_]*$/i', $scope_code)) {
+            throw new Localized_Exception(new Phrase('The scope code can include only letters (a-z), numbers (0-9) and underscores (_). ' . 'Also, the first character must be a letter.'));
         }
     }
 }

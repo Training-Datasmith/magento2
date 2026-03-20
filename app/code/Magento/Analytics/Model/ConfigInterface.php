@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model;
 
 /**
  * Interface for Analytics Config.
  */
-interface ConfigInterface
+interface Config_Interface
 {
     /**
      * Get config value by key.

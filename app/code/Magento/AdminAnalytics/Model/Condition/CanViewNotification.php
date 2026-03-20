@@ -4,58 +4,52 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Admin_Analytics\Model\Condition;
 
-namespace Magento\AdminAnalytics\Model\Condition;
-
-use Magento\AdminAnalytics\Model\ResourceModel\Viewer\Logger;
-use Magento\Framework\App\CacheInterface;
-use Magento\Framework\View\Layout\Condition\VisibilityConditionInterface;
-
+use Magento\Admin_Analytics\Model\Resource_Model\Viewer\Logger;
+use Magento\Framework\App\Cache_Interface;
+use Magento\Framework\View\Layout\Condition\Visibility_Condition_Interface;
 /**
  * Dynamic validator for UI admin analytics notification, control UI component visibility.
  */
-class CanViewNotification implements VisibilityConditionInterface
+class Can_View_Notification implements Visibility_Condition_Interface
 {
     /**
      * Unique condition name.
      */
-    private static string $conditionName = 'can_view_admin_usage_notification';
-
+    private static string $condition_name = 'can_view_admin_usage_notification';
     /**
      * Prefix for cache
      */
-    private static string $cachePrefix = 'admin-usage-notification-popup';
-
-    public function __construct(private readonly Logger $viewerLogger, private readonly CacheInterface $cacheStorage)
+    private static string $cache_prefix = 'admin-usage-notification-popup';
+    public function __construct(private readonly Logger $viewer_logger, private readonly Cache_Interface $cache_storage)
     {
     }
-
     /**
      * Validate if notification popup can be shown and set the notification flag
      *
      * @param array $arguments Attributes from element node.
      * @inheritdoc
      */
-    public function isVisible(array $arguments): bool
+    public function is_visible(array $arguments): bool
     {
-        $cacheKey = self::$cachePrefix;
-        $value = $this->cacheStorage->load($cacheKey);
+        $cache_key = self::$cache_prefix;
+        $value = $this->cache_storage->load($cache_key);
         if ($value !== 'log-exists') {
-            $logExists = $this->viewerLogger->checkLogExists();
-            if ($logExists) {
-                $this->cacheStorage->save('log-exists', $cacheKey);
+            $log_exists = $this->viewer_logger->check_log_exists();
+            if ($log_exists) {
+                $this->cache_storage->save('log-exists', $cache_key);
             }
-            return !$logExists;
+            return !$log_exists;
         }
         return false;
     }
-
     /**
      * Get condition name
      */
-    public function getName(): string
+    public function get_name(): string
     {
-        return self::$conditionName;
+        return self::$condition_name;
     }
 }

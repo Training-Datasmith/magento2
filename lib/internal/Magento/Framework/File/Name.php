@@ -4,16 +4,14 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\File;
 
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Exception\File_System_Exception;
 use Magento\Framework\Filesystem;
-use Magento\Framework\Filesystem\DriverInterface;
-
+use Magento\Framework\Filesystem\Driver_Interface;
 /**
  * Utility for generating a unique file name
  */
@@ -23,15 +21,13 @@ class Name
      * @var Filesystem
      */
     private $filesystem;
-
     /**
      * @param Filesystem|null $filesystem
      */
     public function __construct(?Filesystem $filesystem = null)
     {
-        $this->filesystem = $filesystem ?: ObjectManager::getInstance()->get(Filesystem::class);
+        $this->filesystem = $filesystem ?: Object_Manager::get_instance()->get(Filesystem::class);
     }
-
     /**
      * Gets new file name if the given name is in use
      *
@@ -39,28 +35,19 @@ class Name
      * @return string
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function getNewFileName(string $destinationFile)
+    public function get_new_file_name(string $destination_file)
     {
-        $fileInfo = $this->getPathInfo($destinationFile);
-        $driver = $this->filesystem->getDirectoryWrite(
-            DirectoryList::ROOT,
-            Filesystem\DriverPool::FILE
-        )->getDriver();
-
-        if ($driver->isExists($destinationFile)) {
-            return $this->generateFileName($driver, $fileInfo);
+        $file_info = $this->get_path_info($destination_file);
+        $driver = $this->filesystem->get_directory_write(Directory_List::ROOT, Filesystem\Driver_Pool::FILE)->get_driver();
+        if ($driver->is_exists($destination_file)) {
+            return $this->generate_file_name($driver, $file_info);
         }
-
         /**
          * Try with non-local driver.
          */
-        $driver = $this->filesystem->getDirectoryWrite(DirectoryList::ROOT)->getDriver();
-
-        return $driver->isExists($destinationFile)
-            ? $this->generateFileName($driver, $fileInfo)
-            : $fileInfo['basename'];
+        $driver = $this->filesystem->get_directory_write(Directory_List::ROOT)->get_driver();
+        return $driver->is_exists($destination_file) ? $this->generate_file_name($driver, $file_info) : $file_info['basename'];
     }
-
     /**
      * Generates new file name until file with provided name doesn't exist
      *
@@ -70,23 +57,22 @@ class Name
      * @return string
      * @throws FileSystemException
      */
-    private function generateFileName($driver, $fileInfo, $index = 1)
+    private function generate_file_name($driver, $file_info, $index = 1)
     {
-        $baseName = $fileInfo['filename'] . '_' . $index . '.' . $fileInfo['extension'];
-        if ($driver->isExists($fileInfo['dirname'] . '/' . $baseName)) {
-            return $this->generateFileName($driver, $fileInfo, ++$index);
+        $base_name = $file_info['filename'] . '_' . $index . '.' . $file_info['extension'];
+        if ($driver->is_exists($file_info['dirname'] . '/' . $base_name)) {
+            return $this->generate_file_name($driver, $file_info, ++$index);
         }
-        return $baseName;
+        return $base_name;
     }
-
     /**
      * Gets the path information from a given file
      *
      * @param string $destinationFile
      * @return string|string[]
      */
-    private function getPathInfo(string $destinationFile)
+    private function get_path_info(string $destination_file)
     {
-        return pathinfo($destinationFile);
+        return pathinfo($destination_file);
     }
 }

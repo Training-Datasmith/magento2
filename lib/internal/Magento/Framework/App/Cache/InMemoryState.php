@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Cache;
 
 /**
@@ -13,60 +12,52 @@ namespace Magento\Framework\App\Cache;
  *
  * Used to ease testing of cache state modifications
  */
-class InMemoryState implements StateInterface
+class In_Memory_State implements State_Interface
 {
     /** @var bool[] */
-    private $runtimeState = [];
-
+    private $runtime_state = [];
     /** @var bool[] */
-    private $persistedState = [];
-
+    private $persisted_state = [];
     /**
      * InMemoryState constructor.
      * @param array $persistedState
      */
-    public function __construct(array $persistedState = [])
+    public function __construct(array $persisted_state = [])
     {
-        $this->persistedState = $persistedState;
+        $this->persisted_state = $persisted_state;
     }
-
     /**
      * @inheritDoc
      */
-    public function isEnabled($cacheType)
+    public function is_enabled($cache_type)
     {
-        return $this->runtimeState[$cacheType]
-            ?? $this->persistedState[$cacheType]
-            ?? false;
+        return $this->runtime_state[$cache_type] ?? $this->persisted_state[$cache_type] ?? false;
     }
-
     /**
      * @inheritDoc
      */
-    public function setEnabled($cacheType, $isEnabled)
+    public function set_enabled($cache_type, $is_enabled)
     {
-        $this->runtimeState[$cacheType] = $isEnabled;
+        $this->runtime_state[$cache_type] = $is_enabled;
     }
-
     /**
      * @inheritDoc
      */
     public function persist()
     {
-        $this->persistedState = $this->runtimeState + $this->persistedState;
-        $this->runtimeState = [];
+        $this->persisted_state = $this->runtime_state + $this->persisted_state;
+        $this->runtime_state = [];
     }
-
     /**
      * Creates new instance with persistent state updated values
      *
      * @param bool[] $state
      * @return self
      */
-    public function withPersistedState(array $state): self
+    public function with_persisted_state(array $state): self
     {
-        $newState = new self();
-        $newState->persistedState = $state + $this->persistedState;
-        return $newState;
+        $new_state = new self();
+        $new_state->persisted_state = $state + $this->persisted_state;
+        return $new_state;
     }
 }

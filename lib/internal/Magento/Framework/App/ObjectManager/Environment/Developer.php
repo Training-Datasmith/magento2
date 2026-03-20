@@ -1,94 +1,69 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\App\ObjectManager\Environment;
+namespace Magento\Framework\App\Object_Manager\Environment;
 
 use Magento\Framework\App\Area;
-use Magento\Framework\App\EnvironmentInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Interception\ObjectManager\ConfigInterface;
-
-class Developer extends AbstractEnvironment implements EnvironmentInterface
+use Magento\Framework\App\Environment_Interface;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Interception\Object_Manager\Config_Interface;
+class Developer extends Abstract_Environment implements Environment_Interface
 {
     /**#@+
      * Mode name
      */
     public const MODE = 'developer';
-
     /**
      * @var string
      */
     protected $mode = self::MODE;
-
     /**
      * @var ConfigInterface
      */
     protected $config;
-
     /**
      * @var string
      */
-    protected $configPreference = \Magento\Framework\ObjectManager\Factory\Dynamic\Developer::class;
-
+    protected $config_preference = \Magento\Framework\Object_Manager\Factory\Dynamic\Developer::class;
     /**
      * Returns initialized di config entity
      *
      * @return ConfigInterface
      */
-    public function getDiConfig()
+    public function get_di_config()
     {
         if (!$this->config) {
-            $this->config = new \Magento\Framework\Interception\ObjectManager\Config\Developer(
-                $this->envFactory->getRelations(),
-                $this->envFactory->getDefinitions()
-            );
+            $this->config = new \Magento\Framework\Interception\Object_Manager\Config\Developer($this->env_factory->get_relations(), $this->env_factory->get_definitions());
         }
-
         return $this->config;
     }
-
     /**
      * As developer environment does not have config loader, we return null
      *
      * @return null
      */
-    public function getObjectManagerConfigLoader()
+    public function get_object_manager_config_loader()
     {
         return null;
     }
-
     /**
      * @inheritDoc
      */
-    public function configureObjectManager(ConfigInterface $diConfig, &$sharedInstances)
+    public function configure_object_manager(Config_Interface $di_config, &$shared_instances)
     {
-        $originalSharedInstances = $sharedInstances;
-        $objectManager = ObjectManager::getInstance();
-        $sharedInstances[\Magento\Framework\ObjectManager\ConfigLoaderInterface::class] = $objectManager
-            ->get(\Magento\Framework\App\ObjectManager\ConfigLoader::class);
-
-        $diConfig->setCache(
-            $objectManager->get(\Magento\Framework\App\ObjectManager\ConfigCache::class)
-        );
-
-        $objectManager->configure(
-            $objectManager
-                ->get(\Magento\Framework\App\ObjectManager\ConfigLoader::class)
-                ->load(Area::AREA_GLOBAL)
-        );
-        $objectManager->get(\Magento\Framework\Config\ScopeInterface::class)
-            ->setCurrentScope('global');
-        $diConfig->setInterceptionConfig(
-            $objectManager->get(\Magento\Framework\Interception\Config\Config::class)
-        );
+        $original_shared_instances = $shared_instances;
+        $object_manager = Object_Manager::get_instance();
+        $shared_instances[\Magento\Framework\Object_Manager\Config_Loader_Interface::class] = $object_manager->get(\Magento\Framework\App\Object_Manager\Config_Loader::class);
+        $di_config->set_cache($object_manager->get(\Magento\Framework\App\Object_Manager\Config_Cache::class));
+        $object_manager->configure($object_manager->get(\Magento\Framework\App\Object_Manager\Config_Loader::class)->load(Area::AREA_GLOBAL));
+        $object_manager->get(\Magento\Framework\Config\Scope_Interface::class)->set_current_scope('global');
+        $di_config->set_interception_config($object_manager->get(\Magento\Framework\Interception\Config\Config::class));
         /** Reset the shared instances once interception config is set so classes can be intercepted if necessary */
-        $sharedInstances = $originalSharedInstances;
-        $sharedInstances[\Magento\Framework\ObjectManager\ConfigLoaderInterface::class] = $objectManager
-            ->get(\Magento\Framework\App\ObjectManager\ConfigLoader::class);
+        $shared_instances = $original_shared_instances;
+        $shared_instances[\Magento\Framework\Object_Manager\Config_Loader_Interface::class] = $object_manager->get(\Magento\Framework\App\Object_Manager\Config_Loader::class);
     }
 }

@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Backend form key content block
  */
-
 namespace Magento\Backend\Block\Admin;
 
 /**
@@ -23,8 +21,8 @@ class Formkey extends \Magento\Backend\Block\Template
      *
      * @return string
      */
-    public function getFormKey()
+    public function get_form_key()
     {
-        return $this->formKey->getFormKey();
+        return $this->form_key->get_form_key();
     }
 }

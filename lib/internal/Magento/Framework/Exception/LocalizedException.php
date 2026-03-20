@@ -1,36 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Localized Exception
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Exception;
 
 use Magento\Framework\Phrase;
 use Magento\Framework\Phrase\Renderer\Placeholder;
-
 /**
  * Localized exception
  *
  * @api
  * @since 100.0.2
  */
-class LocalizedException extends \Exception
+class Localized_Exception extends \Exception
 {
     /**
      * @var \Magento\Framework\Phrase
      */
     protected $phrase;
-
     /**
      * @var string
      */
-    protected $logMessage;
-
+    protected $log_message;
     /**
      * @param \Magento\Framework\Phrase $phrase
      * @param \Exception $cause
@@ -39,40 +35,37 @@ class LocalizedException extends \Exception
     public function __construct(Phrase $phrase, ?\Exception $cause = null, $code = 0)
     {
         $this->phrase = $phrase;
-        parent::__construct($phrase->render(), (int)$code, $cause);
+        parent::__construct($phrase->render(), (int) $code, $cause);
     }
-
     /**
      * Get the un-processed message, without the parameters filled in
      *
      * @return string
      */
-    public function getRawMessage()
+    public function get_raw_message()
     {
-        return $this->phrase->getText();
+        return $this->phrase->get_text();
     }
-
     /**
      * Get parameters, corresponding to placeholders in raw exception message
      *
      * @return array
      */
-    public function getParameters()
+    public function get_parameters()
     {
-        return $this->phrase->getArguments();
+        return $this->phrase->get_arguments();
     }
-
     /**
      * Get the un-localized message, but with the parameters filled in
      *
      * @return string
      */
-    public function getLogMessage()
+    public function get_log_message()
     {
-        if ($this->logMessage === null) {
+        if ($this->log_message === null) {
             $renderer = new Placeholder();
-            $this->logMessage = $renderer->render([$this->getRawMessage()], $this->getParameters());
+            $this->log_message = $renderer->render([$this->get_raw_message()], $this->get_parameters());
         }
-        return $this->logMessage;
+        return $this->log_message;
     }
 }

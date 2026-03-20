@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application area front name resolver
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Area;
 
 /**
@@ -22,7 +21,7 @@ namespace Magento\Framework\App\Area;
  * @api
  * @since 100.0.2
  */
-interface FrontNameResolverInterface
+interface Front_Name_Resolver_Interface
 {
     /**
      * Retrieve front name
@@ -30,5 +29,5 @@ interface FrontNameResolverInterface
      * @param bool $checkHost if true, return front name only if it is valid for the current host
      * @return string|bool
      */
-    public function getFrontName($checkHost = false);
+    public function get_front_name($check_host = false);
 }

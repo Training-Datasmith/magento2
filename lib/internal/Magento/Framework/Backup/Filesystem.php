@@ -1,83 +1,73 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Backup;
 
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Object_Manager;
 use Magento\Framework\Archive\Gz;
 use Magento\Framework\Backup\Archive\Tar;
-use Magento\Framework\Backup\Exception\NotEnoughFreeSpace;
-use Magento\Framework\Backup\Exception\NotEnoughPermissions;
+use Magento\Framework\Backup\Exception\Not_Enough_Free_Space;
+use Magento\Framework\Backup\Exception\Not_Enough_Permissions;
 use Magento\Framework\Backup\Filesystem\Helper;
 use Magento\Framework\Backup\Filesystem\Rollback\Fs;
 use Magento\Framework\Backup\Filesystem\Rollback\Ftp;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\Localized_Exception;
 use Magento\Framework\Phrase;
-
 /**
  * Class to work with filesystem backups
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class Filesystem extends AbstractBackup
+class Filesystem extends Abstract_Backup
 {
     /**
      * Paths that ignored when creating or rolling back snapshot
      *
      * @var array
      */
-    protected $_ignorePaths = [];
-
+    protected $_ignore_paths = [];
     /**
      * Whether use ftp account for rollback procedure
      *
      * @var bool
      */
-    protected $_useFtp = false;
-
+    protected $_use_ftp = false;
     /**
      * Ftp host
      *
      * @var string
      */
-    protected $_ftpHost;
-
+    protected $_ftp_host;
     /**
      * Ftp username
      *
      * @var string
      */
-    protected $_ftpUser;
-
+    protected $_ftp_user;
     /**
      * Password to ftp account
      *
      * @var string
      */
-    protected $_ftpPass;
-
+    protected $_ftp_pass;
     /**
      * Ftp path to Magento installation
      *
      * @var string
      */
-    protected $_ftpPath;
-
+    protected $_ftp_path;
     /**
      * @var Ftp
      */
-    protected $rollBackFtp;
-
+    protected $roll_back_ftp;
     /**
      * @var Fs
      */
-    protected $rollBackFs;
-
+    protected $roll_back_fs;
     /**
      * Implementation Rollback functionality for Filesystem
      *
@@ -86,18 +76,14 @@ class Filesystem extends AbstractBackup
      */
     public function rollback()
     {
-        $this->_lastOperationSucceed = false;
-
+        $this->_last_operation_succeed = false;
         set_time_limit(0);
         ignore_user_abort(true);
-
-        $rollbackWorker = $this->_useFtp ? $this->getRollBackFtp() : $this->getRollBackFs();
-        $rollbackWorker->run();
-
-        $this->_lastOperationSucceed = true;
-        return $this->_lastOperationSucceed;
+        $rollback_worker = $this->_use_ftp ? $this->get_roll_back_ftp() : $this->get_roll_back_fs();
+        $rollback_worker->run();
+        $this->_last_operation_succeed = true;
+        return $this->_last_operation_succeed;
     }
-
     /**
      * Implementation Create Backup functionality for Filesystem
      *
@@ -108,55 +94,30 @@ class Filesystem extends AbstractBackup
     {
         set_time_limit(0);
         ignore_user_abort(true);
-
-        $this->_lastOperationSucceed = false;
-
-        $this->_checkBackupsDir();
-
-        $fsHelper = new Helper();
-
-        $filesInfo = $fsHelper->getInfo(
-            $this->getRootDir(),
-            Helper::INFO_READABLE |
-            Helper::INFO_SIZE,
-            $this->getIgnorePaths()
-        );
-
-        if (!$filesInfo['readable']) {
-            throw new NotEnoughPermissions(
-                new Phrase('Not enough permissions to read files for backup')
-            );
+        $this->_last_operation_succeed = false;
+        $this->_check_backups_dir();
+        $fs_helper = new Helper();
+        $files_info = $fs_helper->get_info($this->get_root_dir(), Helper::INFO_READABLE | Helper::INFO_SIZE, $this->get_ignore_paths());
+        if (!$files_info['readable']) {
+            throw new Not_Enough_Permissions(new Phrase('Not enough permissions to read files for backup'));
         }
-        $this->validateAvailableDiscSpace($this->getBackupsDir(), $filesInfo['size']);
-
-        $tarTmpPath = $this->_getTarTmpPath();
-
-        $tarPacker = new Tar();
-        $tarPacker->setSkipFiles($this->getIgnorePaths())->pack($this->getRootDir(), $tarTmpPath, true);
-
-        if (!is_file($tarTmpPath) || filesize($tarTmpPath) == 0) {
-            throw new LocalizedException(
-                new Phrase('Failed to create backup')
-            );
+        $this->validate_available_disc_space($this->get_backups_dir(), $files_info['size']);
+        $tar_tmp_path = $this->_get_tar_tmp_path();
+        $tar_packer = new Tar();
+        $tar_packer->set_skip_files($this->get_ignore_paths())->pack($this->get_root_dir(), $tar_tmp_path, true);
+        if (!is_file($tar_tmp_path) || filesize($tar_tmp_path) == 0) {
+            throw new Localized_Exception(new Phrase('Failed to create backup'));
         }
-
-        $backupPath = $this->getBackupPath();
-
-        $gzPacker = new Gz();
-        $gzPacker->pack($tarTmpPath, $backupPath);
-
-        if (!is_file($backupPath) || filesize($backupPath) == 0) {
-            throw new LocalizedException(
-                new Phrase('Failed to create backup')
-            );
+        $backup_path = $this->get_backup_path();
+        $gz_packer = new Gz();
+        $gz_packer->pack($tar_tmp_path, $backup_path);
+        if (!is_file($backup_path) || filesize($backup_path) == 0) {
+            throw new Localized_Exception(new Phrase('Failed to create backup'));
         }
-
-        @unlink($tarTmpPath);
-
-        $this->_lastOperationSucceed = true;
-        return $this->_lastOperationSucceed;
+        @unlink($tar_tmp_path);
+        $this->_last_operation_succeed = true;
+        return $this->_last_operation_succeed;
     }
-
     /**
      * Validate if disk space is available for creating backup
      *
@@ -165,20 +126,14 @@ class Filesystem extends AbstractBackup
      * @return void
      * @throws LocalizedException
      */
-    public function validateAvailableDiscSpace($backupDir, $size)
+    public function validate_available_disc_space($backup_dir, $size)
     {
-        $freeSpace = disk_free_space($backupDir);
-        $requiredSpace = 2 * $size;
-        if ($requiredSpace > $freeSpace) {
-            throw new NotEnoughFreeSpace(
-                new Phrase(
-                    'Warning: necessary space for backup is ' . (ceil($requiredSpace) / 1024)
-                    . 'MB, but your free disc space is ' . (ceil($freeSpace) / 1024) . 'MB.'
-                )
-            );
+        $free_space = disk_free_space($backup_dir);
+        $required_space = 2 * $size;
+        if ($required_space > $free_space) {
+            throw new Not_Enough_Free_Space(new Phrase('Warning: necessary space for backup is ' . ceil($required_space) / 1024 . 'MB, but your free disc space is ' . ceil($free_space) / 1024 . 'MB.'));
         }
     }
-
     /**
      * Force class to use ftp for rollback procedure
      *
@@ -188,16 +143,15 @@ class Filesystem extends AbstractBackup
      * @param string $path
      * @return $this
      */
-    public function setUseFtp($host, $username, $password, $path)
+    public function set_use_ftp($host, $username, $password, $path)
     {
-        $this->_useFtp = true;
-        $this->_ftpHost = $host;
-        $this->_ftpUser = $username;
-        $this->_ftpPass = $password;
-        $this->_ftpPath = $path;
+        $this->_use_ftp = true;
+        $this->_ftp_host = $host;
+        $this->_ftp_user = $username;
+        $this->_ftp_pass = $password;
+        $this->_ftp_path = $path;
         return $this;
     }
-
     /**
      * Get backup type
      *
@@ -205,42 +159,38 @@ class Filesystem extends AbstractBackup
      *
      * @see BackupInterface::getType()
      */
-    public function getType()
+    public function get_type()
     {
         return 'filesystem';
     }
-
     /**
      * Add path that should be ignoring when creating or rolling back backup
      *
      * @param string|array $paths
      * @return $this
      */
-    public function addIgnorePaths($paths)
+    public function add_ignore_paths($paths)
     {
         if (is_string($paths)) {
-            if (!in_array($paths, $this->_ignorePaths)) {
-                $this->_ignorePaths[] = $paths;
+            if (!in_array($paths, $this->_ignore_paths)) {
+                $this->_ignore_paths[] = $paths;
             }
         } elseif (is_array($paths)) {
             foreach ($paths as $path) {
-                $this->addIgnorePaths($path);
+                $this->add_ignore_paths($path);
             }
         }
-
         return $this;
     }
-
     /**
      * Get paths that should be ignored while creating or rolling back backup procedure
      *
      * @return array
      */
-    public function getIgnorePaths()
+    public function get_ignore_paths()
     {
-        return $this->_ignorePaths;
+        return $this->_ignore_paths;
     }
-
     /**
      * Set directory where backups saved and add it to ignore paths
      *
@@ -249,108 +199,86 @@ class Filesystem extends AbstractBackup
      *
      * @see AbstractBackup::setBackupsDir()
      */
-    public function setBackupsDir($backupsDir)
+    public function set_backups_dir($backups_dir)
     {
-        $backupsDir = rtrim($backupsDir, '/');
-        parent::setBackupsDir($backupsDir);
-        $this->addIgnorePaths($backupsDir);
+        $backups_dir = rtrim($backups_dir, '/');
+        parent::set_backups_dir($backups_dir);
+        $this->add_ignore_paths($backups_dir);
         return $this;
     }
-
     /**
      * Getter for $_ftpPath variable
      *
      * @return string
      */
-    public function getFtpPath()
+    public function get_ftp_path()
     {
-        return $this->_ftpPath;
+        return $this->_ftp_path;
     }
-
     /**
      * Get ftp connection string
      *
      * @return string
      */
-    public function getFtpConnectString()
+    public function get_ftp_connect_string()
     {
-        return 'ftp://' . $this->_ftpUser . ':' . $this->_ftpPass . '@' . $this->_ftpHost . $this->_ftpPath;
+        return 'ftp://' . $this->_ftp_user . ':' . $this->_ftp_pass . '@' . $this->_ftp_host . $this->_ftp_path;
     }
-
     /**
      * Check backups directory existence and whether it's writeable
      *
      * @return void
      * @throws LocalizedException
      */
-    protected function _checkBackupsDir()
+    protected function _check_backups_dir()
     {
-        $backupsDir = $this->getBackupsDir();
-
-        if (!is_dir($backupsDir)) {
-            $backupsDirParentDirectory = basename($backupsDir);
-
-            if (!is_writeable($backupsDirParentDirectory)) {
-                throw new NotEnoughPermissions(
-                    new Phrase('Cant create backups directory')
-                );
+        $backups_dir = $this->get_backups_dir();
+        if (!is_dir($backups_dir)) {
+            $backups_dir_parent_directory = basename($backups_dir);
+            if (!is_writeable($backups_dir_parent_directory)) {
+                throw new Not_Enough_Permissions(new Phrase('Cant create backups directory'));
             }
-
-            mkdir($backupsDir);
-            chmod($backupsDir, 0755);
+            mkdir($backups_dir);
+            chmod($backups_dir, 0755);
         }
-
-        if (!is_writable($backupsDir)) {
-            throw new NotEnoughPermissions(
-                new Phrase('Backups directory is not writeable')
-            );
+        if (!is_writable($backups_dir)) {
+            throw new Not_Enough_Permissions(new Phrase('Backups directory is not writeable'));
         }
     }
-
     /**
      * Generate tmp name for tarball
      *
      * @return string
      */
-    protected function _getTarTmpPath()
+    protected function _get_tar_tmp_path()
     {
-        $tmpName = '~tmp-' . microtime(true) . '.tar';
-        return $this->getBackupsDir() . '/' . $tmpName;
+        $tmp_name = '~tmp-' . microtime(true) . '.tar';
+        return $this->get_backups_dir() . '/' . $tmp_name;
     }
-
     /**
      * Get rollback FTP
      *
      * @return Ftp
      * @deprecated 101.0.0
      */
-    protected function getRollBackFtp()
+    protected function get_roll_back_ftp()
     {
-        if (!$this->rollBackFtp) {
-            $this->rollBackFtp = ObjectManager::getInstance()->create(
-                Ftp::class,
-                ['snapshotObject' => $this]
-            );
+        if (!$this->roll_back_ftp) {
+            $this->roll_back_ftp = Object_Manager::get_instance()->create(Ftp::class, ['snapshotObject' => $this]);
         }
-
-        return $this->rollBackFtp;
+        return $this->roll_back_ftp;
     }
-
     /**
      * Get rollback FS
      *
      * @return Fs
      * @deprecated 101.0.0
      */
-    protected function getRollBackFs()
+    protected function get_roll_back_fs()
     {
-        if (!$this->rollBackFs) {
-            $this->rollBackFs = ObjectManager::getInstance()->create(
-                Fs::class,
-                ['snapshotObject' => $this]
-            );
+        if (!$this->roll_back_fs) {
+            $this->roll_back_fs = Object_Manager::get_instance()->create(Fs::class, ['snapshotObject' => $this]);
         }
-
-        return $this->rollBackFs;
+        return $this->roll_back_fs;
     }
 }

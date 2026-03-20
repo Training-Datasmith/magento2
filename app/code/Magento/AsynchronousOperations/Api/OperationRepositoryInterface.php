@@ -4,10 +4,8 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Api;
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Api;
 
 /**
  * Bulk operation item repository interface.
@@ -16,7 +14,7 @@ namespace Magento\AsynchronousOperations\Api;
  * @api
  * @since 100.3.0
  */
-interface OperationRepositoryInterface
+interface Operation_Repository_Interface
 {
     /**
      * Lists the bulk operation items that match specified search criteria.
@@ -24,5 +22,5 @@ interface OperationRepositoryInterface
      * @return \Magento\AsynchronousOperations\Api\Data\OperationSearchResultsInterface
      * @since 100.3.0
      */
-    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
+    public function get_list(\Magento\Framework\Api\Search_Criteria_Interface $search_criteria);
 }

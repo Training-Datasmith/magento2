@@ -1,28 +1,25 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Exception;
 
 use Magento\Framework\Phrase;
-
 /**
  * Exception thrown while processing bulk of entities
  *
  * @api
  * @since 101.0.7
  */
-class BulkException extends AbstractAggregateException
+class Bulk_Exception extends Abstract_Aggregate_Exception
 {
     /**
      * @var array
      */
     private $data;
-
     /**
      * Exception thrown while processing bulk of entities
      *
@@ -40,25 +37,23 @@ class BulkException extends AbstractAggregateException
         }
         parent::__construct($phrase, $cause, $code);
     }
-
     /**
      * Add data
      *
      * @param array $data
      * @since 101.0.7
      */
-    public function addData($data)
+    public function add_data($data)
     {
         $this->data = $data;
     }
-
     /**
      * Retrieve data
      *
      * @return array
      * @since 101.0.7
      */
-    public function getData()
+    public function get_data()
     {
         return $this->data;
     }

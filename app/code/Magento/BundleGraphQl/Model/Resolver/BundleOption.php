@@ -4,44 +4,39 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Bundle_Graph_Ql\Model\Resolver;
 
-namespace Magento\BundleGraphQl\Model\Resolver;
-
-use Magento\BundleGraphQl\Model\Cart\BundleOptionDataProvider;
-use Magento\Framework\GraphQl\Config\Element\Field;
-use Magento\Framework\GraphQl\Exception\GraphQlInputException;
-use Magento\Framework\GraphQl\Query\ResolverInterface;
-use Magento\Framework\GraphQl\Schema\Type\ResolveInfo;
-
+use Magento\Bundle_Graph_Ql\Model\Cart\Bundle_Option_Data_Provider;
+use Magento\Framework\Graph_Ql\Config\Element\Field;
+use Magento\Framework\Graph_Ql\Exception\Graph_Ql_Input_Exception;
+use Magento\Framework\Graph_Ql\Query\Resolver_Interface;
+use Magento\Framework\Graph_Ql\Schema\Type\Resolve_Info;
 /**
  * Resolver for bundle product options
  */
-class BundleOption implements ResolverInterface
+class Bundle_Option implements Resolver_Interface
 {
     /**
      * @var BundleOptionDataProvider
      */
-    private $dataProvider;
-
+    private $data_provider;
     /**
      * @param BundleOptionDataProvider $bundleOptionDataProvider
      */
-    public function __construct(
-        BundleOptionDataProvider $bundleOptionDataProvider
-    ) {
-        $this->dataProvider = $bundleOptionDataProvider;
+    public function __construct(Bundle_Option_Data_Provider $bundle_option_data_provider)
+    {
+        $this->data_provider = $bundle_option_data_provider;
     }
-
     /**
      * @inheritdoc
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function resolve(Field $field, $context, ResolveInfo $info, ?array $value = null, ?array $args = null)
+    public function resolve(Field $field, $context, Resolve_Info $info, ?array $value = null, ?array $args = null)
     {
         if (!isset($value['model'])) {
-            throw new GraphQlInputException(__('Value must contain "model" property.'));
+            throw new Graph_Ql_Input_Exception(__('Value must contain "model" property.'));
         }
-        return $this->dataProvider->getData($value['model']);
+        return $this->data_provider->get_data($value['model']);
     }
 }

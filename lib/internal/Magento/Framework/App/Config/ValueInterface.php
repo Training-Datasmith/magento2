@@ -6,8 +6,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Config;
 
 /**
@@ -16,7 +15,7 @@ namespace Magento\Framework\App\Config;
  * @api
  * @see \Magento\Framework\App\Config\Value
  */
-interface ValueInterface
+interface Value_Interface
 {
     /**
      * Table name
@@ -24,27 +23,24 @@ interface ValueInterface
      * @deprecated since it is not used
      */
     public const ENTITY = 'config_data';
-
     /**
      * Check if config data value was changed
      *
      * @todo this method should be make as protected
      * @return bool
      */
-    public function isValueChanged();
-
+    public function is_value_changed();
     /**
      * Get old value from existing config
      *
      * @return string
      */
-    public function getOldValue();
-
+    public function get_old_value();
     /**
      * Get value by key for new user data from <section>/groups/<group>/fields/<field>
      *
      * @param string $key
      * @return string
      */
-    public function getFieldsetDataValue($key);
+    public function get_fieldset_data_value($key);
 }

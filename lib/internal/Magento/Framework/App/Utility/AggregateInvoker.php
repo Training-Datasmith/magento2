@@ -1,24 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Utility;
 
 /**
  * Runs given callback across given array of data and collects all PhpUnit assertion results.
  * Should be used in case data provider is huge to minimize overhead.
  */
-class AggregateInvoker
+class Aggregate_Invoker
 {
     /**
      * @var \PHPUnit\Framework\TestCase
      */
-    protected $_testCase;
-
+    protected $_test_case;
     /**
      * There is no PHPUnit internal API to determine whether --verbose or --debug options are passed.
      * When verbose is true, data sets are gathered for any result, includind incomplete and skipped test.
@@ -27,17 +25,15 @@ class AggregateInvoker
      * @var array
      */
     protected $_options = ['verbose' => false];
-
     /**
      * @param \PHPUnit\Framework\TestCase $testCase
      * @param array $options
      */
-    public function __construct($testCase, array $options = [])
+    public function __construct($test_case, array $options = [])
     {
-        $this->_testCase = $testCase;
+        $this->_test_case = $test_case;
         $this->_options = $options + $this->_options;
     }
-
     /**
      * Collect all failed assertions and fail test in case such list is not empty.
      *
@@ -47,33 +43,24 @@ class AggregateInvoker
      * @param array[] $dataSource
      * @return void
      */
-    public function __invoke(callable $callback, array $dataSource)
+    public function __invoke(callable $callback, array $data_source)
     {
-        $results = [
-            \PHPUnit\Framework\IncompleteTestError::class => [],
-            \PHPUnit\Framework\SkippedWithMessageException::class => [],
-            \PHPUnit\Framework\AssertionFailedError::class => [],
-        ];
+        $results = [\Php_Unit\Framework\Incomplete_Test_Error::class => [], \Php_Unit\Framework\Skipped_With_Message_Exception::class => [], \Php_Unit\Framework\Assertion_Failed_Error::class => []];
         $passed = 0;
-        foreach ($dataSource as $dataSetName => $dataSet) {
+        foreach ($data_source as $data_set_name => $data_set) {
             try {
-                call_user_func_array($callback, $dataSet);
+                call_user_func_array($callback, $data_set);
                 $passed++;
-            } catch (\PHPUnit\Framework\IncompleteTestError $exception) {
-                $results[get_class($exception)][] = $this->prepareMessage($exception, $dataSetName, $dataSet);
-            } catch (\PHPUnit\Framework\SkippedWithMessageException $exception) {
-                $results[get_class($exception)][] = $this->prepareMessage($exception, $dataSetName, $dataSet);
-            } catch (\PHPUnit\Framework\AssertionFailedError $exception) {
-                $results[\PHPUnit\Framework\AssertionFailedError::class][] = $this->prepareMessage(
-                    $exception,
-                    $dataSetName,
-                    $dataSet
-                );
+            } catch (\Php_Unit\Framework\Incomplete_Test_Error $exception) {
+                $results[get_class($exception)][] = $this->prepare_message($exception, $data_set_name, $data_set);
+            } catch (\Php_Unit\Framework\Skipped_With_Message_Exception $exception) {
+                $results[get_class($exception)][] = $this->prepare_message($exception, $data_set_name, $data_set);
+            } catch (\Php_Unit\Framework\Assertion_Failed_Error $exception) {
+                $results[\Php_Unit\Framework\Assertion_Failed_Error::class][] = $this->prepare_message($exception, $data_set_name, $data_set);
             }
         }
-        $this->processResults($results, $passed);
+        $this->process_results($results, $passed);
     }
-
     /**
      * Prepare Message
      *
@@ -82,23 +69,18 @@ class AggregateInvoker
      * @param mixed $dataSet
      * @return string
      */
-    protected function prepareMessage(\Exception $exception, $dataSetName, $dataSet)
+    protected function prepare_message(\Exception $exception, $data_set_name, $data_set)
     {
-        if (!is_string($dataSetName)) {
-            $dataSetName = var_export($dataSet, true);
+        if (!is_string($data_set_name)) {
+            $data_set_name = var_export($data_set, true);
         }
-        if ($exception instanceof \PHPUnit\Framework\AssertionFailedError
-            && !$exception instanceof \PHPUnit\Framework\IncompleteTestError
-            && !$exception instanceof \PHPUnit\Framework\SkippedWithMessageException
-            || $this->_options['verbose']) {
-            $dataSetName = 'Data set: ' . $dataSetName . PHP_EOL;
+        if ($exception instanceof \Php_Unit\Framework\Assertion_Failed_Error && !$exception instanceof \Php_Unit\Framework\Incomplete_Test_Error && !$exception instanceof \Php_Unit\Framework\Skipped_With_Message_Exception || $this->_options['verbose']) {
+            $data_set_name = 'Data set: ' . $data_set_name . PHP_EOL;
         } else {
-            $dataSetName = '';
+            $data_set_name = '';
         }
-        return $dataSetName . $exception->getMessage() . PHP_EOL
-        . $exception->getTraceAsString();
+        return $data_set_name . $exception->get_message() . PHP_EOL . $exception->get_trace_as_string();
     }
-
     /**
      * Analyze results of aggregated tests execution and complete test case appropriately
      *
@@ -106,36 +88,20 @@ class AggregateInvoker
      * @param int $passed
      * @return void
      */
-    protected function processResults(array $results, $passed)
+    protected function process_results(array $results, $passed)
     {
-        $totalCountsMessage = sprintf(
-            'Passed: %d, Failed: %d, Incomplete: %d, Skipped: %d.',
-            $passed,
-            count($results[\PHPUnit\Framework\AssertionFailedError::class]),
-            count($results[\PHPUnit\Framework\IncompleteTestError::class]),
-            count($results[\PHPUnit\Framework\SkippedWithMessageException::class])
-        );
-        if ($results[\PHPUnit\Framework\AssertionFailedError::class]) {
-            $this->_testCase->fail(
-                $totalCountsMessage . PHP_EOL .
-                implode(PHP_EOL, $results[\PHPUnit\Framework\AssertionFailedError::class])
-            );
+        $total_counts_message = sprintf('Passed: %d, Failed: %d, Incomplete: %d, Skipped: %d.', $passed, count($results[\Php_Unit\Framework\Assertion_Failed_Error::class]), count($results[\Php_Unit\Framework\Incomplete_Test_Error::class]), count($results[\Php_Unit\Framework\Skipped_With_Message_Exception::class]));
+        if ($results[\Php_Unit\Framework\Assertion_Failed_Error::class]) {
+            $this->_test_case->fail($total_counts_message . PHP_EOL . implode(PHP_EOL, $results[\Php_Unit\Framework\Assertion_Failed_Error::class]));
         }
-        if (!$results[\PHPUnit\Framework\IncompleteTestError::class] &&
-            !$results[\PHPUnit\Framework\SkippedWithMessageException::class]) {
+        if (!$results[\Php_Unit\Framework\Incomplete_Test_Error::class] && !$results[\Php_Unit\Framework\Skipped_With_Message_Exception::class]) {
             return;
         }
-        $message = $totalCountsMessage . PHP_EOL . implode(
-            PHP_EOL,
-            $results[\PHPUnit\Framework\IncompleteTestError::class]
-        ) . PHP_EOL . implode(
-            PHP_EOL,
-            $results[\PHPUnit\Framework\SkippedWithMessageException::class]
-        );
-        if ($results[\PHPUnit\Framework\IncompleteTestError::class]) {
-            $this->_testCase->markTestSkipped($message);
-        } elseif ($results[\PHPUnit\Framework\SkippedWithMessageException::class]) {
-            $this->_testCase->markTestSkipped($message);
+        $message = $total_counts_message . PHP_EOL . implode(PHP_EOL, $results[\Php_Unit\Framework\Incomplete_Test_Error::class]) . PHP_EOL . implode(PHP_EOL, $results[\Php_Unit\Framework\Skipped_With_Message_Exception::class]);
+        if ($results[\Php_Unit\Framework\Incomplete_Test_Error::class]) {
+            $this->_test_case->mark_test_skipped($message);
+        } elseif ($results[\Php_Unit\Framework\Skipped_With_Message_Exception::class]) {
+            $this->_test_case->mark_test_skipped($message);
         }
     }
 }

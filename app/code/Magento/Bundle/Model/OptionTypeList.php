@@ -1,49 +1,42 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Model;
 
-class OptionTypeList implements \Magento\Bundle\Api\ProductOptionTypeListInterface
+class Option_Type_List implements \Magento\Bundle\Api\Product_Option_Type_List_Interface
 {
     /**
      * @var Source\Option\Type
      */
     protected $types;
-
     /**
      * @var \Magento\Bundle\Api\Data\OptionTypeInterfaceFactory
      */
-    protected $typeFactory;
-
+    protected $type_factory;
     /**
      * @param Source\Option\Type $type
      * @param \Magento\Bundle\Api\Data\OptionTypeInterfaceFactory $typeFactory
      */
-    public function __construct(
-        \Magento\Bundle\Model\Source\Option\Type $type,
-        \Magento\Bundle\Api\Data\OptionTypeInterfaceFactory $typeFactory
-    ) {
+    public function __construct(\Magento\Bundle\Model\Source\Option\Type $type, \Magento\Bundle\Api\Data\Option_Type_Interface_Factory $type_factory)
+    {
         $this->types = $type;
-        $this->typeFactory = $typeFactory;
+        $this->type_factory = $type_factory;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getItems()
+    public function get_items()
     {
-        $optionList = $this->types->toOptionArray();
-
+        $option_list = $this->types->to_option_array();
         /** @var \Magento\Bundle\Api\Data\OptionTypeInterface[] $typeList */
-        $typeList = [];
-        foreach ($optionList as $option) {
-            $typeList[] = $this->typeFactory->create()->setCode($option['value'])->setLabel($option['label']);
+        $type_list = [];
+        foreach ($option_list as $option) {
+            $type_list[] = $this->type_factory->create()->set_code($option['value'])->set_label($option['label']);
         }
-        return $typeList;
+        return $type_list;
     }
 }

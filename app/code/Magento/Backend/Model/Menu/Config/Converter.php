@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Menu\Config;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Backend\Model\Menu\Config;
  * @api
  * @since 100.0.2
  */
-class Converter implements \Magento\Framework\Config\ConverterInterface
+class Converter implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * Converts xml to appropriate array
@@ -23,34 +22,21 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
      */
     public function convert($dom)
     {
-        $extractedData = [];
-
-        $attributeNamesList = [
-            'id',
-            'title',
-            'toolTip',
-            'module',
-            'sortOrder',
-            'action',
-            'parent',
-            'resource',
-            'dependsOnModule',
-            'dependsOnConfig',
-            'target',
-        ];
-        $xpath = new \DOMXPath($dom);
-        $nodeList = $xpath->query('/config/menu/*');
-        for ($i = 0; $i < $nodeList->length; $i++) {
+        $extracted_data = [];
+        $attribute_names_list = ['id', 'title', 'toolTip', 'module', 'sortOrder', 'action', 'parent', 'resource', 'dependsOnModule', 'dependsOnConfig', 'target'];
+        $xpath = new \Domx_Path($dom);
+        $node_list = $xpath->query('/config/menu/*');
+        for ($i = 0; $i < $node_list->length; $i++) {
             $item = [];
-            $node = $nodeList->item($i);
-            $item['type'] = $node->nodeName;
-            foreach ($attributeNamesList as $name) {
-                if ($node->hasAttribute($name)) {
-                    $item[$name] = $node->getAttribute($name);
+            $node = $node_list->item($i);
+            $item['type'] = $node->node_name;
+            foreach ($attribute_names_list as $name) {
+                if ($node->has_attribute($name)) {
+                    $item[$name] = $node->get_attribute($name);
                 }
             }
-            $extractedData[] = $item;
+            $extracted_data[] = $item;
         }
-        return $extractedData;
+        return $extracted_data;
     }
 }

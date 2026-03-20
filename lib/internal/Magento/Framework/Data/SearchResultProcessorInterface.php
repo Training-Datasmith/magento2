@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data;
 
 /**
@@ -13,51 +12,45 @@ namespace Magento\Framework\Data;
  *
  * @api
  */
-interface SearchResultProcessorInterface
+interface Search_Result_Processor_Interface
 {
     /**
      * Retrieve all ids for collection
      *
      * @return array
      */
-    public function getAllIds();
-
+    public function get_all_ids();
     /**
      * Get current collection page
      *
      * @return int
      */
-    public function getCurrentPage();
-
+    public function get_current_page();
     /**
      * Retrieve collection page size
      *
      * @return int
      */
-    public function getPageSize();
-
+    public function get_page_size();
     /**
      * Retrieve collection first item
      *
      * @return \Magento\Framework\DataObject
      */
-    public function getFirstItem();
-
+    public function get_first_item();
     /**
      * Retrieve collection last item
      *
      * @return \Magento\Framework\DataObject
      */
-    public function getLastItem();
-
+    public function get_last_item();
     /**
      * Retrieve field values from all items
      *
      * @param   string $colName
      * @return  array
      */
-    public function getColumnValues($colName);
-
+    public function get_column_values($col_name);
     /**
      * Search all items by field value
      *
@@ -65,8 +58,7 @@ interface SearchResultProcessorInterface
      * @param   mixed $value
      * @return  array
      */
-    public function getItemsByColumnValue($column, $value);
-
+    public function get_items_by_column_value($column, $value);
     /**
      * Search first item by field value
      *
@@ -74,16 +66,14 @@ interface SearchResultProcessorInterface
      * @param   mixed $value
      * @return  \Magento\Framework\DataObject || null
      */
-    public function getItemByColumnValue($column, $value);
-
+    public function get_item_by_column_value($column, $value);
     /**
      * Retrieve item by id
      *
      * @param   mixed $idValue
      * @return  \Magento\Framework\DataObject
      */
-    public function getItemById($idValue);
-
+    public function get_item_by_id($id_value);
     /**
      * Walk through the collection and run model method or external callback
      * with optional arguments
@@ -95,22 +85,19 @@ interface SearchResultProcessorInterface
      * @return array
      */
     public function walk($callback, array $arguments = []);
-
     /**
      * Convert collection to XML
      *
      * @return string
      */
-    public function toXml();
-
+    public function to_xml();
     /**
      * Convert collection to array
      *
      * @param array $arrRequiredFields
      * @return array
      */
-    public function toArray($arrRequiredFields = []);
-
+    public function to_array($arr_required_fields = []);
     /**
      * Convert items array to array for select options
      *
@@ -127,8 +114,7 @@ interface SearchResultProcessorInterface
      * @param array $additional
      * @return array
      */
-    public function toOptionArray($valueField = null, $labelField = null, $additional = []);
-
+    public function to_option_array($value_field = null, $label_field = null, $additional = []);
     /**
      * Convert items array to hash for select options
      *
@@ -139,5 +125,5 @@ interface SearchResultProcessorInterface
      * @param   string $labelField
      * @return  array
      */
-    public function toOptionHash($valueField, $labelField);
+    public function to_option_hash($value_field, $label_field);
 }

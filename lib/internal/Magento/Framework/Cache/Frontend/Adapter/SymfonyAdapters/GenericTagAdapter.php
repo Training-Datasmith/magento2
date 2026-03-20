@@ -4,12 +4,10 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Framework\Cache\Frontend\Adapter\Symfony_Adapters;
 
-namespace Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters;
-
-use Psr\Cache\CacheItemPoolInterface;
-
+use Psr\Cache\Cache_Item_Pool_Interface;
 /**
  * Generic tag adapter for backends that don't support native tag-to-ID indices
  *
@@ -25,117 +23,103 @@ use Psr\Cache\CacheItemPoolInterface;
  * - MATCHING_TAG only works if items were saved with those exact tags
  * - NOT_MATCHING_TAG is not efficiently supported (falls back to invalidating nothing)
  */
-class GenericTagAdapter implements TagAdapterInterface
+class Generic_Tag_Adapter implements Tag_Adapter_Interface
 {
     private const NAMESPACE_PREFIX = 'NS_';
     private const NAMESPACE_SEPARATOR = '|';
-    private const MAX_TAGS_FOR_NAMESPACE = 4; // Prevent combinatorial explosion
-
+    private const MAX_TAGS_FOR_NAMESPACE = 4;
+    // Prevent combinatorial explosion
     /**
      * @var CacheItemPoolInterface
      */
-    private CacheItemPoolInterface $cachePool;
-
+    private Cache_Item_Pool_Interface $cache_pool;
     /**
      * @var bool
      */
-    private bool $isPageCache;
-
+    private bool $is_page_cache;
     /**
      * @param CacheItemPoolInterface $cachePool
      * @param bool $isPageCache Whether this is for page cache (FPC)
      */
-    public function __construct(CacheItemPoolInterface $cachePool, bool $isPageCache = false)
+    public function __construct(Cache_Item_Pool_Interface $cache_pool, bool $is_page_cache = false)
     {
-        $this->cachePool = $cachePool;
-        $this->isPageCache = $isPageCache;
+        $this->cache_pool = $cache_pool;
+        $this->is_page_cache = $is_page_cache;
     }
-
     /**
      * Generate namespace tag for a combination of tags
      *
      * @param array $tags
      * @return string
      */
-    public function generateNamespaceTag(array $tags): string
+    public function generate_namespace_tag(array $tags): string
     {
         $tags = array_values(array_unique($tags));
-        sort($tags); // Consistent ordering
+        sort($tags);
+        // Consistent ordering
         return self::NAMESPACE_PREFIX . implode(self::NAMESPACE_SEPARATOR, $tags);
     }
-
     /**
      * Check if we should use namespace tags for this combination
      *
      * @param array $tags
      * @return bool
      */
-    private function shouldUseNamespaceTags(array $tags): bool
+    private function should_use_namespace_tags(array $tags): bool
     {
         $count = count($tags);
-
         // For page cache, use namespace tags for 2-4 tags
-        if ($this->isPageCache) {
+        if ($this->is_page_cache) {
             return $count >= 2 && $count <= self::MAX_TAGS_FOR_NAMESPACE;
         }
-
         // For application cache, don't use namespace tags
         return false;
     }
-
     /**
      * @inheritDoc
      *
      * Uses namespace tags for FPC, falls back to invalidating individual tags for application cache
      */
-    public function getIdsMatchingTags(array $tags): array
+    public function get_ids_matching_tags(array $tags): array
     {
         // This method returns IDs, but we don't maintain explicit indices
         // Instead, we use it to determine what to invalidate
-
         // For generic adapters, we can't efficiently get IDs
         // This is handled in Symfony.php by using invalidateTags
         return [];
     }
-
     /**
      * @inheritDoc
      */
-    public function getIdsMatchingAnyTags(array $tags): array
+    public function get_ids_matching_any_tags(array $tags): array
     {
         // For generic adapters, we can't efficiently get IDs
         // This is handled in Symfony.php by using invalidateTags
         return [];
     }
-
     /**
      * @inheritDoc
      */
-    public function getIdsNotMatchingTags(array $tags): array
+    public function get_ids_not_matching_tags(array $tags): array
     {
         // NOT_MATCHING_TAG is not efficiently supported for generic adapters
         return [];
     }
-
     /**
      * @inheritDoc
      */
-    public function deleteByIds(array $ids): bool
+    public function delete_by_ids(array $ids): bool
     {
         if (empty($ids)) {
             return true;
         }
-
-        $success = $this->cachePool->deleteItems($ids);
-
+        $success = $this->cache_pool->delete_items($ids);
         // Ensure changes are committed immediately (matches Zend behavior)
-        if (method_exists($this->cachePool, 'commit')) {
-            $this->cachePool->commit();
+        if (method_exists($this->cache_pool, 'commit')) {
+            $this->cache_pool->commit();
         }
-
         return $success;
     }
-
     /**
      * @inheritDoc
      *
@@ -145,90 +129,80 @@ class GenericTagAdapter implements TagAdapterInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     // phpcs:disable Magento2.CodeAnalysis.EmptyBlock
-    public function onSave(string $id, array $tags): void
+    public function on_save(string $id, array $tags): void
     {
         // Intentional no-op: Tags are handled by Symfony's TagAwareAdapter
         // (for Database, APCu, and Memcached backends that lack native tag support)
     }
     // phpcs:enable Magento2.CodeAnalysis.EmptyBlock
-
     /**
      * @inheritDoc
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     // phpcs:disable Magento2.CodeAnalysis.EmptyBlock
-    public function onRemove(string $id): void
+    public function on_remove(string $id): void
     {
         // Intentional no-op: No separate indices to update
     }
     // phpcs:enable Magento2.CodeAnalysis.EmptyBlock
-
     /**
      * @inheritDoc
      */
     // phpcs:disable Magento2.CodeAnalysis.EmptyBlock
-    public function clearAllIndices(): void
+    public function clear_all_indices(): void
     {
         // Intentional no-op: No separate indices exist
     }
     // phpcs:enable Magento2.CodeAnalysis.EmptyBlock
-
     /**
      * Get tags to save with cache item (including namespace tags if applicable)
      *
      * @param array $tags Original tags
      * @return array Tags including namespace tags if applicable
      */
-    public function getTagsForSave(array $tags): array
+    public function get_tags_for_save(array $tags): array
     {
         if (empty($tags)) {
             return [];
         }
-
         // Start with original tags
-        $allTags = $tags;
-
+        $all_tags = $tags;
         // Add namespace tag if applicable
-        if ($this->shouldUseNamespaceTags($tags)) {
-            $allTags[] = $this->generateNamespaceTag($tags);
+        if ($this->should_use_namespace_tags($tags)) {
+            $all_tags[] = $this->generate_namespace_tag($tags);
         }
-
-        return array_values(array_unique($allTags));
+        return array_values(array_unique($all_tags));
     }
-
     /**
      * Get tags to invalidate for MATCHING_TAG mode
      *
      * @param array $tags
      * @return array
      */
-    public function getTagsForMatchingTag(array $tags): array
+    public function get_tags_for_matching_tag(array $tags): array
     {
         if (empty($tags)) {
             return [];
         }
-
         // Deduplicate and sort
-        $uniqueTags = array_values(array_unique($tags));
-
+        $unique_tags = array_values(array_unique($tags));
         // If we use namespace tags, invalidate the namespace tag
-        if ($this->shouldUseNamespaceTags($uniqueTags)) {
-            sort($uniqueTags); // Must match save() logic
-            return [$this->generateNamespaceTag($uniqueTags)];
+        if ($this->should_use_namespace_tags($unique_tags)) {
+            sort($unique_tags);
+            // Must match save() logic
+            return [$this->generate_namespace_tag($unique_tags)];
         }
-
         // Otherwise, invalidate individual tags (OR logic, not perfect but best we can do)
-        return $uniqueTags;
+        return $unique_tags;
     }
-
     /**
      * Check if this adapter should use namespace tags for MATCHING_TAG
      *
      * @return bool
      */
-    public function usesNamespaceTags(): bool
+    public function uses_namespace_tags(): bool
     {
-        return $this->isPageCache;
+        return $this->is_page_cache;
     }
 }

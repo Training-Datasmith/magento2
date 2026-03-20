@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Event observer collection
  */
-
 namespace Magento\Framework\Event\Observer;
 
 /**
@@ -24,7 +22,6 @@ class Collection
      * @var array
      */
     protected $_observers;
-
     /**
      * Initializes observers
      */
@@ -32,53 +29,48 @@ class Collection
     {
         $this->_observers = [];
     }
-
     /**
      * Returns all observers in the collection
      *
      * @return array
      */
-    public function getAllObservers()
+    public function get_all_observers()
     {
         return $this->_observers;
     }
-
     /**
      * Returns observer by its name
      *
      * @param string $observerName
      * @return \Magento\Framework\Event\Observer
      */
-    public function getObserverByName($observerName)
+    public function get_observer_by_name($observer_name)
     {
-        return $this->_observers[$observerName];
+        return $this->_observers[$observer_name];
     }
-
     /**
      * Adds an observer to the collection
      *
      * @param \Magento\Framework\Event\Observer $observer
      * @return $this
      */
-    public function addObserver(\Magento\Framework\Event\Observer $observer)
+    public function add_observer(\Magento\Framework\Event\Observer $observer)
     {
-        $observerName = $observer->getName() ?? '';
-        $this->_observers[$observerName] = $observer;
+        $observer_name = $observer->get_name() ?? '';
+        $this->_observers[$observer_name] = $observer;
         return $this;
     }
-
     /**
      * Removes an observer from the collection by its name
      *
      * @param string $observerName
      * @return $this
      */
-    public function removeObserverByName($observerName)
+    public function remove_observer_by_name($observer_name)
     {
-        unset($this->_observers[$observerName]);
+        unset($this->_observers[$observer_name]);
         return $this;
     }
-
     /**
      * Dispatches an event to all observers in the collection
      *

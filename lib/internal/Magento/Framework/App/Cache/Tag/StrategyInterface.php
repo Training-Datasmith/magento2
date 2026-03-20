@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Cache\Tag;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\App\Cache\Tag;
  * @api
  * @since 100.1.3
  */
-interface StrategyInterface
+interface Strategy_Interface
 {
     /**
      * Return invalidation tags for specified object
@@ -24,5 +23,5 @@ interface StrategyInterface
      * @return array
      * @since 100.1.3
      */
-    public function getTags($object);
+    public function get_tags($object);
 }

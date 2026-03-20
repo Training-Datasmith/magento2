@@ -4,13 +4,11 @@
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Block\Dashboard;
 
 use Magento\Backend\Block\Dashboard\Tab\Products\Ordered;
 use Magento\Backend\Block\Widget\Tabs;
-
 /**
  * Adminhtml dashboard bottom tabs
  *
@@ -23,7 +21,6 @@ class Grids extends Tabs
      * @var string
      */
     protected $_template = 'Magento_Backend::widget/tabshoriz.phtml';
-
     /**
      * Internal constructor, that is called from real constructor
      *
@@ -32,10 +29,9 @@ class Grids extends Tabs
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('grid_tab');
-        $this->setDestElementId('grid_tab_content');
+        $this->set_id('grid_tab');
+        $this->set_dest_element_id('grid_tab_content');
     }
-
     /**
      * Prepare layout for dashboard bottom tabs
      *
@@ -50,48 +46,14 @@ class Grids extends Tabs
      *
      * @return $this
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
         // load this active tab statically
-        $this->addTab(
-            'ordered_products',
-            [
-                'label' => __('Bestsellers'),
-                'content' => $this->getLayout()->createBlock(
-                    Ordered::class
-                )->toHtml(),
-                'active' => true,
-            ]
-        );
-
+        $this->add_tab('ordered_products', ['label' => __('Bestsellers'), 'content' => $this->get_layout()->create_block(Ordered::class)->to_html(), 'active' => true]);
         // load other tabs with ajax
-        $this->addTab(
-            'reviewed_products',
-            [
-                'label' => __('Most Viewed Products'),
-                'url' => $this->getUrl('adminhtml/*/productsViewed', ['_current' => true]),
-                'class' => 'ajax',
-            ]
-        );
-
-        $this->addTab(
-            'new_customers',
-            [
-                'label' => __('New Customers'),
-                'url' => $this->getUrl('adminhtml/*/customersNewest', ['_current' => true]),
-                'class' => 'ajax',
-            ]
-        );
-
-        $this->addTab(
-            'customers',
-            [
-                'label' => __('Customers'),
-                'url' => $this->getUrl('adminhtml/*/customersMost', ['_current' => true]),
-                'class' => 'ajax',
-            ]
-        );
-
-        return parent::_prepareLayout();
+        $this->add_tab('reviewed_products', ['label' => __('Most Viewed Products'), 'url' => $this->get_url('adminhtml/*/productsViewed', ['_current' => true]), 'class' => 'ajax']);
+        $this->add_tab('new_customers', ['label' => __('New Customers'), 'url' => $this->get_url('adminhtml/*/customersNewest', ['_current' => true]), 'class' => 'ajax']);
+        $this->add_tab('customers', ['label' => __('Customers'), 'url' => $this->get_url('adminhtml/*/customersMost', ['_current' => true]), 'class' => 'ajax']);
+        return parent::_prepare_layout();
     }
 }

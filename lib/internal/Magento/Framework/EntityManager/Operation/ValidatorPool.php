@@ -1,47 +1,39 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation;
 
-namespace Magento\Framework\EntityManager\Operation;
-
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Class ValidatorPool
  */
-class ValidatorPool
+class Validator_Pool
 {
     /**
      * @var ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @var object[]
      */
     protected $validators;
-
     /**
      * @var array
      */
     private $actions;
-
     /**
      * @param ObjectManagerInterface $objectManager
      * @param array $extensionActions
      */
-    public function __construct(
-        ObjectManagerInterface $objectManager,
-        array $extensionActions = []
-    ) {
-        $this->objectManager = $objectManager;
-        $this->actions = $extensionActions;
+    public function __construct(Object_Manager_Interface $object_manager, array $extension_actions = [])
+    {
+        $this->object_manager = $object_manager;
+        $this->actions = $extension_actions;
     }
-
     /**
      * Get list of validators
      *
@@ -50,14 +42,14 @@ class ValidatorPool
      * @return object[]
      * @throws \Exception
      */
-    public function getValidators($entityType, $actionName)
+    public function get_validators($entity_type, $action_name)
     {
         $actions = [];
-        foreach ($this->validators as $name => $actionGroup) {
-            if (isset($actionGroup[$entityType][$actionName])) {
-                $actions[$name] = $this->objectManager->get($actionGroup[$entityType][$actionName]);
-            } elseif (isset($actionGroup['default'][$actionName])) {
-                $actions[$name] = $this->objectManager->get($actionGroup['default'][$actionName]);
+        foreach ($this->validators as $name => $action_group) {
+            if (isset($action_group[$entity_type][$action_name])) {
+                $actions[$name] = $this->object_manager->get($action_group[$entity_type][$action_name]);
+            } elseif (isset($action_group['default'][$action_name])) {
+                $actions[$name] = $this->object_manager->get($action_group['default'][$action_name]);
             }
         }
         return $actions;

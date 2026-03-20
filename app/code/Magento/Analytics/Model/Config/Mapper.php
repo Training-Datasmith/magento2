@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model\Config;
 
 /**
@@ -36,30 +35,27 @@ class Mapper
      *    ]
      * ];
      */
-    public function execute(array $configData): array
+    public function execute(array $config_data): array
     {
-        if (!isset($configData['config'][0]['file'])) {
+        if (!isset($config_data['config'][0]['file'])) {
             return [];
         }
-
         $files = [];
-        foreach ($configData['config'][0]['file'] as $fileData) {
+        foreach ($config_data['config'][0]['file'] as $file_data) {
             /** just one set of providers is allowed by xsd */
-            $providers = reset($fileData['providers']);
-            foreach ($providers as $providerType => $providerDataSet) {
+            $providers = reset($file_data['providers']);
+            foreach ($providers as $provider_type => $provider_data_set) {
                 /** just one set of provider data is allowed by xsd */
-                $providerData = reset($providerDataSet);
+                $provider_data = reset($provider_data_set);
                 /** just one set of parameters is allowed by xsd */
-                $providerData['parameters'] = !empty($providerData['parameters'])
-                    ? reset($providerData['parameters'])
-                    : [];
-                array_walk($providerData['parameters'], function (&$array): void {
+                $provider_data['parameters'] = !empty($provider_data['parameters']) ? reset($provider_data['parameters']) : [];
+                array_walk($provider_data['parameters'], function (&$array): void {
                     $array = reset($array);
                 });
-                $providers[$providerType] = $providerData;
+                $providers[$provider_type] = $provider_data;
             }
-            $files[$fileData['name']] = $fileData;
-            $files[$fileData['name']]['providers'] = $providers;
+            $files[$file_data['name']] = $file_data;
+            $files[$file_data['name']]['providers'] = $providers;
         }
         return $files;
     }

@@ -1,48 +1,44 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Response;
 
-use Magento\Framework\App\Response\HeaderProvider\HeaderProviderInterface;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\Response\Header_Provider\Header_Provider_Interface;
+use Magento\Framework\Exception\Localized_Exception;
 use Magento\Framework\Phrase;
-
-class HeaderManager
+class Header_Manager
 {
     /**
      * @var HeaderProviderInterface[]
      */
-    private $headerProviders;
-
+    private $header_providers;
     /**
      * @param HeaderProviderInterface[] $headerProviderList
      * @throws LocalizedException In case one of the header providers is invalid
      */
-    public function __construct($headerProviderList)
+    public function __construct($header_provider_list)
     {
-        foreach ($headerProviderList as $header) {
-            if (!($header instanceof HeaderProviderInterface)) {
-                throw new LocalizedException(new Phrase('The header provider is invalid. Verify and try again.'));
+        foreach ($header_provider_list as $header) {
+            if (!$header instanceof Header_Provider_Interface) {
+                throw new Localized_Exception(new Phrase('The header provider is invalid. Verify and try again.'));
             }
         }
-        $this->headerProviders = $headerProviderList;
+        $this->header_providers = $header_provider_list;
     }
-
     /**
      * @param \Magento\Framework\App\Response\Http $subject
      * @return void
      * @codeCoverageIgnore
      */
-    public function beforeSendResponse(\Magento\Framework\App\Response\Http $subject)
+    public function before_send_response(\Magento\Framework\App\Response\Http $subject)
     {
-        foreach ($this->headerProviders as $provider) {
-            if ($provider->canApply()) {
-                $subject->setHeader($provider->getName(), $provider->getValue());
+        foreach ($this->header_providers as $provider) {
+            if ($provider->can_apply()) {
+                $subject->set_header($provider->get_name(), $provider->get_value());
             }
         }
     }

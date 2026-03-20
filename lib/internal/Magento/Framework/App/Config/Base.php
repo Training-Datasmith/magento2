@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Abstract configuration class
  * Used to retrieve core configuration values
@@ -8,7 +8,6 @@ declare(strict_types=1);
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
 class Base extends \Magento\Framework\Simplexml\Config
@@ -19,17 +18,15 @@ class Base extends \Magento\Framework\Simplexml\Config
      * @var Base[]
      */
     public static $instances = [];
-
     /**
      * @param \Magento\Framework\Simplexml\Element|string $sourceData $sourceData
      */
-    public function __construct($sourceData = null)
+    public function __construct($source_data = null)
     {
-        $this->_elementClass = \Magento\Framework\App\Config\Element::class;
-        parent::__construct($sourceData);
+        $this->_element_class = \Magento\Framework\App\Config\Element::class;
+        parent::__construct($source_data);
         self::$instances[] = $this;
     }
-
     /**
      * Cleanup objects because of simplexml memory leak
      *

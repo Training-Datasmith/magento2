@@ -4,8 +4,7 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Backend;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Cache\Backend;
  *
  * Provides common functionality for all backend implementations.
  */
-abstract class AbstractBackend implements BackendInterface
+abstract class Abstract_Backend implements Backend_Interface
 {
     /**
      * Backend options
@@ -21,14 +20,12 @@ abstract class AbstractBackend implements BackendInterface
      * @var array
      */
     protected $_options = [];
-
     /**
      * Frontend or Core object
      *
      * @var object|null
      */
     protected $_frontend = null;
-
     /**
      * Available options with default values
      *
@@ -36,18 +33,7 @@ abstract class AbstractBackend implements BackendInterface
      *
      * @var array
      */
-    protected $_availableOptions = [
-        'cache_dir' => null,
-        'file_locking' => true,
-        'read_control' => true,
-        'read_control_type' => 'crc32',
-        'hashed_directory_level' => 0,
-        'hashed_directory_umask' => 0700,
-        'file_name_prefix' => 'mage',
-        'cache_file_umask' => 0600,
-        'metadatas_array_max_size' => 100,
-    ];
-
+    protected $_available_options = ['cache_dir' => null, 'file_locking' => true, 'read_control' => true, 'read_control_type' => 'crc32', 'hashed_directory_level' => 0, 'hashed_directory_umask' => 0700, 'file_name_prefix' => 'mage', 'cache_file_umask' => 0600, 'metadatas_array_max_size' => 100];
     /**
      * Directives
      *
@@ -59,14 +45,7 @@ abstract class AbstractBackend implements BackendInterface
      *
      * @var array
      */
-    protected $_directives = [
-        'lifetime' => 3600,
-        'priority' => 8,
-        'logging' => false,
-        'logger' => null,
-        'ignore_user_abort' => false,
-    ];
-
+    protected $_directives = ['lifetime' => 3600, 'priority' => 8, 'logging' => false, 'logger' => null, 'ignore_user_abort' => false];
     /**
      * Constructor
      *
@@ -75,26 +54,23 @@ abstract class AbstractBackend implements BackendInterface
     public function __construct(array $options = [])
     {
         // Merge available options with directives
-        $availableOptions = array_merge($this->_availableOptions, $this->_directives);
-
+        $available_options = array_merge($this->_available_options, $this->_directives);
         // Set default values
-        foreach ($availableOptions as $name => $value) {
+        foreach ($available_options as $name => $value) {
             $this->_options[$name] = $value;
         }
-
         // Override with provided options
         foreach ($options as $name => $value) {
-            $this->setOption($name, $value);
+            $this->set_option($name, $value);
         }
     }
-
     /**
      * Set the frontend directives
      *
      * @param array $directives Assoc of directives
      * @return void
      */
-    public function setDirectives($directives)
+    public function set_directives($directives)
     {
         foreach ($directives as $name => $value) {
             if (array_key_exists($name, $this->_directives)) {
@@ -103,7 +79,6 @@ abstract class AbstractBackend implements BackendInterface
             }
         }
     }
-
     /**
      * Set an option
      *
@@ -111,62 +86,55 @@ abstract class AbstractBackend implements BackendInterface
      * @param mixed $value Option value
      * @return void
      */
-    public function setOption($name, $value)
+    public function set_option($name, $value)
     {
         $this->_options[$name] = $value;
     }
-
     /**
      * Get an option value
      *
      * @param string $name Option name
      * @return mixed Option value or null if not set
      */
-    public function getOption($name)
+    public function get_option($name)
     {
         return $this->_options[$name] ?? null;
     }
-
     /**
      * Set the frontend
      *
      * @param object $frontend Frontend object
      * @return void
      */
-    public function setFrontend($frontend)
+    public function set_frontend($frontend)
     {
         $this->_frontend = $frontend;
     }
-
     /**
      * Get the frontend
      *
      * @return object|null
      */
-    public function getFrontend()
+    public function get_frontend()
     {
         return $this->_frontend;
     }
-
     /**
      * Get the lifetime
      *
      * @param int|null $specificLifetime Specific lifetime
      * @return int Lifetime in seconds
      */
-    protected function getLifetime(?int $specificLifetime = null): int
+    protected function get_lifetime(?int $specific_lifetime = null): int
     {
-        if ($specificLifetime === null) {
-            return (int)$this->_directives['lifetime'];
+        if ($specific_lifetime === null) {
+            return (int) $this->_directives['lifetime'];
         }
-
-        if ($specificLifetime === 0) {
+        if ($specific_lifetime === 0) {
             return 0;
         }
-
-        return (int)$specificLifetime;
+        return (int) $specific_lifetime;
     }
-
     /**
      * Log a message if logging is enabled
      *

@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Block\Adminhtml\Catalog\Product\Composite\Fieldset\Options\Type;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\View\Helper\Secure_Html_Renderer;
 /**
  * Bundle option multi select type renderer
  *
@@ -23,12 +21,10 @@ class Multi extends \Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Optio
      * @var string
      */
     protected $_template = 'Magento_Bundle::product/composite/fieldset/options/type/multi.phtml';
-
     /**
      * @var SecureHtmlRenderer
      */
-    protected $secureRenderer;
-
+    protected $secure_renderer;
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\Json\EncoderInterface $jsonEncoder
@@ -44,57 +40,27 @@ class Multi extends \Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Optio
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Framework\Json\EncoderInterface $jsonEncoder,
-        \Magento\Catalog\Helper\Data $catalogData,
-        \Magento\Framework\Registry $registry,
-        \Magento\Framework\Stdlib\StringUtils $string,
-        \Magento\Framework\Math\Random $mathRandom,
-        \Magento\Checkout\Helper\Cart $cartHelper,
-        \Magento\Tax\Helper\Data $taxData,
-        \Magento\Framework\Pricing\Helper\Data $pricingHelper,
-        array $data = [],
-        ?SecureHtmlRenderer $htmlRenderer = null
-    ) {
-        parent::__construct(
-            $context,
-            $jsonEncoder,
-            $catalogData,
-            $registry,
-            $string,
-            $mathRandom,
-            $cartHelper,
-            $taxData,
-            $pricingHelper,
-            $data
-        );
-        $this->secureRenderer = $htmlRenderer ?? ObjectManager::getInstance()->get(SecureHtmlRenderer::class);
+    public function __construct(\Magento\Framework\View\Element\Template\Context $context, \Magento\Framework\Json\Encoder_Interface $json_encoder, \Magento\Catalog\Helper\Data $catalog_data, \Magento\Framework\Registry $registry, \Magento\Framework\Stdlib\String_Utils $string, \Magento\Framework\Math\Random $math_random, \Magento\Checkout\Helper\Cart $cart_helper, \Magento\Tax\Helper\Data $tax_data, \Magento\Framework\Pricing\Helper\Data $pricing_helper, array $data = [], ?Secure_Html_Renderer $html_renderer = null)
+    {
+        parent::__construct($context, $json_encoder, $catalog_data, $registry, $string, $math_random, $cart_helper, $tax_data, $pricing_helper, $data);
+        $this->secure_renderer = $html_renderer ?? Object_Manager::get_instance()->get(Secure_Html_Renderer::class);
     }
-
     /**
      * @inheritdoc
      */
-    public function setValidationContainer($elementId, $containerId)
+    public function set_validation_container($element_id, $container_id)
     {
-        $scriptString = 'document.getElementById(\'' .
-            $elementId .
-            '\').advaiceContainer = \'' .
-            $containerId .
-            '\';';
-
-        return /* @noEscape */ $this->secureRenderer->renderTag('script', [], $scriptString, false);
+        $script_string = 'document.getElementById(\'' . $element_id . '\').advaiceContainer = \'' . $container_id . '\';';
+        return $this->secure_renderer->render_tag('script', [], $script_string, false);
     }
-
     /**
      * @inheritdoc
      * @since 100.3.1
      */
-    public function getSelectionPrice($selection)
+    public function get_selection_price($selection)
     {
-        $price = parent::getSelectionPrice($selection);
-        $qty = $selection->getSelectionQty();
-
+        $price = parent::get_selection_price($selection);
+        $qty = $selection->get_selection_qty();
         return $price * $qty;
     }
 }

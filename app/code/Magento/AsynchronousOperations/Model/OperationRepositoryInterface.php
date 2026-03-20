@@ -4,16 +4,14 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Model;
 
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\AsynchronousOperations\Api\Data\OperationInterface;
-
+use Magento\Asynchronous_Operations\Api\Data\Operation_Interface;
 /**
  * Repository interface to create operation
  */
-interface OperationRepositoryInterface
+interface Operation_Repository_Interface
 {
     /**
      * Create operation by topic, parameters and group ID
@@ -27,5 +25,5 @@ interface OperationRepositoryInterface
      * @param string $groupId
      * @param int $operationId
      */
-    public function create($topicName, $entityParams, $groupId, $operationId): OperationInterface;
+    public function create($topic_name, $entity_params, $group_id, $operation_id): Operation_Interface;
 }

@@ -1,46 +1,40 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Dashboard;
 
 use Magento\Directory\Model\Currency;
 use Magento\Store\Model\Store;
-
 /**
  * Adminhtml dashboard bar block
  */
-class Bar extends \Magento\Backend\Block\Dashboard\AbstractDashboard
+class Bar extends \Magento\Backend\Block\Dashboard\Abstract_Dashboard
 {
     /**
      * @var array
      */
     protected $_totals = [];
-
     /**
      * @var Currency|null
      */
-    protected $_currentCurrencyCode = null;
-
+    protected $_current_currency_code = null;
     /**
      * @var Currency
      */
     private $_currency;
-
     /**
      * Get totals
      *
      * @return array
      */
-    public function getTotals()
+    public function get_totals()
     {
         return $this->_totals;
     }
-
     /**
      * Add total
      *
@@ -49,17 +43,15 @@ class Bar extends \Magento\Backend\Block\Dashboard\AbstractDashboard
      * @param bool $isQuantity
      * @return $this
      */
-    public function addTotal($label, $value, $isQuantity = false)
+    public function add_total($label, $value, $is_quantity = false)
     {
-        if (!$isQuantity) {
+        if (!$is_quantity) {
             $value = $this->format($value);
         }
         $decimals = '';
         $this->_totals[] = ['label' => $label, 'value' => $value, 'decimals' => $decimals];
-
         return $this;
     }
-
     /**
      * Formatting value specific for this store
      *
@@ -68,47 +60,37 @@ class Bar extends \Magento\Backend\Block\Dashboard\AbstractDashboard
      */
     public function format($price)
     {
-        return $this->getCurrency()->format($price);
+        return $this->get_currency()->format($price);
     }
-
     /**
      * Setting currency model
      *
      * @param Currency $currency
      * @return void
      */
-    public function setCurrency($currency)
+    public function set_currency($currency)
     {
         $this->_currency = $currency;
     }
-
     /**
      * Retrieve currency model if not set then return currency model for current store
      *
      * @return Currency
      * @SuppressWarnings(PHPMD.RequestAwareBlockMethod)
      */
-    public function getCurrency()
+    public function get_currency()
     {
-        if ($this->_currentCurrencyCode === null) {
-            if ($this->getRequest()->getParam('store')) {
-                $this->_currentCurrencyCode = $this->_storeManager->getStore(
-                    $this->getRequest()->getParam('store')
-                )->getBaseCurrency();
-            } elseif ($this->getRequest()->getParam('website')) {
-                $this->_currentCurrencyCode = $this->_storeManager->getWebsite(
-                    $this->getRequest()->getParam('website')
-                )->getBaseCurrency();
-            } elseif ($this->getRequest()->getParam('group')) {
-                $this->_currentCurrencyCode = $this->_storeManager->getGroup(
-                    $this->getRequest()->getParam('group')
-                )->getWebsite()->getBaseCurrency();
+        if ($this->_current_currency_code === null) {
+            if ($this->get_request()->get_param('store')) {
+                $this->_current_currency_code = $this->_store_manager->get_store($this->get_request()->get_param('store'))->get_base_currency();
+            } elseif ($this->get_request()->get_param('website')) {
+                $this->_current_currency_code = $this->_store_manager->get_website($this->get_request()->get_param('website'))->get_base_currency();
+            } elseif ($this->get_request()->get_param('group')) {
+                $this->_current_currency_code = $this->_store_manager->get_group($this->get_request()->get_param('group'))->get_website()->get_base_currency();
             } else {
-                $this->_currentCurrencyCode = $this->_storeManager->getStore(Store::DEFAULT_STORE_ID)
-                    ->getBaseCurrency();
+                $this->_current_currency_code = $this->_store_manager->get_store(Store::DEFAULT_STORE_ID)->get_base_currency();
             }
         }
-
-        return $this->_currentCurrencyCode;
+        return $this->_current_currency_code;
     }
 }

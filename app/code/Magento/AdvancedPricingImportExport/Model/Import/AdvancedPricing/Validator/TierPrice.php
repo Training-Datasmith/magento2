@@ -4,37 +4,23 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing\Validator;
 
-declare(strict_types=1);
-
-namespace Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator;
-
-use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing;
-use Magento\CatalogImportExport\Model\Import\Product;
-use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
-use Magento\CatalogImportExport\Model\Import\Product\Validator\AbstractPrice;
-use Magento\Customer\Api\GroupRepositoryInterface;
-use Magento\Framework\Api\SearchCriteriaBuilder;
-use Magento\Framework\Exception\LocalizedException;
-
-class TierPrice extends AbstractPrice
+use Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing;
+use Magento\Catalog_Import_Export\Model\Import\Product;
+use Magento\Catalog_Import_Export\Model\Import\Product\Row_Validator_Interface;
+use Magento\Catalog_Import_Export\Model\Import\Product\Validator\Abstract_Price;
+use Magento\Customer\Api\Group_Repository_Interface;
+use Magento\Framework\Api\Search_Criteria_Builder;
+use Magento\Framework\Exception\Localized_Exception;
+class Tier_Price extends Abstract_Price
 {
-    private array $_tierPriceColumns = [
-        AdvancedPricing::COL_TIER_PRICE_WEBSITE,
-        AdvancedPricing::COL_TIER_PRICE_CUSTOMER_GROUP,
-        AdvancedPricing::COL_TIER_PRICE_QTY,
-        AdvancedPricing::COL_TIER_PRICE,
-        AdvancedPricing::COL_TIER_PRICE_TYPE,
-    ];
-
-    public function __construct(
-        GroupRepositoryInterface $groupRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
-        protected \Magento\CatalogImportExport\Model\Import\Product\StoreResolver $storeResolver
-    ) {
-        parent::__construct($groupRepository, $searchCriteriaBuilder);
+    private array $_tier_price_columns = [Advanced_Pricing::COL_TIER_PRICE_WEBSITE, Advanced_Pricing::COL_TIER_PRICE_CUSTOMER_GROUP, Advanced_Pricing::COL_TIER_PRICE_QTY, Advanced_Pricing::COL_TIER_PRICE, Advanced_Pricing::COL_TIER_PRICE_TYPE];
+    public function __construct(Group_Repository_Interface $group_repository, Search_Criteria_Builder $search_criteria_builder, protected \Magento\Catalog_Import_Export\Model\Import\Product\Store_Resolver $store_resolver)
+    {
+        parent::__construct($group_repository, $search_criteria_builder);
     }
-
     /**
      * Initialize method
      *
@@ -44,15 +30,14 @@ class TierPrice extends AbstractPrice
      */
     public function init($context): void
     {
-        foreach ($this->groupRepository->getList($this->searchCriteriaBuilder->create())->getItems() as $group) {
-            $code = $group->getCode();
+        foreach ($this->group_repository->get_list($this->search_criteria_builder->create())->get_items() as $group) {
+            $code = $group->get_code();
             if ($code !== null) {
-                $this->customerGroups[$code] = $group->getId();
+                $this->customer_groups[$code] = $group->get_id();
             }
         }
         $this->context = $context;
     }
-
     /**
      * Add decimal error
      *
@@ -60,33 +45,22 @@ class TierPrice extends AbstractPrice
      *
      * @return void
      */
-    protected function addDecimalError($attribute)
+    protected function add_decimal_error($attribute)
     {
-        $this->_addMessages(
-            [
-                sprintf(
-                    $this->context->retrieveMessageTemplate(
-                        RowValidatorInterface::ERROR_INVALID_ATTRIBUTE_DECIMAL
-                    ),
-                    $attribute
-                ),
-            ]
-        );
+        $this->_add_messages([sprintf($this->context->retrieve_message_template(Row_Validator_Interface::ERROR_INVALID_ATTRIBUTE_DECIMAL), $attribute)]);
     }
-
     /**
      * Get existing customers groups
      *
      * @return array
      */
-    public function getCustomerGroups()
+    public function get_customer_groups()
     {
-        if (!$this->customerGroups) {
+        if (!$this->customer_groups) {
             $this->init($this->context);
         }
-        return $this->customerGroups;
+        return $this->customer_groups;
     }
-
     /**
      * Validation
      *
@@ -95,76 +69,64 @@ class TierPrice extends AbstractPrice
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
      */
-    public function isValid(array $value)
+    public function is_valid(array $value)
     {
-        $this->_clearMessages();
-        if (!$this->customerGroups) {
+        $this->_clear_messages();
+        if (!$this->customer_groups) {
             $this->init($this->context);
         }
         $valid = true;
-        if ($this->isValidValueAndLength($value)) {
-            if (!isset($value[AdvancedPricing::COL_TIER_PRICE_WEBSITE])
-                || !isset($value[AdvancedPricing::COL_TIER_PRICE_CUSTOMER_GROUP])
-                || !isset($value[AdvancedPricing::COL_TIER_PRICE_QTY])
-                || !isset($value[AdvancedPricing::COL_TIER_PRICE])
-                || !isset($value[AdvancedPricing::COL_TIER_PRICE_TYPE])
-                || $this->hasEmptyColumns($value)
-            ) {
-                $this->_addMessages([self::ERROR_TIER_DATA_INCOMPLETE]);
+        if ($this->is_valid_value_and_length($value)) {
+            if (!isset($value[Advanced_Pricing::COL_TIER_PRICE_WEBSITE]) || !isset($value[Advanced_Pricing::COL_TIER_PRICE_CUSTOMER_GROUP]) || !isset($value[Advanced_Pricing::COL_TIER_PRICE_QTY]) || !isset($value[Advanced_Pricing::COL_TIER_PRICE]) || !isset($value[Advanced_Pricing::COL_TIER_PRICE_TYPE]) || $this->has_empty_columns($value)) {
+                $this->_add_messages([self::ERROR_TIER_DATA_INCOMPLETE]);
                 $valid = false;
-            } elseif ($value[AdvancedPricing::COL_TIER_PRICE_CUSTOMER_GROUP] != AdvancedPricing::VALUE_ALL_GROUPS
-                && !isset($this->customerGroups[$value[AdvancedPricing::COL_TIER_PRICE_CUSTOMER_GROUP]])
-            ) {
-                $this->_addMessages([self::ERROR_INVALID_TIER_PRICE_GROUP]);
+            } elseif ($value[Advanced_Pricing::COL_TIER_PRICE_CUSTOMER_GROUP] != Advanced_Pricing::VALUE_ALL_GROUPS && !isset($this->customer_groups[$value[Advanced_Pricing::COL_TIER_PRICE_CUSTOMER_GROUP]])) {
+                $this->_add_messages([self::ERROR_INVALID_TIER_PRICE_GROUP]);
                 $valid = false;
             }
             if ($valid) {
-                if (!is_numeric($value[AdvancedPricing::COL_TIER_PRICE_QTY])
-                    || $value[AdvancedPricing::COL_TIER_PRICE_QTY] < 0) {
-                    $this->addDecimalError(AdvancedPricing::COL_TIER_PRICE_QTY);
+                if (!is_numeric($value[Advanced_Pricing::COL_TIER_PRICE_QTY]) || $value[Advanced_Pricing::COL_TIER_PRICE_QTY] < 0) {
+                    $this->add_decimal_error(Advanced_Pricing::COL_TIER_PRICE_QTY);
                     $valid = false;
                 }
-                if (!is_numeric($value[AdvancedPricing::COL_TIER_PRICE])
-                    || $value[AdvancedPricing::COL_TIER_PRICE] < 0) {
-                    $this->addDecimalError(AdvancedPricing::COL_TIER_PRICE);
+                if (!is_numeric($value[Advanced_Pricing::COL_TIER_PRICE]) || $value[Advanced_Pricing::COL_TIER_PRICE] < 0) {
+                    $this->add_decimal_error(Advanced_Pricing::COL_TIER_PRICE);
                     $valid = false;
                 }
             }
         }
         return $valid;
     }
-
     /**
      * Check if at list one value and length are valid
      *
      *
      * @return bool
      */
-    protected function isValidValueAndLength(array $value)
+    protected function is_valid_value_and_length(array $value)
     {
-        $isValid = false;
-        foreach ($this->_tierPriceColumns as $column) {
+        $is_valid = false;
+        foreach ($this->_tier_price_columns as $column) {
             if (isset($value[$column]) && strlen($value[$column])) {
-                $isValid = true;
+                $is_valid = true;
             }
         }
-        return $isValid;
+        return $is_valid;
     }
-
     /**
      * Check if value has empty columns
      *
      *
      * @return bool
      */
-    protected function hasEmptyColumns(array $value)
+    protected function has_empty_columns(array $value)
     {
-        $hasEmptyValues = false;
-        foreach ($this->_tierPriceColumns as $column) {
+        $has_empty_values = false;
+        foreach ($this->_tier_price_columns as $column) {
             if (!strlen((string) $value[$column])) {
-                $hasEmptyValues = true;
+                $has_empty_values = true;
             }
         }
-        return $hasEmptyValues;
+        return $has_empty_values;
     }
 }

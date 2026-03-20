@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\DomDocument;
+namespace Magento\Framework\Dom_Document;
 
 /**
  * DOM document factory
  */
-class DomDocumentFactory
+class Dom_Document_Factory
 {
     /**
      * Create empty DOM document instance.
@@ -20,6 +19,6 @@ class DomDocumentFactory
      */
     public function create()
     {
-        return new \DOMDocument();
+        return new \Dom_Document();
     }
 }

@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Backup\Filesystem;
 
 use Magento\Framework\Backup\Filesystem\Iterator\Filter;
-use RecursiveDirectoryIterator;
-use RecursiveIteratorIterator;
-
+use Recursive_Directory_Iterator;
+use Recursive_Iterator_Iterator;
 /**
  * Filesystem helper
  *
@@ -26,7 +24,6 @@ class Helper
      * @const int
      */
     public const INFO_WRITABLE = 1;
-
     /**
      * Constant can be used in getInfo() function as second parameter.
      * Check whether directory and all files/sub directories are readable
@@ -34,7 +31,6 @@ class Helper
      * @const int
      */
     public const INFO_READABLE = 2;
-
     /**
      * Constant can be used in getInfo() function as second parameter.
      * Get directory size
@@ -42,7 +38,6 @@ class Helper
      * @const int
      */
     public const INFO_SIZE = 4;
-
     /**
      * Constant can be used in getInfo() function as second parameter.
      * Combination of INFO_WRITABLE, INFO_READABLE, INFO_SIZE
@@ -50,7 +45,6 @@ class Helper
      * @const int
      */
     public const INFO_ALL = 7;
-
     /**
      * Recursively delete $path
      *
@@ -61,24 +55,17 @@ class Helper
      * @throws \Magento\Framework\Exception\LocalizedException
      * @SuppressWarnings(PHPMD.ShortMethodName)
      */
-    public function rm($path, $skipPaths = [], $removeRoot = false)
+    public function rm($path, $skip_paths = [], $remove_root = false)
     {
-        $filesystemIterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($path),
-            RecursiveIteratorIterator::CHILD_FIRST
-        );
-
-        $iterator = new Filter($filesystemIterator, $skipPaths);
-
+        $filesystem_iterator = new Recursive_Iterator_Iterator(new Recursive_Directory_Iterator($path), Recursive_Iterator_Iterator::CHILD_FIRST);
+        $iterator = new Filter($filesystem_iterator, $skip_paths);
         foreach ($iterator as $item) {
-            $item->isDir() ? @rmdir($item->__toString()) : @unlink($item->__toString());
+            $item->is_dir() ? @rmdir($item->__toString()) : @unlink($item->__toString());
         }
-
-        if ($removeRoot && is_dir($path)) {
+        if ($remove_root && is_dir($path)) {
             @rmdir($path);
         }
     }
-
     /**
      * Get information (readable, writable, size) about $path
      *
@@ -89,50 +76,38 @@ class Helper
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function getInfo($path, $infoOptions = self::INFO_ALL, $skipFiles = [])
+    public function get_info($path, $info_options = self::INFO_ALL, $skip_files = [])
     {
         $info = [];
-        if ($infoOptions & self::INFO_READABLE) {
+        if ($info_options & self::INFO_READABLE) {
             $info['readable'] = true;
             $info['readableMeta'] = [];
         }
-
-        if ($infoOptions & self::INFO_WRITABLE) {
+        if ($info_options & self::INFO_WRITABLE) {
             $info['writable'] = true;
             $info['writableMeta'] = [];
         }
-
-        if ($infoOptions & self::INFO_SIZE) {
+        if ($info_options & self::INFO_SIZE) {
             $info['size'] = 0;
         }
-
-        $filesystemIterator = new RecursiveIteratorIterator(
-            new RecursiveDirectoryIterator($path),
-            RecursiveIteratorIterator::CHILD_FIRST
-        );
-
-        $iterator = new Filter($filesystemIterator, $skipFiles);
-
+        $filesystem_iterator = new Recursive_Iterator_Iterator(new Recursive_Directory_Iterator($path), Recursive_Iterator_Iterator::CHILD_FIRST);
+        $iterator = new Filter($filesystem_iterator, $skip_files);
         foreach ($iterator as $item) {
-            if ($item->isLink()) {
+            if ($item->is_link()) {
                 continue;
             }
-
-            if ($infoOptions & self::INFO_WRITABLE && !$item->isWritable()) {
+            if ($info_options & self::INFO_WRITABLE && !$item->is_writable()) {
                 $info['writable'] = false;
-                $info['writableMeta'][] = $item->getPathname();
+                $info['writableMeta'][] = $item->get_pathname();
             }
-
-            if ($infoOptions & self::INFO_READABLE && !$item->isReadable()) {
+            if ($info_options & self::INFO_READABLE && !$item->is_readable()) {
                 $info['readable'] = false;
-                $info['readableMeta'][] = $item->getPathname();
+                $info['readableMeta'][] = $item->get_pathname();
             }
-
-            if ($infoOptions & self::INFO_SIZE && !$item->isDir()) {
-                $info['size'] += $item->getSize();
+            if ($info_options & self::INFO_SIZE && !$item->is_dir()) {
+                $info['size'] += $item->get_size();
             }
         }
-
         return $info;
     }
 }

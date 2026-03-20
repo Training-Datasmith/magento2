@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache\Config;
 
-use Magento\Framework\Serialize\SerializerInterface;
-
+use Magento\Framework\Serialize\Serializer_Interface;
 /**
  * Provides cached configuration data based on current config scope
  */
@@ -20,8 +18,7 @@ class Data extends \Magento\Framework\Config\Data\Scoped
      *
      * @var string[]
      */
-    protected $_scopePriorityScheme = ['global'];
-
+    protected $_scope_priority_scheme = ['global'];
     /**
      * Constructor
      *
@@ -31,13 +28,8 @@ class Data extends \Magento\Framework\Config\Data\Scoped
      * @param string $cacheId
      * @param SerializerInterface|null $serializer
      */
-    public function __construct(
-        \Magento\Framework\Cache\Config\Reader $reader,
-        \Magento\Framework\Config\ScopeInterface $configScope,
-        \Magento\Framework\Config\CacheInterface $cache,
-        $cacheId,
-        ?SerializerInterface $serializer = null
-    ) {
-        parent::__construct($reader, $configScope, $cache, $cacheId, $serializer);
+    public function __construct(\Magento\Framework\Cache\Config\Reader $reader, \Magento\Framework\Config\Scope_Interface $config_scope, \Magento\Framework\Config\Cache_Interface $cache, $cache_id, ?Serializer_Interface $serializer = null)
+    {
+        parent::__construct($reader, $config_scope, $cache, $cache_id, $serializer);
     }
 }

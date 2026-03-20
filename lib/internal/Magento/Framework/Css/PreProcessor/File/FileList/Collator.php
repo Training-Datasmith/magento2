@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Css\Pre_Processor\File\File_List;
 
-namespace Magento\Framework\Css\PreProcessor\File\FileList;
-
-use Magento\Framework\View\File\FileList\CollateInterface;
-
+use Magento\Framework\View\File\File_List\Collate_Interface;
 /**
  * File list collator
  */
-class Collator implements CollateInterface
+class Collator implements Collate_Interface
 {
     /**
      * Collate source files
@@ -22,17 +20,17 @@ class Collator implements CollateInterface
      * @param \Magento\Framework\View\File[] $filesOrigin
      * @return \Magento\Framework\View\File[]
      */
-    public function collate($files, $filesOrigin)
+    public function collate($files, $files_origin)
     {
         foreach ($files as $file) {
-            $fileId = substr($file->getFileIdentifier(), strpos($file->getFileIdentifier(), '|'));
-            foreach (array_keys($filesOrigin) as $identifier) {
-                if (false !== strpos($identifier, $fileId)) {
-                    unset($filesOrigin[$identifier]);
+            $file_id = substr($file->get_file_identifier(), strpos($file->get_file_identifier(), '|'));
+            foreach (array_keys($files_origin) as $identifier) {
+                if (false !== strpos($identifier, $file_id)) {
+                    unset($files_origin[$identifier]);
                 }
             }
-            $filesOrigin[$file->getFileIdentifier()] = $file;
+            $files_origin[$file->get_file_identifier()] = $file;
         }
-        return $filesOrigin;
+        return $files_origin;
     }
 }

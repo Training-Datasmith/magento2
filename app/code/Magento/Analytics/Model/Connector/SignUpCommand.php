@@ -1,34 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model\Connector;
 
 use Laminas\Http\Request;
-use Magento\Analytics\Model\Connector\Http\ResponseResolver;
-use Magento\Analytics\Model\IntegrationManager;
-use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Analytics\Model\Connector\Http\Response_Resolver;
+use Magento\Analytics\Model\Integration_Manager;
+use Magento\Framework\App\Config\Scope_Config_Interface;
 use Magento\Store\Model\Store;
-use Psr\Log\LoggerInterface;
-
+use Psr\Log\Logger_Interface;
 /**
  * SignUp merchant for Free Tier project
  */
-class SignUpCommand implements CommandInterface
+class Sign_Up_Command implements Command_Interface
 {
-    private string $signUpUrlPath = 'analytics/url/signup';
-
+    private string $sign_up_url_path = 'analytics/url/signup';
     /**
      * SignUpCommand constructor.
      */
-    public function __construct(private readonly IntegrationManager $integrationManager, private readonly ScopeConfigInterface $config, private readonly Http\ClientInterface $httpClient, private readonly LoggerInterface $logger, private readonly ResponseResolver $responseResolver)
+    public function __construct(private readonly Integration_Manager $integration_manager, private readonly Scope_Config_Interface $config, private readonly Http\Client_Interface $http_client, private readonly Logger_Interface $logger, private readonly Response_Resolver $response_resolver)
     {
     }
-
     /**
      * Executes signUp command
      *
@@ -42,33 +38,15 @@ class SignUpCommand implements CommandInterface
     public function execute(): bool
     {
         $result = false;
-        $integrationToken = $this->integrationManager->generateToken();
-        if ($integrationToken) {
-            $this->integrationManager->activateIntegration();
-            $response = $this->httpClient->request(
-                Request::METHOD_POST,
-                $this->config->getValue($this->signUpUrlPath),
-                [
-                    'token' => $integrationToken->getData('token'),
-                    'url' => $this->config->getValue(Store::XML_PATH_SECURE_BASE_URL),
-                ]
-            );
-
-            $result = $this->responseResolver->getResult($response);
+        $integration_token = $this->integration_manager->generate_token();
+        if ($integration_token) {
+            $this->integration_manager->activate_integration();
+            $response = $this->http_client->request(Request::METHOD_POST, $this->config->get_value($this->sign_up_url_path), ['token' => $integration_token->get_data('token'), 'url' => $this->config->get_value(Store::XML_PATH_SECURE_BASE_URL)]);
+            $result = $this->response_resolver->get_result($response);
             if (!$result) {
-                $this->logger->warning(
-                    sprintf(
-                        'Subscription for MBI service has been failed. An error occurred during token exchange: %s.'
-                        . ' Content-Type: %s',
-                        !empty($response->getBody()) ? $response->getBody() : 'Response body is empty',
-                        $response->getHeaders()->has('Content-Type') ?
-                            $response->getHeaders()->get('Content-Type')->getFieldValue() :
-                            ''
-                    )
-                );
+                $this->logger->warning(sprintf('Subscription for MBI service has been failed. An error occurred during token exchange: %s.' . ' Content-Type: %s', !empty($response->get_body()) ? $response->get_body() : 'Response body is empty', $response->get_headers()->has('Content-Type') ? $response->get_headers()->get('Content-Type')->get_field_value() : ''));
             }
         }
-
-        return (bool)$result;
+        return (bool) $result;
     }
 }

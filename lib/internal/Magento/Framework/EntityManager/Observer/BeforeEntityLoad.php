@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Observer;
+namespace Magento\Framework\Entity_Manager\Observer;
 
 use Magento\Framework\Event\Observer;
-use Magento\Framework\Model\AbstractModel;
-
+use Magento\Framework\Model\Abstract_Model;
 /**
  * Class BeforeEntityLoad
  */
-class BeforeEntityLoad
+class Before_Entity_Load
 {
     /**
      * Apply model before load operation
@@ -25,10 +23,10 @@ class BeforeEntityLoad
      */
     public function execute(Observer $observer)
     {
-        $identifier = $observer->getEvent()->getIdentifier();
-        $entity = $observer->getEvent()->getEntity();
-        if ($entity instanceof AbstractModel) {
-            $entity->beforeLoad($identifier);
+        $identifier = $observer->get_event()->get_identifier();
+        $entity = $observer->get_event()->get_entity();
+        if ($entity instanceof Abstract_Model) {
+            $entity->before_load($identifier);
         }
     }
 }

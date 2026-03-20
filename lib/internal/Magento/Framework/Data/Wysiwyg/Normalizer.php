@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Wysiwyg;
 
 /**
@@ -13,42 +12,25 @@ namespace Magento\Framework\Data\Wysiwyg;
  */
 class Normalizer
 {
-    public const WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP = [
-        '{' => '^[',
-        '}' => '^]',
-        '"' => '`',
-        '\\' => '|',
-        '<' => '^(',
-        '>' => '^)',
-    ];
-
+    public const WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP = ['{' => '^[', '}' => '^]', '"' => '`', '\\' => '|', '<' => '^(', '>' => '^)'];
     /**
      * Replace the reserved characters in the content
      *
      * @param string $content
      * @return string
      */
-    public function replaceReservedCharacters($content)
+    public function replace_reserved_characters($content)
     {
-        return $content !== null ? str_replace(
-            array_keys(Normalizer::WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP),
-            array_values(Normalizer::WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP),
-            $content
-        ) : '';
+        return $content !== null ? str_replace(array_keys(Normalizer::WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP), array_values(Normalizer::WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP), $content) : '';
     }
-
     /**
      * Restore the reserved characters in the content
      *
      * @param string $content
      * @return string
      */
-    public function restoreReservedCharacters($content)
+    public function restore_reserved_characters($content)
     {
-        return $content !== null ? str_replace(
-            array_values(Normalizer::WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP),
-            array_keys(Normalizer::WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP),
-            $content
-        ) : '';
+        return $content !== null ? str_replace(array_values(Normalizer::WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP), array_keys(Normalizer::WYSIWYG_RESERVED_CHARACTERS_REPLACEMENT_MAP), $content) : '';
     }
 }

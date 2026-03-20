@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Form\Element;
 
 use Magento\Framework\Data\Form;
 use Magento\Framework\Escaper;
-
 /**
  * Form fieldset
  *
  * @api
  * @since 100.0.2
  */
-class Fieldset extends AbstractElement
+class Fieldset extends Abstract_Element
 {
     /**
      * @param Factory $factoryElement
@@ -25,182 +23,163 @@ class Fieldset extends AbstractElement
      * @param Escaper $escaper
      * @param array $data
      */
-    public function __construct(
-        Factory $factoryElement,
-        CollectionFactory $factoryCollection,
-        Escaper $escaper,
-        $data = []
-    ) {
-        parent::__construct($factoryElement, $factoryCollection, $escaper, $data);
-        $this->_renderer = Form::getFieldsetRenderer();
-        $this->setType('fieldset');
+    public function __construct(Factory $factory_element, Collection_Factory $factory_collection, Escaper $escaper, $data = [])
+    {
+        parent::__construct($factory_element, $factory_collection, $escaper, $data);
+        $this->_renderer = Form::get_fieldset_renderer();
+        $this->set_type('fieldset');
         if (isset($data['advancedSection'])) {
-            $this->setAdvancedLabel($data['advancedSection']);
+            $this->set_advanced_label($data['advancedSection']);
         }
     }
-
     /**
      * Get elements html
      *
      * @return string
      */
-    public function getElementHtml()
+    public function get_element_html()
     {
-        $html = $this->getBeforeElementHtml();
-        $html .= '<fieldset area-hidden="false" id="' . $this->getHtmlId() . '"' . $this->serialize(
-            ['class']
-        ) . $this->_getUiId() . '>' . "\n";
-        if ($this->getLegend()) {
-            $html .= '<legend ' . $this->_getUiId('legend') . '>' . $this->getLegend() . '</legend>' . "\n";
+        $html = $this->get_before_element_html();
+        $html .= '<fieldset area-hidden="false" id="' . $this->get_html_id() . '"' . $this->serialize(['class']) . $this->_get_ui_id() . '>' . "\n";
+        if ($this->get_legend()) {
+            $html .= '<legend ' . $this->_get_ui_id('legend') . '>' . $this->get_legend() . '</legend>' . "\n";
         }
-        $html .= $this->getChildrenHtml();
+        $html .= $this->get_children_html();
         $html .= '</fieldset>' . "\n";
-        $html .= $this->getAfterElementHtml();
+        $html .= $this->get_after_element_html();
         return $html;
     }
-
     /**
      * Get Children element's array
      *
      * @return AbstractElement[]
      */
-    public function getChildren()
+    public function get_children()
     {
         $elements = [];
-        foreach ($this->getElements() as $element) {
-            if ($element->getType() != 'fieldset') {
+        foreach ($this->get_elements() as $element) {
+            if ($element->get_type() != 'fieldset') {
                 $elements[] = $element;
             }
         }
         return $elements;
     }
-
     /**
      * Get Children element's html
      *
      * @return string
      */
-    public function getChildrenHtml()
+    public function get_children_html()
     {
-        return $this->_elementsToHtml($this->getChildren());
+        return $this->_elements_to_html($this->get_children());
     }
-
     /**
      * Get Basic elements' array
      *
      * @return AbstractElement[]
      */
-    public function getBasicChildren()
+    public function get_basic_children()
     {
         $elements = [];
-        foreach ($this->getElements() as $element) {
-            if (!$element->isAdvanced()) {
+        foreach ($this->get_elements() as $element) {
+            if (!$element->is_advanced()) {
                 $elements[] = $element;
             }
         }
         return $elements;
     }
-
     /**
      * Get Basic elements' html in sorted order
      *
      * @return string
      */
-    public function getBasicChildrenHtml()
+    public function get_basic_children_html()
     {
-        return $this->_elementsToHtml($this->getBasicChildren());
+        return $this->_elements_to_html($this->get_basic_children());
     }
-
     /**
      * Get Number of Basic Children
      *
      * @return int
      */
-    public function getCountBasicChildren()
+    public function get_count_basic_children()
     {
-        return count($this->getBasicChildren());
+        return count($this->get_basic_children());
     }
-
     /**
      * Get Advanced elements'
      *
      * @return array
      */
-    public function getAdvancedChildren()
+    public function get_advanced_children()
     {
         $elements = [];
-        foreach ($this->getElements() as $element) {
-            if ($element->isAdvanced()) {
+        foreach ($this->get_elements() as $element) {
+            if ($element->is_advanced()) {
                 $elements[] = $element;
             }
         }
         return $elements;
     }
-
     /**
      * Get Advanced elements' html in sorted order
      *
      * @return string
      */
-    public function getAdvancedChildrenHtml()
+    public function get_advanced_children_html()
     {
-        return $this->_elementsToHtml($this->getAdvancedChildren());
+        return $this->_elements_to_html($this->get_advanced_children());
     }
-
     /**
      * Whether fieldset contains advance section
      *
      * @return bool
      */
-    public function hasAdvanced()
+    public function has_advanced()
     {
-        foreach ($this->getElements() as $element) {
-            if ($element->isAdvanced()) {
+        foreach ($this->get_elements() as $element) {
+            if ($element->is_advanced()) {
                 return true;
             }
         }
         return false;
     }
-
     /**
      * Get SubFieldset
      *
      * @return AbstractElement[]
      */
-    public function getSubFieldset()
+    public function get_sub_fieldset()
     {
         $elements = [];
-        foreach ($this->getElements() as $element) {
-            if ($element->getType() == 'fieldset' && !$element->isAdvanced()) {
+        foreach ($this->get_elements() as $element) {
+            if ($element->get_type() == 'fieldset' && !$element->is_advanced()) {
                 $elements[] = $element;
             }
         }
         return $elements;
     }
-
     /**
      * Enter description here...
      *
      * @return string
      */
-    public function getSubFieldsetHtml()
+    public function get_sub_fieldset_html()
     {
-        return $this->_elementsToHtml($this->getSubFieldset());
+        return $this->_elements_to_html($this->get_sub_fieldset());
     }
-
     /**
      * Enter description here...
      *
      * @return string
      */
-    public function getDefaultHtml()
+    public function get_default_html()
     {
-        $html = '<div><h4 class="icon-head head-edit-form fieldset-legend">' . $this->getLegend() . '</h4>' . "\n";
-        $html .= $this->getElementHtml();
+        $html = '<div><h4 class="icon-head head-edit-form fieldset-legend">' . $this->get_legend() . '</h4>' . "\n";
+        $html .= $this->get_element_html();
         $html .= '</div>';
         return $html;
     }
-
     /**
      * Add field to fieldset
      *
@@ -211,27 +190,26 @@ class Fieldset extends AbstractElement
      * @param bool $isAdvanced
      * @return AbstractElement
      */
-    public function addField($elementId, $type, $config, $after = false, $isAdvanced = false)
+    public function add_field($element_id, $type, $config, $after = false, $is_advanced = false)
     {
-        $element = parent::addField($elementId, $type, $config, $after);
-        if ($renderer = Form::getFieldsetElementRenderer()) {
-            $element->setRenderer($renderer);
+        $element = parent::add_field($element_id, $type, $config, $after);
+        if ($renderer = Form::get_fieldset_element_renderer()) {
+            $element->set_renderer($renderer);
         }
-        $element->setAdvanced($isAdvanced);
+        $element->set_advanced($is_advanced);
         return $element;
     }
-
     /**
      * Return elements as html string
      *
      * @param AbstractElement[] $elements
      * @return string
      */
-    protected function _elementsToHtml($elements)
+    protected function _elements_to_html($elements)
     {
         $html = '';
         foreach ($elements as $element) {
-            $html .= $element->toHtml();
+            $html .= $element->to_html();
         }
         return $html;
     }

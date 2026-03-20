@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Catalog\Api;
  * @api
  * @since 101.0.0
  */
-interface AttributeSetFinderInterface
+interface Attribute_Set_Finder_Interface
 {
     /**
      * Get attribute set ids by product ids
@@ -22,5 +21,5 @@ interface AttributeSetFinderInterface
      * @return array
      * @since 101.0.0
      */
-    public function findAttributeSetIdsByProductIds(array $productIds);
+    public function find_attribute_set_ids_by_product_ids(array $product_ids);
 }

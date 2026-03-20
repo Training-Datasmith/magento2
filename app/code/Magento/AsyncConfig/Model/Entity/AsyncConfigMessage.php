@@ -4,31 +4,27 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Async_Config\Model\Entity;
 
-namespace Magento\AsyncConfig\Model\Entity;
-
-use Magento\AsyncConfig\Api\Data\AsyncConfigMessageInterface;
-
-class AsyncConfigMessage implements AsyncConfigMessageInterface
+use Magento\Async_Config\Api\Data\Async_Config_Message_Interface;
+class Async_Config_Message implements Async_Config_Message_Interface
 {
     /**
      * @var string
      */
     private $data;
-
     /**
      * @inheritDoc
      */
-    public function getConfigData()
+    public function get_config_data()
     {
         return $this->data;
     }
-
     /**
      * @inheritDoc
      */
-    public function setConfigData($data): void
+    public function set_config_data($data): void
     {
         $this->data = $data;
     }

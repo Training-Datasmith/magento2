@@ -1,26 +1,23 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Amqp\Topology;
 
-use Magento\Framework\MessageQueue\Topology\Config\ExchangeConfigItem\BindingInterface;
-use PhpAmqpLib\Channel\AMQPChannel;
-
+use Magento\Framework\Message_Queue\Topology\Config\Exchange_Config_Item\Binding_Interface;
+use Php_Amqp_Lib\Channel\Amqp_Channel;
 /**
  * {@inheritdoc}
  */
-class BindingInstaller implements BindingInstallerInterface
+class Binding_Installer implements Binding_Installer_Interface
 {
     /**
      * @var BindingInstallerInterface[]
      */
     private $installers;
-
     /**
      * Initialize dependencies.
      *
@@ -30,22 +27,20 @@ class BindingInstaller implements BindingInstallerInterface
     {
         $this->installers = $installers;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function install(AMQPChannel $channel, BindingInterface $binding, $exchangeName)
+    public function install(Amqp_Channel $channel, Binding_Interface $binding, $exchange_name)
     {
-        $this->getInstaller($binding->getDestinationType())->install($channel, $binding, $exchangeName);
+        $this->get_installer($binding->get_destination_type())->install($channel, $binding, $exchange_name);
     }
-
     /**
      * Get binding installer by type.
      *
      * @param string $type
      * @return BindingInstallerInterface
      */
-    private function getInstaller($type)
+    private function get_installer($type)
     {
         if (!isset($this->installers[$type])) {
             throw new \InvalidArgumentException(sprintf('Installer type [%s] is not configured', $type));

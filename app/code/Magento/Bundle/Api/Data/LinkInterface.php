@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Api\Data;
 
 /**
@@ -13,159 +12,139 @@ namespace Magento\Bundle\Api\Data;
  * @api
  * @since 100.0.2
  */
-interface LinkInterface extends \Magento\Framework\Api\ExtensibleDataInterface
+interface Link_Interface extends \Magento\Framework\Api\Extensible_Data_Interface
 {
     public const PRICE_TYPE_FIXED = 0;
     public const PRICE_TYPE_PERCENT = 1;
-
     /**
      * Get the identifier
      *
      * @return string|null
      */
-    public function getId();
-
+    public function get_id();
     /**
      * Set id
      *
      * @param string $id
      * @return $this
      */
-    public function setId($id);
-
+    public function set_id($id);
     /**
      * Get linked product sku
      *
      * @return string|null
      */
-    public function getSku();
-
+    public function get_sku();
     /**
      * Set linked product sku
      *
      * @param string $sku
      * @return $this
      */
-    public function setSku($sku);
-
+    public function set_sku($sku);
     /**
      * Get option id
      *
      * @return int|null
      */
-    public function getOptionId();
-
+    public function get_option_id();
     /**
      * Set option id
      *
      * @param int $optionId
      * @return $this
      */
-    public function setOptionId($optionId);
-
+    public function set_option_id($option_id);
     /**
      * Get qty
      *
      * @return float|null
      */
-    public function getQty();
-
+    public function get_qty();
     /**
      * Set qty
      *
      * @param float $qty
      * @return $this
      */
-    public function setQty($qty);
-
+    public function set_qty($qty);
     /**
      * Get position
      *
      * @return int|null
      */
-    public function getPosition();
-
+    public function get_position();
     /**
      * Set position
      *
      * @param int $position
      * @return $this
      */
-    public function setPosition($position);
-
+    public function set_position($position);
     /**
      * Get is default
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    public function getIsDefault();
-
+    public function get_is_default();
     /**
      * Set is default
      *
      * @param bool $isDefault
      * @return $this
      */
-    public function setIsDefault($isDefault);
-
+    public function set_is_default($is_default);
     /**
      * Get price
      *
      * @return float
      */
-    public function getPrice();
-
+    public function get_price();
     /**
      * Set price
      *
      * @param float $price
      * @return $this
      */
-    public function setPrice($price);
-
+    public function set_price($price);
     /**
      * Get price type
      *
      * @return int
      */
-    public function getPriceType();
-
+    public function get_price_type();
     /**
      * Set price type
      *
      * @param int $priceType
      * @return $this
      */
-    public function setPriceType($priceType);
-
+    public function set_price_type($price_type);
     /**
      * Get whether quantity could be changed
      *
      * @return int|null
      */
-    public function getCanChangeQuantity();
-
+    public function get_can_change_quantity();
     /**
      * Set whether quantity could be changed
      *
      * @param int $canChangeQuantity
      * @return $this
      */
-    public function setCanChangeQuantity($canChangeQuantity);
-
+    public function set_can_change_quantity($can_change_quantity);
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
      * @return \Magento\Bundle\Api\Data\LinkExtensionInterface|null
      */
-    public function getExtensionAttributes();
-
+    public function get_extension_attributes();
     /**
      * Set an extension attributes object.
      *
      * @param \Magento\Bundle\Api\Data\LinkExtensionInterface $extensionAttributes
      * @return $this
      */
-    public function setExtensionAttributes(\Magento\Bundle\Api\Data\LinkExtensionInterface $extensionAttributes);
+    public function set_extension_attributes(\Magento\Bundle\Api\Data\Link_Extension_Interface $extension_attributes);
 }

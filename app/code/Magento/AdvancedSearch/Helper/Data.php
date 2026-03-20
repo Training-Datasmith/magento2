@@ -4,40 +4,33 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Advanced_Search\Helper;
 
-namespace Magento\AdvancedSearch\Helper;
-
-use Magento\Framework\App\Helper\AbstractHelper;
+use Magento\Framework\App\Helper\Abstract_Helper;
 use Magento\Framework\App\Helper\Context;
-use Magento\Framework\Search\EngineResolverInterface;
-use OpenSearch\Client;
-
-class Data extends AbstractHelper
+use Magento\Framework\Search\Engine_Resolver_Interface;
+use Open_Search\Client;
+class Data extends Abstract_Helper
 {
     public const OPENSEARCH = 'opensearch';
     public const MAJOR_VERSION = '2';
-
     /**
      * @var EngineResolverInterface
      */
-    public $engineResolver;
-
-    public function __construct(
-        Context $context,
-        EngineResolverInterface $engineResolver
-    ) {
+    public $engine_resolver;
+    public function __construct(Context $context, Engine_Resolver_Interface $engine_resolver)
+    {
         parent::__construct($context);
-        $this->engineResolver = $engineResolver;
+        $this->engine_resolver = $engine_resolver;
     }
-
     /**
      * Check if opensearch v2.x
      */
-    public function isClientOpenSearchV2(): bool
+    public function is_client_open_search_v2(): bool
     {
-        $searchEngine =  $this->engineResolver->getCurrentSearchEngine();
-        if (stripos($searchEngine, self::OPENSEARCH) === false) {
+        $search_engine = $this->engine_resolver->get_current_search_engine();
+        if (stripos($search_engine, self::OPENSEARCH) === false) {
             return false;
         }
         if (substr(Client::VERSION, 0, 1) == self::MAJOR_VERSION) {

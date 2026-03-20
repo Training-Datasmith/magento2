@@ -1,28 +1,25 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Block\Sales\Order\Items;
 
-use Magento\Catalog\Model\Product\Type\AbstractType;
+use Magento\Catalog\Model\Product\Type\Abstract_Type;
 use Magento\Framework\Serialize\Serializer\Json;
-
 /**
  * Order item render block
  * @api
  * @since 100.0.2
  */
-class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer
+class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\Default_Renderer
 {
     /**
      * @var Json
      */
     private $serializer;
-
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Framework\Stdlib\StringUtils $string
@@ -30,19 +27,11 @@ class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer
      * @param array $data
      * @param \Magento\Framework\Serialize\Serializer\Json $serializer
      */
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Framework\Stdlib\StringUtils $string,
-        \Magento\Catalog\Model\Product\OptionFactory $productOptionFactory,
-        array $data = [],
-        ?Json $serializer = null
-    ) {
-        $this->serializer = $serializer ?: \Magento\Framework\App\ObjectManager::getInstance()
-            ->get(Json::class);
-
-        parent::__construct($context, $string, $productOptionFactory, $data);
+    public function __construct(\Magento\Framework\View\Element\Template\Context $context, \Magento\Framework\Stdlib\String_Utils $string, \Magento\Catalog\Model\Product\Option_Factory $product_option_factory, array $data = [], ?Json $serializer = null)
+    {
+        $this->serializer = $serializer ?: \Magento\Framework\App\Object_Manager::get_instance()->get(Json::class);
+        parent::__construct($context, $string, $product_option_factory, $data);
     }
-
     /**
      * Check if shipment type (invoice etc) is separate
      *
@@ -51,37 +40,33 @@ class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer
      * @return bool
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function isShipmentSeparately($item = null)
+    public function is_shipment_separately($item = null)
     {
         if ($item) {
-            if ($item->getOrderItem()) {
-                $item = $item->getOrderItem();
+            if ($item->get_order_item()) {
+                $item = $item->get_order_item();
             }
-            $parentItem = $item->getParentItem();
-            if ($parentItem) {
-                $options = $parentItem->getProductOptions();
+            $parent_item = $item->get_parent_item();
+            if ($parent_item) {
+                $options = $parent_item->get_product_options();
                 if ($options) {
-                    return (isset($options['shipment_type'])
-                        && $options['shipment_type'] == AbstractType::SHIPMENT_SEPARATELY);
+                    return isset($options['shipment_type']) && $options['shipment_type'] == Abstract_Type::SHIPMENT_SEPARATELY;
                 }
             } else {
-                $options = $item->getProductOptions();
+                $options = $item->get_product_options();
                 if ($options) {
-                    return !(isset($options['shipment_type'])
-                        && $options['shipment_type'] == AbstractType::SHIPMENT_SEPARATELY);
+                    return !(isset($options['shipment_type']) && $options['shipment_type'] == Abstract_Type::SHIPMENT_SEPARATELY);
                 }
             }
         }
-
-        $options = $this->getOrderItem()->getProductOptions();
+        $options = $this->get_order_item()->get_product_options();
         if ($options) {
-            if (isset($options['shipment_type']) && $options['shipment_type'] == AbstractType::SHIPMENT_SEPARATELY) {
+            if (isset($options['shipment_type']) && $options['shipment_type'] == Abstract_Type::SHIPMENT_SEPARATELY) {
                 return true;
             }
         }
         return false;
     }
-
     /**
      * Check if sub product calculations are present
      *
@@ -90,39 +75,33 @@ class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer
      * @return bool
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function isChildCalculated($item = null)
+    public function is_child_calculated($item = null)
     {
         if ($item) {
-            if ($item->getOrderItem()) {
-                $item = $item->getOrderItem();
+            if ($item->get_order_item()) {
+                $item = $item->get_order_item();
             }
-            $parentItem = $item->getParentItem();
-            if ($parentItem) {
-                $options = $parentItem->getProductOptions();
+            $parent_item = $item->get_parent_item();
+            if ($parent_item) {
+                $options = $parent_item->get_product_options();
                 if ($options) {
-                    return (isset($options['product_calculations'])
-                        && $options['product_calculations'] == AbstractType::CALCULATE_CHILD);
+                    return isset($options['product_calculations']) && $options['product_calculations'] == Abstract_Type::CALCULATE_CHILD;
                 }
             } else {
-                $options = $item->getProductOptions();
+                $options = $item->get_product_options();
                 if ($options) {
-                    return !(isset($options['product_calculations'])
-                        && $options['product_calculations'] == AbstractType::CALCULATE_CHILD);
+                    return !(isset($options['product_calculations']) && $options['product_calculations'] == Abstract_Type::CALCULATE_CHILD);
                 }
             }
         }
-
-        $options = $this->getOrderItem()->getProductOptions();
+        $options = $this->get_order_item()->get_product_options();
         if ($options) {
-            if (isset($options['product_calculations'])
-                && $options['product_calculations'] == AbstractType::CALCULATE_CHILD
-            ) {
+            if (isset($options['product_calculations']) && $options['product_calculations'] == Abstract_Type::CALCULATE_CHILD) {
                 return true;
             }
         }
         return false;
     }
-
     /**
      * Get bundle selection attributes
      *
@@ -130,19 +109,18 @@ class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer
      *
      * @return mixed|null
      */
-    public function getSelectionAttributes($item)
+    public function get_selection_attributes($item)
     {
         if ($item instanceof \Magento\Sales\Model\Order\Item) {
-            $options = $item->getProductOptions();
+            $options = $item->get_product_options();
         } else {
-            $options = $item->getOrderItem()->getProductOptions();
+            $options = $item->get_order_item()->get_product_options();
         }
         if (isset($options['bundle_selection_attributes'])) {
             return $this->serializer->unserialize($options['bundle_selection_attributes']);
         }
         return null;
     }
-
     /**
      * Get html of bundle selection attributes
      *
@@ -150,51 +128,45 @@ class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer
      *
      * @return string
      */
-    public function getValueHtml($item)
+    public function get_value_html($item)
     {
-        if ($attributes = $this->getSelectionAttributes($item)) {
-            return (float) $attributes['qty'] . ' x ' . $this->escapeHtml($item->getName()) . ' '
-                . $this->getOrder()->formatPrice($attributes['price']);
+        if ($attributes = $this->get_selection_attributes($item)) {
+            return (float) $attributes['qty'] . ' x ' . $this->escape_html($item->get_name()) . ' ' . $this->get_order()->format_price($attributes['price']);
         }
-        return $this->escapeHtml($item->getName());
+        return $this->escape_html($item->get_name());
     }
-
     /**
      * Getting all available children for Invoice, Shipment or CreditMemo item
      *
      * @param \Magento\Framework\DataObject $item
      * @return array
      */
-    public function getChildren($item)
+    public function get_children($item)
     {
-        $itemsArray = [];
-
+        $items_array = [];
         $items = null;
         if ($item instanceof \Magento\Sales\Model\Order\Invoice\Item) {
-            $items = $item->getInvoice()->getAllItems();
+            $items = $item->get_invoice()->get_all_items();
         } elseif ($item instanceof \Magento\Sales\Model\Order\Shipment\Item) {
-            $items = $item->getShipment()->getAllItems();
+            $items = $item->get_shipment()->get_all_items();
         } elseif ($item instanceof \Magento\Sales\Model\Order\Creditmemo\Item) {
-            $items = $item->getCreditmemo()->getAllItems();
+            $items = $item->get_creditmemo()->get_all_items();
         }
-
         if ($items) {
             foreach ($items as $value) {
-                $parentItem = $value->getOrderItem()->getParentItem();
-                if ($parentItem) {
-                    $itemsArray[$parentItem->getId()][$value->getOrderItemId()] = $value;
+                $parent_item = $value->get_order_item()->get_parent_item();
+                if ($parent_item) {
+                    $items_array[$parent_item->get_id()][$value->get_order_item_id()] = $value;
                 } else {
-                    $itemsArray[$value->getOrderItem()->getId()][$value->getOrderItemId()] = $value;
+                    $items_array[$value->get_order_item()->get_id()][$value->get_order_item_id()] = $value;
                 }
             }
         }
-
-        if (isset($itemsArray[$item->getOrderItem()->getId()])) {
-            return $itemsArray[$item->getOrderItem()->getId()];
+        if (isset($items_array[$item->get_order_item()->get_id()])) {
+            return $items_array[$item->get_order_item()->get_id()];
         }
         return null;
     }
-
     /**
      * Check if price info can be shown
      *
@@ -202,26 +174,23 @@ class Renderer extends \Magento\Sales\Block\Order\Item\Renderer\DefaultRenderer
      *
      * @return bool
      */
-    public function canShowPriceInfo($item)
+    public function can_show_price_info($item)
     {
-        if ($item->getOrderItem()->getParentItem() && $this->isChildCalculated() ||
-            !$item->getOrderItem()->getParentItem() && !$this->isChildCalculated()
-        ) {
+        if ($item->get_order_item()->get_parent_item() && $this->is_child_calculated() || !$item->get_order_item()->get_parent_item() && !$this->is_child_calculated()) {
             return true;
         }
         return false;
     }
-
     /**
      * Get the html for item price
      *
      * @param OrderItem|InvoiceItem|CreditmemoItem $item
      * @return string
      */
-    public function getItemPrice($item)
+    public function get_item_price($item)
     {
-        $block = $this->getLayout()->getBlock('item_price');
-        $block->setItem($item);
-        return $block->toHtml();
+        $block = $this->get_layout()->get_block('item_price');
+        $block->set_item($item);
+        return $block->to_html();
     }
 }

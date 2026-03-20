@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -14,18 +13,13 @@ namespace Magento\Framework\App;
  * @api
  * @since 100.0.2
  */
-interface ActionInterface
+interface Action_Interface
 {
     public const FLAG_NO_DISPATCH = 'no-dispatch';
-
     public const FLAG_NO_POST_DISPATCH = 'no-postDispatch';
-
     public const FLAG_NO_DISPATCH_BLOCK_EVENT = 'no-beforeGenerateLayoutBlocksDispatch';
-
     public const PARAM_NAME_BASE64_URL = 'r64';
-
     public const PARAM_NAME_URL_ENCODED = 'uenc';
-
     /**
      * Execute action based on request and return result
      *

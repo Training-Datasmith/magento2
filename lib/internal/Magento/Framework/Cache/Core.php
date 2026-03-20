@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache;
 
 use Magento\Framework\Cache\Backend\Redis;
 use Zend_Cache;
 use Zend_Cache_Exception;
-
 /**
  * Extended Zend Cache Core with backend decorator support
  *
@@ -29,8 +27,7 @@ class Core extends \Zend_Cache_Core
      * -- 'options' - optional array of specific decorator options
      * @var array
      */
-    protected $_specificOptions = ['backend_decorators' => [], 'disable_save' => false];
-
+    protected $_specific_options = ['backend_decorators' => [], 'disable_save' => false];
     /**
      * Make and return a cache id
      *
@@ -39,18 +36,18 @@ class Core extends \Zend_Cache_Core
      * @param  string $cacheId Cache id
      * @return string Cache id (with or without prefix)
      */
-    protected function _id($cacheId)
+    protected function _id($cache_id)
     {
-        if ($cacheId !== null) {
-            $cacheId = str_replace('.', '__', $cacheId); //reduce collision chances
-            $cacheId = preg_replace('/([^a-zA-Z0-9_]{1,1})/', '_', $cacheId);
+        if ($cache_id !== null) {
+            $cache_id = str_replace('.', '__', $cache_id);
+            //reduce collision chances
+            $cache_id = preg_replace('/([^a-zA-Z0-9_]{1,1})/', '_', $cache_id);
             if (isset($this->_options['cache_id_prefix'])) {
-                $cacheId = $this->_options['cache_id_prefix'] . $cacheId;
+                $cache_id = $this->_options['cache_id_prefix'] . $cache_id;
             }
         }
-        return $cacheId;
+        return $cache_id;
     }
-
     /**
      * Prepare tags
      *
@@ -64,19 +61,17 @@ class Core extends \Zend_Cache_Core
         }
         return $tags;
     }
-
     /**
      * @inheritDoc
      */
-    public function save($data, $cacheId = null, $tags = [], $specificLifetime = false, $priority = 8)
+    public function save($data, $cache_id = null, $tags = [], $specific_lifetime = false, $priority = 8)
     {
-        if ($this->getOption('disable_save')) {
+        if ($this->get_option('disable_save')) {
             return true;
         }
         $tags = $this->_tags($tags);
-        return parent::save($data, $cacheId, $tags, $specificLifetime, $priority);
+        return parent::save($data, $cache_id, $tags, $specific_lifetime, $priority);
     }
-
     /**
      * Clean cache entries
      *
@@ -100,7 +95,6 @@ class Core extends \Zend_Cache_Core
         $tags = $this->_tags($tags);
         return parent::clean($mode, $tags);
     }
-
     /**
      * Return an array of stored cache ids which match given tags
      *
@@ -109,12 +103,11 @@ class Core extends \Zend_Cache_Core
      * @param string[] $tags array of tags
      * @return string[] array of matching cache ids (string)
      */
-    public function getIdsMatchingTags($tags = [])
+    public function get_ids_matching_tags($tags = [])
     {
         $tags = $this->_tags($tags);
-        return parent::getIdsMatchingTags($tags);
+        return parent::get_ids_matching_tags($tags);
     }
-
     /**
      * Return an array of stored cache ids which don't match given tags
      *
@@ -123,12 +116,11 @@ class Core extends \Zend_Cache_Core
      * @param string[] $tags array of tags
      * @return string[] array of not matching cache ids (string)
      */
-    public function getIdsNotMatchingTags($tags = [])
+    public function get_ids_not_matching_tags($tags = [])
     {
         $tags = $this->_tags($tags);
-        return parent::getIdsNotMatchingTags($tags);
+        return parent::get_ids_not_matching_tags($tags);
     }
-
     /**
      * Validate a cache id or a tag (security, reliable filenames, reserved prefixes...)
      *
@@ -138,77 +130,60 @@ class Core extends \Zend_Cache_Core
      * @throws Zend_Cache_Exception
      * @return void
      */
-    protected function _validateIdOrTag($string)
+    protected function _validate_id_or_tag($string)
     {
         if ($this->_backend instanceof Redis) {
             if (!is_string($string)) {
-                Zend_Cache::throwException('Invalid id or tag : must be a string');
+                Zend_Cache::throw_exception('Invalid id or tag : must be a string');
             }
             if (substr($string, 0, 9) == 'internal-') {
-                Zend_Cache::throwException('"internal-*" ids or tags are reserved');
+                Zend_Cache::throw_exception('"internal-*" ids or tags are reserved');
             }
             if (!preg_match('~^[a-zA-Z0-9_{}]+$~D', $string)) {
-                Zend_Cache::throwException("Invalid id or tag '$string' : must use only [a-zA-Z0-9_{}]");
+                Zend_Cache::throw_exception("Invalid id or tag '{$string}' : must use only [a-zA-Z0-9_{}]");
             }
-
             return;
         }
-
-        parent::_validateIdOrTag($string);
+        parent::_validate_id_or_tag($string);
     }
-
     /**
      * Set the backend
      *
      * @param  \Zend_Cache_Backend $backendObject
      * @return void
      */
-    public function setBackend(\Zend_Cache_Backend $backendObject)
+    public function set_backend(\Zend_Cache_Backend $backend_object)
     {
-        $backendObject = $this->_decorateBackend($backendObject);
-        parent::setBackend($backendObject);
+        $backend_object = $this->_decorate_backend($backend_object);
+        parent::set_backend($backend_object);
     }
-
     /**
      * Decorate cache backend with additional functionality
      *
      * @param \Zend_Cache_Backend $backendObject
      * @return \Zend_Cache_Backend
      */
-    protected function _decorateBackend(\Zend_Cache_Backend $backendObject)
+    protected function _decorate_backend(\Zend_Cache_Backend $backend_object)
     {
-        if (!is_array($this->_specificOptions['backend_decorators'])) {
-            \Zend_Cache::throwException("'backend_decorator' option should be an array");
+        if (!is_array($this->_specific_options['backend_decorators'])) {
+            \Zend_Cache::throw_exception("'backend_decorator' option should be an array");
         }
-
-        foreach ($this->_specificOptions['backend_decorators'] as $decoratorName => $decoratorOptions) {
-            if (!is_array($decoratorOptions) || !array_key_exists('class', $decoratorOptions)) {
-                \Zend_Cache::throwException(
-                    "Concrete decorator options in '" . $decoratorName . "' should be an array containing 'class' key"
-                );
+        foreach ($this->_specific_options['backend_decorators'] as $decorator_name => $decorator_options) {
+            if (!is_array($decorator_options) || !array_key_exists('class', $decorator_options)) {
+                \Zend_Cache::throw_exception("Concrete decorator options in '" . $decorator_name . "' should be an array containing 'class' key");
             }
-            $classOptions = array_key_exists('options', $decoratorOptions) ? $decoratorOptions['options'] : [];
-            $classOptions['concrete_backend'] = $backendObject;
-
-            if (!class_exists($decoratorOptions['class'])) {
-                \Zend_Cache::throwException(
-                    "Class '" . $decoratorOptions['class'] . "' specified in '" . $decoratorName . "' does not exist"
-                );
+            $class_options = array_key_exists('options', $decorator_options) ? $decorator_options['options'] : [];
+            $class_options['concrete_backend'] = $backend_object;
+            if (!class_exists($decorator_options['class'])) {
+                \Zend_Cache::throw_exception("Class '" . $decorator_options['class'] . "' specified in '" . $decorator_name . "' does not exist");
             }
-
-            $backendObject = new $decoratorOptions['class']($classOptions);
-            if (!$backendObject instanceof \Magento\Framework\Cache\Backend\Decorator\AbstractDecorator) {
-                \Zend_Cache::throwException(
-                    "Decorator in '" .
-                    $decoratorName .
-                    "' should extend \Magento\Framework\Cache\Backend\Decorator\AbstractDecorator"
-                );
+            $backend_object = new $decorator_options['class']($class_options);
+            if (!$backend_object instanceof \Magento\Framework\Cache\Backend\Decorator\Abstract_Decorator) {
+                \Zend_Cache::throw_exception("Decorator in '" . $decorator_name . "' should extend \\Magento\\Framework\\Cache\\Backend\\Decorator\\AbstractDecorator");
             }
         }
-
-        return $backendObject;
+        return $backend_object;
     }
-
     /**
      * Disable show internals with var_dump
      *

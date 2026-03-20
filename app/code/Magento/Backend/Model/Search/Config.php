@@ -1,87 +1,77 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Search;
 
 use Magento\Backend\Model\Search\Config\Result\Builder;
 use Magento\Config\Model\Config\Structure;
-use Magento\Config\Model\Config\Structure\Element\AbstractComposite;
+use Magento\Config\Model\Config\Structure\Element\Abstract_Composite;
 use Magento\Config\Model\Config\Structure\Element\Iterator as ElementIterator;
-
 /**
  * Search Config Model
  */
-class Config extends \Magento\Framework\DataObject
+class Config extends \Magento\Framework\Data_Object
 {
     /**
      * @var \Magento\Framework\App\Config\ConfigTypeInterface
      */
-    private $configStructure;
-
+    private $config_structure;
     /**
      * @var Builder
      */
-    private $resultBuilder;
-
+    private $result_builder;
     /**
      * @param Structure $configStructure
      * @param Builder $resultBuilder
      */
-    public function __construct(Structure $configStructure, Builder $resultBuilder)
+    public function __construct(Structure $config_structure, Builder $result_builder)
     {
-        $this->configStructure = $configStructure;
-        $this->resultBuilder = $resultBuilder;
+        $this->config_structure = $config_structure;
+        $this->result_builder = $result_builder;
     }
-
     /**
      * @param string $query
      * @return $this
      */
-    public function setQuery($query)
+    public function set_query($query)
     {
-        $this->setData('query', $query);
+        $this->set_data('query', $query);
         return $this;
     }
-
     /**
      * @return string|null
      */
-    public function getQuery()
+    public function get_query()
     {
-        return $this->getData('query');
+        return $this->get_data('query');
     }
-
     /**
      * @return bool
      */
-    public function hasQuery()
+    public function has_query()
     {
-        return $this->hasData('query');
+        return $this->has_data('query');
     }
-
     /**
      * @param array $results
      * @return $this
      */
-    public function setResults(array $results)
+    public function set_results(array $results)
     {
-        $this->setData('results', $results);
+        $this->set_data('results', $results);
         return $this;
     }
-
     /**
      * @return array|null
      */
-    public function getResults()
+    public function get_results()
     {
-        return $this->getData('results');
+        return $this->get_data('results');
     }
-
     /**
      * Load search results
      *
@@ -89,11 +79,10 @@ class Config extends \Magento\Framework\DataObject
      */
     public function load()
     {
-        $this->findInStructure($this->configStructure->getTabs(), $this->getQuery());
-        $this->setResults($this->resultBuilder->getAll());
+        $this->find_in_structure($this->config_structure->get_tabs(), $this->get_query());
+        $this->set_results($this->result_builder->get_all());
         return $this;
     }
-
     /**
      * @param ElementIterator $structureElementIterator
      * @param string $searchTerm
@@ -101,18 +90,18 @@ class Config extends \Magento\Framework\DataObject
      * @return void
      * @SuppressWarnings(PHPMD.LongVariable)
      */
-    private function findInStructure(ElementIterator $structureElementIterator, $searchTerm, $pathLabel = '')
+    private function find_in_structure(Element_Iterator $structure_element_iterator, $search_term, $path_label = '')
     {
-        if (empty($searchTerm)) {
+        if (empty($search_term)) {
             return;
         }
-        foreach ($structureElementIterator as $structureElement) {
-            if (mb_stripos((string)$structureElement->getLabel(), $searchTerm) !== false) {
-                $this->resultBuilder->add($structureElement, $pathLabel);
+        foreach ($structure_element_iterator as $structure_element) {
+            if (mb_stripos((string) $structure_element->get_label(), $search_term) !== false) {
+                $this->result_builder->add($structure_element, $path_label);
             }
-            $elementPathLabel = $pathLabel . ' / ' . $structureElement->getLabel();
-            if ($structureElement instanceof AbstractComposite && $structureElement->hasChildren()) {
-                $this->findInStructure($structureElement->getChildren(), $searchTerm, $elementPathLabel);
+            $element_path_label = $path_label . ' / ' . $structure_element->get_label();
+            if ($structure_element instanceof Abstract_Composite && $structure_element->has_children()) {
+                $this->find_in_structure($structure_element->get_children(), $search_term, $element_path_label);
             }
         }
     }

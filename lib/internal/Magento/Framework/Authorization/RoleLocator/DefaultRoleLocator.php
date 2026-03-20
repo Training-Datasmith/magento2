@@ -1,21 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Authorization\Role_Locator;
 
-namespace Magento\Framework\Authorization\RoleLocator;
-
-class DefaultRoleLocator implements \Magento\Framework\Authorization\RoleLocatorInterface
+class Default_Role_Locator implements \Magento\Framework\Authorization\Role_Locator_Interface
 {
     /**
      * Retrieve current role
      *
      * @return string
      */
-    public function getAclRoleId()
+    public function get_acl_role_id()
     {
         return '';
     }

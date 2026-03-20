@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Response;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\App\Response;
  * @api
  * @since 100.0.2
  */
-interface HttpInterface extends \Magento\Framework\App\ResponseInterface
+interface Http_Interface extends \Magento\Framework\App\Response_Interface
 {
     /**
      * Set HTTP response code
@@ -22,16 +21,14 @@ interface HttpInterface extends \Magento\Framework\App\ResponseInterface
      * @param int $code
      * @return void
      */
-    public function setHttpResponseCode($code);
-
+    public function set_http_response_code($code);
     /**
      * Get HTTP response code
      *
      * @return int
      * @since 101.0.0
      */
-    public function getHttpResponseCode();
-
+    public function get_http_response_code();
     /**
      * Set a header
      *
@@ -43,8 +40,7 @@ interface HttpInterface extends \Magento\Framework\App\ResponseInterface
      * @return self
      * @since 101.0.0
      */
-    public function setHeader($name, $value, $replace = false);
-
+    public function set_header($name, $value, $replace = false);
     /**
      * Get header value by name
      *
@@ -55,8 +51,7 @@ interface HttpInterface extends \Magento\Framework\App\ResponseInterface
      * @return \Laminas\Http\Header\HeaderInterface|bool
      * @since 101.0.0
      */
-    public function getHeader($name);
-
+    public function get_header($name);
     /**
      * Remove header by name from header stack
      *
@@ -64,8 +59,7 @@ interface HttpInterface extends \Magento\Framework\App\ResponseInterface
      * @return self
      * @since 101.0.0
      */
-    public function clearHeader($name);
-
+    public function clear_header($name);
     /**
      * Allow granular setting of HTTP response status code, version and phrase
      *
@@ -82,8 +76,7 @@ interface HttpInterface extends \Magento\Framework\App\ResponseInterface
      * @return self
      * @since 101.0.0
      */
-    public function setStatusHeader($httpCode, $version = null, $phrase = null);
-
+    public function set_status_header($http_code, $version = null, $phrase = null);
     /**
      * Append the given string to the response body
      *
@@ -91,8 +84,7 @@ interface HttpInterface extends \Magento\Framework\App\ResponseInterface
      * @return self
      * @since 101.0.0
      */
-    public function appendBody($value);
-
+    public function append_body($value);
     /**
      * Set the response body to the given value
      *
@@ -102,8 +94,7 @@ interface HttpInterface extends \Magento\Framework\App\ResponseInterface
      * @return self
      * @since 101.0.0
      */
-    public function setBody($value);
-
+    public function set_body($value);
     /**
      * Set redirect URL
      *
@@ -114,5 +105,5 @@ interface HttpInterface extends \Magento\Framework\App\ResponseInterface
      * @return self
      * @since 101.0.0
      */
-    public function setRedirect($url, $code = 302);
+    public function set_redirect($url, $code = 302);
 }

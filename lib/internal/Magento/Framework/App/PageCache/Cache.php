@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\App\PageCache;
+namespace Magento\Framework\App\Page_Cache;
 
 /**
  * Cache model for builtin cache
@@ -20,5 +19,5 @@ class Cache extends \Magento\Framework\App\Cache
      *
      * @deprecated 100.1.0
      */
-    protected $_frontendIdentifier = 'page_cache';
+    protected $_frontend_identifier = 'page_cache';
 }

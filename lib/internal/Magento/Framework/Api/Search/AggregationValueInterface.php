@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api\Search;
 
 /**
@@ -13,19 +12,18 @@ namespace Magento\Framework\Api\Search;
  *
  * @api
  */
-interface AggregationValueInterface
+interface Aggregation_Value_Interface
 {
     /**
      * Get aggregation
      *
      * @return string|array
      */
-    public function getValue();
-
+    public function get_value();
     /**
      * Get metrics
      *
      * @return mixed[]
      */
-    public function getMetrics();
+    public function get_metrics();
 }

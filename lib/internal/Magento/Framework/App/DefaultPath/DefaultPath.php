@@ -1,16 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application default url
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\Default_Path;
 
-namespace Magento\Framework\App\DefaultPath;
-
-class DefaultPath implements \Magento\Framework\App\DefaultPathInterface
+class Default_Path implements \Magento\Framework\App\Default_Path_Interface
 {
     /**
      * Default path parts
@@ -18,7 +17,6 @@ class DefaultPath implements \Magento\Framework\App\DefaultPathInterface
      * @var array
      */
     protected $_parts;
-
     /**
      * @param array $parts
      */
@@ -26,14 +24,13 @@ class DefaultPath implements \Magento\Framework\App\DefaultPathInterface
     {
         $this->_parts = $parts;
     }
-
     /**
      * Retrieve path part by key
      *
      * @param string $code
      * @return string
      */
-    public function getPart($code)
+    public function get_part($code)
     {
         return $this->_parts[$code] ?? null;
     }

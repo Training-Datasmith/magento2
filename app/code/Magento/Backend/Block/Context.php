@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block;
 
-use Magento\Framework\Cache\LockGuardedCacheLoader;
-
+use Magento\Framework\Cache\Lock_Guarded_Cache_Loader;
 /**
  * Constructor modification point for Magento\Backend\Block\AbstractBlock.
  *
@@ -31,7 +29,6 @@ class Context extends \Magento\Framework\View\Element\Context
      * @var \Magento\Framework\AuthorizationInterface
      */
     protected $_authorization;
-
     /**
      * @param \Magento\Framework\App\RequestInterface $request
      * @param \Magento\Framework\View\LayoutInterface $layout
@@ -55,56 +52,17 @@ class Context extends \Magento\Framework\View\Element\Context
      *
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    public function __construct(
-        \Magento\Framework\App\RequestInterface $request,
-        \Magento\Framework\View\LayoutInterface $layout,
-        \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Magento\Framework\UrlInterface $urlBuilder,
-        \Magento\Framework\App\CacheInterface $cache,
-        \Magento\Framework\View\DesignInterface $design,
-        \Magento\Framework\Session\SessionManagerInterface $session,
-        \Magento\Framework\Session\SidResolverInterface $sidResolver,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Framework\View\Asset\Repository $assetRepo,
-        \Magento\Framework\View\ConfigInterface $viewConfig,
-        \Magento\Framework\App\Cache\StateInterface $cacheState,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\Escaper $escaper,
-        \Magento\Framework\Filter\FilterManager $filterManager,
-        \Magento\Framework\Stdlib\DateTime\TimezoneInterface $localeDate,
-        \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
-        \Magento\Framework\AuthorizationInterface $authorization,
-        ?LockGuardedCacheLoader $lockQuery = null
-    ) {
+    public function __construct(\Magento\Framework\App\Request_Interface $request, \Magento\Framework\View\Layout_Interface $layout, \Magento\Framework\Event\Manager_Interface $event_manager, \Magento\Framework\Url_Interface $url_builder, \Magento\Framework\App\Cache_Interface $cache, \Magento\Framework\View\Design_Interface $design, \Magento\Framework\Session\Session_Manager_Interface $session, \Magento\Framework\Session\Sid_Resolver_Interface $sid_resolver, \Magento\Framework\App\Config\Scope_Config_Interface $scope_config, \Magento\Framework\View\Asset\Repository $asset_repo, \Magento\Framework\View\Config_Interface $view_config, \Magento\Framework\App\Cache\State_Interface $cache_state, \Psr\Log\Logger_Interface $logger, \Magento\Framework\Escaper $escaper, \Magento\Framework\Filter\Filter_Manager $filter_manager, \Magento\Framework\Stdlib\DateTime\Timezone_Interface $locale_date, \Magento\Framework\Translate\Inline\State_Interface $inline_translation, \Magento\Framework\Authorization_Interface $authorization, ?Lock_Guarded_Cache_Loader $lock_query = null)
+    {
         $this->_authorization = $authorization;
-        parent::__construct(
-            $request,
-            $layout,
-            $eventManager,
-            $urlBuilder,
-            $cache,
-            $design,
-            $session,
-            $sidResolver,
-            $scopeConfig,
-            $assetRepo,
-            $viewConfig,
-            $cacheState,
-            $logger,
-            $escaper,
-            $filterManager,
-            $localeDate,
-            $inlineTranslation,
-            $lockQuery
-        );
+        parent::__construct($request, $layout, $event_manager, $url_builder, $cache, $design, $session, $sid_resolver, $scope_config, $asset_repo, $view_config, $cache_state, $logger, $escaper, $filter_manager, $locale_date, $inline_translation, $lock_query);
     }
-
     /**
      * Retrieve Authorization
      *
      * @return \Magento\Framework\AuthorizationInterface
      */
-    public function getAuthorization()
+    public function get_authorization()
     {
         return $this->_authorization;
     }

@@ -4,77 +4,65 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing\Validator;
 
-declare(strict_types=1);
-
-namespace Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator;
-
-use Magento\AdvancedPricingImportExport\Model\CurrencyResolver;
-use Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing;
-use Magento\CatalogImportExport\Model\Import\Product\RowValidatorInterface;
-use Magento\CatalogImportExport\Model\Import\Product\Validator\AbstractImportValidator;
-use Magento\Framework\App\ObjectManager;
-
-class Website extends AbstractImportValidator implements RowValidatorInterface
+use Magento\Advanced_Pricing_Import_Export\Model\Currency_Resolver;
+use Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing;
+use Magento\Catalog_Import_Export\Model\Import\Product\Row_Validator_Interface;
+use Magento\Catalog_Import_Export\Model\Import\Product\Validator\Abstract_Import_Validator;
+use Magento\Framework\App\Object_Manager;
+class Website extends Abstract_Import_Validator implements Row_Validator_Interface
 {
     /**
      * @var CurrencyResolver
      */
-    private $currencyResolver;
-
-    public function __construct(
-        protected \Magento\CatalogImportExport\Model\Import\Product\StoreResolver $storeResolver,
-        protected \Magento\Store\Model\Website $websiteModel,
-        ?CurrencyResolver $currencyResolver = null
-    ) {
-        $this->currencyResolver = $currencyResolver ?? ObjectManager::getInstance()->get(CurrencyResolver::class);
+    private $currency_resolver;
+    public function __construct(protected \Magento\Catalog_Import_Export\Model\Import\Product\Store_Resolver $store_resolver, protected \Magento\Store\Model\Website $website_model, ?Currency_Resolver $currency_resolver = null)
+    {
+        $this->currency_resolver = $currency_resolver ?? Object_Manager::get_instance()->get(Currency_Resolver::class);
     }
-
     /**
      * Validate by website type
      *
      * @param string $websiteCode
      *
      */
-    protected function isWebsiteValid(array $value, $websiteCode): bool
+    protected function is_website_valid(array $value, $website_code): bool
     {
-        if (!isset($value[$websiteCode])) {
+        if (!isset($value[$website_code])) {
             return true;
         }
-        if (!!empty($value[$websiteCode])) {
+        if (!!empty($value[$website_code])) {
             return true;
         }
-        if ($value[$websiteCode] != $this->getAllWebsitesValue()
-            && !$this->storeResolver->getWebsiteCodeToId($value[$websiteCode])) {
+        if ($value[$website_code] != $this->get_all_websites_value() && !$this->store_resolver->get_website_code_to_id($value[$website_code])) {
             return false;
         }
         return true;
     }
-
     /**
      * Validate value
      *
      *
      */
-    public function isValid(array $value): float|int|true
+    public function is_valid(array $value): float|int|true
     {
-        $this->_clearMessages();
+        $this->_clear_messages();
         $valid = true;
-        if (isset($value[AdvancedPricing::COL_TIER_PRICE]) && !empty($value[AdvancedPricing::COL_TIER_PRICE])) {
-            $valid *= $this->isWebsiteValid($value, AdvancedPricing::COL_TIER_PRICE_WEBSITE);
+        if (isset($value[Advanced_Pricing::COL_TIER_PRICE]) && !empty($value[Advanced_Pricing::COL_TIER_PRICE])) {
+            $valid *= $this->is_website_valid($value, Advanced_Pricing::COL_TIER_PRICE_WEBSITE);
         }
         if (!$valid) {
-            $this->_addMessages([self::ERROR_INVALID_WEBSITE]);
+            $this->_add_messages([self::ERROR_INVALID_WEBSITE]);
         }
         return $valid;
     }
-
     /**
      * Get all websites value with currency code
      */
-    public function getAllWebsitesValue(): string
+    public function get_all_websites_value(): string
     {
-        return AdvancedPricing::VALUE_ALL_WEBSITES .
-            ' [' . $this->currencyResolver->getDefaultBaseCurrency() . ']';
+        return Advanced_Pricing::VALUE_ALL_WEBSITES . ' [' . $this->currency_resolver->get_default_base_currency() . ']';
     }
 }

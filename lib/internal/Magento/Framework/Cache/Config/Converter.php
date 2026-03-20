@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache\Config;
 
-class Converter implements \Magento\Framework\Config\ConverterInterface
+class Converter implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * Convert dom node tree to array
@@ -20,25 +19,20 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     {
         $output = [];
         /** @var \DOMNodeList $types */
-        $types = $source->getElementsByTagName('type');
+        $types = $source->get_elements_by_tag_name('type');
         /** @var \DOMNode $type */
         foreach ($types as $type) {
-            $typeConfig = [];
+            $type_config = [];
             foreach ($type->attributes as $attribute) {
-                $typeConfig[$attribute->nodeName] = $attribute->nodeValue;
+                $type_config[$attribute->node_name] = $attribute->node_value;
             }
             /** @var \DOMNode $childNode */
-            foreach ($type->childNodes as $childNode) {
-                if ($childNode->nodeType == XML_ELEMENT_NODE ||
-                    ($childNode->nodeType == XML_CDATA_SECTION_NODE ||
-                    $childNode->nodeType == XML_TEXT_NODE && trim(
-                        $childNode->nodeValue
-                    ) != '')
-                ) {
-                    $typeConfig[$childNode->nodeName] = $childNode->nodeValue;
+            foreach ($type->child_nodes as $child_node) {
+                if ($child_node->node_type == XML_ELEMENT_NODE || ($child_node->node_type == XML_CDATA_SECTION_NODE || $child_node->node_type == XML_TEXT_NODE && trim($child_node->node_value) != '')) {
+                    $type_config[$child_node->node_name] = $child_node->node_value;
                 }
             }
-            $output[$type->attributes->getNamedItem('name')->nodeValue] = $typeConfig;
+            $output[$type->attributes->get_named_item('name')->node_value] = $type_config;
         }
         return ['types' => $output];
     }

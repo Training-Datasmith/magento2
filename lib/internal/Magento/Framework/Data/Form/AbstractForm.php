@@ -1,26 +1,24 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Form;
 
-use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Data\Form\Element\Abstract_Element;
 use Magento\Framework\Data\Form\Element\Collection;
-use Magento\Framework\Data\Form\Element\CollectionFactory;
+use Magento\Framework\Data\Form\Element\Collection_Factory;
 use Magento\Framework\Data\Form\Element\Column;
 use Magento\Framework\Data\Form\Element\Factory;
 use Magento\Framework\Data\Form\Element\Fieldset;
-
 /**
  * Abstract class for form, column and fieldset
  *
  * @author      Magento Core Team <core@magentocommerce.com>
  */
-class AbstractForm extends \Magento\Framework\DataObject
+class Abstract_Form extends \Magento\Framework\Data_Object
 {
     /**
      * Form level elements collection
@@ -28,42 +26,36 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @var Collection
      */
     protected $_elements;
-
     /**
      * Element type classes
      *
      * @var array
      */
     protected $_types = [];
-
     /**
      * @var Factory
      */
-    protected $_factoryElement;
-
+    protected $_factory_element;
     /**
      * @var CollectionFactory
      */
-    protected $_factoryCollection;
-
+    protected $_factory_collection;
     /**
      * @var array
      */
-    protected $customAttributes = [];
-
+    protected $custom_attributes = [];
     /**
      * @param Factory $factoryElement
      * @param CollectionFactory $factoryCollection
      * @param array $data
      */
-    public function __construct(Factory $factoryElement, CollectionFactory $factoryCollection, $data = [])
+    public function __construct(Factory $factory_element, Collection_Factory $factory_collection, $data = [])
     {
-        $this->_factoryElement = $factoryElement;
-        $this->_factoryCollection = $factoryCollection;
+        $this->_factory_element = $factory_element;
+        $this->_factory_collection = $factory_collection;
         parent::__construct($data);
         $this->_construct();
     }
-
     /**
      * Internal constructor, that is called from real constructor
      *
@@ -76,7 +68,6 @@ class AbstractForm extends \Magento\Framework\DataObject
     {
         //@codingStandardsIgnoreEnd
     }
-
     /**
      * Add element type
      *
@@ -84,25 +75,23 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @param string $className
      * @return $this
      */
-    public function addType($type, $className)
+    public function add_type($type, $class_name)
     {
-        $this->_types[$type] = $className;
+        $this->_types[$type] = $class_name;
         return $this;
     }
-
     /**
      * Get elements collection
      *
      * @return Collection
      */
-    public function getElements()
+    public function get_elements()
     {
         if (empty($this->_elements)) {
-            $this->_elements = $this->_factoryCollection->create(['container' => $this]);
+            $this->_elements = $this->_factory_collection->create(['container' => $this]);
         }
         return $this->_elements;
     }
-
     /**
      * Disable elements
      *
@@ -110,21 +99,19 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @param boolean $useDisabled
      * @return $this
      */
-    public function setReadonly($readonly, $useDisabled = false)
+    public function set_readonly($readonly, $use_disabled = false)
     {
-        if ($useDisabled) {
-            $this->setDisabled($readonly);
-            $this->setData('readonly_disabled', $readonly);
+        if ($use_disabled) {
+            $this->set_disabled($readonly);
+            $this->set_data('readonly_disabled', $readonly);
         } else {
-            $this->setData('readonly', $readonly);
+            $this->set_data('readonly', $readonly);
         }
-        foreach ($this->getElements() as $element) {
-            $element->setReadonly($readonly, $useDisabled);
+        foreach ($this->get_elements() as $element) {
+            $element->set_readonly($readonly, $use_disabled);
         }
-
         return $this;
     }
-
     /**
      * Add form element
      *
@@ -132,13 +119,12 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @param bool|string|null $after
      * @return $this
      */
-    public function addElement(AbstractElement $element, $after = null)
+    public function add_element(Abstract_Element $element, $after = null)
     {
-        $element->setForm($this);
-        $this->getElements()->add($element, $after);
+        $element->set_form($this);
+        $this->get_elements()->add($element, $after);
         return $this;
     }
-
     /**
      * Add child element
      *
@@ -152,29 +138,27 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @param bool|string|null $after
      * @return AbstractElement
      */
-    public function addField($elementId, $type, $config, $after = false)
+    public function add_field($element_id, $type, $config, $after = false)
     {
         if (isset($this->_types[$type])) {
             $type = $this->_types[$type];
         }
-        $element = $this->_factoryElement->create($type, ['data' => $config]);
-        $element->setId($elementId);
-        $this->addElement($element, $after);
+        $element = $this->_factory_element->create($type, ['data' => $config]);
+        $element->set_id($element_id);
+        $this->add_element($element, $after);
         return $element;
     }
-
     /**
      * Enter description here...
      *
      * @param string $elementId
      * @return $this
      */
-    public function removeField($elementId)
+    public function remove_field($element_id)
     {
-        $this->getElements()->remove($elementId);
+        $this->get_elements()->remove($element_id);
         return $this;
     }
-
     /**
      * Add fieldset
      *
@@ -184,15 +168,14 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @param bool $isAdvanced
      * @return Fieldset
      */
-    public function addFieldset($elementId, $config, $after = false, $isAdvanced = false)
+    public function add_fieldset($element_id, $config, $after = false, $is_advanced = false)
     {
-        $element = $this->_factoryElement->create('fieldset', ['data' => $config]);
-        $element->setId($elementId);
-        $element->setAdvanced($isAdvanced);
-        $this->addElement($element, $after);
+        $element = $this->_factory_element->create('fieldset', ['data' => $config]);
+        $element->set_id($element_id);
+        $element->set_advanced($is_advanced);
+        $this->add_element($element, $after);
         return $element;
     }
-
     /**
      * Add column element
      *
@@ -200,14 +183,13 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @param array $config
      * @return Column
      */
-    public function addColumn($elementId, $config)
+    public function add_column($element_id, $config)
     {
-        $element = $this->_factoryElement->create('column', ['data' => $config]);
-        $element->setForm($this)->setId($elementId);
-        $this->addElement($element);
+        $element = $this->_factory_element->create('column', ['data' => $config]);
+        $element->set_form($this)->set_id($element_id);
+        $this->add_element($element);
         return $element;
     }
-
     /**
      * Convert elements to array
      *
@@ -215,17 +197,16 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function convertToArray(array $arrAttributes = [])
+    public function convert_to_array(array $arr_attributes = [])
     {
         $res = [];
-        $res['config'] = $this->getData();
+        $res['config'] = $this->get_data();
         $res['formElements'] = [];
-        foreach ($this->getElements() as $element) {
-            $res['formElements'][] = $element->toArray();
+        foreach ($this->get_elements() as $element) {
+            $res['formElements'][] = $element->to_array();
         }
         return $res;
     }
-
     /**
      * Add custom attribute
      *
@@ -233,12 +214,11 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @param mixed $value
      * @return $this
      */
-    public function addCustomAttribute($key, $value)
+    public function add_custom_attribute($key, $value)
     {
-        $this->customAttributes[$key] = $value;
+        $this->custom_attributes[$key] = $value;
         return $this;
     }
-
     /**
      * Convert data into string with defined keys and values
      *
@@ -248,26 +228,22 @@ class AbstractForm extends \Magento\Framework\DataObject
      * @param string $quote
      * @return string
      */
-    public function serialize($keys = [], $valueSeparator = '=', $fieldSeparator = ' ', $quote = '"')
+    public function serialize($keys = [], $value_separator = '=', $field_separator = ' ', $quote = '"')
     {
         $data = [];
         if (empty($keys)) {
             $keys = array_keys($this->_data);
         }
-
-        $customAttributes = array_filter($this->customAttributes);
-        $keys = array_merge($keys, array_keys(array_diff($this->customAttributes, $customAttributes)));
-
+        $custom_attributes = array_filter($this->custom_attributes);
+        $keys = array_merge($keys, array_keys(array_diff($this->custom_attributes, $custom_attributes)));
         foreach ($this->_data as $key => $value) {
             if (in_array($key, $keys)) {
-                $data[] = $key . $valueSeparator . $quote . $value . $quote;
+                $data[] = $key . $value_separator . $quote . $value . $quote;
             }
         }
-
-        foreach ($customAttributes as $key => $value) {
-            $data[] = $key . $valueSeparator . $quote . $value . $quote;
+        foreach ($custom_attributes as $key => $value) {
+            $data[] = $key . $value_separator . $quote . $value . $quote;
         }
-
-        return implode($fieldSeparator, $data);
+        return implode($field_separator, $data);
     }
 }

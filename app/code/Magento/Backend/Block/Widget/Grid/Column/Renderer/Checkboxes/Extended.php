@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer\Checkboxes;
 
 class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Checkbox
@@ -15,8 +14,8 @@ class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Checkb
      *
      * @return array
      */
-    public function _getValues()
+    public function _get_values()
     {
-        return $this->getColumn()->getValues();
+        return $this->get_column()->get_values();
     }
 }

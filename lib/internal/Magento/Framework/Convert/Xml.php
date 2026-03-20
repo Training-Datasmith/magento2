@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Convert;
 
 /**
@@ -20,23 +19,23 @@ class Xml
      * @param \SimpleXMLElement $xml
      * @return array
      */
-    public function xmlToAssoc(\SimpleXMLElement $xml)
+    public function xml_to_assoc(\Simple_Xml_Element $xml)
     {
         $array = [];
         foreach ($xml as $key => $value) {
             if (isset($value->{$key})) {
                 $i = 0;
                 foreach ($value->{$key} as $v) {
-                    $array[$key][$i++] = (string)$v;
+                    $array[$key][$i++] = (string) $v;
                 }
             } else {
                 // try to transform it into string value, trimming spaces between elements
-                $array[$key] = trim((string)$value);
+                $array[$key] = trim((string) $value);
                 if (empty($array[$key]) && !empty($value)) {
-                    $array[$key] = $this->xmlToAssoc($value);
+                    $array[$key] = $this->xml_to_assoc($value);
                 } else {
                     // untrim strings values
-                    $array[$key] = (string)$value;
+                    $array[$key] = (string) $value;
                 }
             }
         }

@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Acl\Role;
 
 use Laminas\Permissions\Acl\Exception\InvalidArgumentException;
-use Laminas\Permissions\Acl\Role\RoleInterface;
-
+use Laminas\Permissions\Acl\Role\Role_Interface;
 /**
  * Acl role registry. Contains list of roles and their relations.
  */
@@ -25,35 +23,34 @@ class Registry extends \Laminas\Permissions\Acl\Role\Registry
      * @return $this
      * @throws InvalidArgumentException
      */
-    public function addParent($role, $parents)
+    public function add_parent($role, $parents)
     {
         try {
-            if ($role instanceof RoleInterface) {
-                $roleId = $role->getRoleId();
+            if ($role instanceof Role_Interface) {
+                $role_id = $role->get_role_id();
             } else {
-                $roleId = $role;
+                $role_id = $role;
                 $role = $this->get($role);
             }
         } catch (InvalidArgumentException $e) {
-            throw new InvalidArgumentException("Child Role id '{$roleId}' does not exist");
+            throw new InvalidArgumentException("Child Role id '{$role_id}' does not exist");
         }
-
         if (!is_array($parents)) {
             $parents = [$parents];
         }
         foreach ($parents as $parent) {
             try {
-                if ($parent instanceof RoleInterface) {
-                    $roleParentId = $parent->getRoleId();
+                if ($parent instanceof Role_Interface) {
+                    $role_parent_id = $parent->get_role_id();
                 } else {
-                    $roleParentId = $parent;
+                    $role_parent_id = $parent;
                 }
-                $roleParent = $this->get($roleParentId);
+                $role_parent = $this->get($role_parent_id);
             } catch (InvalidArgumentException $e) {
-                throw new InvalidArgumentException("Parent Role id '{$roleParentId}' does not exist");
+                throw new InvalidArgumentException("Parent Role id '{$role_parent_id}' does not exist");
             }
-            $this->roles[$roleId]['parents'][$roleParentId] = $roleParent;
-            $this->roles[$roleParentId]['children'][$roleId] = $role;
+            $this->roles[$role_id]['parents'][$role_parent_id] = $role_parent;
+            $this->roles[$role_parent_id]['children'][$role_id] = $role;
         }
         return $this;
     }

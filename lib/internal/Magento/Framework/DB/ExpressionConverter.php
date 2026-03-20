@@ -1,86 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB;
 
 /**
  * The Database expression converter
  */
-class ExpressionConverter
+class Expression_Converter
 {
     /**
      * Maximum length for many MySql identifiers, including database, table, trigger, and column names
      */
     public const MYSQL_IDENTIFIER_LEN = 64;
-
     /**
      * Dictionary maps common words in identifiers to abbreviations
      *
      * @var array
      */
-    protected static $_translateMap = [
-        'address'       => 'addr',
-        'admin'         => 'adm',
-        'attribute'     => 'attr',
-        'enterprise'    => 'ent',
-        'catalog'       => 'cat',
-        'category'      => 'ctgr',
-        'customer'      => 'cstr',
-        'notification'  => 'ntfc',
-        'product'       => 'prd',
-        'session'       => 'sess',
-        'user'          => 'usr',
-        'entity'        => 'entt',
-        'datetime'      => 'dtime',
-        'decimal'       => 'dec',
-        'varchar'       => 'vchr',
-        'index'         => 'idx',
-        'compare'       => 'cmp',
-        'bundle'        => 'bndl',
-        'option'        => 'opt',
-        'gallery'       => 'glr',
-        'media'         => 'mda',
-        'value'         => 'val',
-        'link'          => 'lnk',
-        'title'         => 'ttl',
-        'super'         => 'spr',
-        'label'         => 'lbl',
-        'website'       => 'ws',
-        'aggregat'      => 'aggr',
-        'minimal'       => 'min',
-        'inventory'     => 'inv',
-        'status'        => 'sts',
-        'agreement'     => 'agrt',
-        'layout'        => 'lyt',
-        'resource'      => 'res',
-        'directory'     => 'dir',
-        'downloadable'  => 'dl',
-        'element'       => 'elm',
-        'fieldset'      => 'fset',
-        'checkout'      => 'chkt',
-        'newsletter'    => 'nlttr',
-        'shipping'      => 'shpp',
-        'calculation'   => 'calc',
-        'search'        => 'srch',
-        'query'         => 'qr',
-    ];
-
+    protected static $_translate_map = ['address' => 'addr', 'admin' => 'adm', 'attribute' => 'attr', 'enterprise' => 'ent', 'catalog' => 'cat', 'category' => 'ctgr', 'customer' => 'cstr', 'notification' => 'ntfc', 'product' => 'prd', 'session' => 'sess', 'user' => 'usr', 'entity' => 'entt', 'datetime' => 'dtime', 'decimal' => 'dec', 'varchar' => 'vchr', 'index' => 'idx', 'compare' => 'cmp', 'bundle' => 'bndl', 'option' => 'opt', 'gallery' => 'glr', 'media' => 'mda', 'value' => 'val', 'link' => 'lnk', 'title' => 'ttl', 'super' => 'spr', 'label' => 'lbl', 'website' => 'ws', 'aggregat' => 'aggr', 'minimal' => 'min', 'inventory' => 'inv', 'status' => 'sts', 'agreement' => 'agrt', 'layout' => 'lyt', 'resource' => 'res', 'directory' => 'dir', 'downloadable' => 'dl', 'element' => 'elm', 'fieldset' => 'fset', 'checkout' => 'chkt', 'newsletter' => 'nlttr', 'shipping' => 'shpp', 'calculation' => 'calc', 'search' => 'srch', 'query' => 'qr'];
     /**
      * Shorten name by abbreviating words
      *
      * @param string $name
      * @return string
      */
-    public static function shortName($name)
+    public static function short_name($name)
     {
-        return $name !== null ? strtr($name, self::$_translateMap) : '';
+        return $name !== null ? strtr($name, self::$_translate_map) : '';
     }
-
     /**
      * Add an abbreviation to the dictionary, or replace if it already exists
      *
@@ -88,11 +39,10 @@ class ExpressionConverter
      * @param string $to
      * @return void
      */
-    public static function addTranslate($from, $to)
+    public static function add_translate($from, $to)
     {
-        self::$_translateMap[$from] = $to;
+        self::$_translate_map[$from] = $to;
     }
-
     /**
      * Retrieves shorten entity name.
      *
@@ -103,26 +53,25 @@ class ExpressionConverter
      * @param string $prefix
      * @return string
      */
-    public static function shortenEntityName($entityName, $prefix)
+    public static function shorten_entity_name($entity_name, $prefix)
     {
-        if ($entityName !== null && strlen($entityName) > self::MYSQL_IDENTIFIER_LEN) {
-            $shortName = ExpressionConverter::shortName($entityName);
-            if (strlen($shortName) > self::MYSQL_IDENTIFIER_LEN) {
+        if ($entity_name !== null && strlen($entity_name) > self::MYSQL_IDENTIFIER_LEN) {
+            $short_name = Expression_Converter::short_name($entity_name);
+            if (strlen($short_name) > self::MYSQL_IDENTIFIER_LEN) {
                 // md5() here is not for cryptographic use.
                 // phpcs:ignore Magento2.Security.InsecureFunction
-                $hash = md5($entityName);
+                $hash = md5($entity_name);
                 if (strlen($prefix . $hash) > self::MYSQL_IDENTIFIER_LEN) {
-                    $entityName = self::trimHash($hash, $prefix, self::MYSQL_IDENTIFIER_LEN);
+                    $entity_name = self::trim_hash($hash, $prefix, self::MYSQL_IDENTIFIER_LEN);
                 } else {
-                    $entityName = $prefix . $hash;
+                    $entity_name = $prefix . $hash;
                 }
             } else {
-                $entityName = $shortName;
+                $entity_name = $short_name;
             }
         }
-        return $entityName;
+        return $entity_name;
     }
-
     /**
      * Remove superfluous characters from hash
      *
@@ -131,14 +80,11 @@ class ExpressionConverter
      * @param  int $maxCharacters
      * @return string
      */
-    private static function trimHash(
-        string $hash,
-        string $prefix,
-        int $maxCharacters
-    ): string {
-        $diff = strlen($hash) + strlen($prefix) - $maxCharacters;
+    private static function trim_hash(string $hash, string $prefix, int $max_characters): string
+    {
+        $diff = strlen($hash) + strlen($prefix) - $max_characters;
         $superfluous = intdiv($diff, 2);
         $odd = $diff % 2;
-        return substr($hash, $superfluous, - ($superfluous + $odd));
+        return substr($hash, $superfluous, -($superfluous + $odd));
     }
 }

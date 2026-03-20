@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\Api\ExtensionAttribute\Config;
+namespace Magento\Framework\Api\Extension_Attribute\Config;
 
 class Reader extends \Magento\Framework\Config\Reader\Filesystem
 {
@@ -15,11 +14,7 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
      *
      * @var array
      */
-    protected $_idAttributes = [
-        '/config/extension_attributes' => 'for',
-        '/config/extension_attributes/attribute' => 'code',
-    ];
-
+    protected $_id_attributes = ['/config/extension_attributes' => 'for', '/config/extension_attributes/attribute' => 'code'];
     /**
      * @param \Magento\Framework\Config\FileResolverInterface $fileResolver
      * @param \Magento\Framework\Api\ExtensionAttribute\Config\Converter $converter
@@ -30,25 +25,8 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
      * @param string $domDocumentClass
      * @param string $defaultScope
      */
-    public function __construct(
-        \Magento\Framework\Config\FileResolverInterface $fileResolver,
-        \Magento\Framework\Api\ExtensionAttribute\Config\Converter $converter,
-        \Magento\Framework\Api\ExtensionAttribute\Config\SchemaLocator $schemaLocator,
-        \Magento\Framework\Config\ValidationStateInterface $validationState,
-        $fileName = 'extension_attributes.xml',
-        $idAttributes = [],
-        $domDocumentClass = \Magento\Framework\Config\Dom::class,
-        $defaultScope = 'global'
-    ) {
-        parent::__construct(
-            $fileResolver,
-            $converter,
-            $schemaLocator,
-            $validationState,
-            $fileName,
-            $idAttributes,
-            $domDocumentClass,
-            $defaultScope
-        );
+    public function __construct(\Magento\Framework\Config\File_Resolver_Interface $file_resolver, \Magento\Framework\Api\Extension_Attribute\Config\Converter $converter, \Magento\Framework\Api\Extension_Attribute\Config\Schema_Locator $schema_locator, \Magento\Framework\Config\Validation_State_Interface $validation_state, $file_name = 'extension_attributes.xml', $id_attributes = [], $dom_document_class = \Magento\Framework\Config\Dom::class, $default_scope = 'global')
+    {
+        parent::__construct($file_resolver, $converter, $schema_locator, $validation_state, $file_name, $id_attributes, $dom_document_class, $default_scope);
     }
 }

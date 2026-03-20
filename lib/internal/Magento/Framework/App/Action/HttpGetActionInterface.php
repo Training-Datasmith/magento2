@@ -4,9 +4,7 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Action;
 
 /**
@@ -14,6 +12,6 @@ namespace Magento\Framework\App\Action;
  *
  * @api
  */
-interface HttpGetActionInterface extends HttpHeadActionInterface
+interface Http_Get_Action_Interface extends Http_Head_Action_Interface
 {
 }

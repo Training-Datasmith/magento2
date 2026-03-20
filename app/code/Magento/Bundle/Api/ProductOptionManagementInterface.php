@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Api;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Bundle\Api;
  * @api
  * @since 100.0.2
  */
-interface ProductOptionManagementInterface
+interface Product_Option_Management_Interface
 {
     /**
      * Add new option for bundle product
@@ -24,5 +23,5 @@ interface ProductOptionManagementInterface
      * @throws \Magento\Framework\Exception\CouldNotSaveException
      * @throws \Magento\Framework\Exception\InputException
      */
-    public function save(\Magento\Bundle\Api\Data\OptionInterface $option);
+    public function save(\Magento\Bundle\Api\Data\Option_Interface $option);
 }

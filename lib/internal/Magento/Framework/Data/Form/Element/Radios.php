@@ -1,32 +1,28 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Radio buttons collection
  */
-
 namespace Magento\Framework\Data\Form\Element;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\DataObject;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Data_Object;
 use Magento\Framework\Escaper;
-use Magento\Framework\View\Helper\SecureHtmlRenderer;
-
+use Magento\Framework\View\Helper\Secure_Html_Renderer;
 /**
  * Radio buttons form element widget.
  */
-class Radios extends AbstractElement
+class Radios extends Abstract_Element
 {
     /**
      * @var SecureHtmlRenderer
      */
-    private $secureRenderer;
-
+    private $secure_renderer;
     /**
      * @param Factory $factoryElement
      * @param CollectionFactory $factoryCollection
@@ -34,35 +30,27 @@ class Radios extends AbstractElement
      * @param array $data
      * @param SecureHtmlRenderer|null $secureRenderer
      */
-    public function __construct(
-        Factory $factoryElement,
-        CollectionFactory $factoryCollection,
-        Escaper $escaper,
-        $data = [],
-        ?SecureHtmlRenderer $secureRenderer = null
-    ) {
-        $this->secureRenderer
-            = $secureRenderer = $secureRenderer ?? ObjectManager::getInstance()->get(SecureHtmlRenderer::class);
-        parent::__construct($factoryElement, $factoryCollection, $escaper, $data, $secureRenderer);
-        $this->setType('radios');
+    public function __construct(Factory $factory_element, Collection_Factory $factory_collection, Escaper $escaper, $data = [], ?Secure_Html_Renderer $secure_renderer = null)
+    {
+        $this->secure_renderer = $secure_renderer = $secure_renderer ?? Object_Manager::get_instance()->get(Secure_Html_Renderer::class);
+        parent::__construct($factory_element, $factory_collection, $escaper, $data, $secure_renderer);
+        $this->set_type('radios');
     }
-
     /**
      * @inheritDoc
      */
-    public function getElementHtml()
+    public function get_element_html()
     {
         $html = '';
-        $value = $this->getValue();
-        if ($values = $this->getValues()) {
+        $value = $this->get_value();
+        if ($values = $this->get_values()) {
             foreach ($values as $option) {
-                $html .= $this->_optionToHtml($option, $value);
+                $html .= $this->_option_to_html($option, $value);
             }
         }
-        $html .= $this->getAfterElementHtml();
+        $html .= $this->get_after_element_html();
         return $html;
     }
-
     /**
      * Render choices.
      *
@@ -70,76 +58,57 @@ class Radios extends AbstractElement
      * @param string[] $selected
      * @return string
      */
-    protected function _optionToHtml($option, $selected)
+    protected function _option_to_html($option, $selected)
     {
-        $html = '<div class="admin__field admin__field-option">' .
-            '<input type="radio"' . $this->getRadioButtonAttributes($option);
+        $html = '<div class="admin__field admin__field-option">' . '<input type="radio"' . $this->get_radio_button_attributes($option);
         if (is_array($option)) {
-            $option = new DataObject($option);
-            $optionId = $this->getHtmlId() . $option['value'];
-            $html .= 'value="' . $this->_escape(
-                $option['value']
-            ) . '" class="admin__control-radio" id="' .$optionId  .'"';
+            $option = new Data_Object($option);
+            $option_id = $this->get_html_id() . $option['value'];
+            $html .= 'value="' . $this->_escape($option['value']) . '" class="admin__control-radio" id="' . $option_id . '"';
             if ($option['value'] == $selected) {
                 $html .= ' checked="checked"';
             }
             $html .= ' />';
-            $html .= '<label class="admin__field-label" for="' .
-                $this->getHtmlId() .
-                $option['value'] .
-                '"><span>' .
-                $option['label'] .
-                '</span></label>';
-        } elseif ($option instanceof DataObject) {
-            $optionId = $this->getHtmlId() . $option->getValue();
-            $html .= 'id="' .$optionId  .'"' .$option->serialize(
-                ['label', 'title', 'value', 'class']
-            );
-            if (in_array($option->getValue(), $selected)) {
+            $html .= '<label class="admin__field-label" for="' . $this->get_html_id() . $option['value'] . '"><span>' . $option['label'] . '</span></label>';
+        } elseif ($option instanceof Data_Object) {
+            $option_id = $this->get_html_id() . $option->get_value();
+            $html .= 'id="' . $option_id . '"' . $option->serialize(['label', 'title', 'value', 'class']);
+            if (in_array($option->get_value(), $selected)) {
                 $html .= ' checked="checked"';
             }
             $html .= ' />';
-            $html .= '<label class="inline" for="' .
-                $this->getHtmlId() .
-                $option->getValue() .
-                '">' .
-                $option->getLabel() .
-                '</label>';
+            $html .= '<label class="inline" for="' . $this->get_html_id() . $option->get_value() . '">' . $option->get_label() . '</label>';
         }
-
-        if ($option->getStyle()) {
-            $html .= $this->secureRenderer->renderStyleAsTag($option->getStyle(), "#$optionId");
+        if ($option->get_style()) {
+            $html .= $this->secure_renderer->render_style_as_tag($option->get_style(), "#{$option_id}");
         }
-        if ($option->getOnclick()) {
-            $this->secureRenderer->renderEventListenerAsTag('onclick', $option->getOnclick(), "#$optionId");
+        if ($option->get_onclick()) {
+            $this->secure_renderer->render_event_listener_as_tag('onclick', $option->get_onclick(), "#{$option_id}");
         }
-        if ($option->getOnchange()) {
-            $this->secureRenderer->renderEventListenerAsTag('onchange', $option->getOnchange(), "#$optionId");
+        if ($option->get_onchange()) {
+            $this->secure_renderer->render_event_listener_as_tag('onchange', $option->get_onchange(), "#{$option_id}");
         }
         $html .= '</div>';
-
         return $html;
     }
-
     /**
      * @inheritDoc
      */
-    public function getHtmlAttributes()
+    public function get_html_attributes()
     {
-        return array_merge(parent::getHtmlAttributes(), ['name']);
+        return array_merge(parent::get_html_attributes(), ['name']);
     }
-
     /**
      * Get a choice's HTML attributes.
      *
      * @param array $option
      * @return string
      */
-    protected function getRadioButtonAttributes($option)
+    protected function get_radio_button_attributes($option)
     {
         $html = '';
-        foreach ($this->getHtmlAttributes() as $attribute) {
-            if ($value = $this->getDataUsingMethod($attribute, $option['value'])) {
+        foreach ($this->get_html_attributes() as $attribute) {
+            if ($value = $this->get_data_using_method($attribute, $option['value'])) {
                 $html .= ' ' . $attribute . '="' . $value . '" ';
             }
         }

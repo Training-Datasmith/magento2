@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Encryption;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Encryption;
  * @api
  * @since 100.0.2
  */
-interface EncryptorInterface
+interface Encryptor_Interface
 {
     /**
      * Generate a [salted] hash.
@@ -29,8 +28,7 @@ interface EncryptorInterface
      * @param bool|int|string $salt
      * @return string
      */
-    public function getHash($password, $salt = false);
-
+    public function get_hash($password, $salt = false);
     /**
      * Hash a string.
      *
@@ -40,7 +38,6 @@ interface EncryptorInterface
      * @return string
      */
     public function hash($data);
-
     /**
      * Synonym to isValidHash.
      *
@@ -50,8 +47,7 @@ interface EncryptorInterface
      * @throws \Exception
      * @see isValidHash
      */
-    public function validateHash($password, $hash);
-
+    public function validate_hash($password, $hash);
     /**
      * Validate hash against hashing method.
      *
@@ -62,8 +58,7 @@ interface EncryptorInterface
      * @return bool
      * @throws \Exception
      */
-    public function isValidHash($password, $hash);
-
+    public function is_valid_hash($password, $hash);
     /**
      * Validate hashing algorithm version
      *
@@ -71,8 +66,7 @@ interface EncryptorInterface
      * @param bool $validateCount
      * @return bool
      */
-    public function validateHashVersion($hash, $validateCount = false);
-
+    public function validate_hash_version($hash, $validate_count = false);
     /**
      * Encrypt a string
      *
@@ -80,7 +74,6 @@ interface EncryptorInterface
      * @return string
      */
     public function encrypt($data);
-
     /**
      * Decrypt a string
      *
@@ -88,12 +81,11 @@ interface EncryptorInterface
      * @return string
      */
     public function decrypt($data);
-
     /**
      * Return crypt model, instantiate if it is empty
      *
      * @param string $key
      * @return \Magento\Framework\Encryption\Crypt
      */
-    public function validateKey($key);
+    public function validate_key($key);
 }

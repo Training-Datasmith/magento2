@@ -1,35 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Select;
 
 use Magento\Framework\DB\Platform\Quote;
 use Magento\Framework\DB\Select;
-
 /**
  * Class ColumnsRenderer
  */
-class ColumnsRenderer implements RendererInterface
+class Columns_Renderer implements Renderer_Interface
 {
     /**
      * @var Quote
      */
     protected $quote;
-
     /**
      * @param Quote $quote
      */
-    public function __construct(
-        Quote $quote
-    ) {
+    public function __construct(Quote $quote)
+    {
         $this->quote = $quote;
     }
-
     /**
      * Render COLUMNS section
      *
@@ -40,23 +35,23 @@ class ColumnsRenderer implements RendererInterface
      */
     public function render(Select $select, $sql = '')
     {
-        if (!count($select->getPart(Select::COLUMNS))) {
+        if (!count($select->get_part(Select::COLUMNS))) {
             return null;
         }
         $columns = [];
-        foreach ($select->getPart(Select::COLUMNS) as $columnEntry) {
-            list($correlationName, $column, $alias) = $columnEntry;
+        foreach ($select->get_part(Select::COLUMNS) as $column_entry) {
+            list($correlation_name, $column, $alias) = $column_entry;
             if ($column instanceof \Zend_Db_Expr) {
-                $columns[] = $this->quote->quoteColumnAs($column, $alias);
+                $columns[] = $this->quote->quote_column_as($column, $alias);
             } else {
                 if ($column == Select::SQL_WILDCARD) {
                     $column = new \Zend_Db_Expr(Select::SQL_WILDCARD);
                     $alias = null;
                 }
-                if (empty($correlationName)) {
-                    $columns[] = $this->quote->quoteColumnAs($column, $alias);
+                if (empty($correlation_name)) {
+                    $columns[] = $this->quote->quote_column_as($column, $alias);
                 } else {
-                    $columns[] = $this->quote->quoteColumnAs([$correlationName, $column], $alias);
+                    $columns[] = $this->quote->quote_column_as([$correlation_name, $column], $alias);
                 }
             }
         }

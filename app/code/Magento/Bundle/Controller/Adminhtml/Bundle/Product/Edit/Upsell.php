@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Controller\Adminhtml\Bundle\Product\Edit;
 
 use Magento\Catalog\Controller\Adminhtml\Product\Upsell as CatalogUpsell;
-use Magento\Framework\App\Action\HttpPostActionInterface;
-
+use Magento\Framework\App\Action\Http_Post_Action_Interface;
 /**
  * Class Upsell
  *
@@ -18,6 +16,6 @@ use Magento\Framework\App\Action\HttpPostActionInterface;
  * @deprecated Not used since upsell products grid moved to UI components.
  * @see Magento_Catalog::view/adminhtml/ui_component/upsell_product_listing.xml
  */
-class Upsell extends CatalogUpsell implements HttpPostActionInterface
+class Upsell extends Catalog_Upsell implements Http_Post_Action_Interface
 {
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 /**
@@ -14,77 +13,59 @@ namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
  * @deprecated 100.2.0 in favour of UI component implementation
  * @since 100.0.2
  */
-class Store extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
+class Store extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract_Renderer
 {
     /**
      * @var bool
      */
-    protected $_skipAllStoresLabel = false;
-
+    protected $_skip_all_stores_label = false;
     /**
      * @var bool
      */
-    protected $_skipEmptyStoresLabel = false;
-
+    protected $_skip_empty_stores_label = false;
     /**
      * @var \Magento\Store\Model\System\Store
      */
-    protected $_systemStore;
-
+    protected $_system_store;
     /**
      * @param \Magento\Backend\Block\Context $context
      * @param \Magento\Store\Model\System\Store $systemStore
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Context $context,
-        \Magento\Store\Model\System\Store $systemStore,
-        array $data = []
-    ) {
-        $this->_systemStore = $systemStore;
+    public function __construct(\Magento\Backend\Block\Context $context, \Magento\Store\Model\System\Store $system_store, array $data = [])
+    {
+        $this->_system_store = $system_store;
         parent::__construct($context, $data);
     }
-
     /**
      * Retrieve System Store model
      *
      * @return \Magento\Store\Model\System\Store
      */
-    protected function _getStoreModel()
+    protected function _get_store_model()
     {
-        return $this->_systemStore;
+        return $this->_system_store;
     }
-
     /**
      * Retrieve 'show all stores label' flag
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    protected function _getShowAllStoresLabelFlag()
+    protected function _get_show_all_stores_label_flag()
     {
-        return $this->getColumn()->getData(
-            'skipAllStoresLabel'
-        ) ? $this->getColumn()->getData(
-            'skipAllStoresLabel'
-        ) : $this->_skipAllStoresLabel;
+        return $this->get_column()->get_data('skipAllStoresLabel') ? $this->get_column()->get_data('skipAllStoresLabel') : $this->_skip_all_stores_label;
     }
-
     /**
      * Retrieve 'show empty stores label' flag
      *
      * @return bool
      * @SuppressWarnings(PHPMD.BooleanGetMethodName)
      */
-    protected function _getShowEmptyStoresLabelFlag()
+    protected function _get_show_empty_stores_label_flag()
     {
-        return $this->getColumn()->getData(
-            'skipEmptyStoresLabel'
-        ) ? $this->getColumn()->getData(
-            'skipEmptyStoresLabel'
-        ) : $this->_skipEmptyStoresLabel;
+        return $this->get_column()->get_data('skipEmptyStoresLabel') ? $this->get_column()->get_data('skipEmptyStoresLabel') : $this->_skip_empty_stores_label;
     }
-
     /**
      * Render row store views
      *
@@ -93,37 +74,32 @@ class Store extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function render(\Magento\Framework\DataObject $row)
+    public function render(\Magento\Framework\Data_Object $row)
     {
         $out = '';
-        $skipAllStoresLabel = $this->_getShowAllStoresLabelFlag();
-        $skipEmptyStoresLabel = $this->_getShowEmptyStoresLabelFlag();
-        $origStores = $row->getData($this->getColumn()->getIndex());
-
-        if ($origStores === null && $row->getStoreName()) {
+        $skip_all_stores_label = $this->_get_show_all_stores_label_flag();
+        $skip_empty_stores_label = $this->_get_show_empty_stores_label_flag();
+        $orig_stores = $row->get_data($this->get_column()->get_index());
+        if ($orig_stores === null && $row->get_store_name()) {
             $scopes = [];
-            foreach (explode("\n", $row->getStoreName()) as $k => $label) {
+            foreach (explode("\n", $row->get_store_name()) as $k => $label) {
                 $scopes[] = str_repeat('&nbsp;', $k * 3) . $label;
             }
             $out .= implode('<br/>', $scopes) . __(' [deleted]');
             return $out;
         }
-
-        if (empty($origStores) && !$skipEmptyStoresLabel) {
+        if (empty($orig_stores) && !$skip_empty_stores_label) {
             return '';
         }
-        if (!is_array($origStores)) {
-            $origStores = [$origStores];
+        if (!is_array($orig_stores)) {
+            $orig_stores = [$orig_stores];
         }
-
-        if (empty($origStores)) {
+        if (empty($orig_stores)) {
             return '';
-        } elseif (in_array(0, $origStores) && count($origStores) == 1 && !$skipAllStoresLabel) {
+        } elseif (in_array(0, $orig_stores) && count($orig_stores) == 1 && !$skip_all_stores_label) {
             return __('All Store Views');
         }
-
-        $data = $this->_getStoreModel()->getStoresStructure(false, $origStores);
-
+        $data = $this->_get_store_model()->get_stores_structure(false, $orig_stores);
         foreach ($data as $website) {
             $out .= $website['label'] . '<br/>';
             foreach ($website['children'] as $group) {
@@ -133,10 +109,8 @@ class Store extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
                 }
             }
         }
-
         return $out;
     }
-
     /**
      * Render row store views for export
      *
@@ -144,31 +118,26 @@ class Store extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
      * @return \Magento\Framework\Phrase|string
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    public function renderExport(\Magento\Framework\DataObject $row)
+    public function render_export(\Magento\Framework\Data_Object $row)
     {
         $out = '';
-        $skipAllStoresLabel = $this->_getShowAllStoresLabelFlag();
-        $origStores = $row->getData($this->getColumn()->getIndex());
-
-        if ($origStores === null && $row->getStoreName()) {
+        $skip_all_stores_label = $this->_get_show_all_stores_label_flag();
+        $orig_stores = $row->get_data($this->get_column()->get_index());
+        if ($orig_stores === null && $row->get_store_name()) {
             $scopes = [];
-            foreach (explode("\n", $row->getStoreName()) as $k => $label) {
+            foreach (explode("\n", $row->get_store_name()) as $k => $label) {
                 $scopes[] = str_repeat(' ', $k * 3) . $label;
             }
             $out .= implode("\r\n", $scopes) . __(' [deleted]');
             return $out;
         }
-
-        if (!is_array($origStores)) {
-            $origStores = [$origStores];
+        if (!is_array($orig_stores)) {
+            $orig_stores = [$orig_stores];
         }
-
-        if (in_array(0, $origStores) && !$skipAllStoresLabel) {
+        if (in_array(0, $orig_stores) && !$skip_all_stores_label) {
             return __('All Store Views');
         }
-
-        $data = $this->_getStoreModel()->getStoresStructure(false, $origStores);
-
+        $data = $this->_get_store_model()->get_stores_structure(false, $orig_stores);
         foreach ($data as $website) {
             $out .= $website['label'] . "\r\n";
             foreach ($website['children'] as $group) {
@@ -178,7 +147,6 @@ class Store extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractR
                 }
             }
         }
-
         return $out;
     }
 }

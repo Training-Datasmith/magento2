@@ -1,43 +1,35 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application configuration object. Used to access configuration when application is installed.
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
-use Magento\Framework\App\Config\MutableScopeConfigInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
+use Magento\Framework\App\Config\Mutable_Scope_Config_Interface;
+use Magento\Framework\App\Config\Scope_Config_Interface;
 /**
  * @inheritdoc
  */
-class MutableScopeConfig extends Config implements MutableScopeConfigInterface
+class Mutable_Scope_Config extends Config implements Mutable_Scope_Config_Interface
 {
     /**
      * @var array
      */
     private $data;
-
     /**
      * @inheritdoc
      */
-    public function getValue(
-        $path = null,
-        $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
-        $scopeCode = null
-    ) {
-        if (isset($this->data[$scope][$scopeCode][$path])) {
-            return $this->data[$scope][$scopeCode][$path];
+    public function get_value($path = null, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_code = null)
+    {
+        if (isset($this->data[$scope][$scope_code][$path])) {
+            return $this->data[$scope][$scope_code][$path];
         }
-
-        return parent::getValue($path, $scope, $scopeCode);
+        return parent::get_value($path, $scope, $scope_code);
     }
-
     /**
      * Set config value in the corresponding config scope
      *
@@ -47,15 +39,10 @@ class MutableScopeConfig extends Config implements MutableScopeConfigInterface
      * @param null|string $scopeCode
      * @return void
      */
-    public function setValue(
-        $path,
-        $value,
-        $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT,
-        $scopeCode = null
-    ) {
-        $this->data[$scope][$scopeCode ?? ''][$path] = $value;
+    public function set_value($path, $value, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_code = null)
+    {
+        $this->data[$scope][$scope_code ?? ''][$path] = $value;
     }
-
     /**
      * @inheritdoc
      */

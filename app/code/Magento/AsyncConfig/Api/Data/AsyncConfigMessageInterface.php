@@ -4,23 +4,21 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Async_Config\Api\Data;
 
-namespace Magento\AsyncConfig\Api\Data;
-
-interface AsyncConfigMessageInterface
+interface Async_Config_Message_Interface
 {
     /**
      * Get Configuration data
      *
      * @return string
      */
-    public function getConfigData();
-
+    public function get_config_data();
     /**
      * Set Configuration data
      *
      * @return void
      */
-    public function setConfigData(string $data);
+    public function set_config_data(string $data);
 }

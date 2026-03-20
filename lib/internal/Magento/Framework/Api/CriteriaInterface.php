@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Api;
 
 /**
@@ -13,24 +12,21 @@ namespace Magento\Framework\Api;
  *
  * @api
  */
-interface CriteriaInterface
+interface Criteria_Interface
 {
     public const PART_FIELDS = 'fields';
     public const PART_FILTERS = 'filters';
     public const PART_ORDERS = 'orders';
     public const PART_CRITERIA_LIST = 'criteria_list';
     public const PART_LIMIT = 'limit';
-
     public const SORT_ORDER_ASC = 'ASC';
     public const SORT_ORDER_DESC = 'DESC';
-
     /**
      * Get associated Mapper Interface name
      *
      * @return string
      */
-    public function getMapperInterfaceName();
-
+    public function get_mapper_interface_name();
     /**
      * Add field to select
      *
@@ -38,8 +34,7 @@ interface CriteriaInterface
      * @param string|null $alias
      * @return void
      */
-    public function addField($field, $alias = null);
-
+    public function add_field($field, $alias = null);
     /**
      * Add field filter to collection
      *
@@ -81,8 +76,7 @@ interface CriteriaInterface
      * @throws \Magento\Framework\Exception\LocalizedException if some error in the input could be detected.
      * @return void
      */
-    public function addFilter($name, $field, $condition = null, $type = 'and');
-
+    public function add_filter($name, $field, $condition = null, $type = 'and');
     /**
      * self::setOrder() alias
      *
@@ -91,8 +85,7 @@ interface CriteriaInterface
      * @param bool $unShift
      * @return void
      */
-    public function addOrder($field, $direction = self::SORT_ORDER_DESC, $unShift = false);
-
+    public function add_order($field, $direction = self::SORT_ORDER_DESC, $un_shift = false);
     /**
      * Set Query limit
      *
@@ -100,8 +93,7 @@ interface CriteriaInterface
      * @param int $size
      * @return void
      */
-    public function setLimit($offset, $size);
-
+    public function set_limit($offset, $size);
     /**
      * Removes field from select
      *
@@ -109,59 +101,51 @@ interface CriteriaInterface
      * @param bool $isAlias Alias identifier
      * @return void
      */
-    public function removeField($field, $isAlias = false);
-
+    public function remove_field($field, $is_alias = false);
     /**
      * Removes all fields from select
      *
      * @return void
      */
-    public function removeAllFields();
-
+    public function remove_all_fields();
     /**
      * Removes filter by name
      *
      * @param string $name
      * @return void
      */
-    public function removeFilter($name);
-
+    public function remove_filter($name);
     /**
      * Removes all filters
      *
      * @return void
      */
-    public function removeAllFilters();
-
+    public function remove_all_filters();
     /**
      * Get Criteria objects added to current Composite Criteria
      *
      * @return \Magento\Framework\Api\CriteriaInterface[]
      */
-    public function getCriteriaList();
-
+    public function get_criteria_list();
     /**
      * Get list of filters
      *
      * @return string[]
      */
-    public function getFilters();
-
+    public function get_filters();
     /**
      * Get ordering criteria
      *
      * @return string[]
      */
-    public function getOrders();
-
+    public function get_orders();
     /**
      * Get limit
      * (['offset', 'page'])
      *
      * @return string[]
      */
-    public function getLimit();
-
+    public function get_limit();
     /**
      * Retrieve criteria part
      *
@@ -169,15 +153,13 @@ interface CriteriaInterface
      * @param mixed $default
      * @return mixed
      */
-    public function getPart($name, $default = null);
-
+    public function get_part($name, $default = null);
     /**
      * Return all criteria parts as array
      *
      * @return array
      */
-    public function toArray();
-
+    public function to_array();
     /**
      * Reset criteria
      *

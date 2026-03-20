@@ -1,51 +1,46 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application request
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface RequestInterface
+interface Request_Interface
 {
     /**
      * Retrieve module name
      *
      * @return string
      */
-    public function getModuleName();
-
+    public function get_module_name();
     /**
      * Set Module name
      *
      * @param string $name
      * @return $this
      */
-    public function setModuleName($name);
-
+    public function set_module_name($name);
     /**
      * Retrieve action name
      *
      * @return string
      */
-    public function getActionName();
-
+    public function get_action_name();
     /**
      * Set action name
      *
      * @param string $name
      * @return $this
      */
-    public function setActionName($name);
-
+    public function set_action_name($name);
     /**
      * Retrieve param by key
      *
@@ -53,23 +48,20 @@ interface RequestInterface
      * @param mixed $defaultValue
      * @return mixed
      */
-    public function getParam($key, $defaultValue = null);
-
+    public function get_param($key, $default_value = null);
     /**
      * Set params from key value array
      *
      * @param array $params
      * @return $this
      */
-    public function setParams(array $params);
-
+    public function set_params(array $params);
     /**
      * Retrieve all params as array
      *
      * @return array
      */
-    public function getParams();
-
+    public function get_params();
     /**
      * Retrieve cookie value
      *
@@ -77,12 +69,11 @@ interface RequestInterface
      * @param string|null $default
      * @return string|null
      */
-    public function getCookie($name, $default);
-
+    public function get_cookie($name, $default);
     /**
      * Returns whether request was delivered over HTTPS
      *
      * @return bool
      */
-    public function isSecure();
+    public function is_secure();
 }

@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\DataObject\Copy\Config;
+namespace Magento\Framework\Data_Object\Copy\Config;
 
 /**
  * Provides DataObject copier configuration

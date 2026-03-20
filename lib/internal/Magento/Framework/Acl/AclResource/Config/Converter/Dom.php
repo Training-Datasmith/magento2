@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\Acl\AclResource\Config\Converter;
+namespace Magento\Framework\Acl\Acl_Resource\Config\Converter;
 
 /**
  * @inheritDoc
  */
-class Dom implements \Magento\Framework\Config\ConverterInterface
+class Dom implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * @inheritdoc
@@ -22,15 +21,14 @@ class Dom implements \Magento\Framework\Config\ConverterInterface
      */
     public function convert($source)
     {
-        $aclResourceConfig = ['config' => ['acl' => ['resources' => []]]];
-        $xpath = new \DOMXPath($source);
+        $acl_resource_config = ['config' => ['acl' => ['resources' => []]]];
+        $xpath = new \Domx_Path($source);
         /** @var $resourceNode \DOMNode */
-        foreach ($xpath->query('/config/acl/resources/resource') as $resourceNode) {
-            $aclResourceConfig['config']['acl']['resources'][] = $this->_convertResourceNode($resourceNode);
+        foreach ($xpath->query('/config/acl/resources/resource') as $resource_node) {
+            $acl_resource_config['config']['acl']['resources'][] = $this->_convert_resource_node($resource_node);
         }
-        return $aclResourceConfig;
+        return $acl_resource_config;
     }
-
     /**
      * Convert resource node into assoc array
      *
@@ -39,36 +37,36 @@ class Dom implements \Magento\Framework\Config\ConverterInterface
      * @throws \Exception
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    protected function _convertResourceNode(\DOMNode $resourceNode)
+    protected function _convert_resource_node(\Dom_Node $resource_node)
     {
-        $resourceData = [];
-        $resourceAttributes = $resourceNode->attributes;
-        $idNode = $resourceAttributes->getNamedItem('id');
-        if ($idNode === null) {
+        $resource_data = [];
+        $resource_attributes = $resource_node->attributes;
+        $id_node = $resource_attributes->get_named_item('id');
+        if ($id_node === null) {
             // phpcs:ignore Magento2.Exceptions.DirectThrow
             throw new \Exception('Attribute "id" is required for ACL resource.');
         }
-        $resourceData['id'] = $idNode->nodeValue;
-        $moduleNode = $resourceAttributes->getNamedItem('module');
-        if ($moduleNode !== null) {
-            $resourceData['module'] = $moduleNode->nodeValue;
+        $resource_data['id'] = $id_node->node_value;
+        $module_node = $resource_attributes->get_named_item('module');
+        if ($module_node !== null) {
+            $resource_data['module'] = $module_node->node_value;
         }
-        $titleNode = $resourceAttributes->getNamedItem('title');
-        if ($titleNode !== null) {
-            $resourceData['title'] = $titleNode->nodeValue;
+        $title_node = $resource_attributes->get_named_item('title');
+        if ($title_node !== null) {
+            $resource_data['title'] = $title_node->node_value;
         }
-        $sortOrderNode = $resourceAttributes->getNamedItem('sortOrder');
-        $resourceData['sortOrder'] = $sortOrderNode !== null ? (int)$sortOrderNode->nodeValue : 0;
-        $disabledNode = $resourceAttributes->getNamedItem('disabled');
-        $resourceData['disabled'] = $disabledNode !== null && $disabledNode->nodeValue == 'true';
+        $sort_order_node = $resource_attributes->get_named_item('sortOrder');
+        $resource_data['sortOrder'] = $sort_order_node !== null ? (int) $sort_order_node->node_value : 0;
+        $disabled_node = $resource_attributes->get_named_item('disabled');
+        $resource_data['disabled'] = $disabled_node !== null && $disabled_node->node_value == 'true';
         // convert child resource nodes if needed
-        $resourceData['children'] = [];
+        $resource_data['children'] = [];
         /** @var $childNode \DOMNode */
-        foreach ($resourceNode->childNodes as $childNode) {
-            if ($childNode->nodeName == 'resource') {
-                $resourceData['children'][] = $this->_convertResourceNode($childNode);
+        foreach ($resource_node->child_nodes as $child_node) {
+            if ($child_node->node_name == 'resource') {
+                $resource_data['children'][] = $this->_convert_resource_node($child_node);
             }
         }
-        return $resourceData;
+        return $resource_data;
     }
 }

@@ -1,24 +1,21 @@
 <?php
 
-declare(strict_types=1);
-
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data\Tree;
 
 use Magento\Framework\Data\Tree;
 use Magento\Framework\Data\Tree\Node\Collection;
-
 /**
  * Data tree node
  *
  * @api
  * @since 100.0.2
  */
-class Node extends \Magento\Framework\DataObject
+class Node extends \Magento\Framework\Data_Object
 {
     /**
      * Parent node
@@ -26,51 +23,45 @@ class Node extends \Magento\Framework\DataObject
      * @var Node
      */
     protected $_parent;
-
     /**
      * Main tree object
      *
      * @var Tree
      */
     protected $_tree;
-
     /**
      * @var Collection
      */
-    protected $_childNodes;
-
+    protected $_child_nodes;
     /**
      * Node ID field name
      *
      * @var string
      */
-    protected $_idField;
-
+    protected $_id_field;
     /**
      * @param array $data
      * @param string $idField
      * @param Tree $tree
      * @param Node $parent
      */
-    public function __construct($data, $idField, $tree, $parent = null)
+    public function __construct($data, $id_field, $tree, $parent = null)
     {
-        $this->setTree($tree);
-        $this->setParent($parent);
-        $this->setIdField($idField);
-        $this->setData($data);
-        $this->_childNodes = new Collection($this);
+        $this->set_tree($tree);
+        $this->set_parent($parent);
+        $this->set_id_field($id_field);
+        $this->set_data($data);
+        $this->_child_nodes = new Collection($this);
     }
-
     /**
      * Retrieve node id
      *
      * @return mixed
      */
-    public function getId()
+    public function get_id()
     {
-        return $this->getData($this->getIdField());
+        return $this->get_data($this->get_id_field());
     }
-
     /**
      * Set node id field name
      *
@@ -78,22 +69,20 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return  $this
      */
-    public function setIdField($idField)
+    public function set_id_field($id_field)
     {
-        $this->_idField = $idField;
+        $this->_id_field = $id_field;
         return $this;
     }
-
     /**
      * Retrieve node id field name
      *
      * @return string
      */
-    public function getIdField()
+    public function get_id_field()
     {
-        return $this->_idField;
+        return $this->_id_field;
     }
-
     /**
      * Set node tree object
      *
@@ -101,22 +90,20 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return  $this
      */
-    public function setTree(Tree $tree)
+    public function set_tree(Tree $tree)
     {
         $this->_tree = $tree;
         return $this;
     }
-
     /**
      * Retrieve node tree object
      *
      * @return Tree
      */
-    public function getTree()
+    public function get_tree()
     {
         return $this->_tree;
     }
-
     /**
      * Set node parent
      *
@@ -124,32 +111,29 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return  $this
      */
-    public function setParent($parent)
+    public function set_parent($parent)
     {
         $this->_parent = $parent;
         return $this;
     }
-
     /**
      * Retrieve node parent
      *
      * @return Tree
      */
-    public function getParent()
+    public function get_parent()
     {
         return $this->_parent;
     }
-
     /**
      * Check node children
      *
      * @return bool
      */
-    public function hasChildren()
+    public function has_children()
     {
-        return $this->_childNodes->count() > 0;
+        return $this->_child_nodes->count() > 0;
     }
-
     /**
      * Set level
      *
@@ -157,12 +141,11 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function setLevel($level)
+    public function set_level($level)
     {
-        $this->setData('level', $level);
+        $this->set_data('level', $level);
         return $this;
     }
-
     /**
      * Set path ID
      *
@@ -170,12 +153,11 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function setPathId($path)
+    public function set_path_id($path)
     {
-        $this->setData('path_id', $path);
+        $this->set_data('path_id', $path);
         return $this;
     }
-
     /**
      * Seemingyly useless method
      *
@@ -184,10 +166,9 @@ class Node extends \Magento\Framework\DataObject
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @phpcs:disable Magento2.CodeAnalysis.EmptyBlock.DetectedFunction
      */
-    public function isChildOf($node)
+    public function is_child_of($node)
     {
     }
-
     /**
      * Load node children
      *
@@ -195,22 +176,20 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return  \Magento\Framework\Data\Tree\Node
      */
-    public function loadChildren($recursionLevel = 0)
+    public function load_children($recursion_level = 0)
     {
-        $this->_tree->load($this, $recursionLevel);
+        $this->_tree->load($this, $recursion_level);
         return $this;
     }
-
     /**
      * Retrieve node children collection
      *
      * @return Collection
      */
-    public function getChildren()
+    public function get_children()
     {
-        return $this->_childNodes;
+        return $this->_child_nodes;
     }
-
     /**
      * Get all child nodes
      *
@@ -218,25 +197,23 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return array
      */
-    public function getAllChildNodes(&$nodes = [])
+    public function get_all_child_nodes(&$nodes = [])
     {
-        foreach ($this->_childNodes as $node) {
-            $nodes[$node->getId()] = $node;
-            $node->getAllChildNodes($nodes);
+        foreach ($this->_child_nodes as $node) {
+            $nodes[$node->get_id()] = $node;
+            $node->get_all_child_nodes($nodes);
         }
         return $nodes;
     }
-
     /**
      * Get last child
      *
      * @return mixed
      */
-    public function getLastChild()
+    public function get_last_child()
     {
-        return $this->_childNodes->lastNode();
+        return $this->_child_nodes->last_node();
     }
-
     /**
      * Add child node
      *
@@ -244,12 +221,11 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return  Node
      */
-    public function addChild($node)
+    public function add_child($node)
     {
-        $this->_childNodes->add($node);
+        $this->_child_nodes->add($node);
         return $this;
     }
-
     /**
      * Append child
      *
@@ -257,12 +233,11 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function appendChild($prevNode = null)
+    public function append_child($prev_node = null)
     {
-        $this->_tree->appendChild($this, $prevNode);
+        $this->_tree->append_child($this, $prev_node);
         return $this;
     }
-
     /**
      * Move to
      *
@@ -271,12 +246,11 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function moveTo($parentNode, $prevNode = null)
+    public function move_to($parent_node, $prev_node = null)
     {
-        $this->_tree->moveNodeTo($this, $parentNode, $prevNode);
+        $this->_tree->move_node_to($this, $parent_node, $prev_node);
         return $this;
     }
-
     /**
      * Copy to
      *
@@ -285,12 +259,11 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function copyTo($parentNode, $prevNode = null)
+    public function copy_to($parent_node, $prev_node = null)
     {
-        $this->_tree->copyNodeTo($this, $parentNode, $prevNode);
+        $this->_tree->copy_node_to($this, $parent_node, $prev_node);
         return $this;
     }
-
     /**
      * Remove child
      *
@@ -298,12 +271,11 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return $this
      */
-    public function removeChild($childNode)
+    public function remove_child($child_node)
     {
-        $this->_childNodes->delete($childNode);
+        $this->_child_nodes->delete($child_node);
         return $this;
     }
-
     /**
      * Get path
      *
@@ -311,33 +283,30 @@ class Node extends \Magento\Framework\DataObject
      *
      * @return array
      */
-    public function getPath(&$prevNodes = [])
+    public function get_path(&$prev_nodes = [])
     {
         if ($this->_parent) {
-            $prevNodes[] = $this;
-            $this->_parent->getPath($prevNodes);
+            $prev_nodes[] = $this;
+            $this->_parent->get_path($prev_nodes);
         }
-
-        return $prevNodes;
+        return $prev_nodes;
     }
-
     /**
      * Get is active
      *
      * @return mixed
      */
-    public function getIsActive()
+    public function get_is_active()
     {
-        return $this->_getData('is_active');
+        return $this->_get_data('is_active');
     }
-
     /**
      * Get name
      *
      * @return mixed
      */
-    public function getName()
+    public function get_name()
     {
-        return $this->_getData('name');
+        return $this->_get_data('name');
     }
 }

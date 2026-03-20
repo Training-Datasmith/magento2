@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Spi;
 
-use Magento\Framework\App\Config\ConfigTypeInterface;
-use Magento\Framework\App\Config\Reader\Source\SourceInterface;
-
+use Magento\Framework\App\Config\Config_Type_Interface;
+use Magento\Framework\App\Config\Reader\Source\Source_Interface;
 /**
  * Allows to use custom callbacks and functions after collecting config from all sources
  *
@@ -19,7 +17,7 @@ use Magento\Framework\App\Config\Reader\Source\SourceInterface;
  * @package Magento\Framework\App\Config\Spi
  * @api
  */
-interface PostProcessorInterface
+interface Post_Processor_Interface
 {
     /**
      * Process config after reading and converting to appropriate format

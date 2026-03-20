@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Menu\Config\Menu;
 
-use DOMElement;
-use Magento\Framework\Exception\LocalizedException;
-
+use Dom_Element;
+use Magento\Framework\Exception\Localized_Exception;
 /**
  * Menu configuration files handler
  * @api
@@ -26,11 +24,11 @@ class Dom extends \Magento\Framework\Config\Dom
      * @throws LocalizedException an exception is possible if original document contains
      * multiple fixed nodes
      */
-    protected function _getMatchedNode($nodePath)
+    protected function _get_matched_node($node_path)
     {
-        if (!$nodePath || !preg_match('/^\/config(\/menu)?$/i', $nodePath)) {
+        if (!$node_path || !preg_match('/^\/config(\/menu)?$/i', $node_path)) {
             return null;
         }
-        return parent::_getMatchedNode($nodePath);
+        return parent::_get_matched_node($node_path);
     }
 }

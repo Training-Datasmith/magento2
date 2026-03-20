@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface ScopeResolverInterface
+interface Scope_Resolver_Interface
 {
     /**
      * Retrieve application scope object
@@ -21,12 +20,11 @@ interface ScopeResolverInterface
      * @param null|int $scopeId
      * @return \Magento\Framework\App\ScopeInterface
      */
-    public function getScope($scopeId = null);
-
+    public function get_scope($scope_id = null);
     /**
      * Retrieve scopes array
      *
      * @return \Magento\Framework\App\ScopeInterface[]
      */
-    public function getScopes();
+    public function get_scopes();
 }

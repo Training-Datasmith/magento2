@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Event cron observer object
  */
-
 namespace Magento\Framework\Event\Observer;
 
 /**
@@ -26,46 +24,27 @@ class Cron extends \Magento\Framework\Event\Observer
      * @return boolean
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function isValidFor(\Magento\Framework\Event $event)
+    public function is_valid_for(\Magento\Framework\Event $event)
     {
-        $e = $this->getCronExpr() !== null ? preg_split('#\s+#', $this->getCronExpr(), -1, PREG_SPLIT_NO_EMPTY) : [];
+        $e = $this->get_cron_expr() !== null ? preg_split('#\s+#', $this->get_cron_expr(), -1, PREG_SPLIT_NO_EMPTY) : [];
         if (count($e) !== 5) {
             return false;
         }
-
-        $d = getdate($this->getNow());
-
-        return $this->matchCronExpression(
-            $e[0],
-            $d['minutes']
-        ) && $this->matchCronExpression(
-            $e[1],
-            $d['hours']
-        ) && $this->matchCronExpression(
-            $e[2],
-            $d['mday']
-        ) && $this->matchCronExpression(
-            $e[3],
-            $d['mon']
-        ) && $this->matchCronExpression(
-            $e[4],
-            $d['wday']
-        );
+        $d = getdate($this->get_now());
+        return $this->match_cron_expression($e[0], $d['minutes']) && $this->match_cron_expression($e[1], $d['hours']) && $this->match_cron_expression($e[2], $d['mday']) && $this->match_cron_expression($e[3], $d['mon']) && $this->match_cron_expression($e[4], $d['wday']);
     }
-
     /**
      * Return current time
      *
      * @return int
      */
-    public function getNow()
+    public function get_now()
     {
-        if (!$this->hasNow()) {
-            $this->setNow(time());
+        if (!$this->has_now()) {
+            $this->set_now(time());
         }
-        return $this->getData('now');
+        return $this->get_data('now');
     }
-
     /**
      * Match cron expression with current time (minutes, hours, day of the month, month, day of the week)
      *
@@ -75,23 +54,21 @@ class Cron extends \Magento\Framework\Event\Observer
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    public function matchCronExpression($expr, $num)
+    public function match_cron_expression($expr, $num)
     {
         // handle ALL match
         if ($expr === '*') {
             return true;
         }
-
         // handle multiple options
         if ($expr && strpos($expr, ',') !== false) {
             foreach (explode(',', $expr) as $e) {
-                if ($this->matchCronExpression($e, $num)) {
+                if ($this->match_cron_expression($e, $num)) {
                     return true;
                 }
             }
             return false;
         }
-
         // handle modulus
         if ($expr && strpos($expr, '/') !== false) {
             $e = explode('/', $expr);
@@ -106,66 +83,38 @@ class Cron extends \Magento\Framework\Event\Observer
         } else {
             $mod = 1;
         }
-
         // handle range
         if ($expr && strpos($expr, '-') !== false) {
             $e = explode('-', $expr);
             if (count($e) !== 2) {
                 return false;
             }
-
-            $from = $this->getNumeric($e[0]);
-            $to = $this->getNumeric($e[1]);
-
+            $from = $this->get_numeric($e[0]);
+            $to = $this->get_numeric($e[1]);
             return $from !== false && $to !== false && $num >= $from && $num <= $to && $num % $mod === 0;
         }
-
         // handle regular token
-        $value = $this->getNumeric($expr);
+        $value = $this->get_numeric($expr);
         return $value !== false && $num == $value && $num % $mod === 0;
     }
-
     /**
      * Return month number
      *
      * @param int|string $value
      * @return bool|string
      */
-    public function getNumeric($value)
+    public function get_numeric($value)
     {
-        static $data = [
-            'jan' => 1,
-            'feb' => 2,
-            'mar' => 3,
-            'apr' => 4,
-            'may' => 5,
-            'jun' => 6,
-            'jul' => 7,
-            'aug' => 8,
-            'sep' => 9,
-            'oct' => 10,
-            'nov' => 11,
-            'dec' => 12,
-            'sun' => 0,
-            'mon' => 1,
-            'tue' => 2,
-            'wed' => 3,
-            'thu' => 4,
-            'fri' => 5,
-            'sat' => 6,
-        ];
-
+        static $data = ['jan' => 1, 'feb' => 2, 'mar' => 3, 'apr' => 4, 'may' => 5, 'jun' => 6, 'jul' => 7, 'aug' => 8, 'sep' => 9, 'oct' => 10, 'nov' => 11, 'dec' => 12, 'sun' => 0, 'mon' => 1, 'tue' => 2, 'wed' => 3, 'thu' => 4, 'fri' => 5, 'sat' => 6];
         if (is_numeric($value)) {
             return $value;
         }
-
         if (is_string($value)) {
             $value = strtolower(substr($value, 0, 3));
             if (isset($data[$value])) {
                 return $data[$value];
             }
         }
-
         return false;
     }
 }

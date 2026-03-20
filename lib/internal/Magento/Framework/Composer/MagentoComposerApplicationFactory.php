@@ -1,42 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Composer;
 
-use Magento\Composer\InfoCommand;
-use Magento\Composer\MagentoComposerApplication;
-use Magento\Composer\RequireUpdateDryRunCommand;
-use Magento\Framework\App\Filesystem\DirectoryList;
-
-class MagentoComposerApplicationFactory
+use Magento\Composer\Info_Command;
+use Magento\Composer\Magento_Composer_Application;
+use Magento\Composer\Require_Update_Dry_Run_Command;
+use Magento\Framework\App\Filesystem\Directory_List;
+class Magento_Composer_Application_Factory
 {
     /**
      * @var string
      */
-    private $pathToComposerHome;
-
+    private $path_to_composer_home;
     /**
      * @var string
      */
-    private $pathToComposerJson;
-
+    private $path_to_composer_json;
     /**
      * Constructor
      *
      * @param ComposerJsonFinder $composerJsonFinder
      * @param DirectoryList $directoryList
      */
-    public function __construct(ComposerJsonFinder $composerJsonFinder, DirectoryList $directoryList)
+    public function __construct(Composer_Json_Finder $composer_json_finder, Directory_List $directory_list)
     {
-        $this->pathToComposerJson = $composerJsonFinder->findComposerJson();
-        $this->pathToComposerHome = $directoryList->getPath(DirectoryList::COMPOSER_HOME);
+        $this->path_to_composer_json = $composer_json_finder->find_composer_json();
+        $this->path_to_composer_home = $directory_list->get_path(Directory_List::COMPOSER_HOME);
     }
-
     /**
      * Creates MagentoComposerApplication instance
      *
@@ -44,26 +39,24 @@ class MagentoComposerApplicationFactory
      */
     public function create()
     {
-        return new MagentoComposerApplication($this->pathToComposerHome, $this->pathToComposerJson);
+        return new Magento_Composer_Application($this->path_to_composer_home, $this->path_to_composer_json);
     }
-
     /**
      * Creates InfoCommand instance
      *
      * @return InfoCommand
      */
-    public function createInfoCommand()
+    public function create_info_command()
     {
-        return new InfoCommand($this->create());
+        return new Info_Command($this->create());
     }
-
     /**
      * Creates RequireUpdateDryRunCommand instance
      *
      * @return RequireUpdateDryRunCommand
      */
-    public function createRequireUpdateDryRunCommand()
+    public function create_require_update_dry_run_command()
     {
-        return new RequireUpdateDryRunCommand($this->create(), $this->createInfoCommand());
+        return new Require_Update_Dry_Run_Command($this->create(), $this->create_info_command());
     }
 }

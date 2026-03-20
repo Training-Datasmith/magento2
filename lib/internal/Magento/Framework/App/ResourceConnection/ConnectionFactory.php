@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\Resource_Connection;
 
-namespace Magento\Framework\App\ResourceConnection;
-
-use Magento\Framework\Model\ResourceModel\Type\Db\ConnectionFactory as ModelConnectionFactory;
-
+use Magento\Framework\Model\Resource_Model\Type\Db\Connection_Factory as ModelConnectionFactory;
 /**
  * Connection adapter factory
  */
-class ConnectionFactory extends ModelConnectionFactory
+class Connection_Factory extends Model_Connection_Factory
 {
     /**
      * Create connection adapter instance
@@ -22,12 +20,12 @@ class ConnectionFactory extends ModelConnectionFactory
      * @return \Magento\Framework\DB\Adapter\AdapterInterface
      * @throws \InvalidArgumentException
      */
-    public function create(array $connectionConfig)
+    public function create(array $connection_config)
     {
-        $connection = parent::create($connectionConfig);
+        $connection = parent::create($connection_config);
         /** @var \Magento\Framework\DB\Adapter\DdlCache $ddlCache */
-        $ddlCache = $this->objectManager->get(\Magento\Framework\DB\Adapter\DdlCache::class);
-        $connection->setCacheAdapter($ddlCache);
+        $ddl_cache = $this->object_manager->get(\Magento\Framework\DB\Adapter\Ddl_Cache::class);
+        $connection->set_cache_adapter($ddl_cache);
         return $connection;
     }
 }

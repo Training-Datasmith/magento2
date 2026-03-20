@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Area;
 
 /**
@@ -17,29 +16,27 @@ namespace Magento\Framework\App\Area;
  * @api
  * @since 100.0.2
  */
-class FrontNameResolverFactory
+class Front_Name_Resolver_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager;
-
+    protected $_object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->_objectManager = $objectManager;
+        $this->_object_manager = $object_manager;
     }
-
     /**
      * Create front name resolver
      *
      * @param string $className
      * @return FrontNameResolverInterface
      */
-    public function create($className)
+    public function create($class_name)
     {
-        return $this->_objectManager->create($className);
+        return $this->_object_manager->create($class_name);
     }
 }

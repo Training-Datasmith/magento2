@@ -4,15 +4,13 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Backend;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Cache\CompositeStaleCacheNotifier;
-use Magento\Framework\Cache\Exception\CacheException;
-use Magento\Framework\Cache\StaleCacheNotifierInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Cache\Composite_Stale_Cache_Notifier;
+use Magento\Framework\Cache\Exception\Cache_Exception;
+use Magento\Framework\Cache\Stale_Cache_Notifier_Interface;
 /**
  * Remote synchronized cache
  *
@@ -21,7 +19,7 @@ use Magento\Framework\Cache\StaleCacheNotifierInterface;
  * This class will check cache version from remote cache and in case it's newer
  * than local one, it will update local one from remote cache (two-level cache).
  */
-class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackendInterface
+class Remote_Synchronized_Cache extends Abstract_Backend implements Extended_Backend_Interface
 {
     /**
      * Local backend cache adapter
@@ -29,61 +27,42 @@ class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackend
      * @var ExtendedBackendInterface
      */
     private $local;
-
     /**
      * Remote backend cache adapter
      *
      * @var ExtendedBackendInterface
      */
     private $remote;
-
     /**
      * Suffix for hash to compare data version in cache storage.
      */
     private const HASH_SUFFIX = ':hash';
-
     /**
      * Prefix for locks in case stale cache is used.
      */
     private const REMOTE_SYNC_LOCK_PREFIX = 'rsl::';
-
     /**
      *  Available options
      *
      * @var array available options
      */
-    protected $_options = [
-        'remote_backend' => '',
-        'remote_backend_custom_naming' => true,
-        'remote_backend_autoload' => true,
-        'remote_backend_options' => [],
-        'local_backend' => '',
-        'local_backend_options' => [],
-        'local_backend_custom_naming' => true,
-        'local_backend_autoload' => true,
-        'use_stale_cache' => false,
-        'cleanup_percentage' => 95,
-    ];
-
+    protected $_options = ['remote_backend' => '', 'remote_backend_custom_naming' => true, 'remote_backend_autoload' => true, 'remote_backend_options' => [], 'local_backend' => '', 'local_backend_options' => [], 'local_backend_custom_naming' => true, 'local_backend_autoload' => true, 'use_stale_cache' => false, 'cleanup_percentage' => 95];
     /**
      * In memory state for locks.
      *
      * @var array
      */
-    private $lockList = [];
-
+    private $lock_list = [];
     /**
      * Sign for locks, helps to avoid removing a lock that was created by another client
      *
      * @var string
      */
-    private $lockSign;
-
+    private $lock_sign;
     /**
      * @var StaleCacheNotifierInterface
      */
     private $notifier;
-
     /**
      * Constructor
      *
@@ -93,69 +72,52 @@ class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackend
     public function __construct($options = [])
     {
         parent::__construct($options);
-
         // Validate and set remote backend
         if ($this->_options['remote_backend'] === null) {
-            throw new CacheException(__('remote_backend option must be set'));
+            throw new Cache_Exception(__('remote_backend option must be set'));
         }
-
-        if (!($this->_options['remote_backend'] instanceof ExtendedBackendInterface)) {
-            throw new CacheException(
-                __('remote_backend must implement ExtendedBackendInterface')
-            );
+        if (!$this->_options['remote_backend'] instanceof Extended_Backend_Interface) {
+            throw new Cache_Exception(__('remote_backend must implement ExtendedBackendInterface'));
         }
-
         $this->remote = $this->_options['remote_backend'];
-
         // Validate and set local backend
         if ($this->_options['local_backend'] === null) {
-            throw new CacheException(__('local_backend option must be set'));
+            throw new Cache_Exception(__('local_backend option must be set'));
         }
-
-        if (!($this->_options['local_backend'] instanceof ExtendedBackendInterface)) {
-            throw new CacheException(
-                __('local_backend must implement ExtendedBackendInterface')
-            );
+        if (!$this->_options['local_backend'] instanceof Extended_Backend_Interface) {
+            throw new Cache_Exception(__('local_backend must implement ExtendedBackendInterface'));
         }
-
         $this->local = $this->_options['local_backend'];
-
-        $this->lockSign = $this->generateLockSign();
+        $this->lock_sign = $this->generate_lock_sign();
     }
-
     /**
      * @inheritDoc
      */
-    public function setDirectives($directives)
+    public function set_directives($directives)
     {
-        $this->remote->setDirectives($directives);
-        $this->local->setDirectives($directives);
+        $this->remote->set_directives($directives);
+        $this->local->set_directives($directives);
     }
-
     /**
      * Return hash sign of the data.
      *
      * @param string $data
      * @return string
      */
-    private function getDataVersion(string $data)
+    private function get_data_version(string $data)
     {
         return \hash('sha256', $data);
     }
-
     /**
      * Load data version by id from remote.
      *
      * @param string $id
      * @return false|string
      */
-    private function loadRemoteDataVersion(string $id)
+    private function load_remote_data_version(string $id)
     {
-        return $this->remote->load(
-            $id . self::HASH_SUFFIX
-        );
+        return $this->remote->load($id . self::HASH_SUFFIX);
     }
-
     /**
      * Save new data version to remote.
      *
@@ -165,200 +127,173 @@ class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackend
      * @param mixed $specificLifetime
      * @return bool
      */
-    private function saveRemoteDataVersion(string $data, string $id, array $tags, $specificLifetime = false)
+    private function save_remote_data_version(string $data, string $id, array $tags, $specific_lifetime = false)
     {
-        return $this->remote->save($this->getDataVersion($data), $id . self::HASH_SUFFIX, $tags, $specificLifetime);
+        return $this->remote->save($this->get_data_version($data), $id . self::HASH_SUFFIX, $tags, $specific_lifetime);
     }
-
     /**
      * Remove remote data version.
      *
      * @param string $id
      * @return bool
      */
-    private function removeRemoteDataVersion($id)
+    private function remove_remote_data_version($id)
     {
         return $this->remote->remove($id . self::HASH_SUFFIX);
     }
-
     /**
      * @inheritdoc
      */
-    public function load($id, $doNotTestCacheValidity = false)
+    public function load($id, $do_not_test_cache_validity = false)
     {
-        $localData = $this->local->load($id);
-
-        if ($localData !== false) {
-            if ($this->getDataVersion($localData) === $this->loadRemoteDataVersion($id)) {
-                return $localData;
+        $local_data = $this->local->load($id);
+        if ($local_data !== false) {
+            if ($this->get_data_version($local_data) === $this->load_remote_data_version($id)) {
+                return $local_data;
             }
         }
-
-        $remoteData = $this->remote->load($id);
-        if ($remoteData !== false) {
-            $this->local->save($remoteData, $id);
-
-            return $remoteData;
-        } elseif ($localData && $this->_options['use_stale_cache']) {
+        $remote_data = $this->remote->load($id);
+        if ($remote_data !== false) {
+            $this->local->save($remote_data, $id);
+            return $remote_data;
+        } elseif ($local_data && $this->_options['use_stale_cache']) {
             if ($this->lock($id)) {
                 return false;
             } else {
-                $this->notifyStaleCache();
-                return $localData;
+                $this->notify_stale_cache();
+                return $local_data;
             }
         }
-
         return false;
     }
-
     /**
      * @inheritdoc
      */
     public function test($id)
     {
-        return $this->_options['use_stale_cache'] ?
-            ($this->local->test($id) ?? $this->remote->test($id))
-            : $this->remote->test($id);
+        return $this->_options['use_stale_cache'] ? $this->local->test($id) ?? $this->remote->test($id) : $this->remote->test($id);
     }
-
     /**
      * @inheritdoc
      */
-    public function save($data, $id, $tags = [], $specificLifetime = null)
+    public function save($data, $id, $tags = [], $specific_lifetime = null)
     {
-        $dataToSave = $data;
-        $remHash = $this->loadRemoteDataVersion($id);
-        $isRemoteUpToDate = false;
-        if ($remHash !== false && $this->getDataVersion($data) === $remHash) {
-            $remoteData = $this->remote->load($id);
-            if ($remoteData !== false && $this->getDataVersion($data) === $this->getDataVersion($remoteData)) {
-                $isRemoteUpToDate = true;
-                $dataToSave = $remoteData;
+        $data_to_save = $data;
+        $rem_hash = $this->load_remote_data_version($id);
+        $is_remote_up_to_date = false;
+        if ($rem_hash !== false && $this->get_data_version($data) === $rem_hash) {
+            $remote_data = $this->remote->load($id);
+            if ($remote_data !== false && $this->get_data_version($data) === $this->get_data_version($remote_data)) {
+                $is_remote_up_to_date = true;
+                $data_to_save = $remote_data;
             }
         }
-        if (!$isRemoteUpToDate) {
-            $this->remote->save($data, $id, $tags, $specificLifetime);
-            $this->saveRemoteDataVersion($data, $id, $tags, $specificLifetime);
+        if (!$is_remote_up_to_date) {
+            $this->remote->save($data, $id, $tags, $specific_lifetime);
+            $this->save_remote_data_version($data, $id, $tags, $specific_lifetime);
         }
-
         if ($this->_options['use_stale_cache']) {
             $this->unlock($id);
         }
-
         // mt_rand() here is not for cryptographic use.
         // phpcs:ignore Magento2.Security.InsecureFunction
-        if (!mt_rand(0, 100) && $this->checkIfLocalCacheSpaceExceeded()) {
+        if (!mt_rand(0, 100) && $this->check_if_local_cache_space_exceeded()) {
             $this->local->clean();
         }
-
         // Local cache doesn't save tags intentionally since it will cause inconsistency after flushing the cache
         // in multinode environment
-        return $this->local->save($dataToSave, $id, [], $specificLifetime);
+        return $this->local->save($data_to_save, $id, [], $specific_lifetime);
     }
-
     /**
      * Check if local cache space bigger that configure amount
      *
      * @return bool
      */
-    private function checkIfLocalCacheSpaceExceeded()
+    private function check_if_local_cache_space_exceeded()
     {
-        return $this->local->getFillingPercentage() >= ($this->_options['cleanup_percentage'] ?? 95);
+        return $this->local->get_filling_percentage() >= ($this->_options['cleanup_percentage'] ?? 95);
     }
-
     /**
      * @inheritdoc
      */
     public function remove($id)
     {
-        $result = $this->removeRemoteDataVersion($id) && $this->remote->remove($id);
+        $result = $this->remove_remote_data_version($id) && $this->remote->remove($id);
         if ($result && !$this->_options['use_stale_cache']) {
             $result = $this->local->remove($id);
         }
         return $result;
     }
-
     /**
      * @inheritdoc
      */
     public function clean($mode = 'all', $tags = [])
     {
-        return $this->remote->clean($mode, $tags) &&
-            $this->local->clean($mode);
+        return $this->remote->clean($mode, $tags) && $this->local->clean($mode);
     }
-
     /**
      * @inheritdoc
      */
-    public function getIds()
+    public function get_ids()
     {
-        return $this->remote->getIds();
+        return $this->remote->get_ids();
     }
-
     /**
      * @inheritdoc
      */
-    public function getTags()
+    public function get_tags()
     {
-        return $this->remote->getTags();
+        return $this->remote->get_tags();
     }
-
     /**
      * @inheritdoc
      */
-    public function getIdsMatchingTags($tags = [])
+    public function get_ids_matching_tags($tags = [])
     {
-        return $this->remote->getIdsMatchingTags($tags);
+        return $this->remote->get_ids_matching_tags($tags);
     }
-
     /**
      * @inheritdoc
      */
-    public function getIdsNotMatchingTags($tags = [])
+    public function get_ids_not_matching_tags($tags = [])
     {
-        return $this->remote->getIdsNotMatchingTags($tags);
+        return $this->remote->get_ids_not_matching_tags($tags);
     }
-
     /**
      * @inheritdoc
      */
-    public function getIdsMatchingAnyTags($tags = [])
+    public function get_ids_matching_any_tags($tags = [])
     {
-        return $this->remote->getIdsMatchingAnyTags($tags);
+        return $this->remote->get_ids_matching_any_tags($tags);
     }
-
     /**
      * @inheritdoc
      */
-    public function getFillingPercentage()
+    public function get_filling_percentage()
     {
-        return $this->remote->getFillingPercentage();
+        return $this->remote->get_filling_percentage();
     }
-
     /**
      * @inheritdoc
      */
-    public function getMetadatas($id)
+    public function get_metadatas($id)
     {
-        return $this->remote->getMetadatas($id);
+        return $this->remote->get_metadatas($id);
     }
-
     /**
      * @inheritdoc
      */
-    public function touch($id, $extraLifetime)
+    public function touch($id, $extra_lifetime)
     {
-        return $this->remote->touch($id, $extraLifetime);
+        return $this->remote->touch($id, $extra_lifetime);
     }
-
     /**
      * @inheritdoc
      */
-    public function getCapabilities()
+    public function get_capabilities()
     {
-        return $this->remote->getCapabilities();
+        return $this->remote->get_capabilities();
     }
-
     /**
      * Sets a lock
      *
@@ -367,25 +302,18 @@ class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackend
      */
     private function lock(string $id): bool
     {
-        $this->lockList[$id] = microtime(true);
-
-        $data = $this->remote->load($this->getLockName($id));
-
+        $this->lock_list[$id] = microtime(true);
+        $data = $this->remote->load($this->get_lock_name($id));
         if (false !== $data) {
             return false;
         }
-
-        $this->remote->save($this->lockSign, $this->getLockName($id), [], 10);
-
-        $data = $this->remote->load($this->getLockName($id));
-
-        if ($data === $this->lockSign) {
+        $this->remote->save($this->lock_sign, $this->get_lock_name($id), [], 10);
+        $data = $this->remote->load($this->get_lock_name($id));
+        if ($data === $this->lock_sign) {
             return true;
         }
-
         return false;
     }
-
     /**
      * Release a lock.
      *
@@ -394,48 +322,41 @@ class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackend
      */
     private function unlock(string|int $id): bool
     {
-        $id = (string)$id;
-        if (isset($this->lockList[$id])) {
-            unset($this->lockList[$id]);
+        $id = (string) $id;
+        if (isset($this->lock_list[$id])) {
+            unset($this->lock_list[$id]);
         }
-
-        $data = $this->remote->load($this->getLockName($id));
-
+        $data = $this->remote->load($this->get_lock_name($id));
         if (false === $data) {
             return false;
         }
-
-        $removeResult = false;
-        if ($data === $this->lockSign) {
-            $removeResult = (bool)$this->remote->remove($this->getLockName($id));
+        $remove_result = false;
+        if ($data === $this->lock_sign) {
+            $remove_result = (bool) $this->remote->remove($this->get_lock_name($id));
         }
-
-        return $removeResult;
+        return $remove_result;
     }
-
     /**
      * Calculate lock name.
      *
      * @param string $id
      * @return string
      */
-    private function getLockName(string $id): string
+    private function get_lock_name(string $id): string
     {
         return self::REMOTE_SYNC_LOCK_PREFIX . $id;
     }
-
     /**
      * Release all locks.
      *
      * @return void
      */
-    private function unlockAll(): void
+    private function unlock_all(): void
     {
-        foreach (array_keys($this->lockList) as $id) {
+        foreach (array_keys($this->lock_list) as $id) {
             $this->unlock($id);
         }
     }
-
     /**
      * Release all locks on destruct.
      *
@@ -443,39 +364,29 @@ class RemoteSynchronizedCache extends AbstractBackend implements ExtendedBackend
      */
     public function __destruct()
     {
-        $this->unlockAll();
+        $this->unlock_all();
     }
-
     /**
      * Function that generates lock sign that helps to avoid removing a lock that was created by another client.
      *
      * @return string
      */
-    private function generateLockSign()
+    private function generate_lock_sign()
     {
-        $sign = \implode(
-            '-',
-            [
-                \getmypid(), \crc32(\gethostname()),
-            ]
-        );
-
+        $sign = \implode('-', [\getmypid(), \crc32(\gethostname())]);
         try {
             $sign .= '-' . \bin2hex(\random_bytes(4));
         } catch (\Exception $e) {
             $sign .= '-' . \uniqid('-uniqid-');
         }
-
         return $sign;
     }
-
     /**
      * Function that notifies configured cache types to be switched off.
      */
-    private function notifyStaleCache(): void
+    private function notify_stale_cache(): void
     {
-        $this->notifier = $this->notifier ??
-            ObjectManager::getInstance()->get(CompositeStaleCacheNotifier::class);
-        $this->notifier->cacheLoaderIsUsingStaleCache();
+        $this->notifier = $this->notifier ?? Object_Manager::get_instance()->get(Composite_Stale_Cache_Notifier::class);
+        $this->notifier->cache_loader_is_using_stale_cache();
     }
 }

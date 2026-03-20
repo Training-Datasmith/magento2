@@ -4,18 +4,15 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Aws_S3\Driver;
 
-namespace Magento\AwsS3\Driver;
-
-use Aws\Credentials\CredentialProvider;
-
-class CachedCredentialsProvider
+use Aws\Credentials\Credential_Provider;
+class Cached_Credentials_Provider
 {
-    public function __construct(private readonly CredentialsCache $magentoCacheAdapter)
+    public function __construct(private readonly Credentials_Cache $magento_cache_adapter)
     {
     }
-
     /**
      * Provides cache mechanism to retrieve and store AWS credentials
      *
@@ -25,10 +22,10 @@ class CachedCredentialsProvider
     {
         //phpcs:ignore Magento2.Functions.DiscouragedFunction
         return call_user_func(
-            [CredentialProvider::class, 'cache'],
+            [Credential_Provider::class, 'cache'],
             //phpcs:ignore Magento2.Functions.DiscouragedFunction
-            call_user_func([CredentialProvider::class, 'defaultProvider']),
-            $this->magentoCacheAdapter
+            call_user_func([Credential_Provider::class, 'defaultProvider']),
+            $this->magento_cache_adapter
         );
     }
 }

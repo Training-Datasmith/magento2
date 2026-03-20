@@ -4,8 +4,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Api\Search;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Api\Search;
  *
  * @api
  */
-interface AggregationInterface
+interface Aggregation_Interface
 {
     /**
      * Get Document field
@@ -21,19 +20,17 @@ interface AggregationInterface
      * @param string $bucketName
      * @return \Magento\Framework\Api\Search\BucketInterface
      */
-    public function getBucket($bucketName);
-
+    public function get_bucket($bucket_name);
     /**
      * Get all Document fields
      *
      * @return \Magento\Framework\Api\Search\BucketInterface[]
      */
-    public function getBuckets();
-
+    public function get_buckets();
     /**
      * Get Document field names
      *
      * @return string[]
      */
-    public function getBucketNames();
+    public function get_bucket_names();
 }

@@ -4,12 +4,10 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Exception;
 
-use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\Exception\Localized_Exception;
 /**
  * Cache exception - Symfony-compatible
  *
@@ -17,6 +15,6 @@ use Magento\Framework\Exception\LocalizedException;
  *
  * @api
  */
-class CacheException extends LocalizedException
+class Cache_Exception extends Localized_Exception
 {
 }

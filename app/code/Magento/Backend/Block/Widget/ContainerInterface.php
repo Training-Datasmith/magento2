@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface ContainerInterface extends \Magento\Backend\Block\Widget\Button\ContextInterface
+interface Container_Interface extends \Magento\Backend\Block\Widget\Button\Context_Interface
 {
     /**
      * Public wrapper for the button list
@@ -24,16 +23,14 @@ interface ContainerInterface extends \Magento\Backend\Block\Widget\Button\Contex
      * @param string|null $region That button should be displayed in ('toolbar', 'header', 'footer', null)
      * @return $this
      */
-    public function addButton($buttonId, $data, $level = 0, $sortOrder = 0, $region = 'toolbar');
-
+    public function add_button($button_id, $data, $level = 0, $sort_order = 0, $region = 'toolbar');
     /**
      * Public wrapper for the button list
      *
      * @param string $buttonId
      * @return $this
      */
-    public function removeButton($buttonId);
-
+    public function remove_button($button_id);
     /**
      * Public wrapper for protected _updateButton method
      *
@@ -42,5 +39,5 @@ interface ContainerInterface extends \Magento\Backend\Block\Widget\Button\Contex
      * @param string $data
      * @return $this
      */
-    public function updateButton($buttonId, $key, $data);
+    public function update_button($button_id, $key, $data);
 }

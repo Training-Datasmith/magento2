@@ -4,58 +4,51 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Model\Option;
 
 use Exception;
-use Magento\Bundle\Api\Data\LinkInterface;
-use Magento\Bundle\Api\Data\OptionInterface;
-use Magento\Bundle\Api\ProductLinkManagementAddChildrenInterface;
-use Magento\Bundle\Api\ProductLinkManagementInterface;
+use Magento\Bundle\Api\Data\Link_Interface;
+use Magento\Bundle\Api\Data\Option_Interface;
+use Magento\Bundle\Api\Product_Link_Management_Add_Children_Interface;
+use Magento\Bundle\Api\Product_Link_Management_Interface;
 use Magento\Bundle\Model\Product\Type;
-use Magento\Bundle\Model\ResourceModel\Option;
-use Magento\Bundle\Model\ResourceModel\Option\Collection;
-use Magento\Catalog\Api\Data\ProductInterface;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\EntityManager\EntityMetadataInterface;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Store\Model\StoreManagerInterface;
-
+use Magento\Bundle\Model\Resource_Model\Option;
+use Magento\Bundle\Model\Resource_Model\Option\Collection;
+use Magento\Catalog\Api\Data\Product_Interface;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Entity_Manager\Entity_Metadata_Interface;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+use Magento\Framework\Exception\Could_Not_Save_Exception;
+use Magento\Framework\Exception\Input_Exception;
+use Magento\Framework\Exception\No_Such_Entity_Exception;
+use Magento\Store\Model\Store_Manager_Interface;
 /**
  * Encapsulates logic for saving a bundle option, including coalescing the parent product's data.
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class SaveAction
+class Save_Action
 {
     /**
      * @var Option
      */
-    private $optionResource;
-
+    private $option_resource;
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var Type
      */
     private $type;
-
     /**
      * @var ProductLinkManagementInterface
      */
-    private $linkManagement;
-
+    private $link_management;
     /**
      * @var ProductLinkManagementAddChildrenInterface
      */
-    private $addChildren;
-
+    private $add_children;
     /**
      * @param Option $optionResource
      * @param MetadataPool $metadataPool
@@ -65,22 +58,14 @@ class SaveAction
      * @param ProductLinkManagementAddChildrenInterface|null $addChildren
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function __construct(
-        Option $optionResource,
-        MetadataPool $metadataPool,
-        Type $type,
-        ProductLinkManagementInterface $linkManagement,
-        ?StoreManagerInterface $storeManager = null,
-        ?ProductLinkManagementAddChildrenInterface $addChildren = null
-    ) {
-        $this->optionResource = $optionResource;
-        $this->metadataPool = $metadataPool;
+    public function __construct(Option $option_resource, Metadata_Pool $metadata_pool, Type $type, Product_Link_Management_Interface $link_management, ?Store_Manager_Interface $store_manager = null, ?Product_Link_Management_Add_Children_Interface $add_children = null)
+    {
+        $this->option_resource = $option_resource;
+        $this->metadata_pool = $metadata_pool;
         $this->type = $type;
-        $this->linkManagement = $linkManagement;
-        $this->addChildren = $addChildren ?:
-            ObjectManager::getInstance()->get(ProductLinkManagementAddChildrenInterface::class);
+        $this->link_management = $link_management;
+        $this->add_children = $add_children ?: Object_Manager::get_instance()->get(Product_Link_Management_Add_Children_Interface::class);
     }
-
     /**
      * Bulk options save
      *
@@ -92,27 +77,15 @@ class SaveAction
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    public function saveBulk(
-        ProductInterface $bundleProduct,
-        array $options,
-        array $existingBundleProductOptions = []
-    ): void {
-        $metadata = $this->metadataPool->getMetadata(ProductInterface::class);
-        $optionCollection = $this->type->getOptionsCollection($bundleProduct);
-
+    public function save_bulk(Product_Interface $bundle_product, array $options, array $existing_bundle_product_options = []): void
+    {
+        $metadata = $this->metadata_pool->get_metadata(Product_Interface::class);
+        $option_collection = $this->type->get_options_collection($bundle_product);
         foreach ($options as $option) {
-            $this->saveOptionItem(
-                $bundleProduct,
-                $option,
-                $optionCollection,
-                $metadata,
-                $existingBundleProductOptions
-            );
+            $this->save_option_item($bundle_product, $option, $option_collection, $metadata, $existing_bundle_product_options);
         }
-
-        $bundleProduct->setIsRelationsChanged(true);
+        $bundle_product->set_is_relations_changed(true);
     }
-
     /**
      * Process option save
      *
@@ -126,50 +99,37 @@ class SaveAction
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    private function saveOptionItem(
-        ProductInterface $bundleProduct,
-        OptionInterface $option,
-        Collection $optionCollection,
-        EntityMetadataInterface $metadata,
-        array $existingBundleProductOptions = []
-    ): void {
-        $linksToAdd = [];
-
-        $option->setStoreId($bundleProduct->getStoreId());
-        $parentId = $bundleProduct->getData($metadata->getLinkField());
-        $option->setParentId($parentId);
-        $optionId = $option->getOptionId();
-        $existingOption = $this->retrieveExistingOption($optionCollection, $option, $existingBundleProductOptions);
-
-        if (!$optionId || $existingOption->getParentId() != $parentId) {
-            $option->setOptionId(null);
-            $option->setDefaultTitle($option->getTitle());
-            if (is_array($option->getProductLinks())) {
-                $linksToAdd = $option->getProductLinks();
+    private function save_option_item(Product_Interface $bundle_product, Option_Interface $option, Collection $option_collection, Entity_Metadata_Interface $metadata, array $existing_bundle_product_options = []): void
+    {
+        $links_to_add = [];
+        $option->set_store_id($bundle_product->get_store_id());
+        $parent_id = $bundle_product->get_data($metadata->get_link_field());
+        $option->set_parent_id($parent_id);
+        $option_id = $option->get_option_id();
+        $existing_option = $this->retrieve_existing_option($option_collection, $option, $existing_bundle_product_options);
+        if (!$option_id || $existing_option->get_parent_id() != $parent_id) {
+            $option->set_option_id(null);
+            $option->set_default_title($option->get_title());
+            if (is_array($option->get_product_links())) {
+                $links_to_add = $option->get_product_links();
             }
         } else {
-            if (!$existingOption || !$existingOption->getOptionId()) {
-                throw new NoSuchEntityException(
-                    __("The option that was requested doesn't exist. Verify the entity and try again.")
-                );
+            if (!$existing_option || !$existing_option->get_option_id()) {
+                throw new No_Such_Entity_Exception(__("The option that was requested doesn't exist. Verify the entity and try again."));
             }
-
-            $option->setData(array_merge($existingOption->getData(), $option->getData()));
-            $this->updateOptionSelection($bundleProduct, $option, $existingOption);
+            $option->set_data(array_merge($existing_option->get_data(), $option->get_data()));
+            $this->update_option_selection($bundle_product, $option, $existing_option);
         }
-
         try {
-            $this->optionResource->save($option);
+            $this->option_resource->save($option);
         } catch (Exception $e) {
-            throw new CouldNotSaveException(__("The option couldn't be saved."), $e);
+            throw new Could_Not_Save_Exception(__("The option couldn't be saved."), $e);
         }
-
         /** @var LinkInterface $linkedProduct */
-        foreach ($linksToAdd as $linkedProduct) {
-            $this->linkManagement->addChild($bundleProduct, $option->getOptionId(), $linkedProduct);
+        foreach ($links_to_add as $linked_product) {
+            $this->link_management->add_child($bundle_product, $option->get_option_id(), $linked_product);
         }
     }
-
     /**
      * Manage the logic of saving a bundle option, including the coalescence of its parent product data.
      *
@@ -179,16 +139,13 @@ class SaveAction
      * @throws CouldNotSaveException
      * @throws Exception
      */
-    public function save(ProductInterface $bundleProduct, OptionInterface $option)
+    public function save(Product_Interface $bundle_product, Option_Interface $option)
     {
-        $metadata = $this->metadataPool->getMetadata(ProductInterface::class);
-        $optionCollection = $this->type->getOptionsCollection($bundleProduct);
-
-        $this->saveOptionItem($bundleProduct, $option, $optionCollection, $metadata);
-
+        $metadata = $this->metadata_pool->get_metadata(Product_Interface::class);
+        $option_collection = $this->type->get_options_collection($bundle_product);
+        $this->save_option_item($bundle_product, $option, $option_collection, $metadata);
         return $option;
     }
-
     /**
      * Update option selections
      *
@@ -200,45 +157,33 @@ class SaveAction
      * @throws InputException
      * @throws NoSuchEntityException
      */
-    private function updateOptionSelection(
-        ProductInterface $product,
-        OptionInterface $option,
-        ?OptionInterface $existingOption = null
-    ): void {
-        $linksToAdd = [];
-        $linksToUpdate = [];
-        $linksToDelete = [];
-
-        if (is_array($option->getProductLinks())) {
-            $productLinks = $option->getProductLinks();
-            foreach ($productLinks as $productLink) {
-                if (!$productLink->getId() && !$productLink->getSelectionId()) {
-                    $linksToAdd[] = $productLink;
+    private function update_option_selection(Product_Interface $product, Option_Interface $option, ?Option_Interface $existing_option = null): void
+    {
+        $links_to_add = [];
+        $links_to_update = [];
+        $links_to_delete = [];
+        if (is_array($option->get_product_links())) {
+            $product_links = $option->get_product_links();
+            foreach ($product_links as $product_link) {
+                if (!$product_link->get_id() && !$product_link->get_selection_id()) {
+                    $links_to_add[] = $product_link;
                 } else {
-                    $linksToUpdate[] = $productLink;
+                    $links_to_update[] = $product_link;
                 }
             }
-            if (!empty($existingOption) && !empty($existingOption->getProductLinks())) {
-                $linksToDelete = $this->compareLinks($existingOption->getProductLinks(), $linksToUpdate);
-                $linksToUpdate = $this->verifyLinksToUpdate($existingOption->getProductLinks(), $linksToUpdate);
+            if (!empty($existing_option) && !empty($existing_option->get_product_links())) {
+                $links_to_delete = $this->compare_links($existing_option->get_product_links(), $links_to_update);
+                $links_to_update = $this->verify_links_to_update($existing_option->get_product_links(), $links_to_update);
             }
         }
-
-        foreach ($linksToUpdate as $linkedProduct) {
-            $this->linkManagement->saveChild($product->getSku(), $linkedProduct);
+        foreach ($links_to_update as $linked_product) {
+            $this->link_management->save_child($product->get_sku(), $linked_product);
         }
-
-        foreach ($linksToDelete as $linkedProduct) {
-            $this->linkManagement->removeChild(
-                $product->getSku(),
-                $option->getOptionId(),
-                $linkedProduct->getSku()
-            );
+        foreach ($links_to_delete as $linked_product) {
+            $this->link_management->remove_child($product->get_sku(), $option->get_option_id(), $linked_product->get_sku());
         }
-
-        $this->addChildren->addChildren($product, (int)$option->getOptionId(), $linksToAdd);
+        $this->add_children->add_children($product, (int) $option->get_option_id(), $links_to_add);
     }
-
     /**
      * Verify that updated data actually changed
      *
@@ -246,28 +191,25 @@ class SaveAction
      * @param LinkInterface[] $updates
      * @return array
      */
-    private function verifyLinksToUpdate(array $existing, array $updates): array
+    private function verify_links_to_update(array $existing, array $updates): array
     {
-        $linksToUpdate = [];
-        $beforeLinksMap = [];
-
-        foreach ($existing as $beforeLink) {
-            $beforeLinksMap[$beforeLink->getId()] = $beforeLink;
+        $links_to_update = [];
+        $before_links_map = [];
+        foreach ($existing as $before_link) {
+            $before_links_map[$before_link->get_id()] = $before_link;
         }
-
-        foreach ($updates as $updatedLink) {
-            if (array_key_exists($updatedLink->getId(), $beforeLinksMap)) {
-                $beforeLink = $beforeLinksMap[$updatedLink->getId()];
-                if ($this->isLinkChanged($beforeLink, $updatedLink)) {
-                    $linksToUpdate[] = $updatedLink;
+        foreach ($updates as $updated_link) {
+            if (array_key_exists($updated_link->get_id(), $before_links_map)) {
+                $before_link = $before_links_map[$updated_link->get_id()];
+                if ($this->is_link_changed($before_link, $updated_link)) {
+                    $links_to_update[] = $updated_link;
                 }
             } else {
-                $linksToUpdate[] = $updatedLink;
+                $links_to_update[] = $updated_link;
             }
         }
-        return $linksToUpdate;
+        return $links_to_update;
     }
-
     /**
      * Check is updated link actually updated
      *
@@ -275,19 +217,10 @@ class SaveAction
      * @param LinkInterface $updatedLink
      * @return bool
      */
-    private function isLinkChanged(LinkInterface $beforeLink, LinkInterface $updatedLink): bool
+    private function is_link_changed(Link_Interface $before_link, Link_Interface $updated_link): bool
     {
-        return (int)$beforeLink->getOptionId() !== (int)$updatedLink->getOptionId()
-            || $beforeLink->getIsDefault() !== $updatedLink->getIsDefault()
-            || (float)$beforeLink->getQty() !== (float)$updatedLink->getQty()
-            || $beforeLink->getPrice() !== $updatedLink->getPrice()
-            || $beforeLink->getCanChangeQuantity() !== $updatedLink->getCanChangeQuantity()
-            || (array)$beforeLink->getExtensionAttributes() !== (array)$updatedLink->getExtensionAttributes()
-            || (int)$beforeLink->getPosition() !== (int)$updatedLink->getPosition()
-            || $beforeLink->getSku() !== $updatedLink->getSku()
-            || $beforeLink->getPriceType() !== $updatedLink->getPriceType();
+        return (int) $before_link->get_option_id() !== (int) $updated_link->get_option_id() || $before_link->get_is_default() !== $updated_link->get_is_default() || (float) $before_link->get_qty() !== (float) $updated_link->get_qty() || $before_link->get_price() !== $updated_link->get_price() || $before_link->get_can_change_quantity() !== $updated_link->get_can_change_quantity() || (array) $before_link->get_extension_attributes() !== (array) $updated_link->get_extension_attributes() || (int) $before_link->get_position() !== (int) $updated_link->get_position() || $before_link->get_sku() !== $updated_link->get_sku() || $before_link->get_price_type() !== $updated_link->get_price_type();
     }
-
     /**
      * Compute the difference between given arrays.
      *
@@ -296,32 +229,24 @@ class SaveAction
      *
      * @return array
      */
-    private function compareLinks(array $firstArray, array $secondArray)
+    private function compare_links(array $first_array, array $second_array)
     {
         $result = [];
-
-        $firstArrayIds = [];
-        $firstArrayMap = [];
-
-        $secondArrayIds = [];
-
-        foreach ($firstArray as $item) {
-            $firstArrayIds[] = $item->getId();
-
-            $firstArrayMap[$item->getId()] = $item;
+        $first_array_ids = [];
+        $first_array_map = [];
+        $second_array_ids = [];
+        foreach ($first_array as $item) {
+            $first_array_ids[] = $item->get_id();
+            $first_array_map[$item->get_id()] = $item;
         }
-
-        foreach ($secondArray as $item) {
-            $secondArrayIds[] = $item->getId();
+        foreach ($second_array as $item) {
+            $second_array_ids[] = $item->get_id();
         }
-
-        foreach (array_diff($firstArrayIds, $secondArrayIds) as $id) {
-            $result[] = $firstArrayMap[$id];
+        foreach (array_diff($first_array_ids, $second_array_ids) as $id) {
+            $result[] = $first_array_map[$id];
         }
-
         return $result;
     }
-
     /**
      * Retrieve option from list.
      *
@@ -330,33 +255,19 @@ class SaveAction
      * @param array $existingBundleProductOptions
      * @return OptionInterface
      */
-    private function retrieveExistingOption(
-        Collection $optionCollection,
-        OptionInterface $option,
-        array $existingBundleProductOptions
-    ): OptionInterface {
-        $existingOption = $optionCollection->getItemById($option->getOptionId());
-
-        $incomingOption = current(
-            array_filter($existingBundleProductOptions, function ($obj) use ($option) {
-                return $obj->getData()['option_id'] == $option->getId();
-            })
-        );
-
-        if (!empty($incomingOption)) {
-            $existingOption->setData(
-                array_merge(
-                    $existingOption->getData(),
-                    $incomingOption->getData()
-                )
-            );
+    private function retrieve_existing_option(Collection $option_collection, Option_Interface $option, array $existing_bundle_product_options): Option_Interface
+    {
+        $existing_option = $option_collection->get_item_by_id($option->get_option_id());
+        $incoming_option = current(array_filter($existing_bundle_product_options, function ($obj) use ($option) {
+            return $obj->get_data()['option_id'] == $option->get_id();
+        }));
+        if (!empty($incoming_option)) {
+            $existing_option->set_data(array_merge($existing_option->get_data(), $incoming_option->get_data()));
         }
-
         // @phpstan-ignore-next-line
-        if (empty($existingOption)) {
-            $existingOption = $optionCollection->getNewEmptyItem();
+        if (empty($existing_option)) {
+            $existing_option = $option_collection->get_new_empty_item();
         }
-
-        return $existingOption;
+        return $existing_option;
     }
 }

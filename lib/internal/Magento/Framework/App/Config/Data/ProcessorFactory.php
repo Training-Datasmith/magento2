@@ -1,36 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Data;
 
 /**
  * @api
  */
-class ProcessorFactory
+class Processor_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager;
-
+    protected $_object_manager;
     /**
      * @var ProcessorInterface[]
      */
     protected $_pool;
-
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->_objectManager = $objectManager;
+        $this->_object_manager = $object_manager;
     }
-
     /**
      * Get concrete Processor Interface instance
      *
@@ -38,17 +34,15 @@ class ProcessorFactory
      * @return ProcessorInterface
      * @throws \InvalidArgumentException In case the given classname is not an instance of ProcessorInterface
      */
-    public function get($processorModel)
+    public function get($processor_model)
     {
-        if (!isset($this->_pool[$processorModel])) {
-            $instance = $this->_objectManager->create($processorModel);
-            if (!$instance instanceof ProcessorInterface) {
-                throw new \InvalidArgumentException(
-                    $processorModel . ' is not instance of \Magento\Framework\App\Config\Data\ProcessorInterface'
-                );
+        if (!isset($this->_pool[$processor_model])) {
+            $instance = $this->_object_manager->create($processor_model);
+            if (!$instance instanceof Processor_Interface) {
+                throw new \InvalidArgumentException($processor_model . ' is not instance of \Magento\Framework\App\Config\Data\ProcessorInterface');
             }
-            $this->_pool[$processorModel] = $instance;
+            $this->_pool[$processor_model] = $instance;
         }
-        return $this->_pool[$processorModel];
+        return $this->_pool[$processor_model];
     }
 }

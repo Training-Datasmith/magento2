@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Locale;
 
 /**
@@ -21,22 +20,18 @@ class Resolver extends \Magento\Framework\Locale\Resolver
      * @var \Magento\Backend\Model\Session
      */
     protected $_session;
-
     /**
      * @var \Magento\Backend\Model\Locale\Manager
      */
-    protected $_localeManager;
-
+    protected $_locale_manager;
     /**
      * @var \Magento\Framework\App\RequestInterface
      */
     protected $_request;
-
     /**
      * @var \Magento\Framework\Validator\Locale
      */
-    protected $_localeValidator;
-
+    protected $_locale_validator;
     /**
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param string $defaultLocalePath
@@ -48,45 +43,32 @@ class Resolver extends \Magento\Framework\Locale\Resolver
      * @param string|null $locale
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        $defaultLocalePath,
-        $scopeType,
-        \Magento\Backend\Model\Session $session,
-        \Magento\Backend\Model\Locale\Manager $localeManager,
-        \Magento\Framework\App\RequestInterface $request,
-        \Magento\Framework\Validator\Locale $localeValidator,
-        $locale = null
-    ) {
+    public function __construct(\Magento\Framework\App\Config\Scope_Config_Interface $scope_config, $default_locale_path, $scope_type, \Magento\Backend\Model\Session $session, \Magento\Backend\Model\Locale\Manager $locale_manager, \Magento\Framework\App\Request_Interface $request, \Magento\Framework\Validator\Locale $locale_validator, $locale = null)
+    {
         $this->_session = $session;
-        $this->_localeManager = $localeManager;
+        $this->_locale_manager = $locale_manager;
         $this->_request = $request;
-        $this->_localeValidator = $localeValidator;
-        parent::__construct($scopeConfig, $defaultLocalePath, $scopeType, $locale);
+        $this->_locale_validator = $locale_validator;
+        parent::__construct($scope_config, $default_locale_path, $scope_type, $locale);
     }
-
     /**
      * Set locale
      *
      * @param string $locale
      * @return $this
      */
-    public function setLocale($locale = null)
+    public function set_locale($locale = null)
     {
-        $forceLocale = $this->_request->getParam('locale', null);
-        if (!$this->_localeValidator->isValid($forceLocale)) {
-            $forceLocale = false;
+        $force_locale = $this->_request->get_param('locale', null);
+        if (!$this->_locale_validator->is_valid($force_locale)) {
+            $force_locale = false;
         }
-
-        $sessionLocale = $this->_session->getSessionLocale();
-        $userLocale = $this->_localeManager->getUserInterfaceLocale();
-
-        $localeCodes = array_filter([$forceLocale, $locale, $sessionLocale, $userLocale]);
-
-        if (count($localeCodes)) {
-            $locale = reset($localeCodes);
+        $session_locale = $this->_session->get_session_locale();
+        $user_locale = $this->_locale_manager->get_user_interface_locale();
+        $locale_codes = array_filter([$force_locale, $locale, $session_locale, $user_locale]);
+        if (count($locale_codes)) {
+            $locale = reset($locale_codes);
         }
-
-        return parent::setLocale($locale);
+        return parent::set_locale($locale);
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Service\V1;
 
 /**
@@ -13,12 +12,12 @@ namespace Magento\Backend\Service\V1;
  * @api
  * @since 100.0.2
  */
-interface ModuleServiceInterface
+interface Module_Service_Interface
 {
     /**
      * Returns an array of enabled modules
      *
      * @return string[]
      */
-    public function getModules();
+    public function get_modules();
 }

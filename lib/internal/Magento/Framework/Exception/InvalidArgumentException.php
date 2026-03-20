@@ -1,16 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Exception;
 
 /**
  * An exception to be thrown when arguments are invalidated
  */
-class InvalidArgumentException extends LocalizedException
+class InvalidArgumentException extends Localized_Exception
 {
 }

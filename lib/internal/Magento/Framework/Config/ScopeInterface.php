@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config;
 
 /**
@@ -14,20 +13,19 @@ namespace Magento\Framework\Config;
  * @api
  * @since 100.0.2
  */
-interface ScopeInterface
+interface Scope_Interface
 {
     /**
      * Get current configuration scope identifier
      *
      * @return string
      */
-    public function getCurrentScope();
-
+    public function get_current_scope();
     /**
      * Set current configuration scope
      *
      * @param string $scope
      * @return void
      */
-    public function setCurrentScope($scope);
+    public function set_current_scope($scope);
 }

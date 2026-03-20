@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api\Search;
 
 /**
@@ -13,11 +12,11 @@ namespace Magento\Framework\Api\Search;
  *
  * @api
  */
-interface ReportingInterface
+interface Reporting_Interface
 {
     /**
      * @param SearchCriteriaInterface $searchCriteria
      * @return SearchResultInterface
      */
-    public function search(SearchCriteriaInterface $searchCriteria);
+    public function search(Search_Criteria_Interface $search_criteria);
 }

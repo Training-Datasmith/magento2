@@ -1,32 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager;
+namespace Magento\Framework\Entity_Manager;
 
 /**
  * Class AbstractModelHydrator
  */
-class AbstractModelHydrator implements HydratorInterface
+class Abstract_Model_Hydrator implements Hydrator_Interface
 {
     /**
      * {@inheritdoc}
      */
     public function extract($entity)
     {
-        return $entity->getData();
+        return $entity->get_data();
     }
-
     /**
      * {@inheritdoc}
      */
     public function hydrate($entity, array $data)
     {
-        $entity->setData(array_merge($entity->getData(), $data));
+        $entity->set_data(array_merge($entity->get_data(), $data));
         return $entity;
     }
 }

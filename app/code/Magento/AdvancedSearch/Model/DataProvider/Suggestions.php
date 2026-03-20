@@ -1,30 +1,27 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Advanced_Search\Model\Data_Provider;
 
-namespace Magento\AdvancedSearch\Model\DataProvider;
-
-use Magento\AdvancedSearch\Model\SuggestedQueriesInterface;
-use Magento\Search\Model\QueryInterface;
-
-class Suggestions implements SuggestedQueriesInterface
+use Magento\Advanced_Search\Model\Suggested_Queries_Interface;
+use Magento\Search\Model\Query_Interface;
+class Suggestions implements Suggested_Queries_Interface
 {
     /**
      * @inheritdoc
      */
-    public function isResultsCountEnabled(): bool
+    public function is_results_count_enabled(): bool
     {
         return false;
     }
-
     /**
      * @inheritdoc
      */
-    public function getItems(QueryInterface $query): array
+    public function get_items(Query_Interface $query): array
     {
         return [];
     }

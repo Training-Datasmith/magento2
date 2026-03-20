@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Api\Search_Criteria\Collection_Processor;
 
-namespace Magento\Framework\Api\SearchCriteria\CollectionProcessor;
-
-use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
-use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Data\Collection\AbstractDb;
-
-class PaginationProcessor implements CollectionProcessorInterface
+use Magento\Framework\Api\Search_Criteria\Collection_Processor_Interface;
+use Magento\Framework\Api\Search_Criteria_Interface;
+use Magento\Framework\Data\Collection\Abstract_Db;
+class Pagination_Processor implements Collection_Processor_Interface
 {
     /**
      * Apply Search Criteria Pagination to collection
@@ -21,9 +19,9 @@ class PaginationProcessor implements CollectionProcessorInterface
      * @param AbstractDb $collection
      * @return void
      */
-    public function process(SearchCriteriaInterface $searchCriteria, AbstractDb $collection)
+    public function process(Search_Criteria_Interface $search_criteria, Abstract_Db $collection)
     {
-        $collection->setCurPage($searchCriteria->getCurrentPage());
-        $collection->setPageSize($searchCriteria->getPageSize());
+        $collection->set_cur_page($search_criteria->get_current_page());
+        $collection->set_page_size($search_criteria->get_page_size());
     }
 }

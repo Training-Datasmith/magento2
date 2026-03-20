@@ -4,8 +4,7 @@
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Exception;
 
 /**
@@ -13,6 +12,6 @@ namespace Magento\Framework\Exception;
  *
  * @api
  */
-interface TemporaryStateExceptionInterface
+interface Temporary_State_Exception_Interface
 {
 }

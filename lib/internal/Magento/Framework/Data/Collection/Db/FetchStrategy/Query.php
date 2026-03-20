@@ -1,26 +1,23 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Retrieving collection data by querying a database
  */
-
-namespace Magento\Framework\Data\Collection\Db\FetchStrategy;
+namespace Magento\Framework\Data\Collection\Db\Fetch_Strategy;
 
 use Magento\Framework\DB\Select;
-
-class Query implements \Magento\Framework\Data\Collection\Db\FetchStrategyInterface
+class Query implements \Magento\Framework\Data\Collection\Db\Fetch_Strategy_Interface
 {
     /**
      * {@inheritdoc}
      */
-    public function fetchAll(Select $select, array $bindParams = [])
+    public function fetch_all(Select $select, array $bind_params = [])
     {
-        return $select->getConnection()->fetchAll($select, $bindParams);
+        return $select->get_connection()->fetch_all($select, $bind_params);
     }
 }

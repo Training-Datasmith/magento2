@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface CategoryRepositoryInterface
+interface Category_Repository_Interface
 {
     /**
      * Create category service
@@ -21,8 +20,7 @@ interface CategoryRepositoryInterface
      * @return \Magento\Catalog\Api\Data\CategoryInterface
      * @throws \Magento\Framework\Exception\CouldNotSaveException
      */
-    public function save(\Magento\Catalog\Api\Data\CategoryInterface $category);
-
+    public function save(\Magento\Catalog\Api\Data\Category_Interface $category);
     /**
      * Get info about category by category id
      *
@@ -31,8 +29,7 @@ interface CategoryRepositoryInterface
      * @return \Magento\Catalog\Api\Data\CategoryInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function get($categoryId, $storeId = null);
-
+    public function get($category_id, $store_id = null);
     /**
      * Delete category by identifier
      *
@@ -42,8 +39,7 @@ interface CategoryRepositoryInterface
      * @throws \Magento\Framework\Exception\StateException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function delete(\Magento\Catalog\Api\Data\CategoryInterface $category);
-
+    public function delete(\Magento\Catalog\Api\Data\Category_Interface $category);
     /**
      * Delete category by identifier
      *
@@ -53,5 +49,5 @@ interface CategoryRepositoryInterface
      * @throws \Magento\Framework\Exception\StateException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function deleteByIdentifier($categoryId);
+    public function delete_by_identifier($category_id);
 }

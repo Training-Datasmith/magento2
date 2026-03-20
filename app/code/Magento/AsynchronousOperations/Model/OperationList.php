@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AsynchronousOperations\Model;
+namespace Magento\Asynchronous_Operations\Model;
 
 /**
  * List of bulk operations.
  */
-class OperationList implements \Magento\AsynchronousOperations\Api\Data\OperationListInterface
+class Operation_List implements \Magento\Asynchronous_Operations\Api\Data\Operation_List_Interface
 {
     /**
      * @param array $items [optional]
@@ -19,11 +18,10 @@ class OperationList implements \Magento\AsynchronousOperations\Api\Data\Operatio
     public function __construct(private readonly array $items = [])
     {
     }
-
     /**
      * @inheritdoc
      */
-    public function getItems()
+    public function get_items()
     {
         return $this->items;
     }

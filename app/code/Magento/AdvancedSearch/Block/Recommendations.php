@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdvancedSearch\Block;
+namespace Magento\Advanced_Search\Block;
 
 /**
  * @api
  * @since 100.0.2
  */
-class Recommendations extends SearchData
+class Recommendations extends Search_Data
 {
 }

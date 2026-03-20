@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 /**
@@ -15,41 +14,39 @@ namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
  * @deprecated 100.2.0 in favour of UI component implementation
  * @since 100.0.2
  */
-class Number extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
+class Number extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract_Renderer
 {
     /**
      * @var int
      */
-    protected $_defaultWidth = 100;
-
+    protected $_default_width = 100;
     /**
      * Returns value of the row
      *
      * @param \Magento\Framework\DataObject $row
      * @return mixed|string
      */
-    protected function _getValue(\Magento\Framework\DataObject $row)
+    protected function _get_value(\Magento\Framework\Data_Object $row)
     {
-        $data = parent::_getValue($row);
+        $data = parent::_get_value($row);
         if ($data !== null) {
             $value = $data * 1;
-            $sign = (bool)(int)$this->getColumn()->getShowNumberSign() && $value > 0 ? '+' : '';
+            $sign = (bool) (int) $this->get_column()->get_show_number_sign() && $value > 0 ? '+' : '';
             if ($sign) {
                 $value = $sign . $value;
             }
             // fixed for showing zero in grid
             return $value ? $value : '0';
         }
-        return $this->getColumn()->getDefault();
+        return $this->get_column()->get_default();
     }
-
     /**
      * Renders CSS
      *
      * @return string
      */
-    public function renderCss()
+    public function render_css()
     {
-        return parent::renderCss() . ' col-number';
+        return parent::render_css() . ' col-number';
     }
 }

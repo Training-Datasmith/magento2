@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache\Config;
 
 use Magento\Framework\App\Area;
 use Magento\Framework\Config\Dom;
-use Magento\Framework\Config\FileResolverInterface;
+use Magento\Framework\Config\File_Resolver_Interface;
 use Magento\Framework\Config\Reader\Filesystem;
-use Magento\Framework\Config\ValidationStateInterface;
-
+use Magento\Framework\Config\Validation_State_Interface;
 /**
  * Cache configuration reader
  */
@@ -24,8 +22,7 @@ class Reader extends Filesystem
      *
      * @var array
      */
-    protected $_idAttributes = ['/config/type' => 'name'];
-
+    protected $_id_attributes = ['/config/type' => 'name'];
     /**
      * Initialize dependencies.
      *
@@ -39,25 +36,8 @@ class Reader extends Filesystem
      * @param string $defaultScope
      * phpcs:disable Generic.CodeAnalysis.UselessOverridingMethod
      */
-    public function __construct(
-        FileResolverInterface $fileResolver,
-        Converter $converter,
-        SchemaLocator $schemaLocator,
-        ValidationStateInterface $validationState,
-        $fileName = 'cache.xml',
-        $idAttributes = [],
-        $domDocumentClass = Dom::class,
-        $defaultScope = Area::AREA_GLOBAL
-    ) {
-        parent::__construct(
-            $fileResolver,
-            $converter,
-            $schemaLocator,
-            $validationState,
-            $fileName,
-            $idAttributes,
-            $domDocumentClass,
-            $defaultScope
-        );
+    public function __construct(File_Resolver_Interface $file_resolver, Converter $converter, Schema_Locator $schema_locator, Validation_State_Interface $validation_state, $file_name = 'cache.xml', $id_attributes = [], $dom_document_class = Dom::class, $default_scope = Area::AREA_GLOBAL)
+    {
+        parent::__construct($file_resolver, $converter, $schema_locator, $validation_state, $file_name, $id_attributes, $dom_document_class, $default_scope);
     }
 }

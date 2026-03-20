@@ -1,69 +1,58 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
-use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
-
+use Magento\Framework\Stdlib\DateTime\Date_Time_Formatter_Interface;
 /**
  * Backend grid item renderer date
  * @api
  * @deprecated 100.2.0 in favour of UI component implementation
  * @since 100.0.2
  */
-class Date extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
+class Date extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract_Renderer
 {
     /**
      * @var int
      */
-    protected $_defaultWidth = 160;
-
+    protected $_default_width = 160;
     /**
      * Date format string
      *
      * @var string
      */
     protected static $_format = null;
-
     /**
      * @var DateTimeFormatterInterface
      */
-    protected $dateTimeFormatter;
-
+    protected $date_time_formatter;
     /**
      * @param \Magento\Backend\Block\Context $context
      * @param DateTimeFormatterInterface $dateTimeFormatter
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Context $context,
-        DateTimeFormatterInterface $dateTimeFormatter,
-        array $data = []
-    ) {
+    public function __construct(\Magento\Backend\Block\Context $context, Date_Time_Formatter_Interface $date_time_formatter, array $data = [])
+    {
         parent::__construct($context, $data);
-        $this->dateTimeFormatter = $dateTimeFormatter;
+        $this->date_time_formatter = $date_time_formatter;
     }
-
     /**
      * Retrieve date format
      *
      * @return string
      * @deprecated 100.1.0
      */
-    protected function _getFormat()
+    protected function _get_format()
     {
-        $format = $this->getColumn()->getFormat();
+        $format = $this->get_column()->get_format();
         if ($format === null) {
             if (self::$_format === null) {
                 try {
-                    self::$_format = $this->_localeDate->getDateFormat(
-                        \IntlDateFormatter::MEDIUM
-                    );
+                    self::$_format = $this->_locale_date->get_date_format(\Intl_Date_Formatter::MEDIUM);
                 } catch (\Exception $e) {
                     $this->_logger->critical($e);
                 }
@@ -72,29 +61,22 @@ class Date extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRe
         }
         return $format;
     }
-
     /**
      * Renders grid column
      *
      * @param   \Magento\Framework\DataObject $row
      * @return  string
      */
-    public function render(\Magento\Framework\DataObject $row)
+    public function render(\Magento\Framework\Data_Object $row)
     {
-        $format = $this->getColumn()->getFormat();
-        $date = $this->_getValue($row);
+        $format = $this->get_column()->get_format();
+        $date = $this->_get_value($row);
         if ($date) {
-            if (!($date instanceof \DateTimeInterface)) {
+            if (!$date instanceof \DateTimeInterface) {
                 $date = new \DateTime($date);
             }
-            return $this->_localeDate->formatDateTime(
-                $date,
-                $format ?: \IntlDateFormatter::MEDIUM,
-                \IntlDateFormatter::NONE,
-                null,
-                $this->getColumn()->getTimezone() === false ? 'UTC' : null
-            );
+            return $this->_locale_date->format_date_time($date, $format ?: \Intl_Date_Formatter::MEDIUM, \Intl_Date_Formatter::NONE, null, $this->get_column()->get_timezone() === false ? 'UTC' : null);
         }
-        return $this->getColumn()->getDefault();
+        return $this->get_column()->get_default();
     }
 }

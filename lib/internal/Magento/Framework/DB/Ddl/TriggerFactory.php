@@ -1,36 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Ddl;
 
 /**
  * @api
  */
-class TriggerFactory
+class Trigger_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @var string
      */
     public const INSTANCE_NAME = \Magento\Framework\DB\Ddl\Trigger::class;
-
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->objectManager = $objectManager;
+        $this->object_manager = $object_manager;
     }
-
     /**
      * Create class instance with specified parameters
      *
@@ -39,6 +35,6 @@ class TriggerFactory
      */
     public function create(array $data = [])
     {
-        return $this->objectManager->create(self::INSTANCE_NAME, $data);
+        return $this->object_manager->create(self::INSTANCE_NAME, $data);
     }
 }

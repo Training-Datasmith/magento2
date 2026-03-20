@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Block\Adminhtml\Catalog\Product\Composite\Fieldset;
 
 /**
@@ -21,21 +20,18 @@ class Bundle extends \Magento\Bundle\Block\Catalog\Product\View\Type\Bundle
      *
      * @return string
      */
-    public function getJsonConfig()
+    public function get_json_config()
     {
         $options = [];
-        $optionsArray = $this->getOptions();
-        foreach ($optionsArray as $option) {
-            $optionId = $option->getId();
-            $options[$optionId] = ['id' => $optionId, 'selections' => []];
-            foreach ($option->getSelections() as $selection) {
-                $options[$optionId]['selections'][$selection->getSelectionId()] = [
-                    'can_change_qty' => $selection->getSelectionCanChangeQty(),
-                    'default_qty' => $selection->getSelectionQty(),
-                ];
+        $options_array = $this->get_options();
+        foreach ($options_array as $option) {
+            $option_id = $option->get_id();
+            $options[$option_id] = ['id' => $option_id, 'selections' => []];
+            foreach ($option->get_selections() as $selection) {
+                $options[$option_id]['selections'][$selection->get_selection_id()] = ['can_change_qty' => $selection->get_selection_can_change_qty(), 'default_qty' => $selection->get_selection_qty()];
             }
         }
         $config = ['options' => $options];
-        return $this->jsonEncoder->encode($config);
+        return $this->json_encoder->encode($config);
     }
 }

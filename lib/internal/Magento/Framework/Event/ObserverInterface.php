@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Observer interface
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Event;
 
 /**
@@ -16,7 +15,7 @@ namespace Magento\Framework\Event;
  * @api
  * @since 100.0.2
  */
-interface ObserverInterface
+interface Observer_Interface
 {
     /**
      * @param Observer $observer

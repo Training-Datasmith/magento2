@@ -4,10 +4,8 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Api\Data;
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Api\Data;
 
 /**
  * Getter Class OperationsStatusInterface
@@ -18,7 +16,7 @@ namespace Magento\AsynchronousOperations\Api\Data;
  * @api
  * @since 100.2.3
  */
-interface SummaryOperationStatusInterface
+interface Summary_Operation_Status_Interface
 {
     /**
      * Operation id
@@ -26,8 +24,7 @@ interface SummaryOperationStatusInterface
      * @return int
      * @since 100.2.3
      */
-    public function getId();
-
+    public function get_id();
     /**
      * Get operation status
      *
@@ -36,21 +33,19 @@ interface SummaryOperationStatusInterface
      * @return int
      * @since 100.2.3
      */
-    public function getStatus();
-
+    public function get_status();
     /**
      * Get result message
      *
      * @return string
      * @since 100.2.3
      */
-    public function getResultMessage();
-
+    public function get_result_message();
     /**
      * Get error code
      *
      * @return int
      * @since 100.2.3
      */
-    public function getErrorCode();
+    public function get_error_code();
 }

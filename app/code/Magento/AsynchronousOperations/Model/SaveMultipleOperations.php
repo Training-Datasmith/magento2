@@ -4,42 +4,34 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Model;
 
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\AsynchronousOperations\Api\SaveMultipleOperationsInterface;
-use Magento\AsynchronousOperations\Model\ResourceModel\Operation as OperationResource;
-use Magento\Framework\Exception\CouldNotSaveException;
-
+use Magento\Asynchronous_Operations\Api\Save_Multiple_Operations_Interface;
+use Magento\Asynchronous_Operations\Model\Resource_Model\Operation as OperationResource;
+use Magento\Framework\Exception\Could_Not_Save_Exception;
 /**
  * Implementation for saving multiple operations
  */
-class SaveMultipleOperations implements SaveMultipleOperationsInterface
+class Save_Multiple_Operations implements Save_Multiple_Operations_Interface
 {
     /**
      * BulkSummary constructor.
      */
-    public function __construct(private readonly OperationResource $operationResource)
+    public function __construct(private readonly Operation_Resource $operation_resource)
     {
     }
-
     /**
      * @inheritDoc
      */
     public function execute(array $operations): void
     {
         try {
-            $operationsToInsert = array_map(fn (\Magento\AsynchronousOperations\Api\Data\OperationInterface $operation) => $operation->getData(), $operations);
-
-            $connection = $this->operationResource->getConnection();
-            $connection->insertMultiple(
-                $this->operationResource->getTable(OperationResource::TABLE_NAME),
-                $operationsToInsert
-            );
+            $operations_to_insert = array_map(fn(\Magento\Asynchronous_Operations\Api\Data\Operation_Interface $operation) => $operation->get_data(), $operations);
+            $connection = $this->operation_resource->get_connection();
+            $connection->insert_multiple($this->operation_resource->get_table(Operation_Resource::TABLE_NAME), $operations_to_insert);
         } catch (\Exception $exception) {
-            throw new CouldNotSaveException(__($exception->getMessage()));
+            throw new Could_Not_Save_Exception(__($exception->get_message()));
         }
     }
 }

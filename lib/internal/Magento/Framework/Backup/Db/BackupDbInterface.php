@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Backup\Db;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Backup\Db;
  * @deprecated 101.0.7 Backups should be done using other means.
  * @since 100.0.2
  */
-interface BackupDbInterface
+interface Backup_Db_Interface
 {
     /**
      * Create DB backup
@@ -22,12 +21,11 @@ interface BackupDbInterface
      * @param BackupInterface $backup
      * @return void
      */
-    public function createBackup(\Magento\Framework\Backup\Db\BackupInterface $backup);
-
+    public function create_backup(\Magento\Framework\Backup\Db\Backup_Interface $backup);
     /**
      * Get database backup size
      *
      * @return int
      */
-    public function getDBBackupSize();
+    public function get_db_backup_size();
 }

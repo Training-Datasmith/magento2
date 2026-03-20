@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api\Data;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Catalog\Api\Data;
  * @api
  * @since 102.0.0
  */
-interface PriceUpdateResultInterface extends \Magento\Framework\Api\ExtensibleDataInterface
+interface Price_Update_Result_Interface extends \Magento\Framework\Api\Extensible_Data_Interface
 {
     /**#@+
      * Constants
@@ -21,15 +20,13 @@ interface PriceUpdateResultInterface extends \Magento\Framework\Api\ExtensibleDa
     public const MESSAGE = 'message';
     public const PARAMETERS = 'parameters';
     /**#@-*/
-
     /**
      * Get error message, that contains description of error occurred during price update.
      *
      * @return string
      * @since 102.0.0
      */
-    public function getMessage();
-
+    public function get_message();
     /**
      * Set error message, that contains description of error occurred during price update.
      *
@@ -37,16 +34,14 @@ interface PriceUpdateResultInterface extends \Magento\Framework\Api\ExtensibleDa
      * @return $this
      * @since 102.0.0
      */
-    public function setMessage($message);
-
+    public function set_message($message);
     /**
      * Get parameters, that could be displayed in error message placeholders.
      *
      * @return string[]
      * @since 102.0.0
      */
-    public function getParameters();
-
+    public function get_parameters();
     /**
      * Set parameters, that could be displayed in error message placeholders.
      *
@@ -54,8 +49,7 @@ interface PriceUpdateResultInterface extends \Magento\Framework\Api\ExtensibleDa
      * @return $this
      * @since 102.0.0
      */
-    public function setParameters(array $parameters);
-
+    public function set_parameters(array $parameters);
     /**
      * Retrieve existing extension attributes object.
      * If extension attributes do not exist return null.
@@ -63,8 +57,7 @@ interface PriceUpdateResultInterface extends \Magento\Framework\Api\ExtensibleDa
      * @return \Magento\Catalog\Api\Data\PriceUpdateResultExtensionInterface|null
      * @since 102.0.0
      */
-    public function getExtensionAttributes();
-
+    public function get_extension_attributes();
     /**
      * Set an extension attributes object.
      *
@@ -72,7 +65,5 @@ interface PriceUpdateResultInterface extends \Magento\Framework\Api\ExtensibleDa
      * @return $this
      * @since 102.0.0
      */
-    public function setExtensionAttributes(
-        \Magento\Catalog\Api\Data\PriceUpdateResultExtensionInterface $extensionAttributes
-    );
+    public function set_extension_attributes(\Magento\Catalog\Api\Data\Price_Update_Result_Extension_Interface $extension_attributes);
 }

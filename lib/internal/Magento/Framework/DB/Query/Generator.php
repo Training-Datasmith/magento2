@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Query;
 
-use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\Exception\Localized_Exception;
 /**
  * Query generator
  */
@@ -18,28 +16,22 @@ class Generator
     /**
      * @var \Magento\Framework\DB\Query\BatchIteratorFactory
      */
-    private $iteratorFactory;
-
+    private $iterator_factory;
     /**
      * @var \Magento\Framework\DB\Query\BatchRangeIteratorFactory
      */
-    private $rangeIteratorFactory;
-
+    private $range_iterator_factory;
     /**
      * Initialize dependencies.
      *
      * @param BatchIteratorFactory $iteratorFactory
      * @param BatchRangeIteratorFactory $rangeIteratorFactory
      */
-    public function __construct(
-        BatchIteratorFactory $iteratorFactory,
-        ?BatchRangeIteratorFactory $rangeIteratorFactory = null
-    ) {
-        $this->iteratorFactory = $iteratorFactory;
-        $this->rangeIteratorFactory = $rangeIteratorFactory ?: \Magento\Framework\App\ObjectManager::getInstance()
-            ->get(\Magento\Framework\DB\Query\BatchRangeIteratorFactory::class);
+    public function __construct(Batch_Iterator_Factory $iterator_factory, ?Batch_Range_Iterator_Factory $range_iterator_factory = null)
+    {
+        $this->iterator_factory = $iterator_factory;
+        $this->range_iterator_factory = $range_iterator_factory ?: \Magento\Framework\App\Object_Manager::get_instance()->get(\Magento\Framework\DB\Query\Batch_Range_Iterator_Factory::class);
     }
-
     /**
      * Generate select query list with predefined items count in each select item
      *
@@ -65,57 +57,36 @@ class Generator
      * @return BatchIteratorInterface
      * @throws LocalizedException Throws if incorrect "FROM" part in \Select exists
      */
-    public function generate(
-        $rangeField,
-        \Magento\Framework\DB\Select $select,
-        $batchSize = 100,
-        $batchStrategy = \Magento\Framework\DB\Query\BatchIteratorInterface::UNIQUE_FIELD_ITERATOR
-    ) {
-        if ($batchStrategy == \Magento\Framework\DB\Query\BatchIteratorInterface::NON_UNIQUE_FIELD_ITERATOR) {
-            return $this->generateByRange($rangeField, $select, $batchSize);
+    public function generate($range_field, \Magento\Framework\DB\Select $select, $batch_size = 100, $batch_strategy = \Magento\Framework\DB\Query\Batch_Iterator_Interface::UNIQUE_FIELD_ITERATOR)
+    {
+        if ($batch_strategy == \Magento\Framework\DB\Query\Batch_Iterator_Interface::NON_UNIQUE_FIELD_ITERATOR) {
+            return $this->generate_by_range($range_field, $select, $batch_size);
         }
-
-        $fromSelect = $select->getPart(\Magento\Framework\DB\Select::FROM);
-        if (empty($fromSelect)) {
-            throw new LocalizedException(
-                new \Magento\Framework\Phrase(
-                    'The select object must have the correct "FROM" part. Verify and try again.'
-                )
-            );
+        $from_select = $select->get_part(\Magento\Framework\DB\Select::FROM);
+        if (empty($from_select)) {
+            throw new Localized_Exception(new \Magento\Framework\Phrase('The select object must have the correct "FROM" part. Verify and try again.'));
         }
-
-        $fieldCorrelationName = '';
-        foreach ($fromSelect as $correlationName => $fromPart) {
-            if ($fromPart['joinType'] == \Magento\Framework\DB\Select::FROM) {
-                $fieldCorrelationName = $correlationName;
+        $field_correlation_name = '';
+        foreach ($from_select as $correlation_name => $from_part) {
+            if ($from_part['joinType'] == \Magento\Framework\DB\Select::FROM) {
+                $field_correlation_name = $correlation_name;
                 break;
             }
         }
-
-        $columns = $select->getPart(\Magento\Framework\DB\Select::COLUMNS);
+        $columns = $select->get_part(\Magento\Framework\DB\Select::COLUMNS);
         /**
          * Calculate $rangeField alias
          */
-        $rangeFieldAlias = $rangeField;
+        $range_field_alias = $range_field;
         foreach ($columns as $column) {
-            list($table, $columnName, $alias) = $column;
-            if ($table == $fieldCorrelationName && $columnName == $rangeField) {
-                $rangeFieldAlias = $alias ?: $rangeField;
+            list($table, $column_name, $alias) = $column;
+            if ($table == $field_correlation_name && $column_name == $range_field) {
+                $range_field_alias = $alias ?: $range_field;
                 break;
             }
         }
-
-        return $this->iteratorFactory->create(
-            [
-                'select' => $select,
-                'batchSize' => $batchSize,
-                'correlationName' => $fieldCorrelationName,
-                'rangeField' => $rangeField,
-                'rangeFieldAlias' => $rangeFieldAlias,
-            ]
-        );
+        return $this->iterator_factory->create(['select' => $select, 'batchSize' => $batch_size, 'correlationName' => $field_correlation_name, 'rangeField' => $range_field, 'rangeFieldAlias' => $range_field_alias]);
     }
-
     /**
      * Generate select query list with predefined items count in each select item.
      *
@@ -140,49 +111,31 @@ class Generator
      *             can't change method generate() in version 2.1 due to a backwards incompatibility.
      *             In 2.2 version need to use original method generate() with additional parameter.
      */
-    public function generateByRange(
-        $rangeField,
-        \Magento\Framework\DB\Select $select,
-        $batchSize = 100
-    ) {
-        $fromSelect = $select->getPart(\Magento\Framework\DB\Select::FROM);
-        if (empty($fromSelect)) {
-            throw new LocalizedException(
-                new \Magento\Framework\Phrase(
-                    'The select object must have the correct "FROM" part. Verify and try again.'
-                )
-            );
+    public function generate_by_range($range_field, \Magento\Framework\DB\Select $select, $batch_size = 100)
+    {
+        $from_select = $select->get_part(\Magento\Framework\DB\Select::FROM);
+        if (empty($from_select)) {
+            throw new Localized_Exception(new \Magento\Framework\Phrase('The select object must have the correct "FROM" part. Verify and try again.'));
         }
-
-        $fieldCorrelationName = '';
-        foreach ($fromSelect as $correlationName => $fromPart) {
-            if ($fromPart['joinType'] == \Magento\Framework\DB\Select::FROM) {
-                $fieldCorrelationName = $correlationName;
+        $field_correlation_name = '';
+        foreach ($from_select as $correlation_name => $from_part) {
+            if ($from_part['joinType'] == \Magento\Framework\DB\Select::FROM) {
+                $field_correlation_name = $correlation_name;
                 break;
             }
         }
-
-        $columns = $select->getPart(\Magento\Framework\DB\Select::COLUMNS);
+        $columns = $select->get_part(\Magento\Framework\DB\Select::COLUMNS);
         /**
          * Calculate $rangeField alias
          */
-        $rangeFieldAlias = $rangeField;
+        $range_field_alias = $range_field;
         foreach ($columns as $column) {
-            list($table, $columnName, $alias) = $column;
-            if ($table == $fieldCorrelationName && $columnName == $rangeField) {
-                $rangeFieldAlias = $alias ?: $rangeField;
+            list($table, $column_name, $alias) = $column;
+            if ($table == $field_correlation_name && $column_name == $range_field) {
+                $range_field_alias = $alias ?: $range_field;
                 break;
             }
         }
-
-        return $this->rangeIteratorFactory->create(
-            [
-                'select' => $select,
-                'batchSize' => $batchSize,
-                'correlationName' => $fieldCorrelationName,
-                'rangeField' => $rangeField,
-                'rangeFieldAlias' => $rangeFieldAlias,
-            ]
-        );
+        return $this->range_iterator_factory->create(['select' => $select, 'batchSize' => $batch_size, 'correlationName' => $field_correlation_name, 'rangeField' => $range_field, 'rangeFieldAlias' => $range_field_alias]);
     }
 }

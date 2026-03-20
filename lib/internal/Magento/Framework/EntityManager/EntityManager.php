@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager;
 
-namespace Magento\Framework\EntityManager;
-
-use Magento\Framework\EntityManager\Operation\CheckIfExistsInterface;
-use Magento\Framework\EntityManager\Operation\CreateInterface;
-use Magento\Framework\EntityManager\Operation\DeleteInterface;
-use Magento\Framework\EntityManager\Operation\ReadInterface;
-use Magento\Framework\EntityManager\Operation\UpdateInterface;
-
+use Magento\Framework\Entity_Manager\Operation\Check_If_Exists_Interface;
+use Magento\Framework\Entity_Manager\Operation\Create_Interface;
+use Magento\Framework\Entity_Manager\Operation\Delete_Interface;
+use Magento\Framework\Entity_Manager\Operation\Read_Interface;
+use Magento\Framework\Entity_Manager\Operation\Update_Interface;
 /**
  * It's not recommended to use EntityManager and its infrastructure for your entities persistence.
  * In the nearest future new Persistence Entity Manager would be released which will cover all the requirements for
@@ -26,46 +24,37 @@ use Magento\Framework\EntityManager\Operation\UpdateInterface;
  * For filtering operations, it's recommended to use successor of
  * Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection class.
  */
-class EntityManager
+class Entity_Manager
 {
     /**
      * @var OperationPool
      */
-    private $operationPool;
-
+    private $operation_pool;
     /**
      * @var CallbackHandler
      */
-    private $callbackHandler;
-
+    private $callback_handler;
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @param OperationPool $operationPool
      * @param MetadataPool $metadataPool
      * @param TypeResolver $typeResolver
      * @param CallbackHandler $callbackHandler
      */
-    public function __construct(
-        OperationPool $operationPool,
-        MetadataPool $metadataPool,
-        TypeResolver $typeResolver,
-        CallbackHandler $callbackHandler
-    ) {
-        $this->operationPool = $operationPool;
-        $this->metadataPool = $metadataPool;
-        $this->typeResolver = $typeResolver;
-        $this->callbackHandler = $callbackHandler;
+    public function __construct(Operation_Pool $operation_pool, Metadata_Pool $metadata_pool, Type_Resolver $type_resolver, Callback_Handler $callback_handler)
+    {
+        $this->operation_pool = $operation_pool;
+        $this->metadata_pool = $metadata_pool;
+        $this->type_resolver = $type_resolver;
+        $this->callback_handler = $callback_handler;
     }
-
     /**
      * @param object $entity
      * @param string $identifier
@@ -75,15 +64,14 @@ class EntityManager
      */
     public function load($entity, $identifier, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $operation = $this->operationPool->getOperation($entityType, 'read');
-        if (!($operation instanceof ReadInterface)) {
-            throw new \LogicException(get_class($operation) . ' must implement ' . ReadInterface::class);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $operation = $this->operation_pool->get_operation($entity_type, 'read');
+        if (!$operation instanceof Read_Interface) {
+            throw new \LogicException(get_class($operation) . ' must implement ' . Read_Interface::class);
         }
         $entity = $operation->execute($entity, $identifier, $arguments);
         return $entity;
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -93,28 +81,27 @@ class EntityManager
      */
     public function save($entity, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
+        $entity_type = $this->type_resolver->resolve($entity);
         if ($this->has($entity)) {
-            $operation = $this->operationPool->getOperation($entityType, 'update');
-            if (!($operation instanceof UpdateInterface)) {
-                throw new \LogicException(get_class($operation) . ' must implement ' . UpdateInterface::class);
+            $operation = $this->operation_pool->get_operation($entity_type, 'update');
+            if (!$operation instanceof Update_Interface) {
+                throw new \LogicException(get_class($operation) . ' must implement ' . Update_Interface::class);
             }
         } else {
-            $operation = $this->operationPool->getOperation($entityType, 'create');
-            if (!($operation instanceof CreateInterface)) {
-                throw new \LogicException(get_class($operation) . ' must implement ' . CreateInterface::class);
+            $operation = $this->operation_pool->get_operation($entity_type, 'create');
+            if (!$operation instanceof Create_Interface) {
+                throw new \LogicException(get_class($operation) . ' must implement ' . Create_Interface::class);
             }
         }
         try {
             $entity = $operation->execute($entity, $arguments);
-            $this->callbackHandler->process($entityType);
+            $this->callback_handler->process($entity_type);
         } catch (\Exception $e) {
-            $this->callbackHandler->clear($entityType);
+            $this->callback_handler->clear($entity_type);
             throw $e;
         }
         return $entity;
     }
-
     /**
      * @param object $entity
      * @return bool
@@ -122,14 +109,13 @@ class EntityManager
      */
     public function has($entity)
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $operation = $this->operationPool->getOperation($entityType, 'checkIfExists');
-        if (!($operation instanceof CheckIfExistsInterface)) {
-            throw new \LogicException(get_class($operation) . ' must implement ' . CheckIfExistsInterface::class);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $operation = $this->operation_pool->get_operation($entity_type, 'checkIfExists');
+        if (!$operation instanceof Check_If_Exists_Interface) {
+            throw new \LogicException(get_class($operation) . ' must implement ' . Check_If_Exists_Interface::class);
         }
         return $operation->execute($entity);
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -139,16 +125,16 @@ class EntityManager
      */
     public function delete($entity, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $operation = $this->operationPool->getOperation($entityType, 'delete');
-        if (!($operation instanceof DeleteInterface)) {
-            throw new \LogicException(get_class($operation) . ' must implement ' . DeleteInterface::class);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $operation = $this->operation_pool->get_operation($entity_type, 'delete');
+        if (!$operation instanceof Delete_Interface) {
+            throw new \LogicException(get_class($operation) . ' must implement ' . Delete_Interface::class);
         }
         try {
             $operation->execute($entity, $arguments);
-            $this->callbackHandler->process($entityType);
+            $this->callback_handler->process($entity_type);
         } catch (\Exception $e) {
-            $this->callbackHandler->clear($entityType);
+            $this->callback_handler->clear($entity_type);
             throw $e;
         }
         return true;

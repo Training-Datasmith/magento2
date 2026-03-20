@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\App\ResourceConnection;
+namespace Magento\Framework\App\Resource_Connection;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface SourceProviderInterface extends \Traversable
+interface Source_Provider_Interface extends \Traversable
 {
     /**
      * Returns main table name - extracted from "module/table" style and
@@ -20,30 +19,26 @@ interface SourceProviderInterface extends \Traversable
      *
      * @return string
      */
-    public function getMainTable();
-
+    public function get_main_table();
     /**
      * Get primary key field name
      *
      * @throws \Magento\Framework\Exception\LocalizedException
      * @return string
      */
-    public function getIdFieldName();
-
+    public function get_id_field_name();
     /**
      * @param string $fieldName
      * @param null|string $alias
      * @return $this
      */
-    public function addFieldToSelect($fieldName, $alias = null);
-
+    public function add_field_to_select($field_name, $alias = null);
     /**
      * Get \Magento\Framework\DB\Select instance and applies fields to select if needed
      *
      * @return \Magento\Framework\DB\Select
      */
-    public function getSelect();
-
+    public function get_select();
     /**
      * Wrapper for compatibility with \Magento\Framework\Data\Collection\AbstractDb
      *
@@ -51,5 +46,5 @@ interface SourceProviderInterface extends \Traversable
      * @param mixed $condition
      * @return $this|\Magento\Framework\Data\Collection\AbstractDb
      */
-    public function addFieldToFilter($attribute, $condition = null);
+    public function add_field_to_filter($attribute, $condition = null);
 }

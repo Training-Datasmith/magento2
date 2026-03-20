@@ -1,42 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Select;
 
 use Magento\Framework\DB\Select;
-
 /**
  * Apply multiple query modifiers to select
  */
-class CompositeQueryModifier implements QueryModifierInterface
+class Composite_Query_Modifier implements Query_Modifier_Interface
 {
     /**
      * @var QueryModifierInterface[]
      */
-    private $queryModifiers;
-
+    private $query_modifiers;
     /**
      * Constructor
      *
      * @param QueryModifierInterface[] $queryModifiers
      */
-    public function __construct(
-        array $queryModifiers = []
-    ) {
-        $this->queryModifiers = $queryModifiers;
+    public function __construct(array $query_modifiers = [])
+    {
+        $this->query_modifiers = $query_modifiers;
     }
-
     /**
      * {@inheritdoc}
      */
     public function modify(Select $select)
     {
-        foreach ($this->queryModifiers as $modifier) {
+        foreach ($this->query_modifiers as $modifier) {
             $modifier->modify($select);
         }
     }

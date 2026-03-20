@@ -1,18 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application config storage writer
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Storage;
 
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
-class Writer implements \Magento\Framework\App\Config\Storage\WriterInterface
+use Magento\Framework\App\Config\Scope_Config_Interface;
+class Writer implements \Magento\Framework\App\Config\Storage\Writer_Interface
 {
     /**
      * Resource model of config data
@@ -20,15 +18,13 @@ class Writer implements \Magento\Framework\App\Config\Storage\WriterInterface
      * @var \Magento\Framework\App\Config\ConfigResource\ConfigInterface
      */
     protected $_resource;
-
     /**
      * @param \Magento\Framework\App\Config\ConfigResource\ConfigInterface $resource
      */
-    public function __construct(\Magento\Framework\App\Config\ConfigResource\ConfigInterface $resource)
+    public function __construct(\Magento\Framework\App\Config\Config_Resource\Config_Interface $resource)
     {
         $this->_resource = $resource;
     }
-
     /**
      * Delete config value from storage
      *
@@ -37,11 +33,10 @@ class Writer implements \Magento\Framework\App\Config\Storage\WriterInterface
      * @param   int $scopeId
      * @return  void
      */
-    public function delete($path, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeId = 0)
+    public function delete($path, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_id = 0)
     {
-        $this->_resource->deleteConfig(rtrim($path, '/'), $scope, $scopeId);
+        $this->_resource->delete_config(rtrim($path, '/'), $scope, $scope_id);
     }
-
     /**
      * Save config value to storage
      *
@@ -51,8 +46,8 @@ class Writer implements \Magento\Framework\App\Config\Storage\WriterInterface
      * @param int $scopeId
      * @return void
      */
-    public function save($path, $value, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeId = 0)
+    public function save($path, $value, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_id = 0)
     {
-        $this->_resource->saveConfig(rtrim($path, '/'), $value, $scope, $scopeId);
+        $this->_resource->save_config(rtrim($path, '/'), $value, $scope, $scope_id);
     }
 }

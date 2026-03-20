@@ -4,14 +4,13 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Captcha\Api;
 
 /**
  * Interface contains methods for post processing and modifies client-side CAPTCHA config
  */
-interface CaptchaConfigPostProcessorInterface
+interface Captcha_Config_Post_Processor_Interface
 {
     /**
      * Filters the data object by a filter list

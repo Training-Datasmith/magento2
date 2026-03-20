@@ -4,79 +4,63 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\Captcha\CustomerData;
+declare (strict_types=1);
+namespace Magento\Captcha\Customer_Data;
 
 use Magento\Captcha\Helper\Data as CaptchaHelper;
-use Magento\Captcha\Model\DefaultModel;
-use Magento\Customer\CustomerData\SectionSourceInterface;
+use Magento\Captcha\Model\Default_Model;
+use Magento\Customer\Customer_Data\Section_Source_Interface;
 use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\DataObject;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Data_Object;
 /**
  * Captcha section.
  *
  * @SuppressWarnings(PHPMD.CookieAndSessionMisuse)
  */
-class Captcha extends DataObject implements SectionSourceInterface
+class Captcha extends Data_Object implements Section_Source_Interface
 {
     /**
      * @var array
      */
-    private $formIds;
-
+    private $form_ids;
     /**
      * @var CaptchaHelper
      */
     private $helper;
-
     /**
      * @var CustomerSession
      */
-    private $customerSession;
-
+    private $customer_session;
     /**
      * @param CaptchaHelper $helper
      * @param array $formIds
      * @param array $data
      * @param CustomerSession|null $customerSession
      */
-    public function __construct(
-        CaptchaHelper $helper,
-        array $formIds,
-        array $data = [],
-        ?CustomerSession $customerSession = null
-    ) {
+    public function __construct(Captcha_Helper $helper, array $form_ids, array $data = [], ?Customer_Session $customer_session = null)
+    {
         $this->helper = $helper;
-        $this->formIds = $formIds;
+        $this->form_ids = $form_ids;
         parent::__construct($data);
-        $this->customerSession = $customerSession ?? ObjectManager::getInstance()->get(CustomerSession::class);
+        $this->customer_session = $customer_session ?? Object_Manager::get_instance()->get(Customer_Session::class);
     }
-
     /**
      * @inheritdoc
      */
-    public function getSectionData(): array
+    public function get_section_data(): array
     {
         $data = [];
-
-        foreach ($this->formIds as $formId) {
+        foreach ($this->form_ids as $form_id) {
             /** @var DefaultModel $captchaModel */
-            $captchaModel = $this->helper->getCaptcha($formId);
+            $captcha_model = $this->helper->get_captcha($form_id);
             $login = '';
-            if ($this->customerSession->isLoggedIn()) {
-                $login = $this->customerSession->getCustomerData()->getEmail();
+            if ($this->customer_session->is_logged_in()) {
+                $login = $this->customer_session->get_customer_data()->get_email();
             }
-            $required =  $captchaModel->isRequired($login);
-            $data[$formId] = [
-                'isRequired' => $required,
-                'timestamp' => time(),
-            ];
+            $required = $captcha_model->is_required($login);
+            $data[$form_id] = ['isRequired' => $required, 'timestamp' => time()];
         }
-
         return $data;
     }
 }

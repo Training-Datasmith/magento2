@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Cache\Tag;
 
 /**
@@ -18,8 +17,7 @@ class Resolver
      *
      * @var Strategy\Factory
      */
-    private $strategyFactory;
-
+    private $strategy_factory;
     /**
      * Resolver constructor.
      *
@@ -27,9 +25,8 @@ class Resolver
      */
     public function __construct(\Magento\Framework\App\Cache\Tag\Strategy\Factory $factory)
     {
-        $this->strategyFactory = $factory;
+        $this->strategy_factory = $factory;
     }
-
     /**
      * Identify invalidation tags for the object using custom strategies
      *
@@ -37,12 +34,11 @@ class Resolver
      * @throws \InvalidArgumentException
      * @return array
      */
-    public function getTags($object)
+    public function get_tags($object)
     {
         if (!is_object($object)) {
             throw new \InvalidArgumentException('Provided argument is not an object');
         }
-
-        return $this->strategyFactory->getStrategy($object)->getTags($object);
+        return $this->strategy_factory->get_strategy($object)->get_tags($object);
     }
 }

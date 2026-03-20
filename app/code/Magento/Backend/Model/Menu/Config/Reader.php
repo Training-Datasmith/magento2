@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Menu\Config;
 
 /**
@@ -24,25 +23,8 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
      * @param string $domDocumentClass
      * @param string $defaultScope
      */
-    public function __construct(
-        \Magento\Framework\Config\FileResolverInterface $fileResolver,
-        \Magento\Backend\Model\Menu\Config\Converter $converter,
-        \Magento\Backend\Model\Menu\Config\SchemaLocator $schemaLocator,
-        \Magento\Framework\Config\ValidationStateInterface $validationState,
-        $fileName = 'menu.xml',
-        $idAttributes = [],
-        $domDocumentClass = \Magento\Backend\Model\Menu\Config\Menu\Dom::class,
-        $defaultScope = 'global'
-    ) {
-        parent::__construct(
-            $fileResolver,
-            $converter,
-            $schemaLocator,
-            $validationState,
-            $fileName,
-            $idAttributes,
-            $domDocumentClass,
-            $defaultScope
-        );
+    public function __construct(\Magento\Framework\Config\File_Resolver_Interface $file_resolver, \Magento\Backend\Model\Menu\Config\Converter $converter, \Magento\Backend\Model\Menu\Config\Schema_Locator $schema_locator, \Magento\Framework\Config\Validation_State_Interface $validation_state, $file_name = 'menu.xml', $id_attributes = [], $dom_document_class = \Magento\Backend\Model\Menu\Config\Menu\Dom::class, $default_scope = 'global')
+    {
+        parent::__construct($file_resolver, $converter, $schema_locator, $validation_state, $file_name, $id_attributes, $dom_document_class, $default_scope);
     }
 }

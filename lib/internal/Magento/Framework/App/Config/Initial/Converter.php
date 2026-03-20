@@ -1,40 +1,36 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Initial configuration data converter. Converts \DOMDocument to array
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Initial;
 
 /**
  * Class Converter
  */
-class Converter implements \Magento\Framework\Config\ConverterInterface
+class Converter implements \Magento\Framework\Config\Converter_Interface
 {
     /**
      * Node paths to process
      *
      * @var array
      */
-    protected $_nodeMap = [];
-
+    protected $_node_map = [];
     /**
      * @var array
      */
     protected $_metadata = [];
-
     /**
      * @param array $nodeMap
      */
-    public function __construct(array $nodeMap = [])
+    public function __construct(array $node_map = [])
     {
-        $this->_nodeMap = $nodeMap;
+        $this->_node_map = $node_map;
     }
-
     /**
      * Convert config data
      *
@@ -44,16 +40,14 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
     public function convert($source)
     {
         $output = [];
-        $xpath = new \DOMXPath($source);
+        $xpath = new \Domx_Path($source);
         $this->_metadata = [];
-
         /** @var $node \DOMNode */
-        foreach ($xpath->query(implode(' | ', $this->_nodeMap)) as $node) {
-            $output = array_merge($output, $this->_convertNode($node));
+        foreach ($xpath->query(implode(' | ', $this->_node_map)) as $node) {
+            $output = array_merge($output, $this->_convert_node($node));
         }
         return ['data' => $output, 'metadata' => $this->_metadata];
     }
-
     /**
      * Convert node oto array
      *
@@ -63,40 +57,36 @@ class Converter implements \Magento\Framework\Config\ConverterInterface
      *
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    protected function _convertNode(\DOMNode $node, $path = '')
+    protected function _convert_node(\Dom_Node $node, $path = '')
     {
         $output = [];
-        if ($node->nodeType == XML_ELEMENT_NODE) {
-            if ($node->hasAttributes()) {
-                $backendModel = $node->attributes->getNamedItem('backend_model');
-                if ($backendModel) {
-                    $this->_metadata[$path] = ['backendModel' => $backendModel->nodeValue];
+        if ($node->node_type == XML_ELEMENT_NODE) {
+            if ($node->has_attributes()) {
+                $backend_model = $node->attributes->get_named_item('backend_model');
+                if ($backend_model) {
+                    $this->_metadata[$path] = ['backendModel' => $backend_model->node_value];
                 }
             }
-            $nodeData = [];
+            $node_data = [];
             /** @var $childNode \DOMNode */
-            foreach ($node->childNodes as $childNode) {
-                $childrenData = $this->_convertNode($childNode, ($path ? $path . '/' : '') . $childNode->nodeName);
-                if ($childrenData == null) {
+            foreach ($node->child_nodes as $child_node) {
+                $children_data = $this->_convert_node($child_node, ($path ? $path . '/' : '') . $child_node->node_name);
+                if ($children_data == null) {
                     continue;
                 }
-                if (is_array($childrenData)) {
-                    $nodeData = array_merge($nodeData, $childrenData);
+                if (is_array($children_data)) {
+                    $node_data = array_merge($node_data, $children_data);
                 } else {
-                    $nodeData = $childrenData;
+                    $node_data = $children_data;
                 }
             }
-            if (is_array($nodeData) && empty($nodeData)) {
-                $nodeData = null;
+            if (is_array($node_data) && empty($node_data)) {
+                $node_data = null;
             }
-            $output[$node->nodeName] = $nodeData;
-        } elseif ($node->nodeType == XML_CDATA_SECTION_NODE || $node->nodeType == XML_TEXT_NODE && trim(
-            $node->nodeValue
-        ) != ''
-        ) {
-            return $node->nodeValue;
+            $output[$node->node_name] = $node_data;
+        } elseif ($node->node_type == XML_CDATA_SECTION_NODE || $node->node_type == XML_TEXT_NODE && trim($node->node_value) != '') {
+            return $node->node_value;
         }
-
         return $output;
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Authorization;
 
 /**
@@ -16,12 +15,12 @@ namespace Magento\Framework\Authorization;
  * @api
  * @since 100.0.2
  */
-interface RoleLocatorInterface
+interface Role_Locator_Interface
 {
     /**
      * Retrieve current role
      *
      * @return string|null
      */
-    public function getAclRoleId();
+    public function get_acl_role_id();
 }

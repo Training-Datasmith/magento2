@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\View\Layout;
 
 /**
@@ -17,9 +16,9 @@ class Builder extends \Magento\Framework\View\Layout\Builder
     /**
      * @return $this
      */
-    protected function afterGenerateBlock()
+    protected function after_generate_block()
     {
-        $this->layout->initMessages();
+        $this->layout->init_messages();
         return $this;
     }
 }

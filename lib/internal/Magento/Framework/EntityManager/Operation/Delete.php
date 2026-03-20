@@ -1,69 +1,59 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation;
 
-namespace Magento\Framework\EntityManager\Operation;
-
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\EntityManager\EventManager;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\Operation\Delete\DeleteAttributes;
-use Magento\Framework\EntityManager\Operation\Delete\DeleteExtensions;
-use Magento\Framework\EntityManager\Operation\Delete\DeleteMain;
-use Magento\Framework\EntityManager\TypeResolver;
-use Magento\Framework\Model\ResourceModel\Db\TransactionManagerInterface;
-
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\Entity_Manager\Event_Manager;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+use Magento\Framework\Entity_Manager\Operation\Delete\Delete_Attributes;
+use Magento\Framework\Entity_Manager\Operation\Delete\Delete_Extensions;
+use Magento\Framework\Entity_Manager\Operation\Delete\Delete_Main;
+use Magento\Framework\Entity_Manager\Type_Resolver;
+use Magento\Framework\Model\Resource_Model\Db\Transaction_Manager_Interface;
 /**
  * Class Delete
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Delete implements DeleteInterface
+class Delete implements Delete_Interface
 {
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @var ResourceConnection
      */
-    private $resourceConnection;
-
+    private $resource_connection;
     /**
      * @var EventManager
      */
-    private $eventManager;
-
+    private $event_manager;
     /**
      * @var TransactionManagerInterface
      */
-    private $transactionManager;
-
+    private $transaction_manager;
     /**
      * @var DeleteMain
      */
-    private $deleteMain;
-
+    private $delete_main;
     /**
      * @var DeleteAttributes
      */
-    private $deleteAttributes;
-
+    private $delete_attributes;
     /**
      * @var DeleteExtensions
      */
-    private $deleteExtensions;
-
+    private $delete_extensions;
     /**
      * @param MetadataPool $metadataPool
      * @param TypeResolver $typeResolver
@@ -74,26 +64,17 @@ class Delete implements DeleteInterface
      * @param DeleteAttributes $deleteAttributes
      * @param DeleteExtensions $deleteExtensions
      */
-    public function __construct(
-        MetadataPool $metadataPool,
-        TypeResolver $typeResolver,
-        ResourceConnection $resourceConnection,
-        EventManager $eventManager,
-        TransactionManagerInterface $transactionManager,
-        DeleteMain $deleteMain,
-        DeleteAttributes $deleteAttributes,
-        DeleteExtensions $deleteExtensions
-    ) {
-        $this->metadataPool = $metadataPool;
-        $this->typeResolver = $typeResolver;
-        $this->resourceConnection = $resourceConnection;
-        $this->eventManager = $eventManager;
-        $this->transactionManager = $transactionManager;
-        $this->deleteMain = $deleteMain;
-        $this->deleteAttributes = $deleteAttributes;
-        $this->deleteExtensions = $deleteExtensions;
+    public function __construct(Metadata_Pool $metadata_pool, Type_Resolver $type_resolver, Resource_Connection $resource_connection, Event_Manager $event_manager, Transaction_Manager_Interface $transaction_manager, Delete_Main $delete_main, Delete_Attributes $delete_attributes, Delete_Extensions $delete_extensions)
+    {
+        $this->metadata_pool = $metadata_pool;
+        $this->type_resolver = $type_resolver;
+        $this->resource_connection = $resource_connection;
+        $this->event_manager = $event_manager;
+        $this->transaction_manager = $transaction_manager;
+        $this->delete_main = $delete_main;
+        $this->delete_attributes = $delete_attributes;
+        $this->delete_extensions = $delete_extensions;
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -102,33 +83,21 @@ class Delete implements DeleteInterface
      */
     public function execute($entity, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $metadata = $this->metadataPool->getMetadata($entityType);
-        $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
-        $this->transactionManager->start($connection);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $metadata = $this->metadata_pool->get_metadata($entity_type);
+        $connection = $this->resource_connection->get_connection_by_name($metadata->get_entity_connection_name());
+        $this->transaction_manager->start($connection);
         try {
-            $this->eventManager->dispatch(
-                'entity_manager_delete_before',
-                [
-                    'entity_type' => $entityType,
-                    'entity' => $entity,
-                ]
-            );
-            $this->eventManager->dispatchEntityEvent($entityType, 'delete_before', ['entity' => $entity]);
-            $entity = $this->deleteExtensions->execute($entity, $arguments);
-            $entity = $this->deleteAttributes->execute($entity, $arguments);
-            $entity = $this->deleteMain->execute($entity, $arguments);
-            $this->eventManager->dispatchEntityEvent($entityType, 'delete_after', ['entity' => $entity]);
-            $this->eventManager->dispatch(
-                'entity_manager_delete_after',
-                [
-                    'entity_type' => $entityType,
-                    'entity' => $entity,
-                ]
-            );
-            $this->transactionManager->commit();
+            $this->event_manager->dispatch('entity_manager_delete_before', ['entity_type' => $entity_type, 'entity' => $entity]);
+            $this->event_manager->dispatch_entity_event($entity_type, 'delete_before', ['entity' => $entity]);
+            $entity = $this->delete_extensions->execute($entity, $arguments);
+            $entity = $this->delete_attributes->execute($entity, $arguments);
+            $entity = $this->delete_main->execute($entity, $arguments);
+            $this->event_manager->dispatch_entity_event($entity_type, 'delete_after', ['entity' => $entity]);
+            $this->event_manager->dispatch('entity_manager_delete_after', ['entity_type' => $entity_type, 'entity' => $entity]);
+            $this->transaction_manager->commit();
         } catch (\Exception $e) {
-            $this->transactionManager->rollBack();
+            $this->transaction_manager->roll_back();
             throw $e;
         }
         return $entity;

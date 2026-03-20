@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Filter;
 
 /**
@@ -13,23 +12,20 @@ namespace Magento\Backend\Block\Widget\Grid\Column\Filter;
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Price extends \Magento\Backend\Block\Widget\Grid\Column\Filter\AbstractFilter
+class Price extends \Magento\Backend\Block\Widget\Grid\Column\Filter\Abstract_Filter
 {
     /**
      * @var array
      */
-    protected $_currencyList = null;
-
+    protected $_currency_list = null;
     /**
      * @var \Magento\Directory\Model\Currency
      */
-    protected $_currencyModel = null;
-
+    protected $_currency_model = null;
     /**
      * @var \Magento\Directory\Model\Currency\DefaultLocator
      */
-    protected $_currencyLocator = null;
-
+    protected $_currency_locator = null;
     /**
      * @param \Magento\Backend\Block\Context $context
      * @param \Magento\Framework\DB\Helper $resourceHelper
@@ -37,192 +33,134 @@ class Price extends \Magento\Backend\Block\Widget\Grid\Column\Filter\AbstractFil
      * @param \Magento\Directory\Model\Currency\DefaultLocator $currencyLocator
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Context $context,
-        \Magento\Framework\DB\Helper $resourceHelper,
-        \Magento\Directory\Model\Currency $currencyModel,
-        \Magento\Directory\Model\Currency\DefaultLocator $currencyLocator,
-        array $data = []
-    ) {
-        parent::__construct($context, $resourceHelper, $data);
-        $this->_currencyModel = $currencyModel;
-        $this->_currencyLocator = $currencyLocator;
+    public function __construct(\Magento\Backend\Block\Context $context, \Magento\Framework\DB\Helper $resource_helper, \Magento\Directory\Model\Currency $currency_model, \Magento\Directory\Model\Currency\Default_Locator $currency_locator, array $data = [])
+    {
+        parent::__construct($context, $resource_helper, $data);
+        $this->_currency_model = $currency_model;
+        $this->_currency_locator = $currency_locator;
     }
-
     /**
      * Retrieve html
      *
      * @return string
      */
-    public function getHtml()
+    public function get_html()
     {
         $html = '<div class="range">';
-        $html .= '<div class="range-line">' .
-            '<input type="text" name="' .
-            $this->_getHtmlName() .
-            '[from]" id="' .
-            $this->_getHtmlId() .
-            '_from" placeholder="' .
-            __(
-                'From'
-            ) . '" value="' . $this->getEscapedValue(
-                'from'
-            ) . '" class="input-text admin__control-text no-changes"  ' . $this->getUiId(
-                'filter',
-                $this->_getHtmlName(),
-                'from'
-            ) . '/></div>';
-        $html .= '<div class="range-line">' .
-            '<input type="text" name="' .
-            $this->_getHtmlName() .
-            '[to]" id="' .
-            $this->_getHtmlId() .
-            '_to" placeholder="' .
-            __(
-                'To'
-            ) . '" value="' . $this->getEscapedValue(
-                'to'
-            ) . '" class="input-text admin__control-text no-changes" ' . $this->getUiId(
-                'filter',
-                $this->_getHtmlName(),
-                'to'
-            ) . '/></div>';
-
-        if ($this->getDisplayCurrencySelect()) {
-            $html .= '<div class="range-line">' . $this->_getCurrencySelectHtml() . '</div>';
+        $html .= '<div class="range-line">' . '<input type="text" name="' . $this->_get_html_name() . '[from]" id="' . $this->_get_html_id() . '_from" placeholder="' . __('From') . '" value="' . $this->get_escaped_value('from') . '" class="input-text admin__control-text no-changes"  ' . $this->get_ui_id('filter', $this->_get_html_name(), 'from') . '/></div>';
+        $html .= '<div class="range-line">' . '<input type="text" name="' . $this->_get_html_name() . '[to]" id="' . $this->_get_html_id() . '_to" placeholder="' . __('To') . '" value="' . $this->get_escaped_value('to') . '" class="input-text admin__control-text no-changes" ' . $this->get_ui_id('filter', $this->_get_html_name(), 'to') . '/></div>';
+        if ($this->get_display_currency_select()) {
+            $html .= '<div class="range-line">' . $this->_get_currency_select_html() . '</div>';
         }
-
         $html .= '</div>';
-
         return $html;
     }
-
     /**
      * Retrieve display currency select
      *
      * @return true|mixed
      */
-    public function getDisplayCurrencySelect()
+    public function get_display_currency_select()
     {
-        if ($this->getColumn()->getData('display_currency_select') !== null) {
-            return $this->getColumn()->getData('display_currency_select');
+        if ($this->get_column()->get_data('display_currency_select') !== null) {
+            return $this->get_column()->get_data('display_currency_select');
         } else {
             return true;
         }
     }
-
     /**
      * Retrieve currency affect
      *
      * @return true|mixed
      */
-    public function getCurrencyAffect()
+    public function get_currency_affect()
     {
-        if ($this->getColumn()->getData('currency_affect') !== null) {
-            return $this->getColumn()->getData('currency_affect');
+        if ($this->get_column()->get_data('currency_affect') !== null) {
+            return $this->get_column()->get_data('currency_affect');
         } else {
             return true;
         }
     }
-
     /**
      * Retrieve currency select html
      *
      * @return string
      */
-    protected function _getCurrencySelectHtml()
+    protected function _get_currency_select_html()
     {
-        $value = $this->getEscapedValue('currency');
+        $value = $this->get_escaped_value('currency');
         if (!$value) {
-            $value = $this->_getColumnCurrencyCode();
+            $value = $this->_get_column_currency_code();
         }
-
         $html = '';
-        $html .= '<select name="' . $this->_getHtmlName() . '[currency]" id="' . $this->_getHtmlId() . '_currency">';
-        foreach ($this->_getCurrencyList() as $currency) {
-            $html .= '<option value="' . $currency . '" ' . ($currency ==
-                $value ? 'selected="selected"' : '') . '>' . $currency . '</option>';
+        $html .= '<select name="' . $this->_get_html_name() . '[currency]" id="' . $this->_get_html_id() . '_currency">';
+        foreach ($this->_get_currency_list() as $currency) {
+            $html .= '<option value="' . $currency . '" ' . ($currency == $value ? 'selected="selected"' : '') . '>' . $currency . '</option>';
         }
         $html .= '</select>';
         return $html;
     }
-
     /**
      * Retrieve list of currencies
      *
      * @return array|null
      */
-    protected function _getCurrencyList()
+    protected function _get_currency_list()
     {
-        if ($this->_currencyList === null) {
-            $this->_currencyList = $this->_currencyModel->getConfigAllowCurrencies();
+        if ($this->_currency_list === null) {
+            $this->_currency_list = $this->_currency_model->get_config_allow_currencies();
         }
-        return $this->_currencyList;
+        return $this->_currency_list;
     }
-
     /**
      * Retrieve filter value
      *
      * @param string|null $index
      * @return array|null
      */
-    public function getValue($index = null)
+    public function get_value($index = null)
     {
         if ($index) {
-            return $this->getData('value', $index);
+            return $this->get_data('value', $index);
         }
-        $value = $this->getData('value');
+        $value = $this->get_data('value');
         if (isset($value['from']) && strlen($value['from']) > 0 || isset($value['to']) && strlen($value['to']) > 0) {
             return $value;
         }
         return null;
     }
-
     /**
      * Retrieve filter condition
      *
      * @return array
      */
-    public function getCondition()
+    public function get_condition()
     {
-        $value = $this->getValue();
-
-        if (isset($value['currency']) && $this->getCurrencyAffect()) {
-            $displayCurrency = $value['currency'];
+        $value = $this->get_value();
+        if (isset($value['currency']) && $this->get_currency_affect()) {
+            $display_currency = $value['currency'];
         } else {
-            $displayCurrency = $this->_getColumnCurrencyCode();
+            $display_currency = $this->_get_column_currency_code();
         }
-        $rate = $this->_getRate($displayCurrency, $this->_getColumnCurrencyCode());
-
+        $rate = $this->_get_rate($display_currency, $this->_get_column_currency_code());
         if (isset($value['from'])) {
             $value['from'] = (float) $value['from'] * $rate;
         }
-
         if (isset($value['to'])) {
             $value['to'] = (float) $value['to'] * $rate;
         }
-
-        $this->prepareRates($displayCurrency);
+        $this->prepare_rates($display_currency);
         return $value;
     }
-
     /**
      * Retrieve column currency code
      *
      * @return string
      */
-    protected function _getColumnCurrencyCode()
+    protected function _get_column_currency_code()
     {
-        return $this->getColumn()
-            ->getCurrencyCode() ? $this
-            ->getColumn()
-            ->getCurrencyCode() : $this
-            ->_currencyLocator
-            ->getDefaultCurrency(
-                $this->_request
-            );
+        return $this->get_column()->get_currency_code() ? $this->get_column()->get_currency_code() : $this->_currency_locator->get_default_currency($this->_request);
     }
-
     /**
      * Get currency rate
      *
@@ -230,25 +168,23 @@ class Price extends \Magento\Backend\Block\Widget\Grid\Column\Filter\AbstractFil
      * @param string $toRate
      * @return float
      */
-    protected function _getRate($fromRate, $toRate)
+    protected function _get_rate($from_rate, $to_rate)
     {
-        return $this->_currencyModel->load($fromRate)->getAnyRate($toRate);
+        return $this->_currency_model->load($from_rate)->get_any_rate($to_rate);
     }
-
     /**
      * Prepare currency rates
      *
      * @param string $displayCurrency
      * @return void
      */
-    public function prepareRates($displayCurrency)
+    public function prepare_rates($display_currency)
     {
-        $storeCurrency = $this->_getColumnCurrencyCode();
-
-        $rate = $this->_getRate($storeCurrency, $displayCurrency);
+        $store_currency = $this->_get_column_currency_code();
+        $rate = $this->_get_rate($store_currency, $display_currency);
         if ($rate) {
-            $this->getColumn()->setRate($rate);
-            $this->getColumn()->setCurrencyCode($displayCurrency);
+            $this->get_column()->set_rate($rate);
+            $this->get_column()->set_currency_code($display_currency);
         }
     }
 }

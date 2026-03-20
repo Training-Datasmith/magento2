@@ -4,45 +4,40 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Bundle\Ui\Data_Provider\Product\Form\Modifier;
 
-namespace Magento\Bundle\Ui\DataProvider\Product\Form\Modifier;
-
-use Magento\CatalogInventory\Model\StockRegistryPreloader;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Ui\DataProvider\Modifier\ModifierInterface;
-
+use Magento\Catalog_Inventory\Model\Stock_Registry_Preloader;
+use Magento\Framework\Exception\No_Such_Entity_Exception;
+use Magento\Ui\Data_Provider\Modifier\Modifier_Interface;
 /**
  * Affects Qty field for newly added selection
  */
-class AddSelectionQtyTypeToProductsData implements ModifierInterface
+class Add_Selection_Qty_Type_To_Products_Data implements Modifier_Interface
 {
     /**
      * @var StockRegistryPreloader
      */
-    private StockRegistryPreloader $stockRegistryPreloader;
-
+    private Stock_Registry_Preloader $stock_registry_preloader;
     /**
      * Initializes dependencies
      *
      * @param StockRegistryPreloader $stockRegistryPreloader
      */
-    public function __construct(StockRegistryPreloader $stockRegistryPreloader)
+    public function __construct(Stock_Registry_Preloader $stock_registry_preloader)
     {
-        $this->stockRegistryPreloader = $stockRegistryPreloader;
+        $this->stock_registry_preloader = $stock_registry_preloader;
     }
-
     /**
      * Modify Meta
      *
      * @param array $meta
      * @return array
      */
-    public function modifyMeta(array $meta)
+    public function modify_meta(array $meta)
     {
         return $meta;
     }
-
     /**
      * Modify Data - checks if new selection can have decimal quantity
      *
@@ -50,26 +45,22 @@ class AddSelectionQtyTypeToProductsData implements ModifierInterface
      * @return array
      * @throws NoSuchEntityException
      */
-    public function modifyData(array $data): array
+    public function modify_data(array $data): array
     {
-        $productIds = array_column($data['items'], 'entity_id');
-
-        $stockItems = [];
-        if ($productIds) {
-            $stockItems = $this->stockRegistryPreloader->preloadStockItems($productIds);
+        $product_ids = array_column($data['items'], 'entity_id');
+        $stock_items = [];
+        if ($product_ids) {
+            $stock_items = $this->stock_registry_preloader->preload_stock_items($product_ids);
         }
-
-        $isQtyDecimals = [];
-        foreach ($stockItems as $stockItem) {
-            $isQtyDecimals[$stockItem->getProductId()] = $stockItem->getIsQtyDecimal();
+        $is_qty_decimals = [];
+        foreach ($stock_items as $stock_item) {
+            $is_qty_decimals[$stock_item->get_product_id()] = $stock_item->get_is_qty_decimal();
         }
-
         foreach ($data['items'] as &$item) {
-            if (isset($isQtyDecimals[$item['entity_id']])) {
-                $item['selection_qty_is_integer'] = !$isQtyDecimals[$item['entity_id']];
+            if (isset($is_qty_decimals[$item['entity_id']])) {
+                $item['selection_qty_is_integer'] = !$is_qty_decimals[$item['entity_id']];
             }
         }
-
         return $data;
     }
 }

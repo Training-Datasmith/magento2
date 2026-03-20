@@ -1,37 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
-use Magento\Framework\App\DeploymentConfig\Reader;
-use Magento\Framework\DataObject;
-
+use Magento\Framework\App\Deployment_Config\Reader;
+use Magento\Framework\Data_Object;
 /**
  * Responsible for reading sources from files: config.dist.php, config.local.php, config.php
  */
-class InitialConfigSource implements ConfigSourceInterface
+class Initial_Config_Source implements Config_Source_Interface
 {
     /**
      * @var Reader
      */
     private $reader;
-
     /**
      * @var string
      */
-    private $configType;
-
+    private $config_type;
     /**
      * @var string
      * @deprecated 101.0.0 Initial configs can not be separated since 2.2.0 version
      */
-    private $fileKey;
-
+    private $file_key;
     /**
      * DataProvider constructor.
      *
@@ -39,22 +34,21 @@ class InitialConfigSource implements ConfigSourceInterface
      * @param string $configType
      * @param string $fileKey
      */
-    public function __construct(Reader $reader, $configType, $fileKey = null)
+    public function __construct(Reader $reader, $config_type, $file_key = null)
     {
         $this->reader = $reader;
-        $this->configType = $configType;
-        $this->fileKey = $fileKey;
+        $this->config_type = $config_type;
+        $this->file_key = $file_key;
     }
-
     /**
      * @inheritdoc
      */
     public function get($path = '')
     {
-        $data = new DataObject($this->reader->load());
+        $data = new Data_Object($this->reader->load());
         if ($path !== '' && $path !== null) {
             $path = '/' . $path;
         }
-        return $data->getData($this->configType . $path) ?: [];
+        return $data->get_data($this->config_type . $path) ?: [];
     }
 }

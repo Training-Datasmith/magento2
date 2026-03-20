@@ -4,18 +4,15 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App\Action;
 
-use Magento\Framework\App\ActionInterface;
-
+use Magento\Framework\App\Action_Interface;
 /**
  * Marker for actions processing CONNECT requests.
  *
  * @api
  */
-interface HttpConnectActionInterface extends ActionInterface
+interface Http_Connect_Action_Interface extends Action_Interface
 {
 }

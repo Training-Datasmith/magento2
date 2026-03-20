@@ -1,39 +1,35 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Component;
 
 /**
  * Value-object for files found in components
  */
-class ComponentFile
+class Component_File
 {
     /**
      * Component type
      *
      * @var string
      */
-    private $componentType;
-
+    private $component_type;
     /**
      * Component name
      *
      * @var string
      */
-    private $componentName;
-
+    private $component_name;
     /**
      * Full path
      *
      * @var string
      */
     private $path;
-
     /**
      * Constructor
      *
@@ -41,39 +37,36 @@ class ComponentFile
      * @param string $componentName
      * @param string $fullPath
      */
-    public function __construct($componentType, $componentName, $fullPath)
+    public function __construct($component_type, $component_name, $full_path)
     {
-        $this->componentType = $componentType;
-        $this->componentName = $componentName;
-        $this->path = $fullPath;
+        $this->component_type = $component_type;
+        $this->component_name = $component_name;
+        $this->path = $full_path;
     }
-
     /**
      * Get component type
      *
      * @return string
      */
-    public function getComponentType()
+    public function get_component_type()
     {
-        return $this->componentType;
+        return $this->component_type;
     }
-
     /**
      * Get component name
      *
      * @return string
      */
-    public function getComponentName()
+    public function get_component_name()
     {
-        return $this->componentName;
+        return $this->component_name;
     }
-
     /**
      * Get full path to the component
      *
      * @return string
      */
-    public function getFullPath()
+    public function get_full_path()
     {
         return $this->path;
     }

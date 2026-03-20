@@ -1,108 +1,80 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml;
 
-namespace Magento\Analytics\ReportXml;
-
-use Magento\Analytics\ReportXml\DB\SelectBuilderFactory;
-use Magento\Framework\App\CacheInterface;
+use Magento\Analytics\Report_Xml\DB\Select_Builder_Factory;
+use Magento\Framework\App\Cache_Interface;
 use Magento\Framework\DB\Select;
-use Magento\Framework\ObjectManagerInterface;
+use Magento\Framework\Object_Manager_Interface;
 use Magento\Framework\Serialize\Serializer\Json;
-
 /**
  * Creates Query object according to configuration
  *
  * Factory for @see \Magento\Analytics\ReportXml\Query
  */
-class QueryFactory
+class Query_Factory
 {
     /**
      * QueryFactory constructor.
      */
-    public function __construct(private readonly CacheInterface $queryCache, private readonly SelectHydrator $selectHydrator, private readonly ObjectManagerInterface $objectManager, private readonly SelectBuilderFactory $selectBuilderFactory, private readonly Config $config, private readonly array $assemblers, private readonly Json $jsonSerializer)
+    public function __construct(private readonly Cache_Interface $query_cache, private readonly Select_Hydrator $select_hydrator, private readonly Object_Manager_Interface $object_manager, private readonly Select_Builder_Factory $select_builder_factory, private readonly Config $config, private readonly array $assemblers, private readonly Json $json_serializer)
     {
     }
-
     /**
      * Returns query connection name according to configuration
      *
      * @param string $queryConfig
      */
-    private function getQueryConnectionName($queryConfig): string
+    private function get_query_connection_name($query_config): string
     {
-        return $queryConfig['connection'] ?? 'default';
+        return $query_config['connection'] ?? 'default';
     }
-
     /**
      * Create query according to configuration settings
      *
      * @param string $queryName
      * @return Query
      */
-    private function constructQuery($queryName)
+    private function construct_query($query_name)
     {
-        $queryConfig = $this->config->get($queryName);
-        $selectBuilder = $this->selectBuilderFactory->create();
-        $selectBuilder->setConnectionName($this->getQueryConnectionName($queryConfig));
+        $query_config = $this->config->get($query_name);
+        $select_builder = $this->select_builder_factory->create();
+        $select_builder->set_connection_name($this->get_query_connection_name($query_config));
         foreach ($this->assemblers as $assembler) {
-            $selectBuilder = $assembler->assemble($selectBuilder, $queryConfig);
+            $select_builder = $assembler->assemble($select_builder, $query_config);
         }
-        $select = $selectBuilder->create();
-        return $this->createQueryObject(
-            $select,
-            $selectBuilder->getConnectionName(),
-            $queryConfig
-        );
+        $select = $select_builder->create();
+        return $this->create_query_object($select, $select_builder->get_connection_name(), $query_config);
     }
-
     /**
      * Creates query by name
      *
      * @param string $queryName
      * @return Query
      */
-    public function create($queryName)
+    public function create($query_name)
     {
-        $cached = $this->queryCache->load($queryName);
+        $cached = $this->query_cache->load($query_name);
         if ($cached) {
-            $queryData = $this->jsonSerializer->unserialize($cached);
-            return $this->createQueryObject(
-                $this->selectHydrator->recreate($queryData['select_parts']),
-                $queryData['connectionName'],
-                $queryData['config']
-            );
+            $query_data = $this->json_serializer->unserialize($cached);
+            return $this->create_query_object($this->select_hydrator->recreate($query_data['select_parts']), $query_data['connectionName'], $query_data['config']);
         }
-        $query = $this->constructQuery($queryName);
-        $this->queryCache->save(
-            $this->jsonSerializer->serialize($query),
-            $queryName
-        );
+        $query = $this->construct_query($query_name);
+        $this->query_cache->save($this->json_serializer->serialize($query), $query_name);
         return $query;
     }
-
     /**
      * Create query class using objectmanger
      *
      * @return Query
      */
-    private function createQueryObject(
-        Select $select,
-        string $connection,
-        array $queryConfig
-    ) {
-        return $this->objectManager->create(
-            Query::class,
-            [
-                'select' => $select,
-                'selectHydrator' => $this->selectHydrator,
-                'connectionName' => $connection,
-                'config' => $queryConfig,
-            ]
-        );
+    private function create_query_object(Select $select, string $connection, array $query_config)
+    {
+        return $this->object_manager->create(Query::class, ['select' => $select, 'selectHydrator' => $this->select_hydrator, 'connectionName' => $connection, 'config' => $query_config]);
     }
 }

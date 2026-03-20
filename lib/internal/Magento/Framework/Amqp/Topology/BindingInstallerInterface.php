@@ -1,22 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Amqp\Topology;
 
-use Magento\Framework\MessageQueue\Topology\Config\ExchangeConfigItem\BindingInterface;
-use PhpAmqpLib\Channel\AMQPChannel;
-
+use Magento\Framework\Message_Queue\Topology\Config\Exchange_Config_Item\Binding_Interface;
+use Php_Amqp_Lib\Channel\Amqp_Channel;
 /**
  * Exchange binding installer.
  *
  * @api
  */
-interface BindingInstallerInterface
+interface Binding_Installer_Interface
 {
     /**
      * Install exchange bindings.
@@ -26,5 +24,5 @@ interface BindingInstallerInterface
      * @param string $exchangeName
      * @return void
      */
-    public function install(AMQPChannel $channel, BindingInterface $binding, $exchangeName);
+    public function install(Amqp_Channel $channel, Binding_Interface $binding, $exchange_name);
 }

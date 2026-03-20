@@ -4,52 +4,44 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Frontend\Adapter\Symfony;
 
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\TagAdapterInterface;
-use Magento\Framework\Cache\FrontendInterface;
-use Psr\Cache\CacheItemPoolInterface;
-
+use Magento\Framework\Cache\Frontend\Adapter\Symfony_Adapters\Tag_Adapter_Interface;
+use Magento\Framework\Cache\Frontend_Interface;
+use Psr\Cache\Cache_Item_Pool_Interface;
 /**
  * Low-level frontend wrapper for Symfony cache adapter
  *
  * Provides backward-compatible interface for legacy code
  * Used by code that needs direct access to cache internals
  */
-class LowLevelFrontend
+class Low_Level_Frontend
 {
     /**
      * @var CacheItemPoolInterface
      */
-    private CacheItemPoolInterface $cache;
-
+    private Cache_Item_Pool_Interface $cache;
     /**
      * @var FrontendInterface
      */
-    private FrontendInterface $symfony;
-
+    private Frontend_Interface $symfony;
     /**
      * @var TagAdapterInterface
      */
-    private TagAdapterInterface $adapter;
-
+    private Tag_Adapter_Interface $adapter;
     /**
      * @var string
      */
-    private string $idPrefix;
-
+    private string $id_prefix;
     /**
      * @var int
      */
     private int $lifetime;
-
     /**
      * @var LowLevelBackend|null
      */
-    private ?LowLevelBackend $backend = null;
-
+    private ?Low_Level_Backend $backend = null;
     /**
      * @param CacheItemPoolInterface $cache
      * @param FrontendInterface $symfony
@@ -57,81 +49,70 @@ class LowLevelFrontend
      * @param string $idPrefix
      * @param int $lifetime
      */
-    public function __construct(
-        CacheItemPoolInterface $cache,
-        FrontendInterface $symfony,
-        TagAdapterInterface $adapter,
-        string $idPrefix,
-        int $lifetime = 7200
-    ) {
+    public function __construct(Cache_Item_Pool_Interface $cache, Frontend_Interface $symfony, Tag_Adapter_Interface $adapter, string $id_prefix, int $lifetime = 7200)
+    {
         $this->cache = $cache;
         $this->symfony = $symfony;
         $this->adapter = $adapter;
-        $this->idPrefix = $idPrefix;
+        $this->id_prefix = $id_prefix;
         $this->lifetime = $lifetime;
     }
-
     /**
      * Get metadata for cache entry
      *
      * @param string $id
      * @return array|false
      */
-    public function getMetadatas($id)
+    public function get_metadatas($id)
     {
-        return $this->symfony->getMetadatas($id);
+        return $this->symfony->get_metadatas($id);
     }
-
     /**
      * Get cache option
      *
      * @param string $name
      * @return mixed
      */
-    public function getOption(string $name)
+    public function get_option(string $name)
     {
         if ($name === 'cache_id_prefix') {
-            return $this->idPrefix;
+            return $this->id_prefix;
         }
         if ($name === 'lifetime') {
             return $this->lifetime;
         }
         return null;
     }
-
     /**
      * Get IDs matching tags
      *
      * @param array $tags
      * @return array
      */
-    public function getIdsMatchingTags(array $tags): array
+    public function get_ids_matching_tags(array $tags): array
     {
         // Get IDs from helper (uses backend-specific logic)
         if (method_exists($this->adapter, 'getIdsMatchingTags')) {
             // Tags are already in the correct format from the caller
             // Helper will add namespace prefix internally
-            return $this->adapter->getIdsMatchingTags($tags);
+            return $this->adapter->get_ids_matching_tags($tags);
         }
-
         // For GenericAdapterHelper, return empty array
         // (it doesn't support native ID lookup by tags)
         return [];
     }
-
     /**
      * Get backend wrapper
      *
      * @return LowLevelBackend
      */
-    public function getBackend(): LowLevelBackend
+    public function get_backend(): Low_Level_Backend
     {
         if ($this->backend === null) {
-            $this->backend = new LowLevelBackend($this->adapter);
+            $this->backend = new Low_Level_Backend($this->adapter);
         }
         return $this->backend;
     }
-
     /**
      * Clean cache entries
      *
@@ -146,7 +127,6 @@ class LowLevelFrontend
         // Delegate to Symfony frontend for proper Lua script integration
         return $this->symfony->clean($mode, $tags);
     }
-
     /**
      * Delegate all other method calls to the cache
      *
@@ -156,6 +136,6 @@ class LowLevelFrontend
      */
     public function __call(string $method, array $arguments)
     {
-        return $this->cache->$method(...$arguments);
+        return $this->cache->{$method}(...$arguments);
     }
 }

@@ -1,52 +1,43 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation\Update;
 
-namespace Magento\Framework\EntityManager\Operation\Update;
-
-use Magento\Framework\EntityManager\Db\UpdateRow;
-use Magento\Framework\EntityManager\HydratorPool;
-use Magento\Framework\EntityManager\TypeResolver;
-
+use Magento\Framework\Entity_Manager\Db\Update_Row;
+use Magento\Framework\Entity_Manager\Hydrator_Pool;
+use Magento\Framework\Entity_Manager\Type_Resolver;
 /**
  * Class UpdateMain
  */
-class UpdateMain
+class Update_Main
 {
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @var HydratorPool
      */
-    private $hydratorPool;
-
+    private $hydrator_pool;
     /**
      * @var UpdateRow
      */
-    private $updateRow;
-
+    private $update_row;
     /**
      * @param TypeResolver $typeResolver
      * @param HydratorPool $hydratorPool
      * @param UpdateRow $updateRow
      */
-    public function __construct(
-        TypeResolver $typeResolver,
-        HydratorPool $hydratorPool,
-        UpdateRow $updateRow
-    ) {
-        $this->typeResolver = $typeResolver;
-        $this->hydratorPool = $hydratorPool;
-        $this->updateRow = $updateRow;
+    public function __construct(Type_Resolver $type_resolver, Hydrator_Pool $hydrator_pool, Update_Row $update_row)
+    {
+        $this->type_resolver = $type_resolver;
+        $this->hydrator_pool = $hydrator_pool;
+        $this->update_row = $update_row;
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -54,11 +45,11 @@ class UpdateMain
      */
     public function execute($entity, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $hydrator = $this->hydratorPool->getHydrator($entityType);
+        $entity_type = $this->type_resolver->resolve($entity);
+        $hydrator = $this->hydrator_pool->get_hydrator($entity_type);
         $arguments = array_merge($hydrator->extract($entity), $arguments);
-        $entityData = $this->updateRow->execute($entityType, $arguments);
-        $entity = $hydrator->hydrate($entity, $entityData);
+        $entity_data = $this->update_row->execute($entity_type, $arguments);
+        $entity = $hydrator->hydrate($entity, $entity_data);
         return $entity;
     }
 }

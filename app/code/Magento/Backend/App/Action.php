@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Generic backend controller
  */
-
 namespace Magento\Backend\App;
 
 /**
@@ -17,6 +15,6 @@ namespace Magento\Backend\App;
  * @SuppressWarnings(PHPMD.NumberOfChildren)
  * @since 100.0.2
  */
-abstract class Action extends \Magento\Backend\App\AbstractAction
+abstract class Action extends \Magento\Backend\App\Abstract_Action
 {
 }

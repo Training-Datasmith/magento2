@@ -4,22 +4,19 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
-use Laminas\Feed\Writer\FeedFactory;
-
+use Laminas\Feed\Writer\Feed_Factory;
 /**
  * Default XML feed class
  */
-class Feed implements FeedInterface
+class Feed implements Feed_Interface
 {
     /**
      * @var array
      */
     private $feeds;
-
     /**
      * Feed constructor.
      * @param array $data
@@ -28,12 +25,11 @@ class Feed implements FeedInterface
     {
         $this->feeds = $data;
     }
-
     /**
      * @inheritDoc
      */
-    public function getFormattedContent(): string
+    public function get_formatted_content(): string
     {
-        return FeedFactory::factory($this->feeds)->export(FeedFactoryInterface::FORMAT_RSS);
+        return Feed_Factory::factory($this->feeds)->export(Feed_Factory_Interface::FORMAT_RSS);
     }
 }

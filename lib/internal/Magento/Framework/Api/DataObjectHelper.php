@@ -1,52 +1,44 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
-use Magento\Framework\Reflection\MethodsMap;
-
+use Magento\Framework\Reflection\Methods_Map;
 /**
  * Service class allow populating object from array data
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class DataObjectHelper
+class Data_Object_Helper
 {
     /**
      * @var ObjectFactory
      */
-    protected $objectFactory;
-
+    protected $object_factory;
     /**
      * @var \Magento\Framework\Reflection\DataObjectProcessor
      */
-    protected $objectProcessor;
-
+    protected $object_processor;
     /**
      * @var \Magento\Framework\Reflection\TypeProcessor
      */
-    protected $typeProcessor;
-
+    protected $type_processor;
     /**
      * @var \Magento\Framework\Api\ExtensionAttributesFactory
      */
-    protected $extensionFactory;
-
+    protected $extension_factory;
     /**
      * @var \Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface
      */
-    protected $joinProcessor;
-
+    protected $join_processor;
     /**
      * @var MethodsMap
      */
-    protected $methodsMapProcessor;
-
+    protected $methods_map_processor;
     /**
      * @param ObjectFactory $objectFactory
      * @param \Magento\Framework\Reflection\DataObjectProcessor $objectProcessor
@@ -55,22 +47,15 @@ class DataObjectHelper
      * @param \Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface $joinProcessor
      * @param MethodsMap $methodsMapProcessor
      */
-    public function __construct(
-        ObjectFactory $objectFactory,
-        \Magento\Framework\Reflection\DataObjectProcessor $objectProcessor,
-        \Magento\Framework\Reflection\TypeProcessor $typeProcessor,
-        \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory,
-        \Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface $joinProcessor,
-        MethodsMap $methodsMapProcessor
-    ) {
-        $this->objectFactory = $objectFactory;
-        $this->objectProcessor = $objectProcessor;
-        $this->typeProcessor = $typeProcessor;
-        $this->extensionFactory = $extensionFactory;
-        $this->joinProcessor = $joinProcessor;
-        $this->methodsMapProcessor = $methodsMapProcessor;
+    public function __construct(Object_Factory $object_factory, \Magento\Framework\Reflection\Data_Object_Processor $object_processor, \Magento\Framework\Reflection\Type_Processor $type_processor, \Magento\Framework\Api\Extension_Attributes_Factory $extension_factory, \Magento\Framework\Api\Extension_Attribute\Join_Processor_Interface $join_processor, Methods_Map $methods_map_processor)
+    {
+        $this->object_factory = $object_factory;
+        $this->object_processor = $object_processor;
+        $this->type_processor = $type_processor;
+        $this->extension_factory = $extension_factory;
+        $this->join_processor = $join_processor;
+        $this->methods_map_processor = $methods_map_processor;
     }
-
     /**
      * Populate data object using data in array format.
      *
@@ -79,15 +64,14 @@ class DataObjectHelper
      * @param string $interfaceName
      * @return $this
      */
-    public function populateWithArray($dataObject, array $data, $interfaceName)
+    public function populate_with_array($data_object, array $data, $interface_name)
     {
-        if ($dataObject instanceof ExtensibleDataInterface) {
-            $data = $this->joinProcessor->extractExtensionAttributes(get_class($dataObject), $data);
+        if ($data_object instanceof Extensible_Data_Interface) {
+            $data = $this->join_processor->extract_extension_attributes(get_class($data_object), $data);
         }
-        $this->_setDataValues($dataObject, $data, $interfaceName);
+        $this->_set_data_values($data_object, $data, $interface_name);
         return $this;
     }
-
     /**
      * Update Data Object with the data from array
      *
@@ -98,61 +82,51 @@ class DataObjectHelper
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    protected function _setDataValues($dataObject, array $data, $interfaceName)
+    protected function _set_data_values($data_object, array $data, $interface_name)
     {
         if (empty($data)) {
             return $this;
         }
-        $setMethods = $this->getSetters($dataObject);
-        $data = $this->setCustomAttributes(
-            $dataObject,
-            $data,
-            [
-                CustomAttributesDataInterface::CUSTOM_ATTRIBUTES,
-                CustomAttributesDataInterface::CUSTOM_ATTRIBUTES . 'V2',
-            ]
-        );
-        if ($dataObject instanceof \Magento\Framework\Model\AbstractModel) {
-            $simpleData = array_filter($data, static function ($e) {
+        $set_methods = $this->get_setters($data_object);
+        $data = $this->set_custom_attributes($data_object, $data, [Custom_Attributes_Data_Interface::CUSTOM_ATTRIBUTES, Custom_Attributes_Data_Interface::CUSTOM_ATTRIBUTES . 'V2']);
+        if ($data_object instanceof \Magento\Framework\Model\Abstract_Model) {
+            $simple_data = array_filter($data, static function ($e) {
                 return is_scalar($e) || is_null($e);
             });
-            if (isset($simpleData['id'])) {
-                $dataObject->setId($simpleData['id']);
-                unset($simpleData['id']);
+            if (isset($simple_data['id'])) {
+                $data_object->set_id($simple_data['id']);
+                unset($simple_data['id']);
             }
-            $simpleData = array_intersect_key($simpleData, $setMethods);
-            $dataObject->addData($simpleData);
-            $data = array_diff_key($data, $simpleData);
+            $simple_data = array_intersect_key($simple_data, $set_methods);
+            $data_object->add_data($simple_data);
+            $data = array_diff_key($data, $simple_data);
             if (\count($data) === 0) {
                 return $this;
             }
         }
-        foreach (array_intersect_key($data, $setMethods) as $key => $value) {
-            $methodName = SimpleDataObjectConverter::snakeCaseToUpperCamelCase($key);
-
+        foreach (array_intersect_key($data, $set_methods) as $key => $value) {
+            $method_name = Simple_Data_Object_Converter::snake_case_to_upper_camel_case($key);
             if (!is_array($value)) {
-                if ($methodName !== 'ExtensionAttributes' || $value !== null) {
-                    if (method_exists($dataObject, 'set' . $methodName)) {
-                        $dataObject->{'set' . $methodName}($value);
+                if ($method_name !== 'ExtensionAttributes' || $value !== null) {
+                    if (method_exists($data_object, 'set' . $method_name)) {
+                        $data_object->{'set' . $method_name}($value);
                     } else {
-                        $dataObject->{'setIs' . $methodName}($value);
+                        $data_object->{'setIs' . $method_name}($value);
                     }
                 }
             } else {
-                $getterMethodName = 'get' . $methodName;
-                $this->setComplexValue($dataObject, $getterMethodName, 'set' . $methodName, $value, $interfaceName);
+                $getter_method_name = 'get' . $method_name;
+                $this->set_complex_value($data_object, $getter_method_name, 'set' . $method_name, $value, $interface_name);
             }
             unset($data[$key]);
         }
-
-        if ($dataObject instanceof CustomAttributesDataInterface) {
+        if ($data_object instanceof Custom_Attributes_Data_Interface) {
             foreach ($data as $key => $value) {
-                $dataObject->setCustomAttribute($key, $value);
+                $data_object->set_custom_attribute($key, $value);
             }
         }
         return $this;
     }
-
     /**
      * Set complex (like object) value using $methodName based on return type of $getterMethodName
      *
@@ -164,79 +138,54 @@ class DataObjectHelper
      * @return $this
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    protected function setComplexValue(
-        $dataObject,
-        $getterMethodName,
-        $methodName,
-        array $value,
-        $interfaceName
-    ) {
-        if ($interfaceName == null) {
-            $interfaceName = get_class($dataObject);
+    protected function set_complex_value($data_object, $getter_method_name, $method_name, array $value, $interface_name)
+    {
+        if ($interface_name == null) {
+            $interface_name = get_class($data_object);
         }
-        $returnType = $this->methodsMapProcessor->getMethodReturnType($interfaceName, $getterMethodName);
-        if ($this->typeProcessor->isTypeSimple($returnType)) {
-            $dataObject->$methodName($value);
+        $return_type = $this->methods_map_processor->get_method_return_type($interface_name, $getter_method_name);
+        if ($this->type_processor->is_type_simple($return_type)) {
+            $data_object->{$method_name}($value);
             return $this;
         }
-
-        if ($this->typeProcessor->isArrayType($returnType)) {
-            $type = $this->typeProcessor->getArrayItemType($returnType);
+        if ($this->type_processor->is_array_type($return_type)) {
+            $type = $this->type_processor->get_array_item_type($return_type);
             $objects = [];
-            foreach ($value as $arrayElementData) {
-                $object = $this->objectFactory->create($type, []);
-                $this->populateWithArray($object, $arrayElementData, $type);
+            foreach ($value as $array_element_data) {
+                $object = $this->object_factory->create($type, []);
+                $this->populate_with_array($object, $array_element_data, $type);
                 $objects[] = $object;
             }
-            $dataObject->$methodName($objects);
+            $data_object->{$method_name}($objects);
             return $this;
         }
-
-        if (is_subclass_of($returnType, \Magento\Framework\Api\ExtensibleDataInterface::class)) {
-            $object = $this->objectFactory->create($returnType, []);
-            $this->populateWithArray($object, $value, $returnType);
-        } elseif (is_subclass_of($returnType, \Magento\Framework\Api\ExtensionAttributesInterface::class)) {
-            foreach ($value as $extensionAttributeKey => $extensionAttributeValue) {
-                $extensionAttributeGetterMethodName
-                    = 'get' . SimpleDataObjectConverter::snakeCaseToUpperCamelCase(
-                        $extensionAttributeKey
-                    );
-                $methodReturnType = $this->methodsMapProcessor->getMethodReturnType(
-                    $returnType,
-                    $extensionAttributeGetterMethodName
-                );
-                $extensionAttributeType = $this->typeProcessor->isArrayType($methodReturnType)
-                    ? $this->typeProcessor->getArrayItemType($methodReturnType)
-                    : $methodReturnType;
-                if ($this->typeProcessor->isTypeSimple($extensionAttributeType)) {
-                    $value[$extensionAttributeKey] = $extensionAttributeValue;
-                } else {
-                    if ($this->typeProcessor->isArrayType($methodReturnType)) {
-                        foreach ($extensionAttributeValue as $key => $extensionAttributeArrayValue) {
-                            $extensionAttribute = $this->objectFactory->create($extensionAttributeType, []);
-                            $this->populateWithArray(
-                                $extensionAttribute,
-                                $extensionAttributeArrayValue,
-                                $extensionAttributeType
-                            );
-                            $value[$extensionAttributeKey][$key] = $extensionAttribute;
-                        }
-                    } else {
-                        $value[$extensionAttributeKey] = $this->objectFactory->create(
-                            $extensionAttributeType,
-                            ['data' => $extensionAttributeValue]
-                        );
+        if (is_subclass_of($return_type, \Magento\Framework\Api\Extensible_Data_Interface::class)) {
+            $object = $this->object_factory->create($return_type, []);
+            $this->populate_with_array($object, $value, $return_type);
+        } elseif (is_subclass_of($return_type, \Magento\Framework\Api\Extension_Attributes_Interface::class)) {
+            foreach ($value as $extension_attribute_key => $extension_attribute_value) {
+                $extension_attribute_getter_method_name = 'get' . Simple_Data_Object_Converter::snake_case_to_upper_camel_case($extension_attribute_key);
+                $method_return_type = $this->methods_map_processor->get_method_return_type($return_type, $extension_attribute_getter_method_name);
+                $extension_attribute_type = $this->type_processor->is_array_type($method_return_type) ? $this->type_processor->get_array_item_type($method_return_type) : $method_return_type;
+                if ($this->type_processor->is_type_simple($extension_attribute_type)) {
+                    $value[$extension_attribute_key] = $extension_attribute_value;
+                } else if ($this->type_processor->is_array_type($method_return_type)) {
+                    foreach ($extension_attribute_value as $key => $extension_attribute_array_value) {
+                        $extension_attribute = $this->object_factory->create($extension_attribute_type, []);
+                        $this->populate_with_array($extension_attribute, $extension_attribute_array_value, $extension_attribute_type);
+                        $value[$extension_attribute_key][$key] = $extension_attribute;
                     }
+                } else {
+                    $value[$extension_attribute_key] = $this->object_factory->create($extension_attribute_type, ['data' => $extension_attribute_value]);
                 }
             }
-            $object = $this->extensionFactory->create(get_class($dataObject), ['data' => $value]);
+            $object = $this->extension_factory->create(get_class($data_object), ['data' => $value]);
         } else {
-            $object = $this->objectFactory->create($returnType, $value);
+            $object = $this->object_factory->create($return_type, $value);
         }
-        $dataObject->$methodName($object);
+        $data_object->{$method_name}($object);
         return $this;
     }
-
     /**
      * Merges second object onto the first
      *
@@ -246,19 +195,15 @@ class DataObjectHelper
      * @return $this
      * @throws \LogicException
      */
-    public function mergeDataObjects(
-        $interfaceName,
-        $firstDataObject,
-        $secondDataObject
-    ) {
-        if (!$firstDataObject instanceof $interfaceName || !$secondDataObject instanceof $interfaceName) {
-            throw new \LogicException('Wrong prototype object given. It can only be of "' . $interfaceName . '" type.');
+    public function merge_data_objects($interface_name, $first_data_object, $second_data_object)
+    {
+        if (!$first_data_object instanceof $interface_name || !$second_data_object instanceof $interface_name) {
+            throw new \LogicException('Wrong prototype object given. It can only be of "' . $interface_name . '" type.');
         }
-        $secondObjectArray = $this->objectProcessor->buildOutputDataArray($secondDataObject, $interfaceName);
-        $this->_setDataValues($firstDataObject, $secondObjectArray, $interfaceName);
+        $second_object_array = $this->object_processor->build_output_data_array($second_data_object, $interface_name);
+        $this->_set_data_values($first_data_object, $second_object_array, $interface_name);
         return $this;
     }
-
     /**
      * Filter attribute value objects for a provided data interface type from an array of custom attribute value objects
      *
@@ -266,56 +211,44 @@ class DataObjectHelper
      * @param string $type Data interface type
      * @return AttributeValue[]
      */
-    public function getCustomAttributeValueByType(array $attributeValues, $type)
+    public function get_custom_attribute_value_by_type(array $attribute_values, $type)
     {
-        $attributeValueArray = [];
-        if (empty($attributeValues)) {
-            return $attributeValueArray;
+        $attribute_value_array = [];
+        if (empty($attribute_values)) {
+            return $attribute_value_array;
         }
-        foreach ($attributeValues as $attributeValue) {
-            if ($attributeValue->getValue() instanceof $type) {
-                $attributeValueArray[] = $attributeValue;
+        foreach ($attribute_values as $attribute_value) {
+            if ($attribute_value->get_value() instanceof $type) {
+                $attribute_value_array[] = $attribute_value;
             }
         }
-        return $attributeValueArray;
+        return $attribute_value_array;
     }
-
     /** @var array  */
-    private array $settersCache = [];
-
+    private array $setters_cache = [];
     /**
      * Get list of setters for object
      *
      * @param object $dataObject
      * @return array
      */
-    private function getSetters(object $dataObject): array
+    private function get_setters(object $data_object): array
     {
-        $class = get_class($dataObject);
-        if (!isset($this->settersCache[$class])) {
-            $dataObjectMethods = get_class_methods($class);
+        $class = get_class($data_object);
+        if (!isset($this->setters_cache[$class])) {
+            $data_object_methods = get_class_methods($class);
             // use regexp to manipulate with method list as it use jit starting with PHP 7.3
-            $setters = array_filter(
-                explode(
-                    ',',
-                    strtolower(
-                        // (0) remove all not setter
-                        // (1) add _ before upper letter
-                        // (2) remove set_ in start of name
-                        // (3) add name without is_ prefix
-                        preg_replace(
-                            ['/(^|,)(?!set)[^,]*/S','/([A-Z])/S', '/(^|,)set_/iS', '/(^|,)is_([^,]+)/is'],
-                            ['', '_$1', '$1', '$1$2,is_$2'],
-                            implode(',', $dataObjectMethods)
-                        )
-                    )
-                )
-            );
-            $this->settersCache[$class] = array_flip($setters);
+            $setters = array_filter(explode(',', strtolower(
+                // (0) remove all not setter
+                // (1) add _ before upper letter
+                // (2) remove set_ in start of name
+                // (3) add name without is_ prefix
+                preg_replace(['/(^|,)(?!set)[^,]*/S', '/([A-Z])/S', '/(^|,)set_/iS', '/(^|,)is_([^,]+)/is'], ['', '_$1', '$1', '$1$2,is_$2'], implode(',', $data_object_methods))
+            )));
+            $this->setters_cache[$class] = array_flip($setters);
         }
-        return $this->settersCache[$class];
+        return $this->setters_cache[$class];
     }
-
     /**
      * Set custom attributes using the $attributeKeys parameter.
      *
@@ -324,19 +257,14 @@ class DataObjectHelper
      * @param array $attributeKeys
      * @return array
      */
-    public function setCustomAttributes(mixed $dataObject, array $data, array $attributeKeys): array
+    public function set_custom_attributes(mixed $data_object, array $data, array $attribute_keys): array
     {
-        foreach ($attributeKeys as $attributeKey) {
-            if ($dataObject instanceof ExtensibleDataInterface
-                && !empty($data[$attributeKey])
-            ) {
-                foreach ($data[$attributeKey] as $customAttribute) {
-                    $dataObject->setCustomAttribute(
-                        $customAttribute[AttributeInterface::ATTRIBUTE_CODE],
-                        $customAttribute[AttributeInterface::VALUE]
-                    );
+        foreach ($attribute_keys as $attribute_key) {
+            if ($data_object instanceof Extensible_Data_Interface && !empty($data[$attribute_key])) {
+                foreach ($data[$attribute_key] as $custom_attribute) {
+                    $data_object->set_custom_attribute($custom_attribute[Attribute_Interface::ATTRIBUTE_CODE], $custom_attribute[Attribute_Interface::VALUE]);
                 }
-                unset($data[$attributeKey]);
+                unset($data[$attribute_key]);
             }
         }
         return $data;

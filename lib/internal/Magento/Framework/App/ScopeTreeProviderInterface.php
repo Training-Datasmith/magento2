@@ -4,8 +4,7 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\App;
  *
  * @api
  */
-interface ScopeTreeProviderInterface
+interface Scope_Tree_Provider_Interface
 {
     /**
      * Return tree of scopes like:

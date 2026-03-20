@@ -4,39 +4,34 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Bundle\Ui\DataProvider\Product\Modifier;
+declare (strict_types=1);
+namespace Magento\Bundle\Ui\Data_Provider\Product\Modifier;
 
 use Magento\Bundle\Model\Product\Type;
-use Magento\Catalog\Api\Data\ProductInterface;
+use Magento\Catalog\Api\Data\Product_Interface;
 use Magento\Directory\Model\Currency as DirectoryCurrency;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Locale\ResolverInterface;
-use Magento\Framework\NumberFormatterFactory;
-use Magento\Ui\DataProvider\Modifier\ModifierInterface;
-use NumberFormatter;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Locale\Resolver_Interface;
+use Magento\Framework\Number_Formatter_Factory;
+use Magento\Ui\Data_Provider\Modifier\Modifier_Interface;
+use Number_Formatter;
 /**
  * Modify product listing special price attributes
  */
-class SpecialPriceAttributes implements ModifierInterface
+class Special_Price_Attributes implements Modifier_Interface
 {
     /**
      * @var ResolverInterface
      */
-    private $localeResolver;
-
+    private $locale_resolver;
     /**
      * @var array
      */
-    private $priceAttributeList;
-
+    private $price_attribute_list;
     /**
      * @var NumberFormatterFactory
      */
-    private $numberFormatterFactory;
-
+    private $number_formatter_factory;
     /**
      * PriceAttributes constructor.
      *
@@ -46,45 +41,35 @@ class SpecialPriceAttributes implements ModifierInterface
      * @param NumberFormatterFactory|null $numberFormatterFactory
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function __construct(
-        DirectoryCurrency $directoryCurrency,
-        ResolverInterface $localeResolver,
-        array $priceAttributeList = [],
-        ?NumberFormatterFactory $numberFormatterFactory = null
-    ) {
-        $this->localeResolver = $localeResolver;
-        $this->priceAttributeList = $priceAttributeList;
-        $this->numberFormatterFactory = $numberFormatterFactory
-            ?? ObjectManager::getInstance()->get(NumberFormatterFactory::class);
+    public function __construct(Directory_Currency $directory_currency, Resolver_Interface $locale_resolver, array $price_attribute_list = [], ?Number_Formatter_Factory $number_formatter_factory = null)
+    {
+        $this->locale_resolver = $locale_resolver;
+        $this->price_attribute_list = $price_attribute_list;
+        $this->number_formatter_factory = $number_formatter_factory ?? Object_Manager::get_instance()->get(Number_Formatter_Factory::class);
     }
-
     /**
      * @inheritdoc
      */
-    public function modifyData(array $data): array
+    public function modify_data(array $data): array
     {
-        if (empty($data) || empty($this->priceAttributeList)) {
+        if (empty($data) || empty($this->price_attribute_list)) {
             return $data;
         }
-        $numberFormatter = $this->numberFormatterFactory->create([
-            'locale' => $this->localeResolver->getLocale(),
-            'style' => NumberFormatter::PERCENT,
-        ]);
-        $numberFormatter->setAttribute(NumberFormatter::MIN_FRACTION_DIGITS, 6);
+        $number_formatter = $this->number_formatter_factory->create(['locale' => $this->locale_resolver->get_locale(), 'style' => Number_Formatter::PERCENT]);
+        $number_formatter->set_attribute(Number_Formatter::MIN_FRACTION_DIGITS, 6);
         foreach ($data['items'] as &$item) {
-            foreach ($this->priceAttributeList as $priceAttribute) {
-                if (isset($item[$priceAttribute]) && $item[ProductInterface::TYPE_ID] === Type::TYPE_CODE) {
-                    $item[$priceAttribute] = $numberFormatter->format((float) $item[$priceAttribute] / 100);
+            foreach ($this->price_attribute_list as $price_attribute) {
+                if (isset($item[$price_attribute]) && $item[Product_Interface::TYPE_ID] === Type::TYPE_CODE) {
+                    $item[$price_attribute] = $number_formatter->format((float) $item[$price_attribute] / 100);
                 }
             }
         }
         return $data;
     }
-
     /**
      * @inheritdoc
      */
-    public function modifyMeta(array $meta): array
+    public function modify_meta(array $meta): array
     {
         return $meta;
     }

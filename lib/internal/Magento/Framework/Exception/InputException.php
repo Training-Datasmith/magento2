@@ -1,53 +1,45 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Exception;
 
 use Magento\Framework\Phrase;
-
 /**
  * Exception to be thrown when there is an issue with the Input to a function call.
  *
  * @api
  * @since 100.0.2
  */
-class InputException extends AbstractAggregateException
+class Input_Exception extends Abstract_Aggregate_Exception
 {
     /**
      * @deprecated
      */
     public const DEFAULT_MESSAGE = 'One or more input exceptions have occurred.';
-
     /**
      * @deprecated
      */
     public const INVALID_FIELD_RANGE = 'The %fieldName value of "%value" must be between %minValue and %maxValue';
-
     /**
      * @deprecated
      */
     public const INVALID_FIELD_MIN_VALUE = 'The %fieldName value of "%value" must be greater than or equal to %minValue.';
-
     /**
      * @deprecated
      */
     public const INVALID_FIELD_MAX_VALUE = 'The %fieldName value of "%value" must be less than or equal to %maxValue.';
-
     /**
      * @deprecated
      */
     public const INVALID_FIELD_VALUE = 'Invalid value of "%value" provided for the %fieldName field.';
-
     /**
      * @deprecated
      */
     public const REQUIRED_FIELD = '"%fieldName" is required. Enter and try again.';
-
     /**
      * Initialize the input exception.
      *
@@ -62,7 +54,6 @@ class InputException extends AbstractAggregateException
         }
         parent::__construct($phrase, $cause, $code);
     }
-
     /**
      * Creates an InputException for when a specific field was provided with an invalid value.
      *
@@ -71,27 +62,18 @@ class InputException extends AbstractAggregateException
      * @param \Exception $cause   Cause of the InputException
      * @return \Magento\Framework\Exception\InputException
      */
-    public static function invalidFieldValue($fieldName, $fieldValue, ?\Exception $cause = null)
+    public static function invalid_field_value($field_name, $field_value, ?\Exception $cause = null)
     {
-        return new self(
-            new Phrase(
-                'Invalid value of "%value" provided for the %fieldName field.',
-                ['fieldName' => $fieldName, 'value' => $fieldValue]
-            ),
-            $cause
-        );
+        return new self(new Phrase('Invalid value of "%value" provided for the %fieldName field.', ['fieldName' => $field_name, 'value' => $field_value]), $cause);
     }
-
     /**
      * Creates an InputException for a missing required field.
      *
      * @param string $fieldName Name of the missing required field.
      * @return \Magento\Framework\Exception\InputException
      */
-    public static function requiredField($fieldName)
+    public static function required_field($field_name)
     {
-        return new self(
-            new Phrase('"%fieldName" is required. Enter and try again.', ['fieldName' => $fieldName])
-        );
+        return new self(new Phrase('"%fieldName" is required. Enter and try again.', ['fieldName' => $field_name]));
     }
 }

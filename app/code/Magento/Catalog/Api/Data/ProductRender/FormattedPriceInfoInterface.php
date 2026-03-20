@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Catalog\Api\Data\ProductRender;
+namespace Magento\Catalog\Api\Data\Product_Render;
 
 /**
  * Formatted Price interface.
@@ -19,7 +18,7 @@ namespace Magento\Catalog\Api\Data\ProductRender;
  * @api
  * @since 102.0.0
  */
-interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleDataInterface
+interface Formatted_Price_Info_Interface extends \Magento\Framework\Api\Extensible_Data_Interface
 {
     /**
      * Retrieve html with final price
@@ -27,8 +26,7 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return string
      * @since 102.0.0
      */
-    public function getFinalPrice();
-
+    public function get_final_price();
     /**
      * Set the final price: usually it calculated as minimal price of the product
      *
@@ -38,8 +36,7 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return void
      * @since 102.0.0
      */
-    public function setFinalPrice($finalPrice);
-
+    public function set_final_price($final_price);
     /**
      * Retrieve max price of a product
      *
@@ -48,8 +45,7 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return string
      * @since 102.0.0
      */
-    public function getMaxPrice();
-
+    public function get_max_price();
     /**
      * Set the max price of the product
      *
@@ -57,8 +53,7 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return void
      * @since 102.0.0
      */
-    public function setMaxPrice($maxPrice);
-
+    public function set_max_price($max_price);
     /**
      * Retrieve the minimal price of the product or variation
      *
@@ -67,8 +62,7 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return string
      * @since 102.0.0
      */
-    public function getMinimalPrice();
-
+    public function get_minimal_price();
     /**
      * Set max regular price
      * Max regular price is the same, as maximum price, except of excluding calculating special price and catalog rules
@@ -78,16 +72,14 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return void
      * @since 102.0.0
      */
-    public function setMaxRegularPrice($maxRegularPrice);
-
+    public function set_max_regular_price($max_regular_price);
     /**
      * Retrieve max regular price
      *
      * @return string
      * @since 102.0.0
      */
-    public function getMaxRegularPrice();
-
+    public function get_max_regular_price();
     /**
      * The minimal regular price has the same behavior of calculation as max regular price, but is opposite price
      *
@@ -95,16 +87,14 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return void
      * @since 102.0.0
      */
-    public function setMinimalRegularPrice($minRegularPrice);
-
+    public function set_minimal_regular_price($min_regular_price);
     /**
      * Retrieve minimal regular price
      *
      * @return string
      * @since 102.0.0
      */
-    public function getMinimalRegularPrice();
-
+    public function get_minimal_regular_price();
     /**
      * Set special price
      *
@@ -114,16 +104,14 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return void
      * @since 102.0.0
      */
-    public function setSpecialPrice($specialPrice);
-
+    public function set_special_price($special_price);
     /**
      * Retrieve special price
      *
      * @return string
      * @since 102.0.0
      */
-    public function getSpecialPrice();
-
+    public function get_special_price();
     /**
      * Set minimal price
      *
@@ -131,8 +119,7 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return void
      * @since 102.0.0
      */
-    public function setMinimalPrice($minimalPrice);
-
+    public function set_minimal_price($minimal_price);
     /**
      * Regular price - is price of product without discounts and special price with taxes and fixed product tax
      *
@@ -141,8 +128,7 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return string
      * @since 102.0.0
      */
-    public function getRegularPrice();
-
+    public function get_regular_price();
     /**
      * Set regular price
      *
@@ -150,16 +136,14 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return void
      * @since 102.0.0
      */
-    public function setRegularPrice($regularPrice);
-
+    public function set_regular_price($regular_price);
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
      * @return \Magento\Catalog\Api\Data\ProductRender\FormattedPriceInfoExtensionInterface|null
      * @since 102.0.0
      */
-    public function getExtensionAttributes();
-
+    public function get_extension_attributes();
     /**
      * Set an extension attributes object.
      *
@@ -167,7 +151,5 @@ interface FormattedPriceInfoInterface extends \Magento\Framework\Api\ExtensibleD
      * @return $this
      * @since 102.0.0
      */
-    public function setExtensionAttributes(
-        \Magento\Catalog\Api\Data\ProductRender\FormattedPriceInfoExtensionInterface $extensionAttributes
-    );
+    public function set_extension_attributes(\Magento\Catalog\Api\Data\Product_Render\Formatted_Price_Info_Extension_Interface $extension_attributes);
 }

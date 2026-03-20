@@ -1,26 +1,23 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
-use Magento\Framework\App\Config\Spi\PostProcessorInterface;
-
+use Magento\Framework\App\Config\Spi\Post_Processor_Interface;
 /**
  * @inheritdoc
  * @package Magento\Framework\App\Config
  */
-class PostProcessorComposite implements PostProcessorInterface
+class Post_Processor_Composite implements Post_Processor_Interface
 {
     /**
      * @var \Magento\Framework\App\Config\Spi\PostProcessorInterface[]
      */
     private $processors;
-
     /**
      * @param array $processors
      */
@@ -28,7 +25,6 @@ class PostProcessorComposite implements PostProcessorInterface
     {
         $this->processors = $processors;
     }
-
     /**
      * @param array $config
      * @return array
@@ -38,7 +34,6 @@ class PostProcessorComposite implements PostProcessorInterface
         foreach ($this->processors as $processor) {
             $config = $processor->process($config);
         }
-
         return $config;
     }
 }

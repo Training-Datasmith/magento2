@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\App\Config;
  * @api
  * @since 100.0.2
  */
-interface DataInterface
+interface Data_Interface
 {
     /**
      * Retrieve configuration value by path
@@ -22,8 +21,7 @@ interface DataInterface
      * @param string|null $path
      * @return mixed
      */
-    public function getValue($path);
-
+    public function get_value($path);
     /**
      * Set configuration value by path
      *
@@ -31,5 +29,5 @@ interface DataInterface
      * @param mixed $value
      * @return void
      */
-    public function setValue($path, $value);
+    public function set_value($path, $value);
 }

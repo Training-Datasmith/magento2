@@ -1,106 +1,94 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api\Data;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface ProductCustomOptionValuesInterface
+interface Product_Custom_Option_Values_Interface
 {
     /**
      * Get option title
      *
      * @return string
      */
-    public function getTitle();
-
+    public function get_title();
     /**
      * Set option title
      *
      * @param string $title
      * @return $this
      */
-    public function setTitle($title);
-
+    public function set_title($title);
     /**
      * Get sort order
      *
      * @return int
      */
-    public function getSortOrder();
-
+    public function get_sort_order();
     /**
      * Set sort order
      *
      * @param int $sortOrder
      * @return $this
      */
-    public function setSortOrder($sortOrder);
-
+    public function set_sort_order($sort_order);
     /**
      * Get price
      *
      * @return float
      */
-    public function getPrice();
-
+    public function get_price();
     /**
      * Set price
      *
      * @param float $price
      * @return $this
      */
-    public function setPrice($price);
-
+    public function set_price($price);
     /**
      * Get price type
      *
      * @return string
      */
-    public function getPriceType();
-
+    public function get_price_type();
     /**
      * Set price type
      *
      * @param string $priceType
      * @return $this
      */
-    public function setPriceType($priceType);
-
+    public function set_price_type($price_type);
     /**
      * Get Sku
      *
      * @return string|null
      */
-    public function getSku();
-
+    public function get_sku();
     /**
      * Set Sku
      *
      * @param string $sku
      * @return $this
      */
-    public function setSku($sku);
-
+    public function set_sku($sku);
     /**
      * Get Option type id
      *
      * @return int|null
      */
-    public function getOptionTypeId();
-
+    public function get_option_type_id();
     /**
      * Set Option type id
      *
      * @param int $optionTypeId
      * @return int|null
      */
-    public function setOptionTypeId($optionTypeId);
+    public function set_option_type_id($option_type_id);
 }

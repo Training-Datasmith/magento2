@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 use Magento\Backend\Block\Widget\Grid\Column;
-
 /**
  * Backend grid item renderer interface
  *
@@ -17,7 +15,7 @@ use Magento\Backend\Block\Widget\Grid\Column;
  * @deprecated 100.2.0 in favour of UI component implementation
  * @since 100.0.2
  */
-interface RendererInterface
+interface Renderer_Interface
 {
     /**
      * Set column for renderer
@@ -26,21 +24,19 @@ interface RendererInterface
      * @return void
      * @abstract
      */
-    public function setColumn($column);
-
+    public function set_column($column);
     /**
      * Returns row associated with the renderer
      *
      * @abstract
      * @return void
      */
-    public function getColumn();
-
+    public function get_column();
     /**
      * Renders grid column
      *
      * @param \Magento\Framework\DataObject $row
      * @return string
      */
-    public function render(\Magento\Framework\DataObject $row);
+    public function render(\Magento\Framework\Data_Object $row);
 }

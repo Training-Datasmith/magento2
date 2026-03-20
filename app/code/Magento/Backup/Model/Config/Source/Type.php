@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backup\Model\Config\Source;
 
 /**
@@ -14,30 +13,28 @@ namespace Magento\Backup\Model\Config\Source;
  * @api
  * @since 100.0.2
  */
-class Type implements \Magento\Framework\Option\ArrayInterface
+class Type implements \Magento\Framework\Option\Array_Interface
 {
     /**
      * @var \Magento\Backup\Helper\Data
      */
-    protected $_backupData = null;
-
+    protected $_backup_data = null;
     /**
      * @param \Magento\Backup\Helper\Data $backupData
      */
-    public function __construct(\Magento\Backup\Helper\Data $backupData)
+    public function __construct(\Magento\Backup\Helper\Data $backup_data)
     {
-        $this->_backupData = $backupData;
+        $this->_backup_data = $backup_data;
     }
-
     /**
      * @inheritDoc
      */
-    public function toOptionArray()
+    public function to_option_array()
     {
-        $backupTypes = [];
-        foreach ($this->_backupData->getBackupTypes() as $type => $label) {
-            $backupTypes[] = ['label' => $label, 'value' => $type];
+        $backup_types = [];
+        foreach ($this->_backup_data->get_backup_types() as $type => $label) {
+            $backup_types[] = ['label' => $label, 'value' => $type];
         }
-        return $backupTypes;
+        return $backup_types;
     }
 }

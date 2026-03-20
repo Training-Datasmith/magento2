@@ -1,22 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Amqp\Topology;
 
-use Magento\Framework\MessageQueue\Topology\Config\QueueConfigItemInterface;
-
+use Magento\Framework\Message_Queue\Topology\Config\Queue_Config_Item_Interface;
 /**
  * Queue installer.
  */
-class QueueInstaller
+class Queue_Installer
 {
-    use ArgumentProcessor;
-
+    use Argument_Processor;
     /**
      * Install queue.
      *
@@ -24,16 +21,8 @@ class QueueInstaller
      * @param QueueConfigItemInterface $queue
      * @return void
      */
-    public function install(\PhpAmqpLib\Channel\AMQPChannel $channel, QueueConfigItemInterface $queue)
+    public function install(\Php_Amqp_Lib\Channel\Amqp_Channel $channel, Queue_Config_Item_Interface $queue)
     {
-        $channel->queue_declare(
-            $queue->getName(),
-            false,
-            $queue->isDurable(),
-            false,
-            $queue->isAutoDelete(),
-            false,
-            $this->processArguments($queue->getArguments())
-        );
+        $channel->queue_declare($queue->get_name(), false, $queue->is_durable(), false, $queue->is_auto_delete(), false, $this->process_arguments($queue->get_arguments()));
     }
 }

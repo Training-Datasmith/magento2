@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Massaction;
 
 /**
@@ -21,29 +20,26 @@ class Item extends \Magento\Backend\Block\Widget
      * @var Extended
      */
     protected $_massaction = null;
-
     /**
      * Set parent massaction block
      *
      * @param  Extended $massaction
      * @return $this
      */
-    public function setMassaction($massaction)
+    public function set_massaction($massaction)
     {
         $this->_massaction = $massaction;
         return $this;
     }
-
     /**
      * Retrieve parent massaction block
      *
      * @return Extended
      */
-    public function getMassaction()
+    public function get_massaction()
     {
         return $this->_massaction;
     }
-
     /**
      * Set additional action block for this item
      *
@@ -51,55 +47,50 @@ class Item extends \Magento\Backend\Block\Widget
      * @return $this
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function setAdditionalActionBlock($block)
+    public function set_additional_action_block($block)
     {
         if (is_string($block)) {
-            $block = $this->getLayout()->createBlock($block);
+            $block = $this->get_layout()->create_block($block);
         } elseif (is_array($block)) {
-            $block = $this->_createFromConfig($block);
-        } elseif (!$block instanceof \Magento\Framework\View\Element\AbstractBlock) {
-            throw new \Magento\Framework\Exception\LocalizedException(__('Unknown block type'));
+            $block = $this->_create_from_config($block);
+        } elseif (!$block instanceof \Magento\Framework\View\Element\Abstract_Block) {
+            throw new \Magento\Framework\Exception\Localized_Exception(__('Unknown block type'));
         }
-
-        $this->setChild('additional_action', $block);
+        $this->set_child('additional_action', $block);
         return $this;
     }
-
     /**
      * @param array $config
      * @return \Magento\Framework\View\Element\BlockInterface
      */
-    protected function _createFromConfig(array $config)
+    protected function _create_from_config(array $config)
     {
         $type = isset($config['type']) ? $config['type'] : 'default';
         switch ($type) {
             default:
-                $blockClass = \Magento\Backend\Block\Widget\Grid\Massaction\Item\Additional\DefaultAdditional::class;
+                $block_class = \Magento\Backend\Block\Widget\Grid\Massaction\Item\Additional\Default_Additional::class;
                 break;
         }
-
-        $block = $this->getLayout()->createBlock($blockClass);
-        $block->createFromConfiguration(isset($config['type']) ? $config['config'] : $config);
+        $block = $this->get_layout()->create_block($block_class);
+        $block->create_from_configuration(isset($config['type']) ? $config['config'] : $config);
         return $block;
     }
-
     /**
      * Retrieve additional action block for this item
      *
      * @return \Magento\Framework\View\Element\AbstractBlock
      */
-    public function getAdditionalActionBlock()
+    public function get_additional_action_block()
     {
-        return $this->getChildBlock('additional_action');
+        return $this->get_child_block('additional_action');
     }
-
     /**
      * Retrieve additional action block HTML for this item
      *
      * @return string
      */
-    public function getAdditionalActionBlockHtml()
+    public function get_additional_action_block_html()
     {
-        return $this->getChildHtml('additional_action');
+        return $this->get_child_html('additional_action');
     }
 }

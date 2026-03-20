@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Massaction\Item\Additional;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Backend\Block\Widget\Grid\Massaction\Item\Additional;
  *
  * @api
  */
-interface AdditionalInterface
+interface Additional_Interface
 {
     /**
      * Create additional action from configuration
@@ -21,5 +20,5 @@ interface AdditionalInterface
      * @param array $configuration
      * @return $this
      */
-    public function createFromConfiguration(array $configuration);
+    public function create_from_configuration(array $configuration);
 }

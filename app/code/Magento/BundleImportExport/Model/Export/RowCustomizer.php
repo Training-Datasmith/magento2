@@ -1,168 +1,122 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\BundleImportExport\Model\Export;
+namespace Magento\Bundle_Import_Export\Model\Export;
 
 use Magento\Bundle\Model\Option;
-use Magento\Bundle\Model\ResourceModel\Selection\Collection as SelectionCollection;
+use Magento\Bundle\Model\Resource_Model\Selection\Collection as SelectionCollection;
 use Magento\Bundle\Model\Selection;
 use Magento\Catalog\Helper\Data as CatalogData;
 use Magento\Catalog\Model\Product;
 use Magento\Catalog\Model\Product\Type;
-use Magento\Catalog\Model\Product\Type\AbstractType;
-use Magento\Catalog\Model\ResourceModel\Product\Collection;
-use Magento\CatalogImportExport\Model\Export\RowCustomizerInterface;
-use Magento\CatalogImportExport\Model\Import\Product as ImportProductModel;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\ImportExport\Model\Import as ImportModel;
+use Magento\Catalog\Model\Product\Type\Abstract_Type;
+use Magento\Catalog\Model\Resource_Model\Product\Collection;
+use Magento\Catalog_Import_Export\Model\Export\Row_Customizer_Interface;
+use Magento\Catalog_Import_Export\Model\Import\Product as ImportProductModel;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Exception\Localized_Exception;
+use Magento\Import_Export\Model\Import as ImportModel;
 use Magento\Store\Model\Store;
-use Magento\Store\Model\StoreManagerInterface;
-
+use Magento\Store\Model\Store_Manager_Interface;
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class RowCustomizer implements RowCustomizerInterface
+class Row_Customizer implements Row_Customizer_Interface
 {
     public const BUNDLE_PRICE_TYPE_COL = 'bundle_price_type';
-
     public const BUNDLE_SKU_TYPE_COL = 'bundle_sku_type';
-
     public const BUNDLE_PRICE_VIEW_COL = 'bundle_price_view';
-
     public const BUNDLE_WEIGHT_TYPE_COL = 'bundle_weight_type';
-
     public const BUNDLE_VALUES_COL = 'bundle_values';
-
     public const VALUE_FIXED = 'fixed';
-
     public const VALUE_DYNAMIC = 'dynamic';
-
     public const VALUE_PERCENT = 'percent';
-
     public const VALUE_PRICE_RANGE = 'Price range';
-
     public const VALUE_AS_LOW_AS = 'As low as';
-
     /**
      * Mapping for bundle types
      *
      * @var array
      */
-    protected $typeMapping = [
-        '0' => self::VALUE_DYNAMIC,
-        '1' => self::VALUE_FIXED,
-    ];
-
+    protected $type_mapping = ['0' => self::VALUE_DYNAMIC, '1' => self::VALUE_FIXED];
     /**
      * Mapping for price views
      *
      * @var array
      */
-    protected $priceViewMapping = [
-        '0' => self::VALUE_PRICE_RANGE,
-        '1' => self::VALUE_AS_LOW_AS,
-    ];
-
+    protected $price_view_mapping = ['0' => self::VALUE_PRICE_RANGE, '1' => self::VALUE_AS_LOW_AS];
     /**
      * Mapping for price types
      *
      * @var array
      */
-    protected $priceTypeMapping = [
-        '0' => self::VALUE_FIXED,
-        '1' => self::VALUE_PERCENT,
-    ];
-
+    protected $price_type_mapping = ['0' => self::VALUE_FIXED, '1' => self::VALUE_PERCENT];
     /**
      * Bundle product columns
      *
      * @var array
      */
-    protected $bundleColumns = [
-        self::BUNDLE_PRICE_TYPE_COL,
-        self::BUNDLE_SKU_TYPE_COL,
-        self::BUNDLE_PRICE_VIEW_COL,
-        self::BUNDLE_WEIGHT_TYPE_COL,
-        self::BUNDLE_VALUES_COL,
-    ];
-
+    protected $bundle_columns = [self::BUNDLE_PRICE_TYPE_COL, self::BUNDLE_SKU_TYPE_COL, self::BUNDLE_PRICE_VIEW_COL, self::BUNDLE_WEIGHT_TYPE_COL, self::BUNDLE_VALUES_COL];
     /**
      * Product's bundle data
      *
      * @var array
      */
-    protected $bundleData = [];
-
+    protected $bundle_data = [];
     /**
      * Column name for shipment_type attribute
      *
      * @var string
      */
-    private $shipmentTypeColumn = 'bundle_shipment_type';
-
+    private $shipment_type_column = 'bundle_shipment_type';
     /**
      * Mapping for shipment type
      *
      * @var array
      */
-    private $shipmentTypeMapping = [
-        AbstractType::SHIPMENT_TOGETHER => 'together',
-        AbstractType::SHIPMENT_SEPARATELY => 'separately',
-    ];
-
+    private $shipment_type_mapping = [Abstract_Type::SHIPMENT_TOGETHER => 'together', Abstract_Type::SHIPMENT_SEPARATELY => 'separately'];
     /**
      * @var \Magento\Bundle\Model\ResourceModel\Option\Collection[]
      */
-    private $optionCollections = [];
-
+    private $option_collections = [];
     /**
      * @var array
      */
-    private $storeIdToCode = [];
-
+    private $store_id_to_code = [];
     /**
      * @var string
      */
-    private $optionCollectionCacheKey = '_cache_instance_options_collection';
-
+    private $option_collection_cache_key = '_cache_instance_options_collection';
     /**
      * @var StoreManagerInterface
      */
-    private $storeManager;
-
+    private $store_manager;
     /**
      * @var CatalogData
      */
-    private $catalogData;
-
+    private $catalog_data;
     /**
      * @param StoreManagerInterface $storeManager
      * @param CatalogData|null $catalogData
      */
-    public function __construct(
-        StoreManagerInterface $storeManager,
-        ?CatalogData $catalogData = null
-    ) {
-        $this->storeManager = $storeManager;
-        $this->catalogData = $catalogData ?? ObjectManager::getInstance()->get(CatalogData::class);
+    public function __construct(Store_Manager_Interface $store_manager, ?Catalog_Data $catalog_data = null)
+    {
+        $this->store_manager = $store_manager;
+        $this->catalog_data = $catalog_data ?? Object_Manager::get_instance()->get(Catalog_Data::class);
     }
-
     /**
      * Retrieve list of bundle specific columns
      *
      * @return array
      */
-    private function getBundleColumns()
+    private function get_bundle_columns()
     {
-        return array_merge($this->bundleColumns, [$this->shipmentTypeColumn]);
+        return array_merge($this->bundle_columns, [$this->shipment_type_column]);
     }
-
     /**
      * Prepare data for export
      *
@@ -170,33 +124,23 @@ class RowCustomizer implements RowCustomizerInterface
      * @param int[] $productIds
      * @return $this
      */
-    public function prepareData($collection, $productIds)
+    public function prepare_data($collection, $product_ids)
     {
-        $productCollection = clone $collection;
-        $productCollection->addAttributeToFilter(
-            'entity_id',
-            ['in' => $productIds]
-        )->addAttributeToFilter(
-            'type_id',
-            ['eq' => Type::TYPE_BUNDLE]
-        );
-
-        return $this->populateBundleData($productCollection);
+        $product_collection = clone $collection;
+        $product_collection->add_attribute_to_filter('entity_id', ['in' => $product_ids])->add_attribute_to_filter('type_id', ['eq' => Type::TYPE_BUNDLE]);
+        return $this->populate_bundle_data($product_collection);
     }
-
     /**
      * Set headers columns
      *
      * @param array $columns
      * @return array
      */
-    public function addHeaderColumns($columns)
+    public function add_header_columns($columns)
     {
-        $columns = array_merge($columns, $this->getBundleColumns());
-
+        $columns = array_merge($columns, $this->get_bundle_columns());
         return $columns;
     }
-
     /**
      * Add data for export
      *
@@ -204,15 +148,13 @@ class RowCustomizer implements RowCustomizerInterface
      * @param int $productId
      * @return array
      */
-    public function addData($dataRow, $productId)
+    public function add_data($data_row, $product_id)
     {
-        if (!empty($this->bundleData[$productId])) {
-            $dataRow = array_merge($this->cleanNotBundleAdditionalAttributes($dataRow), $this->bundleData[$productId]);
+        if (!empty($this->bundle_data[$product_id])) {
+            $data_row = array_merge($this->clean_not_bundle_additional_attributes($data_row), $this->bundle_data[$product_id]);
         }
-
-        return $dataRow;
+        return $data_row;
     }
-
     /**
      * Calculate the largest links block
      *
@@ -221,64 +163,49 @@ class RowCustomizer implements RowCustomizerInterface
      * @return array
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getAdditionalRowsCount($additionalRowsCount, $productId)
+    public function get_additional_rows_count($additional_rows_count, $product_id)
     {
-        return $additionalRowsCount;
+        return $additional_rows_count;
     }
-
     /**
      * Populate bundle product data
      *
      * @param Collection $collection
      * @return $this
      */
-    protected function populateBundleData($collection)
+    protected function populate_bundle_data($collection)
     {
         foreach ($collection as $product) {
-            $id = $product->getEntityId();
-            $this->bundleData[$id][self::BUNDLE_PRICE_TYPE_COL] = $this->getTypeValue($product->getPriceType());
-            $this->bundleData[$id][$this->shipmentTypeColumn] = $this->getShipmentTypeValue(
-                $product->getShipmentType()
-            );
-            $this->bundleData[$id][self::BUNDLE_SKU_TYPE_COL] = $this->getTypeValue($product->getSkuType());
-            $this->bundleData[$id][self::BUNDLE_PRICE_VIEW_COL] = $this->getPriceViewValue($product->getPriceView());
-            $this->bundleData[$id][self::BUNDLE_WEIGHT_TYPE_COL] = $this->getTypeValue($product->getWeightType());
-            $this->bundleData[$id][self::BUNDLE_VALUES_COL] = $this->getFormattedBundleOptionValues($product);
+            $id = $product->get_entity_id();
+            $this->bundle_data[$id][self::BUNDLE_PRICE_TYPE_COL] = $this->get_type_value($product->get_price_type());
+            $this->bundle_data[$id][$this->shipment_type_column] = $this->get_shipment_type_value($product->get_shipment_type());
+            $this->bundle_data[$id][self::BUNDLE_SKU_TYPE_COL] = $this->get_type_value($product->get_sku_type());
+            $this->bundle_data[$id][self::BUNDLE_PRICE_VIEW_COL] = $this->get_price_view_value($product->get_price_view());
+            $this->bundle_data[$id][self::BUNDLE_WEIGHT_TYPE_COL] = $this->get_type_value($product->get_weight_type());
+            $this->bundle_data[$id][self::BUNDLE_VALUES_COL] = $this->get_formatted_bundle_option_values($product);
             // cleanup memory
-            unset($this->optionCollections[$product->getSku()]);
+            unset($this->option_collections[$product->get_sku()]);
         }
         return $this;
     }
-
     /**
      * Retrieve formatted bundle options
      *
      * @param Product $product
      * @return string
      */
-    protected function getFormattedBundleOptionValues(Product $product): string
+    protected function get_formatted_bundle_option_values(Product $product): string
     {
-        $optionCollections = $this->getProductOptionCollection($product);
-        $bundleData = '';
-        $optionTitles = $this->getBundleOptionTitles($product);
-        $optionsRawSelections = $this->getBundleOptionSelections($product);
-        foreach ($optionCollections->getItems() as $option) {
-            $optionValues = $this->getFormattedOptionValues($option, $optionTitles);
-            $bundleData .= implode(
-                '',
-                array_map(
-                    fn ($selectionData) => $optionValues
-                        . ImportModel::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR
-                        . $this->serialize($selectionData)
-                        . ImportProductModel::PSEUDO_MULTI_LINE_SEPARATOR,
-                    $optionsRawSelections[$option->getOptionId()] ?? []
-                )
-            );
+        $option_collections = $this->get_product_option_collection($product);
+        $bundle_data = '';
+        $option_titles = $this->get_bundle_option_titles($product);
+        $options_raw_selections = $this->get_bundle_option_selections($product);
+        foreach ($option_collections->get_items() as $option) {
+            $option_values = $this->get_formatted_option_values($option, $option_titles);
+            $bundle_data .= implode('', array_map(fn($selection_data) => $option_values . Import_Model::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR . $this->serialize($selection_data) . Import_Product_Model::PSEUDO_MULTI_LINE_SEPARATOR, $options_raw_selections[$option->get_option_id()] ?? []));
         }
-
-        return rtrim($bundleData, ImportProductModel::PSEUDO_MULTI_LINE_SEPARATOR);
+        return rtrim($bundle_data, Import_Product_Model::PSEUDO_MULTI_LINE_SEPARATOR);
     }
-
     /**
      * Retrieve formatted bundle selections
      *
@@ -287,28 +214,16 @@ class RowCustomizer implements RowCustomizerInterface
      * @return string
      * @deprecared Not used anymore
      */
-    protected function getFormattedBundleSelections($optionValues, SelectionCollection $selections)
+    protected function get_formatted_bundle_selections($option_values, Selection_Collection $selections)
     {
-        $bundleData = '';
-        $selections->addAttributeToSort('position');
+        $bundle_data = '';
+        $selections->add_attribute_to_sort('position');
         foreach ($selections as $selection) {
-            $selectionData = [
-                'sku' => $selection->getSku(),
-                'price' => $selection->getSelectionPriceValue(),
-                'default' => $selection->getIsDefault(),
-                'default_qty' => $selection->getSelectionQty(),
-                'price_type' => $this->getPriceTypeValue($selection->getSelectionPriceType()),
-                'can_change_qty' => $selection->getSelectionCanChangeQty(),
-            ];
-            $bundleData .= $optionValues
-                . ImportModel::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR
-                . $this->serialize($selectionData)
-                . ImportProductModel::PSEUDO_MULTI_LINE_SEPARATOR;
+            $selection_data = ['sku' => $selection->get_sku(), 'price' => $selection->get_selection_price_value(), 'default' => $selection->get_is_default(), 'default_qty' => $selection->get_selection_qty(), 'price_type' => $this->get_price_type_value($selection->get_selection_price_type()), 'can_change_qty' => $selection->get_selection_can_change_qty()];
+            $bundle_data .= $option_values . Import_Model::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR . $this->serialize($selection_data) . Import_Product_Model::PSEUDO_MULTI_LINE_SEPARATOR;
         }
-
-        return $bundleData;
+        return $bundle_data;
     }
-
     /**
      * Retrieve option value of bundle product
      *
@@ -316,24 +231,11 @@ class RowCustomizer implements RowCustomizerInterface
      * @param string[] $optionTitles
      * @return string
      */
-    protected function getFormattedOptionValues(
-        Option $option,
-        array $optionTitles = []
-    ): string {
-        $data = [
-            ...[
-                'name' => $option->getTitle(),
-            ],
-            ...($optionTitles[$option->getOptionId()] ?? []),
-            ...[
-                'type' => $option->getType(),
-                'required' => $option->getRequired(),
-            ],
-        ];
-
+    protected function get_formatted_option_values(Option $option, array $option_titles = []): string
+    {
+        $data = [...['name' => $option->get_title()], ...$option_titles[$option->get_option_id()] ?? [], ...['type' => $option->get_type(), 'required' => $option->get_required()]];
         return $this->serialize($data);
     }
-
     /**
      * Format associative array to serialized string as name1=value1,name2=value2 format
      *
@@ -342,125 +244,109 @@ class RowCustomizer implements RowCustomizerInterface
      */
     private function serialize(array $data): string
     {
-        return implode(
-            ImportModel::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR,
-            array_map(
-                function ($value, $key) {
-                    return $key . ImportProductModel::PAIR_NAME_VALUE_SEPARATOR . $value;
-                },
-                $data,
-                array_keys($data)
-            )
-        );
+        return implode(Import_Model::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR, array_map(function ($value, $key) {
+            return $key . Import_Product_Model::PAIR_NAME_VALUE_SEPARATOR . $value;
+        }, $data, array_keys($data)));
     }
-
     /**
      * Retrieve bundle type value by code
      *
      * @param string $type
      * @return string
      */
-    protected function getTypeValue($type)
+    protected function get_type_value($type)
     {
-        $type = (string)$type;
-        return $this->typeMapping[$type] ?? self::VALUE_DYNAMIC;
+        $type = (string) $type;
+        return $this->type_mapping[$type] ?? self::VALUE_DYNAMIC;
     }
-
     /**
      * Retrieve bundle price view value by code
      *
      * @param string $type
      * @return string
      */
-    protected function getPriceViewValue($type)
+    protected function get_price_view_value($type)
     {
-        $type = (string)$type;
-        return $this->priceViewMapping[$type] ?? self::VALUE_PRICE_RANGE;
+        $type = (string) $type;
+        return $this->price_view_mapping[$type] ?? self::VALUE_PRICE_RANGE;
     }
-
     /**
      * Retrieve bundle price type value by code
      *
      * @param string $type
      * @return string
      */
-    protected function getPriceTypeValue($type)
+    protected function get_price_type_value($type)
     {
-        $type = (string)$type;
-        return $this->priceTypeMapping[$type] ?? null;
+        $type = (string) $type;
+        return $this->price_type_mapping[$type] ?? null;
     }
-
     /**
      * Retrieve bundle shipment type value by code
      *
      * @param string $type
      * @return string
      */
-    private function getShipmentTypeValue($type)
+    private function get_shipment_type_value($type)
     {
-        $type = (string)$type;
-        return $this->shipmentTypeMapping[$type] ?? null;
+        $type = (string) $type;
+        return $this->shipment_type_mapping[$type] ?? null;
     }
-
     /**
      * Remove bundle specified additional attributes as now they are stored in specified columns
      *
      * @param array $dataRow
      * @return array
      */
-    protected function cleanNotBundleAdditionalAttributes($dataRow)
+    protected function clean_not_bundle_additional_attributes($data_row)
     {
-        if (!empty($dataRow['additional_attributes'])) {
-            $additionalAttributes = $this->parseAdditionalAttributes($dataRow['additional_attributes']);
-            $dataRow['additional_attributes'] = $this->getNotBundleAttributes($additionalAttributes);
+        if (!empty($data_row['additional_attributes'])) {
+            $additional_attributes = $this->parse_additional_attributes($data_row['additional_attributes']);
+            $data_row['additional_attributes'] = $this->get_not_bundle_attributes($additional_attributes);
         }
-
-        return $dataRow;
+        return $data_row;
     }
-
     /**
      * Retrieve not bundle additional attributes
      *
      * @param array $additionalAttributes
      * @return string
      */
-    protected function getNotBundleAttributes($additionalAttributes)
+    protected function get_not_bundle_attributes($additional_attributes)
     {
-        $filteredAttributes = [];
-        foreach ($additionalAttributes as $code => $value) {
-            if (!in_array('bundle_' . $code, $this->getBundleColumns())) {
-                $filteredAttributes[] = $code . ImportProductModel::PAIR_NAME_VALUE_SEPARATOR . $value;
+        $filtered_attributes = [];
+        foreach ($additional_attributes as $code => $value) {
+            if (!in_array('bundle_' . $code, $this->get_bundle_columns())) {
+                $filtered_attributes[] = $code . Import_Product_Model::PAIR_NAME_VALUE_SEPARATOR . $value;
             }
         }
-        return implode(ImportModel::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR, $filteredAttributes);
+        return implode(Import_Model::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR, $filtered_attributes);
     }
-
     /**
      * Retrieves additional attributes as array code=>value.
      *
      * @param string $additionalAttributes
      * @return array
      */
-    private function parseAdditionalAttributes($additionalAttributes)
+    private function parse_additional_attributes($additional_attributes)
     {
-        $attributeNameValuePairs = explode(ImportModel::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR, $additionalAttributes);
-        $preparedAttributes = [];
+        $attribute_name_value_pairs = explode(Import_Model::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR, $additional_attributes);
+        $prepared_attributes = [];
         $code = '';
-        foreach ($attributeNameValuePairs as $attributeData) {
+        foreach ($attribute_name_value_pairs as $attribute_data) {
             //process case when attribute has ImportModel::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR inside its value
-            if (strpos($attributeData, ImportProductModel::PAIR_NAME_VALUE_SEPARATOR) === false) {
+            if (strpos($attribute_data, Import_Product_Model::PAIR_NAME_VALUE_SEPARATOR) === false) {
                 if (!$code) {
                     continue;
                 }
-                $preparedAttributes[$code] .= ImportModel::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR . $attributeData;
+                $prepared_attributes[$code] .= Import_Model::DEFAULT_GLOBAL_MULTI_VALUE_SEPARATOR . $attribute_data;
                 continue;
             }
-            list($code, $value) = explode(ImportProductModel::PAIR_NAME_VALUE_SEPARATOR, $attributeData, 2);
-            $preparedAttributes[$code] = $value;
+            list($code, $value) = explode(Import_Product_Model::PAIR_NAME_VALUE_SEPARATOR, $attribute_data, 2);
+            $prepared_attributes[$code] = $value;
         }
-        return $preparedAttributes;
+        return $prepared_attributes;
     }
-
     /**
      * Get product options titles.
      *
@@ -475,31 +361,29 @@ class RowCustomizer implements RowCustomizerInterface
      * @param Product $product
      * @return array
      */
-    private function getBundleOptionTitles(Product $product): array
+    private function get_bundle_option_titles(Product $product): array
     {
-        $optionCollections = $this->getProductOptionCollection($product);
-        $optionsTitles = [];
+        $option_collections = $this->get_product_option_collection($product);
+        $options_titles = [];
         /** @var Option $option */
-        foreach ($optionCollections->getItems() as $option) {
-            $optionsTitles[$option->getId()]['name'] = $option->getTitle();
+        foreach ($option_collections->get_items() as $option) {
+            $options_titles[$option->get_id()]['name'] = $option->get_title();
         }
-        $storeIds = $product->getStoreIds();
-        if (count($storeIds) > 1) {
-            foreach ($storeIds as $storeId) {
-                $optionCollections = $this->getProductOptionCollection($product, (int)$storeId);
+        $store_ids = $product->get_store_ids();
+        if (count($store_ids) > 1) {
+            foreach ($store_ids as $store_id) {
+                $option_collections = $this->get_product_option_collection($product, (int) $store_id);
                 /** @var Option $option */
-                foreach ($optionCollections->getItems() as $option) {
-                    $optionTitle = $option->getTitle();
-                    if ($optionsTitles[$option->getId()]['name'] != $optionTitle) {
-                        $optionsTitles[$option->getId()]['name_' . $this->getStoreCodeById((int)$storeId)] =
-                            $optionTitle;
+                foreach ($option_collections->get_items() as $option) {
+                    $option_title = $option->get_title();
+                    if ($options_titles[$option->get_id()]['name'] != $option_title) {
+                        $options_titles[$option->get_id()]['name_' . $this->get_store_code_by_id((int) $store_id)] = $option_title;
                     }
                 }
             }
         }
-        return $optionsTitles;
+        return $options_titles;
     }
-
     /**
      * Get bundle product options selections data
      *
@@ -510,35 +394,27 @@ class RowCustomizer implements RowCustomizerInterface
      * @param Product $product
      * @return array
      */
-    private function getBundleOptionSelections(Product $product): array
+    private function get_bundle_option_selections(Product $product): array
     {
-        $selections = $this->getBundleOptionSelectionsData($product);
-
-        if (!$this->catalogData->isPriceGlobal()) {
-            foreach ($product->getWebsiteIds() as $websiteId) {
-                $websiteCode = $this->getWebsiteCodeById((int) $websiteId);
-                $storeId = $this->getWebsiteDefaultStoreId((int) $websiteId);
-                foreach ($this->getProductOptionCollection($product, $storeId) as $option) {
-                    foreach ($option->getSelections() as $selection) {
-                        $optionId = (string)$option->getOptionId();
-                        $selectionId = (string)$selection->getSelectionId();
-                        $selectionData = $selections[$optionId][$selectionId] ?? [];
-                        if ($selectionData && $selection->getPriceScope() == $websiteId) {
-                            $selections[$optionId][$selectionId] = [
-                                ...$selectionData,
-                                'price_website_' . $websiteCode => $selection->getSelectionPriceValue(),
-                                'price_type_website_' . $websiteCode =>
-                                    $this->getPriceTypeValue($selection->getSelectionPriceType()),
-                            ];
+        $selections = $this->get_bundle_option_selections_data($product);
+        if (!$this->catalog_data->is_price_global()) {
+            foreach ($product->get_website_ids() as $website_id) {
+                $website_code = $this->get_website_code_by_id((int) $website_id);
+                $store_id = $this->get_website_default_store_id((int) $website_id);
+                foreach ($this->get_product_option_collection($product, $store_id) as $option) {
+                    foreach ($option->get_selections() as $selection) {
+                        $option_id = (string) $option->get_option_id();
+                        $selection_id = (string) $selection->get_selection_id();
+                        $selection_data = $selections[$option_id][$selection_id] ?? [];
+                        if ($selection_data && $selection->get_price_scope() == $website_id) {
+                            $selections[$option_id][$selection_id] = [...$selection_data, 'price_website_' . $website_code => $selection->get_selection_price_value(), 'price_type_website_' . $website_code => $this->get_price_type_value($selection->get_selection_price_type())];
                         }
                     }
                 }
             }
         }
-
         return $selections;
     }
-
     /**
      * Get bundle product options selections data.
      *
@@ -546,30 +422,20 @@ class RowCustomizer implements RowCustomizerInterface
      * @param int $storeId
      * @return array
      */
-    private function getBundleOptionSelectionsData(
-        Product $product,
-        int $storeId = Store::DEFAULT_STORE_ID
-    ): array {
+    private function get_bundle_option_selections_data(Product $product, int $store_id = Store::DEFAULT_STORE_ID): array
+    {
         $data = [];
-        foreach ($this->getProductOptionCollection($product, $storeId) as $option) {
+        foreach ($this->get_product_option_collection($product, $store_id) as $option) {
             /** @var Option $option*/
-            foreach ($option->getSelections() as $selection) {
+            foreach ($option->get_selections() as $selection) {
                 /** @var Selection $selection*/
-                $optionId = (string)$option->getOptionId();
-                $selectionId = (string)$selection->getSelectionId();
-                $data[$optionId][$selectionId] = [
-                    'sku' => $selection->getSku(),
-                    'price' => $selection->getSelectionPriceValue(),
-                    'default' => $selection->getIsDefault(),
-                    'default_qty' => $selection->getSelectionQty(),
-                    'price_type' => $this->getPriceTypeValue($selection->getSelectionPriceType()),
-                    'can_change_qty' => $selection->getSelectionCanChangeQty(),
-                ];
+                $option_id = (string) $option->get_option_id();
+                $selection_id = (string) $selection->get_selection_id();
+                $data[$option_id][$selection_id] = ['sku' => $selection->get_sku(), 'price' => $selection->get_selection_price_value(), 'default' => $selection->get_is_default(), 'default_qty' => $selection->get_selection_qty(), 'price_type' => $this->get_price_type_value($selection->get_selection_price_type()), 'can_change_qty' => $selection->get_selection_can_change_qty()];
             }
         }
         return $data;
     }
-
     /**
      * Get product options collection by provided product model.
      *
@@ -579,33 +445,22 @@ class RowCustomizer implements RowCustomizerInterface
      * @param int $storeId
      * @return \Magento\Bundle\Model\ResourceModel\Option\Collection
      */
-    private function getProductOptionCollection(
-        Product $product,
-        int $storeId = Store::DEFAULT_STORE_ID
-    ): \Magento\Bundle\Model\ResourceModel\Option\Collection {
-        $productSku = $product->getSku();
-        if (!isset($this->optionCollections[$productSku][$storeId])) {
-            $product->unsetData($this->optionCollectionCacheKey);
-            $product->setStoreId($storeId);
-            $optionCollection = $product->getTypeInstance()
-                ->getOptionsCollection($product)
-                ->setOrder('position', Collection::SORT_ORDER_ASC);
+    private function get_product_option_collection(Product $product, int $store_id = Store::DEFAULT_STORE_ID): \Magento\Bundle\Model\Resource_Model\Option\Collection
+    {
+        $product_sku = $product->get_sku();
+        if (!isset($this->option_collections[$product_sku][$store_id])) {
+            $product->unset_data($this->option_collection_cache_key);
+            $product->set_store_id($store_id);
+            $option_collection = $product->get_type_instance()->get_options_collection($product)->set_order('position', Collection::SORT_ORDER_ASC);
             // Ensure children products are not filtered by website.
             // We need to export all children products regardless of the website they are assigned to.
-            $product->getTypeInstance()->setStoreFilter(Store::DEFAULT_STORE_ID, $product);
-            $selectionCollection = $product->getTypeInstance()
-                ->getSelectionsCollection(
-                    $product->getTypeInstance()->getOptionsIds($product),
-                    $product
-                )
-                ->setOrder('position', Collection::SORT_ORDER_ASC)
-                ->addAttributeToSort('position', Collection::SORT_ORDER_ASC);
-            $optionCollection->appendSelections($selectionCollection, true);
-            $this->optionCollections[$productSku][$storeId] = $optionCollection;
+            $product->get_type_instance()->set_store_filter(Store::DEFAULT_STORE_ID, $product);
+            $selection_collection = $product->get_type_instance()->get_selections_collection($product->get_type_instance()->get_options_ids($product), $product)->set_order('position', Collection::SORT_ORDER_ASC)->add_attribute_to_sort('position', Collection::SORT_ORDER_ASC);
+            $option_collection->append_selections($selection_collection, true);
+            $this->option_collections[$product_sku][$store_id] = $option_collection;
         }
-        return $this->optionCollections[$productSku][$storeId];
+        return $this->option_collections[$product_sku][$store_id];
     }
-
     /**
      * Retrieve default store id for website
      *
@@ -613,13 +468,10 @@ class RowCustomizer implements RowCustomizerInterface
      * @return int
      * @throws LocalizedException
      */
-    private function getWebsiteDefaultStoreId(int $websiteId): int
+    private function get_website_default_store_id(int $website_id): int
     {
-        return (int) $this->storeManager
-            ->getGroup($this->storeManager->getWebsite($websiteId)->getDefaultGroupId())
-            ->getDefaultStoreId();
+        return (int) $this->store_manager->get_group($this->store_manager->get_website($website_id)->get_default_group_id())->get_default_store_id();
     }
-
     /**
      * Retrieve website code by its ID.
      *
@@ -627,11 +479,10 @@ class RowCustomizer implements RowCustomizerInterface
      * @return string
      * @throws LocalizedException
      */
-    private function getWebsiteCodeById(int $websiteId): string
+    private function get_website_code_by_id(int $website_id): string
     {
-        return $this->storeManager->getWebsite($websiteId)->getCode();
+        return $this->store_manager->get_website($website_id)->get_code();
     }
-
     /**
      * Retrieve store code by it's ID.
      *
@@ -640,11 +491,11 @@ class RowCustomizer implements RowCustomizerInterface
      * @param int $storeId
      * @return string
      */
-    private function getStoreCodeById(int $storeId): string
+    private function get_store_code_by_id(int $store_id): string
     {
-        if (!isset($this->storeIdToCode[$storeId])) {
-            $this->storeIdToCode[$storeId] = $this->storeManager->getStore($storeId)->getCode();
+        if (!isset($this->store_id_to_code[$store_id])) {
+            $this->store_id_to_code[$store_id] = $this->store_manager->get_store($store_id)->get_code();
         }
-        return $this->storeIdToCode[$storeId];
+        return $this->store_id_to_code[$store_id];
     }
 }

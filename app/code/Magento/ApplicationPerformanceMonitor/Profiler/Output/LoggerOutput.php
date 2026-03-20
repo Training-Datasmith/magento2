@@ -4,47 +4,40 @@
  * Copyright 2023 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Application_Performance_Monitor\Profiler\Output;
 
-namespace Magento\ApplicationPerformanceMonitor\Profiler\Output;
-
-use Magento\ApplicationPerformanceMonitor\Profiler\Metric;
-use Magento\ApplicationPerformanceMonitor\Profiler\MetricType;
-use Magento\ApplicationPerformanceMonitor\Profiler\OutputInterface;
-use Magento\Framework\App\DeploymentConfig;
-use Psr\Log\LoggerInterface;
-
+use Magento\Application_Performance_Monitor\Profiler\Metric;
+use Magento\Application_Performance_Monitor\Profiler\Metric_Type;
+use Magento\Application_Performance_Monitor\Profiler\Output_Interface;
+use Magento\Framework\App\Deployment_Config;
+use Psr\Log\Logger_Interface;
 /**
  * Outputs the performance metrics and other information to Logger
  */
-class LoggerOutput implements OutputInterface
+class Logger_Output implements Output_Interface
 {
     public const CONFIG_ENABLE_KEY = 'application/performance_monitor/logger_output_enable';
     public const CONFIG_VERBOSE_KEY = 'application/performance_monitor/logger_output_verbose';
-
-    public function __construct(
-        private readonly LoggerInterface $logger,
-        private readonly DeploymentConfig $deploymentConfig,
-    ) {
+    public function __construct(private readonly Logger_Interface $logger, private readonly Deployment_Config $deployment_config)
+    {
     }
-
     /**
      * @inheritDoc
      */
-    public function isEnabled(): bool
+    public function is_enabled(): bool
     {
-        return match ($this->deploymentConfig->get(static::CONFIG_ENABLE_KEY)) {
+        return match ($this->deployment_config->get(static::CONFIG_ENABLE_KEY)) {
             1, '1', 'true', true => true,
             default => false,
         };
     }
-
     /**
      * @inheritDoc
      */
-    public function doOutput(array $metrics, array $information): void
+    public function do_output(array $metrics, array $information): void
     {
-        if (!$this->isEnabled()) {
+        if (!$this->is_enabled()) {
             return;
         }
         if (!empty($information['subject'])) {
@@ -54,93 +47,88 @@ class LoggerOutput implements OutputInterface
             $subject = __('Profile information');
         }
         if (!empty($information['requestContentLength'])) {
-            $information['requestContentLength'] = $this->prettyMemorySize($information['requestContentLength']);
+            $information['requestContentLength'] = $this->pretty_memory_size($information['requestContentLength']);
         }
-        $verbose = $this->isVerbose();
-        $prettyMetrics = $this->doOutputMetrics($metrics, $verbose);
+        $verbose = $this->is_verbose();
+        $pretty_metrics = $this->do_output_metrics($metrics, $verbose);
         $message = sprintf("\"%s\": {\n", $subject);
         foreach ($information as $key => $value) {
-            $message .= sprintf("\t\"%s\":\t\"%s\",\n", (string)$key, (string)$value);
+            $message .= sprintf("\t\"%s\":\t\"%s\",\n", (string) $key, (string) $value);
         }
-        foreach ($prettyMetrics as $key => $value) {
-            $message .= sprintf("\t\"%s\":\t\"%s\",\n", (string)$key, (string)$value);
+        foreach ($pretty_metrics as $key => $value) {
+            $message .= sprintf("\t\"%s\":\t\"%s\",\n", (string) $key, (string) $value);
         }
         $message = \rtrim($message, ",\n");
         $message .= sprintf("\n}\n");
         $this->logger->debug($message);
     }
-
     /**
      * Make the metrics pretty and checks verbosity
      */
-    private function doOutputMetrics(array $metrics, bool $verbose): array
+    private function do_output_metrics(array $metrics, bool $verbose): array
     {
-        $prettyMetrics = [];
+        $pretty_metrics = [];
         /** @var Metric $metric */
         foreach ($metrics as $metric) {
-            if (!$verbose && $metric->isVerbose()) {
+            if (!$verbose && $metric->is_verbose()) {
                 continue;
             }
-            $prettyMetrics[$metric->getName()] = match ($metric->getType()) {
-                MetricType::SECONDS_ELAPSED_FLOAT => $this->prettyElapsedTime($metric->getValue()),
-                MetricType::UNIX_TIMESTAMP_FLOAT => $this->prettyUnixTime($metric->getValue()),
-                MetricType::MEMORY_SIZE_INT => $this->prettyMemorySize($metric->getValue()),
-                default => $metric->getValue(),
+            $pretty_metrics[$metric->get_name()] = match ($metric->get_type()) {
+                Metric_Type::SECONDS_ELAPSED_FLOAT => $this->pretty_elapsed_time($metric->get_value()),
+                Metric_Type::UNIX_TIMESTAMP_FLOAT => $this->pretty_unix_time($metric->get_value()),
+                Metric_Type::MEMORY_SIZE_INT => $this->pretty_memory_size($metric->get_value()),
+                default => $metric->get_value(),
             };
         }
-        return $prettyMetrics;
+        return $pretty_metrics;
     }
-
     /**
      * Returns a string format of memory with units.
      */
-    private function prettyMemorySize(int $size): string
+    private function pretty_memory_size(int $size): string
     {
-        if (!$this->isVerbose()) {
-            $absSize = abs($size);
-            if ($absSize > 1000000000) {
+        if (!$this->is_verbose()) {
+            $abs_size = abs($size);
+            if ($abs_size > 1000000000) {
                 return sprintf('%.3g GB', $size / 1000000000.0);
             }
-            if ($absSize > 1000000) {
+            if ($abs_size > 1000000) {
                 return sprintf('%.3g MB', $size / 1000000.0);
             }
-            if ($absSize > 1000) {
+            if ($abs_size > 1000) {
                 return sprintf('%.3g KB', $size / 1000.0);
             }
         }
-        return ($size) . ' B';
+        return $size . ' B';
     }
-
     /**
      * Returns a string format of elapsed time with units.
      */
-    private function prettyElapsedTime(float $time): string
+    private function pretty_elapsed_time(float $time): string
     {
-        if ($this->isVerbose()) {
-            return ($time) . ' s';
+        if ($this->is_verbose()) {
+            return $time . ' s';
         }
         $time = (int) $time;
         if ($time > 60) {
             return sprintf('%.3g m', $time / 60.0);
         }
-        return ($time) . ' s';
+        return $time . ' s';
     }
-
     /**
      * Returns a string format of unix time with units.
      */
-    private function prettyUnixTime(float $time): string
+    private function pretty_unix_time(float $time): string
     {
-        $timeAsString = sprintf('%.1f', $time);
-        return \DateTime::createFromFormat('U.u', $timeAsString)->format('Y-m-d\TH:i:s.u');
+        $time_as_string = sprintf('%.1f', $time);
+        return \DateTime::create_from_format('U.u', $time_as_string)->format('Y-m-d\TH:i:s.u');
     }
-
     /**
      * Returns true when verbose is enabled in configuration.
      */
-    private function isVerbose(): bool
+    private function is_verbose(): bool
     {
-        return match ($this->deploymentConfig->get(static::CONFIG_VERBOSE_KEY)) {
+        return match ($this->deployment_config->get(static::CONFIG_VERBOSE_KEY)) {
             1, '1', 'true', true => true,
             default => false,
         };

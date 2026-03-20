@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\App;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Backend\App;
  * @api
  * @since 100.0.2
  */
-interface ConfigInterface
+interface Config_Interface
 {
     /**
      * Retrieve config value by path
@@ -23,8 +22,7 @@ interface ConfigInterface
      * @param string $path
      * @return mixed
      */
-    public function getValue($path);
-
+    public function get_value($path);
     /**
      * Set config value
      *
@@ -33,8 +31,7 @@ interface ConfigInterface
      * @param mixed $value
      * @return void
      */
-    public function setValue($path, $value);
-
+    public function set_value($path, $value);
     /**
      * Retrieve config flag
      *
@@ -43,5 +40,5 @@ interface ConfigInterface
      * @param string $path
      * @return bool
      */
-    public function isSetFlag($path);
+    public function is_set_flag($path);
 }

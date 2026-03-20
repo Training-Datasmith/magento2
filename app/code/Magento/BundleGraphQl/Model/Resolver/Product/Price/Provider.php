@@ -4,63 +4,57 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\BundleGraphQl\Model\Resolver\Product\Price;
+declare (strict_types=1);
+namespace Magento\Bundle_Graph_Ql\Model\Resolver\Product\Price;
 
 use Magento\Bundle\Model\Product\Price;
-use Magento\Bundle\Pricing\Price\FinalPrice;
-use Magento\Catalog\Pricing\Price\BasePrice;
-use Magento\Catalog\Pricing\Price\RegularPrice;
-use Magento\CatalogGraphQl\Model\Resolver\Product\Price\ProviderInterface;
-use Magento\Framework\Pricing\Amount\AmountInterface;
-use Magento\Framework\Pricing\SaleableInterface;
-
+use Magento\Bundle\Pricing\Price\Final_Price;
+use Magento\Catalog\Pricing\Price\Base_Price;
+use Magento\Catalog\Pricing\Price\Regular_Price;
+use Magento\Catalog_Graph_Ql\Model\Resolver\Product\Price\Provider_Interface;
+use Magento\Framework\Pricing\Amount\Amount_Interface;
+use Magento\Framework\Pricing\Saleable_Interface;
 /**
  * Provides pricing information for Bundle products
  */
-class Provider implements ProviderInterface
+class Provider implements Provider_Interface
 {
     /**
      * @inheritdoc
      */
-    public function getMinimalFinalPrice(SaleableInterface $product): AmountInterface
+    public function get_minimal_final_price(Saleable_Interface $product): Amount_Interface
     {
-        return $product->getPriceInfo()->getPrice(FinalPrice::PRICE_CODE)->getMinimalPrice();
+        return $product->get_price_info()->get_price(Final_Price::PRICE_CODE)->get_minimal_price();
     }
-
     /**
      * @inheritdoc
      */
-    public function getMinimalRegularPrice(SaleableInterface $product): AmountInterface
+    public function get_minimal_regular_price(Saleable_Interface $product): Amount_Interface
     {
-        return $product->getPriceInfo()->getPrice(RegularPrice::PRICE_CODE)->getMinimalPrice();
+        return $product->get_price_info()->get_price(Regular_Price::PRICE_CODE)->get_minimal_price();
     }
-
     /**
      * @inheritdoc
      */
-    public function getMaximalFinalPrice(SaleableInterface $product): AmountInterface
+    public function get_maximal_final_price(Saleable_Interface $product): Amount_Interface
     {
-        return $product->getPriceInfo()->getPrice(FinalPrice::PRICE_CODE)->getMaximalPrice();
+        return $product->get_price_info()->get_price(Final_Price::PRICE_CODE)->get_maximal_price();
     }
-
     /**
      * @inheritdoc
      */
-    public function getMaximalRegularPrice(SaleableInterface $product): AmountInterface
+    public function get_maximal_regular_price(Saleable_Interface $product): Amount_Interface
     {
-        return $product->getPriceInfo()->getPrice(RegularPrice::PRICE_CODE)->getMaximalPrice();
+        return $product->get_price_info()->get_price(Regular_Price::PRICE_CODE)->get_maximal_price();
     }
-
     /**
      * @inheritdoc
      */
-    public function getRegularPrice(SaleableInterface $product): AmountInterface
+    public function get_regular_price(Saleable_Interface $product): Amount_Interface
     {
-        if ($product->getPriceType() == Price::PRICE_TYPE_FIXED) {
-            return $product->getPriceInfo()->getPrice(BasePrice::PRICE_CODE)->getAmount();
+        if ($product->get_price_type() == Price::PRICE_TYPE_FIXED) {
+            return $product->get_price_info()->get_price(Base_Price::PRICE_CODE)->get_amount();
         }
-        return $product->getPriceInfo()->getPrice(RegularPrice::PRICE_CODE)->getAmount();
+        return $product->get_price_info()->get_price(Regular_Price::PRICE_CODE)->get_amount();
     }
 }

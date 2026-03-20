@@ -1,20 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Console\Command;
 
 /**
  * Command for enabling maintenance mode
  */
-class MaintenanceEnableCommand extends AbstractMaintenanceCommand
+class Maintenance_Enable_Command extends Abstract_Maintenance_Command
 {
     public const NAME = 'maintenance:enable';
-
     /**
      * Initialization of the command
      *
@@ -22,27 +20,24 @@ class MaintenanceEnableCommand extends AbstractMaintenanceCommand
      */
     protected function configure(): void
     {
-        $this->setName(self::NAME)->setDescription('Enables maintenance mode');
-
+        $this->set_name(self::NAME)->set_description('Enables maintenance mode');
         parent::configure();
     }
-
     /**
      * Enable maintenance mode
      *
      * @return bool
      */
-    protected function isEnable(): bool
+    protected function is_enable(): bool
     {
         return true;
     }
-
     /**
      * Get enabled maintenance mode display string
      *
      * @return string
      */
-    protected function getDisplayString(): string
+    protected function get_display_string(): string
     {
         return '<info>Enabled maintenance mode</info>';
     }

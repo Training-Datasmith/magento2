@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Analytics\ReportXml\Config;
+namespace Magento\Analytics\Report_Xml\Config;
 
 /**
  * A reports configuration mapper.
@@ -20,17 +19,16 @@ class Mapper
     /**
      * Transforms configuration data.
      */
-    public function execute(array $configData): array
+    public function execute(array $config_data): array
     {
-        if (!isset($configData['config'][0]['report'])) {
+        if (!isset($config_data['config'][0]['report'])) {
             return [];
         }
-
         $queries = [];
-        foreach ($configData['config'][0]['report'] as $queryData) {
-            $entityData = array_shift($queryData['source']);
-            $queries[$queryData['name']] = $queryData;
-            $queries[$queryData['name']]['source'] = $entityData;
+        foreach ($config_data['config'][0]['report'] as $query_data) {
+            $entity_data = array_shift($query_data['source']);
+            $queries[$query_data['name']] = $query_data;
+            $queries[$query_data['name']]['source'] = $entity_data;
         }
         return $queries;
     }

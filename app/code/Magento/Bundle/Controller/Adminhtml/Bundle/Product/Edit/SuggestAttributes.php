@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Controller\Adminhtml\Bundle\Product\Edit;
 
-class SuggestAttributes extends \Magento\Catalog\Controller\Adminhtml\Product\SuggestAttributes
+class Suggest_Attributes extends \Magento\Catalog\Controller\Adminhtml\Product\Suggest_Attributes
 {
 }

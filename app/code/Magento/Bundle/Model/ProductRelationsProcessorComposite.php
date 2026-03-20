@@ -4,48 +4,38 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Model;
 
-use Magento\Catalog\Api\Data\ProductInterface;
-
+use Magento\Catalog\Api\Data\Product_Interface;
 /**
  * Composite processor to handle bundle product relations.
  */
-class ProductRelationsProcessorComposite implements ProductRelationsProcessorInterface
+class Product_Relations_Processor_Composite implements Product_Relations_Processor_Interface
 {
     /**
      * @var ProductRelationsProcessorInterface[]
      */
     private $processors;
-
     /**
      * @param ProductRelationsProcessorInterface[] $processors
      */
     public function __construct(array $processors = [])
     {
         foreach ($processors as $processor) {
-            if (!$processor instanceof ProductRelationsProcessorInterface) {
-                throw new \InvalidArgumentException(
-                    __('Product relations processor must implement %1.', ProductRelationsProcessorInterface::class)
-                );
+            if (!$processor instanceof Product_Relations_Processor_Interface) {
+                throw new \InvalidArgumentException(__('Product relations processor must implement %1.', Product_Relations_Processor_Interface::class));
             }
         }
-
         $this->processors = $processors;
     }
-
     /**
      * @inheritDoc
      */
-    public function process(
-        ProductInterface $product,
-        array $existingProductOptions,
-        array $expectedProductOptions
-    ): void {
+    public function process(Product_Interface $product, array $existing_product_options, array $expected_product_options): void
+    {
         foreach ($this->processors as $processor) {
-            $processor->process($product, $existingProductOptions, $expectedProductOptions);
+            $processor->process($product, $existing_product_options, $expected_product_options);
         }
     }
 }

@@ -4,18 +4,16 @@
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\DB\Select;
 
 use Magento\Framework\DB\Select;
-
 /**
  * Modify query, add custom conditions
  *
  * @api
  */
-interface QueryModifierInterface
+interface Query_Modifier_Interface
 {
     /**
      * Modify query

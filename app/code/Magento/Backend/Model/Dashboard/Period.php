@@ -4,8 +4,7 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Model\Dashboard;
 
 /**
@@ -19,42 +18,25 @@ class Period
     public const PERIOD_1_MONTH = '1m';
     public const PERIOD_1_YEAR = '1y';
     public const PERIOD_2_YEARS = '2y';
-
     private const PERIOD_UNIT_HOUR = 'hour';
     private const PERIOD_UNIT_DAY = 'day';
     private const PERIOD_UNIT_MONTH = 'month';
-
     /**
      * Prepare array with periods for dashboard graphs
      *
      * @return array
      */
-    public function getDatePeriods(): array
+    public function get_date_periods(): array
     {
-        return [
-            static::PERIOD_TODAY => __('Today'),
-            static::PERIOD_24_HOURS => __('Last 24 Hours'),
-            static::PERIOD_7_DAYS => __('Last 7 Days'),
-            static::PERIOD_1_MONTH => __('Current Month'),
-            static::PERIOD_1_YEAR => __('YTD'),
-            static::PERIOD_2_YEARS => __('2YTD'),
-        ];
+        return [static::PERIOD_TODAY => __('Today'), static::PERIOD_24_HOURS => __('Last 24 Hours'), static::PERIOD_7_DAYS => __('Last 7 Days'), static::PERIOD_1_MONTH => __('Current Month'), static::PERIOD_1_YEAR => __('YTD'), static::PERIOD_2_YEARS => __('2YTD')];
     }
-
     /**
      * Prepare array with periods mapping to chart units
      *
      * @return array
      */
-    public function getPeriodChartUnits(): array
+    public function get_period_chart_units(): array
     {
-        return [
-            static::PERIOD_TODAY => self::PERIOD_UNIT_HOUR,
-            static::PERIOD_24_HOURS => self::PERIOD_UNIT_HOUR,
-            static::PERIOD_7_DAYS => self::PERIOD_UNIT_DAY,
-            static::PERIOD_1_MONTH => self::PERIOD_UNIT_DAY,
-            static::PERIOD_1_YEAR => self::PERIOD_UNIT_MONTH,
-            static::PERIOD_2_YEARS => self::PERIOD_UNIT_MONTH,
-        ];
+        return [static::PERIOD_TODAY => self::PERIOD_UNIT_HOUR, static::PERIOD_24_HOURS => self::PERIOD_UNIT_HOUR, static::PERIOD_7_DAYS => self::PERIOD_UNIT_DAY, static::PERIOD_1_MONTH => self::PERIOD_UNIT_DAY, static::PERIOD_1_YEAR => self::PERIOD_UNIT_MONTH, static::PERIOD_2_YEARS => self::PERIOD_UNIT_MONTH];
     }
 }

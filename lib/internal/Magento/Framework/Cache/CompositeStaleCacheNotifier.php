@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache;
 
 /**
@@ -14,13 +13,12 @@ namespace Magento\Framework\Cache;
  * Introduces an extension point to be used by other modules for disabling
  * own cache write when stale cache load detected
  */
-class CompositeStaleCacheNotifier implements StaleCacheNotifierInterface
+class Composite_Stale_Cache_Notifier implements Stale_Cache_Notifier_Interface
 {
     /**
      * @var StaleCacheNotifierInterface[]
      */
     private $notifiers = [];
-
     /**
      * CompositeStaleCacheNotifier constructor.
      * @param StaleCacheNotifierInterface[] $notifiers
@@ -29,14 +27,13 @@ class CompositeStaleCacheNotifier implements StaleCacheNotifierInterface
     {
         $this->notifiers = $notifiers;
     }
-
     /**
      * Notifies every added cache notifier of stale cache
      */
-    public function cacheLoaderIsUsingStaleCache()
+    public function cache_loader_is_using_stale_cache()
     {
         foreach ($this->notifiers as $notifier) {
-            $notifier->cacheLoaderIsUsingStaleCache();
+            $notifier->cache_loader_is_using_stale_cache();
         }
     }
 }

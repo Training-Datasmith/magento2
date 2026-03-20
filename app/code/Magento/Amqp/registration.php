@@ -1,11 +1,9 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-use Magento\Framework\Component\ComponentRegistrar;
-
-ComponentRegistrar::register(ComponentRegistrar::MODULE, 'Magento_Amqp', __DIR__);
+use Magento\Framework\Component\Component_Registrar;
+Component_Registrar::register(Component_Registrar::MODULE, 'Magento_Amqp', __DIR__);

@@ -4,15 +4,13 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Setup\Patch\Data;
 
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\App\DeploymentConfig\Writer;
-use Magento\Framework\Config\File\ConfigFilePool;
-use Magento\Framework\Setup\Patch\DataPatchInterface;
-
+use Magento\Framework\App\Deployment_Config;
+use Magento\Framework\App\Deployment_Config\Writer;
+use Magento\Framework\Config\File\Config_File_Pool;
+use Magento\Framework\Setup\Patch\Data_Patch_Interface;
 /**
  * Migrate Redis backend configuration from full class names to simple identifiers
  *
@@ -20,30 +18,25 @@ use Magento\Framework\Setup\Patch\DataPatchInterface;
  * - 'Magento\\Framework\\Cache\\Backend\\Redis' → 'redis'
  * - 'Magento\\Framework\\Cache\\Backend\\Valkey' → 'valkey'
  */
-class MigrateRedisBackendConfig implements DataPatchInterface
+class Migrate_Redis_Backend_Config implements Data_Patch_Interface
 {
     /**
      * @var Writer
      */
-    private Writer $configWriter;
-
+    private Writer $config_writer;
     /**
      * @var DeploymentConfig
      */
-    private DeploymentConfig $deploymentConfig;
-
+    private Deployment_Config $deployment_config;
     /**
      * @param Writer $configWriter
      * @param DeploymentConfig $deploymentConfig
      */
-    public function __construct(
-        Writer $configWriter,
-        DeploymentConfig $deploymentConfig
-    ) {
-        $this->configWriter = $configWriter;
-        $this->deploymentConfig = $deploymentConfig;
+    public function __construct(Writer $config_writer, Deployment_Config $deployment_config)
+    {
+        $this->config_writer = $config_writer;
+        $this->deployment_config = $deployment_config;
     }
-
     /**
      * @inheritDoc
      */
@@ -51,61 +44,49 @@ class MigrateRedisBackendConfig implements DataPatchInterface
     {
         // Migration map: Legacy full class name strings => new simple identifiers
         // These are not actual classes - they're legacy string identifiers in env.php
-        $migrationMap = [
+        $migration_map = [
             // phpcs:ignore Magento2.PHP.LiteralNamespaces.LiteralClassUsage
-            'Magento\\Framework\\Cache\\Backend\\Redis' => 'redis',
+            'Magento\Framework\Cache\Backend\Redis' => 'redis',
             // phpcs:ignore Magento2.PHP.LiteralNamespaces.LiteralClassUsage
-            'Magento\\Framework\\Cache\\Backend\\Valkey' => 'valkey',
+            'Magento\Framework\Cache\Backend\Valkey' => 'valkey',
         ];
-
         // Get current cache configuration from env.php
-        $cacheConfig = $this->deploymentConfig->get('cache');
-
-        if (!$cacheConfig || !isset($cacheConfig['frontend'])) {
+        $cache_config = $this->deployment_config->get('cache');
+        if (!$cache_config || !isset($cache_config['frontend'])) {
             // No cache frontend configuration - nothing to migrate
             return $this;
         }
-
-        $configUpdates = [];
+        $config_updates = [];
         $migrated = false;
-
         // Check and migrate each cache frontend
-        foreach ($cacheConfig['frontend'] as $frontendName => $frontendConfig) {
-            if (isset($frontendConfig['backend']) && isset($migrationMap[$frontendConfig['backend']])) {
-                $oldValue = $frontendConfig['backend'];
-                $newValue = $migrationMap[$oldValue];
-
-                if (!isset($configUpdates['cache'])) {
-                    $configUpdates['cache'] = $cacheConfig;
+        foreach ($cache_config['frontend'] as $frontend_name => $frontend_config) {
+            if (isset($frontend_config['backend']) && isset($migration_map[$frontend_config['backend']])) {
+                $old_value = $frontend_config['backend'];
+                $new_value = $migration_map[$old_value];
+                if (!isset($config_updates['cache'])) {
+                    $config_updates['cache'] = $cache_config;
                 }
-                $configUpdates['cache']['frontend'][$frontendName]['backend'] = $newValue;
+                $config_updates['cache']['frontend'][$frontend_name]['backend'] = $new_value;
                 $migrated = true;
             }
         }
-
         // Apply updates if any migrations occurred
         if ($migrated) {
-            $this->configWriter->saveConfig(
-                [ConfigFilePool::APP_ENV => $configUpdates],
-                true
-            );
+            $this->config_writer->save_config([Config_File_Pool::APP_ENV => $config_updates], true);
         }
-
         return $this;
     }
-
     /**
      * @inheritDoc
      */
-    public static function getDependencies()
+    public static function get_dependencies()
     {
         return [];
     }
-
     /**
      * @inheritDoc
      */
-    public function getAliases()
+    public function get_aliases()
     {
         return [];
     }

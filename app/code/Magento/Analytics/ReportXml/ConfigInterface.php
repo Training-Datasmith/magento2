@@ -1,19 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Analytics\ReportXml;
+namespace Magento\Analytics\Report_Xml;
 
 /**
  * Interface ConfigInterface
  *
  * Interface for ReportXml Config
  */
-interface ConfigInterface
+interface Config_Interface
 {
     /**
      * Config of ReportXml
@@ -21,5 +20,5 @@ interface ConfigInterface
      * @param string $queryName
      * @return array
      */
-    public function get($queryName);
+    public function get($query_name);
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Pricing\Price;
 
 /**
@@ -13,18 +12,17 @@ namespace Magento\Bundle\Pricing\Price;
  * @api
  * @since 100.0.2
  */
-interface BundleOptionPriceInterface
+interface Bundle_Option_Price_Interface
 {
     /**
      * Return calculated options
      *
      * @return array
      */
-    public function getOptions();
-
+    public function get_options();
     /**
      * @param \Magento\Bundle\Model\Selection $selection
      * @return \Magento\Framework\Pricing\Amount\AmountInterface
      */
-    public function getOptionSelectionAmount($selection);
+    public function get_option_selection_amount($selection);
 }

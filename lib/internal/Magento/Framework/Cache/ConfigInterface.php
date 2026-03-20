@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache;
 
 /**
@@ -13,20 +12,19 @@ namespace Magento\Framework\Cache;
  *
  * @api
  */
-interface ConfigInterface
+interface Config_Interface
 {
     /**
      * Get configuration of all cache types
      *
      * @return array
      */
-    public function getTypes();
-
+    public function get_types();
     /**
      * Get configuration of specified cache type
      *
      * @param string $type
      * @return array
      */
-    public function getType($type);
+    public function get_type($type);
 }

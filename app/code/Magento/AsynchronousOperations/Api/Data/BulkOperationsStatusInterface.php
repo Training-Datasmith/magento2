@@ -4,10 +4,8 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Api\Data;
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Api\Data;
 
 /**
  * Interface BulkStatusInterface
@@ -17,18 +15,16 @@ namespace Magento\AsynchronousOperations\Api\Data;
  * @api
  * @since 100.2.3
  */
-interface BulkOperationsStatusInterface extends BulkSummaryInterface
+interface Bulk_Operations_Status_Interface extends Bulk_Summary_Interface
 {
     public const OPERATIONS_LIST = 'operations_list';
-
     /**
      * Retrieve list of operation with statuses (short data).
      *
      * @return \Magento\AsynchronousOperations\Api\Data\SummaryOperationStatusInterface[]
      * @since 100.2.3
      */
-    public function getOperationsList();
-
+    public function get_operations_list();
     /**
      * Set operations list.
      *
@@ -36,5 +32,5 @@ interface BulkOperationsStatusInterface extends BulkSummaryInterface
      * @return $this
      * @since 100.2.3
      */
-    public function setOperationsList($operationStatusList);
+    public function set_operations_list($operation_status_list);
 }

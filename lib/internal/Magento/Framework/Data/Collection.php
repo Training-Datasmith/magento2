@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Data\Collection\EntityFactoryInterface;
-use Magento\Framework\DataObject;
-use Magento\Framework\ObjectManager\ResetAfterRequestInterface;
-use Magento\Framework\Option\ArrayInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Data\Collection\Entity_Factory_Interface;
+use Magento\Framework\Data_Object;
+use Magento\Framework\Object_Manager\Reset_After_Request_Interface;
+use Magento\Framework\Option\Array_Interface;
 /**
  * Data collection
  *
@@ -23,59 +21,46 @@ use Magento\Framework\Option\ArrayInterface;
  * @since 100.0.2
  * @SuppressWarnings(PHPMD.ExcessivePublicCount)
  */
-class Collection implements
-    \IteratorAggregate,
-    \Countable,
-    ArrayInterface,
-    CollectionDataSourceInterface,
-    ResetAfterRequestInterface
+class Collection implements \IteratorAggregate, \Countable, Array_Interface, Collection_Data_Source_Interface, Reset_After_Request_Interface
 {
     public const SORT_ORDER_ASC = 'ASC';
-
     public const SORT_ORDER_DESC = 'DESC';
-
     /**
      * Collection items
      *
      * @var DataObject[]
      */
     protected $_items = [];
-
     /**
      * Item object class name
      *
      * @var string
      */
-    protected $_itemObjectClass = DataObject::class;
-
+    protected $_item_object_class = Data_Object::class;
     /**
      * Order configuration
      *
      * @var array
      */
     protected $_orders = [];
-
     /**
      * Filters configuration
      *
      * @var DataObject[]
      */
     protected $_filters = [];
-
     /**
      * Filter rendered flag
      *
      * @var bool
      */
-    protected $_isFiltersRendered = false;
-
+    protected $_is_filters_rendered = false;
     /**
      * Current page number for items pager
      *
      * @var int
      */
-    protected $_curPage = 1;
-
+    protected $_cur_page = 1;
     /**
      * Pager page size
      *
@@ -83,42 +68,36 @@ class Collection implements
      *
      * @var int|false
      */
-    protected $_pageSize = false;
-
+    protected $_page_size = false;
     /**
      * Total items number
      *
      * @var int
      */
-    protected $_totalRecords;
-
+    protected $_total_records;
     /**
      * Loading state flag
      *
      * @var bool
      */
-    protected $_isCollectionLoaded;
-
+    protected $_is_collection_loaded;
     /**
      * Additional collection flags
      *
      * @var array
      */
     protected $_flags = [];
-
     /**
      * @var EntityFactoryInterface
      */
-    protected $_entityFactory;
-
+    protected $_entity_factory;
     /**
      * @param EntityFactoryInterface $entityFactory
      */
-    public function __construct(EntityFactoryInterface $entityFactory)
+    public function __construct(Entity_Factory_Interface $entity_factory)
     {
-        $this->_entityFactory = $entityFactory;
+        $this->_entity_factory = $entity_factory;
     }
-
     /**
      * Add collection filter
      *
@@ -127,19 +106,17 @@ class Collection implements
      * @param string $type and|or|string
      * @return $this
      */
-    public function addFilter($field, $value, $type = 'and')
+    public function add_filter($field, $value, $type = 'and')
     {
-        $filter = new DataObject();
+        $filter = new Data_Object();
         // implements ArrayAccess
         $filter['field'] = $field;
         $filter['value'] = $value;
         $filter['type'] = strtolower($type);
-
         $this->_filters[] = $filter;
-        $this->_isFiltersRendered = false;
+        $this->_is_filters_rendered = false;
         return $this;
     }
-
     /**
      * Add field filter to collection
      *
@@ -179,11 +156,10 @@ class Collection implements
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      * @throws \Magento\Framework\Exception\LocalizedException if some error in the input could be detected.
      */
-    public function addFieldToFilter($field, $condition)
+    public function add_field_to_filter($field, $condition)
     {
-        throw new \Magento\Framework\Exception\LocalizedException(new \Magento\Framework\Phrase('Not implemented'));
+        throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('Not implemented'));
     }
-
     /**
      * Search for a filter by specified field
      *
@@ -196,7 +172,7 @@ class Collection implements
      * @param string|string[] $field
      * @return DataObject|DataObject[]|void
      */
-    public function getFilter($field)
+    public function get_filter($field)
     {
         if (is_array($field)) {
             // empty array: get all filters
@@ -212,7 +188,6 @@ class Collection implements
             }
             return $result;
         }
-
         // get a first filter by specified name
         foreach ($this->_filters as $filter) {
             if ($filter['field'] === $field) {
@@ -220,146 +195,128 @@ class Collection implements
             }
         }
     }
-
     /**
      * Retrieve collection loading status
      *
      * @return bool
      */
-    public function isLoaded()
+    public function is_loaded()
     {
-        return $this->_isCollectionLoaded;
+        return $this->_is_collection_loaded;
     }
-
     /**
      * Set collection loading status flag
      *
      * @param bool $flag
      * @return $this
      */
-    protected function _setIsLoaded($flag = true)
+    protected function _set_is_loaded($flag = true)
     {
-        $this->_isCollectionLoaded = $flag;
+        $this->_is_collection_loaded = $flag;
         return $this;
     }
-
     /**
      * Get current collection page
      *
      * @param int $displacement
      * @return int
      */
-    public function getCurPage($displacement = 0)
+    public function get_cur_page($displacement = 0)
     {
-        if ($this->_curPage + $displacement < 1) {
+        if ($this->_cur_page + $displacement < 1) {
             return 1;
         }
-
-        return $this->_curPage + $displacement;
+        return $this->_cur_page + $displacement;
     }
-
     /**
      * Retrieve collection last page number
      *
      * @return int
      */
-    public function getLastPageNumber()
+    public function get_last_page_number()
     {
-        $collectionSize = (int)$this->getSize();
-        if (0 === $collectionSize) {
+        $collection_size = (int) $this->get_size();
+        if (0 === $collection_size) {
             return 1;
-        } elseif ($this->_pageSize) {
-            return (int)ceil($collectionSize / $this->_pageSize);
+        } elseif ($this->_page_size) {
+            return (int) ceil($collection_size / $this->_page_size);
         }
-
         return 1;
     }
-
     /**
      * Retrieve collection page size
      *
      * @return int
      */
-    public function getPageSize()
+    public function get_page_size()
     {
-        return $this->_pageSize;
+        return $this->_page_size;
     }
-
     /**
      * Retrieve collection all items count
      *
      * @return int
      */
-    public function getSize()
+    public function get_size()
     {
         $this->load();
-        if ($this->_totalRecords === null) {
-            $this->_totalRecords = count($this->getItems());
+        if ($this->_total_records === null) {
+            $this->_total_records = count($this->get_items());
         }
-        return (int)$this->_totalRecords;
+        return (int) $this->_total_records;
     }
-
     /**
      * Retrieve collection first item
      *
      * @return DataObject
      */
-    public function getFirstItem()
+    public function get_first_item()
     {
         $this->load();
-
         if (count($this->_items)) {
             reset($this->_items);
             return current($this->_items);
         }
-
-        return $this->_entityFactory->create($this->_itemObjectClass);
+        return $this->_entity_factory->create($this->_item_object_class);
     }
-
     /**
      * Retrieve collection last item
      *
      * @return DataObject
      */
-    public function getLastItem()
+    public function get_last_item()
     {
         $this->load();
-
         if (count($this->_items)) {
             return end($this->_items);
         }
-
-        return $this->_entityFactory->create($this->_itemObjectClass);
+        return $this->_entity_factory->create($this->_item_object_class);
     }
-
     /**
      * Retrieve collection items
      *
      * @return DataObject[]
      */
-    public function getItems()
+    public function get_items()
     {
         $this->load();
         return $this->_items;
     }
-
     /**
      * Retrieve field values from all items
      *
      * @param string $colName
      * @return array
      */
-    public function getColumnValues($colName)
+    public function get_column_values($col_name)
     {
         $this->load();
-
         $col = [];
-        foreach ($this->getItems() as $item) {
-            $col[] = $item->getData($colName);
+        foreach ($this->get_items() as $item) {
+            $col[] = $item->get_data($col_name);
         }
         return $col;
     }
-
     /**
      * Search all items by field value
      *
@@ -367,19 +324,17 @@ class Collection implements
      * @param float|int|null|string $value
      * @return array
      */
-    public function getItemsByColumnValue($column, $value)
+    public function get_items_by_column_value($column, $value)
     {
         $this->load();
-
         $res = [];
         foreach ($this as $item) {
-            if ($item->getData($column) == $value) {
+            if ($item->get_data($column) == $value) {
                 $res[] = $item;
             }
         }
         return $res;
     }
-
     /**
      * Search first item by field value
      *
@@ -387,18 +342,16 @@ class Collection implements
      * @param string|int $value
      * @return DataObject|null
      */
-    public function getItemByColumnValue($column, $value)
+    public function get_item_by_column_value($column, $value)
     {
         $this->load();
-
         foreach ($this as $item) {
-            if ($item->getData($column) == $value) {
+            if ($item->get_data($column) == $value) {
                 return $item;
             }
         }
         return null;
     }
-
     /**
      * Adding item to item array
      *
@@ -406,86 +359,77 @@ class Collection implements
      * @return $this
      * @throws \Exception
      */
-    public function addItem(DataObject $item)
+    public function add_item(Data_Object $item)
     {
-        $itemId = $this->_getItemId($item);
-
-        if ($itemId !== null) {
-            if (isset($this->_items[$itemId])) {
+        $item_id = $this->_get_item_id($item);
+        if ($item_id !== null) {
+            if (isset($this->_items[$item_id])) {
                 //phpcs:ignore Magento2.Exceptions.DirectThrow
-                throw new \Exception(
-                    'Item (' . get_class($item) . ') with the same ID "' . $item->getId() . '" already exists.'
-                );
+                throw new \Exception('Item (' . get_class($item) . ') with the same ID "' . $item->get_id() . '" already exists.');
             }
-            $this->_items[$itemId] = $item;
+            $this->_items[$item_id] = $item;
         } else {
-            $this->_addItem($item);
+            $this->_add_item($item);
         }
         return $this;
     }
-
     /**
      * Add item that has no id to collection
      *
      * @param DataObject $item
      * @return $this
      */
-    protected function _addItem($item)
+    protected function _add_item($item)
     {
         $this->_items[] = $item;
         return $this;
     }
-
     /**
      * Retrieve item id
      *
      * @param DataObject $item
      * @return string|int
      */
-    protected function _getItemId(DataObject $item)
+    protected function _get_item_id(Data_Object $item)
     {
-        return $item->getId();
+        return $item->get_id();
     }
-
     /**
      * Retrieve ids of all items
      *
      * @return array
      */
-    public function getAllIds()
+    public function get_all_ids()
     {
         $ids = [];
-        foreach ($this->getItems() as $item) {
-            $ids[] = $this->_getItemId($item);
+        foreach ($this->get_items() as $item) {
+            $ids[] = $this->_get_item_id($item);
         }
         return $ids;
     }
-
     /**
      * Remove item from collection by item key
      *
      * @param string $key
      * @return $this
      */
-    public function removeItemByKey($key)
+    public function remove_item_by_key($key)
     {
         if (isset($this->_items[$key])) {
             unset($this->_items[$key]);
         }
         return $this;
     }
-
     /**
      * Remove all items from collection
      *
      * @return $this
      */
-    public function removeAllItems()
+    public function remove_all_items()
     {
         $this->_items = [];
         return $this;
     }
-
     /**
      * Clear collection
      *
@@ -493,12 +437,11 @@ class Collection implements
      */
     public function clear()
     {
-        $this->_setIsLoaded(false);
+        $this->_set_is_loaded(false);
         $this->_items = [];
-        $this->_totalRecords = null;
+        $this->_total_records = null;
         return $this;
     }
-
     /**
      * Walk through the collection and run model method or external callback with optional arguments
      *
@@ -511,10 +454,10 @@ class Collection implements
     public function walk($callback, array $args = [])
     {
         $results = [];
-        $useItemCallback = is_string($callback) && strpos($callback, '::') === false;
-        foreach ($this->getItems() as $id => $item) {
+        $use_item_callback = is_string($callback) && strpos($callback, '::') === false;
+        foreach ($this->get_items() as $id => $item) {
             $params = $args;
-            if ($useItemCallback) {
+            if ($use_item_callback) {
                 $cb = [$item, $callback];
             } else {
                 $cb = $callback;
@@ -525,7 +468,6 @@ class Collection implements
         }
         return $results;
     }
-
     /**
      * Call method or callback on each item in the collection.
      *
@@ -533,23 +475,22 @@ class Collection implements
      * @param array $args
      * @return void
      */
-    public function each($objMethod, $args = [])
+    public function each($obj_method, $args = [])
     {
-        if ($objMethod instanceof \Closure) {
-            foreach ($this->getItems() as $item) {
-                $objMethod($item, ...$args);
+        if ($obj_method instanceof \Closure) {
+            foreach ($this->get_items() as $item) {
+                $obj_method($item, ...$args);
             }
-        } elseif (is_array($objMethod)) {
-            foreach ($this->getItems() as $item) {
-                call_user_func($objMethod, $item, ...$args);
+        } elseif (is_array($obj_method)) {
+            foreach ($this->get_items() as $item) {
+                call_user_func($obj_method, $item, ...$args);
             }
         } else {
-            foreach ($this->getItems() as $item) {
-                $item->$objMethod(...$args);
+            foreach ($this->get_items() as $item) {
+                $item->{$obj_method}(...$args);
             }
         }
     }
-
     /**
      * Setting data for all collection items
      *
@@ -557,44 +498,41 @@ class Collection implements
      * @param string|int|null $value
      * @return $this
      */
-    public function setDataToAll($key, $value = null)
+    public function set_data_to_all($key, $value = null)
     {
         if (is_array($key)) {
             foreach ($key as $k => $v) {
-                $this->setDataToAll($k, $v);
+                $this->set_data_to_all($k, $v);
             }
             return $this;
         }
-        foreach ($this->getItems() as $item) {
-            $item->setData($key, $value);
+        foreach ($this->get_items() as $item) {
+            $item->set_data($key, $value);
         }
         return $this;
     }
-
     /**
      * Set current page
      *
      * @param int $page
      * @return $this
      */
-    public function setCurPage($page)
+    public function set_cur_page($page)
     {
-        $this->_curPage = $page;
+        $this->_cur_page = $page;
         return $this;
     }
-
     /**
      * Set collection page size
      *
      * @param int $size
      * @return $this
      */
-    public function setPageSize($size)
+    public function set_page_size($size)
     {
-        $this->_pageSize = $size;
+        $this->_page_size = $size;
         return $this;
     }
-
     /**
      * Set select order
      *
@@ -602,12 +540,11 @@ class Collection implements
      * @param string $direction
      * @return $this
      */
-    public function setOrder($field, $direction = self::SORT_ORDER_DESC)
+    public function set_order($field, $direction = self::SORT_ORDER_DESC)
     {
         $this->_orders[$field] = $direction;
         return $this;
     }
-
     /**
      * Set collection item class name
      *
@@ -615,55 +552,50 @@ class Collection implements
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function setItemObjectClass($className)
+    public function set_item_object_class($class_name)
     {
-        if (!is_a($className, DataObject::class, true)) {
-            throw new \InvalidArgumentException($className . ' does not extend \Magento\Framework\DataObject');
+        if (!is_a($class_name, Data_Object::class, true)) {
+            throw new \InvalidArgumentException($class_name . ' does not extend \Magento\Framework\DataObject');
         }
-        $this->_itemObjectClass = $className;
+        $this->_item_object_class = $class_name;
         return $this;
     }
-
     /**
      * Retrieve collection empty item
      *
      * @return DataObject
      */
-    public function getNewEmptyItem()
+    public function get_new_empty_item()
     {
-        return $this->_entityFactory->create($this->_itemObjectClass);
+        return $this->_entity_factory->create($this->_item_object_class);
     }
-
     /**
      * Render sql select conditions
      *
      * @return $this
      */
-    protected function _renderFilters()
+    protected function _render_filters()
     {
         return $this;
     }
-
     /**
      * Render sql select orders
      *
      * @return $this
      */
-    protected function _renderOrders()
+    protected function _render_orders()
     {
         return $this;
     }
-
     /**
      * Render sql select limit
      *
      * @return $this
      */
-    protected function _renderLimit()
+    protected function _render_limit()
     {
         return $this;
     }
-
     /**
      * Set select distinct
      *
@@ -675,7 +607,6 @@ class Collection implements
     {
         return $this;
     }
-
     /**
      * Load data
      *
@@ -684,11 +615,10 @@ class Collection implements
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function loadData($printQuery = false, $logQuery = false)
+    public function load_data($print_query = false, $log_query = false)
     {
         return $this;
     }
-
     /**
      * Load data
      *
@@ -696,11 +626,10 @@ class Collection implements
      * @param bool $logQuery
      * @return $this
      */
-    public function load($printQuery = false, $logQuery = false)
+    public function load($print_query = false, $log_query = false)
     {
-        return $this->loadData($printQuery, $logQuery);
+        return $this->load_data($print_query, $log_query);
     }
-
     /**
      * Load data with filter in place
      *
@@ -708,51 +637,44 @@ class Collection implements
      * @param bool $logQuery
      * @return $this
      */
-    public function loadWithFilter($printQuery = false, $logQuery = false)
+    public function load_with_filter($print_query = false, $log_query = false)
     {
-        return $this->loadData($printQuery, $logQuery);
+        return $this->load_data($print_query, $log_query);
     }
-
     /**
      * Convert collection to XML
      *
      * @return string
      */
-    public function toXml()
+    public function to_xml()
     {
         $xml = '<?xml version="1.0" encoding="UTF-8"?>
         <collection>
-           <totalRecords>' .
-            $this->_totalRecords .
-            '</totalRecords>
+           <totalRecords>' . $this->_total_records . '</totalRecords>
            <items>';
-
         foreach ($this as $item) {
-            $xml .= $item->toXml();
+            $xml .= $item->to_xml();
         }
         $xml .= '</items>
         </collection>';
         return $xml;
     }
-
     /**
      * Convert collection to array
      *
      * @param array $arrRequiredFields
      * @return array
      */
-    public function toArray($arrRequiredFields = [])
+    public function to_array($arr_required_fields = [])
     {
-        $arrItems = [];
-        $arrItems['totalRecords'] = $this->getSize();
-
-        $arrItems['items'] = [];
+        $arr_items = [];
+        $arr_items['totalRecords'] = $this->get_size();
+        $arr_items['items'] = [];
         foreach ($this as $item) {
-            $arrItems['items'][] = $item->toArray($arrRequiredFields);
+            $arr_items['items'][] = $item->to_array($arr_required_fields);
         }
-        return $arrItems;
+        return $arr_items;
     }
-
     /**
      * Convert items array to array for select options
      *
@@ -769,41 +691,37 @@ class Collection implements
      * @param array $additional
      * @return array
      */
-    protected function _toOptionArray($valueField = 'id', $labelField = 'name', $additional = [])
+    protected function _to_option_array($value_field = 'id', $label_field = 'name', $additional = [])
     {
         $res = [];
-        $additional['value'] = $valueField;
-        $additional['label'] = $labelField;
-
+        $additional['value'] = $value_field;
+        $additional['label'] = $label_field;
         foreach ($this as $item) {
             foreach ($additional as $code => $field) {
-                $data[$code] = $item->getData($field);
+                $data[$code] = $item->get_data($field);
             }
             $res[] = $data;
         }
         return $res;
     }
-
     /**
      * Returns option array
      *
      * @return array
      */
-    public function toOptionArray()
+    public function to_option_array()
     {
-        return $this->_toOptionArray();
+        return $this->_to_option_array();
     }
-
     /**
      * Returns options hash
      *
      * @return array
      */
-    public function toOptionHash()
+    public function to_option_hash()
     {
-        return $this->_toOptionHash();
+        return $this->_to_option_hash();
     }
-
     /**
      * Convert items array to hash for select options
      *
@@ -814,66 +732,61 @@ class Collection implements
      * @param string $labelField
      * @return array
      */
-    protected function _toOptionHash($valueField = 'id', $labelField = 'name')
+    protected function _to_option_hash($value_field = 'id', $label_field = 'name')
     {
         $res = [];
         foreach ($this as $item) {
-            $res[$item->getData($valueField)] = $item->getData($labelField);
+            $res[$item->get_data($value_field)] = $item->get_data($label_field);
         }
         return $res;
     }
-
     /**
      * Retrieve item by id
      *
      * @param string|int $idValue
      * @return DataObject|null
      */
-    public function getItemById($idValue)
+    public function get_item_by_id($id_value)
     {
-        $idValue = $idValue ?? '';
+        $id_value = $id_value ?? '';
         $this->load();
-        if (isset($this->_items[$idValue])) {
-            return $this->_items[$idValue];
+        if (isset($this->_items[$id_value])) {
+            return $this->_items[$id_value];
         }
         return null;
     }
-
     /**
      * Implementation of \IteratorAggregate::getIterator()
      *
      * @return \ArrayIterator
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function getIterator()
     {
         $this->load();
         return new \ArrayIterator($this->_items);
     }
-
     /**
      * Retrieve count of collection loaded items
      *
      * @return int
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function count()
     {
         $this->load();
         return count($this->_items);
     }
-
     /**
      * Retrieve Flag
      *
      * @param string $flag
      * @return bool|null
      */
-    public function getFlag($flag)
+    public function get_flag($flag)
     {
         return $this->_flags[$flag] ?? null;
     }
-
     /**
      * Set Flag
      *
@@ -881,23 +794,21 @@ class Collection implements
      * @param bool|null $value
      * @return $this
      */
-    public function setFlag($flag, $value = null)
+    public function set_flag($flag, $value = null)
     {
         $this->_flags[$flag] = $value;
         return $this;
     }
-
     /**
      * Has Flag
      *
      * @param string $flag
      * @return bool
      */
-    public function hasFlag($flag)
+    public function has_flag($flag)
     {
         return array_key_exists($flag, $this->_flags);
     }
-
     /**
      * Sleep handler
      *
@@ -907,15 +818,9 @@ class Collection implements
     public function __sleep()
     {
         $properties = array_keys(get_object_vars($this));
-        $properties = array_diff(
-            $properties,
-            [
-                '_entityFactory',
-            ]
-        );
+        $properties = array_diff($properties, ['_entityFactory']);
         return $properties;
     }
-
     /**
      * Init not serializable fields
      *
@@ -925,23 +830,20 @@ class Collection implements
     public function __wakeup()
     {
         // phpcs:ignore Magento2.PHP.AutogeneratedClassNotInConstructor
-        $this->_entityFactory = ObjectManager::getInstance()->get(
-            EntityFactoryInterface::class
-        );
+        $this->_entity_factory = Object_Manager::get_instance()->get(Entity_Factory_Interface::class);
     }
-
     /**
      * @inheritDoc
      */
-    public function _resetState(): void
+    public function _reset_state(): void
     {
         $this->clear();
-        $this->_isCollectionLoaded = null;
+        $this->_is_collection_loaded = null;
         $this->_orders = [];
         $this->_filters = [];
-        $this->_isFiltersRendered = false;
-        $this->_curPage = 1;
-        $this->_pageSize = false;
+        $this->_is_filters_rendered = false;
+        $this->_cur_page = 1;
+        $this->_page_size = false;
         $this->_flags = [];
     }
 }

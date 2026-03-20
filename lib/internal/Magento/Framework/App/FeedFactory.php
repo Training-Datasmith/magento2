@@ -4,76 +4,55 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\App;
 
-use Magento\Framework\ObjectManagerInterface;
-use Psr\Log\LoggerInterface;
-
+use Magento\Framework\Object_Manager_Interface;
+use Psr\Log\Logger_Interface;
 /**
  * Feed factory
  */
-class FeedFactory implements FeedFactoryInterface
+class Feed_Factory implements Feed_Factory_Interface
 {
     /**
      * @var ObjectManagerInterface
      */
-    private $objectManager;
-
+    private $object_manager;
     /**
      * @var LoggerInterface
      */
     private $logger;
-
     /**
      * @var array
      */
     private $formats;
-
     /**
      * @param ObjectManagerInterface $objectManger
      * @param LoggerInterface $logger
      * @param array $formats
      */
-    public function __construct(
-        ObjectManagerInterface $objectManger,
-        LoggerInterface $logger,
-        array $formats
-    ) {
-        $this->objectManager = $objectManger;
+    public function __construct(Object_Manager_Interface $object_manger, Logger_Interface $logger, array $formats)
+    {
+        $this->object_manager = $object_manger;
         $this->logger = $logger;
         $this->formats = $formats;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function create(array $data, string $format = FeedFactoryInterface::FORMAT_RSS): FeedInterface
+    public function create(array $data, string $format = Feed_Factory_Interface::FORMAT_RSS): Feed_Interface
     {
         if (!isset($this->formats[$format])) {
-            throw new \Magento\Framework\Exception\InputException(
-                new \Magento\Framework\Phrase('The format is not supported')
-            );
+            throw new \Magento\Framework\Exception\Input_Exception(new \Magento\Framework\Phrase('The format is not supported'));
         }
-
-        if (!is_subclass_of($this->formats[$format], \Magento\Framework\App\FeedInterface::class)) {
-            throw new \Magento\Framework\Exception\InputException(
-                new \Magento\Framework\Phrase('Wrong format handler type')
-            );
+        if (!is_subclass_of($this->formats[$format], \Magento\Framework\App\Feed_Interface::class)) {
+            throw new \Magento\Framework\Exception\Input_Exception(new \Magento\Framework\Phrase('Wrong format handler type'));
         }
-
         try {
-            return $this->objectManager->create(
-                $this->formats[$format],
-                ['data' => $data]
-            );
+            return $this->object_manager->create($this->formats[$format], ['data' => $data]);
         } catch (\Exception $e) {
-            $this->logger->error($e->getMessage());
-            throw new \Magento\Framework\Exception\RuntimeException(
-                new \Magento\Framework\Phrase('There has been an error with import'),
-                $e
-            );
+            $this->logger->error($e->get_message());
+            throw new \Magento\Framework\Exception\RuntimeException(new \Magento\Framework\Phrase('There has been an error with import'), $e);
         }
     }
 }

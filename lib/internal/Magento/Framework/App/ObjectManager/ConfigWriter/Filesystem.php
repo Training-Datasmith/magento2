@@ -4,33 +4,27 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Framework\App\Object_Manager\Config_Writer;
 
-declare(strict_types=1);
-
-namespace Magento\Framework\App\ObjectManager\ConfigWriter;
-
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Magento\Framework\App\ObjectManager\ConfigWriterInterface;
-
+use Magento\Framework\App\Filesystem\Directory_List;
+use Magento\Framework\App\Object_Manager\Config_Writer_Interface;
 /**
  * @inheritdoc
  */
-class Filesystem implements ConfigWriterInterface
+class Filesystem implements Config_Writer_Interface
 {
     /**
      * @var DirectoryList
      */
-    private $directoryList;
-
+    private $directory_list;
     /**
      * @param DirectoryList $directoryList
      */
-    public function __construct(
-        DirectoryList $directoryList
-    ) {
-        $this->directoryList = $directoryList;
+    public function __construct(Directory_List $directory_list)
+    {
+        $this->directory_list = $directory_list;
     }
-
     /**
      * Writes config in storage
      *
@@ -42,12 +36,8 @@ class Filesystem implements ConfigWriterInterface
     {
         $this->initialize();
         $configuration = sprintf('<?php return %s;', var_export($config, true));
-        file_put_contents(
-            $this->directoryList->getPath(DirectoryList::GENERATED_METADATA) . '/' . $key  . '.php',
-            $configuration
-        );
+        file_put_contents($this->directory_list->get_path(Directory_List::GENERATED_METADATA) . '/' . $key . '.php', $configuration);
     }
-
     /**
      * Initializes writer
      *
@@ -55,8 +45,8 @@ class Filesystem implements ConfigWriterInterface
      */
     private function initialize()
     {
-        if (!file_exists($this->directoryList->getPath(DirectoryList::GENERATED_METADATA))) {
-            mkdir($this->directoryList->getPath(DirectoryList::GENERATED_METADATA));
+        if (!file_exists($this->directory_list->get_path(Directory_List::GENERATED_METADATA))) {
+            mkdir($this->directory_list->get_path(Directory_List::GENERATED_METADATA));
         }
     }
 }

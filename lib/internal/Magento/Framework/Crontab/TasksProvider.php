@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Crontab;
 
 /**
  * TasksProvider collects list of tasks
  */
-class TasksProvider implements TasksProviderInterface
+class Tasks_Provider implements Tasks_Provider_Interface
 {
     /**
      * @var array
      */
     private $tasks = [];
-
     /**
      * @param array $tasks
      */
@@ -25,11 +23,10 @@ class TasksProvider implements TasksProviderInterface
     {
         $this->tasks = $tasks;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getTasks()
+    public function get_tasks()
     {
         return $this->tasks;
     }

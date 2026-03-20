@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Query;
 
-use Magento\Framework\DB\Adapter\AdapterInterface;
+use Magento\Framework\DB\Adapter\Adapter_Interface;
 use Magento\Framework\DB\Select;
-
 /**
  * Query batch range iterator
  *
@@ -23,58 +21,48 @@ use Magento\Framework\DB\Select;
  * @see \Magento\Catalog\Model\Indexer\Category\Product\AbstractAction
  * @see \Magento\Framework\DB\Adapter\Pdo\Mysql
  */
-class BatchRangeIterator implements BatchIteratorInterface
+class Batch_Range_Iterator implements Batch_Iterator_Interface
 {
     /**
      * @var Select
      */
-    private $currentSelect;
-
+    private $current_select;
     /**
      * @var string|array
      */
-    private $rangeField;
-
+    private $range_field;
     /**
      * @var int
      */
-    private $batchSize;
-
+    private $batch_size;
     /**
      * @var AdapterInterface
      */
     private $connection;
-
     /**
      * @var int
      */
-    private $currentOffset = 0;
-
+    private $current_offset = 0;
     /**
      * @var int
      */
-    private $totalItemCount;
-
+    private $total_item_count;
     /**
      * @var int
      */
     private $iteration = 0;
-
     /**
      * @var Select
      */
     private $select;
-
     /**
      * @var string
      */
-    private $correlationName;
-
+    private $correlation_name;
     /**
      * @var bool
      */
-    private $isValid = true;
-
+    private $is_valid = true;
     /**
      * Initialize dependencies.
      *
@@ -85,20 +73,14 @@ class BatchRangeIterator implements BatchIteratorInterface
      * @param string $rangeFieldAlias @deprecated
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function __construct(
-        Select $select,
-        $batchSize,
-        $correlationName,
-        $rangeField,
-        $rangeFieldAlias = ''
-    ) {
-        $this->batchSize = $batchSize;
+    public function __construct(Select $select, $batch_size, $correlation_name, $range_field, $range_field_alias = '')
+    {
+        $this->batch_size = $batch_size;
         $this->select = $select;
-        $this->correlationName = $correlationName;
-        $this->rangeField = $rangeField;
-        $this->connection = $select->getConnection();
+        $this->correlation_name = $correlation_name;
+        $this->range_field = $range_field;
+        $this->connection = $select->get_connection();
     }
-
     /**
      * Return the current element
      *
@@ -108,13 +90,12 @@ class BatchRangeIterator implements BatchIteratorInterface
      */
     public function current()
     {
-        if (null === $this->currentSelect) {
-            $this->isValid = $this->currentOffset < $this->totalItemCount;
-            $this->currentSelect = $this->initSelectObject();
+        if (null === $this->current_select) {
+            $this->is_valid = $this->current_offset < $this->total_item_count;
+            $this->current_select = $this->init_select_object();
         }
-        return $this->currentSelect;
+        return $this->current_select;
     }
-
     /**
      * Return the key of the current element
      *
@@ -126,7 +107,6 @@ class BatchRangeIterator implements BatchIteratorInterface
     {
         return $this->iteration;
     }
-
     /**
      * Move forward to next sub-select
      *
@@ -137,20 +117,19 @@ class BatchRangeIterator implements BatchIteratorInterface
      */
     public function next()
     {
-        if (null === $this->currentSelect) {
+        if (null === $this->current_select) {
             $this->current();
         }
-        $this->isValid = $this->currentOffset < $this->totalItemCount;
-        $select = $this->initSelectObject();
-        if ($this->isValid) {
+        $this->is_valid = $this->current_offset < $this->total_item_count;
+        $select = $this->init_select_object();
+        if ($this->is_valid) {
             $this->iteration++;
-            $this->currentSelect = $select;
+            $this->current_select = $select;
         } else {
-            $this->currentSelect = null;
+            $this->current_select = null;
         }
-        return $this->currentSelect;
+        return $this->current_select;
     }
-
     /**
      * Rewind the BatchRangeIterator to the first element.
      *
@@ -160,12 +139,11 @@ class BatchRangeIterator implements BatchIteratorInterface
      */
     public function rewind()
     {
-        $this->currentSelect = null;
+        $this->current_select = null;
         $this->iteration = 0;
-        $this->isValid = true;
-        $this->totalItemCount = 0;
+        $this->is_valid = true;
+        $this->total_item_count = 0;
     }
-
     /**
      * Checks if current position is valid
      *
@@ -173,9 +151,8 @@ class BatchRangeIterator implements BatchIteratorInterface
      */
     public function valid()
     {
-        return $this->isValid;
+        return $this->is_valid;
     }
-
     /**
      * Initialize select object
      *
@@ -183,34 +160,24 @@ class BatchRangeIterator implements BatchIteratorInterface
      *
      * @return \Magento\Framework\DB\Select
      */
-    private function initSelectObject()
+    private function init_select_object()
     {
         $object = clone $this->select;
-
-        if (!$this->totalItemCount) {
-            $wrapperSelect = $this->connection->select();
-            $wrapperSelect->from(
-                $object,
-                [
-                    new \Zend_Db_Expr('COUNT(*) as cnt'),
-                ]
-            );
-            $row = $this->connection->fetchRow($wrapperSelect);
-
-            $this->totalItemCount = (int)$row['cnt'];
+        if (!$this->total_item_count) {
+            $wrapper_select = $this->connection->select();
+            $wrapper_select->from($object, [new \Zend_Db_Expr('COUNT(*) as cnt')]);
+            $row = $this->connection->fetch_row($wrapper_select);
+            $this->total_item_count = (int) $row['cnt'];
         }
-
-        $rangeField = is_array($this->rangeField) ? $this->rangeField : [$this->rangeField];
-
+        $range_field = is_array($this->range_field) ? $this->range_field : [$this->range_field];
         /**
          * Reset sort order section from origin select object
          */
-        foreach ($rangeField as $field) {
-            $object->order($this->correlationName . '.' . $field . ' ' . \Magento\Framework\DB\Select::SQL_ASC);
+        foreach ($range_field as $field) {
+            $object->order($this->correlation_name . '.' . $field . ' ' . \Magento\Framework\DB\Select::SQL_ASC);
         }
-        $object->limit($this->batchSize, $this->currentOffset);
-        $this->currentOffset += $this->batchSize;
-
+        $object->limit($this->batch_size, $this->current_offset);
+        $this->current_offset += $this->batch_size;
         return $object;
     }
 }

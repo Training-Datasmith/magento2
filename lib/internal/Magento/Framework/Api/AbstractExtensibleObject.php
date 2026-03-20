@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -18,28 +17,24 @@ namespace Magento\Framework\Api;
  * @see \Magento\Framework\Model\AbstractExtensibleModel
  * @since 100.0.2
  */
-abstract class AbstractExtensibleObject extends AbstractSimpleObject implements CustomAttributesDataInterface
+abstract class Abstract_Extensible_Object extends Abstract_Simple_Object implements Custom_Attributes_Data_Interface
 {
     /**
      * Array key for custom attributes
      */
     public const CUSTOM_ATTRIBUTES_KEY = 'custom_attributes';
-
     /**
      * @var \Magento\Framework\Api\ExtensionAttributesFactory
      */
-    protected $extensionFactory;
-
+    protected $extension_factory;
     /**
      * @var AttributeValueFactory
      */
-    protected $attributeValueFactory;
-
+    protected $attribute_value_factory;
     /**
      * @var string[]
      */
-    protected $customAttributesCodes;
-
+    protected $custom_attributes_codes;
     /**
      * Initialize internal storage
      *
@@ -47,43 +42,34 @@ abstract class AbstractExtensibleObject extends AbstractSimpleObject implements 
      * @param AttributeValueFactory $attributeValueFactory
      * @param array $data
      */
-    public function __construct(
-        \Magento\Framework\Api\ExtensionAttributesFactory $extensionFactory,
-        AttributeValueFactory $attributeValueFactory,
-        $data = []
-    ) {
-        $this->extensionFactory = $extensionFactory;
-        $this->attributeValueFactory = $attributeValueFactory;
+    public function __construct(\Magento\Framework\Api\Extension_Attributes_Factory $extension_factory, Attribute_Value_Factory $attribute_value_factory, $data = [])
+    {
+        $this->extension_factory = $extension_factory;
+        $this->attribute_value_factory = $attribute_value_factory;
         parent::__construct($data);
         if (isset($data[self::EXTENSION_ATTRIBUTES_KEY]) && is_array($data[self::EXTENSION_ATTRIBUTES_KEY])) {
-            $this->populateExtensionAttributes($data[self::EXTENSION_ATTRIBUTES_KEY]);
+            $this->populate_extension_attributes($data[self::EXTENSION_ATTRIBUTES_KEY]);
         }
     }
-
     /**
      * Get an attribute value.
      *
      * @param string $attributeCode
      * @return \Magento\Framework\Api\AttributeInterface|null null if the attribute has not been set
      */
-    public function getCustomAttribute($attributeCode)
+    public function get_custom_attribute($attribute_code)
     {
-        return isset($this->_data[self::CUSTOM_ATTRIBUTES])
-            && isset($this->_data[self::CUSTOM_ATTRIBUTES][$attributeCode])
-                ? $this->_data[self::CUSTOM_ATTRIBUTES][$attributeCode]
-                : null;
+        return isset($this->_data[self::CUSTOM_ATTRIBUTES]) && isset($this->_data[self::CUSTOM_ATTRIBUTES][$attribute_code]) ? $this->_data[self::CUSTOM_ATTRIBUTES][$attribute_code] : null;
     }
-
     /**
      * Retrieve custom attributes values.
      *
      * @return \Magento\Framework\Api\AttributeInterface[]|null
      */
-    public function getCustomAttributes()
+    public function get_custom_attributes()
     {
         return $this->_data[self::CUSTOM_ATTRIBUTES] ?? [];
     }
-
     /**
      * Set array of custom attributes
      *
@@ -91,21 +77,20 @@ abstract class AbstractExtensibleObject extends AbstractSimpleObject implements 
      * @return $this
      * @throws \LogicException
      */
-    public function setCustomAttributes(array $attributes)
+    public function set_custom_attributes(array $attributes)
     {
-        $customAttributesCodes = $this->getCustomAttributesCodes();
+        $custom_attributes_codes = $this->get_custom_attributes_codes();
         foreach ($attributes as $attribute) {
-            if (!$attribute instanceof AttributeValue) {
+            if (!$attribute instanceof Attribute_Value) {
                 throw new \LogicException('Custom Attribute array elements can only be type of AttributeValue');
             }
-            $attributeCode = $attribute->getAttributeCode();
-            if (in_array($attributeCode, $customAttributesCodes)) {
-                $this->_data[AbstractExtensibleObject::CUSTOM_ATTRIBUTES_KEY][$attributeCode] = $attribute;
+            $attribute_code = $attribute->get_attribute_code();
+            if (in_array($attribute_code, $custom_attributes_codes)) {
+                $this->_data[Abstract_Extensible_Object::CUSTOM_ATTRIBUTES_KEY][$attribute_code] = $attribute;
             }
         }
         return $this;
     }
-
     /**
      * Set an attribute value for a given attribute code
      *
@@ -113,20 +98,18 @@ abstract class AbstractExtensibleObject extends AbstractSimpleObject implements 
      * @param mixed $attributeValue
      * @return $this
      */
-    public function setCustomAttribute($attributeCode, $attributeValue)
+    public function set_custom_attribute($attribute_code, $attribute_value)
     {
-        $customAttributesCodes = $this->getCustomAttributesCodes();
+        $custom_attributes_codes = $this->get_custom_attributes_codes();
         /* If key corresponds to custom attribute code, populate custom attributes */
-        if (in_array($attributeCode, $customAttributesCodes)) {
+        if (in_array($attribute_code, $custom_attributes_codes)) {
             /** @var AttributeValue $attribute */
-            $attribute = $this->attributeValueFactory->create();
-            $attribute->setAttributeCode($attributeCode)
-                ->setValue($attributeValue);
-            $this->_data[AbstractExtensibleObject::CUSTOM_ATTRIBUTES_KEY][$attributeCode] = $attribute;
+            $attribute = $this->attribute_value_factory->create();
+            $attribute->set_attribute_code($attribute_code)->set_value($attribute_value);
+            $this->_data[Abstract_Extensible_Object::CUSTOM_ATTRIBUTES_KEY][$attribute_code] = $attribute;
         }
         return $this;
     }
-
     /**
      * Get a list of custom attribute codes.
      *
@@ -134,11 +117,10 @@ abstract class AbstractExtensibleObject extends AbstractSimpleObject implements 
      *
      * @return string[]
      */
-    protected function getCustomAttributesCodes()
+    protected function get_custom_attributes_codes()
     {
-        return $this->customAttributesCodes ?? [];
+        return $this->custom_attributes_codes ?? [];
     }
-
     /**
      * Receive a list of EAV attributes using provided metadata service.
      *
@@ -147,53 +129,50 @@ abstract class AbstractExtensibleObject extends AbstractSimpleObject implements 
      * @param \Magento\Framework\Api\MetadataServiceInterface $metadataService
      * @return string[]
      */
-    protected function getEavAttributesCodes(\Magento\Framework\Api\MetadataServiceInterface $metadataService)
+    protected function get_eav_attributes_codes(\Magento\Framework\Api\Metadata_Service_Interface $metadata_service)
     {
-        $attributeCodes = [];
-        $customAttributesMetadata = $metadataService->getCustomAttributesMetadata(get_class($this));
-        if (is_array($customAttributesMetadata)) {
+        $attribute_codes = [];
+        $custom_attributes_metadata = $metadata_service->get_custom_attributes_metadata(get_class($this));
+        if (is_array($custom_attributes_metadata)) {
             /** @var $attribute \Magento\Framework\Api\MetadataObjectInterface */
-            foreach ($customAttributesMetadata as $attribute) {
-                $attributeCodes[] = $attribute->getAttributeCode();
+            foreach ($custom_attributes_metadata as $attribute) {
+                $attribute_codes[] = $attribute->get_attribute_code();
             }
         }
-        return $attributeCodes;
+        return $attribute_codes;
     }
-
     /**
      * Retrieve existing extension attributes object or create a new one.
      *
      * @return \Magento\Framework\Api\ExtensionAttributesInterface
      */
-    protected function _getExtensionAttributes()
+    protected function _get_extension_attributes()
     {
         if (!$this->_get(self::EXTENSION_ATTRIBUTES_KEY)) {
-            $this->populateExtensionAttributes([]);
+            $this->populate_extension_attributes([]);
         }
         return $this->_get(self::EXTENSION_ATTRIBUTES_KEY);
     }
-
     /**
      * Instantiate extension attributes object and populate it with the provided data.
      *
      * @param array $extensionAttributesData
      * @return void
      */
-    private function populateExtensionAttributes(array $extensionAttributesData = [])
+    private function populate_extension_attributes(array $extension_attributes_data = [])
     {
-        $extensionAttributes = $this->extensionFactory->create(get_class($this), $extensionAttributesData);
-        $this->_setExtensionAttributes($extensionAttributes);
+        $extension_attributes = $this->extension_factory->create(get_class($this), $extension_attributes_data);
+        $this->_set_extension_attributes($extension_attributes);
     }
-
     /**
      * Set an extension attributes object.
      *
      * @param \Magento\Framework\Api\ExtensionAttributesInterface $extensionAttributes
      * @return $this
      */
-    protected function _setExtensionAttributes(\Magento\Framework\Api\ExtensionAttributesInterface $extensionAttributes)
+    protected function _set_extension_attributes(\Magento\Framework\Api\Extension_Attributes_Interface $extension_attributes)
     {
-        $this->_data[self::EXTENSION_ATTRIBUTES_KEY] = $extensionAttributes;
+        $this->_data[self::EXTENSION_ATTRIBUTES_KEY] = $extension_attributes;
         return $this;
     }
 }

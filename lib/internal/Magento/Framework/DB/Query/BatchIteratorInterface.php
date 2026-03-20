@@ -4,8 +4,7 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\DB\Query;
 
 /**
@@ -13,20 +12,18 @@ namespace Magento\Framework\DB\Query;
  *
  * @api
  */
-interface BatchIteratorInterface extends \Iterator
+interface Batch_Iterator_Interface extends \Iterator
 {
     /**
      * Constant which determine strategy to create iterator which will to process
      * range field eg. entity_id with unique values.
      */
     public const UNIQUE_FIELD_ITERATOR = 'unique';
-
     /**
      * Constant which determine strategy to create iterator which will to process
      * range field with non-unique values.
      */
     public const NON_UNIQUE_FIELD_ITERATOR = 'non_unqiue';
-
     /**
      * Return the current element
      *
@@ -34,9 +31,8 @@ interface BatchIteratorInterface extends \Iterator
      *
      * @return \Magento\Framework\DB\Select
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function current();
-
     /**
      * Return the key of the current element
      *
@@ -44,9 +40,8 @@ interface BatchIteratorInterface extends \Iterator
      *
      * @return int
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function key();
-
     /**
      * Move forward to next sub-select
      *
@@ -55,9 +50,8 @@ interface BatchIteratorInterface extends \Iterator
      *
      * @return \Magento\Framework\DB\Select
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function next();
-
     /**
      * Rewind the BatchRangeIterator to the first element.
      *
@@ -65,14 +59,13 @@ interface BatchIteratorInterface extends \Iterator
      *
      * @return void
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function rewind();
-
     /**
      * Checks if current position is valid
      *
      * @return bool
      */
-    #[\ReturnTypeWillChange]
+    #[\Return_Type_Will_Change]
     public function valid();
 }

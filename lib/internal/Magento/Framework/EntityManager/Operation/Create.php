@@ -1,73 +1,63 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation;
 
-namespace Magento\Framework\EntityManager\Operation;
-
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\DuplicateException;
-use Magento\Framework\EntityManager\EventManager;
-use Magento\Framework\EntityManager\MetadataPool;
-use Magento\Framework\EntityManager\Operation\Create\CreateAttributes;
-use Magento\Framework\EntityManager\Operation\Create\CreateExtensions;
-use Magento\Framework\EntityManager\Operation\Create\CreateMain;
-use Magento\Framework\EntityManager\Sequence\SequenceApplier;
-use Magento\Framework\EntityManager\TypeResolver;
-use Magento\Framework\Exception\AlreadyExistsException;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\DB\Adapter\Duplicate_Exception;
+use Magento\Framework\Entity_Manager\Event_Manager;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+use Magento\Framework\Entity_Manager\Operation\Create\Create_Attributes;
+use Magento\Framework\Entity_Manager\Operation\Create\Create_Extensions;
+use Magento\Framework\Entity_Manager\Operation\Create\Create_Main;
+use Magento\Framework\Entity_Manager\Sequence\Sequence_Applier;
+use Magento\Framework\Entity_Manager\Type_Resolver;
+use Magento\Framework\Exception\Already_Exists_Exception;
 use Magento\Framework\Phrase;
-
 /**
  * Class Create
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Create implements CreateInterface
+class Create implements Create_Interface
 {
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var TypeResolver
      */
-    private $typeResolver;
-
+    private $type_resolver;
     /**
      * @var ResourceConnection
      */
-    private $resourceConnection;
-
+    private $resource_connection;
     /**
      * @var EventManager
      */
-    private $eventManager;
-
+    private $event_manager;
     /**
      * @var CreateMain
      */
-    private $createMain;
-
+    private $create_main;
     /**
      * @var CreateAttributes
      */
-    private $createAttributes;
-
+    private $create_attributes;
     /**
      * @var CreateExtensions
      */
-    private $createExtensions;
-
+    private $create_extensions;
     /**
      * @var SequenceApplier
      */
-    private $sequenceApplier;
-
+    private $sequence_applier;
     /**
      * @param MetadataPool $metadataPool
      * @param TypeResolver $typeResolver
@@ -77,24 +67,16 @@ class Create implements CreateInterface
      * @param CreateAttributes $createAttributes
      * @param CreateExtensions $createExtensions
      */
-    public function __construct(
-        MetadataPool $metadataPool,
-        TypeResolver $typeResolver,
-        ResourceConnection $resourceConnection,
-        EventManager $eventManager,
-        CreateMain $createMain,
-        CreateAttributes $createAttributes,
-        CreateExtensions $createExtensions
-    ) {
-        $this->metadataPool = $metadataPool;
-        $this->typeResolver = $typeResolver;
-        $this->resourceConnection = $resourceConnection;
-        $this->eventManager = $eventManager;
-        $this->createMain = $createMain;
-        $this->createAttributes = $createAttributes;
-        $this->createExtensions = $createExtensions;
+    public function __construct(Metadata_Pool $metadata_pool, Type_Resolver $type_resolver, Resource_Connection $resource_connection, Event_Manager $event_manager, Create_Main $create_main, Create_Attributes $create_attributes, Create_Extensions $create_extensions)
+    {
+        $this->metadata_pool = $metadata_pool;
+        $this->type_resolver = $type_resolver;
+        $this->resource_connection = $resource_connection;
+        $this->event_manager = $event_manager;
+        $this->create_main = $create_main;
+        $this->create_attributes = $create_attributes;
+        $this->create_extensions = $create_extensions;
     }
-
     /**
      * @param object $entity
      * @param array $arguments
@@ -104,57 +86,39 @@ class Create implements CreateInterface
      */
     public function execute($entity, $arguments = [])
     {
-        $entityType = $this->typeResolver->resolve($entity);
-        $metadata = $this->metadataPool->getMetadata($entityType);
-        $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
-        $connection->beginTransaction();
+        $entity_type = $this->type_resolver->resolve($entity);
+        $metadata = $this->metadata_pool->get_metadata($entity_type);
+        $connection = $this->resource_connection->get_connection_by_name($metadata->get_entity_connection_name());
+        $connection->begin_transaction();
         try {
-            $this->eventManager->dispatch(
-                'entity_manager_save_before',
-                [
-                    'entity_type' => $entityType,
-                    'entity' => $entity,
-                ]
-            );
-            $this->eventManager->dispatchEntityEvent($entityType, 'save_before', ['entity' => $entity]);
-
-            $entity = $this->getSequenceApplier()->apply($entity);
-
-            $entity = $this->createMain->execute($entity, $arguments);
-            $entity = $this->createAttributes->execute($entity, $arguments);
-            $entity = $this->createExtensions->execute($entity, $arguments);
-            $this->eventManager->dispatchEntityEvent($entityType, 'save_after', ['entity' => $entity]);
-            $this->eventManager->dispatch(
-                'entity_manager_save_after',
-                [
-                    'entity_type' => $entityType,
-                    'entity' => $entity,
-                ]
-            );
+            $this->event_manager->dispatch('entity_manager_save_before', ['entity_type' => $entity_type, 'entity' => $entity]);
+            $this->event_manager->dispatch_entity_event($entity_type, 'save_before', ['entity' => $entity]);
+            $entity = $this->get_sequence_applier()->apply($entity);
+            $entity = $this->create_main->execute($entity, $arguments);
+            $entity = $this->create_attributes->execute($entity, $arguments);
+            $entity = $this->create_extensions->execute($entity, $arguments);
+            $this->event_manager->dispatch_entity_event($entity_type, 'save_after', ['entity' => $entity]);
+            $this->event_manager->dispatch('entity_manager_save_after', ['entity_type' => $entity_type, 'entity' => $entity]);
             $connection->commit();
-        } catch (DuplicateException $e) {
-            $connection->rollBack();
-            throw new AlreadyExistsException(new Phrase('Unique constraint violation found'), $e);
+        } catch (Duplicate_Exception $e) {
+            $connection->roll_back();
+            throw new Already_Exists_Exception(new Phrase('Unique constraint violation found'), $e);
         } catch (\Exception $e) {
-            $connection->rollBack();
+            $connection->roll_back();
             throw $e;
         }
         return $entity;
     }
-
     /**
      * @return SequenceApplier
      *
      * @deprecated 101.0.0
      */
-    private function getSequenceApplier()
+    private function get_sequence_applier()
     {
-        if (!$this->sequenceApplier) {
-            $this->sequenceApplier = ObjectManager::getInstance()->get(
-                SequenceApplier::class
-            );
+        if (!$this->sequence_applier) {
+            $this->sequence_applier = Object_Manager::get_instance()->get(Sequence_Applier::class);
         }
-
-        return $this->sequenceApplier;
+        return $this->sequence_applier;
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -18,7 +17,7 @@ namespace Magento\Framework\App;
  * @api
  * @since 101.0.0
  */
-interface PlainTextRequestInterface
+interface Plain_Text_Request_Interface
 {
     /**
      * Returns textual representation of request to Magento.
@@ -26,5 +25,5 @@ interface PlainTextRequestInterface
      * @return string
      * @since 101.0.0
      */
-    public function getContent();
+    public function get_content();
 }

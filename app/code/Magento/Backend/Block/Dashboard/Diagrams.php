@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Dashboard;
 
 /**
@@ -19,7 +18,6 @@ class Diagrams extends \Magento\Backend\Block\Widget\Tabs
      * @var string
      */
     protected $_template = 'Magento_Backend::widget/tabshoriz.phtml';
-
     /**
      * Internal constructor, that is called from real constructor
      *
@@ -28,37 +26,18 @@ class Diagrams extends \Magento\Backend\Block\Widget\Tabs
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('diagram_tab');
-        $this->setDestElementId('diagram_tab_content');
+        $this->set_id('diagram_tab');
+        $this->set_dest_element_id('diagram_tab_content');
     }
-
     /**
      * Preparing global layout
      *
      * @return $this
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
-        $this->addTab(
-            'orders',
-            [
-                'label' => __('Orders'),
-                'content' => $this->getLayout()->createBlock(
-                    \Magento\Backend\Block\Dashboard\Tab\Orders::class
-                )->toHtml(),
-                'active' => true,
-            ]
-        );
-
-        $this->addTab(
-            'amounts',
-            [
-                'label' => __('Amounts'),
-                'content' => $this->getLayout()->createBlock(
-                    \Magento\Backend\Block\Dashboard\Tab\Amounts::class
-                )->toHtml(),
-            ]
-        );
-        return parent::_prepareLayout();
+        $this->add_tab('orders', ['label' => __('Orders'), 'content' => $this->get_layout()->create_block(\Magento\Backend\Block\Dashboard\Tab\Orders::class)->to_html(), 'active' => true]);
+        $this->add_tab('amounts', ['label' => __('Amounts'), 'content' => $this->get_layout()->create_block(\Magento\Backend\Block\Dashboard\Tab\Amounts::class)->to_html()]);
+        return parent::_prepare_layout();
     }
 }

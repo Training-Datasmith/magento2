@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\Page_Cache;
 
-namespace Magento\Framework\App\PageCache;
-
-use Magento\Framework\App\ObjectManager;
+use Magento\Framework\App\Object_Manager;
 use Magento\Framework\App\State as AppState;
-use Magento\Framework\Stdlib\CookieDisablerInterface;
-
+use Magento\Framework\Stdlib\Cookie_Disabler_Interface;
 /**
  * Builtin cache processor
  *
@@ -26,55 +24,44 @@ class Kernel
      * @see Nothing
      */
     protected $cache;
-
     /**
      * @var \Magento\Framework\App\PageCache\IdentifierInterface
      */
     protected $identifier;
-
     /**
      * @var \Magento\Framework\App\Request\Http
      */
     protected $request;
-
     /**
      * @var \Magento\PageCache\Model\Cache\Type
      */
-    private $fullPageCache;
-
+    private $full_page_cache;
     /**
      * @var \Magento\Framework\Serialize\SerializerInterface
      */
     private $serializer;
-
     /**
      * @var \Magento\Framework\App\Http\Context
      */
     private $context;
-
     /**
      * @var \Magento\Framework\App\Http\ContextFactory
      */
-    private $contextFactory;
-
+    private $context_factory;
     /**
      * @var \Magento\Framework\App\Response\HttpFactory
      */
-    private $httpFactory;
-
+    private $http_factory;
     /**
      * @var AppState
      */
     private $state;
-
     /**
      * @var \Magento\Framework\App\PageCache\IdentifierInterface
      */
-    private $identifierForSave;
-
+    private $identifier_for_save;
     // phpcs:disable Magento2.Commenting.ClassPropertyPHPDocFormatting
-    private readonly CookieDisablerInterface $cookieDisabler;
-
+    private readonly Cookie_Disabler_Interface $cookie_disabler;
     /**
      * @param Cache $cache
      * @param \Magento\Framework\App\PageCache\IdentifierInterface $identifier
@@ -89,42 +76,20 @@ class Kernel
      * @param CookieDisablerInterface|null $cookieDisabler
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    public function __construct(
-        \Magento\Framework\App\PageCache\Cache $cache,
-        \Magento\Framework\App\PageCache\IdentifierInterface $identifier,
-        \Magento\Framework\App\Request\Http $request,
-        ?\Magento\Framework\App\Http\Context $context = null,
-        ?\Magento\Framework\App\Http\ContextFactory $contextFactory = null,
-        ?\Magento\Framework\App\Response\HttpFactory $httpFactory = null,
-        ?\Magento\Framework\Serialize\SerializerInterface $serializer = null,
-        ?AppState $state = null,
-        ?\Magento\PageCache\Model\Cache\Type $fullPageCache = null,
-        ?\Magento\Framework\App\PageCache\IdentifierInterface $identifierForSave = null,
-        ?CookieDisablerInterface $cookieDisabler = null,
-    ) {
+    public function __construct(\Magento\Framework\App\Page_Cache\Cache $cache, \Magento\Framework\App\Page_Cache\Identifier_Interface $identifier, \Magento\Framework\App\Request\Http $request, ?\Magento\Framework\App\Http\Context $context = null, ?\Magento\Framework\App\Http\Context_Factory $context_factory = null, ?\Magento\Framework\App\Response\Http_Factory $http_factory = null, ?\Magento\Framework\Serialize\Serializer_Interface $serializer = null, ?App_State $state = null, ?\Magento\Page_Cache\Model\Cache\Type $full_page_cache = null, ?\Magento\Framework\App\Page_Cache\Identifier_Interface $identifier_for_save = null, ?Cookie_Disabler_Interface $cookie_disabler = null)
+    {
         $this->cache = $cache;
         $this->identifier = $identifier;
         $this->request = $request;
-        $this->context = $context ?? ObjectManager::getInstance()->get(\Magento\Framework\App\Http\Context::class);
-        $this->contextFactory = $contextFactory ?? ObjectManager::getInstance()->get(
-            \Magento\Framework\App\Http\ContextFactory::class
-        );
-        $this->httpFactory = $httpFactory ?? ObjectManager::getInstance()->get(
-            \Magento\Framework\App\Response\HttpFactory::class
-        );
-        $this->serializer = $serializer ?? ObjectManager::getInstance()->get(
-            \Magento\Framework\Serialize\SerializerInterface::class
-        );
-        $this->state = $state ?? ObjectManager::getInstance()->get(AppState::class);
-        $this->fullPageCache = $fullPageCache ?? ObjectManager::getInstance()->get(
-            \Magento\PageCache\Model\Cache\Type::class
-        );
-        $this->identifierForSave = $identifierForSave ?? ObjectManager::getInstance()->get(
-            \Magento\Framework\App\PageCache\IdentifierInterface::class
-        );
-        $this->cookieDisabler = $cookieDisabler ?? ObjectManager::getInstance()->get(CookieDisablerInterface::class);
+        $this->context = $context ?? Object_Manager::get_instance()->get(\Magento\Framework\App\Http\Context::class);
+        $this->context_factory = $context_factory ?? Object_Manager::get_instance()->get(\Magento\Framework\App\Http\Context_Factory::class);
+        $this->http_factory = $http_factory ?? Object_Manager::get_instance()->get(\Magento\Framework\App\Response\Http_Factory::class);
+        $this->serializer = $serializer ?? Object_Manager::get_instance()->get(\Magento\Framework\Serialize\Serializer_Interface::class);
+        $this->state = $state ?? Object_Manager::get_instance()->get(App_State::class);
+        $this->full_page_cache = $full_page_cache ?? Object_Manager::get_instance()->get(\Magento\Page_Cache\Model\Cache\Type::class);
+        $this->identifier_for_save = $identifier_for_save ?? Object_Manager::get_instance()->get(\Magento\Framework\App\Page_Cache\Identifier_Interface::class);
+        $this->cookie_disabler = $cookie_disabler ?? Object_Manager::get_instance()->get(Cookie_Disabler_Interface::class);
     }
-
     /**
      * Load response from cache
      *
@@ -132,21 +97,19 @@ class Kernel
      */
     public function load()
     {
-        if ($this->request->isGet() || $this->request->isHead()) {
-            $responseData = $this->fullPageCache->load($this->identifier->getValue());
-            if (!$responseData) {
+        if ($this->request->is_get() || $this->request->is_head()) {
+            $response_data = $this->full_page_cache->load($this->identifier->get_value());
+            if (!$response_data) {
                 return false;
             }
-            $responseData = $this->serializer->unserialize($responseData);
-            if (!$responseData) {
+            $response_data = $this->serializer->unserialize($response_data);
+            if (!$response_data) {
                 return false;
             }
-
-            return $this->buildResponse($responseData);
+            return $this->build_response($response_data);
         }
         return false;
     }
-
     /**
      * Modify and cache application response
      *
@@ -156,77 +119,47 @@ class Kernel
      */
     public function process(\Magento\Framework\App\Response\Http $response)
     {
-        $cacheControlHeader = $response->getHeader('Cache-Control');
-        if ($cacheControlHeader
-            && preg_match('/public.*s-maxage=(\d+)/', $cacheControlHeader->getFieldValue(), $matches)
-        ) {
-            $maxAge = (int) $matches[1];
-            $response->setNoCacheHeaders();
-            if (($response->getHttpResponseCode() == 200 || $response->getHttpResponseCode() == 404)
-                && !$response instanceof NotCacheableInterface
-                && ($this->request->isGet() || $this->request->isHead())
-            ) {
-                $tagsHeader = $response->getHeader('X-Magento-Tags');
-                $tags = $tagsHeader ? explode(',', $tagsHeader->getFieldValue() ?? '') : [];
-
-                $response->clearHeader('Set-Cookie');
-                if ($this->state->getMode() != AppState::MODE_DEVELOPER) {
-                    $response->clearHeader('X-Magento-Tags');
+        $cache_control_header = $response->get_header('Cache-Control');
+        if ($cache_control_header && preg_match('/public.*s-maxage=(\d+)/', $cache_control_header->get_field_value(), $matches)) {
+            $max_age = (int) $matches[1];
+            $response->set_no_cache_headers();
+            if (($response->get_http_response_code() == 200 || $response->get_http_response_code() == 404) && !$response instanceof Not_Cacheable_Interface && ($this->request->is_get() || $this->request->is_head())) {
+                $tags_header = $response->get_header('X-Magento-Tags');
+                $tags = $tags_header ? explode(',', $tags_header->get_field_value() ?? '') : [];
+                $response->clear_header('Set-Cookie');
+                if ($this->state->get_mode() != App_State::MODE_DEVELOPER) {
+                    $response->clear_header('X-Magento-Tags');
                 }
-                $this->cookieDisabler->setCookiesDisabled(true);
-
-                $this->fullPageCache->save(
-                    $this->serializer->serialize($this->getPreparedData($response)),
-                    $this->identifierForSave->getValue(),
-                    $tags,
-                    $maxAge
-                );
+                $this->cookie_disabler->set_cookies_disabled(true);
+                $this->full_page_cache->save($this->serializer->serialize($this->get_prepared_data($response)), $this->identifier_for_save->get_value(), $tags, $max_age);
             }
         }
     }
-
     /**
      * Get prepared data for storage in the cache.
      *
      * @param \Magento\Framework\App\Response\Http $response
      * @return array
      */
-    private function getPreparedData(\Magento\Framework\App\Response\Http $response)
+    private function get_prepared_data(\Magento\Framework\App\Response\Http $response)
     {
-        return [
-            'content' => $response->getContent(),
-            'status_code' => $response->getStatusCode(),
-            'headers' => $response->getHeaders()->toArray(),
-            'context' => $this->context->toArray(),
-        ];
+        return ['content' => $response->get_content(), 'status_code' => $response->get_status_code(), 'headers' => $response->get_headers()->to_array(), 'context' => $this->context->to_array()];
     }
-
     /**
      * Build response using response data.
      *
      * @param array $responseData
      * @return \Magento\Framework\App\Response\Http
      */
-    private function buildResponse($responseData)
+    private function build_response($response_data)
     {
-        $context = $this->contextFactory->create(
-            [
-                'data' => $responseData['context']['data'],
-                'default' => $responseData['context']['default'],
-            ]
-        );
-
-        $response = $this->httpFactory->create(
-            [
-                'context' => $context,
-            ]
-        );
-        $response->setStatusCode($responseData['status_code']);
-        $response->setContent($responseData['content']);
-        foreach ($responseData['headers'] as $headerKey => $headerValue) {
-            $response->setHeader($headerKey, $headerValue, true);
+        $context = $this->context_factory->create(['data' => $response_data['context']['data'], 'default' => $response_data['context']['default']]);
+        $response = $this->http_factory->create(['context' => $context]);
+        $response->set_status_code($response_data['status_code']);
+        $response->set_content($response_data['content']);
+        foreach ($response_data['headers'] as $header_key => $header_value) {
+            $response->set_header($header_key, $header_value, true);
         }
-
         return $response;
     }
 }

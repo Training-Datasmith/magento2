@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface CategoryManagementInterface
+interface Category_Management_Interface
 {
     /**
      * Retrieve list of categories
@@ -22,8 +21,7 @@ interface CategoryManagementInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException If ID is not found
      * @return \Magento\Catalog\Api\Data\CategoryTreeInterface containing Tree objects
      */
-    public function getTree($rootCategoryId = null, $depth = null);
-
+    public function get_tree($root_category_id = null, $depth = null);
     /**
      * Move category
      *
@@ -34,12 +32,11 @@ interface CategoryManagementInterface
      * @throws \Magento\Framework\Exception\LocalizedException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
-    public function move($categoryId, $parentId, $afterId = null);
-
+    public function move($category_id, $parent_id, $after_id = null);
     /**
      * Provide the number of category count
      *
      * @return int
      */
-    public function getCount();
+    public function get_count();
 }

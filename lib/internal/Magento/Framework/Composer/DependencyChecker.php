@@ -1,45 +1,40 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Composer;
 
-use Composer\Console\ApplicationFactory;
-use Magento\Framework\App\Filesystem\DirectoryList;
-use Symfony\Component\Console\Input\ArrayInput;
-use Symfony\Component\Console\Output\BufferedOutput;
-
+use Composer\Console\Application_Factory;
+use Magento\Framework\App\Filesystem\Directory_List;
+use Symfony\Component\Console\Input\Array_Input;
+use Symfony\Component\Console\Output\Buffered_Output;
 /**
  * A class to check if there are any dependency to package(s) that exists in the codebase, regardless of package type
  */
-class DependencyChecker
+class Dependency_Checker
 {
     /**
      * @var ApplicationFactory
      */
-    private $applicationFactory;
-
+    private $application_factory;
     /**
      * @var DirectoryList
      */
-    private $directoryList;
-
+    private $directory_list;
     /**
      * Constructor
      *
      * @param ApplicationFactory $applicationFactory
      * @param DirectoryList $directoryList
      */
-    public function __construct(ApplicationFactory $applicationFactory, DirectoryList $directoryList)
+    public function __construct(Application_Factory $application_factory, Directory_List $directory_list)
     {
-        $this->applicationFactory = $applicationFactory;
-        $this->directoryList = $directoryList;
+        $this->application_factory = $application_factory;
+        $this->directory_list = $directory_list;
     }
-
     /**
      * Checks dependencies to package(s), returns array of dependencies in the format of
      * 'package A' => [array of package names depending on package A]
@@ -50,41 +45,35 @@ class DependencyChecker
      * @param bool $excludeSelf
      * @return string[]
      */
-    public function checkDependencies(array $packages, $excludeSelf = false)
+    public function check_dependencies(array $packages, $exclude_self = false)
     {
-        $app = $this->applicationFactory->create();
-        $app->setAutoExit(false);
+        $app = $this->application_factory->create();
+        $app->set_auto_exit(false);
         $dependencies = [];
         foreach ($packages as $package) {
-            $buffer = new BufferedOutput();
-            $app->resetComposer();
-            $app->run(
-                new ArrayInput(
-                    ['command' => 'depends', '--working-dir' => $this->directoryList->getRoot(), 'package' => $package]
-                ),
-                $buffer
-            );
-            $dependingPackages = $this->parseComposerOutput($buffer->fetch());
-            if ($excludeSelf === true) {
-                $dependingPackages = array_values(array_diff($dependingPackages, $packages));
+            $buffer = new Buffered_Output();
+            $app->reset_composer();
+            $app->run(new Array_Input(['command' => 'depends', '--working-dir' => $this->directory_list->get_root(), 'package' => $package]), $buffer);
+            $depending_packages = $this->parse_composer_output($buffer->fetch());
+            if ($exclude_self === true) {
+                $depending_packages = array_values(array_diff($depending_packages, $packages));
             }
-            $dependencies[$package] = $dependingPackages;
+            $dependencies[$package] = $depending_packages;
         }
         return $dependencies;
     }
-
     /**
      * Parse output from running composer remove command into an array of depending packages
      *
      * @param string $output
      * @return string[]
      */
-    private function parseComposerOutput($output)
+    private function parse_composer_output($output)
     {
-        $rawLines = explode(PHP_EOL, $output);
+        $raw_lines = explode(PHP_EOL, $output);
         $packages = [];
-        foreach ($rawLines as $rawLine) {
-            $parts = explode(' ', $rawLine);
+        foreach ($raw_lines as $raw_line) {
+            $parts = explode(' ', $raw_line);
             if (count(explode('/', $parts[0])) == 2) {
                 if (strpos($parts[0], 'magento/project-') === false) {
                     $packages[] = $parts[0];

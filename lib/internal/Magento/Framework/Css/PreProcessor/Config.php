@@ -1,29 +1,26 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Css\Pre_Processor;
 
-namespace Magento\Framework\Css\PreProcessor;
-
-use Magento\Framework\App\Filesystem\DirectoryList;
-
+use Magento\Framework\App\Filesystem\Directory_List;
 class Config
 {
     /**
      * Temporary directory prefix
      */
     public const TMP_DIR = 'pub/static';
-
     /**
      * Returns relative path to materialization directory
      *
      * @return string
      */
-    public function getMaterializationRelativePath()
+    public function get_materialization_relative_path()
     {
-        return DirectoryList::TMP_MATERIALIZATION_DIR . '/' . self::TMP_DIR;
+        return Directory_List::TMP_MATERIALIZATION_DIR . '/' . self::TMP_DIR;
     }
 }

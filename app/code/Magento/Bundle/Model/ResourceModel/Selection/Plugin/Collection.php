@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Bundle\Model\ResourceModel\Selection\Plugin;
+namespace Magento\Bundle\Model\Resource_Model\Selection\Plugin;
 
 use Magento\Store\Model\Store;
-
 class Collection
 {
     /**
@@ -22,11 +20,8 @@ class Collection
      * @return $this
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function aroundAddStoreFilter(
-        \Magento\Bundle\Model\ResourceModel\Selection\Collection $subject,
-        \Closure $proceed,
-        $store = null
-    ) {
+    public function around_add_store_filter(\Magento\Bundle\Model\Resource_Model\Selection\Collection $subject, \Closure $proceed, $store = null)
+    {
         return $subject;
     }
 }

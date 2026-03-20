@@ -4,27 +4,23 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\File\Pdf;
 
-use Magento\Framework\File\Pdf\ImageResource\ImageFactory;
-
+use Magento\Framework\File\Pdf\Image_Resource\Image_Factory;
 class Image
 {
     /**
      * @var \Magento\Framework\File\Pdf\ImageResource\ImageFactory
      */
-    private ImageFactory $imageFactory;
-
+    private Image_Factory $image_factory;
     /**
      * @param \Magento\Framework\File\Pdf\ImageResource\ImageFactory $imageFactory
      */
-    public function __construct(ImageFactory $imageFactory)
+    public function __construct(Image_Factory $image_factory)
     {
-        $this->imageFactory = $imageFactory;
+        $this->image_factory = $image_factory;
     }
-
     /**
      * Filepath of image file
      *
@@ -33,8 +29,8 @@ class Image
      * @throws \Magento\Framework\Exception\FileSystemException
      * @throws \Zend_Pdf_Exception
      */
-    public function imageWithPathAdvanced(string $filePath)
+    public function image_with_path_advanced(string $file_path)
     {
-        return $this->imageFactory->factory($filePath);
+        return $this->image_factory->factory($file_path);
     }
 }

@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Block\Checkout\Cart\Item;
 
 use Magento\Bundle\Helper\Catalog\Product\Configuration;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-use Magento\Framework\View\Element\Message\InterpretationStrategyInterface;
-
+use Magento\Framework\Pricing\Price_Currency_Interface;
+use Magento\Framework\View\Element\Message\Interpretation_Strategy_Interface;
 /**
  * Shopping cart item render block
  *
@@ -25,8 +23,7 @@ class Renderer extends \Magento\Checkout\Block\Cart\Item\Renderer
      *
      * @var Configuration
      */
-    protected $_bundleProductConfiguration = null;
-
+    protected $_bundle_product_configuration = null;
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
      * @param \Magento\Catalog\Helper\Product\Configuration $productConfig
@@ -41,35 +38,12 @@ class Renderer extends \Magento\Checkout\Block\Cart\Item\Renderer
      * @param array $data
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context,
-        \Magento\Catalog\Helper\Product\Configuration $productConfig,
-        \Magento\Checkout\Model\Session $checkoutSession,
-        \Magento\Catalog\Block\Product\ImageBuilder $imageBuilder,
-        \Magento\Framework\Url\Helper\Data $urlHelper,
-        \Magento\Framework\Message\ManagerInterface $messageManager,
-        PriceCurrencyInterface $priceCurrency,
-        \Magento\Framework\Module\Manager $moduleManager,
-        InterpretationStrategyInterface $messageInterpretationStrategy,
-        Configuration $bundleProductConfiguration,
-        array $data = []
-    ) {
-        $this->_bundleProductConfiguration = $bundleProductConfiguration;
-        parent::__construct(
-            $context,
-            $productConfig,
-            $checkoutSession,
-            $imageBuilder,
-            $urlHelper,
-            $messageManager,
-            $priceCurrency,
-            $moduleManager,
-            $messageInterpretationStrategy,
-            $data
-        );
-        $this->_isScopePrivate = true;
+    public function __construct(\Magento\Framework\View\Element\Template\Context $context, \Magento\Catalog\Helper\Product\Configuration $product_config, \Magento\Checkout\Model\Session $checkout_session, \Magento\Catalog\Block\Product\Image_Builder $image_builder, \Magento\Framework\Url\Helper\Data $url_helper, \Magento\Framework\Message\Manager_Interface $message_manager, Price_Currency_Interface $price_currency, \Magento\Framework\Module\Manager $module_manager, Interpretation_Strategy_Interface $message_interpretation_strategy, Configuration $bundle_product_configuration, array $data = [])
+    {
+        $this->_bundle_product_configuration = $bundle_product_configuration;
+        parent::__construct($context, $product_config, $checkout_session, $image_builder, $url_helper, $message_manager, $price_currency, $module_manager, $message_interpretation_strategy, $data);
+        $this->_is_scope_private = true;
     }
-
     /**
      * Overloaded method for getting list of bundle options
      *
@@ -77,29 +51,26 @@ class Renderer extends \Magento\Checkout\Block\Cart\Item\Renderer
      *
      * @return array
      */
-    public function getOptionList()
+    public function get_option_list()
     {
-        return $this->_bundleProductConfiguration->getOptions($this->getItem());
+        return $this->_bundle_product_configuration->get_options($this->get_item());
     }
-
     /**
      * Return cart item error messages
      *
      * @return array
      */
-    public function getMessages()
+    public function get_messages()
     {
         $messages = [];
-        $quoteItem = $this->getItem();
-
+        $quote_item = $this->get_item();
         // Add basic messages occurring during this page load
-        $baseMessages = $quoteItem->getMessage(false);
-        if ($baseMessages) {
-            foreach ($baseMessages as $message) {
-                $messages[] = ['text' => $message, 'type' => $quoteItem->getHasError() ? 'error' : 'notice'];
+        $base_messages = $quote_item->get_message(false);
+        if ($base_messages) {
+            foreach ($base_messages as $message) {
+                $messages[] = ['text' => $message, 'type' => $quote_item->get_has_error() ? 'error' : 'notice'];
             }
         }
-
         return $messages;
     }
 }

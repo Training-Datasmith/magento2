@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework;
 
 use Magento\Framework\Archive\Bz;
 use Magento\Framework\Archive\Gz;
 use Magento\Framework\Archive\Tar;
-
 /**
  * Class to work with archives
  *
@@ -23,62 +21,43 @@ class Archive
      * Archiver is used for compress.
      */
     public const DEFAULT_ARCHIVER = 'gz';
-
     /**
      * Default packer for directory.
      */
     public const TAPE_ARCHIVER = 'tar';
-
     /**
      * Current archiver is used for compress.
      *
      * @var \Magento\Framework\Archive\Tar|\Magento\Framework\Archive\Gz|\Magento\Framework\Archive\Bz
      */
     protected $_archiver = null;
-
     /**
      * Accessible formats for compress.
      *
      * @var array
      */
-    protected $_formats = [
-        'tar' => 'tar',
-        'gz' => 'gz',
-        'gzip' => 'gz',
-        'tgz' => 'tar.gz',
-        'tgzip' => 'tar.gz',
-        'bz' => 'bz',
-        'bzip' => 'bz',
-        'bzip2' => 'bz',
-        'bz2' => 'bz',
-        'tbz' => 'tar.bz',
-        'tbzip' => 'tar.bz',
-        'tbz2' => 'tar.bz',
-        'tbzip2' => 'tar.bz',
-    ];
-
+    protected $_formats = ['tar' => 'tar', 'gz' => 'gz', 'gzip' => 'gz', 'tgz' => 'tar.gz', 'tgzip' => 'tar.gz', 'bz' => 'bz', 'bzip' => 'bz', 'bzip2' => 'bz', 'bz2' => 'bz', 'tbz' => 'tar.bz', 'tbzip' => 'tar.bz', 'tbz2' => 'tar.bz', 'tbzip2' => 'tar.bz'];
     /**
      * Create object of current archiver by $extension.
      *
      * @param string $extension
      * @return Tar|Gz|Bz
      */
-    protected function _getArchiver($extension)
+    protected function _get_archiver($extension)
     {
         $extension = $extension !== null ? strtolower($extension) : '';
         $format = $this->_formats[$extension] ?? self::DEFAULT_ARCHIVER;
-        $class = '\\Magento\Framework\Archive\\' . ucfirst($format);
+        $class = '\Magento\Framework\Archive\\' . ucfirst($format);
         $this->_archiver = new $class();
         return $this->_archiver;
     }
-
     /**
      * Split current format to list of archivers.
      *
      * @param string $source
      * @return string[]|string
      */
-    protected function _getArchivers($source)
+    protected function _get_archivers($source)
     {
         $ext = pathinfo($source, PATHINFO_EXTENSION);
         if (!empty($this->_formats[$ext])) {
@@ -86,7 +65,6 @@ class Archive
         }
         return [];
     }
-
     /**
      * Pack file or directory to archivers are parsed from extension.
      *
@@ -95,25 +73,24 @@ class Archive
      * @param boolean $skipRoot skip first level parent
      * @return string Path to file
      */
-    public function pack($source, $destination = 'packed.tgz', $skipRoot = false)
+    public function pack($source, $destination = 'packed.tgz', $skip_root = false)
     {
-        $archivers = $this->_getArchivers($destination);
-        $interimSource = '';
+        $archivers = $this->_get_archivers($destination);
+        $interim_source = '';
         for ($i = 0, $count = count($archivers); $i < $count; $i++) {
             if ($i == $count - 1) {
                 $packed = $destination;
             } else {
                 $packed = dirname($destination) . '/~tmp-' . microtime(true) . $archivers[$i] . '.' . $archivers[$i];
             }
-            $source = $this->_getArchiver($archivers[$i])->pack($source, $packed, $skipRoot);
-            if ($interimSource && $i < $count) {
-                unlink($interimSource);
+            $source = $this->_get_archiver($archivers[$i])->pack($source, $packed, $skip_root);
+            if ($interim_source && $i < $count) {
+                unlink($interim_source);
             }
-            $interimSource = $source;
+            $interim_source = $source;
         }
         return $source;
     }
-
     /**
      * Unpack file from archivers are parsed from extension.
      *
@@ -126,34 +103,27 @@ class Archive
      * @param bool $clearInterm
      * @return string Path to file
      */
-    public function unpack($source, $destination = '.', $tillTar = false, $clearInterm = true)
+    public function unpack($source, $destination = '.', $till_tar = false, $clear_interm = true)
     {
-        $archivers = $this->_getArchivers($source);
-        $interimSource = '';
+        $archivers = $this->_get_archivers($source);
+        $interim_source = '';
         for ($i = count($archivers) - 1; $i >= 0; $i--) {
-            if ($tillTar && $archivers[$i] == self::TAPE_ARCHIVER) {
+            if ($till_tar && $archivers[$i] == self::TAPE_ARCHIVER) {
                 break;
             }
             if ($i == 0) {
                 $packed = rtrim($destination, '/') . '/';
             } else {
-                $packed = rtrim(
-                    $destination,
-                    '/'
-                ) . '/~tmp-' . microtime(
-                    true
-                ) . $archivers[$i - 1] . '.' . $archivers[$i - 1];
+                $packed = rtrim($destination, '/') . '/~tmp-' . microtime(true) . $archivers[$i - 1] . '.' . $archivers[$i - 1];
             }
-            $source = $this->_getArchiver($archivers[$i])->unpack($source, $packed);
-
-            if ($clearInterm && $interimSource && $i >= 0) {
-                unlink($interimSource);
+            $source = $this->_get_archiver($archivers[$i])->unpack($source, $packed);
+            if ($clear_interm && $interim_source && $i >= 0) {
+                unlink($interim_source);
             }
-            $interimSource = $source;
+            $interim_source = $source;
         }
         return $source;
     }
-
     /**
      * Extract one file from TAR (Tape Archiver).
      *
@@ -164,38 +134,36 @@ class Archive
      */
     public function extract($file, $source, $destination = '.')
     {
-        $tarFile = $this->unpack($source, $destination, true);
-        $resFile = $this->_getArchiver(self::TAPE_ARCHIVER)->extract($file, $tarFile, $destination);
-        if (!$this->isTar($source)) {
-            unlink($tarFile);
+        $tar_file = $this->unpack($source, $destination, true);
+        $res_file = $this->_get_archiver(self::TAPE_ARCHIVER)->extract($file, $tar_file, $destination);
+        if (!$this->is_tar($source)) {
+            unlink($tar_file);
         }
-        return $resFile;
+        return $res_file;
     }
-
     /**
      * Check file is archive.
      *
      * @param string $file
      * @return boolean
      */
-    public function isArchive($file)
+    public function is_archive($file)
     {
-        $archivers = $this->_getArchivers($file);
+        $archivers = $this->_get_archivers($file);
         if (count($archivers)) {
             return true;
         }
         return false;
     }
-
     /**
      * Check file is TAR.
      *
      * @param string $file
      * @return boolean
      */
-    public function isTar($file)
+    public function is_tar($file)
     {
-        $archivers = $this->_getArchivers($file);
+        $archivers = $this->_get_archivers($file);
         if (count($archivers) == 1 && $archivers[0] == self::TAPE_ARCHIVER) {
             return true;
         }

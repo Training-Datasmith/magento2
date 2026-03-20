@@ -1,44 +1,36 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Button;
 
-use Magento\Framework\View\LayoutInterface;
-
-class Toolbar implements ToolbarInterface
+use Magento\Framework\View\Layout_Interface;
+class Toolbar implements Toolbar_Interface
 {
     /**
      * {@inheritdoc}
      */
-    public function pushButtons(
-        \Magento\Framework\View\Element\AbstractBlock $context,
-        \Magento\Backend\Block\Widget\Button\ButtonList $buttonList
-    ) {
-        foreach ($buttonList->getItems() as $buttons) {
+    public function push_buttons(\Magento\Framework\View\Element\Abstract_Block $context, \Magento\Backend\Block\Widget\Button\Button_List $button_list)
+    {
+        foreach ($button_list->get_items() as $buttons) {
             /** @var \Magento\Backend\Block\Widget\Button\Item $item */
             foreach ($buttons as $item) {
-                $containerName = $context->getNameInLayout() . '-' . $item->getButtonKey();
-
-                $container = $this->createContainer($context->getLayout(), $containerName, $item);
-
-                if ($item->hasData('name')) {
-                    $item->setData('element_name', $item->getName());
+                $container_name = $context->get_name_in_layout() . '-' . $item->get_button_key();
+                $container = $this->create_container($context->get_layout(), $container_name, $item);
+                if ($item->has_data('name')) {
+                    $item->set_data('element_name', $item->get_name());
                 }
-
                 if ($container) {
-                    $container->setContext($context);
-                    $toolbar = $this->getToolbar($context, $item->getRegion());
-                    $toolbar->setChild($item->getButtonKey(), $container);
+                    $container->set_context($context);
+                    $toolbar = $this->get_toolbar($context, $item->get_region());
+                    $toolbar->set_child($item->get_button_key(), $container);
                 }
             }
         }
     }
-
     /**
      * Create button container
      *
@@ -47,16 +39,11 @@ class Toolbar implements ToolbarInterface
      * @param \Magento\Backend\Block\Widget\Button\Item $buttonItem
      * @return \Magento\Backend\Block\Widget\Button\Toolbar\Container
      */
-    protected function createContainer(LayoutInterface $layout, $containerName, $buttonItem)
+    protected function create_container(Layout_Interface $layout, $container_name, $button_item)
     {
-        $container = $layout->createBlock(
-            \Magento\Backend\Block\Widget\Button\Toolbar\Container::class,
-            $containerName,
-            ['data' => ['button_item' => $buttonItem]]
-        );
+        $container = $layout->create_block(\Magento\Backend\Block\Widget\Button\Toolbar\Container::class, $container_name, ['data' => ['button_item' => $button_item]]);
         return $container;
     }
-
     /**
      * Return button parent block
      *
@@ -64,18 +51,17 @@ class Toolbar implements ToolbarInterface
      * @param string $region
      * @return \Magento\Backend\Block\Template
      */
-    protected function getToolbar(\Magento\Framework\View\Element\AbstractBlock $context, $region)
+    protected function get_toolbar(\Magento\Framework\View\Element\Abstract_Block $context, $region)
     {
         $parent = null;
-        $layout = $context->getLayout();
+        $layout = $context->get_layout();
         if (!$region || $region == 'header' || $region == 'footer') {
             $parent = $context;
         } elseif ($region == 'toolbar') {
-            $parent = $layout->getBlock('page.actions.toolbar');
+            $parent = $layout->get_block('page.actions.toolbar');
         } else {
-            $parent = $layout->getBlock($region);
+            $parent = $layout->get_block($region);
         }
-
         if ($parent) {
             return $parent;
         }

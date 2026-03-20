@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml\Config;
 
-namespace Magento\Analytics\ReportXml\Config;
-
-use Magento\Framework\Config\ReaderInterface;
-
+use Magento\Framework\Config\Reader_Interface;
 /**
  * A composite reader of reports configuration.
  *
  * Reads configuration data using declared readers.
  */
-class Reader implements ReaderInterface
+class Reader implements Reader_Interface
 {
     /**
      * @param array $readers
@@ -28,9 +26,9 @@ class Reader implements ReaderInterface
          * The list may be configured in each module via '/etc/di.xml'.
          */
         private $readers = []
-    ) {
+    )
+    {
     }
-
     /**
      * Reads configuration according to the given scope.
      *

@@ -4,46 +4,36 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Backend\Model\Validator\Url_Key;
 
-namespace Magento\Backend\Model\Validator\UrlKey;
-
-use Magento\Backend\App\Area\FrontNameResolver;
-
+use Magento\Backend\App\Area\Front_Name_Resolver;
 /**
  * Class FrontName validates if urlKey doesn't matches frontName
  */
-class FrontName implements UrlKeyValidatorInterface
+class Front_Name implements Url_Key_Validator_Interface
 {
     /**
      * @var FrontNameResolver
      */
-    private $frontNameResolver;
-
+    private $front_name_resolver;
     /**
      * @param FrontNameResolver $frontNameResolver
      */
-    public function __construct(
-        FrontNameResolver $frontNameResolver
-    ) {
-        $this->frontNameResolver = $frontNameResolver;
+    public function __construct(Front_Name_Resolver $front_name_resolver)
+    {
+        $this->front_name_resolver = $front_name_resolver;
     }
-
     /**
      * @inheritDoc
      */
-    public function validate(string $urlKey): array
+    public function validate(string $url_key): array
     {
         $errors = [];
-        $frontName = $this->frontNameResolver->getFrontName();
-        if ($urlKey == $frontName) {
-            $errors[] = __(
-                'URL key "%1" matches a reserved endpoint name (%2). Use another URL key.',
-                $urlKey,
-                $frontName
-            );
+        $front_name = $this->front_name_resolver->get_front_name();
+        if ($url_key == $front_name) {
+            $errors[] = __('URL key "%1" matches a reserved endpoint name (%2). Use another URL key.', $url_key, $front_name);
         }
-
         return $errors;
     }
 }

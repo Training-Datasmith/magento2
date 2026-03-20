@@ -4,18 +4,16 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Framework\App\Config\Config_Resource;
 
-namespace Magento\Framework\App\Config\ConfigResource;
-
-use Magento\Framework\App\Config\ScopeConfigInterface;
-
+use Magento\Framework\App\Config\Scope_Config_Interface;
 /**
  * Resource for storing store configuration values
  *
  * @api
  */
-interface ConfigInterface
+interface Config_Interface
 {
     /**
      * Save config value to the storage resource
@@ -26,8 +24,7 @@ interface ConfigInterface
      * @param int $scopeId
      * @return $this
      */
-    public function saveConfig($path, $value, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeId = 0);
-
+    public function save_config($path, $value, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_id = 0);
     /**
      * Delete config value from the storage resource
      *
@@ -36,5 +33,5 @@ interface ConfigInterface
      * @param int $scopeId
      * @return $this
      */
-    public function deleteConfig($path, $scope = ScopeConfigInterface::SCOPE_TYPE_DEFAULT, $scopeId = 0);
+    public function delete_config($path, $scope = Scope_Config_Interface::SCOPE_TYPE_DEFAULT, $scope_id = 0);
 }

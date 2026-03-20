@@ -1,146 +1,121 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Model\System\Message;
+namespace Magento\Admin_Notification\Model\System\Message;
 
 use Laminas\Http\Request;
 use Laminas\Http\Response;
 use Magento\Framework\HTTP\Adapter\Curl;
-use Magento\Framework\HTTP\Adapter\CurlFactory;
-use Magento\Framework\Notification\MessageInterface;
+use Magento\Framework\HTTP\Adapter\Curl_Factory;
+use Magento\Framework\Notification\Message_Interface;
 use Magento\Framework\Phrase;
 use Magento\Store\Model\Store;
 use Throwable;
-
 /**
  * @api
  * @since 100.0.2
  */
-class Security implements MessageInterface
+class Security implements Message_Interface
 {
     /**
      * Cache key for saving verification result
      */
     public const VERIFICATION_RESULT_CACHE_KEY = 'configuration_files_access_level_verification';
-
     /**
      * File path for verification
      */
-    private string $_filePath = 'app/etc/config.php';
-
+    private string $_file_path = 'app/etc/config.php';
     /**
      * Time out for HTTP verification request
      */
-    private int $_verificationTimeOut = 2;
-
+    private int $_verification_time_out = 2;
     /**
      * @var CurlFactory
      */
-    protected $_curlFactory;
-
-    public function __construct(
-        protected \Magento\Framework\App\CacheInterface $_cache,
-        protected \Magento\Backend\App\ConfigInterface $_backendConfig,
-        protected \Magento\Framework\App\Config\ScopeConfigInterface $_config,
-        CurlFactory $curlFactory
-    ) {
-        $this->_curlFactory = $curlFactory;
+    protected $_curl_factory;
+    public function __construct(protected \Magento\Framework\App\Cache_Interface $_cache, protected \Magento\Backend\App\Config_Interface $_backend_config, protected \Magento\Framework\App\Config\Scope_Config_Interface $_config, Curl_Factory $curl_factory)
+    {
+        $this->_curl_factory = $curl_factory;
     }
-
     /**
      * Check verification result and return true if system must to show notification message
      */
-    private function _canShowNotification(): bool
+    private function _can_show_notification(): bool
     {
         if ($this->_cache->load(self::VERIFICATION_RESULT_CACHE_KEY)) {
             return false;
         }
-
-        if ($this->_isFileAccessible()) {
+        if ($this->_is_file_accessible()) {
             return true;
         }
-
-        $adminSessionLifetime = (int)$this->_backendConfig->getValue('admin/security/session_lifetime');
-        $this->_cache->save(true, self::VERIFICATION_RESULT_CACHE_KEY, [], $adminSessionLifetime);
+        $admin_session_lifetime = (int) $this->_backend_config->get_value('admin/security/session_lifetime');
+        $this->_cache->save(true, self::VERIFICATION_RESULT_CACHE_KEY, [], $admin_session_lifetime);
         return false;
     }
-
     /**
      * If file is accessible return true or false
      */
-    private function _isFileAccessible(): bool
+    private function _is_file_accessible(): bool
     {
-        $unsecureBaseURL = $this->_config->getValue(Store::XML_PATH_UNSECURE_BASE_URL, 'default');
-
+        $unsecure_base_url = $this->_config->get_value(Store::XML_PATH_UNSECURE_BASE_URL, 'default');
         /** @var $http Curl */
-        $http = $this->_curlFactory->create();
-        $http->setOptions(['timeout' => $this->_verificationTimeOut]);
-        $http->write(Request::METHOD_POST, $unsecureBaseURL . $this->_filePath);
-        $responseBody = $http->read();
-        $responseCode = $this->extractCodeFromResponse($responseBody);
+        $http = $this->_curl_factory->create();
+        $http->set_options(['timeout' => $this->_verification_time_out]);
+        $http->write(Request::METHOD_POST, $unsecure_base_url . $this->_file_path);
+        $response_body = $http->read();
+        $response_code = $this->extract_code_from_response($response_body);
         $http->close();
-
-        return $responseCode == 200;
+        return $response_code == 200;
     }
-
     /**
      * Retrieve unique message identity
      */
-    public function getIdentity(): string
+    public function get_identity(): string
     {
         return 'security';
     }
-
     /**
      * Check whether
      *
      * @return bool
      */
-    public function isDisplayed()
+    public function is_displayed()
     {
-        return $this->_canShowNotification();
+        return $this->_can_show_notification();
     }
-
     /**
      * Retrieve message text
      *
      * @return Phrase
      */
-    public function getText()
+    public function get_text()
     {
-        return __(
-            'Your web server is set up incorrectly and allows unauthorized access to sensitive files. '
-            . 'Please contact your hosting provider.'
-        );
+        return __('Your web server is set up incorrectly and allows unauthorized access to sensitive files. ' . 'Please contact your hosting provider.');
     }
-
     /**
      * Retrieve message severity
      */
-    public function getSeverity(): int
+    public function get_severity(): int
     {
-        return MessageInterface::SEVERITY_CRITICAL;
+        return Message_Interface::SEVERITY_CRITICAL;
     }
-
     /**
      * Extract the response code from a response string
      *
      *
      * @return false|int
      */
-    private function extractCodeFromResponse(string $responseString)
+    private function extract_code_from_response(string $response_string)
     {
         try {
-            $responseCode = Response::fromString($responseString)->getStatusCode();
+            $response_code = Response::from_string($response_string)->get_status_code();
         } catch (Throwable) {
-            $responseCode = false;
+            $response_code = false;
         }
-
-        return $responseCode;
+        return $response_code;
     }
 }

@@ -1,178 +1,155 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Asynchronous_Operations\Model;
 
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\AsynchronousOperations\Api\Data\OperationInterface;
-use Magento\Framework\DataObject;
-
+use Magento\Asynchronous_Operations\Api\Data\Operation_Interface;
+use Magento\Framework\Data_Object;
 /**
  * Class Operation encapsulates methods for Operation Model Object
  */
-class Operation extends DataObject implements OperationInterface
+class Operation extends Data_Object implements Operation_Interface
 {
     /**
      * Operation constructor.
      */
-    public function __construct(
-        private readonly OperationStatusValidator $operationStatusValidator,
-        array $data = []
-    ) {
+    public function __construct(private readonly Operation_Status_Validator $operation_status_validator, array $data = [])
+    {
         parent::__construct($data);
     }
-
     /**
      * @inheritDoc
      */
-    public function getId()
+    public function get_id()
     {
-        return $this->getData(self::ID);
+        return $this->get_data(self::ID);
     }
-
     /**
      * @inheritDoc
      */
-    public function setId($id)
+    public function set_id($id)
     {
-        return $this->setData(self::ID, $id);
+        return $this->set_data(self::ID, $id);
     }
-
     /**
      * @inheritDoc
      */
-    public function getBulkUuid()
+    public function get_bulk_uuid()
     {
-        return $this->getData(self::BULK_ID);
+        return $this->get_data(self::BULK_ID);
     }
-
     /**
      * @inheritDoc
      */
-    public function setBulkUuid($bulkId)
+    public function set_bulk_uuid($bulk_id)
     {
-        return $this->setData(self::BULK_ID, $bulkId);
+        return $this->set_data(self::BULK_ID, $bulk_id);
     }
-
     /**
      * @inheritDoc
      */
-    public function getTopicName()
+    public function get_topic_name()
     {
-        return $this->getData(self::TOPIC_NAME);
+        return $this->get_data(self::TOPIC_NAME);
     }
-
     /**
      * @inheritDoc
      */
-    public function setTopicName($topic)
+    public function set_topic_name($topic)
     {
-        return $this->setData(self::TOPIC_NAME, $topic);
+        return $this->set_data(self::TOPIC_NAME, $topic);
     }
-
     /**
      * @inheritDoc
      */
-    public function getSerializedData()
+    public function get_serialized_data()
     {
-        return $this->getData(self::SERIALIZED_DATA);
+        return $this->get_data(self::SERIALIZED_DATA);
     }
-
     /**
      * @inheritDoc
      */
-    public function setSerializedData($serializedData)
+    public function set_serialized_data($serialized_data)
     {
-        return $this->setData(self::SERIALIZED_DATA, $serializedData);
+        return $this->set_data(self::SERIALIZED_DATA, $serialized_data);
     }
-
     /**
      * @inheritDoc
      */
-    public function getResultSerializedData()
+    public function get_result_serialized_data()
     {
-        return $this->getData(self::RESULT_SERIALIZED_DATA);
+        return $this->get_data(self::RESULT_SERIALIZED_DATA);
     }
-
     /**
      * @inheritDoc
      */
-    public function setResultSerializedData($resultSerializedData)
+    public function set_result_serialized_data($result_serialized_data)
     {
-        return $this->setData(self::RESULT_SERIALIZED_DATA, $resultSerializedData);
+        return $this->set_data(self::RESULT_SERIALIZED_DATA, $result_serialized_data);
     }
-
     /**
      * @inheritDoc
      */
-    public function getStatus()
+    public function get_status()
     {
-        return $this->getData(self::STATUS);
+        return $this->get_data(self::STATUS);
     }
-
     /**
      * @inheritDoc
      */
-    public function setStatus($status)
+    public function set_status($status)
     {
-        $this->operationStatusValidator->validate($status);
-        return $this->setData(self::STATUS, $status);
+        $this->operation_status_validator->validate($status);
+        return $this->set_data(self::STATUS, $status);
     }
-
     /**
      * @inheritDoc
      */
-    public function getResultMessage()
+    public function get_result_message()
     {
-        return $this->getData(self::RESULT_MESSAGE);
+        return $this->get_data(self::RESULT_MESSAGE);
     }
-
     /**
      * @inheritDoc
      */
-    public function setResultMessage($resultMessage)
+    public function set_result_message($result_message)
     {
-        return $this->setData(self::RESULT_MESSAGE, $resultMessage);
+        return $this->set_data(self::RESULT_MESSAGE, $result_message);
     }
-
     /**
      * @inheritDoc
      */
-    public function getErrorCode()
+    public function get_error_code()
     {
-        return $this->getData(self::ERROR_CODE);
+        return $this->get_data(self::ERROR_CODE);
     }
-
     /**
      * @inheritDoc
      */
-    public function setErrorCode($errorCode)
+    public function set_error_code($error_code)
     {
-        return $this->setData(self::ERROR_CODE, $errorCode);
+        return $this->set_data(self::ERROR_CODE, $error_code);
     }
-
     /**
      * Retrieve existing extension attributes object.
      *
      * @return \Magento\AsynchronousOperations\Api\Data\OperationExtensionInterface|null
      */
-    public function getExtensionAttributes()
+    public function get_extension_attributes()
     {
-        return $this->getData(self::EXTENSION_ATTRIBUTES_KEY);
+        return $this->get_data(self::EXTENSION_ATTRIBUTES_KEY);
     }
-
     /**
      * Set an extension attributes object.
      *
      * @return $this
      */
-    public function setExtensionAttributes(
-        \Magento\AsynchronousOperations\Api\Data\OperationExtensionInterface $extensionAttributes
-    ) {
-        return $this->setData(self::EXTENSION_ATTRIBUTES_KEY, $extensionAttributes);
+    public function set_extension_attributes(\Magento\Asynchronous_Operations\Api\Data\Operation_Extension_Interface $extension_attributes)
+    {
+        return $this->set_data(self::EXTENSION_ATTRIBUTES_KEY, $extension_attributes);
     }
 }

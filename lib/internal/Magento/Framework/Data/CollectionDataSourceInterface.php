@@ -4,17 +4,15 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data;
 
-use Magento\Framework\View\Element\Block\ArgumentInterface;
-
+use Magento\Framework\View\Element\Block\Argument_Interface;
 /**
  * Interface CollectionDataSourceInterface
  *
  * @api
  */
-interface CollectionDataSourceInterface extends ArgumentInterface
+interface Collection_Data_Source_Interface extends Argument_Interface
 {
 }

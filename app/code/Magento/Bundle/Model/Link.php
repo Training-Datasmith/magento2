@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Model;
 
 /**
  * Class Link
  * @codeCoverageIgnore
  */
-class Link extends \Magento\Framework\Model\AbstractExtensibleModel implements
-    \Magento\Bundle\Api\Data\LinkInterface
+class Link extends \Magento\Framework\Model\Abstract_Extensible_Model implements \Magento\Bundle\Api\Data\Link_Interface
 {
     /**#@+
      * Constants
@@ -28,193 +26,173 @@ class Link extends \Magento\Framework\Model\AbstractExtensibleModel implements
     public const KEY_PRICE_TYPE = 'price_type';
     public const KEY_CAN_CHANGE_QUANTITY = 'selection_can_change_quantity';
     /**#@-*/
-
     /**
      * {@inheritdoc}
      */
-    public function getId()
+    public function get_id()
     {
-        return $this->getData(self::KEY_ID);
+        return $this->get_data(self::KEY_ID);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function setId($id)
+    public function set_id($id)
     {
-        return $this->setData(self::KEY_ID, $id);
+        return $this->set_data(self::KEY_ID, $id);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getSku()
+    public function get_sku()
     {
-        return $this->getData(self::KEY_SKU);
+        return $this->get_data(self::KEY_SKU);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getOptionId()
+    public function get_option_id()
     {
-        return $this->getData(self::KEY_OPTION_ID);
+        return $this->get_data(self::KEY_OPTION_ID);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getQty()
+    public function get_qty()
     {
-        return $this->getData(self::KEY_QTY);
+        return $this->get_data(self::KEY_QTY);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getPosition()
+    public function get_position()
     {
-        return $this->getData(self::KEY_POSITION);
+        return $this->get_data(self::KEY_POSITION);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getIsDefault()
+    public function get_is_default()
     {
-        return $this->getData(self::KEY_IS_DEFAULT);
+        return $this->get_data(self::KEY_IS_DEFAULT);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getPrice()
+    public function get_price()
     {
-        return $this->getData(self::KEY_PRICE);
+        return $this->get_data(self::KEY_PRICE);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getPriceType()
+    public function get_price_type()
     {
-        return $this->getData(self::KEY_PRICE_TYPE);
+        return $this->get_data(self::KEY_PRICE_TYPE);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getCanChangeQuantity()
+    public function get_can_change_quantity()
     {
-        return $this->getData(self::KEY_CAN_CHANGE_QUANTITY);
+        return $this->get_data(self::KEY_CAN_CHANGE_QUANTITY);
     }
-
     /**
      * Set linked product sku
      *
      * @param string $sku
      * @return $this
      */
-    public function setSku($sku)
+    public function set_sku($sku)
     {
-        return $this->setData(self::KEY_SKU, $sku);
+        return $this->set_data(self::KEY_SKU, $sku);
     }
-
     /**
      * Set option id
      *
      * @param int $optionId
      * @return $this
      */
-    public function setOptionId($optionId)
+    public function set_option_id($option_id)
     {
-        return $this->setData(self::KEY_OPTION_ID, $optionId);
+        return $this->set_data(self::KEY_OPTION_ID, $option_id);
     }
-
     /**
      * Set qty
      *
      * @param float $qty
      * @return $this
      */
-    public function setQty($qty)
+    public function set_qty($qty)
     {
-        return $this->setData(self::KEY_QTY, $qty);
+        return $this->set_data(self::KEY_QTY, $qty);
     }
-
     /**
      * Set position
      *
      * @param int $position
      * @return $this
      */
-    public function setPosition($position)
+    public function set_position($position)
     {
-        return $this->setData(self::KEY_POSITION, $position);
+        return $this->set_data(self::KEY_POSITION, $position);
     }
-
     /**
      * Set is default
      *
      * @param bool $isDefault
      * @return $this
      */
-    public function setIsDefault($isDefault)
+    public function set_is_default($is_default)
     {
-        return $this->setData(self::KEY_IS_DEFAULT, $isDefault);
+        return $this->set_data(self::KEY_IS_DEFAULT, $is_default);
     }
-
     /**
      * Set price
      *
      * @param float $price
      * @return $this
      */
-    public function setPrice($price)
+    public function set_price($price)
     {
-        return $this->setData(self::KEY_PRICE, $price);
+        return $this->set_data(self::KEY_PRICE, $price);
     }
-
     /**
      * Set price type
      *
      * @param int $priceType
      * @return $this
      */
-    public function setPriceType($priceType)
+    public function set_price_type($price_type)
     {
-        return $this->setData(self::KEY_PRICE_TYPE, $priceType);
+        return $this->set_data(self::KEY_PRICE_TYPE, $price_type);
     }
-
     /**
      * Set whether quantity could be changed
      *
      * @param int $canChangeQuantity
      * @return $this
      */
-    public function setCanChangeQuantity($canChangeQuantity)
+    public function set_can_change_quantity($can_change_quantity)
     {
-        return $this->setData(self::KEY_CAN_CHANGE_QUANTITY, $canChangeQuantity);
+        return $this->set_data(self::KEY_CAN_CHANGE_QUANTITY, $can_change_quantity);
     }
-
     /**
      * {@inheritdoc}
      *
      * @return \Magento\Bundle\Api\Data\LinkExtensionInterface|null
      */
-    public function getExtensionAttributes()
+    public function get_extension_attributes()
     {
-        return $this->_getExtensionAttributes();
+        return $this->_get_extension_attributes();
     }
-
     /**
      * {@inheritdoc}
      *
      * @param \Magento\Bundle\Api\Data\LinkExtensionInterface $extensionAttributes
      * @return $this
      */
-    public function setExtensionAttributes(\Magento\Bundle\Api\Data\LinkExtensionInterface $extensionAttributes)
+    public function set_extension_attributes(\Magento\Bundle\Api\Data\Link_Extension_Interface $extension_attributes)
     {
-        return $this->_setExtensionAttributes($extensionAttributes);
+        return $this->_set_extension_attributes($extension_attributes);
     }
 }

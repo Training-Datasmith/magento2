@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Operation;
 
-namespace Magento\Framework\EntityManager\Operation;
-
-use Magento\Framework\EntityManager\OperationInterface;
-
+use Magento\Framework\Entity_Manager\Operation_Interface;
 /**
  * Interface for reading entity data
  */
-interface ReadInterface extends OperationInterface
+interface Read_Interface extends Operation_Interface
 {
     /**
      * Read data and populate entity

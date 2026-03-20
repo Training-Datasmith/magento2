@@ -1,16 +1,14 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Session;
 
-use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Customer\Api\GroupManagementInterface;
-
+use Magento\Customer\Api\Customer_Repository_Interface;
+use Magento\Customer\Api\Group_Management_Interface;
 /**
  * Adminhtml quote session
  *
@@ -30,7 +28,7 @@ use Magento\Customer\Api\GroupManagementInterface;
  * @SuppressWarnings(PHPMD.CookieAndSessionMisuse)
  * @since 100.0.2
  */
-class Quote extends \Magento\Framework\Session\SessionManager
+class Quote extends \Magento\Framework\Session\Session_Manager
 {
     /**
      * Quote model object
@@ -38,53 +36,44 @@ class Quote extends \Magento\Framework\Session\SessionManager
      * @var \Magento\Quote\Model\Quote
      */
     protected $_quote;
-
     /**
      * Store model object
      *
      * @var \Magento\Store\Model\Store
      */
     protected $_store;
-
     /**
      * Order model object
      *
      * @var \Magento\Sales\Model\Order
      */
     protected $_order;
-
     /**
      * @var \Magento\Sales\Model\OrderFactory
      */
-    protected $_orderFactory;
-
+    protected $_order_factory;
     /**
      * @var CustomerRepositoryInterface
      */
-    protected $customerRepository;
-
+    protected $customer_repository;
     /**
      * Sales quote repository
      *
      * @var \Magento\Quote\Api\CartRepositoryInterface
      */
-    protected $quoteRepository;
-
+    protected $quote_repository;
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $_storeManager;
-
+    protected $_store_manager;
     /**
      * @var GroupManagementInterface
      */
-    protected $groupManagement;
-
+    protected $group_management;
     /**
      * @var \Magento\Quote\Model\QuoteFactory
      */
-    protected $quoteFactory;
-
+    protected $quote_factory;
     /**
      * @param \Magento\Framework\App\Request\Http $request
      * @param \Magento\Framework\Session\SidResolverInterface $sidResolver
@@ -103,121 +92,89 @@ class Quote extends \Magento\Framework\Session\SessionManager
      * @param \Magento\Quote\Model\QuoteFactory $quoteFactory
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
-    public function __construct(
-        \Magento\Framework\App\Request\Http $request,
-        \Magento\Framework\Session\SidResolverInterface $sidResolver,
-        \Magento\Framework\Session\Config\ConfigInterface $sessionConfig,
-        \Magento\Framework\Session\SaveHandlerInterface $saveHandler,
-        \Magento\Framework\Session\ValidatorInterface $validator,
-        \Magento\Framework\Session\StorageInterface $storage,
-        \Magento\Framework\Stdlib\CookieManagerInterface $cookieManager,
-        \Magento\Framework\Stdlib\Cookie\CookieMetadataFactory $cookieMetadataFactory,
-        \Magento\Framework\App\State $appState,
-        CustomerRepositoryInterface $customerRepository,
-        \Magento\Quote\Api\CartRepositoryInterface $quoteRepository,
-        \Magento\Sales\Model\OrderFactory $orderFactory,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        GroupManagementInterface $groupManagement,
-        \Magento\Quote\Model\QuoteFactory $quoteFactory
-    ) {
-        $this->customerRepository = $customerRepository;
-        $this->quoteRepository = $quoteRepository;
-        $this->_orderFactory = $orderFactory;
-        $this->_storeManager = $storeManager;
-        $this->groupManagement = $groupManagement;
-        $this->quoteFactory = $quoteFactory;
-        parent::__construct(
-            $request,
-            $sidResolver,
-            $sessionConfig,
-            $saveHandler,
-            $validator,
-            $storage,
-            $cookieManager,
-            $cookieMetadataFactory,
-            $appState
-        );
-        if ($this->_storeManager->hasSingleStore()) {
-            $this->setStoreId($this->_storeManager->getStore(true)->getId());
+    public function __construct(\Magento\Framework\App\Request\Http $request, \Magento\Framework\Session\Sid_Resolver_Interface $sid_resolver, \Magento\Framework\Session\Config\Config_Interface $session_config, \Magento\Framework\Session\Save_Handler_Interface $save_handler, \Magento\Framework\Session\Validator_Interface $validator, \Magento\Framework\Session\Storage_Interface $storage, \Magento\Framework\Stdlib\Cookie_Manager_Interface $cookie_manager, \Magento\Framework\Stdlib\Cookie\Cookie_Metadata_Factory $cookie_metadata_factory, \Magento\Framework\App\State $app_state, Customer_Repository_Interface $customer_repository, \Magento\Quote\Api\Cart_Repository_Interface $quote_repository, \Magento\Sales\Model\Order_Factory $order_factory, \Magento\Store\Model\Store_Manager_Interface $store_manager, Group_Management_Interface $group_management, \Magento\Quote\Model\Quote_Factory $quote_factory)
+    {
+        $this->customer_repository = $customer_repository;
+        $this->quote_repository = $quote_repository;
+        $this->_order_factory = $order_factory;
+        $this->_store_manager = $store_manager;
+        $this->group_management = $group_management;
+        $this->quote_factory = $quote_factory;
+        parent::__construct($request, $sid_resolver, $session_config, $save_handler, $validator, $storage, $cookie_manager, $cookie_metadata_factory, $app_state);
+        if ($this->_store_manager->has_single_store()) {
+            $this->set_store_id($this->_store_manager->get_store(true)->get_id());
         }
     }
-
     /**
      * @inheritDoc
      */
-    public function _resetState(): void
+    public function _reset_state(): void
     {
-        parent::_resetState();
+        parent::_reset_state();
         $this->_quote = null;
         $this->_store = null;
         $this->_order = null;
     }
-
     /**
      * Retrieve quote model object
      *
      * @return \Magento\Quote\Model\Quote
      */
-    public function getQuote()
+    public function get_quote()
     {
         if ($this->_quote === null) {
-            $this->_quote = $this->quoteFactory->create();
-            if ($this->getStoreId()) {
-                if (!$this->getQuoteId()) {
-                    $customerGroupId = $this->groupManagement->getDefaultGroup($this->getStoreId())->getId();
-                    $this->_quote->setCustomerGroupId($customerGroupId);
-                    $this->_quote->setIsActive(false);
-                    $this->_quote->setStoreId($this->getStoreId());
-
-                    $this->quoteRepository->save($this->_quote);
-                    $this->setQuoteId($this->_quote->getId());
-                    $this->_quote = $this->quoteRepository->get($this->getQuoteId(), [$this->getStoreId()]);
+            $this->_quote = $this->quote_factory->create();
+            if ($this->get_store_id()) {
+                if (!$this->get_quote_id()) {
+                    $customer_group_id = $this->group_management->get_default_group($this->get_store_id())->get_id();
+                    $this->_quote->set_customer_group_id($customer_group_id);
+                    $this->_quote->set_is_active(false);
+                    $this->_quote->set_store_id($this->get_store_id());
+                    $this->quote_repository->save($this->_quote);
+                    $this->set_quote_id($this->_quote->get_id());
+                    $this->_quote = $this->quote_repository->get($this->get_quote_id(), [$this->get_store_id()]);
                 } else {
-                    $this->_quote = $this->quoteRepository->get($this->getQuoteId(), [$this->getStoreId()]);
-                    $this->_quote->setStoreId($this->getStoreId());
+                    $this->_quote = $this->quote_repository->get($this->get_quote_id(), [$this->get_store_id()]);
+                    $this->_quote->set_store_id($this->get_store_id());
                 }
-
-                if ($this->getCustomerId() && $this->getCustomerId() != $this->_quote->getCustomerId()) {
-                    $customer = $this->customerRepository->getById($this->getCustomerId());
-                    $this->_quote->assignCustomer($customer);
-                    $this->quoteRepository->save($this->_quote);
+                if ($this->get_customer_id() && $this->get_customer_id() != $this->_quote->get_customer_id()) {
+                    $customer = $this->customer_repository->get_by_id($this->get_customer_id());
+                    $this->_quote->assign_customer($customer);
+                    $this->quote_repository->save($this->_quote);
                 }
             }
-            $this->_quote->setIgnoreOldQty(true);
-            $this->_quote->setIsSuperMode(true);
+            $this->_quote->set_ignore_old_qty(true);
+            $this->_quote->set_is_super_mode(true);
         }
-
         return $this->_quote;
     }
-
     /**
      * Retrieve store model object
      *
      * @return \Magento\Store\Model\Store
      */
-    public function getStore()
+    public function get_store()
     {
         if ($this->_store === null) {
-            $this->_store = $this->_storeManager->getStore($this->getStoreId());
-            $currencyId = $this->getCurrencyId();
-            if ($currencyId) {
-                $this->_store->setCurrentCurrencyCode($currencyId);
+            $this->_store = $this->_store_manager->get_store($this->get_store_id());
+            $currency_id = $this->get_currency_id();
+            if ($currency_id) {
+                $this->_store->set_current_currency_code($currency_id);
             }
         }
         return $this->_store;
     }
-
     /**
      * Retrieve order model object
      *
      * @return \Magento\Sales\Model\Order
      */
-    public function getOrder()
+    public function get_order()
     {
         if ($this->_order === null) {
-            $this->_order = $this->_orderFactory->create();
-            if ($this->getOrderId()) {
-                $this->_order->load($this->getOrderId());
+            $this->_order = $this->_order_factory->create();
+            if ($this->get_order_id()) {
+                $this->_order->load($this->get_order_id());
             }
         }
         return $this->_order;

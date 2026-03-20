@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AsynchronousOperations\Ui\Component\AdminNotification;
+namespace Magento\Asynchronous_Operations\Ui\Component\Admin_Notification;
 
 /**
  * Class Plugin to eliminate Bulk related links in the notification area
@@ -16,30 +15,24 @@ class Plugin
     /**
      * @var bool
      */
-    private $isAllowed;
-
+    private $is_allowed;
     /**
      * Plugin constructor.
      */
-    public function __construct(private readonly \Magento\Framework\AuthorizationInterface $authorization)
+    public function __construct(private readonly \Magento\Framework\Authorization_Interface $authorization)
     {
     }
-
     /**
      * Prepares Meta
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterGetMeta(
-        \Magento\AdminNotification\Ui\Component\DataProvider\DataProvider $dataProvider,
-        array $result
-    ): array {
-        if (!isset($this->isAllowed)) {
-            $this->isAllowed = $this->authorization->isAllowed(
-                'Magento_Logging::system_magento_logging_bulk_operations'
-            );
+    public function after_get_meta(\Magento\Admin_Notification\Ui\Component\Data_Provider\Data_Provider $data_provider, array $result): array
+    {
+        if (!isset($this->is_allowed)) {
+            $this->is_allowed = $this->authorization->is_allowed('Magento_Logging::system_magento_logging_bulk_operations');
         }
-        $result['columns']['arguments']['data']['config']['isAllowed'] = $this->isAllowed;
+        $result['columns']['arguments']['data']['config']['isAllowed'] = $this->is_allowed;
         return $result;
     }
 }

@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\Api\ExtensionAttribute;
+namespace Magento\Framework\Api\Extension_Attribute;
 
 /**
  * Data holder for extension attribute joins.
@@ -14,137 +13,120 @@ namespace Magento\Framework\Api\ExtensionAttribute;
  * @api
  * @codeCoverageIgnore
  */
-class JoinData implements JoinDataInterface
+class Join_Data implements Join_Data_Interface
 {
     /**
      * @var string
      */
-    private $attributeCode;
-
+    private $attribute_code;
     /**
      * @var string
      */
-    private $referenceTable;
-
+    private $reference_table;
     /**
      * @var string
      */
-    private $referenceTableAlias;
-
+    private $reference_table_alias;
     /**
      * @var string
      */
-    private $referenceField;
-
+    private $reference_field;
     /**
      * @var string
      */
-    private $joinField;
-
+    private $join_field;
     /**
      * @var string[]
      */
-    private $selectFields;
-
+    private $select_fields;
     /**
      * {@inheritdoc}
      */
-    public function getAttributeCode()
+    public function get_attribute_code()
     {
-        return $this->attributeCode;
+        return $this->attribute_code;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function setAttributeCode($attributeCode)
+    public function set_attribute_code($attribute_code)
     {
-        $this->attributeCode = $attributeCode;
+        $this->attribute_code = $attribute_code;
         return $this;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getReferenceTable()
+    public function get_reference_table()
     {
-        return $this->referenceTable;
+        return $this->reference_table;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function setReferenceTable($referenceTable)
+    public function set_reference_table($reference_table)
     {
-        $this->referenceTable = $referenceTable;
+        $this->reference_table = $reference_table;
         return $this;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getReferenceTableAlias()
+    public function get_reference_table_alias()
     {
-        return $this->referenceTableAlias;
+        return $this->reference_table_alias;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function setReferenceTableAlias($referenceTableAlias)
+    public function set_reference_table_alias($reference_table_alias)
     {
-        $this->referenceTableAlias = $referenceTableAlias;
+        $this->reference_table_alias = $reference_table_alias;
         return $this;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getReferenceField()
+    public function get_reference_field()
     {
-        return $this->referenceField;
+        return $this->reference_field;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function setReferenceField($referenceField)
+    public function set_reference_field($reference_field)
     {
-        $this->referenceField = $referenceField;
+        $this->reference_field = $reference_field;
         return $this;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getJoinField()
+    public function get_join_field()
     {
-        return $this->joinField;
+        return $this->join_field;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function setJoinField($joinField)
+    public function set_join_field($join_field)
     {
-        $this->joinField = $joinField;
+        $this->join_field = $join_field;
         return $this;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getSelectFields()
+    public function get_select_fields()
     {
-        return $this->selectFields;
+        return $this->select_fields;
     }
-
     /**
      * {@inheritdoc}
      */
-    public function setSelectFields(array $selectFields)
+    public function set_select_fields(array $select_fields)
     {
-        $this->selectFields = $selectFields;
+        $this->select_fields = $select_fields;
         return $this;
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option;
 
 /**
@@ -20,21 +19,20 @@ class Multi extends \Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Optio
      * @var string
      */
     protected $_template = 'Magento_Bundle::catalog/product/view/type/bundle/option/multi.phtml';
-
     /**
      * @inheritdoc
      * @since 100.2.0
      */
-    protected function assignSelection(\Magento\Bundle\Model\Option $option, $selectionId)
+    protected function assign_selection(\Magento\Bundle\Model\Option $option, $selection_id)
     {
-        if (is_array($selectionId)) {
-            foreach ($selectionId as $id) {
-                if ($id && $option->getSelectionById($id)) {
-                    $this->_selectedOptions[] = $id;
+        if (is_array($selection_id)) {
+            foreach ($selection_id as $id) {
+                if ($id && $option->get_selection_by_id($id)) {
+                    $this->_selected_options[] = $id;
                 }
             }
         } else {
-            parent::assignSelection($option, $selectionId);
+            parent::assign_selection($option, $selection_id);
         }
     }
 }

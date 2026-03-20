@@ -1,24 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Exception\Temporary_State;
 
-namespace Magento\Framework\Exception\TemporaryState;
-
-use Magento\Framework\Exception\CouldNotSaveException as LocalizedCouldNotSaveException;
-use Magento\Framework\Exception\TemporaryStateExceptionInterface;
+use Magento\Framework\Exception\Could_Not_Save_Exception as LocalizedCouldNotSaveException;
+use Magento\Framework\Exception\Temporary_State_Exception_Interface;
 use Magento\Framework\Phrase;
-
 /**
  * CouldNotSaveException caused by recoverable error
  *
  * @api
  * @since 101.0.0
  */
-class CouldNotSaveException extends LocalizedCouldNotSaveException implements TemporaryStateExceptionInterface
+class Could_Not_Save_Exception extends Localized_Could_Not_Save_Exception implements Temporary_State_Exception_Interface
 {
     /**
      * Class constructor

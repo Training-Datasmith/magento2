@@ -4,14 +4,13 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\CacheInvalidate\Model;
+declare (strict_types=1);
+namespace Magento\Cache_Invalidate\Model;
 
 /**
  * Factory for the \Laminas\Http\Client\Adapter\Socket
  */
-class SocketFactory
+class Socket_Factory
 {
     /**
      * Create object

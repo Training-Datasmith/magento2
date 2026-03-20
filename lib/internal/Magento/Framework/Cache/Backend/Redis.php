@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Cache\Backend;
 
 /**
@@ -18,32 +17,28 @@ class Redis extends \Cm_Cache_Backend_Redis
      *
      * @var array
      */
-    private $preloadedData = [];
-
+    private $preloaded_data = [];
     /**
      * Array of keys to be preloaded.
      *
      * @var array
      */
-    private $preloadKeys = [];
-
+    private $preload_keys = [];
     /**
      * Whether to use lua on garbage collection
      *
      * @var bool
      */
-    private bool $useLuaOnGc;
-
+    private bool $use_lua_on_gc;
     /**
      * @param array $options
      */
     public function __construct($options = [])
     {
-        $this->preloadKeys = $options['preload_keys'] ?? [];
+        $this->preload_keys = $options['preload_keys'] ?? [];
         parent::__construct($options);
-        $this->useLuaOnGc = isset($options['use_lua_on_gc']) ? (bool) $options['use_lua_on_gc'] : (bool) $this->_useLua;
+        $this->use_lua_on_gc = isset($options['use_lua_on_gc']) ? (bool) $options['use_lua_on_gc'] : (bool) $this->_use_lua;
     }
-
     /**
      * Load value with given id from cache
      *
@@ -51,29 +46,22 @@ class Redis extends \Cm_Cache_Backend_Redis
      * @param  boolean $doNotTestCacheValidity If set to true, the cache validity won't be tested
      * @return bool|string
      */
-    public function load($id, $doNotTestCacheValidity = false)
+    public function load($id, $do_not_test_cache_validity = false)
     {
-        if (!empty($this->preloadKeys) && empty($this->preloadedData)) {
-            $redis =  $this->_slave ?? $this->_redis;
+        if (!empty($this->preload_keys) && empty($this->preloaded_data)) {
+            $redis = $this->_slave ?? $this->_redis;
             $redis = $redis->pipeline();
-
-            foreach ($this->preloadKeys as $key) {
-                $redis->hGet(self::PREFIX_KEY . $key, self::FIELD_DATA);
+            foreach ($this->preload_keys as $key) {
+                $redis->h_get(self::PREFIX_KEY . $key, self::FIELD_DATA);
             }
-
-            $redisResponse = $redis->exec();
-            $this->preloadedData = is_array($redisResponse) ?
-                array_filter(array_combine($this->preloadKeys, $redisResponse)) :
-                [];
+            $redis_response = $redis->exec();
+            $this->preloaded_data = is_array($redis_response) ? array_filter(array_combine($this->preload_keys, $redis_response)) : [];
         }
-
-        if (isset($this->preloadedData[$id])) {
-            return $this->_decodeData($this->preloadedData[$id]);
+        if (isset($this->preloaded_data[$id])) {
+            return $this->_decode_data($this->preloaded_data[$id]);
         }
-
-        return parent::load($id, $doNotTestCacheValidity);
+        return parent::load($id, $do_not_test_cache_validity);
     }
-
     /**
      * Cover errors on save operations, which may occurs when Redis cannot evict keys, which is expected in some cases.
      *
@@ -83,18 +71,16 @@ class Redis extends \Cm_Cache_Backend_Redis
      * @param bool $specificLifetime
      * @return bool
      */
-    public function save($data, $id, $tags = [], $specificLifetime = 86_400_000)
+    public function save($data, $id, $tags = [], $specific_lifetime = 86400000)
     {
         // @todo add special handling of MAGE tag, save clenup
         try {
-            $result = parent::save($data, $id, $tags, $specificLifetime);
+            $result = parent::save($data, $id, $tags, $specific_lifetime);
         } catch (\Throwable $exception) {
             $result = false;
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
@@ -105,24 +91,21 @@ class Redis extends \Cm_Cache_Backend_Redis
         } catch (\Throwable $exception) {
             $result = false;
         }
-
         return $result;
     }
-
     /**
      * @inheritDoc
      */
-    protected function _collectGarbage()
+    protected function _collect_garbage()
     {
-        $useLua = $this->_useLua;
-        $this->_useLua = $this->useLuaOnGc;
+        $use_lua = $this->_use_lua;
+        $this->_use_lua = $this->use_lua_on_gc;
         try {
-            parent::_collectGarbage();
+            parent::_collect_garbage();
         } finally {
-            $this->_useLua = $useLua;
+            $this->_use_lua = $use_lua;
         }
     }
-
     /**
      * Disable show internals with var_dump
      *

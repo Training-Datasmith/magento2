@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Api;
  *
  * @api
  */
-interface SimpleBuilderInterface
+interface Simple_Builder_Interface
 {
     /**
      * Builds the Data Object
@@ -21,11 +20,10 @@ interface SimpleBuilderInterface
      * @return AbstractSimpleObject
      */
     public function create();
-
     /**
      * Return data Object data.
      *
      * @return array
      */
-    public function getData();
+    public function get_data();
 }

@@ -1,21 +1,18 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Magento configuration XML DOM utility
  */
-
 namespace Magento\Framework\Config;
 
-use Magento\Framework\Config\Dom\UrnResolver;
-use Magento\Framework\Config\Dom\ValidationSchemaException;
+use Magento\Framework\Config\Dom\Urn_Resolver;
+use Magento\Framework\Config\Dom\Validation_Schema_Exception;
 use Magento\Framework\Phrase;
-
 /**
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  * @SuppressWarnings(PHPMD.CyclomaticComplexity)
@@ -28,67 +25,56 @@ class Dom
      * Prefix which will be used for root namespace
      */
     public const ROOT_NAMESPACE_PREFIX = 'x';
-
     /**
      * Format of items in errors array to be used by default. Available placeholders - fields of \LibXMLError.
      */
     public const ERROR_FORMAT_DEFAULT = "%message%\nLine: %line%\n";
-
     /**
      * @var \Magento\Framework\Config\ValidationStateInterface
      */
-    private $validationState;
-
+    private $validation_state;
     /**
      * Dom document
      *
      * @var \DOMDocument
      */
     protected $dom;
-
     /**
      * @var Dom\NodeMergingConfig
      */
-    protected $nodeMergingConfig;
-
+    protected $node_merging_config;
     /**
      * Name of attribute that specifies type of argument node
      *
      * @var string|null
      */
-    protected $typeAttributeName;
-
+    protected $type_attribute_name;
     /**
      * Schema validation file
      *
      * @var string
      */
     protected $schema;
-
     /**
      * Format of error messages
      *
      * @var string
      */
-    protected $errorFormat;
-
+    protected $error_format;
     /**
      * Default namespace for xml elements
      *
      * @var string
      */
-    protected $rootNamespace;
-
+    protected $root_namespace;
     /**
      * @var \Magento\Framework\Config\Dom\UrnResolver
      */
-    private static $urnResolver;
-
+    private static $urn_resolver;
     /**
      * @var array
      */
-    private static $resolvedSchemaPaths = [];
-
+    private static $resolved_schema_paths = [];
     /**
      * Build DOM with initial XML contents and specifying identifier attributes for merging
      *
@@ -102,23 +88,16 @@ class Dom
      * @param string $schemaFile
      * @param string $errorFormat
      */
-    public function __construct(
-        $xml,
-        \Magento\Framework\Config\ValidationStateInterface $validationState,
-        array $idAttributes = [],
-        $typeAttributeName = null,
-        $schemaFile = null,
-        $errorFormat = self::ERROR_FORMAT_DEFAULT
-    ) {
-        $this->validationState = $validationState;
-        $this->schema = $schemaFile;
-        $this->nodeMergingConfig = new Dom\NodeMergingConfig(new Dom\NodePathMatcher(), $idAttributes);
-        $this->typeAttributeName = $typeAttributeName;
-        $this->errorFormat = $errorFormat;
-        $this->dom = $this->_initDom($xml);
-        $this->rootNamespace = $this->dom->lookupNamespaceUri($this->dom->namespaceURI);
+    public function __construct($xml, \Magento\Framework\Config\Validation_State_Interface $validation_state, array $id_attributes = [], $type_attribute_name = null, $schema_file = null, $error_format = self::ERROR_FORMAT_DEFAULT)
+    {
+        $this->validation_state = $validation_state;
+        $this->schema = $schema_file;
+        $this->node_merging_config = new Dom\Node_Merging_Config(new Dom\Node_Path_Matcher(), $id_attributes);
+        $this->type_attribute_name = $type_attribute_name;
+        $this->error_format = $error_format;
+        $this->dom = $this->_init_dom($xml);
+        $this->root_namespace = $this->dom->lookup_namespace_uri($this->dom->namespace_uri);
     }
-
     /**
      * Retrieve array of xml errors
      *
@@ -126,20 +105,19 @@ class Dom
      * @param \DOMDocument|null $dom
      * @return string[]
      */
-    private static function getXmlErrors($errorFormat, $dom = null)
+    private static function get_xml_errors($error_format, $dom = null)
     {
         $errors = [];
-        $validationErrors = libxml_get_errors();
-        if (count($validationErrors)) {
-            foreach ($validationErrors as $error) {
-                $errors[] = self::_renderErrorMessage($error, $errorFormat, $dom);
+        $validation_errors = libxml_get_errors();
+        if (count($validation_errors)) {
+            foreach ($validation_errors as $error) {
+                $errors[] = self::_render_error_message($error, $error_format, $dom);
             }
         } else {
             $errors[] = 'Unknown validation error';
         }
         return $errors;
     }
-
     /**
      * Merge $xml into DOM document
      *
@@ -148,10 +126,9 @@ class Dom
      */
     public function merge($xml)
     {
-        $dom = $this->_initDom($xml);
-        $this->_mergeNode($dom->documentElement, '');
+        $dom = $this->_init_dom($xml);
+        $this->_merge_node($dom->document_element, '');
     }
-
     /**
      * Recursive merging of the \DOMElement into the original document
      *
@@ -165,126 +142,108 @@ class Dom
      * @return void
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      */
-    protected function _mergeNode(\DOMElement $node, $parentPath)
+    protected function _merge_node(\Dom_Element $node, $parent_path)
     {
-        $path = $this->_getNodePathByParent($node, $parentPath);
-
-        $matchedNode = $this->_getMatchedNode($path);
-
+        $path = $this->_get_node_path_by_parent($node, $parent_path);
+        $matched_node = $this->_get_matched_node($path);
         /* Update matched node attributes and value */
-        if ($matchedNode) {
+        if ($matched_node) {
             //different node type
-            if ($this->typeAttributeName &&
-                $node->hasAttribute($this->typeAttributeName) &&
-                $matchedNode->hasAttribute($this->typeAttributeName) &&
-                $node->getAttribute($this->typeAttributeName) !== $matchedNode->getAttribute($this->typeAttributeName)
-            ) {
-                $parentMatchedNode = $this->_getMatchedNode($parentPath);
-                $newNode = $this->dom->importNode($node, true);
-                $parentMatchedNode->replaceChild($newNode, $matchedNode);
+            if ($this->type_attribute_name && $node->has_attribute($this->type_attribute_name) && $matched_node->has_attribute($this->type_attribute_name) && $node->get_attribute($this->type_attribute_name) !== $matched_node->get_attribute($this->type_attribute_name)) {
+                $parent_matched_node = $this->_get_matched_node($parent_path);
+                $new_node = $this->dom->import_node($node, true);
+                $parent_matched_node->replace_child($new_node, $matched_node);
                 return;
             }
-
-            $this->_mergeAttributes($matchedNode, $node);
-            if (!$node->hasChildNodes()) {
+            $this->_merge_attributes($matched_node, $node);
+            if (!$node->has_child_nodes()) {
                 return;
             }
             /* override node value */
-            if ($this->_isTextNode($node)) {
+            if ($this->_is_text_node($node)) {
                 /* skip the case when the matched node has children, otherwise they get overridden */
-                if (!$matchedNode->hasChildNodes()
-                    || $this->_isTextNode($matchedNode)
-                    || $this->isCdataNode($matchedNode)
-                ) {
-                    $matchedNode->nodeValue = $node->childNodes->item(0)->nodeValue;
+                if (!$matched_node->has_child_nodes() || $this->_is_text_node($matched_node) || $this->is_cdata_node($matched_node)) {
+                    $matched_node->node_value = $node->child_nodes->item(0)->node_value;
                 }
-            } elseif ($this->isCdataNode($node) && $this->_isTextNode($matchedNode)) {
+            } elseif ($this->is_cdata_node($node) && $this->_is_text_node($matched_node)) {
                 /* Replace text node with CDATA section */
-                if ($this->findCdataSection($node)) {
-                    $matchedNode->nodeValue = $this->findCdataSection($node)->nodeValue;
+                if ($this->find_cdata_section($node)) {
+                    $matched_node->node_value = $this->find_cdata_section($node)->node_value;
                 }
-            } elseif ($this->isCdataNode($node) && $this->isCdataNode($matchedNode)) {
+            } elseif ($this->is_cdata_node($node) && $this->is_cdata_node($matched_node)) {
                 /* Replace CDATA with new one */
-                $this->replaceCdataNode($matchedNode, $node);
+                $this->replace_cdata_node($matched_node, $node);
             } else {
                 /* recursive merge for all child nodes */
-                foreach ($node->childNodes as $childNode) {
-                    if ($childNode instanceof \DOMElement) {
-                        $this->_mergeNode($childNode, $path);
+                foreach ($node->child_nodes as $child_node) {
+                    if ($child_node instanceof \Dom_Element) {
+                        $this->_merge_node($child_node, $path);
                     }
                 }
             }
         } else {
             /* Add node as is to the document under the same parent element */
-            $parentMatchedNode = $this->_getMatchedNode($parentPath);
-            $newNode = $this->dom->importNode($node, true);
-            $parentMatchedNode->appendChild($newNode);
+            $parent_matched_node = $this->_get_matched_node($parent_path);
+            $new_node = $this->dom->import_node($node, true);
+            $parent_matched_node->append_child($new_node);
         }
     }
-
     /**
      * Check if the node content is text
      *
      * @param \DOMElement $node
      * @return bool
      */
-    protected function _isTextNode($node)
+    protected function _is_text_node($node)
     {
-        return $node->childNodes->length == 1 && $node->childNodes->item(0) instanceof \DOMText;
+        return $node->child_nodes->length == 1 && $node->child_nodes->item(0) instanceof \Dom_Text;
     }
-
     /**
      * Check if the node content is CDATA (probably surrounded with text nodes) or just text node
      *
      * @param \DOMNode $node
      * @return bool
      */
-    private function isCdataNode($node)
+    private function is_cdata_node($node)
     {
         // If every child node of current is NOT \DOMElement
         // It is arbitrary combination of text nodes and CDATA sections.
-        foreach ($node->childNodes as $childNode) {
-            if ($childNode instanceof \DOMElement) {
+        foreach ($node->child_nodes as $child_node) {
+            if ($child_node instanceof \Dom_Element) {
                 return false;
             }
         }
-
         return true;
     }
-
     /**
      * Finds CDATA section from given node children
      *
      * @param \DOMNode $node
      * @return \DOMCdataSection|null
      */
-    private function findCdataSection($node)
+    private function find_cdata_section($node)
     {
-        foreach ($node->childNodes as $childNode) {
-            if ($childNode instanceof \DOMCdataSection) {
-                return $childNode;
+        foreach ($node->child_nodes as $child_node) {
+            if ($child_node instanceof \Dom_Cdata_Section) {
+                return $child_node;
             }
         }
-
         return null;
     }
-
     /**
      * Replaces CDATA section in $oldNode with $newNode's
      *
      * @param \DOMNode $oldNode
      * @param \DOMNode $newNode
      */
-    private function replaceCdataNode($oldNode, $newNode)
+    private function replace_cdata_node($old_node, $new_node)
     {
-        $oldCdata = $this->findCdataSection($oldNode);
-        $newCdata = $this->findCdataSection($newNode);
-
-        if ($oldCdata && $newCdata) {
-            $oldCdata->nodeValue = $newCdata->nodeValue;
+        $old_cdata = $this->find_cdata_section($old_node);
+        $new_cdata = $this->find_cdata_section($new_node);
+        if ($old_cdata && $new_cdata) {
+            $old_cdata->node_value = $new_cdata->node_value;
         }
     }
-
     /**
      * Merges attributes of the merge node to the base node
      *
@@ -292,13 +251,12 @@ class Dom
      * @param \DOMNode $mergeNode
      * @return void
      */
-    protected function _mergeAttributes($baseNode, $mergeNode)
+    protected function _merge_attributes($base_node, $merge_node)
     {
-        foreach ($mergeNode->attributes as $attribute) {
-            $baseNode->setAttribute($this->_getAttributeName($attribute), $attribute->value);
+        foreach ($merge_node->attributes as $attribute) {
+            $base_node->set_attribute($this->_get_attribute_name($attribute), $attribute->value);
         }
     }
-
     /**
      * Identify node path based on parent path and node attributes
      *
@@ -306,24 +264,23 @@ class Dom
      * @param string $parentPath
      * @return string
      */
-    protected function _getNodePathByParent(\DOMElement $node, $parentPath)
+    protected function _get_node_path_by_parent(\Dom_Element $node, $parent_path)
     {
-        $prefix = $this->rootNamespace === null ? '' : self::ROOT_NAMESPACE_PREFIX . ':';
-        $path = $parentPath . '/' . $prefix . $node->tagName;
-        $idAttribute = $this->nodeMergingConfig->getIdAttribute($path);
-        if (is_array($idAttribute)) {
+        $prefix = $this->root_namespace === null ? '' : self::ROOT_NAMESPACE_PREFIX . ':';
+        $path = $parent_path . '/' . $prefix . $node->tag_name;
+        $id_attribute = $this->node_merging_config->get_id_attribute($path);
+        if (is_array($id_attribute)) {
             $constraints = [];
-            foreach ($idAttribute as $attribute) {
-                $value = $node->getAttribute($attribute);
+            foreach ($id_attribute as $attribute) {
+                $value = $node->get_attribute($attribute);
                 $constraints[] = "@{$attribute}='{$value}'";
             }
             $path .= '[' . implode(' and ', $constraints) . ']';
-        } elseif ($idAttribute && ($value = $node->getAttribute($idAttribute))) {
-            $path .= "[@{$idAttribute}='{$value}']";
+        } elseif ($id_attribute && $value = $node->get_attribute($id_attribute)) {
+            $path .= "[@{$id_attribute}='{$value}']";
         }
         return $path;
     }
-
     /**
      * Getter for node by path
      *
@@ -332,27 +289,21 @@ class Dom
      *     multiple nodes for identifier
      * @return \DOMElement|null
      */
-    protected function _getMatchedNode($nodePath)
+    protected function _get_matched_node($node_path)
     {
-        $xPath = new \DOMXPath($this->dom);
-        if ($this->rootNamespace) {
-            $xPath->registerNamespace(self::ROOT_NAMESPACE_PREFIX, $this->rootNamespace);
+        $x_path = new \Domx_Path($this->dom);
+        if ($this->root_namespace) {
+            $x_path->register_namespace(self::ROOT_NAMESPACE_PREFIX, $this->root_namespace);
         }
-        $matchedNodes = $xPath->query($nodePath);
+        $matched_nodes = $x_path->query($node_path);
         $node = null;
-        if ($matchedNodes->length > 1) {
-            throw new \Magento\Framework\Exception\LocalizedException(
-                new \Magento\Framework\Phrase(
-                    'More than one node matching the query: %1, Xml is: %2',
-                    [$nodePath, $this->dom->saveXML()]
-                )
-            );
-        } elseif ($matchedNodes->length == 1) {
-            $node = $matchedNodes->item(0);
+        if ($matched_nodes->length > 1) {
+            throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('More than one node matching the query: %1, Xml is: %2', [$node_path, $this->dom->save_xml()]));
+        } elseif ($matched_nodes->length == 1) {
+            $node = $matched_nodes->item(0);
         }
         return $node;
     }
-
     /**
      * Validate dom document
      *
@@ -362,42 +313,36 @@ class Dom
      * @return array of errors
      * @throws \Exception
      */
-    public static function validateDomDocument(
-        \DOMDocument $dom,
-        $schema,
-        $errorFormat = self::ERROR_FORMAT_DEFAULT
-    ) {
+    public static function validate_dom_document(\Dom_Document $dom, $schema, $error_format = self::ERROR_FORMAT_DEFAULT)
+    {
         if (!function_exists('libxml_set_external_entity_loader')) {
             return [];
         }
-
-        if (!self::$urnResolver) {
-            self::$urnResolver = new UrnResolver();
+        if (!self::$urn_resolver) {
+            self::$urn_resolver = new Urn_Resolver();
         }
-        if (!isset(self::$resolvedSchemaPaths[$schema])) {
-            self::$resolvedSchemaPaths[$schema] = self::$urnResolver->getRealPath($schema);
+        if (!isset(self::$resolved_schema_paths[$schema])) {
+            self::$resolved_schema_paths[$schema] = self::$urn_resolver->get_real_path($schema);
         }
-        $schema = self::$resolvedSchemaPaths[$schema];
-
+        $schema = self::$resolved_schema_paths[$schema];
         libxml_use_internal_errors(true);
-        libxml_set_external_entity_loader([self::$urnResolver, 'registerEntityLoader']);
+        libxml_set_external_entity_loader([self::$urn_resolver, 'registerEntityLoader']);
         $errors = [];
         try {
-            $result = $dom->schemaValidate($schema);
+            $result = $dom->schema_validate($schema);
             if (!$result) {
-                $errors = self::getXmlErrors($errorFormat, $dom);
+                $errors = self::get_xml_errors($error_format, $dom);
             }
         } catch (\Exception $exception) {
-            $errors = self::getXmlErrors($errorFormat);
+            $errors = self::get_xml_errors($error_format);
             libxml_use_internal_errors(false);
             array_unshift($errors, new Phrase('Processed schema file: %1', [$schema]));
-            throw new ValidationSchemaException(new Phrase(implode("\n", $errors)));
+            throw new Validation_Schema_Exception(new Phrase(implode("\n", $errors)));
         }
         libxml_set_external_entity_loader(null);
         libxml_use_internal_errors(false);
         return $errors;
     }
-
     /**
      * Render error message string by replacing placeholders '%field%' with properties of \LibXMLError
      *
@@ -407,15 +352,12 @@ class Dom
      * @return string
      * @throws \InvalidArgumentException
      */
-    private static function _renderErrorMessage(
-        \LibXMLError $errorInfo,
-        string $format,
-        ?\DOMDocument $dom = null
-    ): string {
+    private static function _render_error_message(\Lib_Xml_Error $error_info, string $format, ?\Dom_Document $dom = null): string
+    {
         $result = $format;
-        foreach ($errorInfo as $field => $value) {
+        foreach ($error_info as $field => $value) {
             $placeholder = '%' . $field . '%';
-            $value = trim((string)$value);
+            $value = trim((string) $value);
             $result = $result !== null ? str_replace($placeholder, $value, $result) : '';
         }
         if ($result && strpos($result, '%') !== false) {
@@ -427,33 +369,29 @@ class Dom
                     }
                 }
                 if (!empty($unsupported)) {
-                    throw new \InvalidArgumentException(
-                        "Error format '{$format}' contains unsupported placeholders: " . implode(', ', $unsupported)
-                    );
+                    throw new \InvalidArgumentException("Error format '{$format}' contains unsupported placeholders: " . implode(', ', $unsupported));
                 }
             }
         }
         if ($dom) {
-            $xml = explode(PHP_EOL, $dom->saveXml());
-            $lines = array_slice($xml, max(0, $errorInfo->line - 5), 10, true);
+            $xml = explode(PHP_EOL, $dom->save_xml());
+            $lines = array_slice($xml, max(0, $error_info->line - 5), 10, true);
             $result .= 'The xml was: ' . PHP_EOL;
-            foreach ($lines as $lineNumber => $line) {
-                $result .= $lineNumber . ':' . $line . PHP_EOL;
+            foreach ($lines as $line_number => $line) {
+                $result .= $line_number . ':' . $line . PHP_EOL;
             }
         }
         return $result;
     }
-
     /**
      * DOM document getter
      *
      * @return \DOMDocument
      */
-    public function getDom()
+    public function get_dom()
     {
         return $this->dom;
     }
-
     /**
      * Create DOM document based on $xml parameter
      *
@@ -461,26 +399,25 @@ class Dom
      * @return \DOMDocument
      * @throws \Magento\Framework\Config\Dom\ValidationException
      */
-    protected function _initDom($xml)
+    protected function _init_dom($xml)
     {
-        $dom = new \DOMDocument();
-        $useErrors = libxml_use_internal_errors(true);
-        $res = $dom->loadXML($xml);
+        $dom = new \Dom_Document();
+        $use_errors = libxml_use_internal_errors(true);
+        $res = $dom->load_xml($xml);
         if (!$res) {
-            $errors = self::getXmlErrors($this->errorFormat);
-            libxml_use_internal_errors($useErrors);
-            throw new \Magento\Framework\Config\Dom\ValidationException(implode("\n", $errors));
+            $errors = self::get_xml_errors($this->error_format);
+            libxml_use_internal_errors($use_errors);
+            throw new \Magento\Framework\Config\Dom\Validation_Exception(implode("\n", $errors));
         }
-        libxml_use_internal_errors($useErrors);
-        if ($this->validationState->isValidationRequired() && $this->schema) {
-            $errors = $this->validateDomDocument($dom, $this->schema, $this->errorFormat);
+        libxml_use_internal_errors($use_errors);
+        if ($this->validation_state->is_validation_required() && $this->schema) {
+            $errors = $this->validate_dom_document($dom, $this->schema, $this->error_format);
             if (count($errors)) {
-                throw new \Magento\Framework\Config\Dom\ValidationException(implode("\n", $errors));
+                throw new \Magento\Framework\Config\Dom\Validation_Exception(implode("\n", $errors));
             }
         }
         return $dom;
     }
-
     /**
      * Validate self contents towards to specified schema
      *
@@ -488,40 +425,38 @@ class Dom
      * @param array &$errors
      * @return bool
      */
-    public function validate($schemaFileName, &$errors = [])
+    public function validate($schema_file_name, &$errors = [])
     {
-        if ($this->validationState->isValidationRequired()) {
-            $errors = $this->validateDomDocument($this->dom, $schemaFileName, $this->errorFormat);
+        if ($this->validation_state->is_validation_required()) {
+            $errors = $this->validate_dom_document($this->dom, $schema_file_name, $this->error_format);
             return !count($errors);
         }
         return true;
     }
-
     /**
      * Set schema file
      *
      * @param string $schemaFile
      * @return $this
      */
-    public function setSchemaFile($schemaFile)
+    public function set_schema_file($schema_file)
     {
-        $this->schema = $schemaFile;
+        $this->schema = $schema_file;
         return $this;
     }
-
     /**
      * Returns the attribute name with prefix, if there is one
      *
      * @param \DOMAttr $attribute
      * @return string
      */
-    private function _getAttributeName($attribute)
+    private function _get_attribute_name($attribute)
     {
         if ($attribute->prefix !== null && !empty($attribute->prefix)) {
-            $attributeName = $attribute->prefix . ':' . $attribute->name;
+            $attribute_name = $attribute->prefix . ':' . $attribute->name;
         } else {
-            $attributeName = $attribute->name;
+            $attribute_name = $attribute->name;
         }
-        return $attributeName;
+        return $attribute_name;
     }
 }

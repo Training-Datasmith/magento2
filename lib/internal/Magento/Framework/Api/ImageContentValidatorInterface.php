@@ -1,23 +1,21 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
-use Magento\Framework\Api\Data\ImageContentInterface;
-use Magento\Framework\Exception\InputException;
-
+use Magento\Framework\Api\Data\Image_Content_Interface;
+use Magento\Framework\Exception\Input_Exception;
 /**
  * Image content validation interface
  *
  * @api
  * @since 100.0.2
  */
-interface ImageContentValidatorInterface
+interface Image_Content_Validator_Interface
 {
     /**
      * Check if gallery entry content is valid
@@ -26,5 +24,5 @@ interface ImageContentValidatorInterface
      * @return bool
      * @throws InputException
      */
-    public function isValid(ImageContentInterface $imageContent);
+    public function is_valid(Image_Content_Interface $image_content);
 }

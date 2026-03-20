@@ -6,8 +6,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Event;
 
 /**
@@ -15,7 +14,7 @@ namespace Magento\Framework\Event;
  *
  * @api
  */
-interface ConfigInterface
+interface Config_Interface
 {
     /**#@+
      * Event types
@@ -23,12 +22,11 @@ interface ConfigInterface
     public const TYPE_CORE = 'core';
     public const TYPE_CUSTOM = 'custom';
     /**#@-*/
-
     /**
      * Get observers by event name
      *
      * @param string $eventName
      * @return array
      */
-    public function getObservers($eventName);
+    public function get_observers($event_name);
 }

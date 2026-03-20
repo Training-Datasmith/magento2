@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Model\ResourceModel\Inbox\Collection;
+namespace Magento\Admin_Notification\Model\Resource_Model\Inbox\Collection;
 
 /**
  * @api
  * @since 100.0.2
  */
-class Critical extends \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+class Critical extends \Magento\Framework\Model\Resource_Model\Db\Collection\Abstract_Collection
 {
     /**
      * Resource collection initialization
@@ -21,35 +20,17 @@ class Critical extends \Magento\Framework\Model\ResourceModel\Db\Collection\Abst
      */
     protected function _construct()
     {
-        $this->_init(
-            \Magento\AdminNotification\Model\Inbox::class,
-            \Magento\AdminNotification\Model\ResourceModel\Inbox::class
-        );
+        $this->_init(\Magento\Admin_Notification\Model\Inbox::class, \Magento\Admin_Notification\Model\Resource_Model\Inbox::class);
     }
-
     /**
      * Initialization of the select object
      *
      * @return $this
      */
-    protected function _initSelect(): static
+    protected function _init_select(): static
     {
-        parent::_initSelect();
-        $this->addOrder(
-            'notification_id',
-            self::SORT_ORDER_DESC
-        )->addFieldToFilter(
-            'is_read',
-            ['neq' => 1]
-        )->addFieldToFilter(
-            'is_remove',
-            ['neq' => 1]
-        )->addFieldToFilter(
-            'severity',
-            \Magento\Framework\Notification\MessageInterface::SEVERITY_CRITICAL
-        )->setPageSize(
-            1
-        );
+        parent::_init_select();
+        $this->add_order('notification_id', self::SORT_ORDER_DESC)->add_field_to_filter('is_read', ['neq' => 1])->add_field_to_filter('is_remove', ['neq' => 1])->add_field_to_filter('severity', \Magento\Framework\Notification\Message_Interface::SEVERITY_CRITICAL)->set_page_size(1);
         return $this;
     }
 }

@@ -4,13 +4,11 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Cardinal_Commerce\Model;
 
-namespace Magento\CardinalCommerce\Model;
-
-use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Store\Model\ScopeInterface;
-
+use Magento\Framework\App\Config\Scope_Config_Interface;
+use Magento\Store\Model\Scope_Interface;
 /**
  * CardinalCommerce integration configuration.
  *
@@ -21,16 +19,14 @@ class Config
     /**
      * @var ScopeConfigInterface
      */
-    private $scopeConfig;
-
+    private $scope_config;
     /**
      * @param ScopeConfigInterface $scopeConfig
      */
-    public function __construct(ScopeConfigInterface $scopeConfig)
+    public function __construct(Scope_Config_Interface $scope_config)
     {
-        $this->scopeConfig = $scopeConfig;
+        $this->scope_config = $scope_config;
     }
-
     /**
      * Returns CardinalCommerce API Key used for authentication.
      *
@@ -39,16 +35,11 @@ class Config
      * @param int|null $storeId
      * @return string
      */
-    public function getApiKey(?int $storeId = null): string
+    public function get_api_key(?int $store_id = null): string
     {
-        $apiKey = $this->scopeConfig->getValue(
-            'three_d_secure/cardinal/api_key',
-            ScopeInterface::SCOPE_STORE,
-            $storeId
-        );
-        return $apiKey;
+        $api_key = $this->scope_config->get_value('three_d_secure/cardinal/api_key', Scope_Interface::SCOPE_STORE, $store_id);
+        return $api_key;
     }
-
     /**
      * Returns CardinalCommerce API Identifier.
      *
@@ -57,16 +48,11 @@ class Config
      * @param int|null $storeId
      * @return string
      */
-    public function getApiIdentifier(?int $storeId = null): string
+    public function get_api_identifier(?int $store_id = null): string
     {
-        $apiIdentifier = $this->scopeConfig->getValue(
-            'three_d_secure/cardinal/api_identifier',
-            ScopeInterface::SCOPE_STORE,
-            $storeId
-        );
-        return $apiIdentifier;
+        $api_identifier = $this->scope_config->get_value('three_d_secure/cardinal/api_identifier', Scope_Interface::SCOPE_STORE, $store_id);
+        return $api_identifier;
     }
-
     /**
      * Returns CardinalCommerce Org Unit Id.
      *
@@ -75,16 +61,11 @@ class Config
      * @param int|null $storeId
      * @return string
      */
-    public function getOrgUnitId(?int $storeId = null): string
+    public function get_org_unit_id(?int $store_id = null): string
     {
-        $orgUnitId = $this->scopeConfig->getValue(
-            'three_d_secure/cardinal/org_unit_id',
-            ScopeInterface::SCOPE_STORE,
-            $storeId
-        );
-        return $orgUnitId;
+        $org_unit_id = $this->scope_config->get_value('three_d_secure/cardinal/org_unit_id', Scope_Interface::SCOPE_STORE, $store_id);
+        return $org_unit_id;
     }
-
     /**
      * Returns CardinalCommerce environment.
      *
@@ -93,29 +74,20 @@ class Config
      * @param int|null $storeId
      * @return string
      */
-    public function getEnvironment(?int $storeId = null): string
+    public function get_environment(?int $store_id = null): string
     {
-        $environment = $this->scopeConfig->getValue(
-            'three_d_secure/cardinal/environment',
-            ScopeInterface::SCOPE_STORE,
-            $storeId
-        );
+        $environment = $this->scope_config->get_value('three_d_secure/cardinal/environment', Scope_Interface::SCOPE_STORE, $store_id);
         return $environment;
     }
-
     /**
      * If is "true" extra information about interaction with CardinalCommerce API are written to payment.log file
      *
      * @param int|null $storeId
      * @return bool
      */
-    public function isDebugModeEnabled(?int $storeId = null): bool
+    public function is_debug_mode_enabled(?int $store_id = null): bool
     {
-        $debugModeEnabled = $this->scopeConfig->isSetFlag(
-            'three_d_secure/cardinal/debug',
-            ScopeInterface::SCOPE_STORE,
-            $storeId
-        );
-        return $debugModeEnabled;
+        $debug_mode_enabled = $this->scope_config->is_set_flag('three_d_secure/cardinal/debug', Scope_Interface::SCOPE_STORE, $store_id);
+        return $debug_mode_enabled;
     }
 }

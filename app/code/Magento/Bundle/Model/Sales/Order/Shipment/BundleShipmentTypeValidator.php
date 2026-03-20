@@ -4,17 +4,15 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Model\Sales\Order\Shipment;
 
 use Magento\Catalog\Model\Product\Type;
-use Magento\Sales\Model\ValidatorInterface;
-
+use Magento\Sales\Model\Validator_Interface;
 /**
  * Validate if requested order items can be shipped according to bundle product shipment type
  */
-class BundleShipmentTypeValidator implements ValidatorInterface
+class Bundle_Shipment_Type_Validator implements Validator_Interface
 {
     /**
      * @inheritdoc
@@ -22,31 +20,16 @@ class BundleShipmentTypeValidator implements ValidatorInterface
     public function validate($item)
     {
         $result = [];
-        if (!$item->isDummy(true)) {
+        if (!$item->is_dummy(true)) {
             return $result;
         }
-
-        $message = 'Cannot create shipment as bundle product "%1" has shipment type "%2". ' .
-            '%3 should be shipped instead.';
-
-        if ($item->getHasChildren() && $item->getProductType() === Type::TYPE_BUNDLE) {
-            $result[] = __(
-                $message,
-                $item->getSku(),
-                __('Separately'),
-                __('Bundle product options'),
-            );
+        $message = 'Cannot create shipment as bundle product "%1" has shipment type "%2". ' . '%3 should be shipped instead.';
+        if ($item->get_has_children() && $item->get_product_type() === Type::TYPE_BUNDLE) {
+            $result[] = __($message, $item->get_sku(), __('Separately'), __('Bundle product options'));
         }
-
-        if ($item->getParentItem() && $item->getParentItem()->getProductType() === Type::TYPE_BUNDLE) {
-            $result[] = __(
-                $message,
-                $item->getParentItem()->getSku(),
-                __('Together'),
-                __('Bundle product itself'),
-            );
+        if ($item->get_parent_item() && $item->get_parent_item()->get_product_type() === Type::TYPE_BUNDLE) {
+            $result[] = __($message, $item->get_parent_item()->get_sku(), __('Together'), __('Bundle product itself'));
         }
-
         return $result;
     }
 }

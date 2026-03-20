@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\System\Design\Edit;
 
 class Tabs extends \Magento\Backend\Block\Widget\Tabs
@@ -16,26 +15,16 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
     protected function _construct()
     {
         parent::_construct();
-        $this->setId('design_tabs');
-        $this->setDestElementId('design-edit-form');
-        $this->setTitle(__('Design Change'));
+        $this->set_id('design_tabs');
+        $this->set_dest_element_id('design-edit-form');
+        $this->set_title(__('Design Change'));
     }
-
     /**
      * {@inheritdoc}
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
-        $this->addTab(
-            'general',
-            [
-                'label' => __('General'),
-                'content' => $this->getLayout()->createBlock(
-                    \Magento\Backend\Block\System\Design\Edit\Tab\General::class
-                )->toHtml(),
-            ]
-        );
-
-        return parent::_prepareLayout();
+        $this->add_tab('general', ['label' => __('General'), 'content' => $this->get_layout()->create_block(\Magento\Backend\Block\System\Design\Edit\Tab\General::class)->to_html()]);
+        return parent::_prepare_layout();
     }
 }

@@ -4,23 +4,20 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Plugin\Framework\Data\Form\Element;
 
-use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Data\Form\Element\Abstract_Element;
 use Magento\Framework\Data\Form\Element\Fieldset;
-
 /**
  * Plugin that fixes mapping of value and label for bundle dynamic attributes
  */
-class FieldsetPlugin
+class Fieldset_Plugin
 {
     /**
      * @var string[]
      */
-    private $dynamicAttributeNames = ['sku_type', 'weight_type', 'price_type'];
-
+    private $dynamic_attribute_names = ['sku_type', 'weight_type', 'price_type'];
     /**
      * Normalise bundle dynamic attributes values
      *
@@ -32,19 +29,17 @@ class FieldsetPlugin
      * @return AbstractElement
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterAddField(Fieldset $subject, AbstractElement $result)
+    public function after_add_field(Fieldset $subject, Abstract_Element $result)
     {
-        if (!in_array($result->getAttributeCode(), $this->dynamicAttributeNames)) {
+        if (!in_array($result->get_attribute_code(), $this->dynamic_attribute_names)) {
             return $result;
         }
-
         $new = [];
-        foreach ($result->getValues() as $option) {
-            $option['value'] = (int)!$option['value'];
+        foreach ($result->get_values() as $option) {
+            $option['value'] = (int) !$option['value'];
             $new[] = $option;
         }
-
-        $result->setValues($new);
+        $result->set_values($new);
         return $result;
     }
 }

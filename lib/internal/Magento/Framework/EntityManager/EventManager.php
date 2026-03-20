@@ -1,43 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager;
 
-namespace Magento\Framework\EntityManager;
-
-use Magento\Framework\Event\ManagerInterface;
-
-class EventManager
+use Magento\Framework\Event\Manager_Interface;
+class Event_Manager
 {
     /**
      * @var ManagerInterface
      */
-    private $eventManager;
-
+    private $event_manager;
     /**
      * EventManager constructor.
      * @param ManagerInterface $eventManager
      */
-    public function __construct(
-        ManagerInterface $eventManager
-    ) {
-        $this->eventManager = $eventManager;
+    public function __construct(Manager_Interface $event_manager)
+    {
+        $this->event_manager = $event_manager;
     }
-
     /**
      * Get entity prefix for event
      *
      * @param string $entityType
      * @return string
      */
-    private function resolveEntityPrefix($entityType)
+    private function resolve_entity_prefix($entity_type)
     {
-        return $entityType !== null ? strtolower(str_replace('\\', '_', $entityType)) : '';
+        return $entity_type !== null ? strtolower(str_replace('\\', '_', $entity_type)) : '';
     }
-
     /**
      * Method to dispatch entity event.
      *
@@ -46,14 +40,10 @@ class EventManager
      * @param array $data
      * @return void
      */
-    public function dispatchEntityEvent($entityType, $eventSuffix, array $data = [])
+    public function dispatch_entity_event($entity_type, $event_suffix, array $data = [])
     {
-        $this->eventManager->dispatch(
-            $this->resolveEntityPrefix($entityType) . '_' . $eventSuffix,
-            $data
-        );
+        $this->event_manager->dispatch($this->resolve_entity_prefix($entity_type) . '_' . $event_suffix, $data);
     }
-
     /**
      * Method to dispatch.
      *
@@ -61,8 +51,8 @@ class EventManager
      * @param array $data
      * @return void
      */
-    public function dispatch($eventName, array $data = [])
+    public function dispatch($event_name, array $data = [])
     {
-        $this->eventManager->dispatch($eventName, $data);
+        $this->event_manager->dispatch($event_name, $data);
     }
 }

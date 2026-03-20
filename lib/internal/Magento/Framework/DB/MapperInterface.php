@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\DB;
 
 /**
@@ -13,27 +12,23 @@ namespace Magento\Framework\DB;
  *
  * @api
  */
-interface MapperInterface
+interface Mapper_Interface
 {
     public const SORT_ORDER_ASC = 'ASC';
-
     public const SORT_ORDER_DESC = 'DESC';
-
     /**
      * Map criteria to Select Query Object
      *
      * @param \Magento\Framework\Api\CriteriaInterface $criteria
      * @return Select
      */
-    public function map(\Magento\Framework\Api\CriteriaInterface $criteria);
-
+    public function map(\Magento\Framework\Api\Criteria_Interface $criteria);
     /**
      * Get resource instance
      *
      * @return \Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
-    public function getResource();
-
+    public function get_resource();
     /**
      * Add attribute expression (SUM, COUNT, etc)
      * Example: ('sub_total', 'SUM({{attribute}})', 'revenue')
@@ -45,8 +40,7 @@ interface MapperInterface
      * @param array|string $fields
      * @return $this
      */
-    public function addExpressionFieldToSelect($alias, $expression, $fields);
-
+    public function add_expression_field_to_select($alias, $expression, $fields);
     /**
      * Add field filter to collection
      *
@@ -85,8 +79,7 @@ interface MapperInterface
      * @throws \Magento\Framework\Exception\LocalizedException if some error in the input could be detected.
      * @return void
      */
-    public function addFieldToFilter($field, $condition = null);
-
+    public function add_field_to_filter($field, $condition = null);
     /**
      * Reset Select object state
      *

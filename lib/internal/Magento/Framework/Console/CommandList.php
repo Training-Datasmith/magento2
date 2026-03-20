@@ -1,24 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Console;
 
 /**
  * Class CommandList has a list of commands, which can be extended via DI configuration.
  * @api
  */
-class CommandList implements CommandListInterface
+class Command_List implements Command_List_Interface
 {
     /**
      * @var string[]
      */
     protected $commands;
-
     /**
      * CommandList constructor is being used for injecting new Commands
      *
@@ -37,11 +35,10 @@ class CommandList implements CommandListInterface
     {
         $this->commands = $commands;
     }
-
     /**
      * @inheritdoc
      */
-    public function getCommands()
+    public function get_commands()
     {
         return $this->commands;
     }

@@ -1,13 +1,12 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Configuration cache interface
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config;
 
 /**
@@ -16,6 +15,6 @@ namespace Magento\Framework\Config;
  * @api
  * @since 100.0.2
  */
-interface CacheInterface extends \Magento\Framework\Cache\FrontendInterface
+interface Cache_Interface extends \Magento\Framework\Cache\Frontend_Interface
 {
 }

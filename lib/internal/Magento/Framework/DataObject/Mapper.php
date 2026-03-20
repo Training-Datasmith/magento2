@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\DataObject;
+namespace Magento\Framework\Data_Object;
 
 /**
  * Utility class for mapping data between objects or arrays
@@ -43,88 +42,60 @@ class Mapper
      * @param array $defaults
      * @return array|object
      */
-    public static function &accumulateByMap($from, $to, array $map, array $defaults = [])
+    public static function &accumulate_by_map($from, $to, array $map, array $defaults = [])
     {
         $get = 'getData';
-        if (is_array(
-            $from
-        ) && isset(
-            $from[0]
-        ) && is_object(
-            $from[0]
-        ) && isset(
-            $from[1]
-        ) && is_string(
-            $from[1]
-        ) && is_callable(
-            $from
-        )
-        ) {
+        if (is_array($from) && isset($from[0]) && is_object($from[0]) && isset($from[1]) && is_string($from[1]) && is_callable($from)) {
             list($from, $get) = $from;
         }
-        $fromIsArray = is_array($from);
-        $fromIsVO = $from instanceof \Magento\Framework\DataObject;
-
+        $from_is_array = is_array($from);
+        $from_is_vo = $from instanceof \Magento\Framework\Data_Object;
         $set = 'setData';
-        if (is_array(
-            $to
-        ) && isset(
-            $to[0]
-        ) && is_object(
-            $to[0]
-        ) && isset(
-            $to[1]
-        ) && is_string(
-            $to[1]
-        ) && is_callable(
-            $to
-        )
-        ) {
+        if (is_array($to) && isset($to[0]) && is_object($to[0]) && isset($to[1]) && is_string($to[1]) && is_callable($to)) {
             list($to, $set) = $to;
         }
-        $toIsArray = is_array($to);
-        $toIsVO = $to instanceof \Magento\Framework\DataObject;
-
-        foreach ($map as $keyFrom => $keyTo) {
-            if (!is_string($keyFrom)) {
-                $keyFrom = $keyTo;
+        $to_is_array = is_array($to);
+        $to_is_vo = $to instanceof \Magento\Framework\Data_Object;
+        foreach ($map as $key_from => $key_to) {
+            if (!is_string($key_from)) {
+                $key_from = $key_to;
             }
-            if ($fromIsArray) {
-                if (array_key_exists($keyFrom, $from)) {
-                    if ($toIsArray) {
-                        $to[$keyTo] = $from[$keyFrom];
-                    } elseif ($toIsVO) {
-                        $to->{$set}($keyTo, $from[$keyFrom]);
+            if ($from_is_array) {
+                if (array_key_exists($key_from, $from)) {
+                    if ($to_is_array) {
+                        $to[$key_to] = $from[$key_from];
+                    } elseif ($to_is_vo) {
+                        $to->{$set}($key_to, $from[$key_from]);
                     }
                 }
-            } elseif ($fromIsVO) {
+            } elseif ($from_is_vo) {
                 // get value if (any) value is found as in magic data or a non-empty value with declared getter
                 $value = null;
-                if ($shouldGet = $from->hasData($keyFrom)) {
-                    $value = $from->{$get}($keyFrom);
+                if ($should_get = $from->has_data($key_from)) {
+                    $value = $from->{$get}($key_from);
                 } elseif (method_exists($from, $get)) {
-                    $value = $from->{$get}($keyFrom);
+                    $value = $from->{$get}($key_from);
                     if ($value) {
-                        $shouldGet = true;
+                        $should_get = true;
                     }
                 }
-                if ($shouldGet) {
-                    if ($toIsArray) {
-                        $to[$keyTo] = $value;
-                    } elseif ($toIsVO) {
-                        $to->{$set}($keyTo, $value);
+                if ($should_get) {
+                    if ($to_is_array) {
+                        $to[$key_to] = $value;
+                    } elseif ($to_is_vo) {
+                        $to->{$set}($key_to, $value);
                     }
                 }
             }
         }
-        foreach ($defaults as $keyTo => $value) {
-            if ($toIsArray) {
-                if (!isset($to[$keyTo])) {
-                    $to[$keyTo] = $value;
+        foreach ($defaults as $key_to => $value) {
+            if ($to_is_array) {
+                if (!isset($to[$key_to])) {
+                    $to[$key_to] = $value;
                 }
-            } elseif ($toIsVO) {
-                if (!$to->hasData($keyTo)) {
-                    $to->{$set}($keyTo, $value);
+            } elseif ($to_is_vo) {
+                if (!$to->has_data($key_to)) {
+                    $to->{$set}($key_to, $value);
                 }
             }
         }

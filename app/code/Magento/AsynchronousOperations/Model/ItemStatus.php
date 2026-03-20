@@ -4,101 +4,87 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Model;
 
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\AsynchronousOperations\Api\Data\ItemStatusInterface;
-use Magento\Framework\DataObject;
-
-class ItemStatus extends DataObject implements ItemStatusInterface
+use Magento\Asynchronous_Operations\Api\Data\Item_Status_Interface;
+use Magento\Framework\Data_Object;
+class Item_Status extends Data_Object implements Item_Status_Interface
 {
     /**
      * @inheritDoc
      */
-    public function getId()
+    public function get_id()
     {
-        return $this->getData(self::ENTITY_ID);
+        return $this->get_data(self::ENTITY_ID);
     }
-
     /**
      * @inheritDoc
      */
-    public function setId($entityId)
+    public function set_id($entity_id)
     {
-        return $this->setData(self::ENTITY_ID, $entityId);
+        return $this->set_data(self::ENTITY_ID, $entity_id);
     }
-
     /**
      * @inheritDoc
      */
-    public function getDataHash()
+    public function get_data_hash()
     {
-        return $this->getData(self::DATA_HASH);
+        return $this->get_data(self::DATA_HASH);
     }
-
     /**
      * @inheritDoc
      */
-    public function setDataHash($hash)
+    public function set_data_hash($hash)
     {
-        return $this->setData(self::DATA_HASH, $hash);
+        return $this->set_data(self::DATA_HASH, $hash);
     }
-
     /**
      * @inheritDoc
      */
-    public function getStatus()
+    public function get_status()
     {
-        return $this->getData(self::STATUS);
+        return $this->get_data(self::STATUS);
     }
-
     /**
      * @inheritDoc
      */
-    public function setStatus($status = self::STATUS_ACCEPTED)
+    public function set_status($status = self::STATUS_ACCEPTED)
     {
-        return $this->setData(self::STATUS, $status);
+        return $this->set_data(self::STATUS, $status);
     }
-
     /**
      * @inheritDoc
      */
-    public function getErrorMessage()
+    public function get_error_message()
     {
-        return $this->getData(self::ERROR_MESSAGE);
+        return $this->get_data(self::ERROR_MESSAGE);
     }
-
     /**
      * @inheritDoc
      */
-    public function setErrorMessage($errorMessage = null)
+    public function set_error_message($error_message = null)
     {
-        if ($errorMessage instanceof \Exception) {
-            $errorMessage = $errorMessage->getMessage();
+        if ($error_message instanceof \Exception) {
+            $error_message = $error_message->get_message();
         }
-
-        return $this->setData(self::ERROR_MESSAGE, $errorMessage);
+        return $this->set_data(self::ERROR_MESSAGE, $error_message);
     }
-
     /**
      * @inheritDoc
      */
-    public function getErrorCode()
+    public function get_error_code()
     {
-        return $this->getData(self::ERROR_CODE);
+        return $this->get_data(self::ERROR_CODE);
     }
-
     /**
      * @inheritDoc
      */
-    public function setErrorCode($errorCode = null)
+    public function set_error_code($error_code = null)
     {
-        if ($errorCode instanceof \Exception) {
-            $errorCode = $errorCode->getCode();
+        if ($error_code instanceof \Exception) {
+            $error_code = $error_code->get_code();
         }
-
-        return $this->setData(self::ERROR_CODE, (int) $errorCode);
+        return $this->set_data(self::ERROR_CODE, (int) $error_code);
     }
 }

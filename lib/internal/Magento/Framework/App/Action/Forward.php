@@ -1,54 +1,49 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Action;
 
-use Magento\Framework\App\CsrfAwareActionInterface;
-use Magento\Framework\App\Request\InvalidRequestException;
-use Magento\Framework\App\RequestInterface;
-
+use Magento\Framework\App\Csrf_Aware_Action_Interface;
+use Magento\Framework\App\Request\Invalid_Request_Exception;
+use Magento\Framework\App\Request_Interface;
 /**
  * Forward request further.
  *
  * @SuppressWarnings(PHPMD.AllPurposeAction)
  */
-class Forward extends AbstractAction implements CsrfAwareActionInterface
+class Forward extends Abstract_Action implements Csrf_Aware_Action_Interface
 {
     /**
      * @inheritDoc
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function dispatch(RequestInterface $request)
+    public function dispatch(Request_Interface $request)
     {
         return $this->execute();
     }
-
     /**
      * @inheritdoc
      */
     public function execute()
     {
-        $this->_request->setDispatched(false);
+        $this->_request->set_dispatched(false);
         return $this->_response;
     }
-
     /**
      * @inheritDoc
      */
-    public function createCsrfValidationException(RequestInterface $request): ?InvalidRequestException
+    public function create_csrf_validation_exception(Request_Interface $request): ?Invalid_Request_Exception
     {
-        return new InvalidRequestException($this->_response);
+        return new Invalid_Request_Exception($this->_response);
     }
-
     /**
      * @inheritDoc
      */
-    public function validateForCsrf(RequestInterface $request): ?bool
+    public function validate_for_csrf(Request_Interface $request): ?bool
     {
         // This exists so that we can forward to the noroute action in the admin
         return true;

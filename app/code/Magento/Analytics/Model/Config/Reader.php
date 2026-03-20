@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model\Config;
 
-use Magento\Framework\Config\ReaderInterface;
-
+use Magento\Framework\Config\Reader_Interface;
 /**
  * Composite reader for config.
  */
-class Reader implements ReaderInterface
+class Reader implements Reader_Interface
 {
     /**
      * @param ReaderInterface[] $readers
@@ -21,7 +19,6 @@ class Reader implements ReaderInterface
     public function __construct(private readonly Mapper $mapper, private $readers = [])
     {
     }
-
     /**
      * Read configuration scope.
      *
@@ -34,7 +31,6 @@ class Reader implements ReaderInterface
         foreach ($this->readers as $reader) {
             $data = array_merge_recursive($data, $reader->read($scope));
         }
-
         return $this->mapper->execute($data);
     }
 }

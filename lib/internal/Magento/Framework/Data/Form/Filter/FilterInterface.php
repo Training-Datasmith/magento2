@@ -1,22 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2011 Adobe
  * All Rights Reserved.
  */
-
 /**
  * Form Input/Output Filter Interface
  */
-
 namespace Magento\Framework\Data\Form\Filter;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface FilterInterface
+interface Filter_Interface
 {
     /**
      * Returns the result of filtering $value
@@ -24,13 +22,12 @@ interface FilterInterface
      * @param string $value
      * @return string
      */
-    public function inputFilter($value);
-
+    public function input_filter($value);
     /**
      * Returns the result of filtering $value
      *
      * @param string $value
      * @return string
      */
-    public function outputFilter($value);
+    public function output_filter($value);
 }

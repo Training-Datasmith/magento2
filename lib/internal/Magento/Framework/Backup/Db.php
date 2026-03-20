@@ -1,17 +1,15 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Backup;
 
 use Magento\Framework\Archive;
-use Magento\Framework\Backup\Db\BackupFactory;
+use Magento\Framework\Backup\Db\Backup_Factory;
 use Magento\Framework\Backup\Filesystem\Iterator\File;
-
 /**
  * Class to work with database backups
  *
@@ -19,21 +17,19 @@ use Magento\Framework\Backup\Filesystem\Iterator\File;
  * @api
  * @since 100.0.2
  */
-class Db extends AbstractBackup
+class Db extends Abstract_Backup
 {
     /**
      * @var BackupFactory
      */
-    protected $_backupFactory;
-
+    protected $_backup_factory;
     /**
      * @param BackupFactory $backupFactory
      */
-    public function __construct(BackupFactory $backupFactory)
+    public function __construct(Backup_Factory $backup_factory)
     {
-        $this->_backupFactory = $backupFactory;
+        $this->_backup_factory = $backup_factory;
     }
-
     /**
      * Implements Rollback functionality for Db
      *
@@ -43,47 +39,38 @@ class Db extends AbstractBackup
     {
         set_time_limit(0);
         ignore_user_abort(true);
-
-        $this->_lastOperationSucceed = false;
-
-        $archiveManager = new Archive();
-        $source = $archiveManager->unpack($this->getBackupPath(), $this->getBackupsDir());
-
+        $this->_last_operation_succeed = false;
+        $archive_manager = new Archive();
+        $source = $archive_manager->unpack($this->get_backup_path(), $this->get_backups_dir());
         $file = new File($source);
         foreach ($file as $statement) {
-            $this->getResourceModel()->runCommand($statement);
+            $this->get_resource_model()->run_command($statement);
         }
-        if ($this->keepSourceFile() === false) {
+        if ($this->keep_source_file() === false) {
             @unlink($source);
         }
-
-        $this->_lastOperationSucceed = true;
-
+        $this->_last_operation_succeed = true;
         return true;
     }
-
     /**
      * Checks whether the line is last in sql command
      *
      * @param string $line
      * @return bool
      */
-    protected function _isLineLastInCommand($line)
+    protected function _is_line_last_in_command($line)
     {
-        $cleanLine = trim($line);
-        $lineLength = strlen($cleanLine);
-
-        $returnResult = false;
-        if ($lineLength > 0) {
-            $lastSymbolIndex = $lineLength - 1;
-            if ($cleanLine[$lastSymbolIndex] == ';') {
-                $returnResult = true;
+        $clean_line = trim($line);
+        $line_length = strlen($clean_line);
+        $return_result = false;
+        if ($line_length > 0) {
+            $last_symbol_index = $line_length - 1;
+            if ($clean_line[$last_symbol_index] == ';') {
+                $return_result = true;
             }
         }
-
-        return $returnResult;
+        return $return_result;
     }
-
     /**
      * Implements Create Backup functionality for Db
      *
@@ -93,44 +80,29 @@ class Db extends AbstractBackup
     {
         set_time_limit(0);
         ignore_user_abort(true);
-
-        $this->_lastOperationSucceed = false;
-
-        $backup = $this->_backupFactory->createBackupModel()->setTime(
-            $this->getTime()
-        )->setType(
-            $this->getType()
-        )->setPath(
-            $this->getBackupsDir()
-        )->setName(
-            $this->getName()
-        );
-
-        $backupDb = $this->_backupFactory->createBackupDbModel();
-        $backupDb->createBackup($backup);
-
-        $this->_lastOperationSucceed = true;
-
+        $this->_last_operation_succeed = false;
+        $backup = $this->_backup_factory->create_backup_model()->set_time($this->get_time())->set_type($this->get_type())->set_path($this->get_backups_dir())->set_name($this->get_name());
+        $backup_db = $this->_backup_factory->create_backup_db_model();
+        $backup_db->create_backup($backup);
+        $this->_last_operation_succeed = true;
         return true;
     }
-
     /**
      * Get database size
      *
      * @return int
      */
-    public function getDBSize()
+    public function get_db_size()
     {
-        $backupDb = $this->_backupFactory->createBackupDbModel();
-        return $backupDb->getDBBackupSize();
+        $backup_db = $this->_backup_factory->create_backup_db_model();
+        return $backup_db->get_db_backup_size();
     }
-
     /**
      * Get Backup Type
      *
      * @return string
      */
-    public function getType()
+    public function get_type()
     {
         return 'db';
     }

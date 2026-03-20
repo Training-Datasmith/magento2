@@ -4,52 +4,44 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Bundle_Graph_Ql\Model\Cart\Buy_Request;
 
-namespace Magento\BundleGraphQl\Model\Cart\BuyRequest;
-
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Stdlib\ArrayManager;
-use Magento\Framework\Stdlib\ArrayManagerFactory;
-use Magento\QuoteGraphQl\Model\Cart\BuyRequest\BuyRequestDataProviderInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Stdlib\Array_Manager;
+use Magento\Framework\Stdlib\Array_Manager_Factory;
+use Magento\Quote_Graph_Ql\Model\Cart\Buy_Request\Buy_Request_Data_Provider_Interface;
 /**
  * Data provider for bundle product buy requests
  */
-class BundleDataProvider implements BuyRequestDataProviderInterface
+class Bundle_Data_Provider implements Buy_Request_Data_Provider_Interface
 {
     /**
      * @var ArrayManagerFactory
      * phpcs:disable Magento2.Commenting.ClassPropertyPHPDocFormatting
      */
-    private readonly ArrayManagerFactory $arrayManagerFactory;
-
+    private readonly Array_Manager_Factory $array_manager_factory;
     /**
      * @param ArrayManager $arrayManager @deprecated @see $arrayManagerFactory
      * @param ArrayManagerFactory|null $arrayManagerFactory
      *
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function __construct(
-        ArrayManager $arrayManager,
-        ?ArrayManagerFactory $arrayManagerFactory = null,
-    ) {
-        $this->arrayManagerFactory = $arrayManagerFactory
-            ?? ObjectManager::getInstance()->get(ArrayManagerFactory::class);
+    public function __construct(Array_Manager $array_manager, ?Array_Manager_Factory $array_manager_factory = null)
+    {
+        $this->array_manager_factory = $array_manager_factory ?? Object_Manager::get_instance()->get(Array_Manager_Factory::class);
     }
-
     /**
      * @inheritdoc
      */
-    public function execute(array $cartItemData): array
+    public function execute(array $cart_item_data): array
     {
-        $bundleOptions = [];
-        $bundleInputs = $this->arrayManagerFactory->create()->get('bundle_options', $cartItemData) ?? [];
-        foreach ($bundleInputs as $bundleInput) {
-            $bundleOptions['bundle_option'][$bundleInput['id']] = $bundleInput['value'];
-            $bundleOptions['bundle_option_qty'][$bundleInput['id']] = $bundleInput['quantity'];
+        $bundle_options = [];
+        $bundle_inputs = $this->array_manager_factory->create()->get('bundle_options', $cart_item_data) ?? [];
+        foreach ($bundle_inputs as $bundle_input) {
+            $bundle_options['bundle_option'][$bundle_input['id']] = $bundle_input['value'];
+            $bundle_options['bundle_option_qty'][$bundle_input['id']] = $bundle_input['quantity'];
         }
-
-        return $bundleOptions;
+        return $bundle_options;
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid;
 
 /**
@@ -23,31 +22,23 @@ class Container extends \Magento\Backend\Block\Widget\Container
      * Initialization parameters in pseudo-constructor
      */
     public const PARAM_BLOCK_GROUP = 'block_group';
-
     public const PARAM_BUTTON_NEW = 'button_new';
-
     public const PARAM_BUTTON_BACK = 'button_back';
-
     /**#@-*/
-
     /**#@-*/
-    protected $_addButtonLabel;
-
+    protected $_add_button_label;
     /**
      * @var string
      */
-    protected $_backButtonLabel;
-
+    protected $_back_button_label;
     /**
      * @var string
      */
-    protected $_blockGroup = 'Magento_Backend';
-
+    protected $_block_group = 'Magento_Backend';
     /**
      * @var string
      */
     protected $_template = 'Magento_Backend::widget/grid/container.phtml';
-
     /**
      * Initialize object state with incoming parameters
      *
@@ -56,132 +47,90 @@ class Container extends \Magento\Backend\Block\Widget\Container
     protected function _construct()
     {
         parent::_construct();
-        if ($this->hasData(self::PARAM_BLOCK_GROUP)) {
-            $this->_blockGroup = $this->_getData(self::PARAM_BLOCK_GROUP);
+        if ($this->has_data(self::PARAM_BLOCK_GROUP)) {
+            $this->_block_group = $this->_get_data(self::PARAM_BLOCK_GROUP);
         }
-        if ($this->hasData(self::PARAM_BUTTON_NEW)) {
-            $this->_addButtonLabel = $this->_getData(self::PARAM_BUTTON_NEW);
+        if ($this->has_data(self::PARAM_BUTTON_NEW)) {
+            $this->_add_button_label = $this->_get_data(self::PARAM_BUTTON_NEW);
         } else {
             // legacy logic to support all descendants
-            if ($this->_addButtonLabel === null) {
-                $this->_addButtonLabel = __('Add New');
+            if ($this->_add_button_label === null) {
+                $this->_add_button_label = __('Add New');
             }
-            $this->_addNewButton();
+            $this->_add_new_button();
         }
-        if ($this->hasData(self::PARAM_BUTTON_BACK)) {
-            $this->_backButtonLabel = $this->_getData(self::PARAM_BUTTON_BACK);
-        } else {
-            // legacy logic
-            if ($this->_backButtonLabel === null) {
-                $this->_backButtonLabel = __('Back');
-            }
+        if ($this->has_data(self::PARAM_BUTTON_BACK)) {
+            $this->_back_button_label = $this->_get_data(self::PARAM_BUTTON_BACK);
+        } else if ($this->_back_button_label === null) {
+            $this->_back_button_label = __('Back');
         }
     }
-
     /**
      * {@inheritdoc}
      */
-    protected function _prepareLayout()
+    protected function _prepare_layout()
     {
         // check if grid was created through the layout
-        if (false === $this->getChildBlock('grid')) {
-            $this->setChild(
-                'grid',
-                $this->getLayout()->createBlock(
-                    str_replace(
-                        '_',
-                        '\\',
-                        $this->_blockGroup
-                    ) . '\\Block\\' . str_replace(
-                        ' ',
-                        '\\',
-                        ucwords(str_replace('_', ' ', $this->_controller))
-                    ) . '\\Grid',
-                    $this->_controller . '.grid'
-                )->setSaveParametersInSession(
-                    true
-                )
-            );
+        if (false === $this->get_child_block('grid')) {
+            $this->set_child('grid', $this->get_layout()->create_block(str_replace('_', '\\', $this->_block_group) . '\Block\\' . str_replace(' ', '\\', ucwords(str_replace('_', ' ', $this->_controller))) . '\Grid', $this->_controller . '.grid')->set_save_parameters_in_session(true));
         }
-        return parent::_prepareLayout();
+        return parent::_prepare_layout();
     }
-
     /**
      * @return string
      */
-    public function getCreateUrl()
+    public function get_create_url()
     {
-        return $this->getUrl('*/*/new');
+        return $this->get_url('*/*/new');
     }
-
     /**
      * @return string
      */
-    public function getGridHtml()
+    public function get_grid_html()
     {
-        return $this->getChildHtml('grid');
+        return $this->get_child_html('grid');
     }
-
     /**
      * @return string
      */
-    public function getAddButtonLabel()
+    public function get_add_button_label()
     {
-        return $this->_addButtonLabel;
+        return $this->_add_button_label;
     }
-
     /**
      * @return string
      */
-    public function getBackButtonLabel()
+    public function get_back_button_label()
     {
-        return $this->_backButtonLabel;
+        return $this->_back_button_label;
     }
-
     /**
      * Create "New" button
      *
      * @return void
      */
-    protected function _addNewButton()
+    protected function _add_new_button()
     {
-        $this->addButton(
-            'add',
-            [
-                'label' => $this->getAddButtonLabel(),
-                'onclick' => 'setLocation(\'' . $this->getCreateUrl() . '\')',
-                'class' => 'add primary',
-            ]
-        );
+        $this->add_button('add', ['label' => $this->get_add_button_label(), 'onclick' => 'setLocation(\'' . $this->get_create_url() . '\')', 'class' => 'add primary']);
     }
-
     /**
      * @return void
      */
-    protected function _addBackButton()
+    protected function _add_back_button()
     {
-        $this->addButton(
-            'back',
-            [
-                'label' => $this->getBackButtonLabel(),
-                'onclick' => 'setLocation(\'' . $this->getBackUrl() . '\')',
-                'class' => 'back',
-            ]
-        );
+        $this->add_button('back', ['label' => $this->get_back_button_label(), 'onclick' => 'setLocation(\'' . $this->get_back_url() . '\')', 'class' => 'back']);
     }
-
     /**
      * {@inheritdoc}
      */
-    public function getHeaderCssClass()
+    public function get_header_css_class()
     {
-        return 'icon-head ' . parent::getHeaderCssClass();
+        return 'icon-head ' . parent::get_header_css_class();
     }
-
     /**
      * @return string
      */
-    public function getHeaderWidth()
+    public function get_header_width()
     {
         return 'width:50%;';
     }

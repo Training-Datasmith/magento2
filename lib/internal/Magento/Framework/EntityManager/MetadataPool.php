@@ -1,122 +1,93 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager;
 
-namespace Magento\Framework\EntityManager;
-
-use Magento\Framework\EntityManager\Sequence\SequenceFactory;
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\Entity_Manager\Sequence\Sequence_Factory;
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Class MetadataPool
  *
  * @api
  * @since 100.1.0
  */
-class MetadataPool
+class Metadata_Pool
 {
     /**
      * @var ObjectManagerInterface
      * @since 100.1.0
      */
-    protected $objectManager;
-
+    protected $object_manager;
     /**
      * @var array
      * @since 100.1.0
      */
     protected $metadata;
-
     /**
      * @var \Magento\Framework\EntityManager\EntityMetadata[]
      * @since 100.1.0
      */
     protected $registry;
-
     /**
      * @var SequenceFactory
      * @since 100.1.0
      */
-    protected $sequenceFactory;
-
+    protected $sequence_factory;
     /**
      * MetadataPool constructor.
      * @param ObjectManagerInterface $objectManager
      * @param SequenceFactory $sequenceFactory
      * @param array $metadata
      */
-    public function __construct(
-        ObjectManagerInterface $objectManager,
-        SequenceFactory $sequenceFactory,
-        array $metadata
-    ) {
-        $this->objectManager = $objectManager;
-        $this->sequenceFactory = $sequenceFactory;
+    public function __construct(Object_Manager_Interface $object_manager, Sequence_Factory $sequence_factory, array $metadata)
+    {
+        $this->object_manager = $object_manager;
+        $this->sequence_factory = $sequence_factory;
         $this->metadata = $metadata;
     }
-
     /**
      * @param string $entityType
      * @return EntityMetadataInterface
      */
-    private function createMetadata($entityType)
+    private function create_metadata($entity_type)
     {
         //@todo: use ID as default if , check is type has EAV attributes
-        $connectionName = isset($this->metadata[$entityType]['connectionName'])
-            ? $this->metadata[$entityType]['connectionName']
-            : 'default';
-        $eavEntityType = isset($this->metadata[$entityType]['eavEntityType'])
-            ? $this->metadata[$entityType]['eavEntityType']
-            : null;
-        $entityContext = isset($this->metadata[$entityType]['entityContext'])
-            ? $this->metadata[$entityType]['entityContext']
-            : [];
-        return $this->objectManager->create(
-            EntityMetadataInterface::class,
-            [
-                'entityTableName' => $this->metadata[$entityType]['entityTableName'],
-                'eavEntityType' => $eavEntityType,
-                'connectionName' => $connectionName,
-                'identifierField' => $this->metadata[$entityType]['identifierField'],
-                'sequence' => $this->sequenceFactory->create($entityType, $this->metadata),
-                'entityContext' => $entityContext,
-            ]
-        );
+        $connection_name = isset($this->metadata[$entity_type]['connectionName']) ? $this->metadata[$entity_type]['connectionName'] : 'default';
+        $eav_entity_type = isset($this->metadata[$entity_type]['eavEntityType']) ? $this->metadata[$entity_type]['eavEntityType'] : null;
+        $entity_context = isset($this->metadata[$entity_type]['entityContext']) ? $this->metadata[$entity_type]['entityContext'] : [];
+        return $this->object_manager->create(Entity_Metadata_Interface::class, ['entityTableName' => $this->metadata[$entity_type]['entityTableName'], 'eavEntityType' => $eav_entity_type, 'connectionName' => $connection_name, 'identifierField' => $this->metadata[$entity_type]['identifierField'], 'sequence' => $this->sequence_factory->create($entity_type, $this->metadata), 'entityContext' => $entity_context]);
     }
-
     /**
      * @param string $entityType
      * @return EntityMetadataInterface
      * @throws \Exception
      * @since 100.1.0
      */
-    public function getMetadata($entityType)
+    public function get_metadata($entity_type)
     {
-        if (!isset($this->metadata[$entityType])) {
-            throw new \Exception(sprintf('Unknown entity type: %s requested', $entityType));
+        if (!isset($this->metadata[$entity_type])) {
+            throw new \Exception(sprintf('Unknown entity type: %s requested', $entity_type));
         }
-        if (!isset($this->registry[$entityType])) {
-            $this->registry[$entityType] = $this->createMetadata($entityType);
+        if (!isset($this->registry[$entity_type])) {
+            $this->registry[$entity_type] = $this->create_metadata($entity_type);
         }
-        return $this->registry[$entityType];
+        return $this->registry[$entity_type];
     }
-
     /**
      * @param string $entityType
      * @return HydratorInterface
      * @deprecated 100.1.0
      * @since 100.1.0
      */
-    public function getHydrator($entityType)
+    public function get_hydrator($entity_type)
     {
-        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
-        return $objectManager->get(HydratorPool::class)->getHydrator($entityType);
+        $object_manager = \Magento\Framework\App\Object_Manager::get_instance();
+        return $object_manager->get(Hydrator_Pool::class)->get_hydrator($entity_type);
     }
-
     /**
      * Check if entity type configuration was set to metadata
      *
@@ -124,8 +95,8 @@ class MetadataPool
      * @return bool
      * @since 100.1.0
      */
-    public function hasConfiguration($entityType)
+    public function has_configuration($entity_type)
     {
-        return isset($this->metadata[$entityType]);
+        return isset($this->metadata[$entity_type]);
     }
 }

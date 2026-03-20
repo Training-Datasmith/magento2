@@ -4,18 +4,16 @@
  * Copyright 2025 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Model\Config\Password;
 
 use Magento\Framework\App\Config\Value;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\User\Model\UserValidationRules;
-
+use Magento\Framework\Exception\Localized_Exception;
+use Magento\User\Model\User_Validation_Rules;
 /**
  * Backend model for admin minimum password length configuration
  */
-class MinimumLength extends Value
+class Minimum_Length extends Value
 {
     /**
      * Validate the minimum password length value
@@ -23,19 +21,12 @@ class MinimumLength extends Value
      * @return $this
      * @throws LocalizedException
      */
-    public function beforeSave()
+    public function before_save()
     {
-        $value = (int) $this->getValue();
-
-        if ($value < UserValidationRules::MIN_PASSWORD_LENGTH) {
-            throw new LocalizedException(
-                __(
-                    'The minimum admin password length must be at least %1 characters.',
-                    UserValidationRules::MIN_PASSWORD_LENGTH
-                )
-            );
+        $value = (int) $this->get_value();
+        if ($value < User_Validation_Rules::MIN_PASSWORD_LENGTH) {
+            throw new Localized_Exception(__('The minimum admin password length must be at least %1 characters.', User_Validation_Rules::MIN_PASSWORD_LENGTH));
         }
-
-        return parent::beforeSave();
+        return parent::before_save();
     }
 }

@@ -1,67 +1,57 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Backend\Controller\Adminhtml\Backend_App;
 
-namespace Magento\Backend\Controller\Adminhtml\BackendApp;
-
-use Magento\Backend\App\AbstractAction;
-
+use Magento\Backend\App\Abstract_Action;
 /**
  * Controller which handles authentication of backend app and redirects back to set cookie with backend app path
  */
-class Redirect extends AbstractAction
+class Redirect extends Abstract_Action
 {
     /**
      * Array of actions which can be processed without secret key validation
      *
      * @var array
      */
-    protected $_publicActions = ['redirect'];
-
+    protected $_public_actions = ['redirect'];
     /**
      * @var \Magento\Backend\App\BackendAppList|null
      */
-    private $backendAppList;
-
+    private $backend_app_list;
     /**
      * @param \Magento\Backend\App\Action\Context $context
      * @param \Magento\Backend\App\BackendAppList $backendAppList
      */
-    public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Backend\App\BackendAppList $backendAppList
-    ) {
+    public function __construct(\Magento\Backend\App\Action\Context $context, \Magento\Backend\App\Backend_App_List $backend_app_list)
+    {
         parent::__construct($context);
-        $this->backendAppList = $backendAppList;
+        $this->backend_app_list = $backend_app_list;
     }
-
     /**
      * @return \Magento\Framework\Controller\ResultInterface
      */
     public function execute()
     {
-        $resultRedirect = $this->resultRedirectFactory->create();
-        if ($this->getRequest()->getParam('app')) {
-            $url = $this->getUrl('*/*/*', []) . '?app=' . $this->getRequest()->getParam('app');
-            return $resultRedirect->setUrl($url);
+        $result_redirect = $this->result_redirect_factory->create();
+        if ($this->get_request()->get_param('app')) {
+            $url = $this->get_url('*/*/*', []) . '?app=' . $this->get_request()->get_param('app');
+            return $result_redirect->set_url($url);
         }
-        return $resultRedirect->setUrl($this->getUrl('*/index/index'));
+        return $result_redirect->set_url($this->get_url('*/index/index'));
     }
-
     /**
      * @return bool
      */
-    protected function _isAllowed()
+    protected function _is_allowed()
     {
-        $backendApp = $this->backendAppList->getBackendApp(
-            $this->getRequest()->getParam('app')
-        );
-        if ($backendApp) {
-            return $this->_authorization->isAllowed($backendApp->getAclResource());
+        $backend_app = $this->backend_app_list->get_backend_app($this->get_request()->get_param('app'));
+        if ($backend_app) {
+            return $this->_authorization->is_allowed($backend_app->get_acl_resource());
         }
         return true;
     }

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Model;
 
 /**
@@ -17,8 +16,7 @@ namespace Magento\Bundle\Model;
  * @method Option setParentId(int $value)
  * @since 100.0.2
  */
-class Option extends \Magento\Framework\Model\AbstractExtensibleModel implements
-    \Magento\Bundle\Api\Data\OptionInterface
+class Option extends \Magento\Framework\Model\Abstract_Extensible_Model implements \Magento\Bundle\Api\Data\Option_Interface
 {
     /**#@+
      * Constants
@@ -31,12 +29,10 @@ class Option extends \Magento\Framework\Model\AbstractExtensibleModel implements
     public const KEY_SKU = 'sku';
     public const KEY_PRODUCT_LINKS = 'product_links';
     /**#@-*/
-
     /**
      * @var null
      */
-    protected $defaultSelection = null;
-
+    protected $default_selection = null;
     /**
      * Initialize resource model
      *
@@ -44,38 +40,36 @@ class Option extends \Magento\Framework\Model\AbstractExtensibleModel implements
      */
     protected function _construct()
     {
-        $this->_init(\Magento\Bundle\Model\ResourceModel\Option::class);
+        $this->_init(\Magento\Bundle\Model\Resource_Model\Option::class);
         parent::_construct();
     }
-
     /**
      * Add selection to option
      *
      * @param \Magento\Catalog\Model\Product $selection
      * @return void
      */
-    public function addSelection(\Magento\Catalog\Model\Product $selection)
+    public function add_selection(\Magento\Catalog\Model\Product $selection)
     {
-        if (!$this->hasData('selections')) {
-            $this->setData('selections', []);
+        if (!$this->has_data('selections')) {
+            $this->set_data('selections', []);
         }
-        $selections = $this->getData('selections');
+        $selections = $this->get_data('selections');
         $selections[] = $selection;
-        $this->setSelections($selections);
+        $this->set_selections($selections);
     }
-
     /**
      * Check Is Saleable Option
      *
      * @return bool
      */
-    public function isSaleable()
+    public function is_saleable()
     {
         $saleable = false;
-        $selections = $this->getSelections();
+        $selections = $this->get_selections();
         if ($selections) {
             foreach ($selections as $selection) {
-                if ($selection->isSaleable()) {
+                if ($selection->is_saleable()) {
                     $saleable = true;
                     break;
                 }
@@ -83,35 +77,32 @@ class Option extends \Magento\Framework\Model\AbstractExtensibleModel implements
         }
         return $saleable;
     }
-
     /**
      * Retrieve default Selection object
      *
      * @return \Magento\Catalog\Model\Product|null
      */
-    public function getDefaultSelection()
+    public function get_default_selection()
     {
-        if (!$this->defaultSelection && $this->getSelections()) {
-            foreach ($this->getSelections() as $selection) {
-                if ($selection->getIsDefault()) {
-                    $this->defaultSelection = $selection;
+        if (!$this->default_selection && $this->get_selections()) {
+            foreach ($this->get_selections() as $selection) {
+                if ($selection->get_is_default()) {
+                    $this->default_selection = $selection;
                     break;
                 }
             }
         }
-        return $this->defaultSelection;
+        return $this->default_selection;
     }
-
     /**
      * Check is multi Option selection
      *
      * @return bool
      */
-    public function isMultiSelection()
+    public function is_multi_selection()
     {
-        return $this->getType() == 'checkbox' || $this->getType() == 'multi';
+        return $this->get_type() == 'checkbox' || $this->get_type() == 'multi';
     }
-
     /**
      * Retrieve options searchable data
      *
@@ -119,184 +110,165 @@ class Option extends \Magento\Framework\Model\AbstractExtensibleModel implements
      * @param int $storeId
      * @return array
      */
-    public function getSearchableData($productId, $storeId)
+    public function get_searchable_data($product_id, $store_id)
     {
-        return $this->_getResource()->getSearchableData($productId, $storeId);
+        return $this->_get_resource()->get_searchable_data($product_id, $store_id);
     }
-
     /**
      * Return selection by it's id
      *
      * @param int $selectionId
      * @return \Magento\Catalog\Model\Product|null
      */
-    public function getSelectionById($selectionId)
+    public function get_selection_by_id($selection_id)
     {
-        $foundSelection = null;
-        foreach ($this->getSelections() as $selection) {
-            if ($selection->getSelectionId() == $selectionId) {
-                $foundSelection = $selection;
+        $found_selection = null;
+        foreach ($this->get_selections() as $selection) {
+            if ($selection->get_selection_id() == $selection_id) {
+                $found_selection = $selection;
                 break;
             }
         }
-        return $foundSelection;
+        return $found_selection;
     }
-
     //@codeCoverageIgnoreStart
-
     /**
      * @inheritdoc
      */
-    public function getOptionId()
+    public function get_option_id()
     {
-        return $this->getData(self::KEY_OPTION_ID);
+        return $this->get_data(self::KEY_OPTION_ID);
     }
-
     /**
      * @inheritdoc
      */
-    public function getTitle()
+    public function get_title()
     {
-        return $this->getData(self::KEY_TITLE);
+        return $this->get_data(self::KEY_TITLE);
     }
-
     /**
      * @inheritdoc
      */
-    public function getRequired()
+    public function get_required()
     {
-        return $this->getData(self::KEY_REQUIRED);
+        return $this->get_data(self::KEY_REQUIRED);
     }
-
     /**
      * @inheritdoc
      */
-    public function getType()
+    public function get_type()
     {
-        return $this->getData(self::KEY_TYPE);
+        return $this->get_data(self::KEY_TYPE);
     }
-
     /**
      * @inheritdoc
      */
-    public function getPosition()
+    public function get_position()
     {
-        return $this->getData(self::KEY_POSITION);
+        return $this->get_data(self::KEY_POSITION);
     }
-
     /**
      * @inheritdoc
      */
-    public function getSku()
+    public function get_sku()
     {
-        return $this->getData(self::KEY_SKU);
+        return $this->get_data(self::KEY_SKU);
     }
-
     /**
      * @inheritdoc
      */
-    public function getProductLinks()
+    public function get_product_links()
     {
-        return $this->getData(self::KEY_PRODUCT_LINKS);
+        return $this->get_data(self::KEY_PRODUCT_LINKS);
     }
-
     /**
      * Set option id
      *
      * @param int $optionId
      * @return $this
      */
-    public function setOptionId($optionId)
+    public function set_option_id($option_id)
     {
-        return $this->setData(self::KEY_OPTION_ID, $optionId);
+        return $this->set_data(self::KEY_OPTION_ID, $option_id);
     }
-
     /**
      * Set option title
      *
      * @param string $title
      * @return $this
      */
-    public function setTitle($title)
+    public function set_title($title)
     {
-        return $this->setData(self::KEY_TITLE, $title);
+        return $this->set_data(self::KEY_TITLE, $title);
     }
-
     /**
      * Set whether option is required
      *
      * @param bool $required
      * @return $this
      */
-    public function setRequired($required)
+    public function set_required($required)
     {
-        return $this->setData(self::KEY_REQUIRED, $required);
+        return $this->set_data(self::KEY_REQUIRED, $required);
     }
-
     /**
      * Set input type
      *
      * @param string $type
      * @return $this
      */
-    public function setType($type)
+    public function set_type($type)
     {
-        return $this->setData(self::KEY_TYPE, $type);
+        return $this->set_data(self::KEY_TYPE, $type);
     }
-
     /**
      * Set option position
      *
      * @param int $position
      * @return $this
      */
-    public function setPosition($position)
+    public function set_position($position)
     {
-        return $this->setData(self::KEY_POSITION, $position);
+        return $this->set_data(self::KEY_POSITION, $position);
     }
-
     /**
      * Set product sku
      *
      * @param string $sku
      * @return $this
      */
-    public function setSku($sku)
+    public function set_sku($sku)
     {
-        return $this->setData(self::KEY_SKU, $sku);
+        return $this->set_data(self::KEY_SKU, $sku);
     }
-
     /**
      * Set product links
      *
      * @param \Magento\Bundle\Api\Data\LinkInterface[] $productLinks
      * @return $this
      */
-    public function setProductLinks(?array $productLinks = null)
+    public function set_product_links(?array $product_links = null)
     {
-        return $this->setData(self::KEY_PRODUCT_LINKS, $productLinks);
+        return $this->set_data(self::KEY_PRODUCT_LINKS, $product_links);
     }
-
     /**
      * @inheritdoc
      *
      * @return \Magento\Bundle\Api\Data\OptionExtensionInterface|null
      */
-    public function getExtensionAttributes()
+    public function get_extension_attributes()
     {
-        return $this->_getExtensionAttributes();
+        return $this->_get_extension_attributes();
     }
-
     /**
      * @inheritdoc
      *
      * @param \Magento\Bundle\Api\Data\OptionExtensionInterface $extensionAttributes
      * @return $this
      */
-    public function setExtensionAttributes(\Magento\Bundle\Api\Data\OptionExtensionInterface $extensionAttributes)
+    public function set_extension_attributes(\Magento\Bundle\Api\Data\Option_Extension_Interface $extension_attributes)
     {
-        return $this->_setExtensionAttributes($extensionAttributes);
+        return $this->_set_extension_attributes($extension_attributes);
     }
-
     //@codeCoverageIgnoreEnd
 }

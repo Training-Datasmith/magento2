@@ -1,17 +1,16 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AsynchronousOperations\Model\ResourceModel;
+namespace Magento\Asynchronous_Operations\Model\Resource_Model;
 
 /**
  * Class Bulk
  */
-class Bulk extends \Magento\Framework\Model\ResourceModel\Db\AbstractDb
+class Bulk extends \Magento\Framework\Model\Resource_Model\Db\Abstract_Db
 {
     /**
      * Initialize banner sales rule resource model

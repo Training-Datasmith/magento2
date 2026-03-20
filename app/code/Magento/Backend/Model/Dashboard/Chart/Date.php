@@ -4,15 +4,13 @@
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Backend\Model\Dashboard\Chart;
 
 use DateTimeZone;
 use Magento\Backend\Model\Dashboard\Period;
-use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
-use Magento\Reports\Model\ResourceModel\Order\CollectionFactory;
-
+use Magento\Framework\Stdlib\DateTime\Timezone_Interface;
+use Magento\Reports\Model\Resource_Model\Order\Collection_Factory;
 /**
  * Dashboard chart dates retriever
  */
@@ -21,26 +19,21 @@ class Date
     /**
      * @var CollectionFactory
      */
-    private $collectionFactory;
-
+    private $collection_factory;
     /**
      * @var TimezoneInterface
      */
-    private $localeDate;
-
+    private $locale_date;
     /**
      * Date constructor.
      * @param CollectionFactory $collectionFactory
      * @param TimezoneInterface $localeDate
      */
-    public function __construct(
-        CollectionFactory $collectionFactory,
-        TimezoneInterface $localeDate
-    ) {
-        $this->collectionFactory = $collectionFactory;
-        $this->localeDate = $localeDate;
+    public function __construct(Collection_Factory $collection_factory, Timezone_Interface $locale_date)
+    {
+        $this->collection_factory = $collection_factory;
+        $this->locale_date = $locale_date;
     }
-
     /**
      * Get chart dates data by period
      *
@@ -48,45 +41,34 @@ class Date
      *
      * @return array
      */
-    public function getByPeriod(string $period): array
+    public function get_by_period(string $period): array
     {
-        [$dateStart, $dateEnd] = $this->collectionFactory->create()->getDateRange(
-            $period,
-            '',
-            '',
-            true
-        );
-        $timezoneLocal = $this->localeDate->getConfigTimezone();
-
-        $dateStart->setTimezone(new DateTimeZone($timezoneLocal));
-        $dateEnd->setTimezone(new DateTimeZone($timezoneLocal));
-
+        [$date_start, $date_end] = $this->collection_factory->create()->get_date_range($period, '', '', true);
+        $timezone_local = $this->locale_date->get_config_timezone();
+        $date_start->set_timezone(new DateTimeZone($timezone_local));
+        $date_end->set_timezone(new DateTimeZone($timezone_local));
         if ($period === Period::PERIOD_24_HOURS) {
-            $dateEnd->modify('-1 hour');
+            $date_end->modify('-1 hour');
         }
-
         $dates = [];
-
-        while ($dateStart <= $dateEnd) {
+        while ($date_start <= $date_end) {
             switch ($period) {
                 case Period::PERIOD_7_DAYS:
                 case Period::PERIOD_1_MONTH:
-                    $d = $dateStart->format('Y-m-d');
-                    $dateStart->modify('+1 day');
+                    $d = $date_start->format('Y-m-d');
+                    $date_start->modify('+1 day');
                     break;
                 case Period::PERIOD_1_YEAR:
                 case Period::PERIOD_2_YEARS:
-                    $d = $dateStart->format('Y-m');
-                    $dateStart->modify('first day of next month');
+                    $d = $date_start->format('Y-m');
+                    $date_start->modify('first day of next month');
                     break;
                 default:
-                    $d = $dateStart->format('Y-m-d H:00');
-                    $dateStart->modify('+1 hour');
+                    $d = $date_start->format('Y-m-d H:00');
+                    $date_start->modify('+1 hour');
             }
-
             $dates[] = $d;
         }
-
         return $dates;
     }
 }

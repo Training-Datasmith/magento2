@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Widget\Grid\Row;
 
 /**
@@ -14,21 +13,19 @@ namespace Magento\Backend\Model\Widget\Grid\Row;
  * @api
  * @since 100.0.2
  */
-class UrlGeneratorFactory
+class Url_Generator_Factory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface
      */
-    protected $_objectManager;
-
+    protected $_object_manager;
     /**
      * @param \Magento\Framework\ObjectManagerInterface $objectManager
      */
-    public function __construct(\Magento\Framework\ObjectManagerInterface $objectManager)
+    public function __construct(\Magento\Framework\Object_Manager_Interface $object_manager)
     {
-        $this->_objectManager = $objectManager;
+        $this->_object_manager = $object_manager;
     }
-
     /**
      * Create new url generator instance
      *
@@ -37,13 +34,12 @@ class UrlGeneratorFactory
      * @return \Magento\Backend\Model\Widget\Grid\Row\UrlGenerator
      * @throws \InvalidArgumentException
      */
-    public function createUrlGenerator($generatorClassName, array $arguments = [])
+    public function create_url_generator($generator_class_name, array $arguments = [])
     {
-        $rowUrlGenerator = $this->_objectManager->create($generatorClassName, $arguments);
-        if (false === $rowUrlGenerator instanceof \Magento\Backend\Model\Widget\Grid\Row\GeneratorInterface) {
+        $row_url_generator = $this->_object_manager->create($generator_class_name, $arguments);
+        if (false === $row_url_generator instanceof \Magento\Backend\Model\Widget\Grid\Row\Generator_Interface) {
             throw new \InvalidArgumentException('Passed wrong parameters');
         }
-
-        return $rowUrlGenerator;
+        return $row_url_generator;
     }
 }

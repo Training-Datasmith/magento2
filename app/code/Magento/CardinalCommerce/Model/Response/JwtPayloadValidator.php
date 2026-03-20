@@ -4,16 +4,14 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Cardinal_Commerce\Model\Response;
 
-namespace Magento\CardinalCommerce\Model\Response;
-
-use Magento\Framework\Intl\DateTimeFactory;
-
+use Magento\Framework\Intl\Date_Time_Factory;
 /**
  * Validates payload of CardinalCommerce response JWT.
  */
-class JwtPayloadValidator implements JwtPayloadValidatorInterface
+class Jwt_Payload_Validator implements Jwt_Payload_Validator_Interface
 {
     /**
      * Resulting state of the transaction.
@@ -34,8 +32,7 @@ class JwtPayloadValidator implements JwtPayloadValidatorInterface
      *
      * @var array
      */
-    private $allowedActionCode = ['SUCCESS', 'NOACTION'];
-
+    private $allowed_action_code = ['SUCCESS', 'NOACTION'];
     /**
      * 3DS status of transaction from ECI Flag value. Liability shift applies.
      *
@@ -52,37 +49,29 @@ class JwtPayloadValidator implements JwtPayloadValidatorInterface
      *
      * @var array
      */
-    private $allowedECIFlag = ['05', '02', '06', '01'];
-
+    private $allowed_eci_flag = ['05', '02', '06', '01'];
     /**
      * @var DateTimeFactory
      */
-    private $dateTimeFactory;
-
+    private $date_time_factory;
     /**
      * @param DateTimeFactory $dateTimeFactory
      */
-    public function __construct(
-        DateTimeFactory $dateTimeFactory
-    ) {
-        $this->dateTimeFactory = $dateTimeFactory;
+    public function __construct(Date_Time_Factory $date_time_factory)
+    {
+        $this->date_time_factory = $date_time_factory;
     }
     /**
      * @inheritdoc
      */
-    public function validate(array $jwtPayload): bool
+    public function validate(array $jwt_payload): bool
     {
-        $transactionState = $jwtPayload['Payload']['ActionCode'] ?? '';
-        $errorNumber = $jwtPayload['Payload']['ErrorNumber'] ?? -1;
-        $eciFlag = $jwtPayload['Payload']['Payment']['ExtendedData']['ECIFlag'] ?? '';
-        $expTimestamp = $jwtPayload['exp'] ?? 0;
-
-        return $this->isValidErrorNumber((int)$errorNumber)
-            && $this->isValidTransactionState($transactionState)
-            && $this->isValidEciFlag($eciFlag)
-            && $this->isNotExpired((int)$expTimestamp);
+        $transaction_state = $jwt_payload['Payload']['ActionCode'] ?? '';
+        $error_number = $jwt_payload['Payload']['ErrorNumber'] ?? -1;
+        $eci_flag = $jwt_payload['Payload']['Payment']['ExtendedData']['ECIFlag'] ?? '';
+        $exp_timestamp = $jwt_payload['exp'] ?? 0;
+        return $this->is_valid_error_number((int) $error_number) && $this->is_valid_transaction_state($transaction_state) && $this->is_valid_eci_flag($eci_flag) && $this->is_not_expired((int) $exp_timestamp);
     }
-
     /**
      * Checks application error number.
      *
@@ -91,43 +80,39 @@ class JwtPayloadValidator implements JwtPayloadValidatorInterface
      * @param int $errorNumber
      * @return bool
      */
-    private function isValidErrorNumber(int $errorNumber)
+    private function is_valid_error_number(int $error_number)
     {
-        return $errorNumber === 0;
+        return $error_number === 0;
     }
-
     /**
      * Checks if value of transaction state identifier is in allowed list.
      *
      * @param string $transactionState
      * @return bool
      */
-    private function isValidTransactionState(string $transactionState)
+    private function is_valid_transaction_state(string $transaction_state)
     {
-        return in_array($transactionState, $this->allowedActionCode);
+        return in_array($transaction_state, $this->allowed_action_code);
     }
-
     /**
      * Checks if value of ECI Flag identifier is in allowed list.
      *
      * @param string $eciFlag
      * @return bool
      */
-    private function isValidEciFlag(string $eciFlag)
+    private function is_valid_eci_flag(string $eci_flag)
     {
-        return in_array($eciFlag, $this->allowedECIFlag);
+        return in_array($eci_flag, $this->allowed_eci_flag);
     }
-
     /**
      * Checks if token is not expired.
      *
      * @param int $expTimestamp
      * @return bool
      */
-    private function isNotExpired(int $expTimestamp)
+    private function is_not_expired(int $exp_timestamp)
     {
-        $currentDate = $this->dateTimeFactory->create('now', new \DateTimeZone('UTC'));
-
-        return $currentDate->getTimestamp() < $expTimestamp;
+        $current_date = $this->date_time_factory->create('now', new \DateTimeZone('UTC'));
+        return $current_date->get_timestamp() < $exp_timestamp;
     }
 }

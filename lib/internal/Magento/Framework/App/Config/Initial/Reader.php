@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config\Initial;
 
 /**
@@ -18,48 +17,41 @@ class Reader
      *
      * @var \Magento\Framework\Config\FileResolverInterface
      */
-    protected $_fileResolver;
-
+    protected $_file_resolver;
     /**
      * Config converter
      *
      * @var  \Magento\Framework\Config\ConverterInterface
      */
     protected $_converter;
-
     /**
      * Config file name
      *
      * @var string
      */
-    protected $_fileName;
-
+    protected $_file_name;
     /**
      * Class of dom configuration document used for merge
      *
      * @var string
      */
-    protected $_domDocumentClass;
-
+    protected $_dom_document_class;
     /**
      * Scope priority loading scheme
      *
      * @var array
      */
-    protected $_scopePriorityScheme = ['global'];
-
+    protected $_scope_priority_scheme = ['global'];
     /**
      * Path to corresponding XSD file with validation rules for config
      *
      * @var string
      */
-    protected $_schemaFile;
-
+    protected $_schema_file;
     /**
      * @var \Magento\Framework\Config\DomFactory
      */
-    private $domFactory;
-
+    private $dom_factory;
     /**
      * @param \Magento\Framework\Config\FileResolverInterface $fileResolver
      * @param \Magento\Framework\Config\ConverterInterface $converter
@@ -67,20 +59,14 @@ class Reader
      * @param \Magento\Framework\Config\DomFactory $domFactory
      * @param string $fileName
      */
-    public function __construct(
-        \Magento\Framework\Config\FileResolverInterface $fileResolver,
-        \Magento\Framework\Config\ConverterInterface $converter,
-        SchemaLocator $schemaLocator,
-        \Magento\Framework\Config\DomFactory $domFactory,
-        $fileName = 'config.xml'
-    ) {
-        $this->_schemaFile = $schemaLocator->getSchema();
-        $this->_fileResolver = $fileResolver;
+    public function __construct(\Magento\Framework\Config\File_Resolver_Interface $file_resolver, \Magento\Framework\Config\Converter_Interface $converter, Schema_Locator $schema_locator, \Magento\Framework\Config\Dom_Factory $dom_factory, $file_name = 'config.xml')
+    {
+        $this->_schema_file = $schema_locator->get_schema();
+        $this->_file_resolver = $file_resolver;
         $this->_converter = $converter;
-        $this->domFactory = $domFactory;
-        $this->_fileName = $fileName;
+        $this->dom_factory = $dom_factory;
+        $this->_file_name = $file_name;
     }
-
     /**
      * Read configuration scope
      *
@@ -90,40 +76,32 @@ class Reader
      */
     public function read()
     {
-        $fileList = [];
-        foreach ($this->_scopePriorityScheme as $scope) {
-            $directories = $this->_fileResolver->get($this->_fileName, $scope);
+        $file_list = [];
+        foreach ($this->_scope_priority_scheme as $scope) {
+            $directories = $this->_file_resolver->get($this->_file_name, $scope);
             foreach ($directories as $key => $directory) {
-                $fileList[$key] = $directory;
+                $file_list[$key] = $directory;
             }
         }
-
-        if (!count($fileList)) {
+        if (!count($file_list)) {
             return [];
         }
-
         /** @var \Magento\Framework\Config\Dom $domDocument */
-        $domDocument = null;
-        foreach ($fileList as $file) {
+        $dom_document = null;
+        foreach ($file_list as $file) {
             try {
-                if (!$domDocument) {
-                    $domDocument = $this->domFactory->createDom(['xml' => $file, 'schemaFile' => $this->_schemaFile]);
+                if (!$dom_document) {
+                    $dom_document = $this->dom_factory->create_dom(['xml' => $file, 'schemaFile' => $this->_schema_file]);
                 } else {
-                    $domDocument->merge($file);
+                    $dom_document->merge($file);
                 }
-            } catch (\Magento\Framework\Config\Dom\ValidationException $e) {
-                throw new \Magento\Framework\Exception\LocalizedException(
-                    new \Magento\Framework\Phrase(
-                        'The XML in file "%1" is invalid:' . "\n%2\nVerify the XML and try again.",
-                        [$file, $e->getMessage()]
-                    )
-                );
+            } catch (\Magento\Framework\Config\Dom\Validation_Exception $e) {
+                throw new \Magento\Framework\Exception\Localized_Exception(new \Magento\Framework\Phrase('The XML in file "%1" is invalid:' . "\n%2\nVerify the XML and try again.", [$file, $e->get_message()]));
             }
         }
-
         $output = [];
-        if ($domDocument) {
-            $output = $this->_converter->convert($domDocument->getDom());
+        if ($dom_document) {
+            $output = $this->_converter->convert($dom_document->get_dom());
         }
         return $output;
     }

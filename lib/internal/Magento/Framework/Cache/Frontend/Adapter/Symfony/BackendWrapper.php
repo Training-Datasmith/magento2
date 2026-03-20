@@ -4,55 +4,46 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Frontend\Adapter\Symfony;
 
 use InvalidArgumentException;
-use Magento\Framework\Cache\Backend\BackendInterface;
-use Magento\Framework\Cache\CacheConstants;
-use Magento\Framework\Cache\Frontend\Adapter\SymfonyAdapters\TagAdapterInterface;
-use Magento\Framework\Cache\FrontendInterface;
-use Psr\Cache\CacheItemPoolInterface;
-
+use Magento\Framework\Cache\Backend\Backend_Interface;
+use Magento\Framework\Cache\Cache_Constants;
+use Magento\Framework\Cache\Frontend\Adapter\Symfony_Adapters\Tag_Adapter_Interface;
+use Magento\Framework\Cache\Frontend_Interface;
+use Psr\Cache\Cache_Item_Pool_Interface;
 /**
  * Backend wrapper for Symfony cache adapter
  *
  * Provides BackendInterface-compatible wrapper for Symfony PSR-6 cache.
  * Delegates operations to the Symfony frontend for proper tag and metadata handling.
  */
-class BackendWrapper implements BackendInterface
+class Backend_Wrapper implements Backend_Interface
 {
     /**
      * @var CacheItemPoolInterface
      */
-    private CacheItemPoolInterface $cache;
-
+    private Cache_Item_Pool_Interface $cache;
     /**
      * @var TagAdapterInterface
      */
-    private TagAdapterInterface $adapter;
-
+    private Tag_Adapter_Interface $adapter;
     /**
      * @var FrontendInterface
      */
-    private FrontendInterface $symfony;
-
+    private Frontend_Interface $symfony;
     /**
      * @param CacheItemPoolInterface $cache
      * @param TagAdapterInterface $adapter
      * @param FrontendInterface $symfony
      */
-    public function __construct(
-        CacheItemPoolInterface $cache,
-        TagAdapterInterface $adapter,
-        FrontendInterface $symfony
-    ) {
+    public function __construct(Cache_Item_Pool_Interface $cache, Tag_Adapter_Interface $adapter, Frontend_Interface $symfony)
+    {
         $this->cache = $cache;
         $this->adapter = $adapter;
         $this->symfony = $symfony;
     }
-
     /**
      * Test if a cache is available for the given id
      *
@@ -63,7 +54,6 @@ class BackendWrapper implements BackendInterface
     {
         return $this->symfony->test($id);
     }
-
     /**
      * Load value with given id from cache
      *
@@ -71,12 +61,11 @@ class BackendWrapper implements BackendInterface
      * @param bool $doNotTestCacheValidity If true, validity not tested
      * @return string|false Cached data or false if not available
      */
-    public function load($id, $doNotTestCacheValidity = false)
+    public function load($id, $do_not_test_cache_validity = false)
     {
         // Delegate to frontend (validity always tested in Symfony)
         return $this->symfony->load($id);
     }
-
     /**
      * Save some data in cache
      *
@@ -86,12 +75,11 @@ class BackendWrapper implements BackendInterface
      * @param int|null $specificLifetime Specific lifetime (null = infinite)
      * @return bool True if no problem
      */
-    public function save($data, $id, $tags = [], $specificLifetime = null)
+    public function save($data, $id, $tags = [], $specific_lifetime = null)
     {
         // Delegate to frontend for full save logic
-        return $this->symfony->save($data, $id, $tags, $specificLifetime);
+        return $this->symfony->save($data, $id, $tags, $specific_lifetime);
     }
-
     /**
      * Remove a cache record
      *
@@ -103,7 +91,6 @@ class BackendWrapper implements BackendInterface
         // Delegate to frontend
         return $this->symfony->remove($id);
     }
-
     /**
      * Clean some cache records
      *
@@ -115,12 +102,11 @@ class BackendWrapper implements BackendInterface
     public function clean($mode = 'all', $tags = [])
     {
         return match ($mode) {
-            CacheConstants::CLEANING_MODE_ALL, 'all' => $this->clear(),
-            CacheConstants::CLEANING_MODE_OLD, 'old' => true,
-            default => throw new InvalidArgumentException('Backend clean only supports ALL and OLD modes')
+            Cache_Constants::CLEANING_MODE_ALL, 'all' => $this->clear(),
+            Cache_Constants::CLEANING_MODE_OLD, 'old' => true,
+            default => throw new InvalidArgumentException('Backend clean only supports ALL and OLD modes'),
         };
     }
-
     /**
      * Set an option
      *
@@ -130,13 +116,12 @@ class BackendWrapper implements BackendInterface
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     // phpcs:disable Magento2.CodeAnalysis.EmptyBlock
-    public function setOption($name, $value)
+    public function set_option($name, $value)
     {
         // Intentional no-op: Symfony backend options are not stored in the wrapper
         // This method exists for BackendInterface compliance but does nothing
     }
     // phpcs:enable Magento2.CodeAnalysis.EmptyBlock
-
     /**
      * Clear all cache entries
      *
@@ -144,10 +129,9 @@ class BackendWrapper implements BackendInterface
      */
     public function clear(): bool
     {
-        $this->adapter->clearAllIndices();
+        $this->adapter->clear_all_indices();
         return $this->cache->clear();
     }
-
     /**
      * Get backend option
      *
@@ -155,7 +139,7 @@ class BackendWrapper implements BackendInterface
      * @return mixed
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function getOption($name)
+    public function get_option($name)
     {
         // Symfony backend options are not stored in the wrapper
         // This method exists for Zend compatibility but returns null

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Data;
 
 /**
@@ -17,30 +16,23 @@ class Graph
      * Search modes
      */
     public const DIRECTIONAL = 1;
-
     public const INVERSE = 2;
-
     public const NON_DIRECTIONAL = 3;
-
     /**#@-*/
-
     /**#@-*/
     protected $_nodes = [];
-
     /**
      * Declared relations directed "from" "to"
      *
      * @var array
      */
     protected $_from = [];
-
     /**
      * Inverse relations "to" "from"
      *
      * @var array
      */
     protected $_to = [];
-
     /**
      * Validate consistency of the declared structure and assign it to the object state
      *
@@ -50,15 +42,14 @@ class Graph
     public function __construct(array $nodes, array $relations)
     {
         foreach ($nodes as $node) {
-            $this->_assertNode($node, false);
+            $this->_assert_node($node, false);
             $this->_nodes[$node] = $node;
         }
         foreach ($relations as $pair) {
-            list($fromNode, $toNode) = $pair;
-            $this->addRelation($fromNode, $toNode);
+            list($from_node, $to_node) = $pair;
+            $this->add_relation($from_node, $to_node);
         }
     }
-
     /**
      * Set a relation between nodes
      *
@@ -67,18 +58,17 @@ class Graph
      * @return $this
      * @throws \InvalidArgumentException
      */
-    public function addRelation($fromNode, $toNode)
+    public function add_relation($from_node, $to_node)
     {
-        if ($fromNode == $toNode) {
-            throw new \InvalidArgumentException("Graph node '{$fromNode}' is linked to itself.");
+        if ($from_node == $to_node) {
+            throw new \InvalidArgumentException("Graph node '{$from_node}' is linked to itself.");
         }
-        $this->_assertNode($fromNode, true);
-        $this->_assertNode($toNode, true);
-        $this->_from[$fromNode][$toNode] = $toNode;
-        $this->_to[$toNode][$fromNode] = $fromNode;
+        $this->_assert_node($from_node, true);
+        $this->_assert_node($to_node, true);
+        $this->_from[$from_node][$to_node] = $to_node;
+        $this->_to[$to_node][$from_node] = $from_node;
         return $this;
     }
-
     /**
      * Export relations between nodes. Can return inverse relations
      *
@@ -86,7 +76,7 @@ class Graph
      * @return array
      * @throws \InvalidArgumentException
      */
-    public function getRelations($mode = self::DIRECTIONAL)
+    public function get_relations($mode = self::DIRECTIONAL)
     {
         switch ($mode) {
             case self::DIRECTIONAL:
@@ -95,9 +85,9 @@ class Graph
                 return $this->_to;
             case self::NON_DIRECTIONAL:
                 $graph = $this->_from;
-                foreach ($this->_to as $idTo => $relations) {
-                    foreach ($relations as $idFrom) {
-                        $graph[$idTo][$idFrom] = $idFrom;
+                foreach ($this->_to as $id_to => $relations) {
+                    foreach ($relations as $id_from) {
+                        $graph[$id_to][$id_from] = $id_from;
                     }
                 }
                 return $graph;
@@ -105,7 +95,6 @@ class Graph
                 throw new \InvalidArgumentException("Unknown search mode: '{$mode}'");
         }
     }
-
     /**
      * Find a cycle in the graph
      *
@@ -116,14 +105,14 @@ class Graph
      * @param boolean $firstOnly found only first cycle
      * @return array
      */
-    public function findCycle($node = null, $firstOnly = true)
+    public function find_cycle($node = null, $first_only = true)
     {
         $nodes = null === $node ? $this->_nodes : [$node];
         $results = [];
         foreach ($nodes as $node) {
             $result = $this->dfs($node, $node);
             if ($result) {
-                if ($firstOnly) {
+                if ($first_only) {
                     return $result;
                 } else {
                     $results[] = $result;
@@ -132,7 +121,6 @@ class Graph
         }
         return $results;
     }
-
     /**
      * Find paths to reachable nodes from root node
      *
@@ -143,13 +131,13 @@ class Graph
      * @param int $mode
      * @return array
      */
-    public function findPathsToReachableNodes($rootNode, $mode = self::DIRECTIONAL)
+    public function find_paths_to_reachable_nodes($root_node, $mode = self::DIRECTIONAL)
     {
-        $graph = $this->getRelations($mode);
+        $graph = $this->get_relations($mode);
         $paths = [];
-        $queue = [$rootNode];
-        $visited = [$rootNode => $rootNode];
-        $paths[$rootNode] = [$rootNode];
+        $queue = [$root_node];
+        $visited = [$root_node => $root_node];
+        $paths[$root_node] = [$root_node];
         while (!empty($queue)) {
             $node = array_shift($queue);
             if (!empty($graph[$node])) {
@@ -165,7 +153,6 @@ class Graph
         }
         return $paths;
     }
-
     /**
      * "Depth-first search" of a path between nodes
      *
@@ -177,13 +164,12 @@ class Graph
      * @param int $mode
      * @return array
      */
-    public function dfs($fromNode, $toNode, $mode = self::DIRECTIONAL)
+    public function dfs($from_node, $to_node, $mode = self::DIRECTIONAL)
     {
-        $this->_assertNode($fromNode, true);
-        $this->_assertNode($toNode, true);
-        return $this->_dfs($fromNode, $toNode, $this->getRelations($mode));
+        $this->_assert_node($from_node, true);
+        $this->_assert_node($to_node, true);
+        return $this->_dfs($from_node, $to_node, $this->get_relations($mode));
     }
-
     /**
      * Recursive sub-routine of dfs()
      *
@@ -195,18 +181,18 @@ class Graph
      * @return array
      * @link http://en.wikipedia.org/wiki/Depth-first_search
      */
-    protected function _dfs($fromNode, $toNode, $graph, &$visited = [], $stack = [])
+    protected function _dfs($from_node, $to_node, $graph, &$visited = [], $stack = [])
     {
-        $stack[] = $fromNode;
-        $visited[$fromNode] = $fromNode;
-        if (isset($graph[$fromNode][$toNode])) {
-            $stack[] = $toNode;
+        $stack[] = $from_node;
+        $visited[$from_node] = $from_node;
+        if (isset($graph[$from_node][$to_node])) {
+            $stack[] = $to_node;
             return $stack;
         }
-        if (isset($graph[$fromNode])) {
-            foreach ($graph[$fromNode] as $node) {
+        if (isset($graph[$from_node])) {
+            foreach ($graph[$from_node] as $node) {
                 if (!isset($visited[$node])) {
-                    $result = $this->_dfs($node, $toNode, $graph, $visited, $stack);
+                    $result = $this->_dfs($node, $to_node, $graph, $visited, $stack);
                     if ($result) {
                         return $result;
                     }
@@ -215,7 +201,6 @@ class Graph
         }
         return [];
     }
-
     /**
      * Verify existence or non-existence of a node
      *
@@ -224,16 +209,14 @@ class Graph
      * @return void
      * @throws \InvalidArgumentException according to assertion rules
      */
-    protected function _assertNode($node, $mustExist)
+    protected function _assert_node($node, $must_exist)
     {
         if (isset($this->_nodes[$node])) {
-            if (!$mustExist) {
+            if (!$must_exist) {
                 throw new \InvalidArgumentException("Graph node '{$node}' already exists'.");
             }
-        } else {
-            if ($mustExist) {
-                throw new \InvalidArgumentException("Graph node '{$node}' does not exist.");
-            }
+        } else if ($must_exist) {
+            throw new \InvalidArgumentException("Graph node '{$node}' does not exist.");
         }
     }
 }

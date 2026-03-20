@@ -1,135 +1,119 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Asynchronous_Operations\Model;
 
-namespace Magento\AsynchronousOperations\Model;
-
-use Magento\AsynchronousOperations\Api\Data\BulkSummaryInterface;
-use Magento\Framework\DataObject;
-
+use Magento\Asynchronous_Operations\Api\Data\Bulk_Summary_Interface;
+use Magento\Framework\Data_Object;
 /**
  * Class BulkSummary
  */
-class BulkSummary extends DataObject implements BulkSummaryInterface, \Magento\Framework\Api\ExtensibleDataInterface
+class Bulk_Summary extends Data_Object implements Bulk_Summary_Interface, \Magento\Framework\Api\Extensible_Data_Interface
 {
     /**
      * @inheritDoc
      */
-    public function getBulkId()
+    public function get_bulk_id()
     {
-        return $this->getData(self::BULK_ID);
+        return $this->get_data(self::BULK_ID);
     }
-
     /**
      * @inheritDoc
      */
-    public function setBulkId($bulkUuid)
+    public function set_bulk_id($bulk_uuid)
     {
-        return $this->setData(self::BULK_ID, $bulkUuid);
+        return $this->set_data(self::BULK_ID, $bulk_uuid);
     }
-
     /**
      * @inheritDoc
      */
-    public function getDescription()
+    public function get_description()
     {
-        return $this->getData(self::DESCRIPTION);
+        return $this->get_data(self::DESCRIPTION);
     }
-
     /**
      * @inheritDoc
      */
-    public function setDescription($description)
+    public function set_description($description)
     {
-        return $this->setData(self::DESCRIPTION, $description);
+        return $this->set_data(self::DESCRIPTION, $description);
     }
-
     /**
      * @inheritDoc
      */
-    public function getStartTime()
+    public function get_start_time()
     {
-        return $this->getData(self::START_TIME);
+        return $this->get_data(self::START_TIME);
     }
-
     /**
      * @inheritDoc
      */
-    public function setStartTime($timestamp)
+    public function set_start_time($timestamp)
     {
-        return $this->setData(self::START_TIME, $timestamp);
+        return $this->set_data(self::START_TIME, $timestamp);
     }
-
     /**
      * @inheritDoc
      */
-    public function getUserId()
+    public function get_user_id()
     {
-        return $this->getData(self::USER_ID);
+        return $this->get_data(self::USER_ID);
     }
-
     /**
      * @inheritDoc
      */
-    public function setUserId($userId)
+    public function set_user_id($user_id)
     {
-        return $this->setData(self::USER_ID, $userId);
+        return $this->set_data(self::USER_ID, $user_id);
     }
-
     /**
      * @inheritDoc
      */
-    public function getUserType()
+    public function get_user_type()
     {
-        return $this->getData(self::USER_TYPE);
+        return $this->get_data(self::USER_TYPE);
     }
-
     /**
      * @inheritDoc
      */
-    public function setUserType($userType)
+    public function set_user_type($user_type)
     {
-        return $this->setData(self::USER_TYPE, $userType);
+        return $this->set_data(self::USER_TYPE, $user_type);
     }
-
     /**
      * @inheritDoc
      */
-    public function getOperationCount()
+    public function get_operation_count()
     {
-        return $this->getData(self::OPERATION_COUNT);
+        return $this->get_data(self::OPERATION_COUNT);
     }
-
     /**
      * @inheritDoc
      */
-    public function setOperationCount($operationCount)
+    public function set_operation_count($operation_count)
     {
-        return $this->setData(self::OPERATION_COUNT, $operationCount);
+        return $this->set_data(self::OPERATION_COUNT, $operation_count);
     }
-
     /**
      * Retrieve existing extension attributes object.
      *
      * @return \Magento\AsynchronousOperations\Api\Data\BulkSummaryExtensionInterface|null
      */
-    public function getExtensionAttributes()
+    public function get_extension_attributes()
     {
-        return $this->getData(self::EXTENSION_ATTRIBUTES_KEY);
+        return $this->get_data(self::EXTENSION_ATTRIBUTES_KEY);
     }
-
     /**
      * Set an extension attributes object.
      *
      * @return $this
      */
-    public function setExtensionAttributes(
-        \Magento\AsynchronousOperations\Api\Data\BulkSummaryExtensionInterface $extensionAttributes
-    ) {
-        return $this->setData(self::EXTENSION_ATTRIBUTES_KEY, $extensionAttributes);
+    public function set_extension_attributes(\Magento\Asynchronous_Operations\Api\Data\Bulk_Summary_Extension_Interface $extension_attributes)
+    {
+        return $this->set_data(self::EXTENSION_ATTRIBUTES_KEY, $extension_attributes);
     }
 }

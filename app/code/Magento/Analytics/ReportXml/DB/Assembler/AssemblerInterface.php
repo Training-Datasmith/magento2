@@ -4,12 +4,10 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Analytics\Report_Xml\DB\Assembler;
 
-namespace Magento\Analytics\ReportXml\DB\Assembler;
-
-use Magento\Analytics\ReportXml\DB\SelectBuilder;
-
+use Magento\Analytics\Report_Xml\DB\Select_Builder;
 /**
  * Interface AssemblerInterface
  *
@@ -19,7 +17,7 @@ use Magento\Analytics\ReportXml\DB\SelectBuilder;
  *
  * @api
  */
-interface AssemblerInterface
+interface Assembler_Interface
 {
     /**
      * Assemble SQL statement
@@ -27,5 +25,5 @@ interface AssemblerInterface
      * @param array $queryConfig
      * @return SelectBuilder
      */
-    public function assemble(SelectBuilder $selectBuilder, $queryConfig);
+    public function assemble(Select_Builder $select_builder, $query_config);
 }

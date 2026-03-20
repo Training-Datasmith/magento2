@@ -1,55 +1,48 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2020 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Console\Command;
 
-use Magento\Backend\Model\Validator\IpValidator;
-use Magento\Framework\App\MaintenanceMode;
+use Magento\Backend\Model\Validator\Ip_Validator;
+use Magento\Framework\App\Maintenance_Mode;
 use Magento\Framework\Console\Cli;
-use Magento\Setup\Console\Command\AbstractSetupCommand;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
-use Symfony\Component\Console\Output\OutputInterface;
-
+use Magento\Setup\Console\Command\Abstract_Setup_Command;
+use Symfony\Component\Console\Input\Input_Interface;
+use Symfony\Component\Console\Input\Input_Option;
+use Symfony\Component\Console\Output\Output_Interface;
 /**
  * General maintenance command.
  */
-abstract class AbstractMaintenanceCommand extends AbstractSetupCommand
+abstract class Abstract_Maintenance_Command extends Abstract_Setup_Command
 {
     /**
      * Names of input option
      */
     public const INPUT_KEY_IP = 'ip';
-
     /**
      * @var MaintenanceMode
      */
-    protected $maintenanceMode;
-
+    protected $maintenance_mode;
     /**
      * @var IpValidator
      */
-    protected $ipValidator;
-
+    protected $ip_validator;
     /**
      * Constructor
      *
      * @param MaintenanceMode $maintenanceMode
      * @param IpValidator $ipValidator
      */
-    public function __construct(MaintenanceMode $maintenanceMode, IpValidator $ipValidator)
+    public function __construct(Maintenance_Mode $maintenance_mode, Ip_Validator $ip_validator)
     {
-        $this->maintenanceMode = $maintenanceMode;
-        $this->ipValidator = $ipValidator;
-
+        $this->maintenance_mode = $maintenance_mode;
+        $this->ip_validator = $ip_validator;
         parent::__construct();
     }
-
     /**
      * Initialization of the command
      *
@@ -57,64 +50,44 @@ abstract class AbstractMaintenanceCommand extends AbstractSetupCommand
      */
     protected function configure()
     {
-        $options = [
-            new InputOption(
-                self::INPUT_KEY_IP,
-                null,
-                InputOption::VALUE_IS_ARRAY | InputOption::VALUE_REQUIRED,
-                "Allowed IP addresses (use 'none' to clear allowed IP list)"
-            ),
-        ];
-        $this->setDefinition($options);
-
+        $options = [new Input_Option(self::INPUT_KEY_IP, null, Input_Option::VALUE_IS_ARRAY | Input_Option::VALUE_REQUIRED, "Allowed IP addresses (use 'none' to clear allowed IP list)")];
+        $this->set_definition($options);
         parent::configure();
     }
-
     /**
      * Get maintenance mode to set
      *
      * @return bool
      */
-    abstract protected function isEnable();
-
+    abstract protected function is_enable();
     /**
      * Get display string after mode is set
      *
      * @return string
      */
-    abstract protected function getDisplayString();
-
+    abstract protected function get_display_string();
     /**
      * @inheritDoc
      */
-    protected function execute(InputInterface $input, OutputInterface $output): int
+    protected function execute(Input_Interface $input, Output_Interface $output): int
     {
-        $addresses = $input->getOption(self::INPUT_KEY_IP);
+        $addresses = $input->get_option(self::INPUT_KEY_IP);
         $messages = $this->validate($addresses);
-
         if (!empty($messages)) {
             $output->writeln('<error>' . implode('</error>' . PHP_EOL . '<error>', $messages));
-
             // We must have an exit code higher than zero to indicate something was wrong
             return Cli::RETURN_FAILURE;
         }
-
-        $this->maintenanceMode->set($this->isEnable());
-        $output->writeln($this->getDisplayString());
-
+        $this->maintenance_mode->set($this->is_enable());
+        $output->writeln($this->get_display_string());
         if (!empty($addresses)) {
             $addresses = implode(',', $addresses);
-            $addresses = ('none' === $addresses) ? '' : $addresses;
-            $this->maintenanceMode->setAddresses($addresses);
-            $output->writeln(
-                '<info>Set exempt IP-addresses: ' . (implode(', ', $this->maintenanceMode->getAddressInfo()) ?: 'none')
-                . '</info>'
-            );
+            $addresses = 'none' === $addresses ? '' : $addresses;
+            $this->maintenance_mode->set_addresses($addresses);
+            $output->writeln('<info>Set exempt IP-addresses: ' . (implode(', ', $this->maintenance_mode->get_address_info()) ?: 'none') . '</info>');
         }
-
         return Cli::RETURN_SUCCESS;
     }
-
     /**
      * Validates IP addresses and return error messages
      *
@@ -123,6 +96,6 @@ abstract class AbstractMaintenanceCommand extends AbstractSetupCommand
      */
     protected function validate(array $addresses)
     {
-        return $this->ipValidator->validateIps($addresses, true);
+        return $this->ip_validator->validate_ips($addresses, true);
     }
 }

@@ -4,36 +4,32 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Admin_Analytics\View_Model;
 
-namespace Magento\AdminAnalytics\ViewModel;
-
-use Magento\AdminAnalytics\Model\Condition\CanViewNotification as AdminAnalyticsNotification;
-use Magento\Framework\View\Element\Block\ArgumentInterface;
-use Magento\ReleaseNotification\Model\Condition\CanViewNotification as ReleaseNotification;
-
+use Magento\Admin_Analytics\Model\Condition\Can_View_Notification as AdminAnalyticsNotification;
+use Magento\Framework\View\Element\Block\Argument_Interface;
+use Magento\Release_Notification\Model\Condition\Can_View_Notification as ReleaseNotification;
 /**
  * Control display of admin analytics and release notification modals
  */
-class Notification implements ArgumentInterface
+class Notification implements Argument_Interface
 {
-    public function __construct(private readonly AdminAnalyticsNotification $canViewNotificationAnalytics, private readonly ReleaseNotification $canViewNotificationRelease)
+    public function __construct(private readonly Admin_Analytics_Notification $can_view_notification_analytics, private readonly Release_Notification $can_view_notification_release)
     {
     }
-
     /**
      * Determine if the analytics popup is visible
      */
-    public function isAnalyticsVisible(): bool
+    public function is_analytics_visible(): bool
     {
-        return $this->canViewNotificationAnalytics->isVisible([]);
+        return $this->can_view_notification_analytics->is_visible([]);
     }
-
     /**
      * Determine if the release popup is visible
      */
-    public function isReleaseVisible(): bool
+    public function is_release_visible(): bool
     {
-        return $this->canViewNotificationRelease->isVisible([]);
+        return $this->can_view_notification_release->is_visible([]);
     }
 }

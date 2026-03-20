@@ -1,14 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Resources configuration filesystem loader
  *
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\App\ResourceConnection\Config;
+namespace Magento\Framework\App\Resource_Connection\Config;
 
 class Reader extends \Magento\Framework\Config\Reader\Filesystem
 {
@@ -17,8 +16,7 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
      *
      * @var array
      */
-    protected $_idAttributes = ['/config/resource' => 'name'];
-
+    protected $_id_attributes = ['/config/resource' => 'name'];
     /**
      * @param \Magento\Framework\Config\FileResolverInterface $fileResolver
      * @param Converter $converter
@@ -29,28 +27,10 @@ class Reader extends \Magento\Framework\Config\Reader\Filesystem
      * @param string $domDocumentClass
      * @param string $defaultScope
      */
-    public function __construct(
-        \Magento\Framework\Config\FileResolverInterface $fileResolver,
-        Converter $converter,
-        SchemaLocator $schemaLocator,
-        \Magento\Framework\Config\ValidationStateInterface $validationState,
-        $fileName = 'resources.xml',
-        $idAttributes = [],
-        $domDocumentClass = \Magento\Framework\Config\Dom::class,
-        $defaultScope = 'global'
-    ) {
-        parent::__construct(
-            $fileResolver,
-            $converter,
-            $schemaLocator,
-            $validationState,
-            $fileName,
-            $idAttributes,
-            $domDocumentClass,
-            $defaultScope
-        );
+    public function __construct(\Magento\Framework\Config\File_Resolver_Interface $file_resolver, Converter $converter, Schema_Locator $schema_locator, \Magento\Framework\Config\Validation_State_Interface $validation_state, $file_name = 'resources.xml', $id_attributes = [], $dom_document_class = \Magento\Framework\Config\Dom::class, $default_scope = 'global')
+    {
+        parent::__construct($file_resolver, $converter, $schema_locator, $validation_state, $file_name, $id_attributes, $dom_document_class, $default_scope);
     }
-
     /**
      * Read resource configuration
      *

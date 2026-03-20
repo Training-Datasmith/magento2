@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Backup;
 
 /**
@@ -21,20 +20,19 @@ class Nomedia extends \Magento\Framework\Backup\Media
      * @return string
      * @see BackupInterface::getType()
      */
-    public function getType()
+    public function get_type()
     {
         return 'nomedia';
     }
-
     /**
      * Add media folder to ignore list
      *
      * @return $this
      */
-    protected function _prepareIgnoreList()
+    protected function _prepare_ignore_list()
     {
-        $rootDir = $this->getRootDir();
-        $this->addIgnorePaths([$rootDir . '/media', $rootDir . '/pub/media']);
+        $root_dir = $this->get_root_dir();
+        $this->add_ignore_paths([$root_dir . '/media', $root_dir . '/pub/media']);
         return $this;
     }
 }

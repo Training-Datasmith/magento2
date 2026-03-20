@@ -1,18 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Request;
 
 /**
  * @api
  * @since 100.1.0
  */
-interface DataPersistorInterface
+interface Data_Persistor_Interface
 {
     /**
      * Store data by key
@@ -23,7 +22,6 @@ interface DataPersistorInterface
      * @since 100.1.0
      */
     public function set($key, $data);
-
     /**
      * Retrieve data by key
      *
@@ -32,7 +30,6 @@ interface DataPersistorInterface
      * @since 100.1.0
      */
     public function get($key);
-
     /**
      * Clear data by key
      *

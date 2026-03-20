@@ -4,39 +4,34 @@
  * Copyright 2021 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Bundle\Plugin\Api\Product_Link_Management;
 
-namespace Magento\Bundle\Plugin\Api\ProductLinkManagement;
-
-use Magento\Bundle\Api\ProductLinkManagementInterface;
-use Magento\Catalog\Api\ProductRepositoryInterface;
+use Magento\Bundle\Api\Product_Link_Management_Interface;
+use Magento\Catalog\Api\Product_Repository_Interface;
 use Magento\Catalog\Model\Indexer\Product\Full;
-
 /**
  * Reindex bundle product after child has been removed.
  */
-class ReindexAfterRemoveChildPlugin
+class Reindex_After_Remove_Child_Plugin
 {
     /**
      * @var Full
      */
     private $indexer;
-
     /**
      * @var ProductRepositoryInterface
      */
-    private $productRepository;
-
+    private $product_repository;
     /**
      * @param Full $indexer
      * @param ProductRepositoryInterface $productRepository
      */
-    public function __construct(Full $indexer, ProductRepositoryInterface $productRepository)
+    public function __construct(Full $indexer, Product_Repository_Interface $product_repository)
     {
         $this->indexer = $indexer;
-        $this->productRepository = $productRepository;
+        $this->product_repository = $product_repository;
     }
-
     /**
      * Reindex bundle product after child has been removed.
      *
@@ -46,14 +41,10 @@ class ReindexAfterRemoveChildPlugin
      * @return bool
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function afterRemoveChild(
-        ProductLinkManagementInterface $subject,
-        bool $result,
-        string $sku
-    ): bool {
-        $bundleProduct = $this->productRepository->get($sku, true);
-        $this->indexer->executeRow($bundleProduct->getId());
-
+    public function after_remove_child(Product_Link_Management_Interface $subject, bool $result, string $sku): bool
+    {
+        $bundle_product = $this->product_repository->get($sku, true);
+        $this->indexer->execute_row($bundle_product->get_id());
         return $result;
     }
 }

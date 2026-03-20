@@ -4,20 +4,18 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Admin_Notification\Controller\Adminhtml\Notification;
 
-namespace Magento\AdminNotification\Controller\Adminhtml\Notification;
-
-use Magento\AdminNotification\Controller\Adminhtml\Notification;
-use Magento\AdminNotification\Model\NotificationService;
+use Magento\Admin_Notification\Controller\Adminhtml\Notification;
+use Magento\Admin_Notification\Model\Notification_Service;
 use Magento\Backend\App\Action;
-use Magento\Framework\App\Action\HttpPostActionInterface;
-use Magento\Framework\Controller\ResultFactory;
-
+use Magento\Framework\App\Action\Http_Post_Action_Interface;
+use Magento\Framework\Controller\Result_Factory;
 /**
  * AdminNotification AjaxMarkAsRead controller
  */
-class AjaxMarkAsRead extends Notification implements HttpPostActionInterface
+class Ajax_Mark_As_Read extends Notification implements Http_Post_Action_Interface
 {
     /**
      * Authorization level of a basic admin session
@@ -25,12 +23,10 @@ class AjaxMarkAsRead extends Notification implements HttpPostActionInterface
      * @see _isAllowed()
      */
     public const ADMIN_RESOURCE = 'Magento_AdminNotification::mark_as_read';
-
-    public function __construct(Action\Context $context, private readonly NotificationService $notificationService)
+    public function __construct(Action\Context $context, private readonly Notification_Service $notification_service)
     {
         parent::__construct($context);
     }
-
     /**
      * Mark notification as read (AJAX action)
      *
@@ -39,21 +35,20 @@ class AjaxMarkAsRead extends Notification implements HttpPostActionInterface
      */
     public function execute()
     {
-        if (!$this->getRequest()->getPostValue()) {
+        if (!$this->get_request()->get_post_value()) {
             return;
         }
-        $notificationId = (int)$this->getRequest()->getPost('id');
-        $responseData = [];
+        $notification_id = (int) $this->get_request()->get_post('id');
+        $response_data = [];
         try {
-            $this->notificationService->markAsRead($notificationId);
-            $responseData['success'] = true;
+            $this->notification_service->mark_as_read($notification_id);
+            $response_data['success'] = true;
         } catch (\Exception) {
-            $responseData['success'] = false;
+            $response_data['success'] = false;
         }
-
         /** @var \Magento\Framework\Controller\Result\Json $resultJson */
-        $resultJson = $this->resultFactory->create(ResultFactory::TYPE_JSON);
-        $resultJson->setData($responseData);
-        return $resultJson;
+        $result_json = $this->result_factory->create(Result_Factory::TYPE_JSON);
+        $result_json->set_data($response_data);
+        return $result_json;
     }
 }

@@ -4,55 +4,53 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Async_Config\Model;
 
-namespace Magento\AsyncConfig\Model;
-
-use Magento\AsyncConfig\Api\Data\AsyncConfigMessageInterface;
+use Magento\Async_Config\Api\Data\Async_Config_Message_Interface;
 use Magento\Config\Controller\Adminhtml\System\Config\Save;
 use Magento\Config\Model\Config\Factory;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Config\ScopeInterface;
-use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Config\Scope_Interface;
+use Magento\Framework\Exception\Localized_Exception;
 use Magento\Framework\Serialize\Serializer\Json;
-use Symfony\Component\Console\Output\ConsoleOutput;
-
+use Symfony\Component\Console\Output\Console_Output;
 class Consumer
 {
     /**
      * @var Save
      */
     private $save;
-
     public function __construct(
         /**
          * Backend Config Model Factory
          */
-        private readonly Factory $configFactory,
+        private readonly Factory $config_factory,
         private readonly Json $serializer,
-        private readonly ScopeInterface $scope,
-        private readonly ConsoleOutput $output
-    ) {
-        $this->scope->setCurrentScope('adminhtml');
-        $this->save = ObjectManager::getInstance()->get(Save::class);
-        $this->scope->setCurrentScope('global');
+        private readonly Scope_Interface $scope,
+        private readonly Console_Output $output
+    )
+    {
+        $this->scope->set_current_scope('adminhtml');
+        $this->save = Object_Manager::get_instance()->get(Save::class);
+        $this->scope->set_current_scope('global');
     }
     /**
      * Process Consumer
      *
      * @throws \Exception
      */
-    public function process(AsyncConfigMessageInterface $asyncConfigMessage): void
+    public function process(Async_Config_Message_Interface $async_config_message): void
     {
-        $configData = $asyncConfigMessage->getConfigData();
-        $data = $this->serializer->unserialize($configData);
-        $data = $this->save->filterNodes($data);
+        $config_data = $async_config_message->get_config_data();
+        $data = $this->serializer->unserialize($config_data);
+        $data = $this->save->filter_nodes($data);
         /** @var \Magento\Config\Model\Config $configModel */
-        $configModel = $this->configFactory->create(['data' => $data]);
+        $config_model = $this->config_factory->create(['data' => $data]);
         try {
-            $configModel->save();
-        } catch (LocalizedException $exception) {
-            $message = $exception->getMessage();
+            $config_model->save();
+        } catch (Localized_Exception $exception) {
+            $message = $exception->get_message();
             $this->output->writeln(' Config couldn\'t be saved: ' . $message);
         }
     }

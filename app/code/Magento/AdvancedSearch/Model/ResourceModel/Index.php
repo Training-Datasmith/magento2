@@ -1,47 +1,42 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Advanced_Search\Model\Resource_Model;
 
-namespace Magento\AdvancedSearch\Model\ResourceModel;
-
-use Magento\Catalog\Api\Data\CategoryInterface;
-use Magento\Catalog\Model\Indexer\Category\Product\AbstractAction;
-use Magento\Catalog\Model\Indexer\Product\Price\DimensionCollectionFactory;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
-use Magento\Framework\Model\ResourceModel\Db\Context;
+use Magento\Catalog\Api\Data\Category_Interface;
+use Magento\Catalog\Model\Indexer\Category\Product\Abstract_Action;
+use Magento\Catalog\Model\Indexer\Product\Price\Dimension_Collection_Factory;
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Model\Resource_Model\Db\Abstract_Db;
+use Magento\Framework\Model\Resource_Model\Db\Context;
 use Magento\Framework\Search\Request\Dimension;
-use Magento\Framework\Search\Request\IndexScopeResolverInterface;
-use Magento\Framework\Search\Request\IndexScopeResolverInterface as TableResolver;
-use Magento\Store\Model\Indexer\WebsiteDimensionProvider;
-
+use Magento\Framework\Search\Request\Index_Scope_Resolver_Interface;
+use Magento\Framework\Search\Request\Index_Scope_Resolver_Interface as TableResolver;
+use Magento\Store\Model\Indexer\Website_Dimension_Provider;
 /**
  * @api
  * @since 100.1.0
  *
  * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
-class Index extends AbstractDb
+class Index extends Abstract_Db
 {
     /**
      * @var TableResolver
      */
-    private $tableResolver;
-
+    private $table_resolver;
     /**
      * @var DimensionCollectionFactory|null
      */
-    private $dimensionCollectionFactory;
-
+    private $dimension_collection_factory;
     /**
      * @var int|null
      */
-    private $websiteId;
-
+    private $website_id;
     /**
      * Index constructor.
      * @param string|null $connectionName
@@ -51,21 +46,20 @@ class Index extends AbstractDb
         /**
          * @since 100.1.0
          */
-        protected \Magento\Store\Model\StoreManagerInterface $storeManager,
+        protected \Magento\Store\Model\Store_Manager_Interface $store_manager,
         /**
          * @since 100.1.0
          */
-        protected \Magento\Framework\EntityManager\MetadataPool $metadataPool,
-        $connectionName = null,
-        ?TableResolver $tableResolver = null,
-        ?DimensionCollectionFactory $dimensionCollectionFactory = null
-    ) {
-        parent::__construct($context, $connectionName);
-        $this->tableResolver = $tableResolver ?: ObjectManager::getInstance()->get(IndexScopeResolverInterface::class);
-        $this->dimensionCollectionFactory = $dimensionCollectionFactory
-            ?: ObjectManager::getInstance()->get(DimensionCollectionFactory::class);
+        protected \Magento\Framework\Entity_Manager\Metadata_Pool $metadata_pool,
+        $connection_name = null,
+        ?Table_Resolver $table_resolver = null,
+        ?Dimension_Collection_Factory $dimension_collection_factory = null
+    )
+    {
+        parent::__construct($context, $connection_name);
+        $this->table_resolver = $table_resolver ?: Object_Manager::get_instance()->get(Index_Scope_Resolver_Interface::class);
+        $this->dimension_collection_factory = $dimension_collection_factory ?: Object_Manager::get_instance()->get(Dimension_Collection_Factory::class);
     }
-
     /**
      * Implementation of abstract construct
      *
@@ -76,44 +70,32 @@ class Index extends AbstractDb
     protected function _construct()
     {
     }
-
     /**
      * Return array of price data per customer and website by products
      *
      * @param null|array $productIds
      * @since 100.1.0
      */
-    protected function _getCatalogProductPriceData($productIds = null): array
+    protected function _get_catalog_product_price_data($product_ids = null): array
     {
-        $connection = $this->getConnection();
-        $catalogProductIndexPriceSelect = [];
-
-        foreach ($this->dimensionCollectionFactory->create() as $dimensions) {
-            if (!isset($dimensions[WebsiteDimensionProvider::DIMENSION_NAME]) ||
-                $this->websiteId === null ||
-                $dimensions[WebsiteDimensionProvider::DIMENSION_NAME]->getValue() === $this->websiteId) {
-                $select = $connection->select()->from(
-                    $this->tableResolver->resolve('catalog_product_index_price', $dimensions),
-                    ['entity_id', 'customer_group_id', 'website_id', 'min_price']
-                );
-                if ($productIds) {
-                    $select->where('entity_id IN (?)', $productIds);
+        $connection = $this->get_connection();
+        $catalog_product_index_price_select = [];
+        foreach ($this->dimension_collection_factory->create() as $dimensions) {
+            if (!isset($dimensions[Website_Dimension_Provider::DIMENSION_NAME]) || $this->website_id === null || $dimensions[Website_Dimension_Provider::DIMENSION_NAME]->get_value() === $this->website_id) {
+                $select = $connection->select()->from($this->table_resolver->resolve('catalog_product_index_price', $dimensions), ['entity_id', 'customer_group_id', 'website_id', 'min_price']);
+                if ($product_ids) {
+                    $select->where('entity_id IN (?)', $product_ids);
                 }
-                $catalogProductIndexPriceSelect[] = $select;
+                $catalog_product_index_price_select[] = $select;
             }
         }
-
-        $catalogProductIndexPriceUnionSelect = $connection->select()->union($catalogProductIndexPriceSelect);
-
+        $catalog_product_index_price_union_select = $connection->select()->union($catalog_product_index_price_select);
         $result = [];
-        foreach ($connection->fetchAll($catalogProductIndexPriceUnionSelect) as $row) {
-            $result[$row['website_id']][$row['entity_id']][$row['customer_group_id']] =
-                round((float) $row['min_price'], 2);
+        foreach ($connection->fetch_all($catalog_product_index_price_union_select) as $row) {
+            $result[$row['website_id']][$row['entity_id']][$row['customer_group_id']] = round((float) $row['min_price'], 2);
         }
-
         return $result;
     }
-
     /**
      * Retrieve price data for product
      *
@@ -122,21 +104,17 @@ class Index extends AbstractDb
      * @return array
      * @since 100.1.0
      */
-    public function getPriceIndexData($productIds, $storeId)
+    public function get_price_index_data($product_ids, $store_id)
     {
-        $websiteId = $this->storeManager->getStore($storeId)->getWebsiteId();
-
-        $this->websiteId = $websiteId;
-        $priceProductsIndexData = $this->_getCatalogProductPriceData($productIds);
-        $this->websiteId = null;
-
-        if (!isset($priceProductsIndexData[$websiteId])) {
+        $website_id = $this->store_manager->get_store($store_id)->get_website_id();
+        $this->website_id = $website_id;
+        $price_products_index_data = $this->_get_catalog_product_price_data($product_ids);
+        $this->website_id = null;
+        if (!isset($price_products_index_data[$website_id])) {
             return [];
         }
-
-        return $priceProductsIndexData[$websiteId];
+        return $price_products_index_data[$website_id];
     }
-
     /**
      * Prepare system index data for products.
      *
@@ -144,39 +122,21 @@ class Index extends AbstractDb
      * @param null|array $productIds
      * @since 100.1.0
      */
-    public function getCategoryProductIndexData($storeId = null, $productIds = null): array
+    public function get_category_product_index_data($store_id = null, $product_ids = null): array
     {
-        $connection = $this->getConnection();
-
-        $catalogCategoryProductDimension = new Dimension(\Magento\Store\Model\Store::ENTITY, $storeId);
-
-        $catalogCategoryProductTableName = $this->tableResolver->resolve(
-            AbstractAction::MAIN_INDEX_TABLE,
-            [
-                $catalogCategoryProductDimension,
-            ]
-        );
-
-        $select = $connection->select()->from(
-            [$catalogCategoryProductTableName],
-            ['category_id', 'product_id', 'position', 'store_id']
-        )->where(
-            'store_id = ?',
-            $storeId
-        );
-
-        if ($productIds) {
-            $select->where('product_id IN (?)', $productIds);
+        $connection = $this->get_connection();
+        $catalog_category_product_dimension = new Dimension(\Magento\Store\Model\Store::ENTITY, $store_id);
+        $catalog_category_product_table_name = $this->table_resolver->resolve(Abstract_Action::MAIN_INDEX_TABLE, [$catalog_category_product_dimension]);
+        $select = $connection->select()->from([$catalog_category_product_table_name], ['category_id', 'product_id', 'position', 'store_id'])->where('store_id = ?', $store_id);
+        if ($product_ids) {
+            $select->where('product_id IN (?)', $product_ids);
         }
-
         $result = [];
-        foreach ($connection->fetchAll($select) as $row) {
+        foreach ($connection->fetch_all($select) as $row) {
             $result[$row['product_id']][$row['category_id']] = $row['position'];
         }
-
         return $result;
     }
-
     /**
      * Retrieve moved categories product ids
      *
@@ -184,26 +144,11 @@ class Index extends AbstractDb
      * @return array
      * @since 100.1.0
      */
-    public function getMovedCategoryProductIds($categoryId)
+    public function get_moved_category_product_ids($category_id)
     {
-        $connection = $this->getConnection();
-
-        $identifierField = $this->metadataPool->getMetadata(CategoryInterface::class)->getIdentifierField();
-
-        $select = $connection->select()->distinct()->from(
-            ['c_p' => $this->getTable('catalog_category_product')],
-            ['product_id']
-        )->join(
-            ['c_e' => $this->getTable('catalog_category_entity')],
-            'c_p.category_id = c_e.' . $identifierField,
-            []
-        )->where(
-            $connection->quoteInto('c_e.path LIKE ?', '%/' . $categoryId . '/%')
-        )->orWhere(
-            'c_p.category_id = ?',
-            $categoryId
-        );
-
-        return $connection->fetchCol($select);
+        $connection = $this->get_connection();
+        $identifier_field = $this->metadata_pool->get_metadata(Category_Interface::class)->get_identifier_field();
+        $select = $connection->select()->distinct()->from(['c_p' => $this->get_table('catalog_category_product')], ['product_id'])->join(['c_e' => $this->get_table('catalog_category_entity')], 'c_p.category_id = c_e.' . $identifier_field, [])->where($connection->quote_into('c_e.path LIKE ?', '%/' . $category_id . '/%'))->or_where('c_p.category_id = ?', $category_id);
+        return $connection->fetch_col($select);
     }
 }

@@ -4,51 +4,40 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Cardinal_Commerce\Model\Checkout;
 
-namespace Magento\CardinalCommerce\Model\Checkout;
-
-use Magento\CardinalCommerce\Model\Config;
-use Magento\CardinalCommerce\Model\Request\TokenBuilder;
-use Magento\Checkout\Model\ConfigProviderInterface;
-
+use Magento\Cardinal_Commerce\Model\Config;
+use Magento\Cardinal_Commerce\Model\Request\Token_Builder;
+use Magento\Checkout\Model\Config_Provider_Interface;
 /**
  * Configuration provider.
  */
-class ConfigProvider implements ConfigProviderInterface
+class Config_Provider implements Config_Provider_Interface
 {
     /**
      * @var TokenBuilder
      */
-    private $requestJwtBuilder;
-
+    private $request_jwt_builder;
     /**
      * @var Config
      */
     private $config;
-
     /**
      * @param TokenBuilder $requestJwtBuilder
      * @param Config $config
      */
-    public function __construct(
-        TokenBuilder $requestJwtBuilder,
-        Config $config
-    ) {
-        $this->requestJwtBuilder = $requestJwtBuilder;
+    public function __construct(Token_Builder $request_jwt_builder, Config $config)
+    {
+        $this->request_jwt_builder = $request_jwt_builder;
         $this->config = $config;
     }
-
     /**
      * @inheritdoc
      */
-    public function getConfig(): array
+    public function get_config(): array
     {
-        $config['cardinal'] = [
-            'environment' => $this->config->getEnvironment(),
-            'requestJWT' => $this->requestJwtBuilder->build(),
-        ];
-
+        $config['cardinal'] = ['environment' => $this->config->get_environment(), 'requestJWT' => $this->request_jwt_builder->build()];
         return $config;
     }
 }

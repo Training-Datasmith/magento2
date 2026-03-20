@@ -1,28 +1,25 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Bundle\Pricing\Price;
 
 use Magento\Catalog\Model\Product;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-
+use Magento\Framework\Pricing\Price_Currency_Interface;
 /**
  * Check the product available discount and apply the correct discount to the price
  */
-class DiscountCalculator
+class Discount_Calculator
 {
     /**
      * @param PriceCurrencyInterface $priceCurrency
      */
-    public function __construct(private readonly PriceCurrencyInterface $priceCurrency)
+    public function __construct(private readonly Price_Currency_Interface $price_currency)
     {
     }
-
     /**
      * Apply percentage discount
      *
@@ -30,19 +27,17 @@ class DiscountCalculator
      * @param float|null $value
      * @return float|null
      */
-    public function calculateDiscount(Product $product, $value = null)
+    public function calculate_discount(Product $product, $value = null)
     {
         if ($value === null) {
-            $value = $product->getPriceInfo()->getPrice(FinalPrice::PRICE_CODE)->getValue();
+            $value = $product->get_price_info()->get_price(Final_Price::PRICE_CODE)->get_value();
         }
-
         $discount = null;
-        foreach ($product->getPriceInfo()->getPrices() as $price) {
-            if ($price instanceof DiscountProviderInterface && $price->getDiscountPercent()) {
-                $discount = min($price->getDiscountPercent(), $discount ?: $price->getDiscountPercent());
+        foreach ($product->get_price_info()->get_prices() as $price) {
+            if ($price instanceof Discount_Provider_Interface && $price->get_discount_percent()) {
+                $discount = min($price->get_discount_percent(), $discount ?: $price->get_discount_percent());
             }
         }
-        return (null !== $discount) ?
-            $this->priceCurrency->roundPrice($discount / 100 * $value, 2) : $value;
+        return null !== $discount ? $this->price_currency->round_price($discount / 100 * $value, 2) : $value;
     }
 }

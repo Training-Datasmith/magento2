@@ -1,37 +1,32 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Amqp\Topology;
 
-use Magento\Framework\MessageQueue\Topology\Config\ExchangeConfigItemInterface;
-
+use Magento\Framework\Message_Queue\Topology\Config\Exchange_Config_Item_Interface;
 /**
  * Exchange installer.
  */
-class ExchangeInstaller
+class Exchange_Installer
 {
-    use ArgumentProcessor;
-
+    use Argument_Processor;
     /**
      * @var BindingInstallerInterface
      */
-    private $bindingInstaller;
-
+    private $binding_installer;
     /**
      * Initialize dependencies.
      *
      * @param BindingInstallerInterface $bindingInstaller
      */
-    public function __construct(BindingInstallerInterface $bindingInstaller)
+    public function __construct(Binding_Installer_Interface $binding_installer)
     {
-        $this->bindingInstaller = $bindingInstaller;
+        $this->binding_installer = $binding_installer;
     }
-
     /**
      * Install exchange.
      *
@@ -39,21 +34,11 @@ class ExchangeInstaller
      * @param ExchangeConfigItemInterface $exchange
      * @return void
      */
-    public function install(\PhpAmqpLib\Channel\AMQPChannel $channel, ExchangeConfigItemInterface $exchange)
+    public function install(\Php_Amqp_Lib\Channel\Amqp_Channel $channel, Exchange_Config_Item_Interface $exchange)
     {
-        $channel->exchange_declare(
-            $exchange->getName(),
-            $exchange->getType(),
-            false,
-            $exchange->isDurable(),
-            $exchange->isAutoDelete(),
-            $exchange->isInternal(),
-            false,
-            $this->processArguments($exchange->getArguments())
-        );
-
-        foreach ($exchange->getBindings() as $binding) {
-            $this->bindingInstaller->install($channel, $binding, $exchange->getName());
+        $channel->exchange_declare($exchange->get_name(), $exchange->get_type(), false, $exchange->is_durable(), $exchange->is_auto_delete(), $exchange->is_internal(), false, $this->process_arguments($exchange->get_arguments()));
+        foreach ($exchange->get_bindings() as $binding) {
+            $this->binding_installer->install($channel, $binding, $exchange->get_name());
         }
     }
 }

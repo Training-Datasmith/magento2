@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
@@ -16,6 +15,6 @@ namespace Magento\Framework\App;
  * @api
  * @since 101.0.0
  */
-interface RequestContentInterface extends RequestInterface, PlainTextRequestInterface
+interface Request_Content_Interface extends Request_Interface, Plain_Text_Request_Interface
 {
 }

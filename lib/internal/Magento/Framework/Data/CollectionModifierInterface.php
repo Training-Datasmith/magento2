@@ -4,19 +4,17 @@
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data;
 
-use Magento\Framework\Data\Collection\AbstractDb;
-
+use Magento\Framework\Data\Collection\Abstract_Db;
 /**
  * Represents specific condition, that can be applied on product collection.
  * This condition can be some join statement, some filter, some derived query, etc...
  *
  * @api
  */
-interface CollectionModifierInterface
+interface Collection_Modifier_Interface
 {
     /**
      * Apply condition to collection
@@ -26,5 +24,5 @@ interface CollectionModifierInterface
      * @param AbstractDb $abstractCollection
      * @return void
      */
-    public function apply(AbstractDb $abstractCollection);
+    public function apply(Abstract_Db $abstract_collection);
 }

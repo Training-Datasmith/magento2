@@ -1,22 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Admin_Notification\Controller\Adminhtml\Notification;
 
-namespace Magento\AdminNotification\Controller\Adminhtml\Notification;
-
-use Magento\AdminNotification\Controller\Adminhtml\Notification;
-use Magento\AdminNotification\Model\InboxFactory as InboxModelFactory;
+use Magento\Admin_Notification\Controller\Adminhtml\Notification;
+use Magento\Admin_Notification\Model\Inbox_Factory as InboxModelFactory;
 use Magento\Backend\App\Action;
-use Magento\Framework\App\Action\HttpPostActionInterface;
-
+use Magento\Framework\App\Action\Http_Post_Action_Interface;
 /**
  * AdminNotification MassMarkAsRead controller
  */
-class MassMarkAsRead extends Notification implements HttpPostActionInterface
+class Mass_Mark_As_Read extends Notification implements Http_Post_Action_Interface
 {
     /**
      * Authorization level of a basic admin session
@@ -24,38 +22,31 @@ class MassMarkAsRead extends Notification implements HttpPostActionInterface
      * @see _isAllowed()
      */
     public const ADMIN_RESOURCE = 'Magento_AdminNotification::mark_as_read';
-
-    public function __construct(Action\Context $context, private readonly InboxModelFactory $inboxModelFactory)
+    public function __construct(Action\Context $context, private readonly Inbox_Model_Factory $inbox_model_factory)
     {
         parent::__construct($context);
     }
-
     /**
      * @inheritdoc
      */
     public function execute()
     {
-        $ids = $this->getRequest()->getParam('notification');
+        $ids = $this->get_request()->get_param('notification');
         if (!is_array($ids)) {
-            $this->messageManager->addErrorMessage(__('Please select messages.'));
+            $this->message_manager->add_error_message(__('Please select messages.'));
         } else {
             try {
                 foreach ($ids as $id) {
-                    $model = $this->inboxModelFactory->create()->load($id);
-                    if ($model->getId()) {
-                        $model->setIsRead(1)->save();
+                    $model = $this->inbox_model_factory->create()->load($id);
+                    if ($model->get_id()) {
+                        $model->set_is_read(1)->save();
                     }
                 }
-                $this->messageManager->addSuccessMessage(
-                    __('A total of %1 record(s) have been marked as Read.', count($ids))
-                );
-            } catch (\Magento\Framework\Exception\LocalizedException $e) {
-                $this->messageManager->addErrorMessage($e->getMessage());
+                $this->message_manager->add_success_message(__('A total of %1 record(s) have been marked as Read.', count($ids)));
+            } catch (\Magento\Framework\Exception\Localized_Exception $e) {
+                $this->message_manager->add_error_message($e->get_message());
             } catch (\Exception $e) {
-                $this->messageManager->addExceptionMessage(
-                    $e,
-                    __("We couldn't mark the notification as Read because of an error.")
-                );
+                $this->message_manager->add_exception_message($e, __("We couldn't mark the notification as Read because of an error."));
             }
         }
         return $this->_redirect('adminhtml/*/');

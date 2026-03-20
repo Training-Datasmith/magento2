@@ -1,45 +1,38 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\Framework\EntityManager\Db;
+namespace Magento\Framework\Entity_Manager\Db;
 
 use Exception;
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\EntityManager\EntityMetadataInterface;
-use Magento\Framework\EntityManager\MetadataPool;
-
-class CreateRow
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\DB\Adapter\Adapter_Interface;
+use Magento\Framework\Entity_Manager\Entity_Metadata_Interface;
+use Magento\Framework\Entity_Manager\Metadata_Pool;
+class Create_Row
 {
     /**
      * @var MetadataPool
      */
-    private $metadataPool;
-
+    private $metadata_pool;
     /**
      * @var ResourceConnection
      */
-    private $resourceConnection;
-
+    private $resource_connection;
     /**
      * CreateRow constructor.
      *
      * @param MetadataPool $metadataPool
      * @param ResourceConnection $resourceConnection
      */
-    public function __construct(
-        MetadataPool $metadataPool,
-        ResourceConnection $resourceConnection
-    ) {
-        $this->metadataPool = $metadataPool;
-        $this->resourceConnection = $resourceConnection;
+    public function __construct(Metadata_Pool $metadata_pool, Resource_Connection $resource_connection)
+    {
+        $this->metadata_pool = $metadata_pool;
+        $this->resource_connection = $resource_connection;
     }
-
     /**
      * Method to prepare data.
      *
@@ -48,27 +41,25 @@ class CreateRow
      * @param array $data
      * @return array
      */
-    protected function prepareData(EntityMetadataInterface $metadata, AdapterInterface $connection, $data)
+    protected function prepare_data(Entity_Metadata_Interface $metadata, Adapter_Interface $connection, $data)
     {
         $output = [];
-        foreach ($connection->describeTable($metadata->getEntityTable()) as $column) {
-            $columnName = strtolower($column['COLUMN_NAME'] ?? '');
-            if ($this->canNotSetTimeStamp($columnName, $column, $data)) {
+        foreach ($connection->describe_table($metadata->get_entity_table()) as $column) {
+            $column_name = strtolower($column['COLUMN_NAME'] ?? '');
+            if ($this->can_not_set_time_stamp($column_name, $column, $data)) {
                 continue;
             }
-
-            if (isset($data[$columnName])) {
+            if (isset($data[$column_name])) {
                 $output[strtolower($column['COLUMN_NAME'] ?? '')] = $data[strtolower($column['COLUMN_NAME'] ?? '')];
             } elseif ($column['DEFAULT'] === null) {
                 $output[strtolower($column['COLUMN_NAME'])] = null;
             }
         }
-        if (empty($data[$metadata->getIdentifierField()])) {
-            $output[$metadata->getIdentifierField()] = $metadata->generateIdentifier();
+        if (empty($data[$metadata->get_identifier_field()])) {
+            $output[$metadata->get_identifier_field()] = $metadata->generate_identifier();
         }
         return $output;
     }
-
     /**
      * Method to can not set time stamp.
      *
@@ -77,12 +68,10 @@ class CreateRow
      * @param array $data
      * @return bool
      */
-    private function canNotSetTimeStamp($columnName, $column, array $data)
+    private function can_not_set_time_stamp($column_name, $column, array $data)
     {
-        return $column['DEFAULT'] == 'CURRENT_TIMESTAMP' && !isset($data[$columnName])
-        && empty($column['NULLABLE']);
+        return $column['DEFAULT'] == 'CURRENT_TIMESTAMP' && !isset($data[$column_name]) && empty($column['NULLABLE']);
     }
-
     /**
      * Method to execute.
      *
@@ -91,18 +80,16 @@ class CreateRow
      * @return array
      * @throws Exception
      */
-    public function execute($entityType, $data)
+    public function execute($entity_type, $data)
     {
-        $metadata = $this->metadataPool->getMetadata($entityType);
-        $linkField = $metadata->getLinkField();
-        $entityTable = $metadata->getEntityTable();
-        $connection = $this->resourceConnection->getConnectionByName($metadata->getEntityConnectionName());
-        $connection->insert($entityTable, $this->prepareData($metadata, $connection, $data));
-
-        if (!isset($data[$linkField]) || !$data[$linkField]) {
-            $data[$linkField] = $connection->lastInsertId($entityTable);
+        $metadata = $this->metadata_pool->get_metadata($entity_type);
+        $link_field = $metadata->get_link_field();
+        $entity_table = $metadata->get_entity_table();
+        $connection = $this->resource_connection->get_connection_by_name($metadata->get_entity_connection_name());
+        $connection->insert($entity_table, $this->prepare_data($metadata, $connection, $data));
+        if (!isset($data[$link_field]) || !$data[$link_field]) {
+            $data[$link_field] = $connection->last_insert_id($entity_table);
         }
-
         return $data;
     }
 }

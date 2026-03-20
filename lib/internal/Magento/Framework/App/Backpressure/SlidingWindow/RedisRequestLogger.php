@@ -4,81 +4,67 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Framework\App\Backpressure\Sliding_Window;
 
-namespace Magento\Framework\App\Backpressure\SlidingWindow;
-
-use Magento\Framework\App\Backpressure\ContextInterface;
-use Magento\Framework\App\Backpressure\SlidingWindow\RedisRequestLogger\RedisClient;
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\App\Backpressure\Context_Interface;
+use Magento\Framework\App\Backpressure\Sliding_Window\Redis_Request_Logger\Redis_Client;
+use Magento\Framework\App\Deployment_Config;
+use Magento\Framework\Exception\File_System_Exception;
 use Magento\Framework\Exception\RuntimeException;
-
 /**
  * Logging requests to Redis
  */
-class RedisRequestLogger implements RequestLoggerInterface
+class Redis_Request_Logger implements Request_Logger_Interface
 {
     /**
      * Identifier for Redis Logger type
      */
     public const BACKPRESSURE_LOGGER_REDIS = 'redis';
-
     /**
      * Default prefix id
      */
     private const DEFAULT_PREFIX_ID = 'reqlog';
-
     /**
      * Config path for backpressure logger id prefix
      */
     public const CONFIG_PATH_BACKPRESSURE_LOGGER_ID_PREFIX = 'backpressure/logger/id-prefix';
-
     /**
      * @var RedisClient
      */
-    private $redisClient;
-
+    private $redis_client;
     /**
      * @var DeploymentConfig
      */
-    private $deploymentConfig;
-
+    private $deployment_config;
     /**
      * @param RedisClient $redisClient
      * @param DeploymentConfig $deploymentConfig
      */
-    public function __construct(
-        RedisClient $redisClient,
-        DeploymentConfig $deploymentConfig
-    ) {
-        $this->redisClient = $redisClient;
-        $this->deploymentConfig = $deploymentConfig;
+    public function __construct(Redis_Client $redis_client, Deployment_Config $deployment_config)
+    {
+        $this->redis_client = $redis_client;
+        $this->deployment_config = $deployment_config;
     }
-
     /**
      * @inheritDoc
      */
-    public function incrAndGetFor(ContextInterface $context, int $timeSlot, int $discardAfter): int
+    public function incr_and_get_for(Context_Interface $context, int $time_slot, int $discard_after): int
     {
-        $id = $this->generateId($context, $timeSlot);
-        $this->redisClient->pipeline();
-        $this->redisClient->incrBy($id, 1);
-        $this->redisClient->expireAt($id, time() + $discardAfter);
-
-        return (int)$this->redisClient->exec()[0];
+        $id = $this->generate_id($context, $time_slot);
+        $this->redis_client->pipeline();
+        $this->redis_client->incr_by($id, 1);
+        $this->redis_client->expire_at($id, time() + $discard_after);
+        return (int) $this->redis_client->exec()[0];
     }
-
     /**
      * @inheritDoc
      */
-    public function getFor(ContextInterface $context, int $timeSlot): ?int
+    public function get_for(Context_Interface $context, int $time_slot): ?int
     {
-        $value = $this->redisClient->get($this->generateId($context, $timeSlot));
-
-        return $value ? (int)$value : null;
+        $value = $this->redis_client->get($this->generate_id($context, $time_slot));
+        return $value ? (int) $value : null;
     }
-
     /**
      * Generate cache ID based on context
      *
@@ -86,28 +72,20 @@ class RedisRequestLogger implements RequestLoggerInterface
      * @param int $timeSlot
      * @return string
      */
-    private function generateId(ContextInterface $context, int $timeSlot): string
+    private function generate_id(Context_Interface $context, int $time_slot): string
     {
-        return $this->getPrefixId()
-            . $context->getTypeId()
-            . $context->getIdentityType()
-            . $context->getIdentity()
-            . $timeSlot;
+        return $this->get_prefix_id() . $context->get_type_id() . $context->get_identity_type() . $context->get_identity() . $time_slot;
     }
-
     /**
      * Returns prefix id
      *
      * @return string
      */
-    private function getPrefixId(): string
+    private function get_prefix_id(): string
     {
         try {
-            return (string)$this->deploymentConfig->get(
-                self::CONFIG_PATH_BACKPRESSURE_LOGGER_ID_PREFIX,
-                self::DEFAULT_PREFIX_ID
-            );
-        } catch (RuntimeException | FileSystemException $e) {
+            return (string) $this->deployment_config->get(self::CONFIG_PATH_BACKPRESSURE_LOGGER_ID_PREFIX, self::DEFAULT_PREFIX_ID);
+        } catch (RuntimeException|File_System_Exception $e) {
             return self::DEFAULT_PREFIX_ID;
         }
     }

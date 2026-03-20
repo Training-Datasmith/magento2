@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -14,20 +13,19 @@ namespace Magento\Framework\Api;
  * @api
  * @since 100.0.2
  */
-interface MetadataObjectInterface
+interface Metadata_Object_Interface
 {
     /**
      * Retrieve code of the attribute.
      *
      * @return string
      */
-    public function getAttributeCode();
-
+    public function get_attribute_code();
     /**
      * Set code of the attribute.
      *
      * @param string $attributeCode
      * @return $this
      */
-    public function setAttributeCode($attributeCode);
+    public function set_attribute_code($attribute_code);
 }

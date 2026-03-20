@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data\Collection;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Data\Collection;
  *
  * @api
  */
-interface EntityFactoryInterface
+interface Entity_Factory_Interface
 {
     /**
      * Create new object instance

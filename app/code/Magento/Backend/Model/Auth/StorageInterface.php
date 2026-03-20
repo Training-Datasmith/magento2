@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model\Auth;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Backend\Model\Auth;
  * @api
  * @since 100.0.2
  */
-interface StorageInterface
+interface Storage_Interface
 {
     /**
      * Perform login specific actions
@@ -22,24 +21,21 @@ interface StorageInterface
      * @return $this
      * @abstract
      */
-    public function processLogin();
-
+    public function process_login();
     /**
      * Perform logout specific actions
      *
      * @return $this
      * @abstract
      */
-    public function processLogout();
-
+    public function process_logout();
     /**
      * Check if user is logged in
      *
      * @return bool
      * @abstract
      */
-    public function isLoggedIn();
-
+    public function is_logged_in();
     /**
      * Prolong storage lifetime
      *

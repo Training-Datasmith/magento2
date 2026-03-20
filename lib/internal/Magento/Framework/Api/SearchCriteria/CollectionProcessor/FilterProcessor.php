@@ -1,43 +1,36 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Api\Search_Criteria\Collection_Processor;
 
-namespace Magento\Framework\Api\SearchCriteria\CollectionProcessor;
-
-use Magento\Framework\Api\Search\FilterGroup;
-use Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor\CustomFilterInterface;
-use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
-use Magento\Framework\Api\SearchCriteriaInterface;
-use Magento\Framework\Data\Collection\AbstractDb;
-
-class FilterProcessor implements CollectionProcessorInterface
+use Magento\Framework\Api\Search\Filter_Group;
+use Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor\Custom_Filter_Interface;
+use Magento\Framework\Api\Search_Criteria\Collection_Processor_Interface;
+use Magento\Framework\Api\Search_Criteria_Interface;
+use Magento\Framework\Data\Collection\Abstract_Db;
+class Filter_Processor implements Collection_Processor_Interface
 {
     /**
      * @var CustomFilterInterface[]
      */
-    private $customFilters;
-
+    private $custom_filters;
     /**
      * @var array
      */
-    private $fieldMapping;
-
+    private $field_mapping;
     /**
      * @param CustomFilterInterface[] $customFilters
      * @param array $fieldMapping
      */
-    public function __construct(
-        array $customFilters = [],
-        array $fieldMapping = []
-    ) {
-        $this->customFilters = $customFilters;
-        $this->fieldMapping = $fieldMapping;
+    public function __construct(array $custom_filters = [], array $field_mapping = [])
+    {
+        $this->custom_filters = $custom_filters;
+        $this->field_mapping = $field_mapping;
     }
-
     /**
      * Apply Search Criteria Filters to collection
      *
@@ -45,13 +38,12 @@ class FilterProcessor implements CollectionProcessorInterface
      * @param AbstractDb $collection
      * @return void
      */
-    public function process(SearchCriteriaInterface $searchCriteria, AbstractDb $collection)
+    public function process(Search_Criteria_Interface $search_criteria, Abstract_Db $collection)
     {
-        foreach ($searchCriteria->getFilterGroups() as $group) {
-            $this->addFilterGroupToCollection($group, $collection);
+        foreach ($search_criteria->get_filter_groups() as $group) {
+            $this->add_filter_group_to_collection($group, $collection);
         }
     }
-
     /**
      * Add FilterGroup to the collection
      *
@@ -59,42 +51,34 @@ class FilterProcessor implements CollectionProcessorInterface
      * @param AbstractDb $collection
      * @return void
      */
-    private function addFilterGroupToCollection(
-        FilterGroup $filterGroup,
-        AbstractDb $collection
-    ) {
+    private function add_filter_group_to_collection(Filter_Group $filter_group, Abstract_Db $collection)
+    {
         $fields = [];
         $conditions = [];
-        foreach ($filterGroup->getFilters() as $filter) {
-            $isApplied = false;
-            $customFilter = $this->getCustomFilterForField($filter->getField());
-            if ($customFilter) {
-                $isApplied = $customFilter->apply($filter, $collection);
+        foreach ($filter_group->get_filters() as $filter) {
+            $is_applied = false;
+            $custom_filter = $this->get_custom_filter_for_field($filter->get_field());
+            if ($custom_filter) {
+                $is_applied = $custom_filter->apply($filter, $collection);
             }
-
-            if (!$isApplied) {
-                $condition = $filter->getConditionType() ? $filter->getConditionType() : 'eq';
-                $fields[] = $this->getFieldMapping($filter->getField());
-
+            if (!$is_applied) {
+                $condition = $filter->get_condition_type() ? $filter->get_condition_type() : 'eq';
+                $fields[] = $this->get_field_mapping($filter->get_field());
                 if ($condition === 'fulltext') {
                     // NOTE: This is not a fulltext search, but the best way to search something when
                     // a SearchCriteria with "fulltext" condition is provided over a MySQL table
                     // (see https://github.com/magento-engcom/msi/issues/1221)
                     $condition = 'like';
-                    $filter->setValue('%' . $filter->getValue() . '%');
+                    $filter->set_value('%' . $filter->get_value() . '%');
                 }
-
-                $conditions[] = [$condition => $filter->getValue()];
+                $conditions[] = [$condition => $filter->get_value()];
             }
         }
-
-        $this->checkFromTo($fields, $conditions);
-
+        $this->check_from_to($fields, $conditions);
         if ($fields) {
-            $collection->addFieldToFilter($fields, $conditions);
+            $collection->add_field_to_filter($fields, $conditions);
         }
     }
-
     /**
      * Return custom filters for field if exists
      *
@@ -102,35 +86,27 @@ class FilterProcessor implements CollectionProcessorInterface
      * @return CustomFilterInterface|null
      * @throws \InvalidArgumentException
      */
-    private function getCustomFilterForField($field)
+    private function get_custom_filter_for_field($field)
     {
         $filter = null;
-        if (isset($this->customFilters[$field])) {
-            $filter = $this->customFilters[$field];
-            if (!($this->customFilters[$field] instanceof CustomFilterInterface)) {
-                throw new \InvalidArgumentException(
-                    sprintf(
-                        'Filter for %s must implement %s interface.',
-                        $field,
-                        CustomFilterInterface::class
-                    )
-                );
+        if (isset($this->custom_filters[$field])) {
+            $filter = $this->custom_filters[$field];
+            if (!$this->custom_filters[$field] instanceof Custom_Filter_Interface) {
+                throw new \InvalidArgumentException(sprintf('Filter for %s must implement %s interface.', $field, Custom_Filter_Interface::class));
             }
         }
         return $filter;
     }
-
     /**
      * Return mapped field name
      *
      * @param string $field
      * @return string
      */
-    private function getFieldMapping($field)
+    private function get_field_mapping($field)
     {
-        return $this->fieldMapping[$field] ?? $field;
+        return $this->field_mapping[$field] ?? $field;
     }
-
     /**
      * Check filtergoup for type from & to
      *
@@ -138,16 +114,14 @@ class FilterProcessor implements CollectionProcessorInterface
      * @param array<string[]> $conditions
      * @return void
      */
-    private function checkFromTo(&$fields, &$conditions)
+    private function check_from_to(&$fields, &$conditions)
     {
         $_fields = array_unique($fields);
         $_conditions = [];
         foreach ($conditions as $condition) {
             $_conditions[array_key_first($condition)] = reset($condition);
         }
-        if ((count($_fields) == 1) && (count($_conditions) == 2)
-            && isset($_conditions['from']) && isset($_conditions['to'])
-        ) {
+        if (count($_fields) == 1 && count($_conditions) == 2 && isset($_conditions['from']) && isset($_conditions['to'])) {
             $fields = $_fields;
             $conditions = [$_conditions];
         }

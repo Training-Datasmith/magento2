@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Filter\Select;
 
 class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Filter\Select
@@ -15,20 +14,18 @@ class Extended extends \Magento\Backend\Block\Widget\Grid\Column\Filter\Select
      *
      * @return array
      */
-    protected function _getOptions()
+    protected function _get_options()
     {
-        $emptyOption = ['value' => null, 'label' => ''];
-
-        $optionGroups = $this->getColumn()->getOptionGroups();
-        if ($optionGroups) {
-            array_unshift($optionGroups, $emptyOption);
-            return $optionGroups;
+        $empty_option = ['value' => null, 'label' => ''];
+        $option_groups = $this->get_column()->get_option_groups();
+        if ($option_groups) {
+            array_unshift($option_groups, $empty_option);
+            return $option_groups;
         }
-
-        $colOptions = $this->getColumn()->getOptions();
-        if (!empty($colOptions) && is_array($colOptions)) {
-            $options = [$emptyOption];
-            foreach ($colOptions as $value => $label) {
+        $col_options = $this->get_column()->get_options();
+        if (!empty($col_options) && is_array($col_options)) {
+            $options = [$empty_option];
+            foreach ($col_options as $value => $label) {
                 $options[] = ['value' => $value, 'label' => $label];
             }
             return $options;

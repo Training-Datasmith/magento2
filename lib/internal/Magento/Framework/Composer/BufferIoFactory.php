@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Composer;
 
-use Composer\IO\BufferIO;
-
+use Composer\IO\Buffer_Io;
 /**
  * Class creates BufferIO instance
  */
-class BufferIoFactory
+class Buffer_Io_Factory
 {
     /**
      * Creates BufferIO instance
@@ -22,6 +20,6 @@ class BufferIoFactory
      */
     public function create()
     {
-        return new BufferIO();
+        return new Buffer_Io();
     }
 }

@@ -4,14 +4,12 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Frontend\Decorator;
 
-use Magento\Framework\Cache\CacheConstants;
-use Magento\Framework\Cache\FrontendInterface;
-use Magento\Framework\Cache\InvalidateLogger as LoggerHandler;
-
+use Magento\Framework\Cache\Cache_Constants;
+use Magento\Framework\Cache\Frontend_Interface;
+use Magento\Framework\Cache\Invalidate_Logger as LoggerHandler;
 /**
  * Cache frontend decorator that logs cache invalidation actions
  */
@@ -21,17 +19,15 @@ class Logger extends Bare
      * @var LoggerHandler
      */
     private $logger;
-
     /**
      * @param FrontendInterface $frontend
      * @param LoggerHandler $logger
      */
-    public function __construct(FrontendInterface $frontend, LoggerHandler $logger)
+    public function __construct(Frontend_Interface $frontend, Logger_Handler $logger)
     {
         parent::__construct($frontend);
         $this->logger = $logger;
     }
-
     /**
      * @inheritdoc
      */
@@ -41,17 +37,15 @@ class Logger extends Bare
         $this->log(compact('identifier'));
         return $result;
     }
-
     /**
      * @inheritdoc
      */
-    public function clean($mode = CacheConstants::CLEANING_MODE_ALL, array $tags = [])
+    public function clean($mode = Cache_Constants::CLEANING_MODE_ALL, array $tags = [])
     {
         $result = parent::clean($mode, $tags);
         $this->log(compact('tags', 'mode'));
         return $result;
     }
-
     /**
      * Log cache invalidation
      *

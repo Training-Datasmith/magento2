@@ -1,57 +1,49 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
-use Magento\Framework\Exception\NoSuchEntityException;
-
+use Magento\Framework\Exception\No_Such_Entity_Exception;
 /**
  * Backend grid item renderer currency
  *
  * @api
  * @since 100.0.2
  */
-class Currency extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer
+class Currency extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstract_Renderer
 {
     /**
      * @var int
      */
-    protected $_defaultWidth = 100;
-
+    protected $_default_width = 100;
     /**
      * Currency objects cache
      *
      * @var \Magento\Framework\DataObject[]
      */
     protected static $_currencies = [];
-
     /**
      * Application object
      *
      * @var \Magento\Store\Model\StoreManagerInterface
      */
-    protected $_storeManager;
-
+    protected $_store_manager;
     /**
      * @var \Magento\Directory\Model\Currency\DefaultLocator
      */
-    protected $_currencyLocator;
-
+    protected $_currency_locator;
     /**
      * @var \Magento\Directory\Model\Currency
      */
-    protected $_defaultBaseCurrency;
-
+    protected $_default_base_currency;
     /**
      * @var \Magento\Framework\Locale\CurrencyInterface
      */
-    protected $_localeCurrency;
-
+    protected $_locale_currency;
     /**
      * @param \Magento\Backend\Block\Context $context
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
@@ -60,115 +52,101 @@ class Currency extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Abstra
      * @param \Magento\Framework\Locale\CurrencyInterface $localeCurrency
      * @param array $data
      */
-    public function __construct(
-        \Magento\Backend\Block\Context $context,
-        \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Magento\Directory\Model\Currency\DefaultLocator $currencyLocator,
-        \Magento\Directory\Model\CurrencyFactory $currencyFactory,
-        \Magento\Framework\Locale\CurrencyInterface $localeCurrency,
-        array $data = []
-    ) {
+    public function __construct(\Magento\Backend\Block\Context $context, \Magento\Store\Model\Store_Manager_Interface $store_manager, \Magento\Directory\Model\Currency\Default_Locator $currency_locator, \Magento\Directory\Model\Currency_Factory $currency_factory, \Magento\Framework\Locale\Currency_Interface $locale_currency, array $data = [])
+    {
         parent::__construct($context, $data);
-        $this->_storeManager = $storeManager;
-        $this->_currencyLocator = $currencyLocator;
-        $this->_localeCurrency = $localeCurrency;
-        $defaultBaseCurrencyCode = $currencyLocator->getDefaultCurrency($this->_request);
-        $this->_defaultBaseCurrency = $currencyFactory->create()->load($defaultBaseCurrencyCode);
+        $this->_store_manager = $store_manager;
+        $this->_currency_locator = $currency_locator;
+        $this->_locale_currency = $locale_currency;
+        $default_base_currency_code = $currency_locator->get_default_currency($this->_request);
+        $this->_default_base_currency = $currency_factory->create()->load($default_base_currency_code);
     }
-
     /**
      * Renders grid column
      *
      * @param   \Magento\Framework\DataObject $row
      * @return  string
      */
-    public function render(\Magento\Framework\DataObject $row)
+    public function render(\Magento\Framework\Data_Object $row)
     {
-        if ($data = (string)$this->_getValue($row)) {
-            $currency_code = $this->_getCurrencyCode($row);
-            $sign = (bool)(int)$this->getColumn()->getShowNumberSign() && $data > 0 ? '+' : '';
+        if ($data = (string) $this->_get_value($row)) {
+            $currency_code = $this->_get_currency_code($row);
+            $sign = (bool) (int) $this->get_column()->get_show_number_sign() && $data > 0 ? '+' : '';
             $data = sprintf('%f', $data);
-            $data = $this->_localeCurrency->getCurrency($currency_code)->toCurrency($data);
+            $data = $this->_locale_currency->get_currency($currency_code)->to_currency($data);
             return $sign . $data;
         }
-        return $this->getColumn()->getDefault();
+        return $this->get_column()->get_default();
     }
-
     /**
      * Returns currency code, false on error
      *
      * @param \Magento\Framework\DataObject $row
      * @return string
      */
-    protected function _getCurrencyCode($row)
+    protected function _get_currency_code($row)
     {
-        if ($code = $this->getColumn()->getCurrencyCode()) {
+        if ($code = $this->get_column()->get_currency_code()) {
             return $code;
         }
-        $currency = $this->getColumn()->getCurrency();
-        if ($currency !== null && $code = $row->getData($currency)) {
+        $currency = $this->get_column()->get_currency();
+        if ($currency !== null && $code = $row->get_data($currency)) {
             return $code;
         }
-        $storeId = $row->getData('store_id');
-        if ($storeId) {
+        $store_id = $row->get_data('store_id');
+        if ($store_id) {
             try {
-                $store = $this->_storeManager->getStore($storeId);
+                $store = $this->_store_manager->get_store($store_id);
                 // Check if the currency is set at the store level
-                $currencyCode = $store->getCurrentCurrencyCode();
-                if ($currencyCode) {
-                    return $currencyCode;
+                $currency_code = $store->get_current_currency_code();
+                if ($currency_code) {
+                    return $currency_code;
                 }
-                $website = $store->getWebsite();
+                $website = $store->get_website();
                 // Check if the currency is set at the website level
-                $currencyCode = $website->getBaseCurrencyCode();
-                if ($currencyCode) {
-                    return $currencyCode;
+                $currency_code = $website->get_base_currency_code();
+                if ($currency_code) {
+                    return $currency_code;
                 }
-            } catch (NoSuchEntityException $e) {
-                $this->_logger->warning('Failed to get website currency: ' . $e->getMessage());
+            } catch (No_Such_Entity_Exception $e) {
+                $this->_logger->warning('Failed to get website currency: ' . $e->get_message());
             }
         }
-        return $this->_currencyLocator->getDefaultCurrency($this->_request);
+        return $this->_currency_locator->get_default_currency($this->_request);
     }
-
     /**
      * Get rate for current row, 1 by default
      *
      * @param \Magento\Framework\DataObject $row
      * @return float|int
      */
-    protected function _getRate($row)
+    protected function _get_rate($row)
     {
-        if ($rate = $this->getColumn()->getRate()) {
+        if ($rate = $this->get_column()->get_rate()) {
             return (float) $rate;
         }
-        $rateField = $this->getColumn()->getRateField();
-
-        if ($rateField !== null && $rate = $row->getData($rateField)) {
+        $rate_field = $this->get_column()->get_rate_field();
+        if ($rate_field !== null && $rate = $row->get_data($rate_field)) {
             return (float) $rate;
         }
-
-        $storeId = $row->getData('store_id');
-        if ($storeId) {
+        $store_id = $row->get_data('store_id');
+        if ($store_id) {
             try {
-                $store = $this->_storeManager->getStore($storeId);
-                return $store->getBaseCurrency()->getRate($store->getCurrentCurrencyCode());
-            } catch (NoSuchEntityException $e) {
-                $this->_logger->warning('Failed to get website currency: ' . $e->getMessage());
+                $store = $this->_store_manager->get_store($store_id);
+                return $store->get_base_currency()->get_rate($store->get_current_currency_code());
+            } catch (No_Such_Entity_Exception $e) {
+                $this->_logger->warning('Failed to get website currency: ' . $e->get_message());
             }
-
         }
-
-        return $this->_defaultBaseCurrency->getRate($this->_getCurrencyCode($row));
+        return $this->_default_base_currency->get_rate($this->_get_currency_code($row));
     }
-
     /**
      * Returns HTML for CSS
      *
      * @return string
      */
-    public function renderCss()
+    public function render_css()
     {
-        return parent::renderCss() . ' a-right';
+        return parent::render_css() . ' a-right';
     }
 }

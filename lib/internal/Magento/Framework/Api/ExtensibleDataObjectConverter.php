@@ -1,34 +1,30 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
-use Magento\Framework\Convert\ConvertArray;
-use Magento\Framework\Reflection\DataObjectProcessor;
-
+use Magento\Framework\Convert\Convert_Array;
+use Magento\Framework\Reflection\Data_Object_Processor;
 /**
  * Class to convert Extensible Data Object array to flat array
  */
-class ExtensibleDataObjectConverter
+class Extensible_Data_Object_Converter
 {
     /**
      * @var DataObjectProcessor
      */
-    protected $dataObjectProcessor;
-
+    protected $data_object_processor;
     /**
      * @param DataObjectProcessor $dataObjectProcessor
      */
-    public function __construct(DataObjectProcessor $dataObjectProcessor)
+    public function __construct(Data_Object_Processor $data_object_processor)
     {
-        $this->dataObjectProcessor = $dataObjectProcessor;
+        $this->data_object_processor = $data_object_processor;
     }
-
     /**
      * Convert AbstractExtensibleObject into a nested array.
      *
@@ -37,31 +33,26 @@ class ExtensibleDataObjectConverter
      * @param string $dataObjectType
      * @return array
      */
-    public function toNestedArray(
-        ExtensibleDataInterface $dataObject,
-        $skipAttributes = [],
-        $dataObjectType = null
-    ) {
-        if ($dataObjectType == null) {
-            $dataObjectType = get_class($dataObject);
+    public function to_nested_array(Extensible_Data_Interface $data_object, $skip_attributes = [], $data_object_type = null)
+    {
+        if ($data_object_type == null) {
+            $data_object_type = get_class($data_object);
         }
-        $dataObjectArray = $this->dataObjectProcessor->buildOutputDataArray($dataObject, $dataObjectType);
+        $data_object_array = $this->data_object_processor->build_output_data_array($data_object, $data_object_type);
         //process custom attributes if present
-        $dataObjectArray = $this->processCustomAttributes($dataObjectArray, $skipAttributes);
-
-        if (!empty($dataObjectArray[ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY])) {
+        $data_object_array = $this->process_custom_attributes($data_object_array, $skip_attributes);
+        if (!empty($data_object_array[Extensible_Data_Interface::EXTENSION_ATTRIBUTES_KEY])) {
             /** @var array $extensionAttributes */
-            $extensionAttributes = $dataObjectArray[ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY];
-            unset($dataObjectArray[ExtensibleDataInterface::EXTENSION_ATTRIBUTES_KEY]);
-            foreach ($extensionAttributes as $attributeKey => $attributeValue) {
-                if (!in_array($attributeKey, $skipAttributes)) {
-                    $dataObjectArray[$attributeKey] = $attributeValue;
+            $extension_attributes = $data_object_array[Extensible_Data_Interface::EXTENSION_ATTRIBUTES_KEY];
+            unset($data_object_array[Extensible_Data_Interface::EXTENSION_ATTRIBUTES_KEY]);
+            foreach ($extension_attributes as $attribute_key => $attribute_value) {
+                if (!in_array($attribute_key, $skip_attributes)) {
+                    $data_object_array[$attribute_key] = $attribute_value;
                 }
             }
         }
-        return $dataObjectArray;
+        return $data_object_array;
     }
-
     /**
      * Recursive process array to process customer attributes
      *
@@ -69,27 +60,25 @@ class ExtensibleDataObjectConverter
      * @param array $skipAttributes
      * @return array
      */
-    private function processCustomAttributes(array $dataObjectArray, array $skipAttributes): array
+    private function process_custom_attributes(array $data_object_array, array $skip_attributes): array
     {
-        if (!empty($dataObjectArray[AbstractExtensibleObject::CUSTOM_ATTRIBUTES_KEY])) {
+        if (!empty($data_object_array[Abstract_Extensible_Object::CUSTOM_ATTRIBUTES_KEY])) {
             /** @var AttributeValue[] $customAttributes */
-            $customAttributes = $dataObjectArray[AbstractExtensibleObject::CUSTOM_ATTRIBUTES_KEY];
-            unset($dataObjectArray[AbstractExtensibleObject::CUSTOM_ATTRIBUTES_KEY]);
-            foreach ($customAttributes as $attributeValue) {
-                if (!in_array($attributeValue[AttributeValue::ATTRIBUTE_CODE], $skipAttributes)) {
-                    $dataObjectArray[$attributeValue[AttributeValue::ATTRIBUTE_CODE]]
-                        = $attributeValue[AttributeValue::VALUE];
+            $custom_attributes = $data_object_array[Abstract_Extensible_Object::CUSTOM_ATTRIBUTES_KEY];
+            unset($data_object_array[Abstract_Extensible_Object::CUSTOM_ATTRIBUTES_KEY]);
+            foreach ($custom_attributes as $attribute_value) {
+                if (!in_array($attribute_value[Attribute_Value::ATTRIBUTE_CODE], $skip_attributes)) {
+                    $data_object_array[$attribute_value[Attribute_Value::ATTRIBUTE_CODE]] = $attribute_value[Attribute_Value::VALUE];
                 }
             }
         }
-        foreach ($dataObjectArray as $key => $value) {
+        foreach ($data_object_array as $key => $value) {
             if (is_array($value)) {
-                $dataObjectArray[$key] = $this->processCustomAttributes($value, $skipAttributes);
+                $data_object_array[$key] = $this->process_custom_attributes($value, $skip_attributes);
             }
         }
-        return $dataObjectArray;
+        return $data_object_array;
     }
-
     /**
      * Convert AbstractExtensibleObject into flat array.
      *
@@ -98,26 +87,20 @@ class ExtensibleDataObjectConverter
      * @param string $dataObjectType
      * @return array
      */
-    public function toFlatArray(
-        ExtensibleDataInterface $dataObject,
-        $skipCustomAttributes = [],
-        $dataObjectType = null
-    ) {
-        $dataObjectArray = $this->toNestedArray($dataObject, $skipCustomAttributes, $dataObjectType);
-        return ConvertArray::toFlatArray($dataObjectArray);
+    public function to_flat_array(Extensible_Data_Interface $data_object, $skip_custom_attributes = [], $data_object_type = null)
+    {
+        $data_object_array = $this->to_nested_array($data_object, $skip_custom_attributes, $data_object_type);
+        return Convert_Array::to_flat_array($data_object_array);
     }
-
     /**
      * Convert Extensible Data Object custom attributes in sequential array format.
      *
      * @param array $extensibleObjectData
      * @return array
      */
-    public static function convertCustomAttributesToSequentialArray($extensibleObjectData)
+    public static function convert_custom_attributes_to_sequential_array($extensible_object_data)
     {
-        $extensibleObjectData[AbstractExtensibleObject::CUSTOM_ATTRIBUTES_KEY] = array_values(
-            $extensibleObjectData[AbstractExtensibleObject::CUSTOM_ATTRIBUTES_KEY]
-        );
-        return $extensibleObjectData;
+        $extensible_object_data[Abstract_Extensible_Object::CUSTOM_ATTRIBUTES_KEY] = array_values($extensible_object_data[Abstract_Extensible_Object::CUSTOM_ATTRIBUTES_KEY]);
+        return $extensible_object_data;
     }
 }

@@ -1,78 +1,70 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Config;
 
-use Magento\Framework\App\AreaList;
-
+use Magento\Framework\App\Area_List;
 /**
  * Scope config
  */
-class Scope implements ScopeInterface, ScopeListInterface
+class Scope implements Scope_Interface, Scope_List_Interface
 {
     /**
      * Current config scope
      *
      * @var string
      */
-    protected $_currentScope;
-
+    protected $_current_scope;
     /**
      * List of all available areas
      *
      * @var AreaList
      */
-    protected $_areaList;
-
+    protected $_area_list;
     /**
      * Constructor
      *
      * @param AreaList $areaList
      * @param string $defaultScope
      */
-    public function __construct(AreaList $areaList, $defaultScope = 'primary')
+    public function __construct(Area_List $area_list, $default_scope = 'primary')
     {
-        $this->_currentScope = $defaultScope;
-        $this->_areaList = $areaList;
+        $this->_current_scope = $default_scope;
+        $this->_area_list = $area_list;
     }
-
     /**
      * Get current configuration scope identifier
      *
      * @return string
      */
-    public function getCurrentScope()
+    public function get_current_scope()
     {
-        return $this->_currentScope;
+        return $this->_current_scope;
     }
-
     /**
      * Set current configuration scope
      *
      * @param string $scope
      * @return void
      */
-    public function setCurrentScope($scope)
+    public function set_current_scope($scope)
     {
-        $this->_currentScope = $scope;
+        $this->_current_scope = $scope;
     }
-
     /**
      * Retrieve list of available config scopes
      *
      * @return string[]
      */
-    public function getAllScopes()
+    public function get_all_scopes()
     {
-        $codes = $this->_areaList->getCodes();
+        $codes = $this->_area_list->get_codes();
         array_unshift($codes, 'global');
         array_unshift($codes, 'primary');
-
         return $codes;
     }
 }

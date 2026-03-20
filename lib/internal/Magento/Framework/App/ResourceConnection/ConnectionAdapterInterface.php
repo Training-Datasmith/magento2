@@ -4,20 +4,18 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Framework\App\Resource_Connection;
 
-namespace Magento\Framework\App\ResourceConnection;
-
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\DB\LoggerInterface;
-use Magento\Framework\DB\SelectFactory;
-
+use Magento\Framework\DB\Adapter\Adapter_Interface;
+use Magento\Framework\DB\Logger_Interface;
+use Magento\Framework\DB\Select_Factory;
 /**
  * Connection adapter interface
  *
  * @api
  */
-interface ConnectionAdapterInterface
+interface Connection_Adapter_Interface
 {
     /**
      * Get connection
@@ -27,5 +25,5 @@ interface ConnectionAdapterInterface
      * @return AdapterInterface
      * @throws \InvalidArgumentException
      */
-    public function getConnection(?LoggerInterface $logger = null, ?SelectFactory $selectFactory = null);
+    public function get_connection(?Logger_Interface $logger = null, ?Select_Factory $select_factory = null);
 }

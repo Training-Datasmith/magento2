@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Filesystem\Directory;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Framework\Filesystem\Directory;
  * @api
  * @since 100.0.2
  */
-interface WriteInterface extends ReadInterface
+interface Write_Interface extends Read_Interface
 {
     /**
      * Create directory if it does not exists
@@ -23,7 +22,6 @@ interface WriteInterface extends ReadInterface
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function create($path = null);
-
     /**
      * Delete given path
      *
@@ -32,7 +30,6 @@ interface WriteInterface extends ReadInterface
      * @throws \Magento\Framework\Exception\FileSystemException
      */
     public function delete($path = null);
-
     /**
      * Rename a file
      *
@@ -42,8 +39,7 @@ interface WriteInterface extends ReadInterface
      * @return bool
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function renameFile($path, $newPath, ?WriteInterface $targetDirectory = null);
-
+    public function rename_file($path, $new_path, ?Write_Interface $target_directory = null);
     /**
      * Copy a file
      *
@@ -53,8 +49,7 @@ interface WriteInterface extends ReadInterface
      * @return bool
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function copyFile($path, $destination, ?WriteInterface $targetDirectory = null);
-
+    public function copy_file($path, $destination, ?Write_Interface $target_directory = null);
     /**
      * Creates symlink on a file or directory and places it to destination
      *
@@ -64,8 +59,7 @@ interface WriteInterface extends ReadInterface
      * @return bool
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function createSymlink($path, $destination, ?WriteInterface $targetDirectory = null);
-
+    public function create_symlink($path, $destination, ?Write_Interface $target_directory = null);
     /**
      * Change permissions of given path
      *
@@ -74,8 +68,7 @@ interface WriteInterface extends ReadInterface
      * @return bool
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function changePermissions($path, $permissions);
-
+    public function change_permissions($path, $permissions);
     /**
      * Change permissions of given path
      *
@@ -85,8 +78,7 @@ interface WriteInterface extends ReadInterface
      * @return bool
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function changePermissionsRecursively($path, $dirPermissions, $filePermissions);
-
+    public function change_permissions_recursively($path, $dir_permissions, $file_permissions);
     /**
      * Sets access and modification time of file.
      *
@@ -95,16 +87,14 @@ interface WriteInterface extends ReadInterface
      * @return bool
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function touch($path, $modificationTime = null);
-
+    public function touch($path, $modification_time = null);
     /**
      * Check if given path is writable
      *
      * @param string $path [optional]
      * @return bool
      */
-    public function isWritable($path = null);
-
+    public function is_writable($path = null);
     /**
      * Open file in given mode
      *
@@ -112,8 +102,7 @@ interface WriteInterface extends ReadInterface
      * @param string $mode
      * @return \Magento\Framework\Filesystem\File\WriteInterface
      */
-    public function openFile($path, $mode = 'w');
-
+    public function open_file($path, $mode = 'w');
     /**
      * Open file in given path
      *
@@ -123,12 +112,11 @@ interface WriteInterface extends ReadInterface
      * @return int The number of bytes that were written.
      * @throws \Magento\Framework\Exception\FileSystemException
      */
-    public function writeFile($path, $content, $mode = null);
-
+    public function write_file($path, $content, $mode = null);
     /**
      * Get driver
      *
      * @return \Magento\Framework\Filesystem\DriverInterface
      */
-    public function getDriver();
+    public function get_driver();
 }

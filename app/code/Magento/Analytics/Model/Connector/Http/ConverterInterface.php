@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model\Connector\Http;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Analytics\Model\Connector\Http;
  * @api
  * @since 100.2.0
  */
-interface ConverterInterface
+interface Converter_Interface
 {
     /**
      * Unserialize data
@@ -23,28 +22,25 @@ interface ConverterInterface
      * @return array
      * @since 100.2.0
      */
-    public function fromBody($body);
-
+    public function from_body($body);
     /**
      * Serialize data
      *
      * @return string
      * @since 100.2.0
      */
-    public function toBody(array $data);
-
+    public function to_body(array $data);
     /**
      * Retrieve content type
      *
      * @return string
      * @since 100.2.0
      */
-    public function getContentTypeHeader();
-
+    public function get_content_type_header();
     /**
      * Retrieve content media
      *
      * @since 100.3.0
      */
-    public function getContentMediaType(): string;
+    public function get_content_media_type(): string;
 }

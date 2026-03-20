@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Catalog\Api;
  * @api
  * @since 100.0.2
  */
-interface CategoryAttributeRepositoryInterface extends \Magento\Framework\Api\MetadataServiceInterface
+interface Category_Attribute_Repository_Interface extends \Magento\Framework\Api\Metadata_Service_Interface
 {
     /**
      * Retrieve all attributes for entity type
@@ -21,13 +20,12 @@ interface CategoryAttributeRepositoryInterface extends \Magento\Framework\Api\Me
      * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
      * @return \Magento\Catalog\Api\Data\CategoryAttributeSearchResultsInterface
      */
-    public function getList(\Magento\Framework\Api\SearchCriteriaInterface $searchCriteria);
-
+    public function get_list(\Magento\Framework\Api\Search_Criteria_Interface $search_criteria);
     /**
      * Retrieve specific attribute
      *
      * @param string $attributeCode
      * @return \Magento\Catalog\Api\Data\CategoryAttributeInterface
      */
-    public function get($attributeCode);
+    public function get($attribute_code);
 }

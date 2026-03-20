@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model\Config\Backend;
 
-use Magento\Framework\Exception\LocalizedException;
-
+use Magento\Framework\Exception\Localized_Exception;
 /**
  * A backend model for verticals configuration.
  */
@@ -24,12 +22,11 @@ class Vertical extends \Magento\Framework\App\Config\Value
      * @return $this
      * @throws LocalizedException if the value of the selected vertical is empty.
      */
-    public function beforeSave(): static
+    public function before_save(): static
     {
-        if (empty($this->getValue())) {
-            throw new LocalizedException(__('Please select an industry.'));
+        if (empty($this->get_value())) {
+            throw new Localized_Exception(__('Please select an industry.'));
         }
-
         return $this;
     }
 }

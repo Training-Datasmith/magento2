@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Api;
 
 /**
@@ -14,21 +13,19 @@ namespace Magento\Framework\Api;
  * @api
  * @since 100.0.2
  */
-interface CustomAttributesDataInterface extends ExtensibleDataInterface
+interface Custom_Attributes_Data_Interface extends Extensible_Data_Interface
 {
     /**
      * Array key for custom attributes
      */
     public const CUSTOM_ATTRIBUTES = 'custom_attributes';
-
     /**
      * Get an attribute value.
      *
      * @param string $attributeCode
      * @return \Magento\Framework\Api\AttributeInterface|null
      */
-    public function getCustomAttribute($attributeCode);
-
+    public function get_custom_attribute($attribute_code);
     /**
      * Set an attribute value for a given attribute code
      *
@@ -36,15 +33,13 @@ interface CustomAttributesDataInterface extends ExtensibleDataInterface
      * @param mixed $attributeValue
      * @return $this
      */
-    public function setCustomAttribute($attributeCode, $attributeValue);
-
+    public function set_custom_attribute($attribute_code, $attribute_value);
     /**
      * Retrieve custom attributes values.
      *
      * @return \Magento\Framework\Api\AttributeInterface[]|null
      */
-    public function getCustomAttributes();
-
+    public function get_custom_attributes();
     /**
      * Set array of custom attributes
      *
@@ -52,5 +47,5 @@ interface CustomAttributesDataInterface extends ExtensibleDataInterface
      * @return $this
      * @throws \LogicException
      */
-    public function setCustomAttributes(array $attributes);
+    public function set_custom_attributes(array $attributes);
 }

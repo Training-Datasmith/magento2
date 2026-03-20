@@ -4,8 +4,7 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Data;
 
 /**
@@ -13,24 +12,22 @@ namespace Magento\Framework\Data;
  *
  * @api
  */
-interface SearchResultInterface
+interface Search_Result_Interface
 {
     /**
      * Retrieve collection items
      *
      * @return \Magento\Framework\DataObject[]
      */
-    public function getItems();
-
+    public function get_items();
     /**
      * Retrieve count of currently loaded items
      *
      * @return int
      */
-    public function getTotalCount();
-
+    public function get_total_count();
     /**
      * @return \Magento\Framework\Api\CriteriaInterface
      */
-    public function getSearchCriteria();
+    public function get_search_criteria();
 }

@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdvancedSearch\Block\Adminhtml\Search;
+namespace Magento\Advanced_Search\Block\Adminhtml\Search;
 
 /**
  * Search query relations edit grid
@@ -16,73 +15,63 @@ namespace Magento\AdvancedSearch\Block\Adminhtml\Search;
  */
 class Grid extends \Magento\Backend\Block\Widget\Grid
 {
-    public function __construct(
-        \Magento\Backend\Block\Template\Context $context,
-        \Magento\Backend\Helper\Data $backendHelper,
-        protected \Magento\AdvancedSearch\Model\Adminhtml\Search\Grid\Options $_options,
-        protected \Magento\Framework\Registry $_registryManager,
-        protected \Magento\Framework\Json\Helper\Data $jsonHelper,
-        array $data = []
-    ) {
-        parent::__construct($context, $backendHelper, $data);
-        $this->setDefaultFilter(['query_id_selected' => 1]);
+    public function __construct(\Magento\Backend\Block\Template\Context $context, \Magento\Backend\Helper\Data $backend_helper, protected \Magento\Advanced_Search\Model\Adminhtml\Search\Grid\Options $_options, protected \Magento\Framework\Registry $_registry_manager, protected \Magento\Framework\Json\Helper\Data $json_helper, array $data = [])
+    {
+        parent::__construct($context, $backend_helper, $data);
+        $this->set_default_filter(['query_id_selected' => 1]);
     }
-
     /**
      *  Retrieve a value from registry by a key
      *
      * @return mixed
      */
-    public function getQuery()
+    public function get_query()
     {
-        return $this->_registryManager->registry('current_catalog_search');
+        return $this->_registry_manager->registry('current_catalog_search');
     }
-
     /**
      * Add column filter to collection
      *
      * @param \Magento\Backend\Block\Widget\Grid\Column $column
      * @return $this
      */
-    protected function _addColumnFilterToCollection($column): static
+    protected function _add_column_filter_to_collection($column): static
     {
         // Set custom filter for query selected flag
-        if ($column->getId() == 'query_id_selected' && $this->getQuery()->getId()) {
-            $selectedIds = $this->getSelectedQueries();
-            if (empty($selectedIds)) {
-                $selectedIds = 0;
+        if ($column->get_id() == 'query_id_selected' && $this->get_query()->get_id()) {
+            $selected_ids = $this->get_selected_queries();
+            if (empty($selected_ids)) {
+                $selected_ids = 0;
             }
-            if ($column->getFilter()->getValue()) {
-                $this->getCollection()->addFieldToFilter('query_id', ['in' => $selectedIds]);
-            } elseif (!empty($selectedIds)) {
-                $this->getCollection()->addFieldToFilter('query_id', ['nin' => $selectedIds]);
+            if ($column->get_filter()->get_value()) {
+                $this->get_collection()->add_field_to_filter('query_id', ['in' => $selected_ids]);
+            } elseif (!empty($selected_ids)) {
+                $this->get_collection()->add_field_to_filter('query_id', ['nin' => $selected_ids]);
             }
         } else {
-            parent::_addColumnFilterToCollection($column);
+            parent::_add_column_filter_to_collection($column);
         }
         return $this;
     }
-
     /**
      * Retrieve selected related queries from grid
      *
      * @return array
      */
-    public function getSelectedQueries()
+    public function get_selected_queries()
     {
-        return $this->_options->toOptionArray();
+        return $this->_options->to_option_array();
     }
-
     /**
      * Get queries json
      *
      * @return string
      */
-    public function getQueriesJson()
+    public function get_queries_json()
     {
-        $queries = array_flip($this->getSelectedQueries());
+        $queries = array_flip($this->get_selected_queries());
         if (!empty($queries)) {
-            return $this->jsonHelper->jsonEncode($queries);
+            return $this->json_helper->json_encode($queries);
         }
         return '{}';
     }

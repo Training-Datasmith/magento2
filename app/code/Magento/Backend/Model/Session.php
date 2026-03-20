@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Model;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Backend\Model;
  * @api
  * @since 100.0.2
  */
-class Session extends \Magento\Framework\Session\SessionManager
+class Session extends \Magento\Framework\Session\Session_Manager
 {
     /**
      * Skip path validation in backend area
@@ -23,7 +22,7 @@ class Session extends \Magento\Framework\Session\SessionManager
      * @return bool
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public function isValidForPath($path)
+    public function is_valid_for_path($path)
     {
         return true;
     }

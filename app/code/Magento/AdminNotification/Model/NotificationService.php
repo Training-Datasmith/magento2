@@ -1,12 +1,11 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Model;
+namespace Magento\Admin_Notification\Model;
 
 /**
  * Notification service model
@@ -14,26 +13,25 @@ namespace Magento\AdminNotification\Model;
  * @api
  * @since 100.0.2
  */
-class NotificationService
+class Notification_Service
 {
-    public function __construct(protected \Magento\AdminNotification\Model\InboxFactory $_notificationFactory)
+    public function __construct(protected \Magento\Admin_Notification\Model\Inbox_Factory $_notification_factory)
     {
     }
-
     /**
      * Mark notification as read
      *
      * @param int $notificationId
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function markAsRead($notificationId): void
+    public function mark_as_read($notification_id): void
     {
-        $notification = $this->_notificationFactory->create();
-        $notification->load($notificationId);
-        if (!$notification->getId()) {
-            throw new \Magento\Framework\Exception\LocalizedException(__('Wrong notification ID specified.'));
+        $notification = $this->_notification_factory->create();
+        $notification->load($notification_id);
+        if (!$notification->get_id()) {
+            throw new \Magento\Framework\Exception\Localized_Exception(__('Wrong notification ID specified.'));
         }
-        $notification->setIsRead(1);
+        $notification->set_is_read(1);
         $notification->save();
     }
 }

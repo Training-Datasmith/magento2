@@ -1,19 +1,17 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid;
 
 use Magento\Backend\Block\Template\Context;
-use Magento\Framework\App\ObjectManager;
-use Magento\Framework\AuthorizationInterface;
-use Magento\Framework\DataObject;
-use Magento\Framework\Json\EncoderInterface;
-
+use Magento\Framework\App\Object_Manager;
+use Magento\Framework\Authorization_Interface;
+use Magento\Framework\Data_Object;
+use Magento\Framework\Json\Encoder_Interface;
 /**
  * Grid widget massaction default block
  *
@@ -22,25 +20,19 @@ use Magento\Framework\Json\EncoderInterface;
  * @since 100.0.2
  * @see MAGETWO-67718
  */
-class Massaction extends \Magento\Backend\Block\Widget\Grid\Massaction\AbstractMassaction
+class Massaction extends \Magento\Backend\Block\Widget\Grid\Massaction\Abstract_Massaction
 {
     /**
      * @var AuthorizationInterface
      */
     private $authorization;
-
     /**
      * Map bind item id to a particular acl type
      * itemId => acl
      *
      * @var array
      */
-    private $restrictions = [
-        'enable'  => 'Magento_Backend::toggling_cache_type',
-        'disable' => 'Magento_Backend::toggling_cache_type',
-        'refresh' => 'Magento_Backend::refresh_cache_type',
-    ];
-
+    private $restrictions = ['enable' => 'Magento_Backend::toggling_cache_type', 'disable' => 'Magento_Backend::toggling_cache_type', 'refresh' => 'Magento_Backend::refresh_cache_type'];
     /**
      * Massaction constructor.
      *
@@ -49,17 +41,11 @@ class Massaction extends \Magento\Backend\Block\Widget\Grid\Massaction\AbstractM
      * @param array $data
      * @param AuthorizationInterface $authorization
      */
-    public function __construct(
-        Context $context,
-        EncoderInterface $jsonEncoder,
-        array $data = [],
-        ?AuthorizationInterface $authorization = null
-    ) {
-        $this->authorization = $authorization ?: ObjectManager::getInstance()->get(AuthorizationInterface::class);
-
-        parent::__construct($context, $jsonEncoder, $data);
+    public function __construct(Context $context, Encoder_Interface $json_encoder, array $data = [], ?Authorization_Interface $authorization = null)
+    {
+        $this->authorization = $authorization ?: Object_Manager::get_instance()->get(Authorization_Interface::class);
+        parent::__construct($context, $json_encoder, $data);
     }
-
     /**
      * @inheritdoc
      *
@@ -69,15 +55,13 @@ class Massaction extends \Magento\Backend\Block\Widget\Grid\Massaction\AbstractM
      * @return $this
      * @since 100.2.3
      */
-    public function addItem($itemId, $item)
+    public function add_item($item_id, $item)
     {
-        if (!$this->isRestricted($itemId)) {
-            parent::addItem($itemId, $item);
+        if (!$this->is_restricted($item_id)) {
+            parent::add_item($item_id, $item);
         }
-
         return $this;
     }
-
     /**
      * Check if access to action restricted
      *
@@ -85,12 +69,11 @@ class Massaction extends \Magento\Backend\Block\Widget\Grid\Massaction\AbstractM
      *
      * @return bool
      */
-    private function isRestricted(string $itemId): bool
+    private function is_restricted(string $item_id): bool
     {
-        if (!key_exists($itemId, $this->restrictions)) {
+        if (!key_exists($item_id, $this->restrictions)) {
             return false;
         }
-
-        return !$this->authorization->isAllowed($this->restrictions[$itemId]);
+        return !$this->authorization->is_allowed($this->restrictions[$item_id]);
     }
 }

@@ -4,48 +4,41 @@
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Bundle\Pricing\Price;
 
 use Magento\Bundle\Model\Product\Price;
-use Magento\Catalog\Api\ProductCustomOptionRepositoryInterface;
+use Magento\Catalog\Api\Product_Custom_Option_Repository_Interface;
 use Magento\Catalog\Model\Product;
-use Magento\Catalog\Pricing\Price\CustomOptionPrice;
-use Magento\Framework\Pricing\Adjustment\CalculatorInterface;
-use Magento\Framework\Pricing\Amount\AmountInterface;
-use Magento\Framework\Pricing\PriceCurrencyInterface;
-
+use Magento\Catalog\Pricing\Price\Custom_Option_Price;
+use Magento\Framework\Pricing\Adjustment\Calculator_Interface;
+use Magento\Framework\Pricing\Amount\Amount_Interface;
+use Magento\Framework\Pricing\Price_Currency_Interface;
 /**
  * Final price model
  */
-class FinalPrice extends \Magento\Catalog\Pricing\Price\FinalPrice implements FinalPriceInterface
+class Final_Price extends \Magento\Catalog\Pricing\Price\Final_Price implements Final_Price_Interface
 {
     /**
      * @var AmountInterface
      */
-    protected $maximalPrice;
-
+    protected $maximal_price;
     /**
      * @var AmountInterface
      */
-    protected $minimalPrice;
-
+    protected $minimal_price;
     /**
      * @var AmountInterface
      */
-    protected $priceWithoutOption;
-
+    protected $price_without_option;
     /**
      * @var BundleOptionPrice
      */
-    protected $bundleOptionPrice;
-
+    protected $bundle_option_price;
     /**
      * @var ProductCustomOptionRepositoryInterface
      */
-    private $productOptionRepository;
-
+    private $product_option_repository;
     /**
      * @param Product $saleableItem
      * @param float $quantity
@@ -53,117 +46,104 @@ class FinalPrice extends \Magento\Catalog\Pricing\Price\FinalPrice implements Fi
      * @param PriceCurrencyInterface $priceCurrency
      * @param ProductCustomOptionRepositoryInterface $productOptionRepository
      */
-    public function __construct(
-        Product $saleableItem,
-        $quantity,
-        CalculatorInterface $calculator,
-        PriceCurrencyInterface $priceCurrency,
-        ProductCustomOptionRepositoryInterface $productOptionRepository
-    ) {
-        parent::__construct($saleableItem, $quantity, $calculator, $priceCurrency);
-        $this->productOptionRepository = $productOptionRepository;
+    public function __construct(Product $saleable_item, $quantity, Calculator_Interface $calculator, Price_Currency_Interface $price_currency, Product_Custom_Option_Repository_Interface $product_option_repository)
+    {
+        parent::__construct($saleable_item, $quantity, $calculator, $price_currency);
+        $this->product_option_repository = $product_option_repository;
     }
-
     /**
      * Returns price value
      *
      * @return float
      */
-    public function getValue()
+    public function get_value()
     {
-        return parent::getValue() + $this->getBundleOptionPrice()->getValue();
+        return parent::get_value() + $this->get_bundle_option_price()->get_value();
     }
-
     /**
      * Returns max price
      *
      * @return AmountInterface
      */
-    public function getMaximalPrice()
+    public function get_maximal_price()
     {
-        if (!$this->maximalPrice) {
-            $price = $this->getBasePrice()->getValue();
-            if ($this->product->getPriceType() == Price::PRICE_TYPE_FIXED) {
+        if (!$this->maximal_price) {
+            $price = $this->get_base_price()->get_value();
+            if ($this->product->get_price_type() == Price::PRICE_TYPE_FIXED) {
                 /** @var CustomOptionPrice $customOptionPrice */
-                $customOptionPrice = $this->priceInfo->getPrice(CustomOptionPrice::PRICE_CODE);
-                $price += $customOptionPrice->getCustomOptionRange(false);
+                $custom_option_price = $this->price_info->get_price(Custom_Option_Price::PRICE_CODE);
+                $price += $custom_option_price->get_custom_option_range(false);
             }
-            $this->maximalPrice = $this->calculator->getMaxAmount($price, $this->product);
+            $this->maximal_price = $this->calculator->get_max_amount($price, $this->product);
         }
-
-        return $this->maximalPrice;
+        return $this->maximal_price;
     }
-
     /**
      * Returns min price
      *
      * @return AmountInterface
      */
-    public function getMinimalPrice()
+    public function get_minimal_price()
     {
-        return $this->getAmount();
+        return $this->get_amount();
     }
-
     /**
      * Returns price amount
      *
      * @return AmountInterface
      */
-    public function getAmount()
+    public function get_amount()
     {
-        if (!$this->minimalPrice) {
-            $price = parent::getValue();
-            if ($this->product->getPriceType() == Price::PRICE_TYPE_FIXED) {
-                $this->loadProductCustomOptions();
+        if (!$this->minimal_price) {
+            $price = parent::get_value();
+            if ($this->product->get_price_type() == Price::PRICE_TYPE_FIXED) {
+                $this->load_product_custom_options();
                 /** @var CustomOptionPrice $customOptionPrice */
-                $customOptionPrice = $this->priceInfo->getPrice(CustomOptionPrice::PRICE_CODE);
-                $price += $customOptionPrice->getCustomOptionRange(true);
+                $custom_option_price = $this->price_info->get_price(Custom_Option_Price::PRICE_CODE);
+                $price += $custom_option_price->get_custom_option_range(true);
             }
-            $this->minimalPrice = $this->calculator->getAmount($price, $this->product);
+            $this->minimal_price = $this->calculator->get_amount($price, $this->product);
         }
-        return $this->minimalPrice;
+        return $this->minimal_price;
     }
-
     /**
      * Load product custom options
      *
      * @return void
      */
-    private function loadProductCustomOptions()
+    private function load_product_custom_options()
     {
-        if (!$this->product->getOptions()) {
+        if (!$this->product->get_options()) {
             $options = [];
-            foreach ($this->productOptionRepository->getProductOptions($this->product) as $option) {
-                $option->setProduct($this->product);
+            foreach ($this->product_option_repository->get_product_options($this->product) as $option) {
+                $option->set_product($this->product);
                 $options[] = $option;
             }
-            $this->product->setOptions($options);
+            $this->product->set_options($options);
         }
     }
-
     /**
      * Get bundle product price without any option
      *
      * @return AmountInterface
      */
-    public function getPriceWithoutOption()
+    public function get_price_without_option()
     {
-        if (!$this->priceWithoutOption) {
-            $this->priceWithoutOption = $this->calculator->getAmountWithoutOption(parent::getValue(), $this->product);
+        if (!$this->price_without_option) {
+            $this->price_without_option = $this->calculator->get_amount_without_option(parent::get_value(), $this->product);
         }
-        return $this->priceWithoutOption;
+        return $this->price_without_option;
     }
-
     /**
      * Returns option price
      *
      * @return BundleOptionPrice
      */
-    protected function getBundleOptionPrice()
+    protected function get_bundle_option_price()
     {
-        if (!$this->bundleOptionPrice) {
-            $this->bundleOptionPrice = $this->priceInfo->getPrice(BundleOptionPrice::PRICE_CODE);
+        if (!$this->bundle_option_price) {
+            $this->bundle_option_price = $this->price_info->get_price(Bundle_Option_Price::PRICE_CODE);
         }
-        return $this->bundleOptionPrice;
+        return $this->bundle_option_price;
     }
 }

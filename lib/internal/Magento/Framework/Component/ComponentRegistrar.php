@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\Component;
 
 /**
@@ -14,7 +13,7 @@ namespace Magento\Framework\Component;
  * @api
  * @since 100.0.2
  */
-class ComponentRegistrar implements ComponentRegistrarInterface
+class Component_Registrar implements Component_Registrar_Interface
 {
     /**#@+
      * Different types of components
@@ -25,16 +24,8 @@ class ComponentRegistrar implements ComponentRegistrarInterface
     public const LANGUAGE = 'language';
     public const SETUP = 'setup';
     /**#@- */
-
     /**#@- */
-    private static $paths = [
-        self::MODULE => [],
-        self::LIBRARY => [],
-        self::LANGUAGE => [],
-        self::THEME => [],
-        self::SETUP => [],
-    ];
-
+    private static $paths = [self::MODULE => [], self::LIBRARY => [], self::LANGUAGE => [], self::THEME => [], self::SETUP => []];
     /**
      * Sets the location of a component.
      *
@@ -44,36 +35,30 @@ class ComponentRegistrar implements ComponentRegistrarInterface
      * @throws \LogicException
      * @return void
      */
-    public static function register($type, $componentName, $path)
+    public static function register($type, $component_name, $path)
     {
-        self::validateType($type);
-        if (isset(self::$paths[$type][$componentName])) {
-            throw new \LogicException(
-                ucfirst($type) . ' \'' . $componentName . '\' from \'' . $path . '\' '
-                . 'has been already defined in \'' . self::$paths[$type][$componentName] . '\'.'
-            );
+        self::validate_type($type);
+        if (isset(self::$paths[$type][$component_name])) {
+            throw new \LogicException(ucfirst($type) . ' \'' . $component_name . '\' from \'' . $path . '\' ' . 'has been already defined in \'' . self::$paths[$type][$component_name] . '\'.');
         }
-        self::$paths[$type][$componentName] = str_replace('\\', '/', $path);
+        self::$paths[$type][$component_name] = str_replace('\\', '/', $path);
     }
-
     /**
      * @inheritdoc
      */
-    public function getPaths($type)
+    public function get_paths($type)
     {
-        self::validateType($type);
+        self::validate_type($type);
         return self::$paths[$type];
     }
-
     /**
      * @inheritdoc
      */
-    public function getPath($type, $componentName)
+    public function get_path($type, $component_name)
     {
-        self::validateType($type);
-        return self::$paths[$type][$componentName] ?? null;
+        self::validate_type($type);
+        return self::$paths[$type][$component_name] ?? null;
     }
-
     /**
      * Checks if type of component is valid
      *
@@ -81,7 +66,7 @@ class ComponentRegistrar implements ComponentRegistrarInterface
      * @return void
      * @throws \LogicException
      */
-    private static function validateType($type)
+    private static function validate_type($type)
     {
         if (!isset(self::$paths[$type])) {
             throw new \LogicException('\'' . $type . '\' is not a valid component type');

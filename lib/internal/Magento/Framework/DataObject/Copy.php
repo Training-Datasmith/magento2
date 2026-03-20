@@ -4,17 +4,15 @@
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
+declare (strict_types=1);
+namespace Magento\Framework\Data_Object;
 
-namespace Magento\Framework\DataObject;
-
-use Magento\Framework\Api\AbstractSimpleObject;
-use Magento\Framework\Api\ExtensibleDataInterface;
-use Magento\Framework\Api\ExtensionAttributesFactory;
-use Magento\Framework\DataObject;
-use Magento\Framework\DataObject\Copy\Config;
-use Magento\Framework\Event\ManagerInterface;
-
+use Magento\Framework\Api\Abstract_Simple_Object;
+use Magento\Framework\Api\Extensible_Data_Interface;
+use Magento\Framework\Api\Extension_Attributes_Factory;
+use Magento\Framework\Data_Object;
+use Magento\Framework\Data_Object\Copy\Config;
+use Magento\Framework\Event\Manager_Interface;
 /**
  * Utility class for copying data sets between objects
  *
@@ -25,33 +23,26 @@ class Copy
     /**
      * @var Config
      */
-    protected $fieldsetConfig;
-
+    protected $fieldset_config;
     /**
      * @var ManagerInterface
      */
-    protected $eventManager = null;
-
+    protected $event_manager = null;
     /**
      * @var ExtensionAttributesFactory
      */
-    protected $extensionAttributesFactory;
-
+    protected $extension_attributes_factory;
     /**
      * @param ManagerInterface $eventManager
      * @param Config $fieldsetConfig
      * @param ExtensionAttributesFactory $extensionAttributesFactory
      */
-    public function __construct(
-        ManagerInterface $eventManager,
-        Config $fieldsetConfig,
-        ExtensionAttributesFactory $extensionAttributesFactory
-    ) {
-        $this->eventManager = $eventManager;
-        $this->fieldsetConfig = $fieldsetConfig;
-        $this->extensionAttributesFactory = $extensionAttributesFactory;
+    public function __construct(Manager_Interface $event_manager, Config $fieldset_config, Extension_Attributes_Factory $extension_attributes_factory)
+    {
+        $this->event_manager = $event_manager;
+        $this->fieldset_config = $fieldset_config;
+        $this->extension_attributes_factory = $extension_attributes_factory;
     }
-
     /**
      * Copy data from object|array to object|array containing fields from fieldset matching an aspect.
      *
@@ -67,35 +58,28 @@ class Copy
      * @return array|DataObject|null the value of $target
      * @throws \InvalidArgumentException
      */
-    public function copyFieldsetToTarget($fieldset, $aspect, $source, $target, $root = 'global')
+    public function copy_fieldset_to_target($fieldset, $aspect, $source, $target, $root = 'global')
     {
-        if (!$this->_isFieldsetInputValid($source, $target)) {
+        if (!$this->_is_fieldset_input_valid($source, $target)) {
             return null;
         }
-        $fields = $this->fieldsetConfig->getFieldset($fieldset, $root);
+        $fields = $this->fieldset_config->get_fieldset($fieldset, $root);
         if ($fields === null) {
             return $target;
         }
-        $targetIsArray = is_array($target);
-
+        $target_is_array = is_array($target);
         foreach ($fields as $code => $node) {
             if (empty($node[$aspect])) {
                 continue;
             }
-
-            $value = $this->_getFieldsetFieldValue($source, $code);
-
-            $targetCode = (string)$node[$aspect];
-            $targetCode = $targetCode == '*' ? $code : $targetCode;
-
-            $target = $this->_setFieldsetFieldValue($target, $targetCode, $value);
+            $value = $this->_get_fieldset_field_value($source, $code);
+            $target_code = (string) $node[$aspect];
+            $target_code = $target_code == '*' ? $code : $target_code;
+            $target = $this->_set_fieldset_field_value($target, $target_code, $value);
         }
-
-        $target = $this->dispatchCopyFieldSetEvent($fieldset, $aspect, $source, $target, $root, $targetIsArray);
-
+        $target = $this->dispatch_copy_field_set_event($fieldset, $aspect, $source, $target, $root, $target_is_array);
         return $target;
     }
-
     /**
      * Dispatch copy fieldset event
      *
@@ -108,22 +92,18 @@ class Copy
      *
      * @return DataObject|mixed
      */
-    protected function dispatchCopyFieldSetEvent($fieldset, $aspect, $source, $target, $root, $targetIsArray)
+    protected function dispatch_copy_field_set_event($fieldset, $aspect, $source, $target, $root, $target_is_array)
     {
-        $eventName = sprintf('core_copy_fieldset_%s_%s', $fieldset, $aspect);
-        if ($targetIsArray) {
-            $target = new DataObject($target);
+        $event_name = sprintf('core_copy_fieldset_%s_%s', $fieldset, $aspect);
+        if ($target_is_array) {
+            $target = new Data_Object($target);
         }
-        $this->eventManager->dispatch(
-            $eventName,
-            ['target' => $target, 'source' => $source, 'root' => $root]
-        );
-        if ($targetIsArray) {
-            $target = $target->getData();
+        $this->event_manager->dispatch($event_name, ['target' => $target, 'source' => $source, 'root' => $root]);
+        if ($target_is_array) {
+            $target = $target->get_data();
         }
         return $target;
     }
-
     /**
      * Get data from object|array to object|array containing fields from fieldset matching an aspect.
      *
@@ -134,33 +114,27 @@ class Copy
      *
      * @return array
      */
-    public function getDataFromFieldset($fieldset, $aspect, $source, $root = 'global')
+    public function get_data_from_fieldset($fieldset, $aspect, $source, $root = 'global')
     {
-        if ((!$this->isInputArgumentValid($source))) {
+        if (!$this->is_input_argument_valid($source)) {
             return null;
         }
-
-        $fields = $this->fieldsetConfig->getFieldset($fieldset, $root);
+        $fields = $this->fieldset_config->get_fieldset($fieldset, $root);
         if ($fields === null) {
             return null;
         }
-
         $data = [];
         foreach ($fields as $code => $node) {
             if (empty($node[$aspect])) {
                 continue;
             }
-
-            $value = $this->_getFieldsetFieldValue($source, $code);
-
-            $targetCode = (string)$node[$aspect];
-            $targetCode = $targetCode == '*' ? $code : $targetCode;
-            $data[$targetCode] = $value;
+            $value = $this->_get_fieldset_field_value($source, $code);
+            $target_code = (string) $node[$aspect];
+            $target_code = $target_code == '*' ? $code : $target_code;
+            $data[$target_code] = $value;
         }
-
         return $data;
     }
-
     /**
      * Check if source and target are valid input for converting using fieldset
      *
@@ -169,11 +143,10 @@ class Copy
      *
      * @return bool
      */
-    protected function _isFieldsetInputValid($source, $target)
+    protected function _is_fieldset_input_valid($source, $target)
     {
-        return $this->isInputArgumentValid($source) && $this->isInputArgumentValid($target);
+        return $this->is_input_argument_valid($source) && $this->is_input_argument_valid($target);
     }
-
     /**
      * Verify that we can access data from input object.
      *
@@ -181,13 +154,10 @@ class Copy
      *
      * @return bool
      */
-    private function isInputArgumentValid($object): bool
+    private function is_input_argument_valid($object): bool
     {
-        return (is_array($object) || $object instanceof DataObject ||
-            $object instanceof ExtensibleDataInterface ||
-            $object instanceof AbstractSimpleObject);
+        return is_array($object) || $object instanceof Data_Object || $object instanceof Extensible_Data_Interface || $object instanceof Abstract_Simple_Object;
     }
-
     /**
      * Get value of source by code
      *
@@ -197,31 +167,27 @@ class Copy
      * @return mixed
      * @throws \InvalidArgumentException
      */
-    protected function _getFieldsetFieldValue($source, $code)
+    protected function _get_fieldset_field_value($source, $code)
     {
         switch (true) {
             case is_array($source):
                 $value = isset($source[$code]) ? $source[$code] : null;
                 break;
-            case $source instanceof ExtensibleDataInterface:
-                $value = $this->getAttributeValueFromExtensibleObject($source, $code);
+            case $source instanceof Extensible_Data_Interface:
+                $value = $this->get_attribute_value_from_extensible_object($source, $code);
                 break;
-            case $source instanceof DataObject:
-                $value = $source->getDataUsingMethod($code);
+            case $source instanceof Data_Object:
+                $value = $source->get_data_using_method($code);
                 break;
-            case $source instanceof AbstractSimpleObject:
-                $sourceArray = $source->__toArray();
-                $value = isset($sourceArray[$code]) ? $sourceArray[$code] : null;
+            case $source instanceof Abstract_Simple_Object:
+                $source_array = $source->__to_array();
+                $value = isset($source_array[$code]) ? $source_array[$code] : null;
                 break;
             default:
-                throw new \InvalidArgumentException(
-                    'Source should be array, Magento Object, ExtensibleDataInterface, or AbstractSimpleObject'
-                );
+                throw new \InvalidArgumentException('Source should be array, Magento Object, ExtensibleDataInterface, or AbstractSimpleObject');
         }
-
         return $value;
     }
-
     /**
      * Set value of target by code
      *
@@ -232,30 +198,26 @@ class Copy
      * @return array|DataObject|ExtensibleDataInterface|AbstractSimpleObject
      * @throws \InvalidArgumentException
      */
-    protected function _setFieldsetFieldValue($target, $targetCode, $value)
+    protected function _set_fieldset_field_value($target, $target_code, $value)
     {
         switch (true) {
             case is_array($target):
-                $target[$targetCode] = $value;
+                $target[$target_code] = $value;
                 break;
-            case $target instanceof ExtensibleDataInterface:
-                $this->setAttributeValueFromExtensibleObject($target, $targetCode, $value);
+            case $target instanceof Extensible_Data_Interface:
+                $this->set_attribute_value_from_extensible_object($target, $target_code, $value);
                 break;
-            case $target instanceof DataObject:
-                $target->setDataUsingMethod($targetCode, $value);
+            case $target instanceof Data_Object:
+                $target->set_data_using_method($target_code, $value);
                 break;
-            case $target instanceof AbstractSimpleObject:
-                $target->setData($targetCode, $value);
+            case $target instanceof Abstract_Simple_Object:
+                $target->set_data($target_code, $value);
                 break;
             default:
-                throw new \InvalidArgumentException(
-                    'Source should be array, Magento Object, ExtensibleDataInterface, or AbstractSimpleObject'
-                );
+                throw new \InvalidArgumentException('Source should be array, Magento Object, ExtensibleDataInterface, or AbstractSimpleObject');
         }
-
         return $target;
     }
-
     /**
      * Access the extension get method
      *
@@ -268,11 +230,10 @@ class Copy
      * @deprecated 102.0.3
      * @see \Magento\Framework\DataObject\Copy::getAttributeValueFromExtensibleObject
      */
-    protected function getAttributeValueFromExtensibleDataObject($source, $code)
+    protected function get_attribute_value_from_extensible_data_object($source, $code)
     {
-        return $this->getAttributeValueFromExtensibleObject($source, $code);
+        return $this->get_attribute_value_from_extensible_object($source, $code);
     }
-
     /**
      * Get Attribute Value from Extensible Object Data with fallback to DataObject or AbstractSimpleObject.
      *
@@ -281,37 +242,29 @@ class Copy
      *
      * @return mixed|null
      */
-    private function getAttributeValueFromExtensibleObject(ExtensibleDataInterface $source, string $code)
+    private function get_attribute_value_from_extensible_object(Extensible_Data_Interface $source, string $code)
     {
         $method = 'get' . str_replace('_', '', ucwords($code, '_'));
-
-        $methodExists = method_exists($source, $method);
-
-        if ($methodExists === true) {
+        $method_exists = method_exists($source, $method);
+        if ($method_exists === true) {
             return $source->{$method}();
         }
-
-        $extensionAttributes = $source->getExtensionAttributes();
-
-        if ($extensionAttributes) {
-            $methodExists = method_exists($extensionAttributes, $method);
-            if ($methodExists) {
-                return $extensionAttributes->{$method}();
+        $extension_attributes = $source->get_extension_attributes();
+        if ($extension_attributes) {
+            $method_exists = method_exists($extension_attributes, $method);
+            if ($method_exists) {
+                return $extension_attributes->{$method}();
             }
         }
-
-        if ($source instanceof DataObject) {
-            return $source->getDataUsingMethod($code);
+        if ($source instanceof Data_Object) {
+            return $source->get_data_using_method($code);
         }
-
-        if ($source instanceof AbstractSimpleObject) {
-            $sourceArray = $source->__toArray();
-            return isset($sourceArray[$code]) ? $sourceArray[$code] : null;
+        if ($source instanceof Abstract_Simple_Object) {
+            $source_array = $source->__to_array();
+            return isset($source_array[$code]) ? $source_array[$code] : null;
         }
-
         throw new \InvalidArgumentException('Attribute in object does not exist.');
     }
-
     /**
      * Access the extension set method
      *
@@ -325,11 +278,10 @@ class Copy
      * @deprecated 102.0.3
      * @see \Magento\Framework\DataObject\Copy::setAttributeValueFromExtensibleObject
      */
-    protected function setAttributeValueFromExtensibleDataObject(ExtensibleDataInterface $target, $code, $value)
+    protected function set_attribute_value_from_extensible_data_object(Extensible_Data_Interface $target, $code, $value)
     {
-        $this->setAttributeValueFromExtensibleObject($target, $code, $value);
+        $this->set_attribute_value_from_extensible_object($target, $code, $value);
     }
-
     /**
      * Set Attribute Value for Extensible Object Data with fallback to DataObject or AbstractSimpleObject.
      *
@@ -340,37 +292,31 @@ class Copy
      * @return void
      * @throws \InvalidArgumentException
      */
-    private function setAttributeValueFromExtensibleObject(ExtensibleDataInterface $target, string $code, $value): void
+    private function set_attribute_value_from_extensible_object(Extensible_Data_Interface $target, string $code, $value): void
     {
         $method = 'set' . str_replace('_', '', ucwords($code, '_'));
-
-        $methodExists = method_exists($target, $method);
-        if ($methodExists) {
+        $method_exists = method_exists($target, $method);
+        if ($method_exists) {
             $target->{$method}($value);
             return;
         }
-
-        $extensionAttributes = $target->getExtensionAttributes();
-        if ($extensionAttributes === null) {
-            $extensionAttributes = $this->extensionAttributesFactory->create(get_class($target));
+        $extension_attributes = $target->get_extension_attributes();
+        if ($extension_attributes === null) {
+            $extension_attributes = $this->extension_attributes_factory->create(get_class($target));
         }
-
-        if (method_exists($extensionAttributes, $method)) {
-            $extensionAttributes->{$method}($value);
-            $target->setExtensionAttributes($extensionAttributes);
+        if (method_exists($extension_attributes, $method)) {
+            $extension_attributes->{$method}($value);
+            $target->set_extension_attributes($extension_attributes);
             return;
         }
-
-        if ($target instanceof DataObject) {
-            $target->setDataUsingMethod($code, $value);
+        if ($target instanceof Data_Object) {
+            $target->set_data_using_method($code, $value);
             return;
         }
-
-        if ($target instanceof AbstractSimpleObject) {
-            $target->setData($code, $value);
+        if ($target instanceof Abstract_Simple_Object) {
+            $target->set_data($code, $value);
             return;
         }
-
         throw new \InvalidArgumentException('Attribute in object does not exist.');
     }
 }

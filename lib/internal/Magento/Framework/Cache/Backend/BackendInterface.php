@@ -4,18 +4,16 @@
  * Copyright 2026 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
+declare (strict_types=1);
 namespace Magento\Framework\Cache\Backend;
 
-use Magento\Framework\Cache\Exception\CacheException;
-
+use Magento\Framework\Cache\Exception\Cache_Exception;
 /**
  * Magento cache backend interface
  *
  * Defines core cache operations for all backend implementations.
  */
-interface BackendInterface
+interface Backend_Interface
 {
     /**
      * Test if a cache is available for the given id
@@ -24,7 +22,6 @@ interface BackendInterface
      * @return int|false Last modified timestamp of cache entry if it is available, false otherwise
      */
     public function test($id);
-
     /**
      * Load value with given id from cache
      *
@@ -32,8 +29,7 @@ interface BackendInterface
      * @param bool $doNotTestCacheValidity If set to true, validity is not tested
      * @return string|false Cached data (string) or false if cache is not available
      */
-    public function load($id, $doNotTestCacheValidity = false);
-
+    public function load($id, $do_not_test_cache_validity = false);
     /**
      * Save some data in cache
      *
@@ -45,8 +41,7 @@ interface BackendInterface
      * @return bool True if no problem
      * @throws CacheException
      */
-    public function save($data, $id, $tags = [], $specificLifetime = null);
-
+    public function save($data, $id, $tags = [], $specific_lifetime = null);
     /**
      * Remove a cache record
      *
@@ -54,7 +49,6 @@ interface BackendInterface
      * @return bool True if no problem
      */
     public function remove($id);
-
     /**
      * Clean some cache records
      *
@@ -71,7 +65,6 @@ interface BackendInterface
      * @throws CacheException
      */
     public function clean($mode = 'all', $tags = []);
-
     /**
      * Set an option
      *
@@ -79,13 +72,12 @@ interface BackendInterface
      * @param mixed $value Option value
      * @return void
      */
-    public function setOption($name, $value);
-
+    public function set_option($name, $value);
     /**
      * Get an option value
      *
      * @param string $name Option name
      * @return mixed Option value or null if not set
      */
-    public function getOption($name);
+    public function get_option($name);
 }

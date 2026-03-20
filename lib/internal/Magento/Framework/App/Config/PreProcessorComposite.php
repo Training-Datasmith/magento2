@@ -1,25 +1,22 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App\Config;
 
-use Magento\Framework\App\Config\Spi\PreProcessorInterface;
-
+use Magento\Framework\App\Config\Spi\Pre_Processor_Interface;
 /**
  * Class PreProcessorComposite
  */
-class PreProcessorComposite implements PreProcessorInterface
+class Pre_Processor_Composite implements Pre_Processor_Interface
 {
     /**
      * @var PreProcessorInterface[]
      */
     private $processors = [];
-
     /**
      * @param PreProcessorInterface[] $processors
      */
@@ -27,7 +24,6 @@ class PreProcessorComposite implements PreProcessorInterface
     {
         $this->processors = $processors;
     }
-
     /**
      * @inheritdoc
      */
@@ -37,7 +33,6 @@ class PreProcessorComposite implements PreProcessorInterface
         foreach ($this->processors as $processor) {
             $config = $processor->process($config);
         }
-
         return $config;
     }
 }

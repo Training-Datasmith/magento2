@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Tab;
 
 /**
@@ -14,33 +13,30 @@ namespace Magento\Backend\Block\Widget\Tab;
  * @api
  * @since 100.0.2
  */
-interface TabInterface
+interface Tab_Interface
 {
     /**
      * Return Tab label
      *
      * @return string
      */
-    public function getTabLabel();
-
+    public function get_tab_label();
     /**
      * Return Tab title
      *
      * @return string
      */
-    public function getTabTitle();
-
+    public function get_tab_title();
     /**
      * Can show tab in tabs
      *
      * @return boolean
      */
-    public function canShowTab();
-
+    public function can_show_tab();
     /**
      * Tab is hidden
      *
      * @return boolean
      */
-    public function isHidden();
+    public function is_hidden();
 }

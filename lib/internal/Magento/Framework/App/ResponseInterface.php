@@ -1,25 +1,24 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Application response
  *
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\App;
 
 /**
  * @api
  * @since 100.0.2
  */
-interface ResponseInterface
+interface Response_Interface
 {
     /**
      * Send response to client
      *
      * @return int|void
      */
-    public function sendResponse();
+    public function send_response();
 }

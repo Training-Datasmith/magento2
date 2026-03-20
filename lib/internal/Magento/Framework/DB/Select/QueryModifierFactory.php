@@ -1,44 +1,37 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Framework\DB\Select;
 
-use Magento\Framework\ObjectManagerInterface;
-
+use Magento\Framework\Object_Manager_Interface;
 /**
  * Create instance of QueryModifierInterface
  */
-class QueryModifierFactory
+class Query_Modifier_Factory
 {
     /**
      * @var ObjectManagerInterface
      */
-    private $objectManager;
-
+    private $object_manager;
     /**
      * @var array
      */
-    private $queryModifiers;
-
+    private $query_modifiers;
     /**
      * Constructor
      *
      * @param ObjectManagerInterface $objectManager
      * @param array $queryModifiers
      */
-    public function __construct(
-        ObjectManagerInterface $objectManager,
-        array $queryModifiers = []
-    ) {
-        $this->objectManager = $objectManager;
-        $this->queryModifiers = $queryModifiers;
+    public function __construct(Object_Manager_Interface $object_manager, array $query_modifiers = [])
+    {
+        $this->object_manager = $object_manager;
+        $this->query_modifiers = $query_modifiers;
     }
-
     /**
      * Create instance of QueryModifierInterface
      *
@@ -49,15 +42,13 @@ class QueryModifierFactory
      */
     public function create($type, array $data = [])
     {
-        if (!isset($this->queryModifiers[$type])) {
+        if (!isset($this->query_modifiers[$type])) {
             throw new \InvalidArgumentException('Unknown query modifier type ' . $type);
         }
-        $queryModifier = $this->objectManager->create($this->queryModifiers[$type], $data);
-        if (!($queryModifier instanceof QueryModifierInterface)) {
-            throw new \InvalidArgumentException(
-                $this->queryModifiers[$type] . ' must implement ' . QueryModifierInterface::class
-            );
+        $query_modifier = $this->object_manager->create($this->query_modifiers[$type], $data);
+        if (!$query_modifier instanceof Query_Modifier_Interface) {
+            throw new \InvalidArgumentException($this->query_modifiers[$type] . ' must implement ' . Query_Modifier_Interface::class);
         }
-        return $queryModifier;
+        return $query_modifier;
     }
 }

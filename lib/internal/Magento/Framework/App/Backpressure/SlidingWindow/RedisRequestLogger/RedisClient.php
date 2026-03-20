@@ -4,19 +4,17 @@
  * Copyright 2022 Adobe
  * All Rights Reserved.
  */
-declare(strict_types=1);
-
-namespace Magento\Framework\App\Backpressure\SlidingWindow\RedisRequestLogger;
+declare (strict_types=1);
+namespace Magento\Framework\App\Backpressure\Sliding_Window\Redis_Request_Logger;
 
 use Credis_Client;
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\Exception\FileSystemException;
+use Magento\Framework\App\Deployment_Config;
+use Magento\Framework\Exception\File_System_Exception;
 use Magento\Framework\Exception\RuntimeException;
-
 /**
  * Redis client for request logger
  */
-class RedisClient
+class Redis_Client
 {
     /**
      * Keys for Redis settings
@@ -28,7 +26,6 @@ class RedisClient
     public const KEY_DB = 'db';
     public const KEY_PASSWORD = 'password';
     public const KEY_USER = 'user';
-
     /**
      * Configuration paths for Redis settings
      */
@@ -39,54 +36,25 @@ class RedisClient
     public const CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB = 'backpressure/logger/options/db';
     public const CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD = 'backpressure/logger/options/password';
     public const CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER = 'backpressure/logger/options/user';
-
     /**
      * Redis default settings
      */
-    public const DEFAULT_REDIS_CONFIG_VALUES = [
-        self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_SERVER => '127.0.0.1',
-        self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PORT => 6379,
-        self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_TIMEOUT => null,
-        self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PERSISTENT => '',
-        self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB => 3,
-        self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD => null,
-        self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER => null,
-    ];
-
+    public const DEFAULT_REDIS_CONFIG_VALUES = [self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_SERVER => '127.0.0.1', self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PORT => 6379, self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_TIMEOUT => null, self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PERSISTENT => '', self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB => 3, self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD => null, self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER => null];
     /**
      * Config map
      */
-    public const KEY_CONFIG_PATH_MAP = [
-        self::KEY_HOST => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_SERVER,
-        self::KEY_PORT => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PORT,
-        self::KEY_TIMEOUT => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_TIMEOUT,
-        self::KEY_PERSISTENT => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PERSISTENT,
-        self::KEY_DB => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB,
-        self::KEY_PASSWORD => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD,
-        self::KEY_USER => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER,
-    ];
-
+    public const KEY_CONFIG_PATH_MAP = [self::KEY_HOST => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_SERVER, self::KEY_PORT => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PORT, self::KEY_TIMEOUT => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_TIMEOUT, self::KEY_PERSISTENT => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PERSISTENT, self::KEY_DB => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB, self::KEY_PASSWORD => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD, self::KEY_USER => self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER];
     /**
      * @var Credis_Client
      */
     private $client;
-
     /**
      * @param DeploymentConfig $config
      */
-    public function __construct(DeploymentConfig $config)
+    public function __construct(Deployment_Config $config)
     {
-        $this->client = new Credis_Client(
-            $this->getHost($config),
-            $this->getPort($config),
-            $this->getTimeout($config),
-            $this->getPersistent($config),
-            $this->getDb($config),
-            $this->getPassword($config),
-            $this->getUser($config)
-        );
+        $this->client = new Credis_Client($this->get_host($config), $this->get_port($config), $this->get_timeout($config), $this->get_persistent($config), $this->get_db($config), $this->get_password($config), $this->get_user($config));
     }
-
     /**
      * Increments given key value
      *
@@ -94,11 +62,10 @@ class RedisClient
      * @param int $decrement
      * @return Credis_Client|int
      */
-    public function incrBy(string $key, int $decrement)
+    public function incr_by(string $key, int $decrement)
     {
-        return $this->client->incrBy($key, $decrement);
+        return $this->client->incr_by($key, $decrement);
     }
-
     /**
      * Sets expiration date of the key
      *
@@ -106,11 +73,10 @@ class RedisClient
      * @param int $timestamp
      * @return Credis_Client|int
      */
-    public function expireAt(string $key, int $timestamp)
+    public function expire_at(string $key, int $timestamp)
     {
-        return $this->client->expireAt($key, $timestamp);
+        return $this->client->expire_at($key, $timestamp);
     }
-
     /**
      * Returns value by key
      *
@@ -121,7 +87,6 @@ class RedisClient
     {
         return $this->client->get($key);
     }
-
     /**
      * Start pipeline
      *
@@ -131,7 +96,6 @@ class RedisClient
     {
         $this->client->pipeline();
     }
-
     /**
      * Execute statement
      *
@@ -141,7 +105,6 @@ class RedisClient
     {
         return $this->client->exec();
     }
-
     /**
      * Returns Redis host
      *
@@ -150,14 +113,10 @@ class RedisClient
      * @throws FileSystemException
      * @throws RuntimeException
      */
-    private function getHost(DeploymentConfig $config): string
+    private function get_host(Deployment_Config $config): string
     {
-        return $config->get(
-            self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_SERVER,
-            self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_SERVER]
-        );
+        return $config->get(self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_SERVER, self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_SERVER]);
     }
-
     /**
      * Returns Redis port
      *
@@ -166,14 +125,10 @@ class RedisClient
      * @throws FileSystemException
      * @throws RuntimeException
      */
-    private function getPort(DeploymentConfig $config): int
+    private function get_port(Deployment_Config $config): int
     {
-        return (int)$config->get(
-            self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PORT,
-            self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PORT]
-        );
+        return (int) $config->get(self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PORT, self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PORT]);
     }
-
     /**
      * Returns Redis timeout
      *
@@ -182,14 +137,10 @@ class RedisClient
      * @throws FileSystemException
      * @throws RuntimeException
      */
-    private function getTimeout(DeploymentConfig $config): ?float
+    private function get_timeout(Deployment_Config $config): ?float
     {
-        return (float)$config->get(
-            self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_TIMEOUT,
-            self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_TIMEOUT]
-        );
+        return (float) $config->get(self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_TIMEOUT, self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_TIMEOUT]);
     }
-
     /**
      * Returns Redis persistent
      *
@@ -198,14 +149,10 @@ class RedisClient
      * @throws FileSystemException
      * @throws RuntimeException
      */
-    private function getPersistent(DeploymentConfig $config): string
+    private function get_persistent(Deployment_Config $config): string
     {
-        return $config->get(
-            self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PERSISTENT,
-            self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PERSISTENT]
-        );
+        return $config->get(self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PERSISTENT, self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PERSISTENT]);
     }
-
     /**
      * Returns Redis db
      *
@@ -214,14 +161,10 @@ class RedisClient
      * @throws FileSystemException
      * @throws RuntimeException
      */
-    private function getDb(DeploymentConfig $config): int
+    private function get_db(Deployment_Config $config): int
     {
-        return (int)$config->get(
-            self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB,
-            self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB]
-        );
+        return (int) $config->get(self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB, self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_DB]);
     }
-
     /**
      * Returns Redis password
      *
@@ -230,14 +173,10 @@ class RedisClient
      * @throws FileSystemException
      * @throws RuntimeException
      */
-    private function getPassword(DeploymentConfig $config): ?string
+    private function get_password(Deployment_Config $config): ?string
     {
-        return $config->get(
-            self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD,
-            self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD]
-        );
+        return $config->get(self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD, self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_PASSWORD]);
     }
-
     /**
      * Returns Redis user
      *
@@ -246,11 +185,8 @@ class RedisClient
      * @throws FileSystemException
      * @throws RuntimeException
      */
-    private function getUser(DeploymentConfig $config): ?string
+    private function get_user(Deployment_Config $config): ?string
     {
-        return $config->get(
-            self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER,
-            self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER]
-        );
+        return $config->get(self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER, self::DEFAULT_REDIS_CONFIG_VALUES[self::CONFIG_PATH_BACKPRESSURE_LOGGER_REDIS_USER]);
     }
 }

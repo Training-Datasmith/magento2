@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Catalog\Api;
 
 /**
@@ -13,7 +12,7 @@ namespace Magento\Catalog\Api;
  * @api
  * @since 102.0.0
  */
-interface BasePriceStorageInterface
+interface Base_Price_Storage_Interface
 {
     /**
      * Return product prices. In case of at least one of skus is not found exception will be thrown.
@@ -23,7 +22,6 @@ interface BasePriceStorageInterface
      * @since 102.0.0
      */
     public function get(array $skus);
-
     /**
      * Add or update product prices.
      * Input item should correspond \Magento\Catalog\Api\Data\CostInterface.

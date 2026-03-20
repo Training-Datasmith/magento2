@@ -1,41 +1,39 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2015 Adobe
  * All Rights Reserved.
  */
-
-namespace Magento\AdminNotification\Model\ResourceModel\System\Message\Collection;
+namespace Magento\Admin_Notification\Model\Resource_Model\System\Message\Collection;
 
 /**
  * @api
  * @since 100.0.2
  */
-class Synchronized extends \Magento\AdminNotification\Model\ResourceModel\System\Message\Collection
+class Synchronized extends \Magento\Admin_Notification\Model\Resource_Model\System\Message\Collection
 {
     /**
      * Unread message list
      *
      * @var \Magento\Framework\Notification\MessageInterface[]
      */
-    protected $_unreadMessages = [];
-
+    protected $_unread_messages = [];
     /**
      * Store new messages in database and remove outdated messages
      *
      * @return $this|\Magento\Framework\Model\ResourceModel\Db\AbstractDb
      */
-    public function _afterLoad(): static
+    public function _after_load(): static
     {
-        $messages = $this->_messageList->asArray();
+        $messages = $this->_message_list->as_array();
         $persisted = [];
         $unread = [];
         foreach ($messages as $message) {
-            if ($message->isDisplayed()) {
-                foreach ($this->_items as $persistedKey => $persistedMessage) {
-                    if ($message->getIdentity() == $persistedMessage->getIdentity()) {
-                        $persisted[$persistedKey] = $persistedMessage;
+            if ($message->is_displayed()) {
+                foreach ($this->_items as $persisted_key => $persisted_message) {
+                    if ($message->get_identity() == $persisted_message->get_identity()) {
+                        $persisted[$persisted_key] = $persisted_message;
                         continue 2;
                     }
                 }
@@ -43,30 +41,29 @@ class Synchronized extends \Magento\AdminNotification\Model\ResourceModel\System
             }
         }
         $removed = array_diff_key($this->_items, $persisted);
-        foreach ($removed as $removedItem) {
-            $removedItem->delete();
+        foreach ($removed as $removed_item) {
+            $removed_item->delete();
         }
-        foreach ($unread as $unreadItem) {
-            $item = $this->getNewEmptyItem();
-            $item->setIdentity($unreadItem->getIdentity())->setSeverity($unreadItem->getSeverity())->save();
+        foreach ($unread as $unread_item) {
+            $item = $this->get_new_empty_item();
+            $item->set_identity($unread_item->get_identity())->set_severity($unread_item->get_severity())->save();
         }
         if (count($removed) || count($unread)) {
-            $this->_unreadMessages = $unread;
+            $this->_unread_messages = $unread;
             $this->clear();
             $this->load();
         } else {
-            parent::_afterLoad();
+            parent::_after_load();
         }
         return $this;
     }
-
     /**
      * Retrieve list of unread messages
      *
      * @return \Magento\Framework\Notification\MessageInterface[]
      */
-    public function getUnread()
+    public function get_unread()
     {
-        return $this->_unreadMessages;
+        return $this->_unread_messages;
     }
 }

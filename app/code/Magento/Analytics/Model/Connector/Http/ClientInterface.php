@@ -1,21 +1,19 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Analytics\Model\Connector\Http;
 
 use Laminas\Http\Response;
-
 /**
  * An interface for an HTTP client.
  *
  * Send requests via a proper adapter.
  */
-interface ClientInterface
+interface Client_Interface
 {
     /**
      * Sends a request using given parameters.

@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2014 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Controller\Adminhtml\System\Design;
 
 class Grid extends \Magento\Backend\Controller\Adminhtml\System\Design
@@ -15,6 +14,6 @@ class Grid extends \Magento\Backend\Controller\Adminhtml\System\Design
      */
     public function execute()
     {
-        return $this->resultLayoutFactory->create();
+        return $this->result_layout_factory->create();
     }
 }

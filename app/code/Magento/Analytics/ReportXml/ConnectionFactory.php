@@ -1,45 +1,39 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2017 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Analytics\Report_Xml;
 
-namespace Magento\Analytics\ReportXml;
-
-use Magento\Framework\App\DeploymentConfig;
-use Magento\Framework\App\ResourceConnection\ConfigInterface as ResourceConfigInterface;
-use Magento\Framework\Config\ConfigOptionsListConstants;
-use Magento\Framework\DB\Adapter\AdapterInterface;
-use Magento\Framework\Model\ResourceModel\Type\Db\ConnectionFactoryInterface;
-
+use Magento\Framework\App\Deployment_Config;
+use Magento\Framework\App\Resource_Connection\Config_Interface as ResourceConfigInterface;
+use Magento\Framework\Config\Config_Options_List_Constants;
+use Magento\Framework\DB\Adapter\Adapter_Interface;
+use Magento\Framework\Model\Resource_Model\Type\Db\Connection_Factory_Interface;
 /**
  * Creates connection instance for export according to existing one
  *
  * This connection does not use buffered statement, also this connection is not persistent
  */
-class ConnectionFactory
+class Connection_Factory
 {
-    public function __construct(private readonly ResourceConfigInterface $resourceConfig, private readonly DeploymentConfig $deploymentConfig, private readonly ConnectionFactoryInterface $connectionFactory)
+    public function __construct(private readonly Resource_Config_Interface $resource_config, private readonly Deployment_Config $deployment_config, private readonly Connection_Factory_Interface $connection_factory)
     {
     }
-
     /**
      * Creates one-time connection for export
      *
      * @param string $resourceName
      * @return AdapterInterface
      */
-    public function getConnection($resourceName)
+    public function get_connection($resource_name)
     {
-        $connectionName = $this->resourceConfig->getConnectionName($resourceName);
-        $configData = $this->deploymentConfig->get(
-            ConfigOptionsListConstants::CONFIG_PATH_DB_CONNECTIONS . '/' . $connectionName
-        );
-        $configData['use_buffered_query'] = false;
-        unset($configData['persistent']);
-
-        return $this->connectionFactory->create($configData);
+        $connection_name = $this->resource_config->get_connection_name($resource_name);
+        $config_data = $this->deployment_config->get(Config_Options_List_Constants::CONFIG_PATH_DB_CONNECTIONS . '/' . $connection_name);
+        $config_data['use_buffered_query'] = false;
+        unset($config_data['persistent']);
+        return $this->connection_factory->create($config_data);
     }
 }

@@ -4,10 +4,8 @@
  * Copyright 2018 Adobe
  * All Rights Reserved.
  */
-
-declare(strict_types=1);
-
-namespace Magento\AsynchronousOperations\Api\Data;
+declare (strict_types=1);
+namespace Magento\Asynchronous_Operations\Api\Data;
 
 /**
  * Bulk operation search result interface.
@@ -16,7 +14,7 @@ namespace Magento\AsynchronousOperations\Api\Data;
  * @api
  * @since 100.3.0
  */
-interface OperationSearchResultsInterface extends \Magento\Framework\Api\SearchResultsInterface
+interface Operation_Search_Results_Interface extends \Magento\Framework\Api\Search_Results_Interface
 {
     /**
      * Get list of operations.
@@ -24,8 +22,7 @@ interface OperationSearchResultsInterface extends \Magento\Framework\Api\SearchR
      * @return \Magento\AsynchronousOperations\Api\Data\OperationInterface[]
      * @since 100.3.0
      */
-    public function getItems();
-
+    public function get_items();
     /**
      * Set list of operations.
      *
@@ -33,5 +30,5 @@ interface OperationSearchResultsInterface extends \Magento\Framework\Api\SearchR
      * @return $this
      * @since 100.3.0
      */
-    public function setItems(array $items);
+    public function set_items(array $items);
 }

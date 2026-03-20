@@ -1,11 +1,10 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2013 Adobe
  * All Rights Reserved.
  */
-
 namespace Magento\Backend\Block\Widget\Grid\Column\Renderer;
 
 /**
@@ -20,45 +19,41 @@ class Massaction extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Chec
     /**
      * @var int
      */
-    protected $_defaultWidth = 20;
-
+    protected $_default_width = 20;
     /**
      * Render header of the row
      *
      * @return string
      */
-    public function renderHeader()
+    public function render_header()
     {
         return '&nbsp;';
     }
-
     /**
      * Render HTML properties
      *
      * @return string
      */
-    public function renderProperty()
+    public function render_property()
     {
-        $out = parent::renderProperty();
+        $out = parent::render_property();
         $out = preg_replace('/class=".*?"/i', '', $out);
         $out .= ' class="a-center"';
         return $out;
     }
-
     /**
      * Returns HTML of the object
      *
      * @param \Magento\Framework\DataObject $row
      * @return string
      */
-    public function render(\Magento\Framework\DataObject $row)
+    public function render(\Magento\Framework\Data_Object $row)
     {
-        if ($this->getColumn()->getGrid()->getMassactionIdFieldOnlyIndexValue()) {
-            $this->setNoObjectId(true);
+        if ($this->get_column()->get_grid()->get_massaction_id_field_only_index_value()) {
+            $this->set_no_object_id(true);
         }
         return parent::render($row);
     }
-
     /**
      * Returns HTML of the checkbox
      *
@@ -66,14 +61,14 @@ class Massaction extends \Magento\Backend\Block\Widget\Grid\Column\Renderer\Chec
      * @param bool   $checked
      * @return string
      */
-    protected function _getCheckboxHtml($value, $checked)
+    protected function _get_checkbox_html($value, $checked)
     {
         $id = 'id_' . random_int(0, 999);
-        $html = '<label class="data-grid-checkbox-cell-inner" for="'. $id .'">';
-        $html .= '<input type="checkbox" name="' . $this->getColumn()->getName() . '" ';
+        $html = '<label class="data-grid-checkbox-cell-inner" for="' . $id . '">';
+        $html .= '<input type="checkbox" name="' . $this->get_column()->get_name() . '" ';
         $html .= 'id="' . $id . '" data-role="select-row"';
-        $html .= 'value="' . $this->escapeHtml($value) . '" class="admin__control-checkbox"' . $checked . '/>';
-        $html .= '<label for="'. $id .'"></label></label>';
+        $html .= 'value="' . $this->escape_html($value) . '" class="admin__control-checkbox"' . $checked . '/>';
+        $html .= '<label for="' . $id . '"></label></label>';
         return $html;
     }
 }

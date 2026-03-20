@@ -1,22 +1,20 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\App\Response\Header_Provider;
 
-namespace Magento\Framework\App\Response\HeaderProvider;
-
-class XContentTypeOptions extends AbstractHeaderProvider
+class X_Content_Type_Options extends Abstract_Header_Provider
 {
     /**
      * @var string
      */
-    protected $headerValue = 'nosniff';
-
+    protected $header_value = 'nosniff';
     /**
      * @var string
      */
-    protected $headerName = 'X-Content-Type-Options';
+    protected $header_name = 'X-Content-Type-Options';
 }

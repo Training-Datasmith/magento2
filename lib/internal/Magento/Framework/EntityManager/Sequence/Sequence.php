@@ -1,69 +1,57 @@
 <?php
 
-declare(strict_types=1);
+declare (strict_types=1);
 /**
  * Copyright 2016 Adobe
  * All Rights Reserved.
  */
+namespace Magento\Framework\Entity_Manager\Sequence;
 
-namespace Magento\Framework\EntityManager\Sequence;
-
-use Magento\Framework\App\ResourceConnection;
-use Magento\Framework\DB\Sequence\SequenceInterface;
-
+use Magento\Framework\App\Resource_Connection;
+use Magento\Framework\DB\Sequence\Sequence_Interface;
 /**
  * Class Sequence
  */
-class Sequence implements SequenceInterface
+class Sequence implements Sequence_Interface
 {
     /**
      * @var string
      */
-    protected $connectionName;
-
+    protected $connection_name;
     /**
      * @var string
      */
-    protected $sequenceTable;
-
+    protected $sequence_table;
     /**
      * @var \Magento\Framework\App\ResourceConnection
      */
     protected $resource;
-
     /**
      * @param ResourceConnection $resource
      * @param string $connectionName
      * @param string $sequenceTable
      */
-    public function __construct(
-        ResourceConnection $resource,
-        $connectionName,
-        $sequenceTable
-    ) {
+    public function __construct(Resource_Connection $resource, $connection_name, $sequence_table)
+    {
         $this->resource = $resource;
-        $this->connectionName = $connectionName;
-        $this->sequenceTable = $sequenceTable;
+        $this->connection_name = $connection_name;
+        $this->sequence_table = $sequence_table;
     }
-
     /**
      * @inheritdoc
      */
-    public function getNextValue()
+    public function get_next_value()
     {
-        $this->resource->getConnection($this->connectionName)
-            ->insert($this->resource->getTableName($this->sequenceTable), []);
-        return $this->resource->getConnection($this->connectionName)
-            ->lastInsertId($this->resource->getTableName($this->sequenceTable));
+        $this->resource->get_connection($this->connection_name)->insert($this->resource->get_table_name($this->sequence_table), []);
+        return $this->resource->get_connection($this->connection_name)->last_insert_id($this->resource->get_table_name($this->sequence_table));
     }
-
     /**
      * @inheritdoc
      */
-    public function getCurrentValue()
+    public function get_current_value()
     {
-        $select = $this->resource->getConnection($this->connectionName)->select();
-        $select->from($this->resource->getTableName($this->sequenceTable));
-        return $this->resource->getConnection($this->connectionName)->fetchRow($select);
+        $select = $this->resource->get_connection($this->connection_name)->select();
+        $select->from($this->resource->get_table_name($this->sequence_table));
+        return $this->resource->get_connection($this->connection_name)->fetch_row($select);
     }
 }

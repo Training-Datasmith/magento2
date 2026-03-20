@@ -4,23 +4,19 @@
  * Copyright 2019 Adobe
  * All Rights Reserved.
  */
+declare (strict_types=1);
+namespace Magento\Framework\Config\Validation_State;
 
-declare(strict_types=1);
-
-namespace Magento\Framework\Config\ValidationState;
-
-use Magento\Framework\Config\ValidationStateInterface;
-
+use Magento\Framework\Config\Validation_State_Interface;
 /**
  * A configurable validation state
  */
-class Configurable implements ValidationStateInterface
+class Configurable implements Validation_State_Interface
 {
     /**
      * @var bool
      */
     private $required;
-
     /**
      * @param bool $required
      */
@@ -28,11 +24,10 @@ class Configurable implements ValidationStateInterface
     {
         $this->required = $required;
     }
-
     /**
      * @inheritdoc
      */
-    public function isValidationRequired(): bool
+    public function is_validation_required(): bool
     {
         return $this->required;
     }
