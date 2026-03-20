@@ -44,7 +44,7 @@
             </actionGroup>
             <actionGroup ref="ResetAdminDataGridToDefaultViewActionGroup" stepKey="NavigateToAndResetProductGridToDefaultView"/>
 
-            <helper class="\Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
+            <helper class="\Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
                 <argument name="path">var/export</argument>
             </helper>
             <actionGroup ref="CliIndexerReindexActionGroup" stepKey="reindexInvalidatedIndices">
@@ -153,15 +153,15 @@
 
         <!-- Validate Downloaded Export File on File System: Simple Product -->
         <grabAttributeFrom userInput="href" selector="{{AdminExportAttributeSection.download('0')}}" stepKey="grabExportUrl"/>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsRelatedProductPosition">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsRelatedProductPosition">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">1,2,3</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsUpsellProductPosition">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsUpsellProductPosition">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">1,2,3,4</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsCrossSellProductPosition">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsCrossSellProductPosition">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">1,2</argument>
         </helper>
@@ -170,7 +170,7 @@
         <actionGroup ref="DeleteExportedFileActionGroup" stepKey="deleteExportedFile">
             <argument name="fileName" value="{$getFilename}"/>
         </actionGroup>
-        <helper class="\Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
+        <helper class="\Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
         </helper>
     </test>

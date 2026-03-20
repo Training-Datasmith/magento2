@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Quote\Plugin\UpdateQuoteStore">
+    <type name="Magento\Quote\Plugin\Update_Quote_Store">
         <arguments>
-            <argument name="quoteRepository" xsi:type="object">Magento\Quote\Model\QuoteRepository\Proxy</argument>
+            <argument name="quoteRepository" xsi:type="object">Magento\Quote\Model\Quote_Repository\Proxy</argument>
             <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Api\StoreCookieManagerInterface">
-        <plugin name="update_quote_store_after_switch_store_view" type="Magento\Quote\Plugin\UpdateQuoteStore"/>
+    <type name="Magento\Store\Api\Store_Cookie_Manager_Interface">
+        <plugin name="update_quote_store_after_switch_store_view" type="Magento\Quote\Plugin\Update_Quote_Store"/>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Customer">
-        <plugin name="cart_recollect_on_group_change" type="Magento\Quote\Plugin\RecollectOnGroupChange"/>
+    <type name="Magento\Customer\Model\Resource_Model\Customer">
+        <plugin name="cart_recollect_on_group_change" type="Magento\Quote\Plugin\Recollect_On_Group_Change"/>
     </type>
 </config>

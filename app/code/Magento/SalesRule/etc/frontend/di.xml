@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\SalesRule\Helper\Coupon">
+    <type name="Magento\Sales_Rule\Helper\Coupon">
         <arguments>
             <argument name="couponParameters" xsi:type="array">
                 <item name="separator" xsi:type="string">-</item>
@@ -18,14 +18,14 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+    <type name="Magento\Checkout\Model\Composite_Config_Provider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="checkout_sales_rule_captcha_config_provider" xsi:type="object">Magento\SalesRule\Model\Coupon\CaptchaConfigProvider</item>
+                <item name="checkout_sales_rule_captcha_config_provider" xsi:type="object">Magento\Sales_Rule\Model\Coupon\Captcha_Config_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Captcha\CustomerData\Captcha">
+    <type name="Magento\Captcha\Customer_Data\Captcha">
         <arguments>
             <argument name="formIds" xsi:type="array">
                 <item name="sales_rule_coupon_request" xsi:type="string">sales_rule_coupon_request</item>

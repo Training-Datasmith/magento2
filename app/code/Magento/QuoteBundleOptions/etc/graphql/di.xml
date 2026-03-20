@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Quote\Model\Cart\BuyRequest\BuyRequestBuilder">
+    <type name="Magento\Quote\Model\Cart\Buy_Request\Buy_Request_Builder">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="bundle" xsi:type="object">Magento\QuoteBundleOptions\Model\Cart\BuyRequest\BundleDataProvider</item>
+                <item name="bundle" xsi:type="object">Magento\Quote_Bundle_Options\Model\Cart\Buy_Request\Bundle_Data_Provider</item>
             </argument>
         </arguments>
     </type>

@@ -13,7 +13,7 @@
         <referenceContainer name="footer">
             <block class="Magento\Newsletter\Block\Subscribe" name="form.subscribe" as="subscribe" before="-" template="Magento_Newsletter::subscribe.phtml" ifconfig="newsletter/general/active">
                 <arguments>
-                    <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\ButtonLockManager</argument>
+                    <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\Button_Lock_Manager</argument>
                 </arguments>
             </block>
         </referenceContainer>

@@ -62,7 +62,7 @@
                 <argument name="searchInput" value="{{AdminSecondaryGridSection.taxIdentifierSearch}}"/>
             </actionGroup>
             <deleteData createDataKey="createUkTaxRate" stepKey="deleteUkTaxRate"/>
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteProducts"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteProducts"/>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
             <actionGroup ref="AdminLogoutActionGroup" stepKey="logoutAdmin"/>
         </after>

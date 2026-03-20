@@ -10,14 +10,14 @@
        xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
     <test name="AdminExportSimpleProductWithImageAndImageAltForDiffrentScopeTest">
 
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\FileAssertions" method="assertFileExists" stepKey="assertExportFileExists">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\File_Assertions" method="assertFileExists" stepKey="assertExportFileExists">
             <argument name="filePath">{"local":"var/export/{$grabNameFile}","s3":"import_export/export/{$grabNameFile}"}</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\FileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct">
             <argument name="filePath">{"local":"var/export/{$grabNameFile}","s3":"import_export/export/{$grabNameFile}"}</argument>
             <argument name="text">$createProductImage.entry[content][name]$,"english image alt text 1"</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\FileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct1">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct1">
             <argument name="filePath">{"local":"var/export/{$grabNameFile}","s3":"import_export/export/{$grabNameFile}"}</argument>
             <argument name="text">$createProductImage.entry[content][name]$,"french image alt text 1"</argument>
         </helper>

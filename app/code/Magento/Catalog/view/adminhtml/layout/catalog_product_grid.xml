@@ -9,7 +9,7 @@
     <update handle="formkey"/>
     <container name="root" label="Root">
         <block class="Magento\Catalog\Block\Adminhtml\Product\Grid" name="admin.product.grid">
-            <block class="Magento\Framework\View\Element\Text\ListText" name="grid.bottom.links"/>
+            <block class="Magento\Framework\View\Element\Text\List_Text" name="grid.bottom.links"/>
         </block>
     </container>
 </layout>

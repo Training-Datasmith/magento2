@@ -15,7 +15,7 @@
                         <argument name="use_ajax" xsi:type="string">0</argument>
                         <argument name="sortable" xsi:type="string">0</argument>
                         <argument name="pager_visibility" xsi:type="string">0</argument>
-                        <argument name="dataSource" xsi:type="object" shared="false">Magento\Reports\Model\ResourceModel\Refresh\Collection</argument>
+                        <argument name="dataSource" xsi:type="object" shared="false">Magento\Reports\Model\Resource_Model\Refresh\Collection</argument>
                     </arguments>
                     <block class="Magento\Backend\Block\Widget\Grid\Massaction" name="adminhtml.block.refresh.statistics.massactions" as="grid.massaction">
                         <arguments>
@@ -37,7 +37,7 @@
                             </argument>
                         </arguments>
                     </block>
-                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.block.reportrefresh.statistics.columnSet">
+                    <block class="Magento\Backend\Block\Widget\Grid\Column_Set" as="grid.columnSet" name="adminhtml.block.reportrefresh.statistics.columnSet">
                         <arguments>
                             <argument name="filter_visibility" xsi:type="string">0</argument>
                             <argument name="id" xsi:type="string">gridRefreshStatistics</argument>

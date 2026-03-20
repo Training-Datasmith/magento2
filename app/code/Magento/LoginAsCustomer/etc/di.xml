@@ -7,38 +7,38 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\LoginAsCustomerApi\Api\Data\AuthenticationDataInterface"
-                type="Magento\LoginAsCustomer\Model\AuthenticationData"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\GenerateAuthenticationSecretInterface"
-                type="Magento\LoginAsCustomer\Model\GenerateAuthenticationSecret"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\SaveAuthenticationDataInterface"
-                type="Magento\LoginAsCustomer\Model\ResourceModel\SaveAuthenticationData"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\GetAuthenticationDataBySecretInterface"
-                type="Magento\LoginAsCustomer\Model\GetAuthenticationDataBySecret"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\AuthenticateCustomerBySecretInterface"
-                type="Magento\LoginAsCustomer\Model\AuthenticateCustomerBySecret"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\DeleteAuthenticationDataForUserInterface"
-                type="Magento\LoginAsCustomer\Model\ResourceModel\DeleteAuthenticationDataForUser"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\DeleteAuthenticationDataForListOfUserInterface"
-                type="Magento\LoginAsCustomer\Model\ResourceModel\DeleteAuthenticationDataForListOfUser"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\ConfigInterface" type="Magento\LoginAsCustomer\Model\Config"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\IsLoginAsCustomerSessionActiveInterface" type="Magento\LoginAsCustomer\Model\ResourceModel\IsLoginAsCustomerSessionActive"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\GetLoggedAsCustomerAdminIdInterface" type="Magento\LoginAsCustomer\Model\GetLoggedAsCustomerAdminId"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\GetLoggedAsCustomerCustomerIdInterface" type="Magento\LoginAsCustomer\Model\GetLoggedAsCustomerCustomerId"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\SetLoggedAsCustomerAdminIdInterface" type="Magento\LoginAsCustomer\Model\SetLoggedAsCustomerAdminId"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\Data\IsLoginAsCustomerEnabledForCustomerResultInterface"
-                type="Magento\LoginAsCustomer\Model\IsLoginAsCustomerEnabledForCustomerResult"/>
-    <preference for="Magento\LoginAsCustomerApi\Api\SetLoggedAsCustomerCustomerIdInterface" type="Magento\LoginAsCustomer\Model\SetLoggedAsCustomerCustomerId"/>
-    <type name="Magento\LoginAsCustomerApi\Model\IsLoginAsCustomerEnabledForCustomerChain">
+    <preference for="Magento\Login_As_Customer_Api\Api\Data\Authentication_Data_Interface"
+                type="Magento\Login_As_Customer\Model\Authentication_Data"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Generate_Authentication_Secret_Interface"
+                type="Magento\Login_As_Customer\Model\Generate_Authentication_Secret"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Save_Authentication_Data_Interface"
+                type="Magento\Login_As_Customer\Model\Resource_Model\Save_Authentication_Data"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Get_Authentication_Data_By_Secret_Interface"
+                type="Magento\Login_As_Customer\Model\Get_Authentication_Data_By_Secret"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Authenticate_Customer_By_Secret_Interface"
+                type="Magento\Login_As_Customer\Model\Authenticate_Customer_By_Secret"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Delete_Authentication_Data_For_User_Interface"
+                type="Magento\Login_As_Customer\Model\Resource_Model\Delete_Authentication_Data_For_User"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Delete_Authentication_Data_For_List_Of_User_Interface"
+                type="Magento\Login_As_Customer\Model\Resource_Model\Delete_Authentication_Data_For_List_Of_User"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Config_Interface" type="Magento\Login_As_Customer\Model\Config"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Is_Login_As_Customer_Session_Active_Interface" type="Magento\Login_As_Customer\Model\Resource_Model\Is_Login_As_Customer_Session_Active"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Get_Logged_As_Customer_Admin_Id_Interface" type="Magento\Login_As_Customer\Model\Get_Logged_As_Customer_Admin_Id"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Get_Logged_As_Customer_Customer_Id_Interface" type="Magento\Login_As_Customer\Model\Get_Logged_As_Customer_Customer_Id"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Set_Logged_As_Customer_Admin_Id_Interface" type="Magento\Login_As_Customer\Model\Set_Logged_As_Customer_Admin_Id"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Data\Is_Login_As_Customer_Enabled_For_Customer_Result_Interface"
+                type="Magento\Login_As_Customer\Model\Is_Login_As_Customer_Enabled_For_Customer_Result"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Set_Logged_As_Customer_Customer_Id_Interface" type="Magento\Login_As_Customer\Model\Set_Logged_As_Customer_Customer_Id"/>
+    <type name="Magento\Login_As_Customer_Api\Model\Is_Login_As_Customer_Enabled_For_Customer_Chain">
         <arguments>
             <argument name="resolvers" xsi:type="array">
                 <item name="is_enabled" xsi:type="object">
-                    Magento\LoginAsCustomer\Model\Resolver\IsLoginAsCustomerEnabledResolver
+                    Magento\Login_As_Customer\Model\Resolver\Is_Login_As_Customer_Enabled_Resolver
                 </item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Backend\Model\Auth">
-        <plugin name="login_as_customer_admin_logout" type="Magento\LoginAsCustomer\Plugin\AdminLogoutPlugin"/>
+        <plugin name="login_as_customer_admin_logout" type="Magento\Login_As_Customer\Plugin\Admin_Logout_Plugin"/>
     </type>
 </config>

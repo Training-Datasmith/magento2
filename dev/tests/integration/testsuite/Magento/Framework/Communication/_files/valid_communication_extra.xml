@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
     <topic name="customerAdded" request="string[]">
-        <handler name="customerCreatedExtra" type="Magento\Customer\Api\CustomerRepositoryInterface" method="save"/>
+        <handler name="customerCreatedExtra" type="Magento\Customer\Api\Customer_Repository_Interface" method="save"/>
     </topic>
 </config>

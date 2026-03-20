@@ -6,42 +6,42 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\MediaContentApi\Api\DeleteContentAssetLinksByAssetIdsInterface" type="Magento\MediaContent\Model\DeleteContentAssetLinksByAssetIds"/>
-    <preference for="Magento\MediaContentApi\Api\GetAssetIdsByContentIdentityInterface" type="Magento\MediaContent\Model\GetAssetIdsByContentIdentity"/>
-    <preference for="Magento\MediaContentApi\Api\GetContentByAssetIdsInterface" type="Magento\MediaContent\Model\GetContentByAssetIds"/>
-    <preference for="Magento\MediaContentApi\Api\ExtractAssetsFromContentInterface" type="Magento\MediaContent\Model\ExtractAssetsFromContent"/>
-    <preference for="Magento\MediaContentApi\Api\UpdateContentAssetLinksInterface" type="Magento\MediaContent\Model\UpdateContentAssetLinks"/>
-    <preference for="Magento\MediaContentApi\Api\DeleteContentAssetLinksInterface" type="Magento\MediaContent\Model\DeleteContentAssetLinks"/>
-    <preference for="Magento\MediaContentApi\Api\SaveContentAssetLinksInterface" type="Magento\MediaContent\Model\SaveContentAssetLinks"/>
-    <preference for="Magento\MediaContentApi\Api\Data\ContentIdentityInterface" type="Magento\MediaContent\Model\ContentIdentity"/>
-    <preference for="Magento\MediaContentApi\Api\Data\ContentAssetLinkInterface" type="Magento\MediaContent\Model\ContentAssetLink"/>
-    <preference for="Magento\MediaContentApi\Model\SearchPatternConfigInterface" type="Magento\MediaContent\Model\Content\SearchPatternConfig"/>
-    <preference for="Magento\MediaContentApi\Api\GetAssetIdsByContentFieldInterface" type="Magento\MediaContentApi\Model\Composite\GetAssetIdsByContentField"/>
-    <type name="Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface">
-        <plugin name="remove_media_content_after_asset_is_removed_by_path" type="Magento\MediaContent\Plugin\MediaGalleryAssetDeleteByPath" />
+    <preference for="Magento\Media_Content_Api\Api\Delete_Content_Asset_Links_By_Asset_Ids_Interface" type="Magento\Media_Content\Model\Delete_Content_Asset_Links_By_Asset_Ids"/>
+    <preference for="Magento\Media_Content_Api\Api\Get_Asset_Ids_By_Content_Identity_Interface" type="Magento\Media_Content\Model\Get_Asset_Ids_By_Content_Identity"/>
+    <preference for="Magento\Media_Content_Api\Api\Get_Content_By_Asset_Ids_Interface" type="Magento\Media_Content\Model\Get_Content_By_Asset_Ids"/>
+    <preference for="Magento\Media_Content_Api\Api\Extract_Assets_From_Content_Interface" type="Magento\Media_Content\Model\Extract_Assets_From_Content"/>
+    <preference for="Magento\Media_Content_Api\Api\Update_Content_Asset_Links_Interface" type="Magento\Media_Content\Model\Update_Content_Asset_Links"/>
+    <preference for="Magento\Media_Content_Api\Api\Delete_Content_Asset_Links_Interface" type="Magento\Media_Content\Model\Delete_Content_Asset_Links"/>
+    <preference for="Magento\Media_Content_Api\Api\Save_Content_Asset_Links_Interface" type="Magento\Media_Content\Model\Save_Content_Asset_Links"/>
+    <preference for="Magento\Media_Content_Api\Api\Data\Content_Identity_Interface" type="Magento\Media_Content\Model\Content_Identity"/>
+    <preference for="Magento\Media_Content_Api\Api\Data\Content_Asset_Link_Interface" type="Magento\Media_Content\Model\Content_Asset_Link"/>
+    <preference for="Magento\Media_Content_Api\Model\Search_Pattern_Config_Interface" type="Magento\Media_Content\Model\Content\Search_Pattern_Config"/>
+    <preference for="Magento\Media_Content_Api\Api\Get_Asset_Ids_By_Content_Field_Interface" type="Magento\Media_Content_Api\Model\Composite\Get_Asset_Ids_By_Content_Field"/>
+    <type name="Magento\Media_Gallery_Api\Api\Delete_Assets_By_Paths_Interface">
+        <plugin name="remove_media_content_after_asset_is_removed_by_path" type="Magento\Media_Content\Plugin\Media_Gallery_Asset_Delete_By_Path" />
     </type>
-    <type name="Magento\MediaGalleryApi\Api\DeleteDirectoriesByPathsInterface">
-        <plugin name="remove_media_content_after_asset_is_removed_by_directory_path" type="Magento\MediaContent\Plugin\MediaGalleryAssetDeleteByDirectoryPath" />
+    <type name="Magento\Media_Gallery_Api\Api\Delete_Directories_By_Paths_Interface">
+        <plugin name="remove_media_content_after_asset_is_removed_by_directory_path" type="Magento\Media_Content\Plugin\Media_Gallery_Asset_Delete_By_Directory_Path" />
     </type>
-    <virtualType name="Magento\MediaContent\Model\Content\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
+    <virtualType name="Magento\Media_Content\Model\Content\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
         <arguments>
             <argument name="fileName" xsi:type="string">media_content.xml</argument>
-            <argument name="converter" xsi:type="object">Magento\MediaContent\Model\Content\Config\Converter</argument>
-            <argument name="schemaLocator" xsi:type="object">Magento\MediaContent\Model\Content\Config\SchemaLocator</argument>
+            <argument name="converter" xsi:type="object">Magento\Media_Content\Model\Content\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Magento\Media_Content\Model\Content\Config\Schema_Locator</argument>
             <argument name="idAttributes" xsi:type="array">
                 <item name="/config/search/patterns/pattern" xsi:type="string">name</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\MediaContent\Model\Content\Config\Data" type="Magento\Framework\Config\Data">
+    <virtualType name="Magento\Media_Content\Model\Content\Config\Data" type="Magento\Framework\Config\Data">
         <arguments>
-            <argument name="reader" xsi:type="object">Magento\MediaContent\Model\Content\Config\Reader</argument>
+            <argument name="reader" xsi:type="object">Magento\Media_Content\Model\Content\Config\Reader</argument>
             <argument name="cacheId" xsi:type="string">Media_Content_Patterns_CacheId</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\MediaContent\Model\Content\SearchPatternConfig">
+    <type name="Magento\Media_Content\Model\Content\Search_Pattern_Config">
         <arguments>
-            <argument name="data" xsi:type="object">Magento\MediaContent\Model\Content\Config\Data</argument>
+            <argument name="data" xsi:type="object">Magento\Media_Content\Model\Content\Config\Data</argument>
         </arguments>
     </type>
 </config>

@@ -11,10 +11,10 @@
     <consumer name="queue.for.multiple.topics.test.y" queue="queue.for.multiple.topics.test.y" connection="amqp"/>
     <consumer name="queue.for.multiple.topics.test.z" queue="queue.for.multiple.topics.test.z" connection="amqp"/>
     <consumer name="mixed.sync.and.async.queue.consumer" connection="amqp" queue="mixed.sync.and.async.queue"/>
-    <consumer name="mtmh.queue.1.consumer" queue="mtmh.queue.1" connection="amqp" handler="Magento\TestModuleAsyncAmqp\Model\CustomHandler::processMixed"/>
+    <consumer name="mtmh.queue.1.consumer" queue="mtmh.queue.1" connection="amqp" handler="Magento\Test_Module_Async_Amqp\Model\Custom_Handler::processMixed"/>
     <consumer name="mtmh.queue.2.consumer" queue="mtmh.queue.2" connection="amqp"/>
-    <consumer name="wildcard.queue.one.consumer" connection="amqp" queue="wildcard.queue.one" handler="Magento\TestModuleAsyncAmqp\Model\WildCardHandler::methodOne"/>
-    <consumer name="wildcard.queue.two.consumer" connection="amqp" queue="wildcard.queue.two" handler="Magento\TestModuleAsyncAmqp\Model\WildCardHandler::methodTwo"/>
-    <consumer name="wildcard.queue.three.consumer" connection="amqp" queue="wildcard.queue.three" handler="Magento\TestModuleAsyncAmqp\Model\WildCardHandler::methodThree"/>
-    <consumer name="wildcard.queue.four.consumer" connection="amqp" queue="wildcard.queue.four" handler="Magento\TestModuleAsyncAmqp\Model\WildCardHandler::methodFour"/>
+    <consumer name="wildcard.queue.one.consumer" connection="amqp" queue="wildcard.queue.one" handler="Magento\Test_Module_Async_Amqp\Model\Wild_Card_Handler::methodOne"/>
+    <consumer name="wildcard.queue.two.consumer" connection="amqp" queue="wildcard.queue.two" handler="Magento\Test_Module_Async_Amqp\Model\Wild_Card_Handler::methodTwo"/>
+    <consumer name="wildcard.queue.three.consumer" connection="amqp" queue="wildcard.queue.three" handler="Magento\Test_Module_Async_Amqp\Model\Wild_Card_Handler::methodThree"/>
+    <consumer name="wildcard.queue.four.consumer" connection="amqp" queue="wildcard.queue.four" handler="Magento\Test_Module_Async_Amqp\Model\Wild_Card_Handler::methodFour"/>
 </config>

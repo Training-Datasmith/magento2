@@ -16,7 +16,7 @@
                 </field>
                 <field id="frequency" translate="label" type="select" sortOrder="2" showInDefault="1" canRestore="1">
                     <label>Update Frequency</label>
-                    <source_model>Magento\AdminNotification\Model\Config\Source\Frequency</source_model>
+                    <source_model>Magento\Admin_Notification\Model\Config\Source\Frequency</source_model>
                 </field>
                 <field id="last_update" translate="label" type="label" sortOrder="3" showInDefault="1">
                     <label>Last Update</label>

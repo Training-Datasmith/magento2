@@ -16,59 +16,59 @@
             <argument name="storage" xsi:type="object">Magento\Checkout\Model\Session\Storage</argument>
         </arguments>
     </type>
-    <preference for="Magento\Checkout\Api\GuestShippingInformationManagementInterface" type="Magento\Checkout\Model\GuestShippingInformationManagement" />
-    <preference for="Magento\Checkout\Api\ShippingInformationManagementInterface" type="Magento\Checkout\Model\ShippingInformationManagement" />
-    <preference for="Magento\Checkout\Api\Data\ShippingInformationInterface" type="Magento\Checkout\Model\ShippingInformation" />
-    <preference for="Magento\Checkout\Api\Data\PaymentDetailsInterface" type="Magento\Checkout\Model\PaymentDetails" />
-    <preference for="Magento\Checkout\Api\GuestPaymentInformationManagementInterface" type="Magento\Checkout\Model\GuestPaymentInformationManagement" />
-    <preference for="Magento\Checkout\Api\PaymentInformationManagementInterface" type="Magento\Checkout\Model\PaymentInformationManagement" />
-    <preference for="Magento\Checkout\Api\Data\TotalsInformationInterface" type="Magento\Checkout\Model\TotalsInformation" />
-    <preference for="Magento\Checkout\Api\GuestTotalsInformationManagementInterface" type="Magento\Checkout\Model\GuestTotalsInformationManagement" />
-    <preference for="Magento\Checkout\Api\TotalsInformationManagementInterface" type="Magento\Checkout\Model\TotalsInformationManagement" />
-    <preference for="Magento\Checkout\Api\AgreementsValidatorInterface" type="Magento\Checkout\Model\AgreementsValidator" />
-    <preference for="Magento\Checkout\Model\Cart\RequestInfoFilterInterface"
-                type="Magento\Checkout\Model\Cart\RequestInfoFilterComposite"/>
-    <preference for="Magento\Checkout\Model\AddressComparatorInterface" type="Magento\Checkout\Model\AddressComparator" />
-    <type name="Magento\Checkout\Model\Cart\RequestInfoFilter">
+    <preference for="Magento\Checkout\Api\Guest_Shipping_Information_Management_Interface" type="Magento\Checkout\Model\Guest_Shipping_Information_Management" />
+    <preference for="Magento\Checkout\Api\Shipping_Information_Management_Interface" type="Magento\Checkout\Model\Shipping_Information_Management" />
+    <preference for="Magento\Checkout\Api\Data\Shipping_Information_Interface" type="Magento\Checkout\Model\Shipping_Information" />
+    <preference for="Magento\Checkout\Api\Data\Payment_Details_Interface" type="Magento\Checkout\Model\Payment_Details" />
+    <preference for="Magento\Checkout\Api\Guest_Payment_Information_Management_Interface" type="Magento\Checkout\Model\Guest_Payment_Information_Management" />
+    <preference for="Magento\Checkout\Api\Payment_Information_Management_Interface" type="Magento\Checkout\Model\Payment_Information_Management" />
+    <preference for="Magento\Checkout\Api\Data\Totals_Information_Interface" type="Magento\Checkout\Model\Totals_Information" />
+    <preference for="Magento\Checkout\Api\Guest_Totals_Information_Management_Interface" type="Magento\Checkout\Model\Guest_Totals_Information_Management" />
+    <preference for="Magento\Checkout\Api\Totals_Information_Management_Interface" type="Magento\Checkout\Model\Totals_Information_Management" />
+    <preference for="Magento\Checkout\Api\Agreements_Validator_Interface" type="Magento\Checkout\Model\Agreements_Validator" />
+    <preference for="Magento\Checkout\Model\Cart\Request_Info_Filter_Interface"
+                type="Magento\Checkout\Model\Cart\Request_Info_Filter_Composite"/>
+    <preference for="Magento\Checkout\Model\Address_Comparator_Interface" type="Magento\Checkout\Model\Address_Comparator" />
+    <type name="Magento\Checkout\Model\Cart\Request_Info_Filter">
         <arguments>
             <argument name="filterList" xsi:type="array">
                 <item name="form_key" xsi:type="string">form_key</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Checkout\Model\Cart\RequestInfoFilterComposite">
+    <type name="Magento\Checkout\Model\Cart\Request_Info_Filter_Composite">
         <arguments>
             <argument name="filters" xsi:type="array">
-                <item name="filter" xsi:type="object">Magento\Checkout\Model\Cart\RequestInfoFilter</item>
+                <item name="filter" xsi:type="object">Magento\Checkout\Model\Cart\Request_Info_Filter</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="checkout/payment_failed/copy_to" xsi:type="string">1</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Checkout\Api\PaymentProcessingRateLimiterInterface"
-                type="Magento\Checkout\Model\CaptchaPaymentProcessingRateLimiter" />
-    <preference for="Magento\Checkout\Api\PaymentSavingRateLimiterInterface"
-                type="Magento\Checkout\Model\CaptchaPaymentSavingRateLimiter" />
-    <type name="Magento\Framework\Webapi\Backpressure\CompositeRequestTypeExtractor">
+    <preference for="Magento\Checkout\Api\Payment_Processing_Rate_Limiter_Interface"
+                type="Magento\Checkout\Model\Captcha_Payment_Processing_Rate_Limiter" />
+    <preference for="Magento\Checkout\Api\Payment_Saving_Rate_Limiter_Interface"
+                type="Magento\Checkout\Model\Captcha_Payment_Saving_Rate_Limiter" />
+    <type name="Magento\Framework\Webapi\Backpressure\Composite_Request_Type_Extractor">
         <arguments>
             <argument name="extractors" xsi:type="array">
                 <item name="checkout" xsi:type="object">
-                    Magento\Checkout\Model\Backpressure\WebapiRequestTypeExtractor
+                    Magento\Checkout\Model\Backpressure\Webapi_Request_Type_Extractor
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Customer">
-        <plugin name="recollect_quote_on_customer_group_change" type="Magento\Checkout\Model\Plugin\RecollectQuoteOnCustomerGroupChange"/>
+    <type name="Magento\Customer\Model\Resource_Model\Customer">
+        <plugin name="recollect_quote_on_customer_group_change" type="Magento\Checkout\Model\Plugin\Recollect_Quote_On_Customer_Group_Change"/>
     </type>
-    <type name="Magento\Checkout\Model\AddProductToCart">
+    <type name="Magento\Checkout\Model\Add_Product_To_Cart">
         <arguments>
-            <argument name="quoteMutex" xsi:type="object">Magento\Quote\Model\ResourceModel\LoadQuoteByIdMutex</argument>
+            <argument name="quoteMutex" xsi:type="object">Magento\Quote\Model\Resource_Model\Load_Quote_By_Id_Mutex</argument>
         </arguments>
     </type>
 </config>

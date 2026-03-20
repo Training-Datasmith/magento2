@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="checkout_allow_guest">
-        <observer name="checkout_allow_guest" instance="Magento\Downloadable\Observer\IsAllowedGuestCheckoutObserver" />
+        <observer name="checkout_allow_guest" instance="Magento\Downloadable\Observer\Is_Allowed_Guest_Checkout_Observer" />
     </event>
 </config>

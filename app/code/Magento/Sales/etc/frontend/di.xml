@@ -6,19 +6,19 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Sales\Controller\AbstractController\OrderLoaderInterface" type="Magento\Sales\Controller\AbstractController\OrderLoader" />
-    <preference for="Magento\Sales\Controller\AbstractController\OrderViewAuthorizationInterface" type="Magento\Sales\Controller\AbstractController\OrderViewAuthorization" />
-    <type name="Magento\Framework\Url\SecurityInfo">
+    <preference for="Magento\Sales\Controller\Abstract_Controller\Order_Loader_Interface" type="Magento\Sales\Controller\Abstract_Controller\Order_Loader" />
+    <preference for="Magento\Sales\Controller\Abstract_Controller\Order_View_Authorization_Interface" type="Magento\Sales\Controller\Abstract_Controller\Order_View_Authorization" />
+    <type name="Magento\Framework\Url\Security_Info">
         <arguments>
             <argument name="secureUrlList" xsi:type="array">
                 <item name="sales" xsi:type="string">/sales/</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Section_Pool_Interface">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="last-ordered-items" xsi:type="string">Magento\Sales\CustomerData\LastOrderedItems</item>
+                <item name="last-ordered-items" xsi:type="string">Magento\Sales\Customer_Data\Last_Ordered_Items</item>
             </argument>
         </arguments>
     </type>
@@ -27,7 +27,7 @@
             <argument name="addToCartInvalidProduct" xsi:type="boolean">true</argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\CustomerData\LastOrderedItems">
+    <type name="Magento\Sales\Customer_Data\Last_Ordered_Items">
         <arguments>
             <argument name="skipDeletedProductLogging" xsi:type="boolean">false</argument>
         </arguments>

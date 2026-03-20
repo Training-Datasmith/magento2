@@ -25,7 +25,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Sales::sales_creditmemo</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="sales_order_view_creditmemo_grid_data_source">
+        <dataProvider class="Magento\Framework\View\Element\Ui_Component\Data_Provider\Data_Provider" name="sales_order_view_creditmemo_grid_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -57,7 +57,7 @@
             </filterSelect>
         </filters>
         <massaction name="listing_massaction">
-            <action name="pdfcreditmemos_order" class="Magento\Sales\Ui\Component\Control\PdfAction">
+            <action name="pdfcreditmemos_order" class="Magento\Sales\Ui\Component\Control\Pdf_Action">
                 <argument name="data" xsi:type="array">
                     <item name="config" xsi:type="array">
                         <item name="pdfAction" xsi:type="string">sales/creditmemo/pdfcreditmemos</item>
@@ -242,7 +242,7 @@
                 <visible>false</visible>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Sales\Ui\Component\Listing\Column\ViewAction">
+        <actionsColumn name="actions" class="Magento\Sales\Ui\Component\Listing\Column\View_Action">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="viewUrlPath" xsi:type="string">sales/order_creditmemo/view</item>

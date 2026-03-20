@@ -10,11 +10,11 @@
     <body>
         <referenceContainer name="content">
             <uiComponent name="admin_usage_notification">
-                <visibilityCondition name="can_view_admin_usage_notification" className="Magento\AdminAnalytics\Model\Condition\CanViewNotification"/>
+                <visibilityCondition name="can_view_admin_usage_notification" className="Magento\Admin_Analytics\Model\Condition\Can_View_Notification"/>
             </uiComponent>
             <block name="tracking_notification" as="tracking_notification" template="Magento_AdminAnalytics::notification.phtml">
                 <arguments>
-                    <argument name="notification" xsi:type="object">Magento\AdminAnalytics\ViewModel\Notification</argument>
+                    <argument name="notification" xsi:type="object">Magento\Admin_Analytics\View_Model\Notification</argument>
                 </arguments>
             </block>
         </referenceContainer>

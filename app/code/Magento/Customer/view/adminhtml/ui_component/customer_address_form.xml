@@ -19,9 +19,9 @@
     </argument>
     <settings>
         <buttons>
-            <button name="cancel" class="Magento\Customer\Block\Adminhtml\Edit\Address\CancelButton"/>
-            <button name="delete" class="Magento\Customer\Block\Adminhtml\Edit\Address\DeleteButton"/>
-            <button name="save" class="Magento\Customer\Block\Adminhtml\Edit\Address\SaveButton"/>
+            <button name="cancel" class="Magento\Customer\Block\Adminhtml\Edit\Address\Cancel_Button"/>
+            <button name="delete" class="Magento\Customer\Block\Adminhtml\Edit\Address\Delete_Button"/>
+            <button name="save" class="Magento\Customer\Block\Adminhtml\Edit\Address\Save_Button"/>
         </buttons>
         <namespace>customer_address_form</namespace>
         <ajaxSave>true</ajaxSave>
@@ -42,7 +42,7 @@
             <validateUrl path="customer/address/validate"/>
         </settings>
         <aclResource>Magento_Customer::manage</aclResource>
-        <dataProvider class="Magento\Customer\Model\Address\DataProvider" name="customer_address_form_data_source">
+        <dataProvider class="Magento\Customer\Model\Address\Data_Provider" name="customer_address_form_data_source">
             <settings>
                 <requestFieldName>entity_id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>

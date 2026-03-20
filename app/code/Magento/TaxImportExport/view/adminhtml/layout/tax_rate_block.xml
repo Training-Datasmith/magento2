@@ -25,7 +25,7 @@
         </referenceBlock>
         <referenceBlock name="adminhtml.catalog.product.set.grid.column.tax_country_id">
             <arguments>
-                <argument name="renderer" xsi:type="string">Magento\TaxImportExport\Block\Adminhtml\Rate\Grid\Renderer\Country</argument>
+                <argument name="renderer" xsi:type="string">Magento\Tax_Import_Export\Block\Adminhtml\Rate\Grid\Renderer\Country</argument>
             </arguments>
         </referenceBlock>
         <referenceBlock name="adminhtml.catalog.product.set.grid.column.code">

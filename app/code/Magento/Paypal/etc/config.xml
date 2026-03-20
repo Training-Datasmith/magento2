@@ -87,7 +87,7 @@
                 <visible_on_product>1</visible_on_product>
                 <group>paypal</group>
                 <verify_peer>1</verify_peer>
-                <model>Magento\Paypal\Model\PayflowExpress</model>
+                <model>Magento\Paypal\Model\Payflow_Express</model>
             </payflow_express>
             <payflow_express_bml>
                 <model>Magento\Paypal\Model\Payflow\Bml</model>
@@ -121,14 +121,14 @@
                 <cc_year_length>2</cc_year_length>
                 <can_authorize_vault>1</can_authorize_vault>
                 <can_capture_vault>1</can_capture_vault>
-                <avs_ems_adapter>Magento\Paypal\Model\Payflow\AvsEmsCodeMapper</avs_ems_adapter>
-                <cvv_ems_adapter>Magento\Paypal\Model\Payflow\CvvEmsCodeMapper</cvv_ems_adapter>
+                <avs_ems_adapter>Magento\Paypal\Model\Payflow\Avs_Ems_Code_Mapper</avs_ems_adapter>
+                <cvv_ems_adapter>Magento\Paypal\Model\Payflow\Cvv_Ems_Code_Mapper</cvv_ems_adapter>
             </payflowpro>
             <payflowpro_cc_vault>
                 <model>PayflowProCreditCardVaultFacade</model>
                 <title>Stored Cards (Payflow Pro)</title>
                 <instant_purchase>
-                    <tokenFormat>\Magento\Paypal\Model\InstantPurchase\Payflow\Pro\TokenFormatter</tokenFormat>
+                    <tokenFormat>\Magento\Paypal\Model\Instant_Purchase\Payflow\Pro\Token_Formatter</tokenFormat>
                 </instant_purchase>
                 <group>paypal</group>
             </payflowpro_cc_vault>

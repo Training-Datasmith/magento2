@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+    <type name="Magento\Store_Graph_Ql\Model\Resolver\Store\Store_Config_Data_Provider">
         <arguments>
             <argument name="extendedConfigData" xsi:type="array">
                 <item name="front" xsi:type="string">web/default/front</item>
@@ -18,34 +18,34 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\ResolverIdentityClassProvider">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Resolver_Identity_Class_Provider">
         <arguments>
             <argument name="cacheableResolverClassNameIdentityMap" xsi:type="array">
-                <item name="Magento\CmsGraphQl\Model\Resolver\Page" xsi:type="string">
-                    Magento\CmsGraphQl\Model\Resolver\Page\ResolverCacheIdentity
+                <item name="Magento\Cms_Graph_Ql\Model\Resolver\Page" xsi:type="string">
+                    Magento\Cms_Graph_Ql\Model\Resolver\Page\Resolver_Cache_Identity
                 </item>
-                <item name="Magento\CmsGraphQl\Model\Resolver\Blocks" xsi:type="string">
-                    Magento\CmsGraphQl\Model\Resolver\Block\ResolverCacheIdentity
+                <item name="Magento\Cms_Graph_Ql\Model\Resolver\Blocks" xsi:type="string">
+                    Magento\Cms_Graph_Ql\Model\Resolver\Block\Resolver_Cache_Identity
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\Calculator\Provider">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Cache_Key\Calculator\Provider">
         <arguments>
             <argument name="factorProviders" xsi:type="array">
-                <item name="Magento\CmsGraphQl\Model\Resolver\Page" xsi:type="array">
-                    <item name="currency" xsi:type="string">Magento\StoreGraphQl\Model\Resolver\CacheKey\FactorProvider\Currency</item>
-                    <item name="store" xsi:type="string">Magento\StoreGraphQl\Model\Resolver\CacheKey\FactorProvider\Store</item>
-                    <item name="customergroup" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CustomerGroup</item>
-                    <item name="customertaxrate" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CustomerTaxRate</item>
-                    <item name="isloggedin" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\IsLoggedIn</item>
+                <item name="Magento\Cms_Graph_Ql\Model\Resolver\Page" xsi:type="array">
+                    <item name="currency" xsi:type="string">Magento\Store_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Currency</item>
+                    <item name="store" xsi:type="string">Magento\Store_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Store</item>
+                    <item name="customergroup" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Customer_Group</item>
+                    <item name="customertaxrate" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Customer_Tax_Rate</item>
+                    <item name="isloggedin" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Is_Logged_In</item>
                 </item>
-                <item name="Magento\CmsGraphQl\Model\Resolver\Blocks" xsi:type="array">
-                    <item name="currency" xsi:type="string">Magento\StoreGraphQl\Model\Resolver\CacheKey\FactorProvider\Currency</item>
-                    <item name="store" xsi:type="string">Magento\StoreGraphQl\Model\Resolver\CacheKey\FactorProvider\Store</item>
-                    <item name="customergroup" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CustomerGroup</item>
-                    <item name="customertaxrate" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CustomerTaxRate</item>
-                    <item name="isloggedin" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\IsLoggedIn</item>
+                <item name="Magento\Cms_Graph_Ql\Model\Resolver\Blocks" xsi:type="array">
+                    <item name="currency" xsi:type="string">Magento\Store_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Currency</item>
+                    <item name="store" xsi:type="string">Magento\Store_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Store</item>
+                    <item name="customergroup" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Customer_Group</item>
+                    <item name="customertaxrate" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Customer_Tax_Rate</item>
+                    <item name="isloggedin" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Is_Logged_In</item>
                 </item>
             </argument>
         </arguments>

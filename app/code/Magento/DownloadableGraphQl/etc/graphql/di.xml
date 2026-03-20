@@ -6,14 +6,14 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\CatalogGraphQl\Model\ProductInterfaceTypeResolverComposite">
+    <type name="Magento\Catalog_Graph_Ql\Model\Product_Interface_Type_Resolver_Composite">
         <arguments>
             <argument name="productTypeNameResolvers" xsi:type="array">
-                <item name="downloadable_product_type_resolver" xsi:type="object">Magento\DownloadableGraphQl\Model\DownloadableProductTypeResolver</item>
+                <item name="downloadable_product_type_resolver" xsi:type="object">Magento\Downloadable_Graph_Ql\Model\Downloadable_Product_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Schema\Type\Enum\DefaultDataMapper">
+    <type name="Magento\Framework\Graph_Ql\Schema\Type\Enum\Default_Data_Mapper">
         <arguments>
             <argument name="map" xsi:type="array">
                 <item name="DownloadableFileTypeEnum" xsi:type="array">
@@ -23,7 +23,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Schema\Type\Entity\DefaultMapper">
+    <type name="Magento\Framework\Graph_Ql\Schema\Type\Entity\Default_Mapper">
         <arguments>
             <argument name="map" xsi:type="array">
                 <item name="catalog_product" xsi:type="array">
@@ -32,45 +32,45 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\Cart\BuyRequest\BuyRequestBuilder">
+    <type name="Magento\Quote_Graph_Ql\Model\Cart\Buy_Request\Buy_Request_Builder">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="downloadable_links" xsi:type="object">Magento\DownloadableGraphQl\Model\Cart\BuyRequest\DownloadableLinksDataProvider</item>
+                <item name="downloadable_links" xsi:type="object">Magento\Downloadable_Graph_Ql\Model\Cart\Buy_Request\Downloadable_Links_Data_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesGraphQl\Model\TypeResolver\OrderItem">
+    <type name="Magento\Sales_Graph_Ql\Model\Type_Resolver\Order_Item">
         <arguments>
             <argument name="productTypeMap" xsi:type="array">
                 <item name="downloadable" xsi:type="string">DownloadableOrderItem</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesGraphQl\Model\TypeResolver\InvoiceItem">
+    <type name="Magento\Sales_Graph_Ql\Model\Type_Resolver\Invoice_Item">
         <arguments>
             <argument name="productTypeMap" xsi:type="array">
                 <item name="downloadable" xsi:type="string">DownloadableInvoiceItem</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesGraphQl\Model\TypeResolver\CreditMemoItem">
+    <type name="Magento\Sales_Graph_Ql\Model\Type_Resolver\Credit_Memo_Item">
         <arguments>
             <argument name="productTypeMap" xsi:type="array">
                 <item name="downloadable" xsi:type="string">DownloadableCreditMemoItem</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\WishlistGraphQl\Model\Resolver\Type\WishlistItemType">
+    <type name="Magento\Wishlist_Graph_Ql\Model\Resolver\Type\Wishlist_Item_Type">
         <arguments>
             <argument name="supportedTypes" xsi:type="array">
                 <item name="downloadable" xsi:type="string">DownloadableWishlistItem</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\UrlRewriteGraphQl\Model\RoutableInterfaceTypeResolver">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Routable_Interface_Type_Resolver">
         <arguments>
             <argument name="productTypeNameResolvers" xsi:type="array">
-                <item name="downloadable_product_type_resolver" xsi:type="object">Magento\DownloadableGraphQl\Model\DownloadableProductTypeResolver</item>
+                <item name="downloadable_product_type_resolver" xsi:type="object">Magento\Downloadable_Graph_Ql\Model\Downloadable_Product_Type_Resolver</item>
             </argument>
         </arguments>
     </type>

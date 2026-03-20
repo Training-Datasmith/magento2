@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="store_delete">
-        <observer name="magento_sequence" instance="Magento\SalesSequence\Observer\SequenceRemovalObserver" />
+        <observer name="magento_sequence" instance="Magento\Sales_Sequence\Observer\Sequence_Removal_Observer" />
     </event>
 </config>

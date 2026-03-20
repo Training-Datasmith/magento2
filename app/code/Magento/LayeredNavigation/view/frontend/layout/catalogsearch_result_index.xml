@@ -9,11 +9,11 @@
     <body>
         <attribute name="class" value="page-with-filter"/>
         <referenceContainer name="sidebar.main">
-            <block class="Magento\LayeredNavigation\Block\Navigation\Search" name="catalogsearch.leftnav" before="-" template="Magento_LayeredNavigation::layer/view.phtml">
-                <block class="Magento\LayeredNavigation\Block\Navigation\State" name="catalogsearch.navigation.state" as="state" />
-                <block class="Magento\LayeredNavigation\Block\Navigation\FilterRenderer" name="catalogsearch.navigation.renderer" as="renderer" template="Magento_LayeredNavigation::layer/filter.phtml">
+            <block class="Magento\Layered_Navigation\Block\Navigation\Search" name="catalogsearch.leftnav" before="-" template="Magento_LayeredNavigation::layer/view.phtml">
+                <block class="Magento\Layered_Navigation\Block\Navigation\State" name="catalogsearch.navigation.state" as="state" />
+                <block class="Magento\Layered_Navigation\Block\Navigation\Filter_Renderer" name="catalogsearch.navigation.renderer" as="renderer" template="Magento_LayeredNavigation::layer/filter.phtml">
                     <arguments>
-                        <argument name="product_layer_view_model" xsi:type="object">Magento\LayeredNavigation\ViewModel\Layer\Filter</argument>
+                        <argument name="product_layer_view_model" xsi:type="object">Magento\Layered_Navigation\View_Model\Layer\Filter</argument>
                     </arguments>
                 </block>
             </block>

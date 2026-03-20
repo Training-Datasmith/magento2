@@ -25,7 +25,7 @@
             </storageConfig>
         </settings>
         <aclResource>Magento_Theme::theme</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="design_theme_listing_data_source">
+        <dataProvider class="Magento\Framework\View\Element\Ui_Component\Data_Provider\Data_Provider" name="design_theme_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>theme_id</primaryFieldName>
@@ -80,7 +80,7 @@
                 </fieldClass>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Theme\Ui\Component\Listing\Column\ViewAction" sortOrder="50">
+        <actionsColumn name="actions" class="Magento\Theme\Ui\Component\Listing\Column\View_Action" sortOrder="50">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="viewUrlPath" xsi:type="string">adminhtml/system_design_theme/edit</item>

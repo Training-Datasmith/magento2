@@ -12,7 +12,7 @@
         <data key="backendConfigName">data</data>
     </entity>
     <entity name="WebdriverKey">
-        <data key="tabKey">[\Facebook\WebDriver\WebDriverKeys::TAB]</data>
+        <data key="tabKey">[\Facebook\Web_Driver\Web_Driver_Keys::TAB]</data>
     </entity>
     <entity name="productAttributeColour" type="productAttribute">
         <data key="gold">gold</data>

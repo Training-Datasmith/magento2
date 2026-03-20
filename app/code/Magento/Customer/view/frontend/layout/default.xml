@@ -14,16 +14,16 @@
                     <argument name="sortOrder" xsi:type="number">110</argument>
                 </arguments>
             </block>
-            <block class="Magento\Customer\Block\Account\RegisterLink" name="register-link">
+            <block class="Magento\Customer\Block\Account\Register_Link" name="register-link">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">Create an Account</argument>
                 </arguments>
             </block>
-            <block class="Magento\Customer\Block\Account\AuthorizationLink" name="authorization-link"
+            <block class="Magento\Customer\Block\Account\Authorization_Link" name="authorization-link"
                    template="Magento_Customer::account/link/authorization.phtml"/>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="Magento\Customer\Block\Account\AuthenticationPopup" name="authentication-popup" as="authentication-popup" template="Magento_Customer::account/authentication-popup.phtml">
+            <block class="Magento\Customer\Block\Account\Authentication_Popup" name="authentication-popup" as="authentication-popup" template="Magento_Customer::account/authentication-popup.phtml">
                 <arguments>
                     <argument name="jsLayout" xsi:type="array">
                         <item name="components" xsi:type="array">
@@ -38,24 +38,24 @@
                             </item>
                         </item>
                     </argument>
-                    <argument name="view_model" xsi:type="object">Magento\Customer\ViewModel\Customer\StoreConfig</argument>
+                    <argument name="view_model" xsi:type="object">Magento\Customer\View_Model\Customer\Store_Config</argument>
                 </arguments>
             </block>
-            <block name="customer.section.config" class="Magento\Customer\Block\SectionConfig"
+            <block name="customer.section.config" class="Magento\Customer\Block\Section_Config"
                    template="Magento_Customer::js/section-config.phtml">
                 <arguments>
-                    <argument name="sectionNamesProvider" xsi:type="object">Magento\Customer\Block\SectionNamesProvider</argument>
+                    <argument name="sectionNamesProvider" xsi:type="object">Magento\Customer\Block\Section_Names_Provider</argument>
                 </arguments>
             </block>
-            <block name="customer.customer.data"  class="Magento\Customer\Block\CustomerData"
+            <block name="customer.customer.data"  class="Magento\Customer\Block\Customer_Data"
                    template="Magento_Customer::js/customer-data.phtml">
                 <arguments>
-                    <argument name="auth" xsi:type="object">Magento\Customer\ViewModel\Customer\Auth</argument>
-                    <argument name="json_serializer" xsi:type="object">Magento\Customer\ViewModel\Customer\JsonSerializer</argument>
-                    <argument name="cookie_settings" xsi:type="object">Magento\Customer\ViewModel\CookieSettings</argument>
+                    <argument name="auth" xsi:type="object">Magento\Customer\View_Model\Customer\Auth</argument>
+                    <argument name="json_serializer" xsi:type="object">Magento\Customer\View_Model\Customer\Json_Serializer</argument>
+                    <argument name="cookie_settings" xsi:type="object">Magento\Customer\View_Model\Cookie_Settings</argument>
                 </arguments>
             </block>
-            <block name="customer.data.invalidation.rules" class="Magento\Customer\Block\CustomerScopeData"
+            <block name="customer.data.invalidation.rules" class="Magento\Customer\Block\Customer_Scope_Data"
                    template="Magento_Customer::js/customer-data/invalidation-rules.phtml"/>
         </referenceContainer>
     </body>

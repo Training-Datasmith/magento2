@@ -58,7 +58,7 @@
         <actionGroup ref="FillProductNameAndSkuInProductFormActionGroup" stepKey="fillNameAndSku">
             <argument name="product" value="BundleProduct"/>
         </actionGroup>
-        <pressKey selector="{{AdminProductFormSection.productSku}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="enter"/>
+        <pressKey selector="{{AdminProductFormSection.productSku}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="enter"/>
 
         <!--Off dynamic price and set value-->
         <scrollToTopOfPage stepKey="scrollToTopOfThePageToSeePriceTypeElement"/>

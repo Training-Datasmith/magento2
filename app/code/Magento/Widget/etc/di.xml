@@ -9,8 +9,8 @@
     <type name="Magento\Widget\Model\Config\Reader">
         <arguments>
             <argument name="fileName" xsi:type="string">widget.xml</argument>
-            <argument name="schemaLocator" xsi:type="object">Magento\Widget\Model\Config\SchemaLocator</argument>
-            <argument name="fileResolver" xsi:type="object">Magento\Widget\Model\Config\FileResolver</argument>
+            <argument name="schemaLocator" xsi:type="object">Magento\Widget\Model\Config\Schema_Locator</argument>
+            <argument name="fileResolver" xsi:type="object">Magento\Widget\Model\Config\File_Resolver</argument>
         </arguments>
     </type>
     <type name="Magento\Widget\Model\Config\Data">
@@ -19,12 +19,12 @@
             <argument name="cacheId" xsi:type="string">widget_config</argument>
         </arguments>
     </type>
-    <type name="Magento\Widget\Model\ResourceModel\Layout\Update">
+    <type name="Magento\Widget\Model\Resource_Model\Layout\Update">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Framework\App\Cache\Type\Layout</argument>
         </arguments>
     </type>
-    <type name="Magento\Cms\Model\Template\FilterProvider">
+    <type name="Magento\Cms\Model\Template\Filter_Provider">
         <arguments>
             <argument name="pageFilter" xsi:type="string">Magento\Widget\Model\Template\Filter</argument>
             <argument name="blockFilter" xsi:type="string">Magento\Widget\Model\Template\Filter</argument>
@@ -32,9 +32,9 @@
     </type>
     <type name="Magento\Framework\View\Model\Layout\Merge">
         <plugin name="widget-layout-update-plugin"
-                type="Magento\Widget\Model\ResourceModel\Layout\Plugin" sortOrder="10"/>
+                type="Magento\Widget\Model\Resource_Model\Layout\Plugin" sortOrder="10"/>
     </type>
-    <virtualType name="WidgetValidationState" type="\Magento\Framework\Config\ValidationState\Configurable">
+    <virtualType name="WidgetValidationState" type="\Magento\Framework\Config\Validation_State\Configurable">
         <arguments>
             <argument name="required" xsi:type="boolean">true</argument>
         </arguments>
@@ -44,7 +44,7 @@
             <argument name="validationState" xsi:type="object">WidgetValidationState</argument>
         </arguments>
     </virtualType>
-    <virtualType name="WidgetXmlValidatorFactory" type="Magento\Framework\View\Model\Layout\Update\ValidatorFactory">
+    <virtualType name="WidgetXmlValidatorFactory" type="Magento\Framework\View\Model\Layout\Update\Validator_Factory">
         <arguments>
             <argument name="instanceName" xsi:type="string">WidgetXmlValidator</argument>
         </arguments>

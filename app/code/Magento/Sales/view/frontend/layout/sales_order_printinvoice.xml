@@ -14,17 +14,17 @@
         <referenceContainer name="header-wrapper">
             <referenceBlock name="logo">
                 <arguments>
-                    <argument name="logo_src" xsi:type="helper" helper="Magento\Sales\Model\Order\Invoice\GetLogoFile::execute"/>
+                    <argument name="logo_src" xsi:type="helper" helper="Magento\Sales\Model\Order\Invoice\Get_Logo_File::execute"/>
                 </arguments>
             </referenceBlock>
         </referenceContainer>
         <referenceContainer name="page.main.title">
-            <block class="Magento\Sales\Block\Order\PrintOrder\Invoice" name="order.status" template="Magento_Sales::order/order_status.phtml" />
-            <block class="Magento\Sales\Block\Order\PrintOrder\Invoice" name="order.date" template="Magento_Sales::order/order_date.phtml" />
+            <block class="Magento\Sales\Block\Order\Print_Order\Invoice" name="order.status" template="Magento_Sales::order/order_status.phtml" />
+            <block class="Magento\Sales\Block\Order\Print_Order\Invoice" name="order.date" template="Magento_Sales::order/order_date.phtml" />
         </referenceContainer>
         <referenceContainer name="content">
-            <block class="Magento\Sales\Block\Order\PrintOrder\Invoice" name="sales.order.print.invoice" template="Magento_Sales::order/print/invoice.phtml">
-                <block class="Magento\Framework\View\Element\RendererList" name="sales.order.print.invoice.renderers" as="renderer.list" />
+            <block class="Magento\Sales\Block\Order\Print_Order\Invoice" name="sales.order.print.invoice" template="Magento_Sales::order/print/invoice.phtml">
+                <block class="Magento\Framework\View\Element\Renderer_List" name="sales.order.print.invoice.renderers" as="renderer.list" />
                 <block class="Magento\Sales\Block\Order\Invoice\Totals" name="invoice_totals" template="Magento_Sales::order/totals.phtml" cacheable="false">
                     <arguments>
                         <argument name="label_properties" xsi:type="string">colspan="4" class="mark"</argument>
@@ -37,7 +37,7 @@
         <block class="Magento\Framework\View\Element\Template" name="additional.product.info" template="Magento_Theme::template.phtml"/>
         <referenceBlock name="logo">
             <arguments>
-                <argument name="logoPathResolver" xsi:type="object">Magento\Sales\ViewModel\Header\LogoPathResolver</argument>
+                <argument name="logoPathResolver" xsi:type="object">Magento\Sales\View_Model\Header\Logo_Path_Resolver</argument>
             </arguments>
         </referenceBlock>
     </body>

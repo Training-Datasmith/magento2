@@ -7,35 +7,35 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Section_Pool_Interface">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="messages" xsi:type="string">Magento\Theme\CustomerData\Messages</item>
+                <item name="messages" xsi:type="string">Magento\Theme\Customer_Data\Messages</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Element\Message\MessageConfigurationsPool">
+    <type name="Magento\Framework\View\Element\Message\Message_Configurations_Pool">
         <arguments>
             <argument name="configurationsMap" xsi:type="array">
                 <item name="default_message_identifier" xsi:type="array">
-                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\EscapeRenderer::CODE</item>
+                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\Escape_Renderer::CODE</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Controller\ResultInterface">
-        <plugin name="result-messages" type="Magento\Theme\Controller\Result\MessagePlugin"/>
+    <type name="Magento\Framework\Controller\Result_Interface">
+        <plugin name="result-messages" type="Magento\Theme\Controller\Result\Message_Plugin"/>
     </type>
     <type name="Magento\Framework\View\Result\Layout">
-        <plugin name="asyncCssLoad" type="Magento\Theme\Controller\Result\AsyncCssPlugin" sortOrder="-20" />
-        <plugin name="deferJsToFooter" type="Magento\Theme\Controller\Result\JsFooterPlugin" sortOrder="-10" />
+        <plugin name="asyncCssLoad" type="Magento\Theme\Controller\Result\Async_Css_Plugin" sortOrder="-20" />
+        <plugin name="deferJsToFooter" type="Magento\Theme\Controller\Result\Js_Footer_Plugin" sortOrder="-10" />
     </type>
-    <type name="Magento\Theme\Block\Html\Header\CriticalCss">
+    <type name="Magento\Theme\Block\Html\Header\Critical_Css">
         <arguments>
             <argument name="filePath" xsi:type="string">css/critical.css</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\ActionInterface">
-        <plugin name="designLoader" type="Magento\Theme\Plugin\LoadDesignPlugin"/>
+    <type name="Magento\Framework\App\Action_Interface">
+        <plugin name="designLoader" type="Magento\Theme\Plugin\Load_Design_Plugin"/>
     </type>
 </config>

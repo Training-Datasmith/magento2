@@ -6,13 +6,13 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="product_action_attribute.update" request="Magento\AsynchronousOperations\Api\Data\OperationInterface">
+    <topic name="product_action_attribute.update" request="Magento\Asynchronous_Operations\Api\Data\Operation_Interface">
         <handler name="product_action_attribute.update" type="Magento\Catalog\Model\Attribute\Backend\Consumer" method="process" />
     </topic>
-    <topic name="product_action_attribute.website.update" request="Magento\AsynchronousOperations\Api\Data\OperationInterface">
-        <handler name="product_action_attribute.website.update" type="Magento\Catalog\Model\Attribute\Backend\ConsumerWebsiteAssign" method="process" />
+    <topic name="product_action_attribute.website.update" request="Magento\Asynchronous_Operations\Api\Data\Operation_Interface">
+        <handler name="product_action_attribute.website.update" type="Magento\Catalog\Model\Attribute\Backend\Consumer_Website_Assign" method="process" />
     </topic>
-    <topic name="catalog_website_attribute_value_sync" request="Magento\AsynchronousOperations\Api\Data\OperationInterface">
-        <handler name="catalog_website_attribute_value_sync" type="Magento\Catalog\Model\Attribute\Backend\WebsiteSpecific\ValueSynchronizer" method="process" />
+    <topic name="catalog_website_attribute_value_sync" request="Magento\Asynchronous_Operations\Api\Data\Operation_Interface">
+        <handler name="catalog_website_attribute_value_sync" type="Magento\Catalog\Model\Attribute\Backend\Website_Specific\Value_Synchronizer" method="process" />
     </topic>
 </config>

@@ -7,22 +7,22 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
      <type name="Magento\Framework\Authorization">
-        <plugin name="customerAuthorization" type="Magento\Customer\Model\Plugin\CustomerAuthorization" />
+        <plugin name="customerAuthorization" type="Magento\Customer\Model\Plugin\Customer_Authorization" />
     </type>
-    <type name="Magento\Authorization\Model\CompositeUserContext">
+    <type name="Magento\Authorization\Model\Composite_User_Context">
         <arguments>
             <argument name="userContexts" xsi:type="array">
                 <item name="customerSessionUserContext" xsi:type="array">
-                    <item name="type" xsi:type="object">Magento\Customer\Model\Authorization\CustomerSessionUserContext\Proxy</item>
+                    <item name="type" xsi:type="object">Magento\Customer\Model\Authorization\Customer_Session_User_Context\Proxy</item>
                     <item name="sortOrder" xsi:type="string">20</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
-        <plugin name="updateCustomerByIdFromRequest" type="Magento\Customer\Model\Plugin\UpdateCustomer" />
+    <type name="Magento\Customer\Api\Customer_Repository_Interface">
+        <plugin name="updateCustomerByIdFromRequest" type="Magento\Customer\Model\Plugin\Update_Customer" />
     </type>
-    <type name="Magento\Customer\Model\Customer\AuthorizationComposite">
+    <type name="Magento\Customer\Model\Customer\Authorization_Composite">
         <arguments>
             <argument name="authorizationChecks" xsi:type="array">
                 <item name="rest_customer_authorization" xsi:type="object">
@@ -31,14 +31,14 @@
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Customer\Api\AccountManagementInterface"
-                type="Magento\Customer\Model\AccountManagementApi" />
+    <preference for="Magento\Customer\Api\Account_Management_Interface"
+                type="Magento\Customer\Model\Account_Management_Api" />
     <type name="Magento\Customer\Model\Group\Retriever">
         <plugin name="customerGroupRetrieverApiPlugin"
-                type="Magento\Customer\Plugin\Model\Group\RetrieverPlugin" />
+                type="Magento\Customer\Plugin\Model\Group\Retriever_Plugin" />
     </type>
     <type name="Magento\Customer\Model\Session">
         <plugin name="customerSessionApiPlugin"
-                type="Magento\Customer\Plugin\Model\SessionPlugin" />
+                type="Magento\Customer\Plugin\Model\Session_Plugin" />
     </type>
 </config>

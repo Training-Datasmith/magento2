@@ -10,7 +10,7 @@
     <settings>
         <buttons>
             <button name="login_as_customer"
-                    class="Magento\LoginAsCustomerAdminUi\Ui\Customer\Component\Control\LoginAsCustomerButton"/>
+                    class="Magento\Login_As_Customer_Admin_Ui\Ui\Customer\Component\Control\Login_As_Customer_Button"/>
         </buttons>
     </settings>
 </form>

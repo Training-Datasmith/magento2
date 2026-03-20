@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\UrlRewriteGraphQl\Model\RoutableInterfaceTypeResolver">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Routable_Interface_Type_Resolver">
         <arguments>
             <argument name="productTypeNameResolvers" xsi:type="array">
-                <item name="cms_page_type_resolver" xsi:type="object">Magento\CmsUrlRewriteGraphQl\Model\CmsPageTypeResolver</item>
+                <item name="cms_page_type_resolver" xsi:type="object">Magento\Cms_Url_Rewrite_Graph_Ql\Model\Cms_Page_Type_Resolver</item>
             </argument>
         </arguments>
     </type>

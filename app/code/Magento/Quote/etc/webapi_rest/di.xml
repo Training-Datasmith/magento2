@@ -6,33 +6,33 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Quote\Model\GuestCart\GuestCartManagement">
-        <plugin name="authorization" type="Magento\Quote\Model\GuestCartManagement\Plugin\Authorization" />
+    <type name="Magento\Quote\Model\Guest_Cart\Guest_Cart_Management">
+        <plugin name="authorization" type="Magento\Quote\Model\Guest_Cart_Management\Plugin\Authorization" />
     </type>
-    <type name="Magento\Quote\Model\QuoteRepository">
-        <plugin name="accessControl" type="Magento\Quote\Model\QuoteRepository\Plugin\AccessChangeQuoteControl" />
-        <plugin name="authorization" type="Magento\Quote\Model\QuoteRepository\Plugin\Authorization" />
+    <type name="Magento\Quote\Model\Quote_Repository">
+        <plugin name="accessControl" type="Magento\Quote\Model\Quote_Repository\Plugin\Access_Change_Quote_Control" />
+        <plugin name="authorization" type="Magento\Quote\Model\Quote_Repository\Plugin\Authorization" />
     </type>
-    <type name="Magento\Quote\Api\GuestCartItemRepositoryInterface">
-        <plugin name="updateCartIdFromRequest" type="Magento\Quote\Plugin\UpdateCartId" />
+    <type name="Magento\Quote\Api\Guest_Cart_Item_Repository_Interface">
+        <plugin name="updateCartIdFromRequest" type="Magento\Quote\Plugin\Update_Cart_Id" />
     </type>
     <type name="Magento\Quote\Model\Quote">
-        <plugin name="updateQuoteStoreId" type="Magento\Quote\Model\Quote\Plugin\UpdateQuoteStoreId" />
-        <plugin name="validateQuoteAddress" type="Magento\Quote\Plugin\QuoteAddress" />
+        <plugin name="updateQuoteStoreId" type="Magento\Quote\Model\Quote\Plugin\Update_Quote_Store_Id" />
+        <plugin name="validateQuoteAddress" type="Magento\Quote\Plugin\Quote_Address" />
     </type>
-    <type name="Magento\Quote\Model\QuoteValidator">
-        <plugin name="error_redirect_processor" type="Magento\Quote\Plugin\Webapi\Model\ErrorRedirectProcessor" />
+    <type name="Magento\Quote\Model\Quote_Validator">
+        <plugin name="error_redirect_processor" type="Magento\Quote\Plugin\Webapi\Model\Error_Redirect_Processor" />
     </type>
-    <type name="Magento\Quote\Api\CartItemRepositoryInterface">
+    <type name="Magento\Quote\Api\Cart_Item_Repository_Interface">
         <plugin name="validateProductWebsiteAssignment"
-                type="Magento\Quote\Plugin\Webapi\ValidateProductWebsiteAssignment"
+                type="Magento\Quote\Plugin\Webapi\Validate_Product_Website_Assignment"
                 sortOrder="100" />
     </type>
-    <virtualType name="Magento\Quote\Model\Quote\Item\CartItemValidatorChainOnSave" type="Magento\Quote\Model\Quote\Item\CartItemValidatorChain">
+    <virtualType name="Magento\Quote\Model\Quote\Item\Cart_Item_Validator_Chain_On_Save" type="Magento\Quote\Model\Quote\Item\Cart_Item_Validator_Chain">
         <arguments>
             <argument name="breakChainOnFailure" xsi:type="boolean">true</argument>
             <argument name="validators" xsi:type="array">
-                <item name="cart_item_custom_options_validator" xsi:type="object">Magento\Quote\Model\Quote\Item\CartItemCustomOptionsValidator</item>
+                <item name="cart_item_custom_options_validator" xsi:type="object">Magento\Quote\Model\Quote\Item\Cart_Item_Custom_Options_Validator</item>
             </argument>
         </arguments>
     </virtualType>

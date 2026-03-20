@@ -14,8 +14,8 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Magento\AsynchronousOperations\Block\Adminhtml\Bulk\Details\RetryButton"/>
-            <button name="done" class="Magento\AsynchronousOperations\Block\Adminhtml\Bulk\Details\DoneButton"/>
+            <button name="save" class="Magento\Asynchronous_Operations\Block\Adminhtml\Bulk\Details\Retry_Button"/>
+            <button name="done" class="Magento\Asynchronous_Operations\Block\Adminhtml\Bulk\Details\Done_Button"/>
         </buttons>
         <namespace>bulk_details_form_modal</namespace>
         <ajaxSave>true</ajaxSave>
@@ -34,7 +34,7 @@
         <settings>
             <submitUrl path="bulk/bulk/retry"/>
         </settings>
-        <dataProvider class="Magento\AsynchronousOperations\Ui\Component\Operation\DataProvider" name="bulk_details_form_modal_data_source">
+        <dataProvider class="Magento\Asynchronous_Operations\Ui\Component\Operation\Data_Provider" name="bulk_details_form_modal_data_source">
             <settings>
                 <requestFieldName>uuid</requestFieldName>
                 <primaryFieldName>uuid</primaryFieldName>

@@ -13,7 +13,7 @@
     </type>
     <type name="Magento\Internal\Some\Class">
         <arguments>
-            <argument name="argument1" xsi:type="object">Magento\ExternalModule4\Some\Argument4</argument>
+            <argument name="argument1" xsi:type="object">Magento\External_Module4\Some\Argument4</argument>
         </arguments>
     </type>
     <type name="MyVirtualType">

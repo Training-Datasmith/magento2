@@ -20,7 +20,7 @@
         <click selector="{{AdminNewCatalogPriceRule.conditionsTab}}" after="discardSubsequentRules" stepKey="openConditionsTab"/>
         <waitForPageLoad after="openConditionsTab" stepKey="waitForConditionTabOpened"/>
         <click selector="{{AdminNewCatalogPriceRuleConditions.newCondition}}" after="waitForConditionTabOpened" stepKey="addNewCondition"/>
-        <selectOption selector="{{AdminNewCatalogPriceRuleConditions.conditionSelect('1')}}" userInput="Magento\CatalogRule\Model\Rule\Condition\Product|sku" after="addNewCondition" stepKey="selectTypeCondition"/>
+        <selectOption selector="{{AdminNewCatalogPriceRuleConditions.conditionSelect('1')}}" userInput="Magento\Catalog_Rule\Model\Rule\Condition\Product|sku" after="addNewCondition" stepKey="selectTypeCondition"/>
         <waitForPageLoad after="selectTypeCondition" stepKey="waitForConditionChosed"/>
         <click selector="{{AdminNewCatalogPriceRuleConditions.targetEllipsis('1')}}" after="waitForConditionChosed" stepKey="clickEllipsis"/>
         <fillField selector="{{AdminNewCatalogPriceRuleConditions.targetInput('1', '1')}}" userInput="{{productSku}}" after="clickEllipsis" stepKey="fillProductSku"/>

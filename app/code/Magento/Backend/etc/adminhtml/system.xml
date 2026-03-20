@@ -29,7 +29,7 @@
             <resource>Magento_Config::advanced</resource>
             <group id="modules_disable_output" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Disable Modules Output</label>
-                <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset\Modules\DisableOutput</frontend_model>
+                <frontend_model>Magento\Config\Block\System\Config\Form\Fieldset\Modules\Disable_Output</frontend_model>
             </group>
         </section>
         <section id="trans_email" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -327,7 +327,7 @@
                 </field>
                 <field id="transport" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Transport</label>
-                    <source_model>Magento\Email\Model\Config\Source\SmtpTransportType</source_model>
+                    <source_model>Magento\Email\Model\Config\Source\Smtp_Transport_Type</source_model>
                 </field>
                 <field id="host" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Host</label>
@@ -367,14 +367,14 @@
                 </field>
                 <field id="auth" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Auth</label>
-                    <source_model>Magento\Email\Model\Config\Source\SmtpAuthType</source_model>
+                    <source_model>Magento\Email\Model\Config\Source\Smtp_Auth_Type</source_model>
                     <depends>
                         <field id="transport">smtp</field>
                     </depends>
                 </field>
                 <field id="ssl" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>SSL</label>
-                    <source_model>Magento\Email\Model\Config\Source\SmtpSslType</source_model>
+                    <source_model>Magento\Email\Model\Config\Source\Smtp_Ssl_Type</source_model>
                     <depends>
                         <field id="transport">smtp</field>
                     </depends>
@@ -470,7 +470,7 @@
                     <label>Minimum Admin Password Length</label>
                     <comment>Minimum number of characters required for admin user passwords. Values below 7 are not allowed.</comment>
                     <validate>required-entry validate-digits validate-digits-range digits-range-7-65535</validate>
-                    <backend_model>Magento\Backend\Model\Config\Password\MinimumLength</backend_model>
+                    <backend_model>Magento\Backend\Model\Config\Password\Minimum_Length</backend_model>
                 </field>
                 <field id="use_form_key" translate="label" type="select" sortOrder="10" showInDefault="1" canRestore="1">
                     <label>Add Secret Key to URLs</label>
@@ -484,7 +484,7 @@
                 <field id="session_lifetime" translate="label comment" sortOrder="30" showInDefault="1" canRestore="1">
                     <label>Admin Session Lifetime (seconds)</label>
                     <comment>Please enter at least 60 and at most 31536000 (one year).</comment>
-                    <backend_model>Magento\Backend\Model\Config\SessionLifetime\BackendModel</backend_model>
+                    <backend_model>Magento\Backend\Model\Config\Session_Lifetime\Backend_Model</backend_model>
                     <validate>validate-digits validate-digits-range digits-range-60-31536000</validate>
                 </field>
             </group>

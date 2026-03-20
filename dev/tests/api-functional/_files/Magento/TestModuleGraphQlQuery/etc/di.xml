@@ -6,5 +6,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\TestModuleGraphQlQuery\Model\Entity\ItemInterface" type="Magento\TestModuleGraphQlQuery\Model\Entity\Item"/>
+    <preference for="Magento\Test_Module_Graph_Ql_Query\Model\Entity\Item_Interface" type="Magento\Test_Module_Graph_Ql_Query\Model\Entity\Item"/>
 </config>

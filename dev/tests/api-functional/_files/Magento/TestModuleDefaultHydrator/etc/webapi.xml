@@ -8,25 +8,25 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <route url="/V1/TestModuleDefaultHydrator" method="POST">
-        <service class="Magento\TestModuleDefaultHydrator\Api\CustomerPersistenceInterface" method="save"/>
+        <service class="Magento\Test_Module_Default_Hydrator\Api\Customer_Persistence_Interface" method="save"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>
     </route>
     <route url="/V1/TestModuleDefaultHydrator/:id" method="GET">
-        <service class="Magento\TestModuleDefaultHydrator\Api\CustomerPersistenceInterface" method="getById"/>
+        <service class="Magento\Test_Module_Default_Hydrator\Api\Customer_Persistence_Interface" method="getById"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>
     </route>
     <route url="/V1/TestModuleDefaultHydrator/:id" method="DELETE">
-        <service class="Magento\TestModuleDefaultHydrator\Api\CustomerPersistenceInterface" method="delete"/>
+        <service class="Magento\Test_Module_Default_Hydrator\Api\Customer_Persistence_Interface" method="delete"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>
     </route>
     <route url="/V1/TestModuleDefaultHydrator/:id" method="PUT">
-        <service class="Magento\TestModuleDefaultHydrator\Api\CustomerPersistenceInterface" method="save"/>
+        <service class="Magento\Test_Module_Default_Hydrator\Api\Customer_Persistence_Interface" method="save"/>
         <resources>
             <resource ref="anonymous"/>
         </resources>

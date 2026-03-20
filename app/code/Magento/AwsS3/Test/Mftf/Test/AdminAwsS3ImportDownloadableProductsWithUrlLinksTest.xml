@@ -27,18 +27,18 @@
             <comment userInput="BIC workaround" stepKey="createDirectoryForImportFiles" after="createCustomer"/>
             <comment userInput="BIC workaround" stepKey="copyImportFile" after="createDirectoryForImportFiles"/>
             <remove keyForRemoval="createDirectoryForImportImages"/>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="createDirectory" stepKey="createDirectoryForImportImagesInS3">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="createDirectory" stepKey="createDirectoryForImportImagesInS3">
                 <argument name="path">var/import/images/{{ImportProduct_Downloadable_UrlLinks.name}}</argument>
             </helper>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="copyFromLocal" stepKey="copyBaseImage">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="copyFromLocal" stepKey="copyBaseImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/{{ImportProduct_Downloadable_UrlLinks.baseImage}}</argument>
                 <argument name="destination">var/import/images/{{ImportProduct_Downloadable_UrlLinks.name}}/{{ImportProduct_Downloadable_UrlLinks.baseImage}}</argument>
             </helper>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="copyFromLocal" stepKey="copySmallImage">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="copyFromLocal" stepKey="copySmallImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/{{ImportProduct_Downloadable_UrlLinks.smallImage}}</argument>
                 <argument name="destination">var/import/images/{{ImportProduct_Downloadable_UrlLinks.name}}/{{ImportProduct_Downloadable_UrlLinks.smallImage}}</argument>
             </helper>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="copyFromLocal" stepKey="copyThumbnailImage">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="copyFromLocal" stepKey="copyThumbnailImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/{{ImportProduct_Downloadable_UrlLinks.thumbnailImage}}</argument>
                 <argument name="destination">var/import/images/{{ImportProduct_Downloadable_UrlLinks.name}}/{{ImportProduct_Downloadable_UrlLinks.thumbnailImage}}</argument>
             </helper>
@@ -56,7 +56,7 @@
             <!-- Delete S3 Data -->
             <remove keyForRemoval="deleteProductImageDirectory"/>
             <comment userInput="BIC workaround" stepKey="deleteImportFilesDirectoryS3" after="deleteCustomer"/>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="deleteDirectory" stepKey="deleteImportImagesFilesDirectoryS3" after="deleteImportFilesDirectoryS3">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="deleteDirectory" stepKey="deleteImportImagesFilesDirectoryS3" after="deleteImportFilesDirectoryS3">
                 <argument name="path">var/import/images/{{ImportProduct_Downloadable_UrlLinks.name}}</argument>
             </helper>
             <actionGroup ref="CliCacheFlushActionGroup" stepKey="flushCache" after="deleteImportImagesFilesDirectoryS3">

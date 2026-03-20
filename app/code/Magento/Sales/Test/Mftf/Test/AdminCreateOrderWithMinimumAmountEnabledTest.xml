@@ -38,7 +38,7 @@
             <createData entity="DisabledMinimumOrderAmount" stepKey="disableMinimumOrderAmount"/>
             <actionGroup ref="ClearCacheActionGroup" stepKey="clearCacheAfter"/>
             <!--Delete all customers via API-->
-            <helper class="Magento\Customer\Test\Mftf\Helper\CustomerApiHelper" method="deleteAllCustomersApi" stepKey="deleteAllCustomersViaApi"/>
+            <helper class="Magento\Customer\Test\Mftf\Helper\Customer_Api_Helper" method="deleteAllCustomersApi" stepKey="deleteAllCustomersViaApi"/>
             <actionGroup ref="AdminLogoutActionGroup" stepKey="amOnLogoutPage"/>
         </after>
 

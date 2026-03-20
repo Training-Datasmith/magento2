@@ -8,56 +8,56 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Magento\Catalog\Model\Product\Option\Type\Date" type="Magento\Catalog\Model\Webapi\Product\Option\Type\Date" />
-    <type name="Magento\Catalog\Helper\Product\ConfigurationPool">
+    <type name="Magento\Catalog\Helper\Product\Configuration_Pool">
         <arguments>
             <argument name="instancesByType" xsi:type="array">
                 <item name="default" xsi:type="object">Magento\Catalog\Helper\Product\Configuration</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\ResourceConnection">
-        <plugin name="get_catalog_category_product_index_table_name" type="Magento\Catalog\Model\Indexer\Category\Product\Plugin\TableResolver"/>
-        <plugin name="get_catalog_product_price_index_table_name" type="Magento\Catalog\Model\Indexer\Product\Price\Plugin\TableResolver"/>
+    <type name="Magento\Framework\App\Resource_Connection">
+        <plugin name="get_catalog_category_product_index_table_name" type="Magento\Catalog\Model\Indexer\Category\Product\Plugin\Table_Resolver"/>
+        <plugin name="get_catalog_product_price_index_table_name" type="Magento\Catalog\Model\Indexer\Product\Price\Plugin\Table_Resolver"/>
     </type>
-    <type name="Magento\Catalog\Api\ProductCustomOptionRepositoryInterface">
-        <plugin name="updateProductCustomOptionsAttributes" type="Magento\Catalog\Plugin\Model\Product\Option\UpdateProductCustomOptionsAttributes"/>
+    <type name="Magento\Catalog\Api\Product_Custom_Option_Repository_Interface">
+        <plugin name="updateProductCustomOptionsAttributes" type="Magento\Catalog\Plugin\Model\Product\Option\Update_Product_Custom_Options_Attributes"/>
     </type>
-    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
-        <plugin name="product_authorization" type="Magento\Catalog\Plugin\ProductAuthorization" />
+    <type name="Magento\Catalog\Api\Product_Repository_Interface">
+        <plugin name="product_authorization" type="Magento\Catalog\Plugin\Product_Authorization" />
     </type>
-    <type name="Magento\Catalog\Api\CategoryRepositoryInterface">
-        <plugin name="category_authorization" type="Magento\Catalog\Plugin\CategoryAuthorization" />
+    <type name="Magento\Catalog\Api\Category_Repository_Interface">
+        <plugin name="category_authorization" type="Magento\Catalog\Plugin\Category_Authorization" />
     </type>
-    <type name="Magento\Framework\Reflection\DataObjectProcessor">
+    <type name="Magento\Framework\Reflection\Data_Object_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="Magento\Catalog\Model\Product" xsi:type="object">Magento\Catalog\Model\Product\Webapi\ProductOutputProcessor\Proxy</item>
+                <item name="Magento\Catalog\Model\Product" xsi:type="object">Magento\Catalog\Model\Product\Webapi\Product_Output_Processor\Proxy</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Webapi\ProductOutputProcessor">
+    <type name="Magento\Catalog\Model\Product\Webapi\Product_Output_Processor">
         <arguments>
-            <argument name="deserializer" xsi:type="object">Magento\Catalog\Model\Product\Webapi\Rest\RequestTypeBasedDeserializer</argument>
+            <argument name="deserializer" xsi:type="object">Magento\Catalog\Model\Product\Webapi\Rest\Request_Type_Based_Deserializer</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Api\ProductLinkRepositoryInterface">
-        <plugin name="reindex_after_save_product_links" type="Magento\Catalog\Plugin\Api\ProductLinkRepositoryInterface\ReindexAfterSaveProductLinksPlugin"/>
-        <plugin name="reindex_after_delete_by_id_product_links" type="Magento\Catalog\Plugin\Api\ProductLinkRepositoryInterface\ReindexAfterDeleteByIdProductLinksPlugin"/>
+    <type name="Magento\Catalog\Api\Product_Link_Repository_Interface">
+        <plugin name="reindex_after_save_product_links" type="Magento\Catalog\Plugin\Api\Product_Link_Repository_Interface\Reindex_After_Save_Product_Links_Plugin"/>
+        <plugin name="reindex_after_delete_by_id_product_links" type="Magento\Catalog\Plugin\Api\Product_Link_Repository_Interface\Reindex_After_Delete_By_Id_Product_Links_Plugin"/>
     </type>
-    <type name="Magento\Catalog\Model\CategoryRepository">
-        <plugin name="format_category_url_key_rest_api" type="Magento\Catalog\Plugin\Model\CategoryRepositoryPlugin" />
+    <type name="Magento\Catalog\Model\Category_Repository">
+        <plugin name="format_category_url_key_rest_api" type="Magento\Catalog\Plugin\Model\Category_Repository_Plugin" />
     </type>
-    <type name="Magento\Catalog\Model\Product\Price\SpecialPriceStorage">
+    <type name="Magento\Catalog\Model\Product\Price\Special_Price_Storage">
         <plugin name="vendor_special_price_rest_plugin"
-                type="Magento\Catalog\Model\Plugin\SpecialPricePluginForREST\SpecialPriceStoragePlugin" />
+                type="Magento\Catalog\Model\Plugin\Special_Price_Plugin_For_REST\Special_Price_Storage_Plugin" />
     </type>
     <!-- Essential performance optimizations for category tree operations -->
-    <type name="Magento\Catalog\Api\CategoryManagementInterface">
+    <type name="Magento\Catalog\Api\Category_Management_Interface">
         <plugin name="categoryManagementPerformanceOptimizer"
-                type="Magento\Catalog\Plugin\CategoryManagementPerformanceOptimizer" />
+                type="Magento\Catalog\Plugin\Category_Management_Performance_Optimizer" />
     </type>
-    <type name="Magento\Catalog\Model\ProductRenderList">
+    <type name="Magento\Catalog\Model\Product_Render_List">
         <plugin name="customerGroupContextForPricing"
-                type="Magento\Catalog\Plugin\Model\ProductRenderListPlugin" />
+                type="Magento\Catalog\Plugin\Model\Product_Render_List_Plugin" />
     </type>
 </config>

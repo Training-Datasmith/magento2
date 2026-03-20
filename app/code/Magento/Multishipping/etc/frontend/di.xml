@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\Url\SecurityInfo">
+    <type name="Magento\Framework\Url\Security_Info">
         <arguments>
             <argument name="secureUrlList" xsi:type="array">
                 <item name="multishipping_checkout" xsi:type="string">/multishipping/checkout</item>
@@ -31,30 +31,30 @@
         </arguments>
     </type>
     <type name="Magento\Checkout\Controller\Cart\Add">
-        <plugin name="multishipping_disabler" type="Magento\Multishipping\Plugin\DisableMultishippingMode" sortOrder="50" />
+        <plugin name="multishipping_disabler" type="Magento\Multishipping\Plugin\Disable_Multishipping_Mode" sortOrder="50" />
     </type>
-    <type name="Magento\Checkout\Controller\Cart\UpdatePost">
-        <plugin name="multishipping_disabler" type="Magento\Multishipping\Plugin\DisableMultishippingMode" sortOrder="50" />
+    <type name="Magento\Checkout\Controller\Cart\Update_Post">
+        <plugin name="multishipping_disabler" type="Magento\Multishipping\Plugin\Disable_Multishipping_Mode" sortOrder="50" />
     </type>
     <type name="Magento\Checkout\Controller\Index\Index">
-        <plugin name="multishipping_disabler" type="Magento\Multishipping\Plugin\DisableMultishippingMode" sortOrder="50" />
+        <plugin name="multishipping_disabler" type="Magento\Multishipping\Plugin\Disable_Multishipping_Mode" sortOrder="50" />
     </type>
     <type name="Magento\Checkout\Model\Cart">
         <plugin name="multishipping_session_mapper" type="Magento\Multishipping\Model\Checkout\Type\Multishipping\Plugin" sortOrder="50" />
     </type>
     <type name="Magento\Checkout\Controller\Cart">
-        <plugin name="multishipping_clear_addresses" type="Magento\Multishipping\Model\Cart\Controller\CartPlugin" sortOrder="50" />
+        <plugin name="multishipping_clear_addresses" type="Magento\Multishipping\Model\Cart\Controller\Cart_Plugin" sortOrder="50" />
     </type>
-    <type name="Magento\Checkout\Controller\Sidebar\UpdateItemQty">
-        <plugin name="multishipping_clear_addresses_before_update_qty" type="Magento\Multishipping\Model\Cart\Controller\MiniCartPlugin" sortOrder="50" />
+    <type name="Magento\Checkout\Controller\Sidebar\Update_Item_Qty">
+        <plugin name="multishipping_clear_addresses_before_update_qty" type="Magento\Multishipping\Model\Cart\Controller\Mini_Cart_Plugin" sortOrder="50" />
     </type>
-    <type name="Magento\Checkout\Controller\Sidebar\RemoveItem">
-        <plugin name="multishipping_clear_addresses_before_remove_item" type="Magento\Multishipping\Model\Cart\Controller\MiniCartPlugin" sortOrder="50" />
+    <type name="Magento\Checkout\Controller\Sidebar\Remove_Item">
+        <plugin name="multishipping_clear_addresses_before_remove_item" type="Magento\Multishipping\Model\Cart\Controller\Mini_Cart_Plugin" sortOrder="50" />
     </type>
     <type name="Magento\Quote\Model\Quote">
-        <plugin name="multishipping_reset_shipping_assigment" type="Magento\Multishipping\Plugin\ResetShippingAssigment"/>
+        <plugin name="multishipping_reset_shipping_assigment" type="Magento\Multishipping\Plugin\Reset_Shipping_Assigment"/>
     </type>
-    <type name="Magento\Checkout\Controller\Cart\UpdateItemQty">
-        <plugin name="multishipping_disabler" type="Magento\Multishipping\Plugin\DisableMultishippingMode" sortOrder="10" />
+    <type name="Magento\Checkout\Controller\Cart\Update_Item_Qty">
+        <plugin name="multishipping_disabler" type="Magento\Multishipping\Plugin\Disable_Multishipping_Mode" sortOrder="10" />
     </type>
 </config>

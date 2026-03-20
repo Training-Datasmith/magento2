@@ -7,7 +7,7 @@
 -->
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-    <widget id="new_products" class="Magento\Catalog\Block\Product\Widget\NewWidget" is_email_compatible="true"
+    <widget id="new_products" class="Magento\Catalog\Block\Product\Widget\New_Widget" is_email_compatible="true"
             placeholder_image="Magento_Catalog::images/product_widget_new.png" ttl="86400">
         <label translate="true">Catalog New Products List</label>
         <description translate="true">List of Products that are set as New</description>
@@ -166,7 +166,7 @@
             </parameter>
         </parameters>
     </widget>
-    <widget id="catalog_recently_viewed" class="Magento\Catalog\Block\Widget\RecentlyViewed"
+    <widget id="catalog_recently_viewed" class="Magento\Catalog\Block\Widget\Recently_Viewed"
             placeholder_image="Magento_Catalog::images/product_widget_viewed.png">
         <label translate="true">Recently Viewed Products</label>
         <description translate="true">List of Products Recently Viewed by Visitor</description>
@@ -238,7 +238,7 @@
             </container>
         </containers>
     </widget>
-    <widget id="catalog_recently_compared" class="Magento\Catalog\Block\Widget\RecentlyCompared"
+    <widget id="catalog_recently_compared" class="Magento\Catalog\Block\Widget\Recently_Compared"
             placeholder_image="Magento_Catalog::images/product_widget_viewed.png">
         <label translate="true">Recently Compared Products</label>
         <description translate="true">List of Products Recently Compared by Visitor</description>

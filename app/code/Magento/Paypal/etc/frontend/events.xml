@@ -7,12 +7,12 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="checkout_submit_all_after">
-        <observer name="hss_save_order_after_submit" instance="Magento\Paypal\Observer\SaveOrderAfterSubmitObserver"/>
+        <observer name="hss_save_order_after_submit" instance="Magento\Paypal\Observer\Save_Order_After_Submit_Observer"/>
     </event>
     <event name="checkout_controller_onepage_saveOrder">
-        <observer name="hss_save_order_onepage" instance="Magento\Paypal\Observer\SetResponseAfterSaveOrderObserver"/>
+        <observer name="hss_save_order_onepage" instance="Magento\Paypal\Observer\Set_Response_After_Save_Order_Observer"/>
     </event>
     <event name="shortcut_buttons_container">
-        <observer name="paypal_shortcuts" instance="Magento\Paypal\Observer\AddPaypalShortcutsObserver"/>
+        <observer name="paypal_shortcuts" instance="Magento\Paypal\Observer\Add_Paypal_Shortcuts_Observer"/>
     </event>
 </config>

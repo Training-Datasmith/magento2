@@ -6,9 +6,9 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Framework\Module\SomeInterface" type="Magento\Framework\Module\ClassOne" />
-    <preference for="Magento\Framework\Module\SomeInterfaceTwo" type="Magento\Framework\Module\ClassTwo" />
-    <type name="Magento\Framework\Data\Collection\Db\FetchStrategy\Cache">
+    <preference for="Magento\Framework\Module\Some_Interface" type="Magento\Framework\Module\Class_One" />
+    <preference for="Magento\Framework\Module\Some_Interface_Two" type="Magento\Framework\Module\Class_Two" />
+    <type name="Magento\Framework\Data\Collection\Db\Fetch_Strategy\Cache">
         <arguments>
             <argument name="cacheTags" xsi:type="array">
                 <item name="const" xsi:type="const">Magento\Store\Model\Website::CACHE_TAG</item>

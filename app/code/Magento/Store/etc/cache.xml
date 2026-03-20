@@ -26,11 +26,11 @@
         <label>Reflection Data</label>
         <description>API interfaces reflection data</description>
     </type>
-    <type name="db_ddl" translate="label,description" instance="Magento\Framework\DB\Adapter\DdlCache">
+    <type name="db_ddl" translate="label,description" instance="Magento\Framework\DB\Adapter\Ddl_Cache">
         <label>Database DDL operations</label>
         <description>Results of DDL queries, such as describing tables or indexes</description>
     </type>
-    <type name="compiled_config" translate="label,description" instance="Magento\Framework\App\Interception\Cache\CompiledConfig">
+    <type name="compiled_config" translate="label,description" instance="Magento\Framework\App\Interception\Cache\Compiled_Config">
         <label>Compiled Config</label>
         <description>Compilation configuration</description>
     </type>

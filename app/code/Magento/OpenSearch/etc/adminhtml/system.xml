@@ -73,7 +73,7 @@
                        showInWebsite="0" showInStore="0">
                     <label/>
                     <button_label>Test Connection</button_label>
-                    <frontend_model>Magento\OpenSearch\Block\Adminhtml\System\Config\TestConnection</frontend_model>
+                    <frontend_model>Magento\Open_Search\Block\Adminhtml\System\Config\Test_Connection</frontend_model>
                     <depends>
                         <field id="engine">opensearch</field>
                     </depends>
@@ -84,7 +84,7 @@
                         <field id="engine">opensearch</field>
                     </depends>
                     <comment><![CDATA[<a href="https://experienceleague.adobe.com/en/docs/commerce-admin/catalog/catalog/search/search-configuration">Learn more</a> about valid syntax.]]></comment>
-                    <backend_model>Magento\Elasticsearch\Model\Config\Backend\MinimumShouldMatch</backend_model>
+                    <backend_model>Magento\Elasticsearch\Model\Config\Backend\Minimum_Should_Match</backend_model>
                 </field>
             </group>
         </section>

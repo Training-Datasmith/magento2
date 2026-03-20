@@ -8,7 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="product.info.addtocart.bundle">
-            <block class="Magento\Paypal\Block\PayLater\Banner" name="product.info.addtocart.additional.paylater"
+            <block class="Magento\Paypal\Block\Pay_Later\Banner" name="product.info.addtocart.additional.paylater"
                    template="Magento_Paypal::paylater/banner.phtml">
                 <arguments>
                     <argument name="placement" xsi:type="string">product</argument>

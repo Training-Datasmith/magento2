@@ -8,7 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="after.body.start">
-            <block class="Magento\Paypal\Block\Express\InContext\Component"
+            <block class="Magento\Paypal\Block\Express\In_Context\Component"
                    name="paypal.express-in-context.component">
                 <arguments>
                     <argument name="is_button_context" xsi:type="boolean">true</argument>

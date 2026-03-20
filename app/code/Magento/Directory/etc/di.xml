@@ -12,15 +12,15 @@
             <argument name="servicesConfig" xsi:type="array">
                 <item name="fixerio" xsi:type="array">
                     <item name="label" xsi:type="string" translatable="true">Fixer.io (legacy)</item>
-                    <item name="class" xsi:type="string">Magento\Directory\Model\Currency\Import\FixerIo</item>
+                    <item name="class" xsi:type="string">Magento\Directory\Model\Currency\Import\Fixer_Io</item>
                 </item>
                 <item name="fixerio_apilayer" xsi:type="array">
                     <item name="label" xsi:type="string" translatable="true">Fixer Api (APILayer)</item>
-                    <item name="class" xsi:type="string">Magento\Directory\Model\Currency\Import\FixerIoApiLayer</item>
+                    <item name="class" xsi:type="string">Magento\Directory\Model\Currency\Import\Fixer_Io_Api_Layer</item>
                 </item>
                 <item name="currencyconverterapi" xsi:type="array">
                     <item name="label" xsi:type="string" translatable="true">Currency Converter API</item>
-                    <item name="class" xsi:type="string">Magento\Directory\Model\Currency\Import\CurrencyConverterApi</item>
+                    <item name="class" xsi:type="string">Magento\Directory\Model\Currency\Import\Currency_Converter_Api</item>
                 </item>
             </argument>
         </arguments>
@@ -31,7 +31,7 @@
             <argument name="instanceName" xsi:type="string">Magento\Directory\Helper\Data</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Directory\Model\ResourceModel\Country\Collection" shared="false">
+    <type name="Magento\Directory\Model\Resource_Model\Country\Collection" shared="false">
         <arguments>
             <argument name="helperData" xsi:type="object">DirectoryHelperDataProxy</argument>
             <argument name="countriesWithNotRequiredStates" xsi:type="array">
@@ -43,15 +43,15 @@
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Directory\Model\Country\Postcode\ConfigInterface" type="Magento\Directory\Model\Country\Postcode\Config" />
-    <preference for="Magento\Directory\Model\Country\Postcode\ValidatorInterface" type="Magento\Directory\Model\Country\Postcode\Validator" />
-    <preference for="Magento\Directory\Api\CurrencyInformationAcquirerInterface" type="Magento\Directory\Model\CurrencyInformationAcquirer" />
-    <preference for="Magento\Directory\Api\Data\CurrencyInformationInterface" type="Magento\Directory\Model\Data\CurrencyInformation" />
-    <preference for="Magento\Directory\Api\Data\ExchangeRateInterface" type="Magento\Directory\Model\Data\ExchangeRate" />
-    <preference for="Magento\Directory\Api\CountryInformationAcquirerInterface" type="Magento\Directory\Model\CountryInformationAcquirer" />
-    <preference for="Magento\Directory\Api\Data\CountryInformationInterface" type="Magento\Directory\Model\Data\CountryInformation" />
-    <preference for="Magento\Directory\Api\Data\RegionInformationInterface" type="Magento\Directory\Model\Data\RegionInformation" />
-    <type name="Magento\Config\Model\Config\TypePool">
+    <preference for="Magento\Directory\Model\Country\Postcode\Config_Interface" type="Magento\Directory\Model\Country\Postcode\Config" />
+    <preference for="Magento\Directory\Model\Country\Postcode\Validator_Interface" type="Magento\Directory\Model\Country\Postcode\Validator" />
+    <preference for="Magento\Directory\Api\Currency_Information_Acquirer_Interface" type="Magento\Directory\Model\Currency_Information_Acquirer" />
+    <preference for="Magento\Directory\Api\Data\Currency_Information_Interface" type="Magento\Directory\Model\Data\Currency_Information" />
+    <preference for="Magento\Directory\Api\Data\Exchange_Rate_Interface" type="Magento\Directory\Model\Data\Exchange_Rate" />
+    <preference for="Magento\Directory\Api\Country_Information_Acquirer_Interface" type="Magento\Directory\Model\Country_Information_Acquirer" />
+    <preference for="Magento\Directory\Api\Data\Country_Information_Interface" type="Magento\Directory\Model\Data\Country_Information" />
+    <preference for="Magento\Directory\Api\Data\Region_Information_Interface" type="Magento\Directory\Model\Data\Region_Information" />
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="currency/import/error_email" xsi:type="string">1</item>

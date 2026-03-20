@@ -56,7 +56,7 @@
                 <argument name="InterfaceLocaleByValue" value="en_US"/>
             </actionGroup>
             <!-- Delete configurable product -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
             <deleteData createDataKey="createColorAttribute" stepKey="deleteColorAttribute"/>
             <deleteData createDataKey="createSizeAttribute" stepKey="deleteSizeAttribute"/>
             <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>

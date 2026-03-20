@@ -10,7 +10,7 @@
         <arguments>
             <argument name="dataSource" xsi:type="object">Magento\Framework\Data\Collection</argument>
         </arguments>
-        <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="admin.test.grid.columnSet">
+        <block class="Magento\Backend\Block\Widget\Grid\Column_Set" as="grid.columnSet" name="admin.test.grid.columnSet">
             <block class="Magento\Backend\Block\Widget\Grid\Column" as="product_name">
                 <arguments>
                     <argument name="header" xsi:type="string" translate="true">Product name 1</argument>
@@ -65,7 +65,7 @@
                     <item name="option_id3" xsi:type="array">
                         <item name="label" xsi:type="string" translate="true">Option Three</item>
                         <item name="url" xsi:type="string">*/*/option3</item>
-                        <item name="visible" xsi:type="object">Magento\Backend\Block\Cache\Grid\Massaction\ProductionModeVisibilityChecker</item>
+                        <item name="visible" xsi:type="object">Magento\Backend\Block\Cache\Grid\Massaction\Production_Mode_Visibility_Checker</item>
                     </item>
                 </argument>
             </arguments>

@@ -9,7 +9,7 @@
     <update handle="review_product_form_component"/>
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Cookie\Block\RequireCookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml" ifconfig="catalog/review/active">
+            <block class="Magento\Cookie\Block\Require_Cookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml" ifconfig="catalog/review/active">
                 <arguments>
                     <argument name="triggers" xsi:type="array">
                         <item name="submitReviewButton" xsi:type="string">.review .action.submit</item>
@@ -24,7 +24,7 @@
                 </arguments>
                 <block class="Magento\Review\Block\Form" name="product.review.form" as="review_form" ifconfig="catalog/review/active">
                     <arguments>
-                        <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\ButtonLockManager</argument>
+                        <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\Button_Lock_Manager</argument>
                     </arguments>
                     <container name="form.additional.review.info" as="form_additional_review_info"/>
                     <container name="product.review.form.fields.before" as="form_fields_before" label="Review Form Fields Before"/>

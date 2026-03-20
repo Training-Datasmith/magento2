@@ -108,14 +108,14 @@
             <argument name="rowIndex" value="0"/>
         </actionGroup>
         <!-- Validate Export File on File System: Configurable Product -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertExportFileExists">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertExportFileExists">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$createProductImage.entry[content][name]$,"english image alt text 1"</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct1">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct1">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$createProductImage.entry[content][name]$,"french image alt text 1"</argument>
         </helper>

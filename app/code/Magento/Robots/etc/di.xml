@@ -11,7 +11,7 @@
             <argument name="template" xsi:type="string">Magento_Robots::robots.phtml</argument>
         </arguments>
     </virtualType>
-    <virtualType name="robotsResultPageFactory" type="Magento\Framework\View\Result\PageFactory">
+    <virtualType name="robotsResultPageFactory" type="Magento\Framework\View\Result\Page_Factory">
         <arguments>
             <argument name="instanceName" xsi:type="string">robotsResultPage</argument>
         </arguments>
@@ -21,7 +21,7 @@
             <argument name="resultPageFactory" xsi:type="object">robotsResultPageFactory</argument>
         </arguments>
     </type>
-    <type name="Magento\Theme\Model\Design\Config\MetadataProvider">
+    <type name="Magento\Theme\Model\Design\Config\Metadata_Provider">
         <arguments>
             <argument name="metadata" xsi:type="array">
                 <item name="custom_instructions" xsi:type="array">

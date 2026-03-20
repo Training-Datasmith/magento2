@@ -6,39 +6,39 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\FilterProcessor\ContentField">
+    <type name="Magento\Media_Gallery_Ui\Model\Search_Criteria\Collection_Processor\Filter_Processor\Content_Field">
         <arguments>
-            <argument name="getAssetIdsByContentStatus" xsi:type="object">Magento\MediaContentApi\Api\GetAssetIdsByContentFieldInterface</argument>
+            <argument name="getAssetIdsByContentStatus" xsi:type="object">Magento\Media_Content_Api\Api\Get_Asset_Ids_By_Content_Field_Interface</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="customFilters" xsi:type="array">
-                <item name="path" xsi:type="object">Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\FilterProcessor\Directory</item>
-                <item name="fulltext" xsi:type="object">Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\FilterProcessor\Keyword</item>
-                <item name="entity_type" xsi:type="object">Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\FilterProcessor\EntityType</item>
-                <item name="duplicated" xsi:type="object">Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\FilterProcessor\Duplicated</item>
-                <item name="content_status" xsi:type="object">Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\FilterProcessor\ContentField</item>
-                <item name="store_id" xsi:type="object">Magento\MediaGalleryUi\Model\SearchCriteria\CollectionProcessor\FilterProcessor\ContentField</item>
+                <item name="path" xsi:type="object">Magento\Media_Gallery_Ui\Model\Search_Criteria\Collection_Processor\Filter_Processor\Directory</item>
+                <item name="fulltext" xsi:type="object">Magento\Media_Gallery_Ui\Model\Search_Criteria\Collection_Processor\Filter_Processor\Keyword</item>
+                <item name="entity_type" xsi:type="object">Magento\Media_Gallery_Ui\Model\Search_Criteria\Collection_Processor\Filter_Processor\Entity_Type</item>
+                <item name="duplicated" xsi:type="object">Magento\Media_Gallery_Ui\Model\Search_Criteria\Collection_Processor\Filter_Processor\Duplicated</item>
+                <item name="content_status" xsi:type="object">Magento\Media_Gallery_Ui\Model\Search_Criteria\Collection_Processor\Filter_Processor\Content_Field</item>
+                <item name="store_id" xsi:type="object">Magento\Media_Gallery_Ui\Model\Search_Criteria\Collection_Processor\Filter_Processor\Content_Field</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor\SortingProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor" />
-    <virtualType name="Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor\PaginationProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor" />
-    <virtualType name="Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor\JoinProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\JoinProcessor" />
-    <virtualType name="Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor\Sorting_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor" />
+    <virtualType name="Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor\Pagination_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor" />
+    <virtualType name="Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor\Join_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Join_Processor" />
+    <virtualType name="Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
-                <item name="joins" xsi:type="object">Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor\JoinProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor\Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
+                <item name="joins" xsi:type="object">Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor\Join_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\MediaGalleryUi\Model\Listing\DataProvider">
+    <type name="Magento\Media_Gallery_Ui\Model\Listing\Data_Provider">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\MediaGalleryUi\Model\Api\SearchCriteria\CollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Media_Gallery_Ui\Model\Api\Search_Criteria\Collection_Processor</argument>
         </arguments>
     </type>
 </config>

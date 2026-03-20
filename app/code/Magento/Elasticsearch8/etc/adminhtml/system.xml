@@ -74,7 +74,7 @@
                        showInWebsite="0" showInStore="0">
                     <label/>
                     <button_label>Test Connection</button_label>
-                    <frontend_model>Magento\Elasticsearch8\Block\Adminhtml\System\Config\TestConnection</frontend_model>
+                    <frontend_model>Magento\Elasticsearch8\Block\Adminhtml\System\Config\Test_Connection</frontend_model>
                     <depends>
                         <field id="engine">elasticsearch8</field>
                     </depends>
@@ -85,7 +85,7 @@
                         <field id="engine">elasticsearch8</field>
                     </depends>
                     <comment><![CDATA[<a href="https://docs.magento.com/user-guide/catalog/search-elasticsearch.html">Learn more</a> about valid syntax.]]></comment>
-                    <backend_model>Magento\Elasticsearch\Model\Config\Backend\MinimumShouldMatch</backend_model>
+                    <backend_model>Magento\Elasticsearch\Model\Config\Backend\Minimum_Should_Match</backend_model>
                 </field>
             </group>
         </section>

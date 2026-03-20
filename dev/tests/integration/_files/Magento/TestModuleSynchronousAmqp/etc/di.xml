@@ -6,5 +6,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\TestModuleSynchronousAmqp\Api\ServiceInterface" type="Magento\TestModuleSynchronousAmqp\Api\ServiceInterfaceRemote" />
+    <preference for="Magento\Test_Module_Synchronous_Amqp\Api\Service_Interface" type="Magento\Test_Module_Synchronous_Amqp\Api\Service_Interface_Remote" />
 </config>

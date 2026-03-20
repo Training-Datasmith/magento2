@@ -7,7 +7,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Some_For_Name" type="Some_Type_Name" />
-    <virtualType name="Php\Namespace\VirtualClassName" type="Php\Namespace\ConcreteClassName" shared="true">
+    <virtualType name="Php\Namespace\Virtual_Class_Name" type="Php\Namespace\Concrete_Class_Name" shared="true">
         <arguments>
             <argument name="object" xsi:type="object" shared="true">Object</argument>
             <argument name="init_parameter" xsi:type="init_parameter">INIT_PARAMETER</argument>
@@ -64,5 +64,5 @@
             </argument>
         </arguments>
     </type>
-    <virtualType name="\BackslashPrefix\IsAllowed" type="TypeName" shared="true"/>
+    <virtualType name="\Backslash_Prefix\Is_Allowed" type="TypeName" shared="true"/>
 </config>

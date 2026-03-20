@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\CatalogInventory\Model\StockRegistryPreloader">
-        <plugin name="prevent_caching_preloaded_stock_data" type="Magento\TestModuleCatalogInventoryCache\Plugin\PreventCachingPreloadedStockDataInToStockRegistry"/>
+    <type name="Magento\Catalog_Inventory\Model\Stock_Registry_Preloader">
+        <plugin name="prevent_caching_preloaded_stock_data" type="Magento\Test_Module_Catalog_Inventory_Cache\Plugin\Prevent_Caching_Preloaded_Stock_Data_In_To_Stock_Registry"/>
     </type>
 </config>

@@ -8,13 +8,13 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <route url="/V1/carts/licence" method="GET">
-        <service class="Magento\CheckoutAgreements\Api\CheckoutAgreementsRepositoryInterface" method="getList"/>
+        <service class="Magento\Checkout_Agreements\Api\Checkout_Agreements_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Sales::sales" />
         </resources>
     </route>
     <route url="/V1/carts/licence/list" method="GET">
-        <service class="Magento\CheckoutAgreements\Api\CheckoutAgreementsListInterface" method="getList"/>
+        <service class="Magento\Checkout_Agreements\Api\Checkout_Agreements_List_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Sales::sales" />
         </resources>

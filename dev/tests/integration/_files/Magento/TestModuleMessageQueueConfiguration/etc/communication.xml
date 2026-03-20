@@ -7,24 +7,24 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
     <topic name="deprecated.config.async.bool.topic" request="bool">
-        <handler name="handler1" type="Magento\TestModuleMessageQueueConfiguration\AsyncHandler" method="methodWithBoolParam"/>
-        <handler name="handler2" type="Magento\TestModuleMessageQueueConfiguration\AsyncHandler" method="methodWithMixedParam"/>
+        <handler name="handler1" type="Magento\Test_Module_Message_Queue_Configuration\Async_Handler" method="methodWithBoolParam"/>
+        <handler name="handler2" type="Magento\Test_Module_Message_Queue_Configuration\Async_Handler" method="methodWithMixedParam"/>
     </topic>
     <topic name="deprecated.config.async.string.topic" request="string"/>
     <topic name="deprecated.config.sync.string.topic" request="string" response="string">
-        <handler name="handler1" type="Magento\TestModuleMessageQueueConfiguration\SyncHandler" method="methodWithStringParam"/>
+        <handler name="handler1" type="Magento\Test_Module_Message_Queue_Configuration\Sync_Handler" method="methodWithStringParam"/>
     </topic>
-    <topic name="deprecated.config.sync.bool.topic" schema="Magento\TestModuleMessageQueueConfiguration\SyncHandler::methodWithBoolParam">
-        <handler name="handler1" type="Magento\TestModuleMessageQueueConfiguration\SyncHandler" method="methodWithBoolParam"/>
+    <topic name="deprecated.config.sync.bool.topic" schema="Magento\Test_Module_Message_Queue_Configuration\Sync_Handler::methodWithBoolParam">
+        <handler name="handler1" type="Magento\Test_Module_Message_Queue_Configuration\Sync_Handler" method="methodWithBoolParam"/>
     </topic>
     <topic name="overlapping.topic.declaration" request="string">
-        <handler name="handler1" type="Magento\TestModuleMessageQueueConfiguration\AsyncHandler" method="methodWithStringParam"/>
+        <handler name="handler1" type="Magento\Test_Module_Message_Queue_Configuration\Async_Handler" method="methodWithStringParam"/>
     </topic>
     <topic name="anotherTopic1" request="string"/>
     <topic name="anotherTopic2" request="string"/>
 
     <!-- Stomp topics -->
     <topic name="stomp.topic.declaration" request="string">
-        <handler name="handler1" type="Magento\TestModuleMessageQueueConfiguration\AsyncHandler" method="methodWithStringParam"/>
+        <handler name="handler1" type="Magento\Test_Module_Message_Queue_Configuration\Async_Handler" method="methodWithStringParam"/>
     </topic>
 </config>

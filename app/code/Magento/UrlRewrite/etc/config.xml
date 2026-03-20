@@ -10,13 +10,13 @@
         <url_rewrite>
             <entity_types>
                 <product>
-                    <generator>Magento\Framework\DataObject</generator>
+                    <generator>Magento\Framework\Data_Object</generator>
                 </product>
                 <category>
-                    <generator>Magento\Framework\DataObject</generator>
+                    <generator>Magento\Framework\Data_Object</generator>
                 </category>
                 <cms-page>
-                    <generator>Magento\Framework\DataObject</generator>
+                    <generator>Magento\Framework\Data_Object</generator>
                 </cms-page>
             </entity_types>
         </url_rewrite>

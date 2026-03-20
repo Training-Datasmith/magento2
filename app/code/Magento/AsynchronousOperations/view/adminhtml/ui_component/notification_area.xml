@@ -15,12 +15,12 @@
                 <item name="dismissUrl" xsi:type="url" path="bulk/notification/dismiss"/>
             </item>
         </argument>
-        <actionsColumn name="actions" class="Magento\AsynchronousOperations\Ui\Component\Listing\Column\NotificationActions" sortOrder="20">
+        <actionsColumn name="actions" class="Magento\Asynchronous_Operations\Ui\Component\Listing\Column\Notification_Actions" sortOrder="20">
             <settings>
                 <indexField>identity</indexField>
             </settings>
         </actionsColumn>
-        <actionsColumn name="dismiss" class="Magento\AsynchronousOperations\Ui\Component\Listing\Column\NotificationDismissActions" sortOrder="10">
+        <actionsColumn name="dismiss" class="Magento\Asynchronous_Operations\Ui\Component\Listing\Column\Notification_Dismiss_Actions" sortOrder="10">
             <settings>
                 <indexField>identity</indexField>
                 <bodyTmpl>Magento_AsynchronousOperations/grid/cells/actions</bodyTmpl>

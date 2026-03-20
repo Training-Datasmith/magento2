@@ -8,7 +8,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Usps\Model\Carrier">
         <arguments>
-            <argument name="httpClient" xsi:type="object">Magento\TestModuleUsps\Model\MockAsyncClient</argument>
+            <argument name="httpClient" xsi:type="object">Magento\Test_Module_Usps\Model\Mock_Async_Client</argument>
         </arguments>
     </type>
 </config>

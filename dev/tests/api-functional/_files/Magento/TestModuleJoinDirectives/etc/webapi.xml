@@ -9,7 +9,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
 
     <route url="/V1/TestModuleJoinDirectives" method="GET">
-        <service class="Magento\TestModuleJoinDirectives\Api\TestRepositoryInterface" method="getList"/>
+        <service class="Magento\Test_Module_Join_Directives\Api\Test_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_TestModuleJoinDirectives::getList" />
         </resources>

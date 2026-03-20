@@ -9,25 +9,25 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <!-- For authorized customer -->
     <route url="/V1/carts/:cartId/gift-message" method="GET">
-        <service class="Magento\GiftMessage\Api\CartRepositoryInterface" method="get"/>
+        <service class="Magento\Gift_Message\Api\Cart_Repository_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Sales::create" />
         </resources>
     </route>
     <route url="/V1/carts/:cartId/gift-message/:itemId" method="GET">
-        <service class="Magento\GiftMessage\Api\ItemRepositoryInterface" method="get"/>
+        <service class="Magento\Gift_Message\Api\Item_Repository_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Sales::create" />
         </resources>
     </route>
     <route url="/V1/carts/:cartId/gift-message" method="POST">
-        <service class="Magento\GiftMessage\Api\CartRepositoryInterface" method="save"/>
+        <service class="Magento\Gift_Message\Api\Cart_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Sales::create" />
         </resources>
     </route>
     <route url="/V1/carts/:cartId/gift-message/:itemId" method="POST">
-        <service class="Magento\GiftMessage\Api\ItemRepositoryInterface" method="save"/>
+        <service class="Magento\Gift_Message\Api\Item_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Sales::create" />
         </resources>
@@ -35,7 +35,7 @@
 
     <!-- For current customer -->
     <route url="/V1/carts/mine/gift-message" method="GET">
-        <service class="Magento\GiftMessage\Api\CartRepositoryInterface" method="get"/>
+        <service class="Magento\Gift_Message\Api\Cart_Repository_Interface" method="get"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -44,7 +44,7 @@
         </data>
     </route>
     <route url="/V1/carts/mine/gift-message/:itemId" method="GET">
-        <service class="Magento\GiftMessage\Api\ItemRepositoryInterface" method="get"/>
+        <service class="Magento\Gift_Message\Api\Item_Repository_Interface" method="get"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -53,7 +53,7 @@
         </data>
     </route>
     <route url="/V1/carts/mine/gift-message" method="POST">
-        <service class="Magento\GiftMessage\Api\CartRepositoryInterface" method="save"/>
+        <service class="Magento\Gift_Message\Api\Cart_Repository_Interface" method="save"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -62,7 +62,7 @@
         </data>
     </route>
     <route url="/V1/carts/mine/gift-message/:itemId" method="POST">
-        <service class="Magento\GiftMessage\Api\ItemRepositoryInterface" method="save"/>
+        <service class="Magento\Gift_Message\Api\Item_Repository_Interface" method="save"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -73,25 +73,25 @@
 
     <!-- For guests -->
     <route url="/V1/guest-carts/:cartId/gift-message" method="GET">
-        <service class="Magento\GiftMessage\Api\GuestCartRepositoryInterface" method="get"/>
+        <service class="Magento\Gift_Message\Api\Guest_Cart_Repository_Interface" method="get"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
     </route>
     <route url="/V1/guest-carts/:cartId/gift-message/:itemId" method="GET">
-        <service class="Magento\GiftMessage\Api\GuestItemRepositoryInterface" method="get"/>
+        <service class="Magento\Gift_Message\Api\Guest_Item_Repository_Interface" method="get"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
     </route>
     <route url="/V1/guest-carts/:cartId/gift-message" method="POST">
-        <service class="Magento\GiftMessage\Api\GuestCartRepositoryInterface" method="save"/>
+        <service class="Magento\Gift_Message\Api\Guest_Cart_Repository_Interface" method="save"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
     </route>
     <route url="/V1/guest-carts/:cartId/gift-message/:itemId" method="POST">
-        <service class="Magento\GiftMessage\Api\GuestItemRepositoryInterface" method="save"/>
+        <service class="Magento\Gift_Message\Api\Guest_Item_Repository_Interface" method="save"/>
         <resources>
             <resource ref="anonymous" />
         </resources>

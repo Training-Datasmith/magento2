@@ -10,7 +10,7 @@
         <referenceBlock name="swaggerUiContent">
             <arguments>
                 <argument name="schema_types" xsi:type="array">
-                    <item name="rest" xsi:type="object">Magento\SwaggerWebapi\Model\SchemaType\Rest</item>
+                    <item name="rest" xsi:type="object">Magento\Swagger_Webapi\Model\Schema_Type\Rest</item>
                 </argument>
                 <argument name="default_schema_type_code" xsi:type="string">rest</argument>
             </arguments>

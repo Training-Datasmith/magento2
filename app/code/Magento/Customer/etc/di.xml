@@ -6,71 +6,71 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Customer\Api\AddressRepositoryInterface"
-                type="Magento\Customer\Model\ResourceModel\AddressRepository" />
-    <preference for="Magento\Customer\Api\CustomerRepositoryInterface"
-                type="Magento\Customer\Model\ResourceModel\CustomerRepository" />
-    <preference for="Magento\Customer\Api\GroupManagementInterface"
-                type="Magento\Customer\Model\GroupManagement" />
-    <preference for="Magento\Customer\Api\CustomerGroupConfigInterface"
-                type="Magento\Customer\Model\CustomerGroupConfig" />
-    <preference for="Magento\Customer\Api\GroupRepositoryInterface"
-                type="Magento\Customer\Model\ResourceModel\GroupRepository" />
-    <preference for="Magento\Customer\Api\Data\CustomerInterface" type="Magento\Customer\Model\Data\Customer" />
-    <preference for="Magento\Customer\Api\Data\AddressInterface" type="Magento\Customer\Model\Data\Address" />
-    <preference for="Magento\Customer\Api\Data\RegionInterface" type="Magento\Customer\Model\Data\Region" />
-    <preference for="Magento\Customer\Api\Data\AttributeMetadataInterface"
-                type="Magento\Customer\Model\Data\AttributeMetadata" />
-    <preference for="Magento\Customer\Api\Data\GroupInterface" type="Magento\Customer\Model\Data\Group" />
-    <preference for="Magento\Customer\Api\Data\GroupExcludedWebsiteInterface" type="Magento\Customer\Model\Data\GroupExcludedWebsite" />
-    <preference for="Magento\Customer\Api\Data\OptionInterface" type="Magento\Customer\Model\Data\Option" />
-    <preference for="Magento\Customer\Api\Data\ValidationRuleInterface"
-                type="Magento\Customer\Model\Data\ValidationRule" />
-    <preference for="Magento\Customer\Api\Data\ValidationResultsInterface"
-                type="Magento\Customer\Model\Data\ValidationResults" />
-    <preference for="Magento\Customer\Api\Data\GroupSearchResultsInterface"
-                type="Magento\Customer\Model\GroupSearchResults" />
-    <preference for="Magento\Customer\Api\Data\CustomerSearchResultsInterface"
-                type="Magento\Customer\Model\CustomerSearchResults" />
-    <preference for="Magento\Customer\Api\Data\AddressSearchResultsInterface"
-                type="Magento\Customer\Model\AddressSearchResults" />
-    <preference for="Magento\Customer\Api\AccountManagementInterface"
-                type="Magento\Customer\Model\AccountManagement" />
-    <preference for="Magento\Customer\Api\CustomerMetadataInterface"
-                type="Magento\Customer\Model\Metadata\CustomerCachedMetadata" />
-    <preference for="Magento\Customer\Api\AddressMetadataInterface"
-                type="Magento\Customer\Model\Metadata\AddressCachedMetadata" />
-    <preference for="Magento\Customer\Api\CustomerMetadataManagementInterface"
-                type="Magento\Customer\Model\Metadata\CustomerMetadataManagement" />
-    <preference for="Magento\Customer\Api\AddressMetadataManagementInterface"
-                type="Magento\Customer\Model\Metadata\AddressMetadataManagement" />
-    <preference for="Magento\Customer\Api\CustomerManagementInterface"
-                type="Magento\Customer\Model\CustomerManagement" />
-    <preference for="Magento\Customer\Model\AuthenticationInterface"
+    <preference for="Magento\Customer\Api\Address_Repository_Interface"
+                type="Magento\Customer\Model\Resource_Model\Address_Repository" />
+    <preference for="Magento\Customer\Api\Customer_Repository_Interface"
+                type="Magento\Customer\Model\Resource_Model\Customer_Repository" />
+    <preference for="Magento\Customer\Api\Group_Management_Interface"
+                type="Magento\Customer\Model\Group_Management" />
+    <preference for="Magento\Customer\Api\Customer_Group_Config_Interface"
+                type="Magento\Customer\Model\Customer_Group_Config" />
+    <preference for="Magento\Customer\Api\Group_Repository_Interface"
+                type="Magento\Customer\Model\Resource_Model\Group_Repository" />
+    <preference for="Magento\Customer\Api\Data\Customer_Interface" type="Magento\Customer\Model\Data\Customer" />
+    <preference for="Magento\Customer\Api\Data\Address_Interface" type="Magento\Customer\Model\Data\Address" />
+    <preference for="Magento\Customer\Api\Data\Region_Interface" type="Magento\Customer\Model\Data\Region" />
+    <preference for="Magento\Customer\Api\Data\Attribute_Metadata_Interface"
+                type="Magento\Customer\Model\Data\Attribute_Metadata" />
+    <preference for="Magento\Customer\Api\Data\Group_Interface" type="Magento\Customer\Model\Data\Group" />
+    <preference for="Magento\Customer\Api\Data\Group_Excluded_Website_Interface" type="Magento\Customer\Model\Data\Group_Excluded_Website" />
+    <preference for="Magento\Customer\Api\Data\Option_Interface" type="Magento\Customer\Model\Data\Option" />
+    <preference for="Magento\Customer\Api\Data\Validation_Rule_Interface"
+                type="Magento\Customer\Model\Data\Validation_Rule" />
+    <preference for="Magento\Customer\Api\Data\Validation_Results_Interface"
+                type="Magento\Customer\Model\Data\Validation_Results" />
+    <preference for="Magento\Customer\Api\Data\Group_Search_Results_Interface"
+                type="Magento\Customer\Model\Group_Search_Results" />
+    <preference for="Magento\Customer\Api\Data\Customer_Search_Results_Interface"
+                type="Magento\Customer\Model\Customer_Search_Results" />
+    <preference for="Magento\Customer\Api\Data\Address_Search_Results_Interface"
+                type="Magento\Customer\Model\Address_Search_Results" />
+    <preference for="Magento\Customer\Api\Account_Management_Interface"
+                type="Magento\Customer\Model\Account_Management" />
+    <preference for="Magento\Customer\Api\Customer_Metadata_Interface"
+                type="Magento\Customer\Model\Metadata\Customer_Cached_Metadata" />
+    <preference for="Magento\Customer\Api\Address_Metadata_Interface"
+                type="Magento\Customer\Model\Metadata\Address_Cached_Metadata" />
+    <preference for="Magento\Customer\Api\Customer_Metadata_Management_Interface"
+                type="Magento\Customer\Model\Metadata\Customer_Metadata_Management" />
+    <preference for="Magento\Customer\Api\Address_Metadata_Management_Interface"
+                type="Magento\Customer\Model\Metadata\Address_Metadata_Management" />
+    <preference for="Magento\Customer\Api\Customer_Management_Interface"
+                type="Magento\Customer\Model\Customer_Management" />
+    <preference for="Magento\Customer\Model\Authentication_Interface"
                 type="Magento\Customer\Model\Authentication" />
-    <preference for="Magento\Customer\Model\EmailNotificationInterface"
-                type="Magento\Customer\Model\EmailNotification" />
-    <preference for="Magento\Customer\Api\CustomerNameGenerationInterface"
+    <preference for="Magento\Customer\Model\Email_Notification_Interface"
+                type="Magento\Customer\Model\Email_Notification" />
+    <preference for="Magento\Customer\Api\Customer_Name_Generation_Interface"
                 type="Magento\Customer\Helper\View" />
-    <preference for="Magento\Customer\Model\Address\CustomAttributeListInterface"
-                type="Magento\Customer\Model\Address\CustomAttributeList" />
-    <preference for="Magento\Customer\Model\Customer\Source\GroupSourceInterface"
+    <preference for="Magento\Customer\Model\Address\Custom_Attribute_List_Interface"
+                type="Magento\Customer\Model\Address\Custom_Attribute_List" />
+    <preference for="Magento\Customer\Model\Customer\Source\Group_Source_Interface"
                 type="Magento\Customer\Model\Customer\Source\Group" />
-    <preference for="Magento\Customer\Model\Customer\Attribute\Source\GroupSourceLoggedInOnlyInterface"
+    <preference for="Magento\Customer\Model\Customer\Attribute\Source\Group_Source_Logged_In_Only_Interface"
                 type="Magento\Customer\Model\Customer\Attribute\Source\Group"/>
-    <preference for="Magento\Customer\Block\Account\SortLinkInterface"
-                type="Magento\Customer\Block\Account\SortLink"/>
-    <preference for="Magento\Customer\Model\Group\RetrieverInterface"
+    <preference for="Magento\Customer\Block\Account\Sort_Link_Interface"
+                type="Magento\Customer\Block\Account\Sort_Link"/>
+    <preference for="Magento\Customer\Model\Group\Retriever_Interface"
                 type="Magento\Customer\Model\Group\Retriever"/>
-    <preference for="Magento\Customer\Api\SessionCleanerInterface" type="Magento\Customer\Model\Session\SessionCleaner"/>
-    <preference for="Magento\Customer\Api\GroupExcludedWebsiteRepositoryInterface"
-                type="Magento\Customer\Model\ResourceModel\GroupExcludedWebsiteRepository" />
-    <virtualType name="SessionValidator" type="Magento\Framework\Session\CompositeValidator">
+    <preference for="Magento\Customer\Api\Session_Cleaner_Interface" type="Magento\Customer\Model\Session\Session_Cleaner"/>
+    <preference for="Magento\Customer\Api\Group_Excluded_Website_Repository_Interface"
+                type="Magento\Customer\Model\Resource_Model\Group_Excluded_Website_Repository" />
+    <virtualType name="SessionValidator" type="Magento\Framework\Session\Composite_Validator">
         <arguments>
             <argument name="validators" xsi:type="array">
                 <item name="validator" xsi:type="object">Magento\Framework\Session\Validator</item>
                 <item name="cutoff_validator" xsi:type="object">
-                    Magento\Customer\Model\Session\Validators\CutoffValidator
+                    Magento\Customer\Model\Session\Validators\Cutoff_Validator
                 </item>
             </argument>
         </arguments>
@@ -79,9 +79,9 @@
         <arguments>
             <argument name="configShare" xsi:type="object">Magento\Customer\Model\Config\Share\Proxy</argument>
             <argument name="customerUrl" xsi:type="object">Magento\Customer\Model\Url\Proxy</argument>
-            <argument name="customerResource" xsi:type="object">Magento\Customer\Model\ResourceModel\Customer\Proxy</argument>
+            <argument name="customerResource" xsi:type="object">Magento\Customer\Model\Resource_Model\Customer\Proxy</argument>
             <argument name="storage" xsi:type="object">Magento\Customer\Model\Session\Storage</argument>
-            <argument name="customerRepository" xsi:type="object">Magento\Customer\Api\CustomerRepositoryInterface\Proxy</argument>
+            <argument name="customerRepository" xsi:type="object">Magento\Customer\Api\Customer_Repository_Interface\Proxy</argument>
             <argument name="validator" xsi:type="object">SessionValidator</argument>
         </arguments>
     </type>
@@ -93,32 +93,32 @@
     <type name="Magento\Framework\App\Http\Context">
         <arguments>
             <argument name="default" xsi:type="array">
-                <item name="customer_group" xsi:type="const">Magento\Customer\Api\Data\GroupInterface::NOT_LOGGED_IN_ID</item>
+                <item name="customer_group" xsi:type="const">Magento\Customer\Api\Data\Group_Interface::NOT_LOGGED_IN_ID</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Customer\Model\Config\Share">
         <arguments>
-            <argument name="customerResource" xsi:type="object">Magento\Customer\Model\ResourceModel\Customer\Proxy</argument>
+            <argument name="customerResource" xsi:type="object">Magento\Customer\Model\Resource_Model\Customer\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\Entity\Setup\PropertyMapper\Composite">
+    <type name="Magento\Eav\Model\Entity\Setup\Property_Mapper\Composite">
         <arguments>
             <argument name="propertyMappers" xsi:type="array">
-                <item name="customer" xsi:type="string">Magento\Customer\Model\ResourceModel\Setup\PropertyMapper</item>
+                <item name="customer" xsi:type="string">Magento\Customer\Model\Resource_Model\Setup\Property_Mapper</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Model\ActionValidator\RemoveAction">
+    <type name="Magento\Framework\Model\Action_Validator\Remove_Action">
         <arguments>
             <argument name="protectedModels" xsi:type="array">
                 <item name="customer" xsi:type="string">Magento\Customer\Model\Customer</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Address">
+    <type name="Magento\Customer\Model\Resource_Model\Address">
         <arguments>
-            <argument name="customerRepository" xsi:type="object">Magento\Customer\Api\CustomerRepositoryInterface\Proxy</argument>
+            <argument name="customerRepository" xsi:type="object">Magento\Customer\Api\Customer_Repository_Interface\Proxy</argument>
             <argument name="entitySnapshot" xsi:type="object">CustomerAddressSnapshot</argument>
             <argument name="entityRelationComposite" xsi:type="object">CustomerAddressRelationsComposite</argument>
         </arguments>
@@ -137,12 +137,12 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Group" shared="false">
+    <type name="Magento\Customer\Model\Resource_Model\Group" shared="false">
         <arguments>
-            <argument name="groupManagement" xsi:type="object">Magento\Customer\Api\GroupManagementInterface\Proxy</argument>
+            <argument name="groupManagement" xsi:type="object">Magento\Customer\Api\Group_Management_Interface\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\Metadata\CustomerMetadata">
+    <type name="Magento\Customer\Model\Metadata\Customer_Metadata">
         <arguments>
             <argument name="systemAttributes" xsi:type="array">
                 <item name="disable_auto_group_change" xsi:type="string">disable_auto_group_change</item>
@@ -156,8 +156,8 @@
                 <item name="/config/action/section" xsi:type="string">name</item>
             </argument>
             <argument name="fileName" xsi:type="string">sections.xml</argument>
-            <argument name="converter" xsi:type="object">\Magento\Customer\CustomerData\SectionConfigConverter</argument>
-            <argument name="schemaLocator" xsi:type="object">Magento\Customer\CustomerData\SchemaLocator</argument>
+            <argument name="converter" xsi:type="object">\Magento\Customer\Customer_Data\Section_Config_Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Magento\Customer\Customer_Data\Schema_Locator</argument>
             <argument name="defaultScope" xsi:type="string">frontend</argument>
         </arguments>
     </virtualType>
@@ -167,109 +167,109 @@
             <argument name="cacheId" xsi:type="string">sections_invalidation_config</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Customer\Block\SectionConfig">
+    <type name="Magento\Customer\Block\Section_Config">
         <arguments>
             <argument name="sectionConfig" xsi:type="object">SectionInvalidationConfigData</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Block\SectionNamesProvider">
+    <type name="Magento\Customer\Block\Section_Names_Provider">
         <arguments>
             <argument name="sectionConfig" xsi:type="object">SectionInvalidationConfigData</argument>
         </arguments>
     </type>
-    <preference for="Magento\Customer\CustomerData\JsLayoutDataProviderPoolInterface"
-                type="Magento\Customer\CustomerData\JsLayoutDataProviderPool"/>
-    <type name="Magento\Framework\Webapi\ServiceTypeToEntityTypeMap">
+    <preference for="Magento\Customer\Customer_Data\Js_Layout_Data_Provider_Pool_Interface"
+                type="Magento\Customer\Customer_Data\Js_Layout_Data_Provider_Pool"/>
+    <type name="Magento\Framework\Webapi\Service_Type_To_Entity_Type_Map">
         <arguments>
             <argument name="serviceTypeToEntityTypeMap" xsi:type="array">
-                <item name="Magento\Customer\Api\Data\CustomerInterface" xsi:type="const">Magento\Customer\Api\CustomerMetadataInterface::ENTITY_TYPE_CUSTOMER</item>
-                <item name="Magento\Customer\Api\Data\AddressInterface" xsi:type="const">Magento\Customer\Api\AddressMetadataInterface::ENTITY_TYPE_ADDRESS</item>
+                <item name="Magento\Customer\Api\Data\Customer_Interface" xsi:type="const">Magento\Customer\Api\Customer_Metadata_Interface::ENTITY_TYPE_CUSTOMER</item>
+                <item name="Magento\Customer\Api\Data\Address_Interface" xsi:type="const">Magento\Customer\Api\Address_Metadata_Interface::ENTITY_TYPE_ADDRESS</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\TypeLocator\ComplexType">
+    <type name="Magento\Eav\Model\Type_Locator\Complex_Type">
         <arguments>
             <argument name="backendModelToAttributeTypeMap" xsi:type="array">
-                <item name="Magento\Customer\Api\Data\CustomerInterface" xsi:type="array">
-                    <item name="Magento\Eav\Model\Attribute\Data\Image" xsi:type="string">Magento\Framework\Api\Data\ImageContentInterface</item>
+                <item name="Magento\Customer\Api\Data\Customer_Interface" xsi:type="array">
+                    <item name="Magento\Eav\Model\Attribute\Data\Image" xsi:type="string">Magento\Framework\Api\Data\Image_Content_Interface</item>
                 </item>
                 <item name="Magento\Customer\Model\Customer\Attribute\Backend\Website" xsi:type="string">int</item>
                 <item name="Magento\Customer\Model\Customer\Attribute\Backend\Store" xsi:type="string">int</item>
                 <item name="Magento\Customer\Model\Attribute\Backend\Data\Boolean" xsi:type="string">boolean</item>
                 <item name="Magento\Customer\Model\Customer\Attribute\Backend\Password" xsi:type="string">string</item>
-                <item name="Magento\Customer\Model\Customer\Attribute\Backend\Billing" xsi:type="string">Magento\Customer\Api\Data\AddressInterface</item>
-                <item name="Magento\Customer\Model\Customer\Attribute\Backend\Shipping" xsi:type="string">Magento\Customer\Api\Data\AddressInterface</item>
+                <item name="Magento\Customer\Model\Customer\Attribute\Backend\Billing" xsi:type="string">Magento\Customer\Api\Data\Address_Interface</item>
+                <item name="Magento\Customer\Model\Customer\Attribute\Backend\Shipping" xsi:type="string">Magento\Customer\Api\Data\Address_Interface</item>
                 <item name="Magento\Eav\Model\Entity\Attribute\Backend\Datetime" xsi:type="string">string</item>
-                <item name="Magento\Customer\Model\ResourceModel\Address\Attribute\Backend\Region" xsi:type="string">Magento\Customer\Api\Data\RegionInterface</item>
+                <item name="Magento\Customer\Model\Resource_Model\Address\Attribute\Backend\Region" xsi:type="string">Magento\Customer\Api\Data\Region_Interface</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="EavVersionControlSnapshot" type="Magento\Framework\Model\ResourceModel\Db\VersionControl\Snapshot">
+    <virtualType name="EavVersionControlSnapshot" type="Magento\Framework\Model\Resource_Model\Db\Version_Control\Snapshot">
         <arguments>
-            <argument name="metadata" xsi:type="object">Magento\Eav\Model\Entity\VersionControl\Metadata</argument>
+            <argument name="metadata" xsi:type="object">Magento\Eav\Model\Entity\Version_Control\Metadata</argument>
         </arguments>
     </virtualType>
-    <virtualType name="CustomerAddressSnapshot" type="Magento\Customer\Model\ResourceModel\Db\VersionControl\AddressSnapshot">
+    <virtualType name="CustomerAddressSnapshot" type="Magento\Customer\Model\Resource_Model\Db\Version_Control\Address_Snapshot">
         <arguments>
-            <argument name="metadata" xsi:type="object">Magento\Eav\Model\Entity\VersionControl\Metadata</argument>
+            <argument name="metadata" xsi:type="object">Magento\Eav\Model\Entity\Version_Control\Metadata</argument>
         </arguments>
     </virtualType>
-    <virtualType name="CustomerRelationsComposite" type="Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite">
+    <virtualType name="CustomerRelationsComposite" type="Magento\Framework\Model\Resource_Model\Db\Version_Control\Relation_Composite">
         <arguments>
             <argument name="relationProcessors" xsi:type="array">
-                <item name="default" xsi:type="object">Magento\Customer\Model\ResourceModel\Customer\Relation</item>
+                <item name="default" xsi:type="object">Magento\Customer\Model\Resource_Model\Customer\Relation</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="CustomerAddressRelationsComposite" type="Magento\Framework\Model\ResourceModel\Db\VersionControl\RelationComposite">
+    <virtualType name="CustomerAddressRelationsComposite" type="Magento\Framework\Model\Resource_Model\Db\Version_Control\Relation_Composite">
         <arguments>
             <argument name="relationProcessors" xsi:type="array">
-                <item name="default" xsi:type="object">Magento\Customer\Model\ResourceModel\Address\Relation</item>
+                <item name="default" xsi:type="object">Magento\Customer\Model\Resource_Model\Address\Relation</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Customer\Model\ResourceModel\Customer">
+    <type name="Magento\Customer\Model\Resource_Model\Customer">
         <arguments>
             <argument name="entitySnapshot" xsi:type="object">EavVersionControlSnapshot</argument>
             <argument name="entityRelationComposite" xsi:type="object">CustomerRelationsComposite</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Customer\Collection">
+    <type name="Magento\Customer\Model\Resource_Model\Customer\Collection">
         <arguments>
             <argument name="entitySnapshot" xsi:type="object">EavVersionControlSnapshot</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Address\Collection">
+    <type name="Magento\Customer\Model\Resource_Model\Address\Collection">
         <arguments>
             <argument name="entitySnapshot" xsi:type="object">EavVersionControlSnapshot</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <type name="Magento\Framework\View\Element\Ui_Component\Data_Provider\Collection_Factory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="customer_listing_data_source" xsi:type="string">Magento\Customer\Model\ResourceModel\Grid\Collection</item>
-                <item name="customer_online_grid_data_source" xsi:type="string">Magento\Customer\Model\ResourceModel\Online\Grid\Collection</item>
-                <item name="customer_group_listing_data_source" xsi:type="string">Magento\Customer\Model\ResourceModel\Group\Grid\Collection</item>
-                <item name="customer_address_listing_data_source" xsi:type="string">Magento\Customer\Model\ResourceModel\Address\Grid\Collection</item>
+                <item name="customer_listing_data_source" xsi:type="string">Magento\Customer\Model\Resource_Model\Grid\Collection</item>
+                <item name="customer_online_grid_data_source" xsi:type="string">Magento\Customer\Model\Resource_Model\Online\Grid\Collection</item>
+                <item name="customer_group_listing_data_source" xsi:type="string">Magento\Customer\Model\Resource_Model\Group\Grid\Collection</item>
+                <item name="customer_address_listing_data_source" xsi:type="string">Magento\Customer\Model\Resource_Model\Address\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="CustomerNameHandler" type="Magento\Framework\Indexer\Handler\ConcatHandler">
+    <virtualType name="CustomerNameHandler" type="Magento\Framework\Indexer\Handler\Concat_Handler">
         <arguments>
             <argument name="concatExpression" xsi:type="object">CustomerNameExpression</argument>
         </arguments>
     </virtualType>
-    <virtualType name="ShippingAddressHandler" type="Magento\Framework\Indexer\Handler\ConcatHandler">
+    <virtualType name="ShippingAddressHandler" type="Magento\Framework\Indexer\Handler\Concat_Handler">
         <arguments>
             <argument name="concatExpression" xsi:type="object">ShippingAddressExpression</argument>
         </arguments>
     </virtualType>
-    <virtualType name="BillingAddressHandler" type="Magento\Framework\Indexer\Handler\ConcatHandler">
+    <virtualType name="BillingAddressHandler" type="Magento\Framework\Indexer\Handler\Concat_Handler">
         <arguments>
             <argument name="concatExpression" xsi:type="object">BillingAddressExpression</argument>
         </arguments>
     </virtualType>
-    <virtualType name="CustomerNameExpression" type="Magento\Framework\DB\Sql\ConcatExpression">
+    <virtualType name="CustomerNameExpression" type="Magento\Framework\DB\Sql\Concat_Expression">
         <arguments>
             <argument name="tableName" xsi:type="string">e</argument>
             <argument name="columns" xsi:type="array">
@@ -296,7 +296,7 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="ShippingAddressExpression" type="Magento\Framework\DB\Sql\ConcatExpression">
+    <virtualType name="ShippingAddressExpression" type="Magento\Framework\DB\Sql\Concat_Expression">
         <arguments>
             <argument name="columns" xsi:type="array">
                 <item name="prefix" xsi:type="array">
@@ -318,7 +318,7 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="BillingAddressExpression" type="Magento\Framework\DB\Sql\ConcatExpression">
+    <virtualType name="BillingAddressExpression" type="Magento\Framework\DB\Sql\Concat_Expression">
         <arguments>
             <argument name="columns" xsi:type="array">
                 <item name="prefix" xsi:type="array">
@@ -340,55 +340,55 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Customer\Model\Indexer\AttributeProvider">
+    <type name="Magento\Customer\Model\Indexer\Attribute_Provider">
         <arguments>
-            <argument name="collection" xsi:type="object" shared="false">Magento\Customer\Model\ResourceModel\Attribute\Collection</argument>
+            <argument name="collection" xsi:type="object" shared="false">Magento\Customer\Model\Resource_Model\Attribute\Collection</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\Indexer\Address\AttributeProvider">
+    <type name="Magento\Customer\Model\Indexer\Address\Attribute_Provider">
         <arguments>
-            <argument name="collection" xsi:type="object" shared="false">Magento\Customer\Model\ResourceModel\Address\Attribute\Collection</argument>
+            <argument name="collection" xsi:type="object" shared="false">Magento\Customer\Model\Resource_Model\Address\Attribute\Collection</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Online\Grid\Collection">
+    <type name="Magento\Customer\Model\Resource_Model\Online\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">customer_visitor</argument>
-            <argument name="resourceModel" xsi:type="string">Magento\Customer\Model\ResourceModel\Visitor</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Customer\Model\Resource_Model\Visitor</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="upgradeHashAlgorithmCommand" xsi:type="object">Magento\Customer\Console\Command\UpgradeHashAlgorithmCommand</item>
+                <item name="upgradeHashAlgorithmCommand" xsi:type="object">Magento\Customer\Console\Command\Upgrade_Hash_Algorithm_Command</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
-        <plugin name="transactionWrapper" type="Magento\Customer\Model\Plugin\CustomerRepository\TransactionWrapper" sortOrder="-1"/>
+    <type name="Magento\Customer\Api\Customer_Repository_Interface">
+        <plugin name="transactionWrapper" type="Magento\Customer\Model\Plugin\Customer_Repository\Transaction_Wrapper" sortOrder="-1"/>
     </type>
-    <type name="Magento\Framework\App\ActionInterface">
-        <plugin name="customerNotification" type="Magento\Customer\Model\Plugin\CustomerNotification"/>
+    <type name="Magento\Framework\App\Action_Interface">
+        <plugin name="customerNotification" type="Magento\Customer\Model\Plugin\Customer_Notification"/>
     </type>
-    <type name="Magento\Customer\Model\Authorization\CustomerSessionUserContext">
+    <type name="Magento\Customer\Model\Authorization\Customer_Session_User_Context">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\PageCache\Observer\FlushFormKey">
-        <plugin name="customerFlushFormKey" type="Magento\Customer\Model\Plugin\CustomerFlushFormKey"/>
+    <type name="Magento\Page_Cache\Observer\Flush_Form_Key">
+        <plugin name="customerFlushFormKey" type="Magento\Customer\Model\Plugin\Customer_Flush_Form_Key"/>
     </type>
-    <type name="Magento\Customer\Model\Customer\NotificationStorage">
+    <type name="Magento\Customer\Model\Customer\Notification_Storage">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Customer\Model\Cache\Type\Notification</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\CustomerRepository">
+    <type name="Magento\Customer\Model\Resource_Model\Customer_Repository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor</argument>
         </arguments>
     </type>
     <!-- @api -->
-    <virtualType name="Magento\Customer\Model\Api\SearchCriteria\CollectionProcessor\GroupFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Customer\Model\Api\Search_Criteria\Collection_Processor\Group_Filter_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="fieldMapping" xsi:type="array">
                 <item name="code" xsi:type="string">main_table.customer_group_code</item>
@@ -398,7 +398,7 @@
         </arguments>
     </virtualType>
     <!-- @api -->
-    <virtualType name="Magento\Customer\Model\Api\SearchCriteria\CollectionProcessor\GroupSortingProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor">
+    <virtualType name="Magento\Customer\Model\Api\Search_Criteria\Collection_Processor\Group_Sorting_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor">
         <arguments>
             <argument name="fieldMapping" xsi:type="array">
                 <item name="code" xsi:type="string">main_table.customer_group_code</item>
@@ -411,34 +411,34 @@
         </arguments>
     </virtualType>
     <!-- @api -->
-    <virtualType name="Magento\Customer\Model\Api\SearchCriteria\GroupCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Customer\Model\Api\Search_Criteria\Group_Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\Customer\Model\Api\SearchCriteria\CollectionProcessor\GroupFilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\Customer\Model\Api\SearchCriteria\CollectionProcessor\GroupSortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Customer\Model\Api\Search_Criteria\Collection_Processor\Group_Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Customer\Model\Api\Search_Criteria\Collection_Processor\Group_Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Customer\Model\ResourceModel\GroupRepository">
+    <type name="Magento\Customer\Model\Resource_Model\Group_Repository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Customer\Model\Api\SearchCriteria\GroupCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Customer\Model\Api\Search_Criteria\Group_Collection_Processor</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\AddressRepository">
+    <type name="Magento\Customer\Model\Resource_Model\Address_Repository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor</argument>
         </arguments>
     </type>
     <type name="Magento\Customer\Model\Attribute">
         <arguments>
-            <argument name="attributeMetadataCache" xsi:type="object">Magento\Customer\Model\Metadata\AttributeMetadataCache\Proxy</argument>
+            <argument name="attributeMetadataCache" xsi:type="object">Magento\Customer\Model\Metadata\Attribute_Metadata_Cache\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\MetadataPool">
+    <type name="Magento\Framework\Entity_Manager\Metadata_Pool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Magento\Customer\Api\Data\CustomerInterface" xsi:type="array">
+                <item name="Magento\Customer\Api\Data\Customer_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">customer_entity</item>
                     <item name="eavEntityType" xsi:type="string">customer</item>
                     <item name="identifierField" xsi:type="string">entity_id</item>
@@ -446,7 +446,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Ui\Component\MassAction\Group\Options">
+    <type name="Magento\Customer\Ui\Component\Mass_Action\Group\Options">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="urlPath" xsi:type="string">customer/index/massAssignGroup</item>
@@ -458,12 +458,12 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\AccountManagement">
+    <type name="Magento\Customer\Model\Account_Management">
         <arguments>
-            <argument name="sessionManager" xsi:type="object">Magento\Framework\Session\SessionManagerInterface\Proxy</argument>
+            <argument name="sessionManager" xsi:type="object">Magento\Framework\Session\Session_Manager_Interface\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\Address\CompositeValidator">
+    <type name="Magento\Customer\Model\Address\Composite_Validator">
         <arguments>
             <argument name="validators" xsi:type="array">
                 <item name="general" xsi:type="object">Magento\Customer\Model\Address\Validator\General</item>
@@ -472,34 +472,34 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Group\Grid\Collection">
+    <type name="Magento\Customer\Model\Resource_Model\Group\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">customer_group</argument>
             <argument name="eventPrefix" xsi:type="string">customer_group_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">customer_group_collection</argument>
-            <argument name="resourceModel" xsi:type="string">Magento\Customer\Model\ResourceModel\Group</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Customer\Model\Resource_Model\Group</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\ResourceModel\Address\Grid\Collection">
+    <type name="Magento\Customer\Model\Resource_Model\Address\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">customer_address_entity</argument>
             <argument name="eventPrefix" xsi:type="string">customer_address_entity_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">customer_address_entity_grid_collection</argument>
-            <argument name="resourceModel" xsi:type="string">Magento\Customer\Model\ResourceModel\Address</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Customer\Model\Resource_Model\Address</argument>
         </arguments>
     </type>
-    <type name="Magento\Webapi\Controller\Rest\ParamsOverrider">
+    <type name="Magento\Webapi\Controller\Rest\Params_Overrider">
         <arguments>
             <argument name="paramOverriders" xsi:type="array">
-                <item name="%customer_group_id%" xsi:type="object">Magento\Customer\Model\Webapi\ParamOverriderCustomerGroupId</item>
-                <item name="%customer_website_id%" xsi:type="object">Magento\Customer\Model\Webapi\ParamOverriderCustomerWebsiteId</item>
-                <item name="%customer_store_id%" xsi:type="object">Magento\Customer\Model\Webapi\ParamOverriderCustomerStoreId</item>
+                <item name="%customer_group_id%" xsi:type="object">Magento\Customer\Model\Webapi\Param_Overrider_Customer_Group_Id</item>
+                <item name="%customer_website_id%" xsi:type="object">Magento\Customer\Model\Webapi\Param_Overrider_Customer_Website_Id</item>
+                <item name="%customer_store_id%" xsi:type="object">Magento\Customer\Model\Webapi\Param_Overrider_Customer_Store_Id</item>
             </argument>
         </arguments>
     </type>
     <preference
-            for="Magento\Customer\Api\AccountDelegationInterface"
-            type="Magento\Customer\Model\Delegation\AccountDelegation" />
+            for="Magento\Customer\Api\Account_Delegation_Interface"
+            type="Magento\Customer\Model\Delegation\Account_Delegation" />
     <type name="Magento\Eav\Model\Config">
         <arguments>
             <argument name="attributesForPreload" xsi:type="array">
@@ -554,21 +554,21 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Api\GroupRepositoryInterface">
-        <plugin name="saveCustomerGroupExcludedWebsite" type="Magento\Customer\Model\Plugin\SaveCustomerGroupExcludedWebsite"/>
-        <plugin name="deleteCustomerGroupExcludedWebsite" type="Magento\Customer\Model\Plugin\DeleteCustomerGroupExcludedWebsite"/>
-        <plugin name="getByIdCustomerGroupExcludedWebsite" type="Magento\Customer\Model\Plugin\GetByIdCustomerGroupExcludedWebsite"/>
-        <plugin name="getListCustomerGroupExcludedWebsite" type="Magento\Customer\Model\Plugin\GetListCustomerGroupExcludedWebsite"/>
+    <type name="Magento\Customer\Api\Group_Repository_Interface">
+        <plugin name="saveCustomerGroupExcludedWebsite" type="Magento\Customer\Model\Plugin\Save_Customer_Group_Excluded_Website"/>
+        <plugin name="deleteCustomerGroupExcludedWebsite" type="Magento\Customer\Model\Plugin\Delete_Customer_Group_Excluded_Website"/>
+        <plugin name="getByIdCustomerGroupExcludedWebsite" type="Magento\Customer\Model\Plugin\Get_By_Id_Customer_Group_Excluded_Website"/>
+        <plugin name="getListCustomerGroupExcludedWebsite" type="Magento\Customer\Model\Plugin\Get_List_Customer_Group_Excluded_Website"/>
     </type>
     <type name="Magento\Customer\Ui\Component\Listing\Columns">
         <arguments>
             <argument name="filterConfigProviders" xsi:type="array">
-                <item name="text" xsi:type="object">Magento\Customer\Ui\Component\Listing\Filter\TextFilterConfigProvider</item>
+                <item name="text" xsi:type="object">Magento\Customer\Ui\Component\Listing\Filter\Text_Filter_Config_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\EmailNotificationInterface">
-        <plugin name="saveWishlistDataAndAddReferenceKeyToBackUrl" type="Magento\Wishlist\Plugin\SaveWishlistDataAndAddReferenceKeyToBackUrl"/>
+    <type name="Magento\Customer\Model\Email_Notification_Interface">
+        <plugin name="saveWishlistDataAndAddReferenceKeyToBackUrl" type="Magento\Wishlist\Plugin\Save_Wishlist_Data_And_Add_Reference_Key_To_Back_Url"/>
     </type>
     <type name="Magento\Eav\Model\Validator\Attribute\Data">
         <arguments>
@@ -588,17 +588,17 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\AsynchronousOperations\Model\MassSchedule">
+    <type name="Magento\Asynchronous_Operations\Model\Mass_Schedule">
         <plugin name="anonymousAsyncCustomerRequest"
-                type="Magento\Customer\Plugin\AsyncRequestCustomerGroupAuthorization"
+                type="Magento\Customer\Plugin\Async_Request_Customer_Group_Authorization"
         />
     </type>
-    <virtualType name="Magento\Customer\Model\MviewAction" type="\Magento\Framework\Mview\View\BaseAction">
+    <virtualType name="Magento\Customer\Model\Mview_Action" type="\Magento\Framework\Mview\View\Base_Action">
         <arguments>
             <argument name="indexerId" xsi:type="string">customer_grid</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\Webapi\ErrorProcessor">
-        <plugin name="processValidatorException" type="Magento\Customer\Model\Plugin\Webapi\ErrorProcessorPlugin" sortOrder="10"/>
+    <type name="Magento\Framework\Webapi\Error_Processor">
+        <plugin name="processValidatorException" type="Magento\Customer\Model\Plugin\Webapi\Error_Processor_Plugin" sortOrder="10"/>
     </type>
 </config>

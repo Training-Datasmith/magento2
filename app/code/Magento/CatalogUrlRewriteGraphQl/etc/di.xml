@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\UrlResolverIdentity">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Url_Resolver_Identity">
         <arguments>
             <argument name="urlResolverIdentities" xsi:type="array">
-                <item name="product" xsi:type="object">Magento\CatalogUrlRewriteGraphQl\Model\Resolver\UrlRewrite\CatalogUrlResolverIdentity</item>
-                <item name="category" xsi:type="object">Magento\CatalogUrlRewriteGraphQl\Model\Resolver\UrlRewrite\CatalogUrlResolverIdentity</item>
+                <item name="product" xsi:type="object">Magento\Catalog_Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Catalog_Url_Resolver_Identity</item>
+                <item name="category" xsi:type="object">Magento\Catalog_Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Catalog_Url_Resolver_Identity</item>
             </argument>
         </arguments>
     </type>
 
-    <type name="Magento\CatalogGraphQl\Plugin\Search\Request\ConfigReader">
+    <type name="Magento\Catalog_Graph_Ql\Plugin\Search\Request\Config_Reader">
         <arguments>
             <argument name="exactMatchAttributes" xsi:type="array">
                 <item name="url_key" xsi:type="string">url_key</item>
@@ -23,19 +23,19 @@
         </arguments>
     </type>
 
-    <type name="Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite">
         <arguments>
             <argument name="entityTypeMapping" xsi:type="array">
-                <item name="catalog_product" xsi:type="const">Magento\CatalogUrlRewrite\Model\ProductUrlRewriteGenerator::ENTITY_TYPE</item>
+                <item name="catalog_product" xsi:type="const">Magento\Catalog_Url_Rewrite\Model\Product_Url_Rewrite_Generator::ENTITY_TYPE</item>
             </argument>
         </arguments>
     </type>
 
-    <type name="Magento\UrlRewriteGraphQl\Model\DataProvider\EntityDataProviderComposite">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Data_Provider\Entity_Data_Provider_Composite">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
-                <item name="category" xsi:type="object">Magento\CatalogUrlRewriteGraphQl\Model\DataProvider\UrlRewrite\CatalogTreeDataProvider</item>
-                <item name="product" xsi:type="object">Magento\CatalogUrlRewriteGraphQl\Model\DataProvider\UrlRewrite\ProductDataProvider</item>
+                <item name="category" xsi:type="object">Magento\Catalog_Url_Rewrite_Graph_Ql\Model\Data_Provider\Url_Rewrite\Catalog_Tree_Data_Provider</item>
+                <item name="product" xsi:type="object">Magento\Catalog_Url_Rewrite_Graph_Ql\Model\Data_Provider\Url_Rewrite\Product_Data_Provider</item>
             </argument>
         </arguments>
     </type>

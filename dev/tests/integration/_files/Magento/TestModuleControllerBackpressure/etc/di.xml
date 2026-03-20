@@ -6,20 +6,20 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\App\Request\Backpressure\CompositeRequestTypeExtractor">
+    <type name="Magento\Framework\App\Request\Backpressure\Composite_Request_Type_Extractor">
         <arguments>
             <argument name="extractors" xsi:type="array">
                 <item name="controllertestbackpressure" xsi:type="object">
-                    Magento\TestModuleControllerBackpressure\Model\TypeExtractor
+                    Magento\Test_Module_Controller_Backpressure\Model\Type_Extractor
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\Backpressure\SlidingWindow\CompositeLimitConfigManager">
+    <type name="Magento\Framework\App\Backpressure\Sliding_Window\Composite_Limit_Config_Manager">
         <arguments>
             <argument name="configs" xsi:type="array">
                 <item name="testcontrollerbackpressure" xsi:type="object">
-                    Magento\TestModuleControllerBackpressure\Model\LimitConfigManager
+                    Magento\Test_Module_Controller_Backpressure\Model\Limit_Config_Manager
                 </item>
             </argument>
         </arguments>

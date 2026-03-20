@@ -14,7 +14,7 @@
             <arguments>
                 <argument name="id" xsi:type="string">order_transactions</argument>
                 <argument name="dataSource" xsi:type="object" shared="false">
-                    <updater>Magento\Sales\Model\Grid\CollectionUpdater</updater>
+                    <updater>Magento\Sales\Model\Grid\Collection_Updater</updater>
                 </argument>
                 <argument name="use_ajax" xsi:type="boolean">true</argument>
                 <argument name="default_sort" xsi:type="string">created_at</argument>

@@ -11,13 +11,13 @@
             <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.newsletter.queue.grid" as="grid">
                 <arguments>
                     <argument name="id" xsi:type="string">queueGrid</argument>
-                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Newsletter\Model\ResourceModel\Queue\Grid\Collection</argument>
+                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Newsletter\Model\Resource_Model\Queue\Grid\Collection</argument>
                     <argument name="default_sort" xsi:type="string">start_at</argument>
                     <argument name="default_dir" xsi:type="string">DESC</argument>
                     <argument name="save_parameters_in_session" xsi:type="string">1</argument>
                     <argument name="use_ajax" xsi:type="string">1</argument>
                 </arguments>
-                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.newsletter.queue.grid.columnSet" as="grid.columnSet">
+                <block class="Magento\Backend\Block\Widget\Grid\Column_Set" name="adminhtml.newsletter.queue.grid.columnSet" as="grid.columnSet">
                     <arguments>
                         <argument name="rowUrl" xsi:type="array">
                             <item name="path" xsi:type="string">*/*/edit</item>

@@ -6,13 +6,13 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\CatalogGraphQl\Model\Resolver\Layer\DataProvider\Filters">
-        <plugin name="add_swatch_data_to_filters" type="Magento\SwatchesGraphQl\Plugin\Filters\DataProviderPlugin"/>
+    <type name="Magento\Catalog_Graph_Ql\Model\Resolver\Layer\Data_Provider\Filters">
+        <plugin name="add_swatch_data_to_filters" type="Magento\Swatches_Graph_Ql\Plugin\Filters\Data_Provider_Plugin"/>
     </type>
-    <type name="Magento\CatalogGraphQl\Model\LayerFilterItemTypeResolverComposite">
+    <type name="Magento\Catalog_Graph_Ql\Model\Layer_Filter_Item_Type_Resolver_Composite">
         <arguments>
             <argument name="typeResolvers" xsi:type="array">
-                <item name="swatch_layer_filter_item" xsi:type="object">Magento\SwatchesGraphQl\Model\Resolver\SwatchLayerFilterItemResolver</item>
+                <item name="swatch_layer_filter_item" xsi:type="object">Magento\Swatches_Graph_Ql\Model\Resolver\Swatch_Layer_Filter_Item_Resolver</item>
             </argument>
         </arguments>
     </type>

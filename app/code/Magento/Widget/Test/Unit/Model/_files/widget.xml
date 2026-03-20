@@ -50,7 +50,7 @@
                 </block>
             </parameter>
             <parameter name="condition" xsi:type="conditions" visible="true" required="true" sort_order="10"
-                       class="Magento\CatalogWidget\Block\Product\Widget\Conditions">
+                       class="Magento\Catalog_Widget\Block\Product\Widget\Conditions">
                 <label translate="true">Conditions</label>
             </parameter>
         </parameters>

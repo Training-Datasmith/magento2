@@ -33,7 +33,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_UrlRewrite::urlrewrite</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider"
+        <dataProvider class="Magento\Framework\View\Element\Ui_Component\Data_Provider\Data_Provider"
                       name="url_rewrite_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
@@ -133,7 +133,7 @@
         </column>
         <column name="redirect_type" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Magento\UrlRewrite\Model\OptionProvider"/>
+                <options class="Magento\Url_Rewrite\Model\Option_Provider"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -142,7 +142,7 @@
                 <label translate="true">Redirect Type</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\UrlRewrite\Ui\Component\Listing\Column\BlockActions">
+        <actionsColumn name="actions" class="Magento\Url_Rewrite\Ui\Component\Listing\Column\Block_Actions">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="urlEntityParamName" xsi:type="string">id</item>

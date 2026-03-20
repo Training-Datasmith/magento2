@@ -18,7 +18,7 @@
         </arguments>
 
         <!-- This 6x backspace stuff is some magic that is necessary to interact with this field correctly -->
-        <pressKey selector="{{AdminColorPickerSection.hexByIndex(nthColorPicker)}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::BACKSPACE,\Facebook\WebDriver\WebDriverKeys::BACKSPACE,\Facebook\WebDriver\WebDriverKeys::BACKSPACE,\Facebook\WebDriver\WebDriverKeys::BACKSPACE,\Facebook\WebDriver\WebDriverKeys::BACKSPACE,\Facebook\WebDriver\WebDriverKeys::BACKSPACE,'{{hexColor}}']" stepKey="fillHex1"/>
+        <pressKey selector="{{AdminColorPickerSection.hexByIndex(nthColorPicker)}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::BACKSPACE,\Facebook\Web_Driver\Web_Driver_Keys::BACKSPACE,\Facebook\Web_Driver\Web_Driver_Keys::BACKSPACE,\Facebook\Web_Driver\Web_Driver_Keys::BACKSPACE,\Facebook\Web_Driver\Web_Driver_Keys::BACKSPACE,\Facebook\Web_Driver\Web_Driver_Keys::BACKSPACE,'{{hexColor}}']" stepKey="fillHex1"/>
         <click selector="{{AdminColorPickerSection.submitByIndex(nthColorPicker)}}" stepKey="submitColor1"/>
     </actionGroup>
 </actionGroups>

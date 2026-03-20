@@ -57,7 +57,7 @@
         </actionGroup>
 
         <!--Press Key ENTER-->
-        <pressKey selector="{{StorefrontCheckoutPaymentMethodSection.purchaseOrderNumber}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="pressKeyEnter"/>
+        <pressKey selector="{{StorefrontCheckoutPaymentMethodSection.purchaseOrderNumber}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="pressKeyEnter"/>
         <waitForPageLoad stepKey="waitForPageLoad"/>
 
         <!--See success messages-->

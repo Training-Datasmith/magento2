@@ -12,7 +12,7 @@
             <arguments>
                 <argument name="id" xsi:type="string">transactionChildGrid</argument>
                 <argument name="dataSource" xsi:type="object" shared="false">
-                    <updater>Magento\Sales\Model\Grid\Child\CollectionUpdater</updater>
+                    <updater>Magento\Sales\Model\Grid\Child\Collection_Updater</updater>
                 </argument>
                 <argument name="use_ajax" xsi:type="string">false</argument>
                 <argument name="pager_visibility" xsi:type="boolean">false</argument>

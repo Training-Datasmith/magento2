@@ -14,7 +14,7 @@
         <amOnPage url="{{AdminTaxRuleGridPage.url}}" stepKey="goToTaxRuleGridPage"/>
         <waitForPageLoad stepKey="waitForPageLoad1"/>
         <click selector="{{AdminDataGridHeaderSection.clearFilters}}" stepKey="clickClearFilters"/>
-        <helper class="Magento\Tax\Test\Mftf\Helper\TaxHelpers" method="deleteAllSpecifiedTaxRuleRows" stepKey="deleteAllSpecifiedTaxRules">
+        <helper class="Magento\Tax\Test\Mftf\Helper\Tax_Helpers" method="deleteAllSpecifiedTaxRuleRows" stepKey="deleteAllSpecifiedTaxRules">
             <argument name="rowsToDelete">{{AdminTaxRuleGridSection.allRows}}</argument>
             <argument name="deleteButton">{{AdminMainActionsSection.delete}}</argument>
             <argument name="modalAcceptButton">{{AdminConfirmationModalSection.ok}}</argument>

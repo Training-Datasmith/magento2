@@ -10,7 +10,7 @@
     <columns name="product_attributes_columns">
         <column name="is_filterable" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Magento\LayeredNavigation\Model\Attribute\Source\FilterableOptions"/>
+                <options class="Magento\Layered_Navigation\Model\Attribute\Source\Filterable_Options"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Use in Layered Navigation</label>

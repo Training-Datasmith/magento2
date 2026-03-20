@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="customerDeleted" schema="Magento\Customer\Api\CustomerRepositoryInterface::delete">
-        <handler name="customHandler" type="Magento\Customer\Api\CustomerRepositoryInterface" method="invalid"/>
+    <topic name="customerDeleted" schema="Magento\Customer\Api\Customer_Repository_Interface::delete">
+        <handler name="customHandler" type="Magento\Customer\Api\Customer_Repository_Interface" method="invalid"/>
     </topic>
 </config>

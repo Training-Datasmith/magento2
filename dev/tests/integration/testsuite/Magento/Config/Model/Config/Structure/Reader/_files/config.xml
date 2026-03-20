@@ -15,8 +15,8 @@
                     <label>Merchant Country</label>
                     <comment>If not specified, Default Country from General Config will be used.</comment>
                     <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Country</frontend_model>
-                    <source_model>Magento\Paypal\Model\System\Config\Source\MerchantCountry</source_model>
-                    <backend_model>Magento\Paypal\Model\System\Config\Backend\MerchantCountry</backend_model>
+                    <source_model>Magento\Paypal\Model\System\Config\Source\Merchant_Country</source_model>
+                    <backend_model>Magento\Paypal\Model\System\Config\Backend\Merchant_Country</backend_model>
                     <config_path>paypal/general/merchant_country</config_path>
                 </field>
             </group>

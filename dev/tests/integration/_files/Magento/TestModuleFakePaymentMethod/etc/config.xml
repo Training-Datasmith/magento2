@@ -9,7 +9,7 @@
     <default>
         <payment>
             <fake>
-                <model>Magento\TestModuleFakePaymentMethod\Gateway\Facade</model>
+                <model>Magento\Test_Module_Fake_Payment_Method\Gateway\Facade</model>
                 <title>Fake Payment Method</title>
                 <payment_action>authorize</payment_action>
                 <active>1</active>
@@ -25,7 +25,7 @@
                 <order_status>processing</order_status>
             </fake>
             <fake_vault>
-                <model>Magento\TestModuleFakePaymentMethod\Gateway\VaultFacade</model>
+                <model>Magento\Test_Module_Fake_Payment_Method\Gateway\Vault_Facade</model>
                 <title>Fake Payment Method Vault</title>
                 <active>1</active>
                 <instant_purchase>

@@ -32,7 +32,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Cms::page</aclResource>
-        <dataProvider class="Magento\Cms\Ui\Component\DataProvider" name="cms_page_listing_data_source">
+        <dataProvider class="Magento\Cms\Ui\Component\Data_Provider" name="cms_page_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>page_id</primaryFieldName>
@@ -175,7 +175,7 @@
         </column>
         <column name="page_layout" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Magento\Cms\Model\Page\Source\PageLayout"/>
+                <options class="Magento\Cms\Model\Page\Source\Page_Layout"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -193,7 +193,7 @@
         </column>
         <column name="is_active" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Magento\Cms\Model\Page\Source\IsActive"/>
+                <options class="Magento\Cms\Model\Page\Source\Is_Active"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -256,7 +256,7 @@
         </column>
         <column name="custom_root_template" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Magento\Cms\Model\Page\Source\CustomLayout"/>
+                <options class="Magento\Cms\Model\Page\Source\Custom_Layout"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -296,7 +296,7 @@
                 <visible>false</visible>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Cms\Ui\Component\Listing\Column\PageActions">
+        <actionsColumn name="actions" class="Magento\Cms\Ui\Component\Listing\Column\Page_Actions">
             <settings>
                 <indexField>page_id</indexField>
                 <resizeEnabled>false</resizeEnabled>

@@ -11,18 +11,18 @@
             <argument name="session" xsi:type="object">Magento\Backend\Model\Session</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\Rss\RssManagerInterface">
+    <type name="Magento\Framework\App\Rss\Rss_Manager_Interface">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
                 <item name="review" xsi:type="string">Magento\Review\Block\Adminhtml\Rss</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+    <virtualType name="Magento\Catalog\Ui\Data_Provider\Product\Form\Modifier\Pool">
         <arguments>
             <argument name="modifiers" xsi:type="array">
                 <item name="review" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\Review\Ui\DataProvider\Product\Form\Modifier\Review</item>
+                    <item name="class" xsi:type="string">Magento\Review\Ui\Data_Provider\Product\Form\Modifier\Review</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                 </item>
             </argument>

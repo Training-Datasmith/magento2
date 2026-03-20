@@ -15,7 +15,7 @@
                    template="Magento_LoginAsCustomerAssistance::shopping-assistance.phtml">
                 <arguments>
                     <argument name="view_model" xsi:type="object">
-                        Magento\LoginAsCustomerAssistance\ViewModel\ShoppingAssistanceViewModel
+                        Magento\Login_As_Customer_Assistance\View_Model\Shopping_Assistance_View_Model
                     </argument>
                 </arguments>
             </block>

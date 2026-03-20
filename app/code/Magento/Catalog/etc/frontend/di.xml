@@ -6,27 +6,27 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="Magento\Catalog\Model\ResourceModel\Category\Collection\FetchStrategy" type="Magento\Framework\Data\Collection\Db\FetchStrategy\Cache">
+    <virtualType name="Magento\Catalog\Model\Resource_Model\Category\Collection\Fetch_Strategy" type="Magento\Framework\Data\Collection\Db\Fetch_Strategy\Cache">
         <arguments>
             <argument name="cacheTags" xsi:type="array">
                 <item name="categoryTag" xsi:type="const">Magento\Catalog\Model\Category::CACHE_TAG</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Catalog\Model\Indexer\AbstractFlatState">
+    <type name="Magento\Catalog\Model\Indexer\Abstract_Flat_State">
         <arguments>
             <argument name="isAvailable" xsi:type="boolean">true</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Catalog\Block\ShortcutButtons\InCatalog" type="Magento\Catalog\Block\ShortcutButtons">
+    <virtualType name="Magento\Catalog\Block\Shortcut_Buttons\In_Catalog" type="Magento\Catalog\Block\Shortcut_Buttons">
         <arguments>
             <argument name="isCatalogProduct" xsi:type="boolean">true</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Catalog\Block\ShortcutButtons\InCatalog\PositionAfter" type="Magento\Catalog\Block\ShortcutButtons">
+    <virtualType name="Magento\Catalog\Block\Shortcut_Buttons\In_Catalog\Position_After" type="Magento\Catalog\Block\Shortcut_Buttons">
         <arguments>
             <argument name="isCatalogProduct" xsi:type="boolean">true</argument>
-            <argument name="orPosition" xsi:type="const">Magento\Catalog\Block\ShortcutButtons::POSITION_AFTER</argument>
+            <argument name="orPosition" xsi:type="const">Magento\Catalog\Block\Shortcut_Buttons::POSITION_AFTER</argument>
         </arguments>
     </virtualType>
     <type name="Magento\Catalog\Model\Indexer\Product\Flat\State">
@@ -36,49 +36,49 @@
     </type>
     <type name="Magento\Framework\View\Layout">
         <plugin name="catalog-session-depersonalize"
-                type="Magento\Catalog\Model\Layout\DepersonalizePlugin" sortOrder="10"/>
+                type="Magento\Catalog\Model\Layout\Depersonalize_Plugin" sortOrder="10"/>
     </type>
-    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Section_Pool_Interface">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="compare-products" xsi:type="string">Magento\Catalog\CustomerData\CompareProducts</item>
+                <item name="compare-products" xsi:type="string">Magento\Catalog\Customer_Data\Compare_Products</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Helper\Product\ConfigurationPool">
+    <type name="Magento\Catalog\Helper\Product\Configuration_Pool">
         <arguments>
             <argument name="instancesByType" xsi:type="array">
                 <item name="default" xsi:type="object">Magento\Catalog\Helper\Product\Configuration</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Pricing\Render\PriceBox">
-        <plugin name="catalog_price_box_key" type="Magento\Catalog\Block\Category\Plugin\PriceBoxTags" />
+    <type name="Magento\Framework\Pricing\Render\Price_Box">
+        <plugin name="catalog_price_box_key" type="Magento\Catalog\Block\Category\Plugin\Price_Box_Tags" />
     </type>
-    <type name="Magento\Customer\CustomerData\SectionPool">
+    <type name="Magento\Customer\Customer_Data\Section_Pool">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="recently_viewed_product" xsi:type="string">Magento\Catalog\CustomerData\RecentlyViewedProductsSection</item>
-                <item name="recently_compared_product" xsi:type="string">Magento\Catalog\CustomerData\RecentlyComparedProductsSection</item>
-                <item name="product_data_storage" xsi:type="string">Magento\Catalog\CustomerData\ProductsRenderInfoSection</item>
+                <item name="recently_viewed_product" xsi:type="string">Magento\Catalog\Customer_Data\Recently_Viewed_Products_Section</item>
+                <item name="recently_compared_product" xsi:type="string">Magento\Catalog\Customer_Data\Recently_Compared_Products_Section</item>
+                <item name="product_data_storage" xsi:type="string">Magento\Catalog\Customer_Data\Products_Render_Info_Section</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Catalog\CustomerData\RecentlyViewedProductsSection" type="Magento\Catalog\CustomerData\ProductFrontendActionSection">
+    <virtualType name="Magento\Catalog\Customer_Data\Recently_Viewed_Products_Section" type="Magento\Catalog\Customer_Data\Product_Frontend_Action_Section">
         <arguments>
             <argument name="typeId" xsi:type="string">recently_viewed_product</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Catalog\CustomerData\RecentlyComparedProductsSection" type="Magento\Catalog\CustomerData\ProductFrontendActionSection">
+    <virtualType name="Magento\Catalog\Customer_Data\Recently_Compared_Products_Section" type="Magento\Catalog\Customer_Data\Product_Frontend_Action_Section">
         <arguments>
             <argument name="typeId" xsi:type="string">recently_compared_product</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\View\Element\Message\MessageConfigurationsPool">
+    <type name="Magento\Framework\View\Element\Message\Message_Configurations_Pool">
         <arguments>
             <argument name="configurationsMap" xsi:type="array">
                 <item name="addCompareSuccessMessage" xsi:type="array">
-                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\Block_Renderer::CODE</item>
                     <item name="data" xsi:type="array">
                         <item name="template" xsi:type="string">Magento_Catalog::messages/addCompareSuccessMessage.phtml</item>
                     </item>
@@ -107,24 +107,24 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\ResourceConnection">
-        <plugin name="get_catalog_category_product_index_table_name" type="Magento\Catalog\Model\Indexer\Category\Product\Plugin\TableResolver"/>
-        <plugin name="get_catalog_product_price_index_table_name" type="Magento\Catalog\Model\Indexer\Product\Price\Plugin\TableResolver"/>
+    <type name="Magento\Framework\App\Resource_Connection">
+        <plugin name="get_catalog_category_product_index_table_name" type="Magento\Catalog\Model\Indexer\Category\Product\Plugin\Table_Resolver"/>
+        <plugin name="get_catalog_product_price_index_table_name" type="Magento\Catalog\Model\Indexer\Product\Price\Plugin\Table_Resolver"/>
     </type>
-    <type name="Magento\Framework\App\Action\AbstractAction">
+    <type name="Magento\Framework\App\Action\Abstract_Action">
         <plugin name="catalog_app_action_dispatch_controller_context_plugin"
-                type="Magento\Catalog\Plugin\Framework\App\Action\ContextPlugin" />
+                type="Magento\Catalog\Plugin\Framework\App\Action\Context_Plugin" />
     </type>
-    <type name="\Magento\PageCache\Model\PageCacheTagsPreprocessorComposite">
+    <type name="\Magento\Page_Cache\Model\Page_Cache_Tags_Preprocessor_Composite">
         <arguments>
             <argument name="preprocessors" xsi:type="array">
                 <item name="catalog_product_view" xsi:type="array">
-                    <item name="product_not_found" xsi:type="object">Magento\Catalog\Model\ProductNotFoundPageCacheTags</item>
+                    <item name="product_not_found" xsi:type="object">Magento\Catalog\Model\Product_Not_Found_Page_Cache_Tags</item>
                 </item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Config">
-        <plugin name="special_price_listing_plugin" type="Magento\Catalog\Plugin\Model\ConfigPlugin" sortOrder="10" />
+        <plugin name="special_price_listing_plugin" type="Magento\Catalog\Plugin\Model\Config_Plugin" sortOrder="10" />
     </type>
 </config>

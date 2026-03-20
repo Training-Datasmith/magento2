@@ -149,7 +149,7 @@
                 <field id="async_sending" translate="label" type="select" sortOrder="1" showInDefault="1" canRestore="1">
                     <label>Asynchronous sending</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                    <backend_model>Magento\Sales\Model\Config\Backend\Email\AsyncSending</backend_model>
+                    <backend_model>Magento\Sales\Model\Config\Backend\Email\Async_Sending</backend_model>
                 </field>
                 <field id="sending_limit" translate="label" type="text" sortOrder="2" showInDefault="1" canRestore="1">
                     <label>Limit per cron run</label>
@@ -562,7 +562,7 @@
                 <field id="async_indexing" translate="label" type="select" sortOrder="1" showInDefault="1" canRestore="1">
                     <label>Asynchronous indexing</label>
                     <source_model>Magento\Config\Model\Config\Source\Enabledisable</source_model>
-                    <backend_model>Magento\Sales\Model\Config\Backend\Grid\AsyncIndexing</backend_model>
+                    <backend_model>Magento\Sales\Model\Config\Backend\Grid\Async_Indexing</backend_model>
                 </field>
             </group>
         </section>

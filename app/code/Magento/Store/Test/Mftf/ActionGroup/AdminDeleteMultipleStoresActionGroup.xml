@@ -19,7 +19,7 @@
         <waitForElementVisible selector="{{AdminLegacyDataGridFilterSection.clear}}" stepKey="waitForResetFilter"/>
         <click selector="{{AdminLegacyDataGridFilterSection.clear}}" stepKey="clickResetFilter"/>
         <waitForPageLoad stepKey="waitForGridReset"/>
-        <helper class="Magento\Store\Test\Mftf\Helper\StoreHelpers" method="deleteAllSpecifiedStores" stepKey="deleteAllSpecifiedStores">
+        <helper class="Magento\Store\Test\Mftf\Helper\Store_Helpers" method="deleteAllSpecifiedStores" stepKey="deleteAllSpecifiedStores">
             <argument name="storesToDelete">{{storesToDelete}}</argument>
             <argument name="deleteButton">{{AdminMainActionsSection.delete}}</argument>
             <argument name="createDbBackupButton">{{AdminStoresDeleteStoreGroupSection.createDbBackup}}</argument>

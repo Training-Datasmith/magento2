@@ -7,69 +7,69 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Catalog\Controller\Adminhtml\Product\Initialization\Helper">
-        <plugin name="configurable" type="Magento\ConfigurableProduct\Controller\Adminhtml\Product\Initialization\Helper\Plugin\Configurable" sortOrder="50" />
-        <plugin name="updateConfigurations" type="Magento\ConfigurableProduct\Controller\Adminhtml\Product\Initialization\Helper\Plugin\UpdateConfigurations" sortOrder="60" />
-        <plugin name="cleanConfigurationTmpImages" type="Magento\ConfigurableProduct\Plugin\Product\Initialization\CleanConfigurationTmpImages" sortOrder="999" />
+        <plugin name="configurable" type="Magento\Configurable_Product\Controller\Adminhtml\Product\Initialization\Helper\Plugin\Configurable" sortOrder="50" />
+        <plugin name="updateConfigurations" type="Magento\Configurable_Product\Controller\Adminhtml\Product\Initialization\Helper\Plugin\Update_Configurations" sortOrder="60" />
+        <plugin name="cleanConfigurationTmpImages" type="Magento\Configurable_Product\Plugin\Product\Initialization\Clean_Configuration_Tmp_Images" sortOrder="999" />
     </type>
     <type name="Magento\Catalog\Controller\Adminhtml\Product\Builder">
-        <plugin name="configurable" type="Magento\ConfigurableProduct\Controller\Adminhtml\Product\Builder\Plugin" sortOrder="50" />
+        <plugin name="configurable" type="Magento\Configurable_Product\Controller\Adminhtml\Product\Builder\Plugin" sortOrder="50" />
     </type>
     <type name="Magento\Catalog\Model\Product\Validator">
-        <plugin name="configurable" type="Magento\ConfigurableProduct\Model\Product\Validator\Plugin" sortOrder="50" />
+        <plugin name="configurable" type="Magento\Configurable_Product\Model\Product\Validator\Plugin" sortOrder="50" />
     </type>
-    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\AbstractSidebar">
-        <plugin name="configurable" type="Magento\ConfigurableProduct\Block\Adminhtml\Order\Create\Sidebar" sortOrder="200"/>
+    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\Abstract_Sidebar">
+        <plugin name="configurable" type="Magento\Configurable_Product\Block\Adminhtml\Order\Create\Sidebar" sortOrder="200"/>
     </type>
-    <type name="Magento\ConfigurableProduct\Block\Adminhtml\Product\Attribute\Edit\Tab\Variations\Main">
+    <type name="Magento\Configurable_Product\Block\Adminhtml\Product\Attribute\Edit\Tab\Variations\Main">
         <arguments>
-            <argument name="inputTypeFactory" xsi:type="object">Magento\Catalog\Model\System\Config\Source\InputtypeFactory</argument>
+            <argument name="inputTypeFactory" xsi:type="object">Magento\Catalog\Model\System\Config\Source\Inputtype_Factory</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product">
-        <plugin name="reload_attributes" type="Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Product" />
+    <type name="Magento\Catalog\Model\Resource_Model\Product">
+        <plugin name="reload_attributes" type="Magento\Configurable_Product\Plugin\Model\Resource_Model\Product" />
     </type>
-    <type name="Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Columns">
+    <type name="Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Columns">
         <arguments>
-            <argument name="attributeRepository" xsi:type="object">Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Attribute\Repository</argument>
+            <argument name="attributeRepository" xsi:type="object">Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Attribute\Repository</argument>
         </arguments>
     </type>
-    <type name="Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Filters">
+    <type name="Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Filters">
         <arguments>
-            <argument name="attributeRepository" xsi:type="object">Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Attribute\Repository</argument>
+            <argument name="attributeRepository" xsi:type="object">Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Attribute\Repository</argument>
         </arguments>
     </type>
-    <preference for="Magento\ConfigurableProduct\Model\AttributesListInterface" type="Magento\ConfigurableProduct\Model\AttributesList" />
-    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+    <preference for="Magento\Configurable_Product\Model\Attributes_List_Interface" type="Magento\Configurable_Product\Model\Attributes_List" />
+    <virtualType name="Magento\Catalog\Ui\Data_Provider\Product\Form\Modifier\Pool">
         <arguments>
             <argument name="modifiers" xsi:type="array">
                 <item name="configurable" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\Composite</item>
+                    <item name="class" xsi:type="string">Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Composite</item>
                     <item name="sortOrder" xsi:type="number">140</item>
                 </item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\Composite">
+    <type name="Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Composite">
         <arguments>
-            <argument name="allowedProductTypes" xsi:type="object">Magento\Catalog\Ui\BaseAllowedProductTypes</argument>
+            <argument name="allowedProductTypes" xsi:type="object">Magento\Catalog\Ui\Base_Allowed_Product_Types</argument>
             <argument name="modifiers" xsi:type="array">
-                <item name="configurablePanel" xsi:type="string">Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\ConfigurablePanel</item>
-                <item name="configurablePrice" xsi:type="string">Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\ConfigurablePrice</item>
-                <item name="configurableQty" xsi:type="string">Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\ConfigurableQty</item>
-                <item name="configurableAttributeSetHandler" xsi:type="string">Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\ConfigurableAttributeSetHandler</item>
-                <item name="StockData" xsi:type="string">Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\StockData</item>
-                <item name="customOptions" xsi:type="string">Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\CustomOptions</item>
+                <item name="configurablePanel" xsi:type="string">Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Configurable_Panel</item>
+                <item name="configurablePrice" xsi:type="string">Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Configurable_Price</item>
+                <item name="configurableQty" xsi:type="string">Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Configurable_Qty</item>
+                <item name="configurableAttributeSetHandler" xsi:type="string">Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Configurable_Attribute_Set_Handler</item>
+                <item name="StockData" xsi:type="string">Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Stock_Data</item>
+                <item name="customOptions" xsi:type="string">Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Custom_Options</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\ConfigurableProduct\Ui\DataProvider\Product\Form\Modifier\ConfigurablePanel">
+    <type name="Magento\Configurable_Product\Ui\Data_Provider\Product\Form\Modifier\Configurable_Panel">
         <arguments>
             <argument name="formName" xsi:type="string">product_form</argument>
             <argument name="dataScopeName" xsi:type="string">product_form.product_form</argument>
             <argument name="dataSourceName" xsi:type="string">product_form.product_form_data_source</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Catalog\Ui\BaseAllowedProductTypes" type="Magento\Catalog\Ui\AllowedProductTypes">
+    <virtualType name="Magento\Catalog\Ui\Base_Allowed_Product_Types" type="Magento\Catalog\Ui\Allowed_Product_Types">
         <arguments>
             <argument name="productTypes" xsi:type="array">
                 <item name="simple" xsi:type="string">simple</item>
@@ -79,9 +79,9 @@
         </arguments>
     </virtualType>
     <type name="Magento\Sales\Model\Order\Invoice">
-        <plugin name="update_configurable_product_total_qty" type="Magento\ConfigurableProduct\Plugin\Model\Order\Invoice\UpdateConfigurableProductTotalQty"/>
+        <plugin name="update_configurable_product_total_qty" type="Magento\Configurable_Product\Plugin\Model\Order\Invoice\Update_Configurable_Product_Total_Qty"/>
     </type>
-    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
-        <plugin name="configurable_product_widget_product_list" type="Magento\ConfigurableProduct\Plugin\CatalogWidget\Block\Product\ProductsListPlugin" sortOrder="2"/>
+    <type name="Magento\Catalog_Widget\Block\Product\Products_List">
+        <plugin name="configurable_product_widget_product_list" type="Magento\Configurable_Product\Plugin\Catalog_Widget\Block\Product\Products_List_Plugin" sortOrder="2"/>
     </type>
 </config>

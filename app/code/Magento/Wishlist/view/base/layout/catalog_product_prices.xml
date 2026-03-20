@@ -11,7 +11,7 @@
             <argument name="default" xsi:type="array">
                 <item name="prices" xsi:type="array">
                     <item name="wishlist_configured_price" xsi:type="array">
-                        <item name="render_class" xsi:type="string">Magento\Wishlist\Pricing\Render\ConfiguredPriceBox</item>
+                        <item name="render_class" xsi:type="string">Magento\Wishlist\Pricing\Render\Configured_Price_Box</item>
                         <item name="render_template" xsi:type="string">Magento_Catalog::product/price/configured_price.phtml</item>
                     </item>
                 </item>

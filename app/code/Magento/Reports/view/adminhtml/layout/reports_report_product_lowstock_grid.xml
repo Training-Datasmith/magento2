@@ -12,7 +12,7 @@
                 <arguments>
                     <argument name="id" xsi:type="string">gridLowstock</argument>
                     <argument name="use_ajax" xsi:type="string">0</argument>
-                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Reports\Model\ResourceModel\Product\Lowstock\Collection</argument>
+                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Reports\Model\Resource_Model\Product\Lowstock\Collection</argument>
                 </arguments>
                 <block class="Magento\Backend\Block\Widget\Grid\Export" name="adminhtml.block.report.product.lowstock.export" as="grid.export">
                     <arguments>
@@ -28,7 +28,7 @@
                         </argument>
                     </arguments>
                 </block>
-                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="adminhtml.block.report.product.lowstock.grid.columnSet">
+                <block class="Magento\Backend\Block\Widget\Grid\Column_Set" as="grid.columnSet" name="adminhtml.block.report.product.lowstock.grid.columnSet">
                     <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.block.report.product.lowstock.grid.columnSet.name" as="name">
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Product</argument>

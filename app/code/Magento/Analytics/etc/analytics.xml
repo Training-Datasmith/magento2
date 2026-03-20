@@ -8,7 +8,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Analytics:etc/analytics.xsd">
     <file name="modules">
         <providers>
-            <reportProvider name="modules" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider name="modules" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>modules</name>
                 </parameters>
@@ -17,12 +17,12 @@
     </file>
     <file name="store_config">
         <providers>
-            <customProvider name="store_config" class="Magento\Analytics\Model\StoreConfigurationProvider"/>
+            <customProvider name="store_config" class="Magento\Analytics\Model\Store_Configuration_Provider"/>
         </providers>
     </file>
     <file name="stores">
         <providers>
-            <reportProvider name="stores" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider name="stores" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>stores</name>
                 </parameters>
@@ -31,7 +31,7 @@
     </file>
     <file name="websites">
         <providers>
-            <reportProvider name="websites" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider name="websites" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>websites</name>
                 </parameters>
@@ -40,7 +40,7 @@
     </file>
     <file name="groups">
         <providers>
-            <reportProvider name="groups" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider name="groups" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>groups</name>
                 </parameters>

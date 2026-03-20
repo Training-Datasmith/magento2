@@ -28,7 +28,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Magento\LayeredNavigation\Model\Attribute\Source\FilterableOptions"/>
+                        <options class="Magento\Layered_Navigation\Model\Attribute\Source\Filterable_Options"/>
                     </settings>
                 </select>
             </formElements>

@@ -14,7 +14,7 @@
         <waitForElementVisible selector="{{AdminLegacyDataGridFilterSection.clear}}" stepKey="waitForResetFilter"/>
         <click selector="{{AdminLegacyDataGridFilterSection.clear}}" stepKey="clickResetFilter"/>
         <waitForPageLoad stepKey="waitForGridReset"/>
-        <helper class="Magento\CheckoutAgreements\Test\Mftf\Helper\CheckoutAgreementsHelpers" method="deleteAllTermConditionRows" stepKey="deleteAllTermConditionRows">
+        <helper class="Magento\Checkout_Agreements\Test\Mftf\Helper\Checkout_Agreements_Helpers" method="deleteAllTermConditionRows" stepKey="deleteAllTermConditionRows">
             <argument name="rowsToDelete">{{AdminTermGridSection.allTermRows}}</argument>
             <argument name="deleteButton">{{AdminMainActionsSection.delete}}</argument>
             <argument name="modalAcceptButton">{{AdminConfirmationModalSection.ok}}</argument>

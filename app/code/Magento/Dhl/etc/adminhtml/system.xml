@@ -48,12 +48,12 @@
                 </field>
                 <field id="handling_type" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Calculate Handling Fee</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Type</source_model>
                 </field>
                 <field id="handling_action" translate="label comment" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Handling Applied</label>
                     <comment>"Per Order" allows a single handling fee for the entire order. "Per Package" allows an individual handling fee for each package.</comment>
-                    <source_model>Magento\Shipping\Model\Source\HandlingAction</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Action</source_model>
                 </field>
                 <field id="handling_fee" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1">
                     <label>Handling Fee</label>

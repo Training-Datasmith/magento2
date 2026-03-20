@@ -15,7 +15,7 @@
         to use the correct path when Magento is either installed with S3 enabled or with S3 disabled -->
 
         <!-- Verify that the file exists on remote storage -->
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\FileAssertions"
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\File_Assertions"
                 method="assertFileExists"
                 stepKey="assertExportFileExists">
             <argument name="filePath">{"local":"var/export/{$grabNameFile}","s3":"import_export/export/{$grabNameFile}"}</argument>

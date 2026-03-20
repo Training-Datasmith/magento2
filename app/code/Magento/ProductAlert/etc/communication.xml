@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="product_alert" request="Magento\AsynchronousOperations\Api\Data\OperationInterface">
-        <handler name="productAlert" type="Magento\ProductAlert\Model\Mailing\Consumer" method="process"/>
+    <topic name="product_alert" request="Magento\Asynchronous_Operations\Api\Data\Operation_Interface">
+        <handler name="productAlert" type="Magento\Product_Alert\Model\Mailing\Consumer" method="process"/>
     </topic>
 </config>

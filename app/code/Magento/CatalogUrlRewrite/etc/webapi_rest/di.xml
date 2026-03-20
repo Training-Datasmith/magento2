@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Webapi\Controller\Rest\InputParamsResolver">
-        <plugin name="product_save_rewrites_history_rest_plugin" type="Magento\CatalogUrlRewrite\Plugin\Webapi\Controller\Rest\InputParamsResolver" sortOrder="1" disabled="false" />
+    <type name="Magento\Webapi\Controller\Rest\Input_Params_Resolver">
+        <plugin name="product_save_rewrites_history_rest_plugin" type="Magento\Catalog_Url_Rewrite\Plugin\Webapi\Controller\Rest\Input_Params_Resolver" sortOrder="1" disabled="false" />
     </type>
-    <type name="Magento\CatalogUrlRewrite\Model\CategoryUrlRewriteGenerator">
-        <plugin name="category_set_save_rewrites_history_rest_plugin" type="Magento\CatalogUrlRewrite\Plugin\Model\CategorySetSaveRewriteHistory" disabled="false" />
+    <type name="Magento\Catalog_Url_Rewrite\Model\Category_Url_Rewrite_Generator">
+        <plugin name="category_set_save_rewrites_history_rest_plugin" type="Magento\Catalog_Url_Rewrite\Plugin\Model\Category_Set_Save_Rewrite_History" disabled="false" />
     </type>
 </config>

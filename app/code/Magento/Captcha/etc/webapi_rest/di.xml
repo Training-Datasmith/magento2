@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Sales\Api\OrderManagementInterface">
-        <plugin name="reset_payment_attempts_after_order_is_placed_plugin" type="Magento\Captcha\Plugin\ResetPaymentAttemptsAfterOrderIsPlacedPlugin"/>
+    <type name="Magento\Sales\Api\Order_Management_Interface">
+        <plugin name="reset_payment_attempts_after_order_is_placed_plugin" type="Magento\Captcha\Plugin\Reset_Payment_Attempts_After_Order_Is_Placed_Plugin"/>
     </type>
 </config>

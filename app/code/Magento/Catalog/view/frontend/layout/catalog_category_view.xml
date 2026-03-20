@@ -11,8 +11,8 @@
             <container name="category.view.container" htmlTag="div" htmlClass="category-view" after="-">
                 <block class="Magento\Catalog\Block\Category\View" name="category.image" template="Magento_Catalog::category/image.phtml">
                     <arguments>
-                        <argument name="image" xsi:type="object">Magento\Catalog\ViewModel\Category\Image</argument>
-                        <argument name="output" xsi:type="object">Magento\Catalog\ViewModel\Category\Output</argument>
+                        <argument name="image" xsi:type="object">Magento\Catalog\View_Model\Category\Image</argument>
+                        <argument name="output" xsi:type="object">Magento\Catalog\View_Model\Category\Output</argument>
                     </arguments>
                 </block>
                 <block class="Magento\Catalog\Block\Category\View" name="category.description" template="Magento_Catalog::category/description.phtml"/>
@@ -21,17 +21,17 @@
         </referenceContainer>
         <referenceContainer name="content">
             <block class="Magento\Catalog\Block\Category\View" name="category.products" template="Magento_Catalog::category/products.phtml">
-                <block class="Magento\Catalog\Block\Product\ListProduct" name="category.products.list" as="product_list" template="Magento_Catalog::product/list.phtml">
+                <block class="Magento\Catalog\Block\Product\List_Product" name="category.products.list" as="product_list" template="Magento_Catalog::product/list.phtml">
                     <container name="category.product.list.additional" as="additional" />
-                    <block class="Magento\Framework\View\Element\RendererList" name="category.product.type.details.renderers" as="details.renderers">
+                    <block class="Magento\Framework\View\Element\Renderer_List" name="category.product.type.details.renderers" as="details.renderers">
                         <block class="Magento\Framework\View\Element\Template" name="category.product.type.details.renderers.default" as="default"/>
                     </block>
-                    <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="category.product.addto" as="addto">
-                        <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+                    <block class="Magento\Catalog\Block\Product\Product_List\Item\Container" name="category.product.addto" as="addto">
+                        <block class="Magento\Catalog\Block\Product\Product_List\Item\Add_To\Compare"
                                name="category.product.addto.compare" as="compare"
                                template="Magento_Catalog::product/list/addto/compare.phtml"/>
                     </block>
-                    <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                    <block class="Magento\Catalog\Block\Product\Product_List\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
                         <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
                     </block>
                     <action method="setToolbarBlockName">
@@ -39,7 +39,7 @@
                     </action>
                 </block>
             </block>
-            <block class="Magento\Cookie\Block\RequireCookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml">
+            <block class="Magento\Cookie\Block\Require_Cookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml">
                 <arguments>
                     <argument name="triggers" xsi:type="array">
                         <item name="compareProductLink" xsi:type="string">.action.tocompare</item>
@@ -56,7 +56,7 @@
         </referenceBlock>
         <referenceBlock name="category.products.list">
             <arguments>
-                <argument name="viewModel" xsi:type="object">Magento\Catalog\ViewModel\Product\OptionsData</argument>
+                <argument name="viewModel" xsi:type="object">Magento\Catalog\View_Model\Product\Options_Data</argument>
             </arguments>
         </referenceBlock>
     </body>

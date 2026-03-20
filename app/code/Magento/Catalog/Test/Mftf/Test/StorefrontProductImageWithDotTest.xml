@@ -56,7 +56,7 @@
 
         <!-- Assert product image in storefront product page -->
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.imageFile(TestImageWithDotInFilename.filename)}}" stepKey="productImageURL"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertProductImageEqualToOriginalImage">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertProductImageEqualToOriginalImage">
             <argument name="url">{$productImageURL}</argument>
             <argument name="expectedString">{{TestImageWithDotInFilenameImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$productImageURL}" did not render image: {{TestImageWithDotInFilename.file}}</argument>

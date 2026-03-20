@@ -9,34 +9,34 @@
     <type name="Magento\Catalog\Controller\Adminhtml\Product\Initialization\Helper">
         <plugin name="Downloadable" type="Magento\Downloadable\Controller\Adminhtml\Product\Initialization\Helper\Plugin\Downloadable" sortOrder="70" />
     </type>
-    <type name="Magento\Catalog\Model\Product\CopyConstructor\Composite">
+    <type name="Magento\Catalog\Model\Product\Copy_Constructor\Composite">
         <arguments>
             <argument name="constructors" xsi:type="array">
-                <item name="downloadable" xsi:type="string">Magento\Downloadable\Model\Product\CopyConstructor\Downloadable</item>
+                <item name="downloadable" xsi:type="string">Magento\Downloadable\Model\Product\Copy_Constructor\Downloadable</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+    <virtualType name="Magento\Catalog\Ui\Data_Provider\Product\Form\Modifier\Pool">
         <arguments>
             <argument name="modifiers" xsi:type="array">
                 <item name="downloadable" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\Composite</item>
+                    <item name="class" xsi:type="string">Magento\Downloadable\Ui\Data_Provider\Product\Form\Modifier\Composite</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                 </item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\Composite">
+    <type name="Magento\Downloadable\Ui\Data_Provider\Product\Form\Modifier\Composite">
         <arguments>
             <argument name="modifiers" xsi:type="array">
-                <item name="downloadablePanel" xsi:type="string">Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\DownloadablePanel</item>
-                <item name="links" xsi:type="string">Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\Links</item>
-                <item name="samples" xsi:type="string">Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\Samples</item>
-                <item name="usedDefault" xsi:type="string">Magento\Downloadable\Ui\DataProvider\Product\Form\Modifier\UsedDefault</item>
+                <item name="downloadablePanel" xsi:type="string">Magento\Downloadable\Ui\Data_Provider\Product\Form\Modifier\Downloadable_Panel</item>
+                <item name="links" xsi:type="string">Magento\Downloadable\Ui\Data_Provider\Product\Form\Modifier\Links</item>
+                <item name="samples" xsi:type="string">Magento\Downloadable\Ui\Data_Provider\Product\Form\Modifier\Samples</item>
+                <item name="usedDefault" xsi:type="string">Magento\Downloadable\Ui\Data_Provider\Product\Form\Modifier\Used_Default</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Catalog\Ui\BaseAllowedProductTypes">
+    <virtualType name="Magento\Catalog\Ui\Base_Allowed_Product_Types">
         <arguments>
             <argument name="productTypes" xsi:type="array">
                 <item name="downloadable" xsi:type="string">downloadable</item>

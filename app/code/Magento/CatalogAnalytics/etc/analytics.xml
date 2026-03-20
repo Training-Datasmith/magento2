@@ -8,7 +8,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Analytics:etc/analytics.xsd">
     <file name="products">
         <providers>
-            <reportProvider name="products" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider name="products" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>products</name>
                 </parameters>

@@ -6,41 +6,41 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\CheckoutAgreements\Api\CheckoutAgreementsRepositoryInterface" type="Magento\CheckoutAgreements\Model\CheckoutAgreementsRepository" />
-    <preference for="Magento\CheckoutAgreements\Api\Data\AgreementInterface" type="Magento\CheckoutAgreements\Model\Agreement" />
-    <preference for="Magento\CheckoutAgreements\Api\CheckoutAgreementsListInterface" type="Magento\CheckoutAgreements\Model\CheckoutAgreementsList" />
-    <type name="Magento\CheckoutAgreements\Model\AgreementsValidator">
+    <preference for="Magento\Checkout_Agreements\Api\Checkout_Agreements_Repository_Interface" type="Magento\Checkout_Agreements\Model\Checkout_Agreements_Repository" />
+    <preference for="Magento\Checkout_Agreements\Api\Data\Agreement_Interface" type="Magento\Checkout_Agreements\Model\Agreement" />
+    <preference for="Magento\Checkout_Agreements\Api\Checkout_Agreements_List_Interface" type="Magento\Checkout_Agreements\Model\Checkout_Agreements_List" />
+    <type name="Magento\Checkout_Agreements\Model\Agreements_Validator">
         <arguments>
             <argument name="list" xsi:type="array">
-                <item name="checkoutagreements" xsi:type="object">\Magento\CheckoutAgreements\Model\AgreementsProvider</item>
+                <item name="checkoutagreements" xsi:type="object">\Magento\Checkout_Agreements\Model\Agreements_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Checkout\Api\PaymentInformationManagementInterface">
-        <plugin name="validate-agreements" type="Magento\CheckoutAgreements\Model\Checkout\Plugin\Validation"/>
+    <type name="Magento\Checkout\Api\Payment_Information_Management_Interface">
+        <plugin name="validate-agreements" type="Magento\Checkout_Agreements\Model\Checkout\Plugin\Validation"/>
     </type>
-    <preference for="Magento\Checkout\Api\AgreementsValidatorInterface" type="Magento\CheckoutAgreements\Model\AgreementsValidator" />
-    <type name="Magento\Checkout\Api\GuestPaymentInformationManagementInterface">
-        <plugin name="validate-guest-agreements" type="Magento\CheckoutAgreements\Model\Checkout\Plugin\GuestValidation"/>
+    <preference for="Magento\Checkout\Api\Agreements_Validator_Interface" type="Magento\Checkout_Agreements\Model\Agreements_Validator" />
+    <type name="Magento\Checkout\Api\Guest_Payment_Information_Management_Interface">
+        <plugin name="validate-guest-agreements" type="Magento\Checkout_Agreements\Model\Checkout\Plugin\Guest_Validation"/>
     </type>
-    <type name="Magento\CheckoutAgreements\Model\CheckoutAgreementsList">
+    <type name="Magento\Checkout_Agreements\Model\Checkout_Agreements_List">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\CheckoutAgreements\Model\Api\SearchCriteria\CollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Checkout_Agreements\Model\Api\Search_Criteria\Collection_Processor</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\CheckoutAgreements\Model\Api\SearchCriteria\CollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Checkout_Agreements\Model\Api\Search_Criteria\Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\CheckoutAgreements\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Checkout_Agreements\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\CheckoutAgreements\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Checkout_Agreements\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="customFilters" xsi:type="array">
-                <item name="store_id" xsi:type="object">Magento\CheckoutAgreements\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\StoreFilter</item>
+                <item name="store_id" xsi:type="object">Magento\Checkout_Agreements\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Store_Filter</item>
             </argument>
         </arguments>
     </virtualType>

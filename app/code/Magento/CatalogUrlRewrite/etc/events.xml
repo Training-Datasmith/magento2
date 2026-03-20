@@ -7,33 +7,33 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="catalog_category_prepare_save">
-        <observer name="category_save_rewrites_history_setter" instance="Magento\CatalogUrlRewrite\Observer\CategorySaveRewritesHistorySetterObserver"/>
+        <observer name="category_save_rewrites_history_setter" instance="Magento\Catalog_Url_Rewrite\Observer\Category_Save_Rewrites_History_Setter_Observer"/>
     </event>
     <event name="catalog_category_save_after">
-        <observer name="process_url_rewrite_saving" instance="Magento\CatalogUrlRewrite\Observer\CategoryProcessUrlRewriteSavingObserver"/>
+        <observer name="process_url_rewrite_saving" instance="Magento\Catalog_Url_Rewrite\Observer\Category_Process_Url_Rewrite_Saving_Observer"/>
     </event>
     <event name="catalog_product_import_bunch_save_after">
-        <observer name="catalog_product_import_rewrites_generation" instance="Magento\CatalogUrlRewrite\Observer\AfterImportDataObserver"/>
+        <observer name="catalog_product_import_rewrites_generation" instance="Magento\Catalog_Url_Rewrite\Observer\After_Import_Data_Observer"/>
     </event>
     <event name="catalog_product_import_bunch_delete_after">
-        <observer name="catalog_product_import_rewrites_delete" instance="Magento\CatalogUrlRewrite\Observer\ClearProductUrlsObserver"/>
+        <observer name="catalog_product_import_rewrites_delete" instance="Magento\Catalog_Url_Rewrite\Observer\Clear_Product_Urls_Observer"/>
     </event>
     <event name="catalog_product_delete_before">
-        <observer name="process_url_rewrite_removing" instance="Magento\CatalogUrlRewrite\Observer\ProductProcessUrlRewriteRemovingObserver"/>
+        <observer name="process_url_rewrite_removing" instance="Magento\Catalog_Url_Rewrite\Observer\Product_Process_Url_Rewrite_Removing_Observer"/>
     </event>
     <event name="catalog_product_save_before">
-        <observer name="product_url_key_autogeneration" instance="Magento\CatalogUrlRewrite\Observer\ProductUrlKeyAutogeneratorObserver"/>
+        <observer name="product_url_key_autogeneration" instance="Magento\Catalog_Url_Rewrite\Observer\Product_Url_Key_Autogenerator_Observer"/>
     </event>
     <event name="catalog_product_save_after">
-        <observer name="process_url_rewrite_saving" instance="Magento\CatalogUrlRewrite\Observer\ProductProcessUrlRewriteSavingObserver"/>
+        <observer name="process_url_rewrite_saving" instance="Magento\Catalog_Url_Rewrite\Observer\Product_Process_Url_Rewrite_Saving_Observer"/>
     </event>
     <event name="catalog_product_attribute_update_before">
-        <observer name="process_url_rewrite_on_change_product_visibility" instance="Magento\CatalogUrlRewrite\Observer\ProcessUrlRewriteOnChangeProductVisibilityObserver"/>
+        <observer name="process_url_rewrite_on_change_product_visibility" instance="Magento\Catalog_Url_Rewrite\Observer\Process_Url_Rewrite_On_Change_Product_Visibility_Observer"/>
     </event>
     <event name="catalog_category_save_before">
-        <observer name="category_url_path_autogeneration" instance="Magento\CatalogUrlRewrite\Observer\CategoryUrlPathAutogeneratorObserver"/>
+        <observer name="category_url_path_autogeneration" instance="Magento\Catalog_Url_Rewrite\Observer\Category_Url_Path_Autogenerator_Observer"/>
     </event>
     <event name="catalog_category_move_after">
-        <observer name="process_url_rewrite_moving" instance="Magento\CatalogUrlRewrite\Observer\CategoryProcessUrlRewriteMovingObserver"/>
+        <observer name="process_url_rewrite_moving" instance="Magento\Catalog_Url_Rewrite\Observer\Category_Process_Url_Rewrite_Moving_Observer"/>
     </event>
 </config>

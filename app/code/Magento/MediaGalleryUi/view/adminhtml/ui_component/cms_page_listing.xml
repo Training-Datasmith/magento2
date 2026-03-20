@@ -12,7 +12,7 @@
                 name="asset_id"
                 provider="${ $.parentName }"
                 sortOrder="10"
-                class="Magento\MediaGalleryUi\Ui\Component\Listing\Filters\Asset"
+                class="Magento\Media_Gallery_Ui\Ui\Component\Listing\Filters\Asset"
                 component="Magento_Ui/js/grid/filters/elements/ui-select"
                 template="Magento_MediaGalleryUi/grid/filters/elements/ui-select">
                 <argument name="data" xsi:type="array">

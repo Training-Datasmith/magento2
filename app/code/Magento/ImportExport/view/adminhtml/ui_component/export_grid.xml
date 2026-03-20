@@ -27,7 +27,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_ImportExport::export</aclResource>
-        <dataProvider class="Magento\ImportExport\Ui\DataProvider\ExportFileDataProvider" name="export_grid_data_source">
+        <dataProvider class="Magento\Import_Export\Ui\Data_Provider\Export_File_Data_Provider" name="export_grid_data_source">
             <settings>
                 <requestFieldName>file_name</requestFieldName>
                 <primaryFieldName>file_name</primaryFieldName>
@@ -38,13 +38,13 @@
         <paging name="listing_paging"/>
     </listingToolbar>
     <columns name="export_grid_columns">
-        <column name="file_display_name" class="Magento\ImportExport\Ui\Component\Columns\FileDisplayName">
+        <column name="file_display_name" class="Magento\Import_Export\Ui\Component\Columns\File_Display_Name">
             <settings>
                 <sortable>false</sortable>
                 <label translate="true">File name</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\ImportExport\Ui\Component\Columns\ExportGridActions">
+        <actionsColumn name="actions" class="Magento\Import_Export\Ui\Component\Columns\Export_Grid_Actions">
             <settings>
                 <indexField>file_name</indexField>
             </settings>

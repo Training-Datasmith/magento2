@@ -8,7 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="before.body.end">
-            <block class="Magento\Catalog\Block\FrontendStorageManager" name="frontend-storage-manager" before="-"
+            <block class="Magento\Catalog\Block\Frontend_Storage_Manager" name="frontend-storage-manager" before="-"
                    template="Magento_Catalog::frontend_storage_manager.phtml">
                 <arguments>
                     <argument name="configuration" xsi:type="array">

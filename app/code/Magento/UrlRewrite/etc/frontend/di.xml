@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\App\RouterList">
+    <type name="Magento\Framework\App\Router_List">
         <arguments>
             <argument name="routerList" xsi:type="array">
                 <item name="urlrewrite" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\UrlRewrite\Controller\Router</item>
+                    <item name="class" xsi:type="string">Magento\Url_Rewrite\Controller\Router</item>
                     <item name="disable" xsi:type="boolean">false</item>
                     <item name="sortOrder" xsi:type="string">20</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\UrlRewrite\Model\UrlFinderInterface" type="Magento\UrlRewrite\Model\CompositeUrlFinder"/>
+    <preference for="Magento\Url_Rewrite\Model\Url_Finder_Interface" type="Magento\Url_Rewrite\Model\Composite_Url_Finder"/>
 </config>

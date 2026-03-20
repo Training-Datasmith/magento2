@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\MediaContentSynchronizationCatalog\Model\Synchronizer\Category">
+    <type name="Magento\Media_Content_Synchronization_Catalog\Model\Synchronizer\Category">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="image" xsi:type="string">image</item>
@@ -14,15 +14,15 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentSynchronizationApi\Model\GetEntitiesInterface">
+    <type name="Magento\Media_Content_Synchronization_Api\Model\Get_Entities_Interface">
         <arguments>
             <argument name="entities" xsi:type="array">
-                <item name="catalog_product" xsi:type="string">Magento\Catalog\Api\Data\ProductInterface</item>
-                <item name="catalog_category" xsi:type="string">Magento\Catalog\Api\Data\CategoryInterface</item>
+                <item name="catalog_product" xsi:type="string">Magento\Catalog\Api\Data\Product_Interface</item>
+                <item name="catalog_category" xsi:type="string">Magento\Catalog\Api\Data\Category_Interface</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentSynchronizationCatalog\Model\Synchronizer\Product">
+    <type name="Magento\Media_Content_Synchronization_Catalog\Model\Synchronizer\Product">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="description" xsi:type="string">description</item>
@@ -30,19 +30,19 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentSynchronizationApi\Model\SynchronizerPool">
+    <type name="Magento\Media_Content_Synchronization_Api\Model\Synchronizer_Pool">
         <arguments>
             <argument name="synchronizers" xsi:type="array">
-                <item name="media_content_category_synchronizer" xsi:type="object">Magento\MediaContentSynchronizationCatalog\Model\Synchronizer\Category</item>
-                <item name="media_content_product_synchronizer" xsi:type="object">Magento\MediaContentSynchronizationCatalog\Model\Synchronizer\Product</item>
+                <item name="media_content_category_synchronizer" xsi:type="object">Magento\Media_Content_Synchronization_Catalog\Model\Synchronizer\Category</item>
+                <item name="media_content_product_synchronizer" xsi:type="object">Magento\Media_Content_Synchronization_Catalog\Model\Synchronizer\Product</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentSynchronizationApi\Model\SynchronizeIdentitiesPool">
+    <type name="Magento\Media_Content_Synchronization_Api\Model\Synchronize_Identities_Pool">
         <arguments>
             <argument name="synchronizers" xsi:type="array">
                 <item name="media_content_catalog"
-                      xsi:type="object">Magento\MediaContentSynchronizationCatalog\Model\Synchronizer\SynchronizeIdentities
+                      xsi:type="object">Magento\Media_Content_Synchronization_Catalog\Model\Synchronizer\Synchronize_Identities
                 </item>
             </argument>
         </arguments>

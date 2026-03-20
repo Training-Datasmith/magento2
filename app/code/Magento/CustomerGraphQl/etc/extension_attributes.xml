@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
-    <extension_attributes for="Magento\GraphQl\Model\Query\ContextInterface">
+    <extension_attributes for="Magento\Graph_Ql\Model\Query\Context_Interface">
         <attribute code="is_customer" type="boolean"/>
         <attribute code="customer_group_id" type="integer"/>
     </extension_attributes>

@@ -6,23 +6,23 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing">
-         <plugin name="invalidateAdvancedPriceIndexerOnImport" type="Magento\AdvancedPricingImportExport\Model\Indexer\Product\Price\Plugin\Import" />
+    <type name="Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing">
+         <plugin name="invalidateAdvancedPriceIndexerOnImport" type="Magento\Advanced_Pricing_Import_Export\Model\Indexer\Product\Price\Plugin\Import" />
      </type>
-    <type name="Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator">
+    <type name="Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing\Validator">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="tierPrice" xsi:type="object">Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator\TierPrice</item>
-                <item name="website" xsi:type="object">Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator\Website</item>
-                <item name="tierPriceType" xsi:type="object">Magento\AdvancedPricingImportExport\Model\Import\AdvancedPricing\Validator\TierPriceType</item>
+                <item name="tierPrice" xsi:type="object">Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing\Validator\Tier_Price</item>
+                <item name="website" xsi:type="object">Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing\Validator\Website</item>
+                <item name="tierPriceType" xsi:type="object">Magento\Advanced_Pricing_Import_Export\Model\Import\Advanced_Pricing\Validator\Tier_Price_Type</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\ImportExport\Controller\Adminhtml\Export\GetFilter" type="Magento\AdvancedPricingImportExport\Controller\Adminhtml\Export\GetFilter" />
-    <type name="Magento\ImportExport\Model\Export\EntityFiltersProvider">
+    <preference for="Magento\Import_Export\Controller\Adminhtml\Export\Get_Filter" type="Magento\Advanced_Pricing_Import_Export\Controller\Adminhtml\Export\Get_Filter" />
+    <type name="Magento\Import_Export\Model\Export\Entity_Filters_Provider">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="advanced_pricing" xsi:type="object">Magento\CatalogImportExport\Model\Export\EntityFiltersProvider</item>
+                <item name="advanced_pricing" xsi:type="object">Magento\Catalog_Import_Export\Model\Export\Entity_Filters_Provider</item>
             </argument>
         </arguments>
     </type>

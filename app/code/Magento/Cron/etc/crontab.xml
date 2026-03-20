@@ -9,7 +9,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
         <job name="clean_cron_schedule"
-                instance="Magento\Cron\Cron\CleanOldJobs"
+                instance="Magento\Cron\Cron\Clean_Old_Jobs"
                 method="execute">
             <schedule>0 0 * * *</schedule>
         </job>

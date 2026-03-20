@@ -7,9 +7,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="catalog_product_upsell">
-        <observer name="bundle_observer" instance="Magento\Bundle\Observer\AppendUpsellProductsObserver"/>
+        <observer name="bundle_observer" instance="Magento\Bundle\Observer\Append_Upsell_Products_Observer"/>
     </event>
     <event name="product_option_renderer_init">
-        <observer name="bundle_observer" instance="Magento\Bundle\Observer\InitOptionRendererObserver"/>
+        <observer name="bundle_observer" instance="Magento\Bundle\Observer\Init_Option_Renderer_Observer"/>
     </event>
 </config>

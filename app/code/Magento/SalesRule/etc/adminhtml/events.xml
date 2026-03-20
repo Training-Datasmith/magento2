@@ -7,12 +7,12 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="catalog_entity_attribute_delete_after">
-        <observer name="salesrule" instance="Magento\SalesRule\Observer\CatalogAttributeDeleteAfterObserver" />
+        <observer name="salesrule" instance="Magento\Sales_Rule\Observer\Catalog_Attribute_Delete_After_Observer" />
     </event>
     <event name="catalog_entity_attribute_save_after">
-        <observer name="salesrule" instance="Magento\SalesRule\Observer\CatalogAttributeSaveAfterObserver" />
+        <observer name="salesrule" instance="Magento\Sales_Rule\Observer\Catalog_Attribute_Save_After_Observer" />
     </event>
     <event name="adminhtml_sales_order_create_process_data">
-        <observer name="magento_salesrule" instance="Magento\SalesRule\Observer\ProcessOrderCreationDataObserver"/>
+        <observer name="magento_salesrule" instance="Magento\Sales_Rule\Observer\Process_Order_Creation_Data_Observer"/>
     </event>
 </config>

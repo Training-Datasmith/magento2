@@ -48,7 +48,7 @@
 
         <!-- Add Contact block to HomePage -->
         <actionGroup ref="AdminEditCMSPageContentActionGroup" stepKey="addContactBlockToHomePage">
-            <argument name="content" value="{{block class=&quot;Magento\Contact\Block\ContactForm&quot; name=&quot;home.form.contact&quot; template=&quot;Magento_Contact::form.phtml&quot;}}"/>
+            <argument name="content" value="{{block class=&quot;Magento\Contact\Block\Contact_Form&quot; name=&quot;home.form.contact&quot; template=&quot;Magento_Contact::form.phtml&quot;}}"/>
             <argument name="pageId" value="{{CmsHomePageContent.page_id}}"/>
         </actionGroup>
 
@@ -96,7 +96,7 @@
 
         <!-- Add Send To Friend block to HomePage -->
         <actionGroup ref="AdminEditCMSPageContentActionGroup" stepKey="addSendToFriendBlockToHomePage">
-            <argument name="content" value="{{block class=&quot;Magento\SendFriend\Block\Send&quot; name=&quot;home.form.send&quot; template=&quot;Magento_SendFriend::send.phtml&quot;}}"/>
+            <argument name="content" value="{{block class=&quot;Magento\Send_Friend\Block\Send&quot; name=&quot;home.form.send&quot; template=&quot;Magento_SendFriend::send.phtml&quot;}}"/>
             <argument name="pageId" value="{{CmsHomePageContent.page_id}}"/>
         </actionGroup>
 

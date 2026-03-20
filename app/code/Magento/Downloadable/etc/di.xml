@@ -8,11 +8,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Downloadable\Helper\Download">
         <arguments>
-            <argument name="coreFileStorageDb" xsi:type="object">Magento\MediaStorage\Helper\File\Storage\Database\Proxy</argument>
+            <argument name="coreFileStorageDb" xsi:type="object">Magento\Media_Storage\Helper\File\Storage\Database\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\CartConfiguration">
-        <plugin name="Downloadable" type="Magento\Downloadable\Model\Product\CartConfiguration\Plugin\Downloadable" />
+    <type name="Magento\Catalog\Model\Product\Cart_Configuration">
+        <plugin name="Downloadable" type="Magento\Downloadable\Model\Product\Cart_Configuration\Plugin\Downloadable" />
     </type>
     <virtualType name="context_for_downloadable" type="Magento\Framework\View\Element\Template\Context">
         <arguments>
@@ -24,8 +24,8 @@
             <argument name="context" xsi:type="object">context_for_downloadable</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\TypeTransitionManager">
-        <plugin name="downloadable_product_transition" type="Magento\Downloadable\Model\Product\TypeTransitionManager\Plugin\Downloadable" />
+    <type name="Magento\Catalog\Model\Product\Type_Transition_Manager">
+        <plugin name="downloadable_product_transition" type="Magento\Downloadable\Model\Product\Type_Transition_Manager\Plugin\Downloadable" />
         <arguments>
             <argument name="compatibleTypes" xsi:type="array">
                 <item name="downloadable" xsi:type="const">Magento\Downloadable\Model\Product\Type::TYPE_DOWNLOADABLE</item>
@@ -35,7 +35,7 @@
     <virtualType name="Magento\Downloadable\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="link_price" xsi:type="string">Magento\Downloadable\Pricing\Price\LinkPrice</item>
+                <item name="link_price" xsi:type="string">Magento\Downloadable\Pricing\Price\Link_Price</item>
             </argument>
             <argument name="target" xsi:type="object">Magento\Catalog\Pricing\Price\Pool</argument>
         </arguments>
@@ -45,132 +45,132 @@
             <argument name="pool" xsi:type="object">Magento\Downloadable\Pricing\Price\Pool</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\Pricing\PriceInfo\Factory">
+    <type name="Magento\Framework\Pricing\Price_Info\Factory">
         <arguments>
             <argument name="types" xsi:type="array">
                 <item name="downloadable" xsi:type="array">
-                    <item name="infoClass" xsi:type="string">Magento\Framework\Pricing\PriceInfo\Base</item>
+                    <item name="infoClass" xsi:type="string">Magento\Framework\Pricing\Price_Info\Base</item>
                     <item name="prices" xsi:type="string">Magento\Downloadable\Pricing\Price\Collection</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Downloadable\Model\Product\TypeHandler\TypeHandler">
+    <type name="Magento\Downloadable\Model\Product\Type_Handler\Type_Handler">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="sample" xsi:type="object">Magento\Downloadable\Model\Product\TypeHandler\Sample</item>
-                <item name="link" xsi:type="object">Magento\Downloadable\Model\Product\TypeHandler\Link</item>
+                <item name="sample" xsi:type="object">Magento\Downloadable\Model\Product\Type_Handler\Sample</item>
+                <item name="link" xsi:type="object">Magento\Downloadable\Model\Product\Type_Handler\Link</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Quote\Model\Quote\Item\Repository">
         <arguments>
             <argument name="cartItemProcessors" xsi:type="array">
-                <item name="downloadable" xsi:type="object">Magento\Downloadable\Model\Quote\Item\CartItemProcessor\Proxy</item>
+                <item name="downloadable" xsi:type="object">Magento\Downloadable\Model\Quote\Item\Cart_Item_Processor\Proxy</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Api\OrderItemRepositoryInterface">
+    <type name="Magento\Sales\Api\Order_Item_Repository_Interface">
         <arguments>
             <argument name="processorPool" xsi:type="array">
-                <item name="downloadable" xsi:type="object">Magento\Downloadable\Model\ProductOptionProcessor</item>
+                <item name="downloadable" xsi:type="object">Magento\Downloadable\Model\Product_Option_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Model\Order\ProductOption">
+    <type name="Magento\Sales\Model\Order\Product_Option">
         <arguments>
             <argument name="processorPool" xsi:type="array">
-                <item name="downloadable" xsi:type="object">Magento\Downloadable\Model\ProductOptionProcessor</item>
+                <item name="downloadable" xsi:type="object">Magento\Downloadable\Model\Product_Option_Processor</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Downloadable\Api\LinkRepositoryInterface" type="Magento\Downloadable\Model\LinkRepository" />
-    <preference for="Magento\Downloadable\Api\SampleRepositoryInterface" type="Magento\Downloadable\Model\SampleRepository" />
-    <preference for="Magento\Downloadable\Api\Data\LinkInterface" type="Magento\Downloadable\Model\Link" />
-    <preference for="Magento\Downloadable\Api\Data\SampleInterface" type="Magento\Downloadable\Model\Sample" />
-    <preference for="Magento\Downloadable\Api\Data\File\ContentInterface" type="Magento\Downloadable\Model\File\Content" />
-    <preference for="Magento\Downloadable\Api\Data\File\ContentUploaderInterface" type="Magento\Downloadable\Model\File\ContentUploader" />
-    <preference for="Magento\Downloadable\Model\Product\TypeHandler\TypeHandlerInterface" type="Magento\Downloadable\Model\Product\TypeHandler\TypeHandler" />
-    <preference for="Magento\Downloadable\Api\Data\DownloadableOptionInterface" type="Magento\Downloadable\Model\DownloadableOption" />
-    <preference for="Magento\Downloadable\Api\DomainManagerInterface" type="Magento\Downloadable\Model\DomainManager"/>
-    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+    <preference for="Magento\Downloadable\Api\Link_Repository_Interface" type="Magento\Downloadable\Model\Link_Repository" />
+    <preference for="Magento\Downloadable\Api\Sample_Repository_Interface" type="Magento\Downloadable\Model\Sample_Repository" />
+    <preference for="Magento\Downloadable\Api\Data\Link_Interface" type="Magento\Downloadable\Model\Link" />
+    <preference for="Magento\Downloadable\Api\Data\Sample_Interface" type="Magento\Downloadable\Model\Sample" />
+    <preference for="Magento\Downloadable\Api\Data\File\Content_Interface" type="Magento\Downloadable\Model\File\Content" />
+    <preference for="Magento\Downloadable\Api\Data\File\Content_Uploader_Interface" type="Magento\Downloadable\Model\File\Content_Uploader" />
+    <preference for="Magento\Downloadable\Model\Product\Type_Handler\Type_Handler_Interface" type="Magento\Downloadable\Model\Product\Type_Handler\Type_Handler" />
+    <preference for="Magento\Downloadable\Api\Data\Downloadable_Option_Interface" type="Magento\Downloadable\Model\Downloadable_Option" />
+    <preference for="Magento\Downloadable\Api\Domain_Manager_Interface" type="Magento\Downloadable\Model\Domain_Manager"/>
+    <type name="Magento\Framework\Entity_Manager\Operation\Extension_Pool">
         <arguments>
             <argument name="extensionActions" xsi:type="array">
-                <item name="Magento\Catalog\Api\Data\ProductInterface" xsi:type="array">
+                <item name="Magento\Catalog\Api\Data\Product_Interface" xsi:type="array">
                     <item name="read" xsi:type="array">
-                        <item name="downloadable_link_read" xsi:type="string">Magento\Downloadable\Model\Link\ReadHandler</item>
-                        <item name="downloadable_sample_read" xsi:type="string">Magento\Downloadable\Model\Sample\ReadHandler</item>
+                        <item name="downloadable_link_read" xsi:type="string">Magento\Downloadable\Model\Link\Read_Handler</item>
+                        <item name="downloadable_sample_read" xsi:type="string">Magento\Downloadable\Model\Sample\Read_Handler</item>
                     </item>
                     <item name="create" xsi:type="array">
-                        <item name="downloadable_link_create" xsi:type="string">Magento\Downloadable\Model\Link\CreateHandler</item>
-                        <item name="downloadable_sample_create" xsi:type="string">Magento\Downloadable\Model\Sample\CreateHandler</item>
+                        <item name="downloadable_link_create" xsi:type="string">Magento\Downloadable\Model\Link\Create_Handler</item>
+                        <item name="downloadable_sample_create" xsi:type="string">Magento\Downloadable\Model\Sample\Create_Handler</item>
                     </item>
                     <item name="update" xsi:type="array">
-                        <item name="downloadable_link_update" xsi:type="string">Magento\Downloadable\Model\Sample\UpdateHandler</item>
-                        <item name="downloadable_sample_update" xsi:type="string">Magento\Downloadable\Model\Link\UpdateHandler</item>
+                        <item name="downloadable_link_update" xsi:type="string">Magento\Downloadable\Model\Sample\Update_Handler</item>
+                        <item name="downloadable_sample_update" xsi:type="string">Magento\Downloadable\Model\Link\Update_Handler</item>
                     </item>
                     <item name="delete" xsi:type="array">
-                        <item name="downloadable_link_delete" xsi:type="string">Magento\Downloadable\Model\Sample\DeleteHandler</item>
-                        <item name="downloadable_sample_delete" xsi:type="string">Magento\Downloadable\Model\Link\DeleteHandler</item>
+                        <item name="downloadable_link_delete" xsi:type="string">Magento\Downloadable\Model\Sample\Delete_Handler</item>
+                        <item name="downloadable_sample_delete" xsi:type="string">Magento\Downloadable\Model\Link\Delete_Handler</item>
                     </item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\MetadataPool">
+    <type name="Magento\Framework\Entity_Manager\Metadata_Pool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Magento\Downloadable\Api\Data\LinkInterface" xsi:type="array">
+                <item name="Magento\Downloadable\Api\Data\Link_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">downloadable_link</item>
                     <item name="identifierField" xsi:type="string">link_id</item>
                 </item>
-                <item name="Magento\Downloadable\Api\Data\SampleInterface" xsi:type="array">
+                <item name="Magento\Downloadable\Api\Data\Sample_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">downloadable_sample</item>
                     <item name="identifierField" xsi:type="string">sample_id</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Price\CostStorage">
+    <type name="Magento\Catalog\Model\Product\Price\Cost_Storage">
         <arguments>
             <argument name="allowedProductTypes" xsi:type="array">
                 <item name="2" xsi:type="string">downloadable</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Price\Validation\TierPriceValidator">
+    <type name="Magento\Catalog\Model\Product\Price\Validation\Tier_Price_Validator">
         <arguments>
             <argument name="allowedProductTypes" xsi:type="array">
                 <item name="3" xsi:type="string">downloadable</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Price\BasePriceStorage">
+    <type name="Magento\Catalog\Model\Product\Price\Base_Price_Storage">
         <arguments>
             <argument name="allowedProductTypes" xsi:type="array">
                 <item name="3" xsi:type="string">downloadable</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Price\SpecialPriceStorage">
+    <type name="Magento\Catalog\Model\Product\Price\Special_Price_Storage">
         <arguments>
             <argument name="allowedProductTypes" xsi:type="array">
                 <item name="3" xsi:type="string">downloadable</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Downloadable\Model\ResourceModel\Indexer\Price">
+    <type name="Magento\Downloadable\Model\Resource_Model\Indexer\Price">
         <arguments>
-            <argument name="tableStrategy" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\Indexer\TemporaryTableStrategy</argument>
+            <argument name="tableStrategy" xsi:type="object">Magento\Catalog\Model\Resource_Model\Product\Indexer\Temporary_Table_Strategy</argument>
             <argument name="connectionName" xsi:type="string">indexer</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="addDomainsCommand" xsi:type="object">Magento\Downloadable\Console\Command\DomainsAddCommand</item>
-                <item name="removeDomainsCommand" xsi:type="object">Magento\Downloadable\Console\Command\DomainsRemoveCommand</item>
-                <item name="showDomainsCommand" xsi:type="object">Magento\Downloadable\Console\Command\DomainsShowCommand</item>
+                <item name="addDomainsCommand" xsi:type="object">Magento\Downloadable\Console\Command\Domains_Add_Command</item>
+                <item name="removeDomainsCommand" xsi:type="object">Magento\Downloadable\Console\Command\Domains_Remove_Command</item>
+                <item name="showDomainsCommand" xsi:type="object">Magento\Downloadable\Console\Command\Domains_Show_Command</item>
             </argument>
         </arguments>
     </type>

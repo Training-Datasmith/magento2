@@ -95,10 +95,10 @@
         </settings>
         <column>
             <settings>
-                <options class="Magento\Test\OptionsProvider">
+                <options class="Magento\Test\Options_Provider">
                     <option xsi:type="boolean" name="anySimpleType">true</option>
                 </options>
-                <options class="Magento\Test\OptionsProvider"/>
+                <options class="Magento\Test\Options_Provider"/>
             </settings>
         </column>
     </columns>

@@ -9,6 +9,6 @@
 <entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
           xsi:noNamespaceSchemaLocation="urn:magento:mftf:DataGenerator/etc/dataProfileSchema.xsd">
     <entity name="CatalogRuleProductConditions">
-        <data key="categoryIds">Magento\CatalogRule\Model\Rule\Condition\Product|category_ids</data>
+        <data key="categoryIds">Magento\Catalog_Rule\Model\Rule\Condition\Product|category_ids</data>
     </entity>
 </entities>

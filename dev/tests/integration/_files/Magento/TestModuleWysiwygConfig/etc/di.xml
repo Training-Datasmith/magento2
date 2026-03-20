@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Ui\Block\Wysiwyg\ActiveEditor">
+    <type name="Magento\Ui\Block\Wysiwyg\Active_Editor">
         <arguments>
             <argument name="availableAdapterPaths" xsi:type="array">
                 <item name="Magento_TestModuleWysiwygConfig/wysiwyg/tinymceTestAdapter" xsi:type="string"/>

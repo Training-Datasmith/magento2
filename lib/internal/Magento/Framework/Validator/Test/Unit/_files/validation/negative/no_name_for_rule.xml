@@ -19,7 +19,7 @@
             <rule name="test_rule_sku">
                 <property_constraints>
                     <property name="sku">
-                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\NotEmpty"/>
+                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\Not_Empty"/>
                     </property>
                 </property_constraints>
             </rule>

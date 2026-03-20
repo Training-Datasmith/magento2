@@ -53,7 +53,7 @@
         <fillField selector="{{AdminProductFormSection.productSku}}" userInput="{{updateVirtualProductSpecialPriceOutOfStock.sku}}" stepKey="fillProductSku"/>
         <fillField selector="{{AdminProductFormSection.productPrice}}" userInput="{{updateVirtualProductSpecialPriceOutOfStock.price}}" stepKey="fillProductPrice"/>
         <!-- Press enter to validate advanced pricing link -->
-        <pressKey selector="{{AdminProductFormSection.productPrice}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="pressEnterKey"/>
+        <pressKey selector="{{AdminProductFormSection.productPrice}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="pressEnterKey"/>
         <click selector="{{AdminProductFormSection.advancedPricingLink}}" stepKey="clickAdvancedPricingLink"/>
         <fillField selector="{{AdminProductFormAdvancedPricingSection.specialPrice}}" userInput="{{updateVirtualProductSpecialPriceOutOfStock.special_price}}" stepKey="fillSpecialPrice"/>
         <click selector="{{AdminProductFormAdvancedPricingSection.doneButton}}" stepKey="clickDoneButton"/>

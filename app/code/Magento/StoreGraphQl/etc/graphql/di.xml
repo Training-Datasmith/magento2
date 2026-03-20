@@ -6,24 +6,24 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\GraphQl\Controller\HttpRequestProcessor">
+    <type name="Magento\Graph_Ql\Controller\Http_Request_Processor">
         <arguments>
             <argument name="graphQlHeaders" xsi:type="array">
-                <item name="Store" xsi:type="object">Magento\StoreGraphQl\Controller\HttpHeaderProcessor\StoreProcessor</item>
+                <item name="Store" xsi:type="object">Magento\Store_Graph_Ql\Controller\Http_Header_Processor\Store_Processor</item>
             </argument>
             <argument name="requestValidators" xsi:type="array">
-                <item name="storeValidator" xsi:type="object">Magento\StoreGraphQl\Controller\HttpRequestValidator\StoreValidator</item>
+                <item name="storeValidator" xsi:type="object">Magento\Store_Graph_Ql\Controller\Http_Request_Validator\Store_Validator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQl\Model\Query\ContextFactory">
+    <type name="Magento\Graph_Ql\Model\Query\Context_Factory">
         <arguments>
             <argument name="contextParametersProcessors" xsi:type="array">
-                <item name="add_store_info_to_context" xsi:type="object">Magento\StoreGraphQl\Model\Context\AddStoreInfoToContext</item>
+                <item name="add_store_info_to_context" xsi:type="object">Magento\Store_Graph_Ql\Model\Context\Add_Store_Info_To_Context</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+    <type name="Magento\Store_Graph_Ql\Model\Resolver\Store\Store_Config_Data_Provider">
         <arguments>
             <argument name="extendedConfigData" xsi:type="array">
                 <item name="use_store_in_url" xsi:type="string">web/url/use_store</item>
@@ -34,11 +34,11 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQlCache\Model\CacheId\CacheIdCalculator">
+    <type name="Magento\Graph_Ql_Cache\Model\Cache_Id\Cache_Id_Calculator">
         <arguments>
             <argument name="idFactorProviders" xsi:type="array">
-                <item name="currency" xsi:type="object">Magento\StoreGraphQl\CacheIdFactorProviders\CurrencyProvider</item>
-                <item name="store" xsi:type="object">Magento\StoreGraphQl\CacheIdFactorProviders\StoreProvider</item>
+                <item name="currency" xsi:type="object">Magento\Store_Graph_Ql\Cache_Id_Factor_Providers\Currency_Provider</item>
+                <item name="store" xsi:type="object">Magento\Store_Graph_Ql\Cache_Id_Factor_Providers\Store_Provider</item>
             </argument>
         </arguments>
     </type>

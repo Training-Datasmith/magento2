@@ -11,13 +11,13 @@
         <title translate="true">Design Config Grid</title>
         <description translate="true">Rebuild design config grid index</description>
 
-        <fieldset name="design_config" source="Magento\Theme\Model\ResourceModel\Design\Config\Scope\Collection"
-                  provider="Magento\Theme\Model\Indexer\Design\Config\FieldsProvider">
+        <fieldset name="design_config" source="Magento\Theme\Model\Resource_Model\Design\Config\Scope\Collection"
+                  provider="Magento\Theme\Model\Indexer\Design\Config\Fields_Provider">
             <field name="store_website_id" xsi:type="filterable" dataType="int"/>
             <field name="store_group_id" xsi:type="filterable" dataType="int"/>
             <field name="store_id" xsi:type="filterable" dataType="int"/>
         </fieldset>
-        <saveHandler class="Magento\Theme\Model\Indexer\Design\IndexerHandler"/>
-        <structure class="Magento\Framework\Indexer\GridStructure"/>
+        <saveHandler class="Magento\Theme\Model\Indexer\Design\Indexer_Handler"/>
+        <structure class="Magento\Framework\Indexer\Grid_Structure"/>
     </indexer>
 </config>

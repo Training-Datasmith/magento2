@@ -6,12 +6,12 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\MediaGalleryRenditionsApi\Api\GenerateRenditionsInterface" type="Magento\MediaGalleryRenditions\Model\GenerateRenditions"/>
-    <preference for="Magento\MediaGalleryRenditionsApi\Api\GetRenditionPathInterface" type="Magento\MediaGalleryRenditions\Model\GetRenditionPath"/>
-    <type name="Magento\Cms\Model\Wysiwyg\Images\GetInsertImageContent">
-        <plugin name="set_rendition_path" type="Magento\MediaGalleryRenditions\Plugin\SetRenditionPath"/>
+    <preference for="Magento\Media_Gallery_Renditions_Api\Api\Generate_Renditions_Interface" type="Magento\Media_Gallery_Renditions\Model\Generate_Renditions"/>
+    <preference for="Magento\Media_Gallery_Renditions_Api\Api\Get_Rendition_Path_Interface" type="Magento\Media_Gallery_Renditions\Model\Get_Rendition_Path"/>
+    <type name="Magento\Cms\Model\Wysiwyg\Images\Get_Insert_Image_Content">
+        <plugin name="set_rendition_path" type="Magento\Media_Gallery_Renditions\Plugin\Set_Rendition_Path"/>
     </type>
-    <type name="Magento\MediaGalleryRenditions\Model\Queue\FetchRenditionPathsBatches">
+    <type name="Magento\Media_Gallery_Renditions\Model\Queue\Fetch_Rendition_Paths_Batches">
         <arguments>
             <argument name="batchSize" xsi:type="number">100</argument>
             <argument name="fileExtensions" xsi:type="array">
@@ -23,9 +23,9 @@
         </arguments>
     </type>
     <type name="Magento\Framework\App\Config\Value">
-        <plugin name="admin_system_config_media_gallery_renditions" type="Magento\MediaGalleryRenditions\Plugin\UpdateRenditionsOnConfigChange"/>
+        <plugin name="admin_system_config_media_gallery_renditions" type="Magento\Media_Gallery_Renditions\Plugin\Update_Renditions_On_Config_Change"/>
     </type>
-    <type name="Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface">
-        <plugin name="delete_renditions_on_assets_delete" type="Magento\MediaGalleryRenditions\Plugin\RemoveRenditions"/>
+    <type name="Magento\Media_Gallery_Api\Api\Delete_Assets_By_Paths_Interface">
+        <plugin name="delete_renditions_on_assets_delete" type="Magento\Media_Gallery_Renditions\Plugin\Remove_Renditions"/>
     </type>
 </config>

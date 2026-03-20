@@ -20,7 +20,7 @@
     <settings>
         <buttons>
             <button name="save" class="Magento\Catalog\Block\Adminhtml\Product\Attribute\Button\Save"/>
-            <button name="saveInNewSet" class="Magento\Catalog\Block\Adminhtml\Product\Attribute\Button\SaveInNewAttributeSet"/>
+            <button name="saveInNewSet" class="Magento\Catalog\Block\Adminhtml\Product\Attribute\Button\Save_In_New_Attribute_Set"/>
             <button name="cancel" class="Magento\Catalog\Block\Adminhtml\Product\Attribute\Button\Cancel"/>
         </buttons>
         <namespace>product_attribute_add_form</namespace>
@@ -41,7 +41,7 @@
             <validateUrl path="catalog/product_attribute/validate"/>
             <submitUrl path="catalog/product_attribute/save"/>
         </settings>
-        <dataProvider class="Magento\Catalog\Model\Product\Attribute\DataProvider" name="product_attribute_add_form_data_source">
+        <dataProvider class="Magento\Catalog\Model\Product\Attribute\Data_Provider" name="product_attribute_add_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>attribute_id</primaryFieldName>

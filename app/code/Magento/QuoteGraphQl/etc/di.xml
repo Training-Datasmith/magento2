@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValueInterface" type="Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Composite" />
-    <preference for="Magento\QuoteGraphQl\Model\CartItem\DataProvider\Processor\ItemDataProcessorInterface" type="Magento\QuoteGraphQl\Model\CartItem\DataProvider\Processor\ItemDataCompositeProcessor" />
-    <preference for="Magento\QuoteGraphQl\Model\CartItem\PrecursorInterface" type="Magento\QuoteGraphQl\Model\CartItem\PrecursorComposite" />
-    <type name="Magento\QuoteGraphQl\Model\Resolver\CartItemTypeResolver">
+    <preference for="Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value_Interface" type="Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Composite" />
+    <preference for="Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Processor\Item_Data_Processor_Interface" type="Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Processor\Item_Data_Composite_Processor" />
+    <preference for="Magento\Quote_Graph_Ql\Model\Cart_Item\Precursor_Interface" type="Magento\Quote_Graph_Ql\Model\Cart_Item\Precursor_Composite" />
+    <type name="Magento\Quote_Graph_Ql\Model\Resolver\Cart_Item_Type_Resolver">
         <arguments>
             <argument name="supportedTypes" xsi:type="array">
                 <item name="simple" xsi:type="string">SimpleCartItem</item>
@@ -19,40 +19,40 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Composite">
+    <type name="Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Composite">
         <arguments>
             <argument name="customizableOptionValues" xsi:type="array">
-                <item name="field" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Text</item>
-                <item name="date" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Text</item>
-                <item name="time" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Text</item>
-                <item name="date_time" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Text</item>
-                <item name="area" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Text</item>
-                <item name="drop_down" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Dropdown</item>
-                <item name="radio" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Dropdown</item>
-                <item name="checkbox" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Multiple</item>
-                <item name="multiple" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\Multiple</item>
-                <item name="file" xsi:type="string">Magento\QuoteGraphQl\Model\CartItem\DataProvider\CustomizableOptionValue\File</item>
+                <item name="field" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Text</item>
+                <item name="date" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Text</item>
+                <item name="time" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Text</item>
+                <item name="date_time" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Text</item>
+                <item name="area" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Text</item>
+                <item name="drop_down" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Dropdown</item>
+                <item name="radio" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Dropdown</item>
+                <item name="checkbox" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Multiple</item>
+                <item name="multiple" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\Multiple</item>
+                <item name="file" xsi:type="string">Magento\Quote_Graph_Ql\Model\Cart_Item\Data_Provider\Customizable_Option_Value\File</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Query\Resolver\ArgumentsCompositeProcessor">
+    <type name="Magento\Framework\Graph_Ql\Query\Resolver\Arguments_Composite_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="cart_item_id" xsi:type="object">Magento\QuoteGraphQl\Model\CartItem\CartItemUidArgsProcessor</item>
-                <item name="cart_items_id" xsi:type="object">Magento\QuoteGraphQl\Model\CartItem\CartItemsUidArgsProcessor</item>
+                <item name="cart_item_id" xsi:type="object">Magento\Quote_Graph_Ql\Model\Cart_Item\Cart_Item_Uid_Args_Processor</item>
+                <item name="cart_items_id" xsi:type="object">Magento\Quote_Graph_Ql\Model\Cart_Item\Cart_Items_Uid_Args_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\Resolver\AvailablePaymentMethods">
+    <type name="Magento\Quote_Graph_Ql\Model\Resolver\Available_Payment_Methods">
         <arguments>
-            <argument name="informationShipping" xsi:type="object">Magento\Quote\Api\ShippingMethodManagementInterface</argument>
+            <argument name="informationShipping" xsi:type="object">Magento\Quote\Api\Shipping_Method_Management_Interface</argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQl\Model\Backpressure\CompositeRequestTypeExtractor">
+    <type name="Magento\Graph_Ql\Model\Backpressure\Composite_Request_Type_Extractor">
         <arguments>
             <argument name="extractors" xsi:type="array">
                 <item name="checkout" xsi:type="object">
-                    Magento\QuoteGraphQl\Model\BackpressureRequestTypeExtractor
+                    Magento\Quote_Graph_Ql\Model\Backpressure_Request_Type_Extractor
                 </item>
             </argument>
         </arguments>

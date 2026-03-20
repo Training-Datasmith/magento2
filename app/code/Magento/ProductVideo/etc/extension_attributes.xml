@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
-    <extension_attributes for="Magento\Catalog\Api\Data\ProductAttributeMediaGalleryEntryInterface">
-        <attribute code="video_content" type="Magento\Framework\Api\Data\VideoContentInterface" />
+    <extension_attributes for="Magento\Catalog\Api\Data\Product_Attribute_Media_Gallery_Entry_Interface">
+        <attribute code="video_content" type="Magento\Framework\Api\Data\Video_Content_Interface" />
     </extension_attributes>
 </config>

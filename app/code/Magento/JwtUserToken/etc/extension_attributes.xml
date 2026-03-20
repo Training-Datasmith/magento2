@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
-    <extension_attributes for="Magento\Integration\Api\Data\UserTokenParametersInterface">
-        <attribute code="jwt_params" type="Magento\JwtUserToken\Model\Data\JwtTokenParameters" />
+    <extension_attributes for="Magento\Integration\Api\Data\User_Token_Parameters_Interface">
+        <attribute code="jwt_params" type="Magento\Jwt_User_Token\Model\Data\Jwt_Token_Parameters" />
     </extension_attributes>
 </config>

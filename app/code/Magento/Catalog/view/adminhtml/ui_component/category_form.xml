@@ -16,8 +16,8 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Magento\Catalog\Block\Adminhtml\Category\Edit\SaveButton"/>
-            <button name="delete" class="Magento\Catalog\Block\Adminhtml\Category\Edit\DeleteButton"/>
+            <button name="save" class="Magento\Catalog\Block\Adminhtml\Category\Edit\Save_Button"/>
+            <button name="delete" class="Magento\Catalog\Block\Adminhtml\Category\Edit\Delete_Button"/>
         </buttons>
         <namespace>category_form</namespace>
         <dataScope>data</dataScope>
@@ -35,7 +35,7 @@
             <validateUrl path="catalog/category/validate"/>
             <submitUrl path="catalog/category/save"/>
         </settings>
-        <dataProvider class="Magento\Catalog\Model\Category\DataProvider" name="category_form_data_source">
+        <dataProvider class="Magento\Catalog\Model\Category\Data_Provider" name="category_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -428,7 +428,7 @@
         </settings>
         <container name="assign_products_container" sortOrder="160">
             <htmlContent name="html_content">
-                <block name="gallery" class="Magento\Catalog\Block\Adminhtml\Category\AssignProducts"/>
+                <block name="gallery" class="Magento\Catalog\Block\Adminhtml\Category\Assign_Products"/>
             </htmlContent>
         </container>
     </fieldset>

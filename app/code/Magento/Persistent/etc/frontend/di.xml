@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\Url\SecurityInfo">
+    <type name="Magento\Framework\Url\Security_Info">
         <arguments>
             <argument name="secureUrlList" xsi:type="array">
                 <item name="persistent_onepage_register" xsi:type="string">/persistent/index/saveMethod</item>
@@ -15,35 +15,35 @@
     </type>
     <type name="Magento\Framework\View\Layout">
         <plugin name="persistent-session-depersonalize"
-                type="Magento\Persistent\Model\Layout\DepersonalizePlugin"
+                type="Magento\Persistent\Model\Layout\Depersonalize_Plugin"
                 sortOrder="10"
         />
-        <plugin name="add_persistent_remember_me_init_plugin" type="Magento\Persistent\Plugin\AddPersistentRememberMeInitPlugin" />
+        <plugin name="add_persistent_remember_me_init_plugin" type="Magento\Persistent\Plugin\Add_Persistent_Remember_Me_Init_Plugin" />
     </type>
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+    <type name="Magento\Checkout\Model\Composite_Config_Provider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="persistent_checkout_config_provider" xsi:type="object">Magento\Persistent\Model\CheckoutConfigProvider</item>
+                <item name="persistent_checkout_config_provider" xsi:type="object">Magento\Persistent\Model\Checkout_Config_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\AddressAdditionalDataProcessor">
-        <plugin name="persistent_remember_me_checkbox_processor" type="Magento\Persistent\Model\Checkout\AddressDataProcessorPlugin" />
+    <type name="Magento\Quote\Model\Address_Additional_Data_Processor">
+        <plugin name="persistent_remember_me_checkbox_processor" type="Magento\Persistent\Model\Checkout\Address_Data_Processor_Plugin" />
     </type>
-    <type name="Magento\Checkout\Model\DefaultConfigProvider">
-        <plugin name="mask_quote_id_substitutor" type="Magento\Persistent\Model\Checkout\ConfigProviderPlugin" />
+    <type name="Magento\Checkout\Model\Default_Config_Provider">
+        <plugin name="mask_quote_id_substitutor" type="Magento\Persistent\Model\Checkout\Config_Provider_Plugin" />
     </type>
-    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
-        <plugin name="inject_guest_address_for_nologin" type="Magento\Persistent\Model\Checkout\GuestPaymentInformationManagementPlugin" />
+    <type name="Magento\Checkout\Model\Guest_Payment_Information_Management">
+        <plugin name="inject_guest_address_for_nologin" type="Magento\Persistent\Model\Checkout\Guest_Payment_Information_Management_Plugin" />
     </type>
-    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Section_Pool_Interface">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="persistent" xsi:type="string">Magento\Persistent\CustomerData\Persistent</item>
+                <item name="persistent" xsi:type="string">Magento\Persistent\Customer_Data\Persistent</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Block\CustomerData">
+    <type name="Magento\Customer\Block\Customer_Data">
         <arguments>
             <argument name="expirableSectionNames" xsi:type="array">
                 <item name="persistent" xsi:type="string">persistent</item>
@@ -51,14 +51,14 @@
         </arguments>
     </type>
     <type name="Magento\Framework\App\Http\Context">
-        <plugin name="persistent_page_cache_variation" type="Magento\Persistent\Model\Plugin\PersistentCustomerContext" />
+        <plugin name="persistent_page_cache_variation" type="Magento\Persistent\Model\Plugin\Persistent_Customer_Context" />
     </type>
-    <type name="Magento\Persistent\Model\QuoteManager">
+    <type name="Magento\Persistent\Model\Quote_Manager">
         <arguments>
-            <argument name="shippingAssignmentProcessor" xsi:type="object">Magento\Quote\Model\Quote\ShippingAssignment\ShippingAssignmentProcessor\Proxy</argument>
+            <argument name="shippingAssignmentProcessor" xsi:type="object">Magento\Quote\Model\Quote\Shipping_Assignment\Shipping_Assignment_Processor\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\LoginAsCustomerApi\Api\AuthenticateCustomerBySecretInterface">
-        <plugin name="login_as_customer_cleanup" type="Magento\Persistent\Model\Plugin\LoginAsCustomerCleanUp" />
+    <type name="Magento\Login_As_Customer_Api\Api\Authenticate_Customer_By_Secret_Interface">
+        <plugin name="login_as_customer_cleanup" type="Magento\Persistent\Model\Plugin\Login_As_Customer_Clean_Up" />
     </type>
 </config>

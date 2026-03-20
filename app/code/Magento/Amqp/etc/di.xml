@@ -6,68 +6,68 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\MessageQueue\Consumer\Config\CompositeReader">
-        <plugin name="queueConfigPlugin" type="Magento\Framework\MessageQueue\Config\Consumer\ConfigReaderPlugin" />
+    <type name="Magento\Framework\Message_Queue\Consumer\Config\Composite_Reader">
+        <plugin name="queueConfigPlugin" type="Magento\Framework\Message_Queue\Config\Consumer\Config_Reader_Plugin" />
     </type>
-    <type name="Magento\Framework\MessageQueue\Publisher\Config\CompositeReader">
-        <plugin name="queueConfigPlugin" type="Magento\Framework\MessageQueue\Config\Publisher\ConfigReaderPlugin" />
+    <type name="Magento\Framework\Message_Queue\Publisher\Config\Composite_Reader">
+        <plugin name="queueConfigPlugin" type="Magento\Framework\Message_Queue\Config\Publisher\Config_Reader_Plugin" />
     </type>
-    <type name="Magento\Framework\MessageQueue\Topology\Config\CompositeReader">
-        <plugin name="queueConfigPlugin" type="Magento\Framework\MessageQueue\Config\Topology\ConfigReaderPlugin" />
+    <type name="Magento\Framework\Message_Queue\Topology\Config\Composite_Reader">
+        <plugin name="queueConfigPlugin" type="Magento\Framework\Message_Queue\Config\Topology\Config_Reader_Plugin" />
     </type>
-    <type name="Magento\Framework\MessageQueue\PublisherPool">
+    <type name="Magento\Framework\Message_Queue\Publisher_Pool">
         <arguments>
             <argument name="publishers" xsi:type="array">
                 <item name="async" xsi:type="array">
-                    <item name="amqp" xsi:type="object">Magento\Framework\MessageQueue\Publisher</item>
+                    <item name="amqp" xsi:type="object">Magento\Framework\Message_Queue\Publisher</item>
                 </item>
                 <item name="sync" xsi:type="array">
-                    <item name="amqp" xsi:type="object">Magento\Framework\MessageQueue\Rpc\Publisher</item>
+                    <item name="amqp" xsi:type="object">Magento\Framework\Message_Queue\Rpc\Publisher</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\Bulk\PublisherPool">
+    <type name="Magento\Framework\Message_Queue\Bulk\Publisher_Pool">
         <arguments>
             <argument name="publishers" xsi:type="array">
                 <item name="async" xsi:type="array">
-                    <item name="amqp" xsi:type="object">Magento\Framework\MessageQueue\Bulk\Publisher</item>
+                    <item name="amqp" xsi:type="object">Magento\Framework\Message_Queue\Bulk\Publisher</item>
                 </item>
                 <item name="sync" xsi:type="array">
-                    <item name="amqp" xsi:type="object">Magento\Framework\MessageQueue\Bulk\Rpc\Publisher</item>
+                    <item name="amqp" xsi:type="object">Magento\Framework\Message_Queue\Bulk\Rpc\Publisher</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\ConnectionTypeResolver">
+    <type name="Magento\Framework\Message_Queue\Connection_Type_Resolver">
         <arguments>
             <argument name="resolvers" xsi:type="array">
-                <item name="amqp" xsi:type="object">Magento\Framework\Amqp\ConnectionTypeResolver</item>
+                <item name="amqp" xsi:type="object">Magento\Framework\Amqp\Connection_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\ExchangeFactory">
+    <type name="Magento\Framework\Message_Queue\Exchange_Factory">
         <arguments>
             <argument name="exchangeFactories" xsi:type="array">
-                <item name="amqp" xsi:type="object">Magento\Framework\Amqp\ExchangeFactory</item>
+                <item name="amqp" xsi:type="object">Magento\Framework\Amqp\Exchange_Factory</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\Bulk\ExchangeFactory">
+    <type name="Magento\Framework\Message_Queue\Bulk\Exchange_Factory">
         <arguments>
             <argument name="exchangeFactories" xsi:type="array">
-                <item name="amqp" xsi:type="object">Magento\Framework\Amqp\Bulk\ExchangeFactory</item>
+                <item name="amqp" xsi:type="object">Magento\Framework\Amqp\Bulk\Exchange_Factory</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\QueueFactory">
+    <type name="Magento\Framework\Message_Queue\Queue_Factory">
         <arguments>
             <argument name="queueFactories" xsi:type="array">
-                <item name="amqp" xsi:type="object">Magento\Framework\Amqp\QueueFactory</item>
+                <item name="amqp" xsi:type="object">Magento\Framework\Amqp\Queue_Factory</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Framework\Amqp\Bulk\ExchangeFactory" type="Magento\Framework\Amqp\ExchangeFactory">
+    <virtualType name="Magento\Framework\Amqp\Bulk\Exchange_Factory" type="Magento\Framework\Amqp\Exchange_Factory">
         <arguments>
             <argument name="instanceName" xsi:type="string">\Magento\Framework\Amqp\Bulk\Exchange</argument>
         </arguments>

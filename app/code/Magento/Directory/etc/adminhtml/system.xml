@@ -25,7 +25,7 @@
                 <field id="default" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Default Display Currency</label>
                     <source_model>Magento\Config\Model\Config\Source\Locale\Currency</source_model>
-                    <backend_model>Magento\Config\Model\Config\Backend\Currency\DefaultCurrency</backend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Currency\Default_Currency</backend_model>
                 </field>
                 <field id="allow" translate="label" type="multiselect" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Allowed Currencies</label>
@@ -156,8 +156,8 @@
             <group id="locale">
                 <field id="weight_unit" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Weight Unit</label>
-                    <source_model>Magento\Directory\Model\Config\Source\WeightUnit</source_model>
-                    <backend_model>Magento\Directory\Model\Config\Backend\WeightUnit</backend_model>
+                    <source_model>Magento\Directory\Model\Config\Source\Weight_Unit</source_model>
+                    <backend_model>Magento\Directory\Model\Config\Backend\Weight_Unit</backend_model>
                 </field>
             </group>
         </section>

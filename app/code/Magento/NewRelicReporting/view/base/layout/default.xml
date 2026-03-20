@@ -11,7 +11,7 @@
             <block class="Magento\Framework\View\Element\Template" name="newrelicreporting.browser_monitoring.script.header" before="-" template="Magento_NewRelicReporting::html/inline_js.phtml">
                 <arguments>
                     <argument name="content_provider" xsi:type="object">
-                        Magento\NewRelicReporting\ViewModel\BrowserMonitoringHeaderJs
+                        Magento\New_Relic_Reporting\View_Model\Browser_Monitoring_Header_Js
                     </argument>
                 </arguments>
             </block>
@@ -20,7 +20,7 @@
             <block class="Magento\Framework\View\Element\Template" name="newrelicreporting.browser_monitoring.script.footer" after="-" template="Magento_NewRelicReporting::html/inline_js.phtml">
                 <arguments>
                     <argument name="content_provider" xsi:type="object">
-                        Magento\NewRelicReporting\ViewModel\BrowserMonitoringFooterJs
+                        Magento\New_Relic_Reporting\View_Model\Browser_Monitoring_Footer_Js
                     </argument>
                 </arguments>
             </block>

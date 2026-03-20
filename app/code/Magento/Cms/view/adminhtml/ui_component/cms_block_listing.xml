@@ -32,7 +32,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Cms::block</aclResource>
-        <dataProvider class="Magento\Cms\Ui\Component\DataProvider" name="cms_block_listing_data_source">
+        <dataProvider class="Magento\Cms\Ui\Component\Data_Provider" name="cms_block_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>block_id</primaryFieldName>
@@ -162,7 +162,7 @@
         </column>
         <column name="is_active" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Magento\Cms\Model\Block\Source\IsActive"/>
+                <options class="Magento\Cms\Model\Block\Source\Is_Active"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -185,7 +185,7 @@
                 <label translate="true">Modified</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Cms\Ui\Component\Listing\Column\BlockActions">
+        <actionsColumn name="actions" class="Magento\Cms\Ui\Component\Listing\Column\Block_Actions">
             <settings>
                 <indexField>block_id</indexField>
             </settings>

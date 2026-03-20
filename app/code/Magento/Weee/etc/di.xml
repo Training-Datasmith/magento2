@@ -6,8 +6,8 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Weee\Api\Data\ProductRender\WeeeAdjustmentAttributeInterface"
-                type="Magento\Weee\Model\ProductRender\WeeeAdjustmentAttribute"/>
+    <preference for="Magento\Weee\Api\Data\Product_Render\Weee_Adjustment_Attribute_Interface"
+                type="Magento\Weee\Model\Product_Render\Weee_Adjustment_Attribute"/>
     <type name="Magento\Weee\Helper\Data">
         <arguments>
             <argument name="weeeTax" xsi:type="object">Magento\Weee\Model\Tax\Proxy</argument>
@@ -18,7 +18,7 @@
         <arguments>
             <argument name="adjustments" xsi:type="array">
                 <item name="weee" xsi:type="const">Magento\Weee\Pricing\Adjustment::ADJUSTMENT_CODE</item>
-                <item name="weee_tax" xsi:type="const">Magento\Weee\Pricing\TaxAdjustment::ADJUSTMENT_CODE</item>
+                <item name="weee_tax" xsi:type="const">Magento\Weee\Pricing\Tax_Adjustment::ADJUSTMENT_CODE</item>
             </argument>
         </arguments>
     </type>
@@ -31,36 +31,36 @@
                     <item name="sortOrder" xsi:type="string">25</item>
                 </item>
                 <item name="weee_tax" xsi:type="array">
-                    <item name="className" xsi:type="string">Magento\Weee\Pricing\TaxAdjustment</item>
+                    <item name="className" xsi:type="string">Magento\Weee\Pricing\Tax_Adjustment</item>
                     <item name="sortOrder" xsi:type="string">35</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Bundle\Pricing\Price\BundleSelectionPrice">
+    <type name="Magento\Bundle\Pricing\Price\Bundle_Selection_Price">
         <arguments>
             <argument name="excludeAdjustment" xsi:type="array">
                 <item name="weee" xsi:type="const">Magento\Weee\Pricing\Adjustment::ADJUSTMENT_CODE</item>
-                <item name="weee_tax" xsi:type="const">Magento\Weee\Pricing\TaxAdjustment::ADJUSTMENT_CODE</item>
+                <item name="weee_tax" xsi:type="const">Magento\Weee\Pricing\Tax_Adjustment::ADJUSTMENT_CODE</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Pricing\Price\CustomOptionPrice">
+    <type name="Magento\Catalog\Pricing\Price\Custom_Option_Price">
         <arguments>
             <argument name="excludeAdjustment" xsi:type="array">
                 <item name="weee" xsi:type="const">Magento\Weee\Pricing\Adjustment::ADJUSTMENT_CODE</item>
-                <item name="weee_tax" xsi:type="const">Magento\Weee\Pricing\TaxAdjustment::ADJUSTMENT_CODE</item>
+                <item name="weee_tax" xsi:type="const">Magento\Weee\Pricing\Tax_Adjustment::ADJUSTMENT_CODE</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorComposite">
+    <type name="Magento\Catalog\Ui\Data_Provider\Product\Product_Render_Collector_Composite">
         <arguments>
             <argument name="productProviders" xsi:type="array">
-                <item name="weee" xsi:type="object">\Magento\Weee\Ui\DataProvider\Product\Listing\Collector\Weee</item>
+                <item name="weee" xsi:type="object">\Magento\Weee\Ui\Data_Provider\Product\Listing\Collector\Weee</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Ui\DataProvider\Product\Listing\Collector\Price">
+    <type name="Magento\Catalog\Ui\Data_Provider\Product\Listing\Collector\Price">
         <arguments>
             <argument name="excludeAdjustments" xsi:type="array">
                 <item name="weee" xsi:type="string">weee</item>
@@ -68,32 +68,32 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Ui\DataProvider\Product\Listing\DataProvider">
-        <plugin name="weeeSettingsProvider" type="Magento\Weee\Plugin\Ui\DataProvider\WeeeSettings"/>
+    <type name="Magento\Catalog\Ui\Data_Provider\Product\Listing\Data_Provider">
+        <plugin name="weeeSettingsProvider" type="Magento\Weee\Plugin\Ui\Data_Provider\Weee_Settings"/>
     </type>
-    <type name="Magento\Catalog\Model\ProductRender\FormattedPriceInfoBuilder">
+    <type name="Magento\Catalog\Model\Product_Render\Formatted_Price_Info_Builder">
         <arguments>
             <argument name="formattedPriceTypesPool" xsi:type="array">
-                <item name="catalog_prices" xsi:type="string">Magento\Catalog\Api\Data\ProductRender\FormattedPriceInfoInterface</item>
+                <item name="catalog_prices" xsi:type="string">Magento\Catalog\Api\Data\Product_Render\Formatted_Price_Info_Interface</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Controller\Adminhtml\Product\Initialization\Helper">
-        <plugin name="weeeAttributeOptionsProcess" type="Magento\Weee\Plugin\Catalog\Controller\Adminhtml\Product\Initialization\Helper\ProcessTaxAttribute"/>
+        <plugin name="weeeAttributeOptionsProcess" type="Magento\Weee\Plugin\Catalog\Controller\Adminhtml\Product\Initialization\Helper\Process_Tax_Attribute"/>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Attribute\RemoveProductAttributeData">
-        <plugin name="removeWeeAttributesData" type="Magento\Weee\Plugin\Catalog\ResourceModel\Attribute\RemoveProductWeeData" />
+    <type name="Magento\Catalog\Model\Resource_Model\Attribute\Remove_Product_Attribute_Data">
+        <plugin name="removeWeeAttributesData" type="Magento\Weee\Plugin\Catalog\Resource_Model\Attribute\Remove_Product_Wee_Data" />
     </type>
     <type name="Magento\Catalog\Ui\Component\Listing\Columns">
         <plugin name="changeWeeColumnConfig" type="Magento\Weee\Plugin\Catalog\Ui\Component\Listing\Columns"/>
     </type>
     <type name="Magento\Weee\Model\Tax">
-        <plugin name="configurableVariationAttributePriority" type="Magento\Weee\Plugin\Model\ConfigurableVariationAttributePriority"/>
+        <plugin name="configurableVariationAttributePriority" type="Magento\Weee\Plugin\Model\Configurable_Variation_Attribute_Priority"/>
     </type>
-    <type name="Magento\ConfigurableProduct\Pricing\Price\FinalPriceResolver">
-        <plugin name="configurableProductPriceAdjustment" type="Magento\Weee\Plugin\ConfigurableProduct\Pricing\FinalPriceResolver"/>
+    <type name="Magento\Configurable_Product\Pricing\Price\Final_Price_Resolver">
+        <plugin name="configurableProductPriceAdjustment" type="Magento\Weee\Plugin\Configurable_Product\Pricing\Final_Price_Resolver"/>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\LinkedProductSelectBuilderByIndexPrice">
-        <plugin name="weeeAttributeProductSort" type="Magento\Weee\Plugin\Catalog\ResourceModel\Product\WeeeAttributeProductSort"/>
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Indexer\Linked_Product_Select_Builder_By_Index_Price">
+        <plugin name="weeeAttributeProductSort" type="Magento\Weee\Plugin\Catalog\Resource_Model\Product\Weee_Attribute_Product_Sort"/>
     </type>
 </config>

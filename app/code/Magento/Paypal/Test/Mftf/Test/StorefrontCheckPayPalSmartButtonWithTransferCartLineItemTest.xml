@@ -33,8 +33,8 @@
         </before>
         <after>
             <actionGroup ref="StorefrontCustomerLogoutActionGroup" stepKey="logoutCustomer" />
-            <helper class="Magento\Customer\Test\Mftf\Helper\CustomerApiHelper" method="deleteAllCustomersApi" stepKey="deleteCustomer"/>
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteSimpleProduct"/>
+            <helper class="Magento\Customer\Test\Mftf\Helper\Customer_Api_Helper" method="deleteAllCustomersApi" stepKey="deleteCustomer"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteSimpleProduct"/>
             <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
         </after>
         <actionGroup ref="LoginToStorefrontActionGroup" stepKey="signUpNewUser">

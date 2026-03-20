@@ -7,7 +7,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="sales_order_place_after">
-        <observer name="newrelicreporting_observer_report_sales_order_place" instance="Magento\NewRelicReporting\Model\Observer\ReportOrderPlaced" />
-        <observer name="newrelicreporting_newrelic_report_sales_order_place" instance="Magento\NewRelicReporting\Model\Observer\ReportOrderPlacedToNewRelic" />
+        <observer name="newrelicreporting_observer_report_sales_order_place" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Order_Placed" />
+        <observer name="newrelicreporting_newrelic_report_sales_order_place" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Order_Placed_To_New_Relic" />
     </event>
 </config>

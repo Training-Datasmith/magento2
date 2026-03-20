@@ -33,31 +33,31 @@
         </before>
 
         <after>
-            <helper class="\Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
+            <helper class="\Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
                 <argument name="path">import_export/export</argument>
             </helper>
             <comment userInput="BIC workaround" stepKey="disableRemoteStorage"/>
         </after>
 
         <!-- Validate Export File on S3 -->
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertExportFileExists">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertExportFileExists">
             <argument name="filePath">import_export/export/{$grabNameFile}</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableProduct">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableProduct">
             <argument name="filePath">import_export/export/{$grabNameFile}</argument>
             <argument name="text">$$createProduct.name$$</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableLink">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableLink">
             <argument name="filePath">import_export/export/{$grabNameFile}</argument>
             <argument name="text">title=$addDownloadableLink.link[title]$,sort_order=$addDownloadableLink.link[sort_order]$,sample_type=$addDownloadableLink.link[sample_type]$,sample_url=$addDownloadableLink.link[sample_url]$,price=$addDownloadableLink.link[price]$0000,number_of_downloads=$addDownloadableLink.link[number_of_downloads]$,link_type=$addDownloadableLink.link[link_type]$,link_url=$addDownloadableLink.link[link_url]$</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableSampleLink">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableSampleLink">
             <argument name="filePath">import_export/export/{$grabNameFile}</argument>
             <argument name="text">title=$addDownloadableSamples.sample[title]$,sort_order=$addDownloadableSamples.sample[sort_order]$,sample_type=$addDownloadableSamples.sample[sample_type]$,sample_url=$addDownloadableSamples.sample[sample_url]$</argument>
         </helper>
 
         <!-- Delete Export File -->
-        <helper class="\Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
+        <helper class="\Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
             <argument name="filePath">import_export/export/{$grabNameFile}</argument>
         </helper>
     </test>

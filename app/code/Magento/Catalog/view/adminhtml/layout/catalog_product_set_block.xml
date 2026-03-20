@@ -11,12 +11,12 @@
             <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.catalog.product.set.grid" as="grid">
                 <arguments>
                     <argument name="id" xsi:type="string">setGrid</argument>
-                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Eav\Model\ResourceModel\Entity\Attribute\Grid\Collection</argument>
+                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Eav\Model\Resource_Model\Entity\Attribute\Grid\Collection</argument>
                     <argument name="default_sort" xsi:type="string">set_name</argument>
                     <argument name="default_dir" xsi:type="string">ASC</argument>
                     <argument name="save_parameters_in_session" xsi:type="string">1</argument>
                 </arguments>
-                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.catalog.product.set.grid.columnSet" as="grid.columnSet">
+                <block class="Magento\Backend\Block\Widget\Grid\Column_Set" name="adminhtml.catalog.product.set.grid.columnSet" as="grid.columnSet">
                     <arguments>
                         <argument name="id" xsi:type="string">setGrid</argument>
                         <argument name="rowUrl" xsi:type="array">

@@ -44,7 +44,7 @@
             <group id="default_layouts">
                 <field id="default_cms_layout" translate="label" type="select" sortOrder="30" showInDefault="1">
                     <label>Default Page Layout</label>
-                    <source_model>Magento\Cms\Model\Page\Source\PageLayout</source_model>
+                    <source_model>Magento\Cms\Model\Page\Source\Page_Layout</source_model>
                 </field>
             </group>
         </section>

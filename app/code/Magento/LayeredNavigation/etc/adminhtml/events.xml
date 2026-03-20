@@ -7,12 +7,12 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="product_attribute_form_build_front_tab">
-        <observer name="layeredNavigation" instance="Magento\LayeredNavigation\Observer\Edit\Tab\Front\ProductAttributeFormBuildFrontTabObserver" />
+        <observer name="layeredNavigation" instance="Magento\Layered_Navigation\Observer\Edit\Tab\Front\Product_Attribute_Form_Build_Front_Tab_Observer" />
     </event>
     <event name="product_attribute_grid_build">
-        <observer name="layeredNavigation" instance="Magento\LayeredNavigation\Observer\Grid\ProductAttributeGridBuildObserver" />
+        <observer name="layeredNavigation" instance="Magento\Layered_Navigation\Observer\Grid\Product_Attribute_Grid_Build_Observer" />
     </event>
     <event name="adminhtml_catalog_product_attribute_edit_frontend_prepare_field_dependencies">
-        <observer name="layeredNavigation" instance="Magento\LayeredNavigation\Observer\Edit\Tab\Front\ProductAttributeFormBuildFormFieldDependenciesObserver" />
+        <observer name="layeredNavigation" instance="Magento\Layered_Navigation\Observer\Edit\Tab\Front\Product_Attribute_Form_Build_Form_Field_Dependencies_Observer" />
     </event>
 </config>

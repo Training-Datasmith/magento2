@@ -13,7 +13,7 @@
     <htmlContent name="customer_edit_tab_view_content">
         <block class="Magento\Customer\Block\Adminhtml\Edit\Tab\View"
                name="customer_edit_tab_view" template="Magento_Customer::tab/view.phtml">
-            <block class="Magento\Customer\Block\Adminhtml\Edit\Tab\View\PersonalInfo"
+            <block class="Magento\Customer\Block\Adminhtml\Edit\Tab\View\Personal_Info"
                    name="personal_info" template="Magento_Customer::tab/view/personal_info.phtml"/>
         </block>
     </htmlContent>

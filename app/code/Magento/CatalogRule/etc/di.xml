@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\CatalogRule\Model\ResourceModel\Rule">
+    <type name="Magento\Catalog_Rule\Model\Resource_Model\Rule">
         <arguments>
             <argument name="eventManager" xsi:type="object">Magento\Framework\Event\Manager\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogRule\Model\ResourceModel\Rule\Collection" shared="false" />
-    <type name="Magento\Catalog\Model\Product\PriceModifier\Composite">
+    <type name="Magento\Catalog_Rule\Model\Resource_Model\Rule\Collection" shared="false" />
+    <type name="Magento\Catalog\Model\Product\Price_Modifier\Composite">
         <arguments>
             <argument name="modifiers" xsi:type="array">
-                <item name="catalog_rule" xsi:type="string">Magento\CatalogRule\Model\Product\PriceModifier</item>
+                <item name="catalog_rule" xsi:type="string">Magento\Catalog_Rule\Model\Product\Price_Modifier</item>
             </argument>
         </arguments>
     </type>
@@ -29,74 +29,74 @@
     <virtualType name="Magento\Catalog\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="catalog_rule_price" xsi:type="string">Magento\CatalogRule\Pricing\Price\CatalogRulePrice</item>
+                <item name="catalog_rule_price" xsi:type="string">Magento\Catalog_Rule\Pricing\Price\Catalog_Rule_Price</item>
             </argument>
         </arguments>
     </virtualType>
-    <preference for="Magento\CatalogRule\Api\Data\RuleInterface" type="Magento\CatalogRule\Model\Rule" />
-    <preference for="Magento\CatalogRule\Api\CatalogRuleRepositoryInterface" type="Magento\CatalogRule\Model\CatalogRuleRepository" />
-    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+    <preference for="Magento\Catalog_Rule\Api\Data\Rule_Interface" type="Magento\Catalog_Rule\Model\Rule" />
+    <preference for="Magento\Catalog_Rule\Api\Catalog_Rule_Repository_Interface" type="Magento\Catalog_Rule\Model\Catalog_Rule_Repository" />
+    <type name="Magento\Framework\Model\Entity\Repository_Factory">
         <arguments>
             <argument name="entities" xsi:type="array">
-                <item name="Magento\CatalogRule\Api\Data\RuleInterface" xsi:type="string">Magento\CatalogRule\Api\CatalogRuleRepositoryInterface</item>
+                <item name="Magento\Catalog_Rule\Api\Data\Rule_Interface" xsi:type="string">Magento\Catalog_Rule\Api\Catalog_Rule_Repository_Interface</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\MetadataPool">
+    <type name="Magento\Framework\Entity_Manager\Metadata_Pool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Magento\CatalogRule\Api\Data\RuleInterface" xsi:type="array">
+                <item name="Magento\Catalog_Rule\Api\Data\Rule_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">catalogrule</item>
                     <item name="identifierField" xsi:type="string">rule_id</item>
                 </item>
             </argument>
             <argument name="eavMapping" xsi:type="array">
-                <item name="Magento\Catalog\Api\Data\ProductInterface" xsi:type="string">catalog_product</item>
+                <item name="Magento\Catalog\Api\Data\Product_Interface" xsi:type="string">catalog_product</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\Operation\AttributePool">
+    <type name="Magento\Framework\Entity_Manager\Operation\Attribute_Pool">
         <arguments>
             <argument name="extensionActions" xsi:type="array">
                 <item name="catalogRule" xsi:type="array">
-                    <item name="Magento\CatalogRule\Api\Data\RuleInterface" xsi:type="array">
-                        <item name="read" xsi:type="string">Magento\CatalogRule\Model\ResourceModel\ReadHandler</item>
-                        <item name="create" xsi:type="string">Magento\CatalogRule\Model\ResourceModel\SaveHandler</item>
-                        <item name="update" xsi:type="string">Magento\CatalogRule\Model\ResourceModel\SaveHandler</item>
+                    <item name="Magento\Catalog_Rule\Api\Data\Rule_Interface" xsi:type="array">
+                        <item name="read" xsi:type="string">Magento\Catalog_Rule\Model\Resource_Model\Read_Handler</item>
+                        <item name="create" xsi:type="string">Magento\Catalog_Rule\Model\Resource_Model\Save_Handler</item>
+                        <item name="update" xsi:type="string">Magento\Catalog_Rule\Model\Resource_Model\Save_Handler</item>
                     </item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <type name="Magento\Framework\View\Element\Ui_Component\Data_Provider\Collection_Factory">
         <arguments>
             <argument name="collections" xsi:type="array">
                 <item name="catalog_rule_data_source" xsi:type="string">catalogRuleSearchResult</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="catalogRuleSearchResult" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="catalogRuleSearchResult" type="Magento\Framework\View\Element\Ui_Component\Data_Provider\Search_Result">
         <arguments>
             <argument name="mainTable" xsi:type="string">catalogrule</argument>
-            <argument name="resourceModel" xsi:type="string">\Magento\CatalogRule\Model\ResourceModel\Rule</argument>
+            <argument name="resourceModel" xsi:type="string">\Magento\Catalog_Rule\Model\Resource_Model\Rule</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\CatalogRule\Model\Rule\Condition\Combine">
+    <type name="Magento\Catalog_Rule\Model\Rule\Condition\Combine">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">catalog_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogRule\Model\Rule\Condition\Product">
+    <type name="Magento\Catalog_Rule\Model\Rule\Condition\Product">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">catalog_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\CatalogRule\Api\Data\ConditionInterface" type="Magento\CatalogRule\Model\Data\Condition" />
-    <virtualType name="Magento\CatalogRule\Model\ResourceModel\Rule\AssociatedEntityMap" type="Magento\Framework\DataObject">
+    <preference for="Magento\Catalog_Rule\Api\Data\Condition_Interface" type="Magento\Catalog_Rule\Model\Data\Condition" />
+    <virtualType name="Magento\Catalog_Rule\Model\Resource_Model\Rule\Associated_Entity_Map" type="Magento\Framework\Data_Object">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="website" xsi:type="array">
@@ -112,81 +112,81 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\EntityManager\HydratorPool">
+    <type name="Magento\Framework\Entity_Manager\Hydrator_Pool">
         <arguments>
             <argument name="hydrators" xsi:type="array">
-                <item name="Magento\CatalogRule\Api\Data\RuleInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+                <item name="Magento\Catalog_Rule\Api\Data\Rule_Interface" xsi:type="string">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product\LinkedProductSelectBuilderComposite">
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Linked_Product_Select_Builder_Composite">
         <arguments>
             <argument name="linkedProductSelectBuilder" xsi:type="array">
-                <item name="catalogRulePrice" xsi:type="object">Magento\CatalogRule\Model\ResourceModel\Product\LinkedProductSelectBuilderByCatalogRulePrice</item>
+                <item name="catalogRulePrice" xsi:type="object">Magento\Catalog_Rule\Model\Resource_Model\Product\Linked_Product_Select_Builder_By_Catalog_Rule_Price</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\CatalogRule\Model\Indexer\IndexerTableSwapperInterface" type="Magento\CatalogRule\Model\Indexer\IndexerTableSwapper" />
-    <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\PriceInterface">
+    <preference for="Magento\Catalog_Rule\Model\Indexer\Indexer_Table_Swapper_Interface" type="Magento\Catalog_Rule\Model\Indexer\Indexer_Table_Swapper" />
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Indexer\Price\Price_Interface">
         <arguments>
             <argument name="priceModifiers" xsi:type="array">
-                <item name="catalogRulePriceModifier" xsi:type="object">Magento\CatalogRule\Model\Indexer\ProductPriceIndexModifier</item>
+                <item name="catalogRulePriceModifier" xsi:type="object">Magento\Catalog_Rule\Model\Indexer\Product_Price_Index_Modifier</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BasePriceModifier">
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Indexer\Price\Base_Price_Modifier">
         <arguments>
             <argument name="priceModifiers" xsi:type="array">
-                <item name="catalogRulePriceModifier" xsi:type="object">Magento\CatalogRule\Model\Indexer\ProductPriceIndexModifier</item>
+                <item name="catalogRulePriceModifier" xsi:type="object">Magento\Catalog_Rule\Model\Indexer\Product_Price_Index_Modifier</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="CatalogRuleCustomConditionProvider" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\ConditionProcessor\CustomConditionProvider">
+    <virtualType name="CatalogRuleCustomConditionProvider" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Condition_Processor\Custom_Condition_Provider">
         <arguments>
             <argument name="customConditionProcessors" xsi:type="array">
-                <item name="category_ids" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\ConditionProcessor\ProductCategoryCondition</item>
+                <item name="category_ids" xsi:type="object">Magento\Catalog\Model\Api\Search_Criteria\Collection_Processor\Condition_Processor\Product_Category_Condition</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="CatalogRuleAdvancedFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\AdvancedFilterProcessor">
+    <virtualType name="CatalogRuleAdvancedFilterProcessor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Advanced_Filter_Processor">
         <arguments>
-            <argument name="defaultConditionProcessor" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\ConditionProcessor\DefaultCondition</argument>
+            <argument name="defaultConditionProcessor" xsi:type="object">Magento\Catalog\Model\Api\Search_Criteria\Collection_Processor\Condition_Processor\Default_Condition</argument>
             <argument name="customConditionProvider" xsi:type="object">CatalogRuleCustomConditionProvider</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\CatalogRule\Model\ResourceModel\Product\ConditionsToCollectionApplier">
+    <type name="Magento\Catalog_Rule\Model\Resource_Model\Product\Conditions_To_Collection_Applier">
         <arguments>
             <argument name="searchCriteriaProcessor" xsi:type="object">CatalogRuleAdvancedFilterProcessor</argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogRule\Model\Rule\Condition\MappableConditionsProcessor">
+    <type name="Magento\Catalog_Rule\Model\Rule\Condition\Mappable_Conditions_Processor">
         <arguments>
             <argument name="customConditionProvider" xsi:type="object">CatalogRuleCustomConditionProvider</argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Indexer\Product\Price">
-        <plugin name="recollect_quote_after_rule_change" type="Magento\CatalogRule\Plugin\Model\Indexer\RecollectQuoteAfterRuleChange"/>
+        <plugin name="recollect_quote_after_rule_change" type="Magento\Catalog_Rule\Plugin\Model\Indexer\Recollect_Quote_After_Rule_Change"/>
     </type>
-    <virtualType name="Magento\CatalogRule\Model\ResourceModel\Product\OptimizedCollectionFactory" type="Magento\Catalog\Model\ResourceModel\Product\CollectionFactory">
+    <virtualType name="Magento\Catalog_Rule\Model\Resource_Model\Product\Optimized_Collection_Factory" type="Magento\Catalog\Model\Resource_Model\Product\Collection_Factory">
         <arguments>
-            <argument name="instanceName" xsi:type="string">Magento\CatalogRule\Model\ResourceModel\Product\Collection</argument>
+            <argument name="instanceName" xsi:type="string">Magento\Catalog_Rule\Model\Resource_Model\Product\Collection</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\CatalogRule\Model\Rule">
+    <type name="Magento\Catalog_Rule\Model\Rule">
         <arguments>
-            <argument name="productCollectionFactory" xsi:type="object">Magento\CatalogRule\Model\ResourceModel\Product\OptimizedCollectionFactory</argument>
+            <argument name="productCollectionFactory" xsi:type="object">Magento\Catalog_Rule\Model\Resource_Model\Product\Optimized_Collection_Factory</argument>
         </arguments>
     </type>
 
-    <virtualType name="Magento\CatalogRule\Model\Indexer\CatalogRuleBatchSizeManagement" type="Magento\Framework\Indexer\BatchSizeManagement">
+    <virtualType name="Magento\Catalog_Rule\Model\Indexer\Catalog_Rule_Batch_Size_Management" type="Magento\Framework\Indexer\Batch_Size_Management">
         <arguments>
-            <argument name="rowSizeEstimator" xsi:type="object">Magento\CatalogRule\Model\Indexer\CatalogRuleProductPriceRowSizeEstimator</argument>
+            <argument name="rowSizeEstimator" xsi:type="object">Magento\Catalog_Rule\Model\Indexer\Catalog_Rule_Product_Price_Row_Size_Estimator</argument>
         </arguments>
     </virtualType>
 
-    <type name="Magento\CatalogRule\Model\Indexer\CatalogRuleInsertBatchSizeCalculator">
+    <type name="Magento\Catalog_Rule\Model\Indexer\Catalog_Rule_Insert_Batch_Size_Calculator">
         <arguments>
-            <argument name="batchSizeManagement" xsi:type="object">Magento\CatalogRule\Model\Indexer\CatalogRuleBatchSizeManagement</argument>
+            <argument name="batchSizeManagement" xsi:type="object">Magento\Catalog_Rule\Model\Indexer\Catalog_Rule_Batch_Size_Management</argument>
             <argument name="defaultBatchSize" xsi:type="number">5000</argument>
         </arguments>
     </type>

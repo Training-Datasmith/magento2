@@ -6,5 +6,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\CustomUrlLocatorInterface" type="Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\CustomUrlLocator"/>
+    <preference for="Magento\Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Custom_Url_Locator_Interface" type="Magento\Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Custom_Url_Locator"/>
 </config>

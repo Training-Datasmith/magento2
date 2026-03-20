@@ -6,30 +6,30 @@
   */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Ui\Component\Wysiwyg\ConfigInterface" type="Magento\Cms\Model\Wysiwyg\Config"/>
-    <type name="Magento\Cms\Block\Adminhtml\Page\Grid\Renderer\Action\UrlBuilder">
+    <preference for="Magento\Ui\Component\Wysiwyg\Config_Interface" type="Magento\Cms\Model\Wysiwyg\Config"/>
+    <type name="Magento\Cms\Block\Adminhtml\Page\Grid\Renderer\Action\Url_Builder">
         <arguments>
             <argument name="frontendUrlBuilder" xsi:type="object">Magento\Framework\Url</argument>
         </arguments>
     </type>
-    <type name="Magento\Cms\ViewModel\Page\Grid\UrlBuilder">
+    <type name="Magento\Cms\View_Model\Page\Grid\Url_Builder">
         <arguments>
             <argument name="frontendUrlBuilder" xsi:type="object">Magento\Framework\Url</argument>
         </arguments>
     </type>
-    <type name="Magento\Cms\Model\Wysiwyg\CompositeConfigProvider">
+    <type name="Magento\Cms\Model\Wysiwyg\Composite_Config_Provider">
         <arguments>
             <argument name="variablePluginConfigProvider" xsi:type="array">
-                <item name="default" xsi:type="string">Magento\Variable\Model\Variable\ConfigProvider</item>
+                <item name="default" xsi:type="string">Magento\Variable\Model\Variable\Config_Provider</item>
             </argument>
             <argument name="widgetPluginConfigProvider" xsi:type="array">
                 <item name="default" xsi:type="string">Magento\Widget\Model\Widget\Config</item>
             </argument>
             <argument name="wysiwygConfigPostProcessor" xsi:type="array">
-                <item name="default" xsi:type="string">Magento\Cms\Model\Wysiwyg\DefaultConfigProvider</item>
+                <item name="default" xsi:type="string">Magento\Cms\Model\Wysiwyg\Default_Config_Provider</item>
             </argument>
             <argument name="galleryConfigProvider" xsi:type="array">
-                <item name="default" xsi:type="string">Magento\Cms\Model\Wysiwyg\Gallery\DefaultConfigProvider</item>
+                <item name="default" xsi:type="string">Magento\Cms\Model\Wysiwyg\Gallery\Default_Config_Provider</item>
             </argument>
         </arguments>
     </type>
@@ -43,7 +43,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Cms\Model\Wysiwyg\Gallery\DefaultConfigProvider">
+    <type name="Magento\Cms\Model\Wysiwyg\Gallery\Default_Config_Provider">
         <arguments>
             <argument name="currentTreePath" xsi:type="const">\Magento\Cms\Model\Wysiwyg\Config::IMAGE_DIRECTORY</argument>
             <argument name="windowSize" xsi:type="array">
@@ -52,7 +52,7 @@
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Cms\Ui\Component\Form\Field\PageLayout" type="Magento\Ui\Component\Form\Field\DefaultValue">
+    <virtualType name="Magento\Cms\Ui\Component\Form\Field\Page_Layout" type="Magento\Ui\Component\Form\Field\Default_Value">
         <arguments>
             <argument name="path" xsi:type="string">web/default_layouts/default_cms_layout</argument>
         </arguments>
@@ -62,16 +62,16 @@
             <argument name="variableConfig" xsi:type="object">Magento\Variable\Model\Variable\Config\Proxy</argument>
         </arguments>
     </type>
-    <preference for="Magento\Cms\Model\Page\TargetUrlBuilderInterface" type="Magento\Cms\Model\Page\TargetUrlBuilder"/>
-    <type name="Magento\Cms\Model\Page\TargetUrlBuilder">
+    <preference for="Magento\Cms\Model\Page\Target_Url_Builder_Interface" type="Magento\Cms\Model\Page\Target_Url_Builder"/>
+    <type name="Magento\Cms\Model\Page\Target_Url_Builder">
         <arguments>
             <argument name="frontendUrlBuilder" xsi:type="object">Magento\Framework\Url</argument>
         </arguments>
     </type>
-    <type name="Magento\Cms\Api\PageRepositoryInterface">
-        <plugin name="vendor_cmsvalidate_page_save" type="Magento\Cms\Plugin\PageRepositoryValidatePlugin" sortOrder="10"/>
+    <type name="Magento\Cms\Api\Page_Repository_Interface">
+        <plugin name="vendor_cmsvalidate_page_save" type="Magento\Cms\Plugin\Page_Repository_Validate_Plugin" sortOrder="10"/>
     </type>
-    <type name="Magento\Cms\Api\BlockRepositoryInterface">
-        <plugin name="vendor_cmsvalidate_block_save" type="Magento\Cms\Plugin\BlockRepositoryValidatePlugin" sortOrder="10"/>
+    <type name="Magento\Cms\Api\Block_Repository_Interface">
+        <plugin name="vendor_cmsvalidate_block_save" type="Magento\Cms\Plugin\Block_Repository_Validate_Plugin" sortOrder="10"/>
     </type>
 </config>

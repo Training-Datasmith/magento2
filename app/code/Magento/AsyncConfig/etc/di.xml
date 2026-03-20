@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\AsyncConfig\Api\AsyncConfigPublisherInterface"
-                type="Magento\AsyncConfig\Model\AsyncConfigPublisher" />
-    <preference for="Magento\AsyncConfig\Api\Data\AsyncConfigMessageInterface"
-                type="Magento\AsyncConfig\Model\Entity\AsyncConfigMessage" />
+    <preference for="Magento\Async_Config\Api\Async_Config_Publisher_Interface"
+                type="Magento\Async_Config\Model\Async_Config_Publisher" />
+    <preference for="Magento\Async_Config\Api\Data\Async_Config_Message_Interface"
+                type="Magento\Async_Config\Model\Entity\Async_Config_Message" />
     <type name="Magento\Config\Controller\Adminhtml\System\Config\Save">
-        <plugin name="save_config_async" type="Magento\AsyncConfig\Plugin\Controller\System\Config\SaveAsyncConfigPlugin"/>
+        <plugin name="save_config_async" type="Magento\Async_Config\Plugin\Controller\System\Config\Save_Async_Config_Plugin"/>
     </type>
 </config>

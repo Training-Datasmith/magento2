@@ -7,7 +7,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+    <type name="Magento\Store_Graph_Ql\Model\Resolver\Store\Store_Config_Data_Provider">
         <arguments>
             <argument name="extendedConfigData" xsi:type="array">
                 <item name="allow_order" xsi:type="string">sales/gift_options/allow_order</item>

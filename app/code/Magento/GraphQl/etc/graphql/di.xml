@@ -6,31 +6,31 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Framework\App\FrontControllerInterface" type="Magento\GraphQl\Controller\GraphQl" />
-    <preference for="Magento\Framework\Authorization\RoleLocatorInterface" type="Magento\Webapi\Model\WebapiRoleLocator" />
-    <type name="Magento\Authorization\Model\CompositeUserContext">
+    <preference for="Magento\Framework\App\Front_Controller_Interface" type="Magento\Graph_Ql\Controller\Graph_Ql" />
+    <preference for="Magento\Framework\Authorization\Role_Locator_Interface" type="Magento\Webapi\Model\Webapi_Role_Locator" />
+    <type name="Magento\Authorization\Model\Composite_User_Context">
         <arguments>
             <argument name="userContexts" xsi:type="array">
                 <item name="tokenUserContext" xsi:type="array">
-                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\TokenUserContext</item>
+                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\Token_User_Context</item>
                     <item name="sortOrder" xsi:type="string">10</item>
                 </item>
                 <item name="guestUserContext" xsi:type="array">
-                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\GuestUserContext</item>
+                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\Guest_User_Context</item>
                     <item name="sortOrder" xsi:type="string">100</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQl\Controller\HttpRequestProcessor">
+    <type name="Magento\Graph_Ql\Controller\Http_Request_Processor">
         <arguments>
             <argument name="requestValidators" xsi:type="array">
-                <item name="ContentTypeValidator" xsi:type="object">Magento\GraphQl\Controller\HttpRequestValidator\ContentTypeValidator</item>
-                <item name="VerbValidator" xsi:type="object">Magento\GraphQl\Controller\HttpRequestValidator\HttpVerbValidator</item>
+                <item name="ContentTypeValidator" xsi:type="object">Magento\Graph_Ql\Controller\Http_Request_Validator\Content_Type_Validator</item>
+                <item name="VerbValidator" xsi:type="object">Magento\Graph_Ql\Controller\Http_Request_Validator\Http_Verb_Validator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQl\Model\Mutation\Resolver\ErrorTypeResolver">
+    <type name="Magento\Graph_Ql\Model\Mutation\Resolver\Error_Type_Resolver">
         <arguments>
             <argument name="validErrorTypes" xsi:type="array">
                 <item name="no_such_entity_uid" xsi:type="string">NoSuchEntityUidError</item>
@@ -38,7 +38,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Session\SessionStartChecker">
-        <plugin name="graphql_session_disable" type="Magento\GraphQl\Plugin\DisableSession"/>
+    <type name="Magento\Framework\Session\Session_Start_Checker">
+        <plugin name="graphql_session_disable" type="Magento\Graph_Ql\Plugin\Disable_Session"/>
     </type>
 </config>

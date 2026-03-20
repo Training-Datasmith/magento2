@@ -25,7 +25,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Logging::system_magento_logging_bulk_operations</aclResource>
-        <dataProvider class="Magento\AsynchronousOperations\Ui\Component\DataProvider" name="bulk_listing_data_source">
+        <dataProvider class="Magento\Asynchronous_Operations\Ui\Component\Data_Provider" name="bulk_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>id</primaryFieldName>
@@ -76,7 +76,7 @@
         <column name="description" sortOrder="50">
             <settings>
                 <filter>select</filter>
-                <options class="Magento\AsynchronousOperations\Model\BulkDescription\Options"/>
+                <options class="Magento\Asynchronous_Operations\Model\Bulk_Description\Options"/>
                 <dataType>select</dataType>
                 <label translate="true">Description of Operation</label>
             </settings>
@@ -84,7 +84,7 @@
         <column name="user_type" component="Magento_Ui/js/grid/columns/select" sortOrder="55">
             <settings>
                 <filter>select</filter>
-                <options class="\Magento\AsynchronousOperations\Model\BulkUserType\Options"/>
+                <options class="\Magento\Asynchronous_Operations\Model\Bulk_User_Type\Options"/>
                 <dataType>select</dataType>
                 <label translate="true">User Type</label>
             </settings>
@@ -92,12 +92,12 @@
         <column name="status" component="Magento_Ui/js/grid/columns/select" sortOrder="60">
             <settings>
                 <filter>select</filter>
-                <options class="Magento\AsynchronousOperations\Model\BulkStatus\Options"/>
+                <options class="Magento\Asynchronous_Operations\Model\Bulk_Status\Options"/>
                 <dataType>select</dataType>
                 <label translate="true">Status</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="\Magento\AsynchronousOperations\Ui\Component\Listing\Column\Actions">
+        <actionsColumn name="actions" class="\Magento\Asynchronous_Operations\Ui\Component\Listing\Column\Actions">
             <settings>
                 <indexField>id</indexField>
                 <label translate="true">Action</label>

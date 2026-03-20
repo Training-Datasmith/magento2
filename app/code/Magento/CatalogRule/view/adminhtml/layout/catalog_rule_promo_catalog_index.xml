@@ -9,7 +9,7 @@
     <update handle="catalog_rule_promo_catalog_block"/>
     <body>
         <referenceContainer name="content">
-            <block class="Magento\CatalogRule\Block\Adminhtml\Promo\Catalog" name="adminhtml.promo.catalog.grid.container"/>
+            <block class="Magento\Catalog_Rule\Block\Adminhtml\Promo\Catalog" name="adminhtml.promo.catalog.grid.container"/>
         </referenceContainer>
     </body>
 </page>

@@ -6,18 +6,18 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\Message\ExceptionMessageFactoryPool">
+    <type name="Magento\Framework\Message\Exception_Message_Factory_Pool">
         <arguments>
             <argument name="exceptionMessageFactoryMap" xsi:type="array">
-                <item name="Magento\UrlRewrite\Model\Exception\UrlAlreadyExistsException" xsi:type="object">\Magento\UrlRewrite\Model\Message\UrlRewriteExceptionMessageFactory</item>
+                <item name="Magento\Url_Rewrite\Model\Exception\Url_Already_Exists_Exception" xsi:type="object">\Magento\Url_Rewrite\Model\Message\Url_Rewrite_Exception_Message_Factory</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Element\Message\MessageConfigurationsPool">
+    <type name="Magento\Framework\View\Element\Message\Message_Configurations_Pool">
         <arguments>
             <argument name="configurationsMap" xsi:type="array">
                 <item name="urlDuplicateMessageMapId" xsi:type="array">
-                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\Block_Renderer::CODE</item>
                     <item name="data" xsi:type="array">
                         <item name="template" xsi:type="string">Magento_UrlRewrite::messages/url_duplicate_message.phtml</item>
                     </item>

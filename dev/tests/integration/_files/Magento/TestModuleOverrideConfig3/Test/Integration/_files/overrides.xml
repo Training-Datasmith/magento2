@@ -6,7 +6,7 @@
  */
 -->
 <overrides>
-    <test class="Magento\TestModuleOverrideConfig\MagentoConfigFixture\ReplaceFixtureTest">
+    <test class="Magento\Test_Module_Override_Config\Magento_Config_Fixture\Replace_Fixture_Test">
         <method name="testReplaceFixtureViaThirdModule">
             <dataSet name="second_data_set">
                 <magentoConfigFixture scopeType="store" scopeCode="current" path="test_section/test_group/field_1" newValue="Overridden fixture for data set from third module"/>
@@ -14,7 +14,7 @@
             <magentoConfigFixture scopeType="store" scopeCode="current" path="test_section/test_group/field_1" newValue="Overridden fixture for method from third module"/>
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\MagentoAdminConfigFixture\ReplaceFixtureTest">
+    <test class="Magento\Test_Module_Override_Config\Magento_Admin_Config_Fixture\Replace_Fixture_Test">
         <method name="testReplaceFixtureViaThirdModule">
             <dataSet name="second_data_set">
                 <magentoAdminConfigFixture path="test_section/test_group/field_1" newValue="Overridden admin config fixture for data set from third module"/>
@@ -22,17 +22,17 @@
             <magentoAdminConfigFixture path="test_section/test_group/field_1" newValue="Overridden admin config fixture for method from third module"/>
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\MagentoDataFixture\AddFixtureTest">
+    <test class="Magento\Test_Module_Override_Config\Magento_Data_Fixture\Add_Fixture_Test">
         <method name="testAddSameFixtures">
             <magentoDataFixture path="Magento/TestModuleOverrideConfig2/_files/fixture2_second_module.php"/>
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\MagentoDataFixtureBeforeTransaction\AddFixtureTest">
+    <test class="Magento\Test_Module_Override_Config\Magento_Data_Fixture_Before_Transaction\Add_Fixture_Test">
         <method name="testAddSameFixtures">
             <magentoDataFixture path="Magento/TestModuleOverrideConfig2/_files/fixture3_second_module.php"/>
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\MagentoDataFixture\ReplaceFixtureTest">
+    <test class="Magento\Test_Module_Override_Config\Magento_Data_Fixture\Replace_Fixture_Test">
         <method name="testReplaceFixtureViaThirdModule">
             <magentoDataFixture path="Magento/TestModuleOverrideConfig/_files/fixture1_first_module.php" newPath="Magento/TestModuleOverrideConfig2/_files/fixture3_second_module.php" />
             <magentoDataFixture path="Magento/TestModuleOverrideConfig/_files/fixture1_first_module_rollback.php" newPath="Magento/TestModuleOverrideConfig2/_files/fixture3_second_module_rollback.php" />
@@ -46,14 +46,14 @@
             <magentoDataFixture path="Magento/TestModuleOverrideConfig2/_files/fixture3_second_module_rollback.php" newPath="Magento/TestModuleOverrideConfig3/_files/fixture1_third_module_rollback.php" />
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\MagentoDataFixture\SortFixturesTest">
+    <test class="Magento\Test_Module_Override_Config\Magento_Data_Fixture\Sort_Fixtures_Test">
         <method name="testSortFixtures">
             <dataSet name="first_data_set">
                 <magentoDataFixture path="Magento/TestModuleOverrideConfig3/_files/fixture1_third_module.php" before="Magento/TestModuleOverrideConfig/_files/fixture3_first_module.php" />
             </dataSet>
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\Inheritance\Fixtures\FixturesInterface">
+    <test class="Magento\Test_Module_Override_Config\Inheritance\Fixtures\Fixtures_Interface">
         <magentoAdminConfigFixture path="test_section/test_group/field_1" value="overridden config fixture value for class"/>
         <magentoConfigFixture scopeType="store" scopeCode="current" path="test_section/test_group/field_1" value="overridden config fixture value for class"/>
         <magentoDataFixture path="Magento/TestModuleOverrideConfig/_files/fixture1_first_module.php"/>
@@ -73,7 +73,7 @@
             </dataSet>
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\Inheritance\Fixtures\FixturesAbstractClass">
+    <test class="Magento\Test_Module_Override_Config\Inheritance\Fixtures\Fixtures_Abstract_Class">
         <method name="testAbstractInheritance">
             <magentoAdminConfigFixture path="test_section/test_group/field_2" remove="true"/>
             <magentoConfigFixture scopeType="store" scopeCode="current" path="test_section/test_group/field_2" remove="true"/>
@@ -95,13 +95,13 @@
             </dataSet>
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\Inheritance\Skip\SkipAbstractClass">
+    <test class="Magento\Test_Module_Override_Config\Inheritance\Skip\Skip_Abstract_Class">
         <method name="testAbstractSkip" skip="true"/>
         <method name="testSkipDataSet">
             <dataSet name="first_data_set" skip="true"/>
         </method>
     </test>
-    <test class="Magento\TestModuleOverrideConfig\Inheritance\Skip\SkipInterface">
+    <test class="Magento\Test_Module_Override_Config\Inheritance\Skip\Skip_Interface">
         <method name="testInterfaceSkip" skip="true"/>
         <method name="testSkipDataSet">
             <dataSet name="second_data_set" skip="true"/>

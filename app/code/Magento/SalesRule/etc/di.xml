@@ -6,39 +6,39 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\SalesRule\Api\RuleRepositoryInterface"
-                type="Magento\SalesRule\Model\RuleRepository" />
-    <preference for="Magento\SalesRule\Api\Data\RuleInterface"
-                type="Magento\SalesRule\Model\Data\Rule" />
-    <preference for="Magento\SalesRule\Api\Data\ConditionInterface"
-                type="Magento\SalesRule\Model\Data\Condition" />
-    <preference for="Magento\SalesRule\Api\Data\RuleSearchResultInterface"
-                type="Magento\Framework\Api\SearchResults" />
-    <preference for="Magento\SalesRule\Api\Data\RuleLabelInterface"
-                type="Magento\SalesRule\Model\Data\RuleLabel" />
-    <preference for="Magento\SalesRule\Api\Data\CouponInterface"
-                type="Magento\SalesRule\Model\Coupon" />
-    <preference for="Magento\SalesRule\Api\CouponRepositoryInterface"
-                type="Magento\SalesRule\Model\CouponRepository" />
-    <preference for="Magento\SalesRule\Model\Spi\CouponResourceInterface"
-                type="Magento\SalesRule\Model\ResourceModel\Coupon" />
-    <preference for="Magento\SalesRule\Api\Data\CouponSearchResultInterface"
-                type="Magento\Framework\Api\SearchResults" />
-    <preference for="Magento\SalesRule\Api\Data\CouponGenerationSpecInterface"
-                type="Magento\SalesRule\Model\Data\CouponGenerationSpec" />
-    <preference for="Magento\SalesRule\Api\Data\CouponMassDeleteResultInterface"
-                type="Magento\SalesRule\Model\Data\CouponMassDeleteResult" />
-    <preference for="Magento\SalesRule\Api\CouponManagementInterface"
-                type="Magento\SalesRule\Model\Service\CouponManagementService" />
-    <preference for="Magento\SalesRule\Api\Data\RuleDiscountInterface"
-                type="Magento\SalesRule\Model\Data\RuleDiscount" />
-    <preference for="Magento\SalesRule\Api\Data\DiscountDataInterface"
-                type="Magento\SalesRule\Model\Data\DiscountData" />
-    <preference for="Magento\SalesRule\Model\Spi\RuleQuoteRecollectTotalsInterface"
-                type="Magento\SalesRule\Model\Rule\RuleQuoteRecollectTotalsOnDemand" />
-    <preference for="Magento\SalesRule\Model\Spi\QuoteResetAppliedRulesInterface"
-                type="Magento\SalesRule\Model\Rule\QuoteResetAppliedRules" />
-    <type name="Magento\SalesRule\Helper\Coupon">
+    <preference for="Magento\Sales_Rule\Api\Rule_Repository_Interface"
+                type="Magento\Sales_Rule\Model\Rule_Repository" />
+    <preference for="Magento\Sales_Rule\Api\Data\Rule_Interface"
+                type="Magento\Sales_Rule\Model\Data\Rule" />
+    <preference for="Magento\Sales_Rule\Api\Data\Condition_Interface"
+                type="Magento\Sales_Rule\Model\Data\Condition" />
+    <preference for="Magento\Sales_Rule\Api\Data\Rule_Search_Result_Interface"
+                type="Magento\Framework\Api\Search_Results" />
+    <preference for="Magento\Sales_Rule\Api\Data\Rule_Label_Interface"
+                type="Magento\Sales_Rule\Model\Data\Rule_Label" />
+    <preference for="Magento\Sales_Rule\Api\Data\Coupon_Interface"
+                type="Magento\Sales_Rule\Model\Coupon" />
+    <preference for="Magento\Sales_Rule\Api\Coupon_Repository_Interface"
+                type="Magento\Sales_Rule\Model\Coupon_Repository" />
+    <preference for="Magento\Sales_Rule\Model\Spi\Coupon_Resource_Interface"
+                type="Magento\Sales_Rule\Model\Resource_Model\Coupon" />
+    <preference for="Magento\Sales_Rule\Api\Data\Coupon_Search_Result_Interface"
+                type="Magento\Framework\Api\Search_Results" />
+    <preference for="Magento\Sales_Rule\Api\Data\Coupon_Generation_Spec_Interface"
+                type="Magento\Sales_Rule\Model\Data\Coupon_Generation_Spec" />
+    <preference for="Magento\Sales_Rule\Api\Data\Coupon_Mass_Delete_Result_Interface"
+                type="Magento\Sales_Rule\Model\Data\Coupon_Mass_Delete_Result" />
+    <preference for="Magento\Sales_Rule\Api\Coupon_Management_Interface"
+                type="Magento\Sales_Rule\Model\Service\Coupon_Management_Service" />
+    <preference for="Magento\Sales_Rule\Api\Data\Rule_Discount_Interface"
+                type="Magento\Sales_Rule\Model\Data\Rule_Discount" />
+    <preference for="Magento\Sales_Rule\Api\Data\Discount_Data_Interface"
+                type="Magento\Sales_Rule\Model\Data\Discount_Data" />
+    <preference for="Magento\Sales_Rule\Model\Spi\Rule_Quote_Recollect_Totals_Interface"
+                type="Magento\Sales_Rule\Model\Rule\Rule_Quote_Recollect_Totals_On_Demand" />
+    <preference for="Magento\Sales_Rule\Model\Spi\Quote_Reset_Applied_Rules_Interface"
+                type="Magento\Sales_Rule\Model\Rule\Quote_Reset_Applied_Rules" />
+    <type name="Magento\Sales_Rule\Helper\Coupon">
         <arguments>
             <argument name="couponParameters" xsi:type="array">
                 <item name="separator" xsi:type="string">-</item>
@@ -50,9 +50,9 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\ResourceModel\Rule\Collection" shared="false" />
+    <type name="Magento\Sales_Rule\Model\Resource_Model\Rule\Collection" shared="false" />
     <type name="Magento\Quote\Model\Quote\Config">
-        <plugin name="append_sales_rule_keys_to_quote" type="Magento\SalesRule\Model\Plugin\QuoteConfigProductAttributes"/>
+        <plugin name="append_sales_rule_keys_to_quote" type="Magento\Sales_Rule\Model\Plugin\Quote_Config_Product_Attributes"/>
     </type>
     <type name="Magento\Framework\Module\Setup\Migration">
         <arguments>
@@ -61,108 +61,108 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\Rss\RssManagerInterface">
+    <type name="Magento\Framework\App\Rss\Rss_Manager_Interface">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
-                <item name="discounts" xsi:type="string">Magento\SalesRule\Block\Rss\Discounts</item>
+                <item name="discounts" xsi:type="string">Magento\Sales_Rule\Block\Rss\Discounts</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\ResourceModel\Report\Rule">
+    <type name="Magento\Sales_Rule\Model\Resource_Model\Report\Rule">
         <arguments>
             <argument name="connectionName" xsi:type="string">sales</argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\ResourceModel\Report\Rule\Createdat">
+    <type name="Magento\Sales_Rule\Model\Resource_Model\Report\Rule\Createdat">
         <arguments>
             <argument name="connectionName" xsi:type="string">sales</argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\ResourceModel\Report\Rule\Updatedat">
+    <type name="Magento\Sales_Rule\Model\Resource_Model\Report\Rule\Updatedat">
         <arguments>
             <argument name="connectionName" xsi:type="string">sales</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+    <type name="Magento\Framework\Model\Entity\Repository_Factory">
         <arguments>
             <argument name="entities" xsi:type="array">
-                <item name="Magento\SalesRule\Api\Data\RuleInterface" xsi:type="string">Magento\SalesRule\Model\ResourceModel\Rule</item>
+                <item name="Magento\Sales_Rule\Api\Data\Rule_Interface" xsi:type="string">Magento\Sales_Rule\Model\Resource_Model\Rule</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\MetadataPool">
+    <type name="Magento\Framework\Entity_Manager\Metadata_Pool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Magento\SalesRule\Api\Data\RuleInterface" xsi:type="array">
+                <item name="Magento\Sales_Rule\Api\Data\Rule_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">salesrule</item>
                     <item name="identifierField" xsi:type="string">rule_id</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\Operation\AttributePool">
+    <type name="Magento\Framework\Entity_Manager\Operation\Attribute_Pool">
         <arguments>
             <argument name="extensionActions" xsi:type="array">
                 <item name="salesRule" xsi:type="array">
-                    <item name="Magento\SalesRule\Api\Data\RuleInterface" xsi:type="array">
-                        <item name="read" xsi:type="string">Magento\SalesRule\Model\ResourceModel\ReadHandler</item>
-                        <item name="create" xsi:type="string">Magento\SalesRule\Model\ResourceModel\SaveHandler</item>
-                        <item name="update" xsi:type="string">Magento\SalesRule\Model\ResourceModel\SaveHandler</item>
+                    <item name="Magento\Sales_Rule\Api\Data\Rule_Interface" xsi:type="array">
+                        <item name="read" xsi:type="string">Magento\Sales_Rule\Model\Resource_Model\Read_Handler</item>
+                        <item name="create" xsi:type="string">Magento\Sales_Rule\Model\Resource_Model\Save_Handler</item>
+                        <item name="update" xsi:type="string">Magento\Sales_Rule\Model\Resource_Model\Save_Handler</item>
                     </item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Rule\Condition\Address">
+    <type name="Magento\Sales_Rule\Model\Rule\Condition\Address">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">sales_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Rule\Condition\Combine">
+    <type name="Magento\Sales_Rule\Model\Rule\Condition\Combine">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">sales_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Rule\Condition\Product">
+    <type name="Magento\Sales_Rule\Model\Rule\Condition\Product">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">sales_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Rule\Condition\Product\Combine">
+    <type name="Magento\Sales_Rule\Model\Rule\Condition\Product\Combine">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">sales_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Rule\Condition\Product\Found">
+    <type name="Magento\Sales_Rule\Model\Rule\Condition\Product\Found">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">sales_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Rule\Condition\Product\Subselect">
+    <type name="Magento\Sales_Rule\Model\Rule\Condition\Product\Subselect">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">sales_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Rule\Customer">
+    <type name="Magento\Sales_Rule\Model\Rule\Customer">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="form_name" xsi:type="string">sales_rule_form</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\SalesRule\Model\ResourceModel\Rule\AssociatedEntityMap" type="Magento\Framework\DataObject">
+    <virtualType name="Magento\Sales_Rule\Model\Resource_Model\Rule\Associated_Entity_Map" type="Magento\Framework\Data_Object">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="website" xsi:type="array">
@@ -178,38 +178,38 @@
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\EntityManager\HydratorPool">
+    <type name="Magento\Framework\Entity_Manager\Hydrator_Pool">
         <arguments>
             <argument name="hydrators" xsi:type="array">
-                <item name="Magento\SalesRule\Api\Data\RuleInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
-                <item name="Magento\SalesRule\Api\Data\CouponInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+                <item name="Magento\Sales_Rule\Api\Data\Rule_Interface" xsi:type="string">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</item>
+                <item name="Magento\Sales_Rule\Api\Data\Coupon_Interface" xsi:type="string">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\Cart\CartTotalRepository">
-        <plugin name="coupon_label_plugin" type="Magento\SalesRule\Plugin\CartTotalRepository" />
+    <type name="Magento\Quote\Model\Cart\Cart_Total_Repository">
+        <plugin name="coupon_label_plugin" type="Magento\Sales_Rule\Plugin\Cart_Total_Repository" />
     </type>
-    <type name="Magento\Sales\Model\Service\OrderService">
-        <plugin name="coupon_uses_decrement_plugin" type="Magento\SalesRule\Plugin\CouponUsagesDecrement" />
+    <type name="Magento\Sales\Model\Service\Order_Service">
+        <plugin name="coupon_uses_decrement_plugin" type="Magento\Sales_Rule\Plugin\Coupon_Usages_Decrement" />
     </type>
-    <type name="\Magento\Quote\Model\QuoteManagement">
-        <plugin name="coupon_uses_increment_plugin" type="Magento\SalesRule\Plugin\CouponUsagesIncrement" sortOrder="20"/>
+    <type name="\Magento\Quote\Model\Quote_Management">
+        <plugin name="coupon_uses_increment_plugin" type="Magento\Sales_Rule\Plugin\Coupon_Usages_Increment" sortOrder="20"/>
     </type>
-    <type name="\Magento\Multishipping\Model\Checkout\Type\Multishipping\PlaceOrderDefault">
-        <plugin name="coupon_uses_increment_multishipping_plugin" type="Magento\SalesRule\Plugin\CouponUsagesIncrementMultishipping" sortOrder="30"/>
+    <type name="\Magento\Multishipping\Model\Checkout\Type\Multishipping\Place_Order_Default">
+        <plugin name="coupon_uses_increment_multishipping_plugin" type="Magento\Sales_Rule\Plugin\Coupon_Usages_Increment_Multishipping" sortOrder="30"/>
     </type>
     <preference
-            for="Magento\SalesRule\Model\Spi\CodeLimitManagerInterface"
-            type="Magento\SalesRule\Model\Coupon\CodeLimitManager" />
-    <type name="Magento\SalesRule\Observer\RuleQuoteRecollectTotalsObserver">
+            for="Magento\Sales_Rule\Model\Spi\Code_Limit_Manager_Interface"
+            type="Magento\Sales_Rule\Model\Coupon\Code_Limit_Manager" />
+    <type name="Magento\Sales_Rule\Observer\Rule_Quote_Recollect_Totals_Observer">
         <arguments>
-            <argument name="recollectTotals" xsi:type="object">Magento\SalesRule\Model\Rule\RuleQuoteRecollectTotalsAsync\Proxy</argument>
+            <argument name="recollectTotals" xsi:type="object">Magento\Sales_Rule\Model\Rule\Rule_Quote_Recollect_Totals_Async\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Controller\Adminhtml\Promo\Quote\Generate">
+    <type name="Magento\Sales_Rule\Controller\Adminhtml\Promo\Quote\Generate">
         <arguments>
-            <argument name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\ScopeConfigInterface\Proxy</argument>
+            <argument name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\Scope_Config_Interface\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Rule\Action\Discount\ExistingDiscountRuleCollector" shared="true" />
+    <type name="Magento\Sales_Rule\Model\Rule\Action\Discount\Existing_Discount_Rule_Collector" shared="true" />
 </config>

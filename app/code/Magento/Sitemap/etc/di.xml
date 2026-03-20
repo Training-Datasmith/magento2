@@ -6,55 +6,55 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Sitemap\Model\SitemapItemInterface" type="Magento\Sitemap\Model\SitemapItem" />
-    <preference for="Magento\Sitemap\Model\ItemProvider\ItemProviderInterface" type="Magento\Sitemap\Model\ItemProvider\Composite" />
-    <preference for="Magento\Sitemap\Model\SitemapConfigReaderInterface" type="Magento\Sitemap\Model\SitemapConfigReader" />
+    <preference for="Magento\Sitemap\Model\Sitemap_Item_Interface" type="Magento\Sitemap\Model\Sitemap_Item" />
+    <preference for="Magento\Sitemap\Model\Item_Provider\Item_Provider_Interface" type="Magento\Sitemap\Model\Item_Provider\Composite" />
+    <preference for="Magento\Sitemap\Model\Sitemap_Config_Reader_Interface" type="Magento\Sitemap\Model\Sitemap_Config_Reader" />
 
-    <type name="Magento\Sitemap\Model\ItemProvider\Batch\Product">
+    <type name="Magento\Sitemap\Model\Item_Provider\Batch\Product">
         <arguments>
-            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\ItemProvider\ProductConfigReader</argument>
+            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Product_Config_Reader</argument>
         </arguments>
     </type>
     <type name="Magento\Sitemap\Model\Sitemap">
         <arguments>
-            <argument name="resource" xsi:type="object">Magento\Sitemap\Model\ResourceModel\Sitemap</argument>
+            <argument name="resource" xsi:type="object">Magento\Sitemap\Model\Resource_Model\Sitemap</argument>
         </arguments>
     </type>
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="sitemap/generate/error_email" xsi:type="string">1</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sitemap\Model\ItemProvider\Composite">
+    <type name="Magento\Sitemap\Model\Item_Provider\Composite">
         <arguments>
             <argument name="itemProviders" xsi:type="array">
-                <item name="storeUrlProvider" xsi:type="object">Magento\Sitemap\Model\ItemProvider\StoreUrl</item>
-                <item name="categoryProvider" xsi:type="object">Magento\Sitemap\Model\ItemProvider\Category</item>
-                <item name="cmsPageProvider" xsi:type="object">Magento\Sitemap\Model\ItemProvider\CmsPage</item>
-                <item name="productProvider" xsi:type="object">Magento\Sitemap\Model\ItemProvider\Product</item>
+                <item name="storeUrlProvider" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Store_Url</item>
+                <item name="categoryProvider" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Category</item>
+                <item name="cmsPageProvider" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Cms_Page</item>
+                <item name="productProvider" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Product</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sitemap\Model\ItemProvider\StoreUrl">
+    <type name="Magento\Sitemap\Model\Item_Provider\Store_Url">
         <arguments>
-            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\ItemProvider\StoreUrlConfigReader</argument>
+            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Store_Url_Config_Reader</argument>
         </arguments>
     </type>
-    <type name="Magento\Sitemap\Model\ItemProvider\Category">
+    <type name="Magento\Sitemap\Model\Item_Provider\Category">
         <arguments>
-            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\ItemProvider\CategoryConfigReader</argument>
+            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Category_Config_Reader</argument>
         </arguments>
     </type>
-    <type name="Magento\Sitemap\Model\ItemProvider\Product">
+    <type name="Magento\Sitemap\Model\Item_Provider\Product">
         <arguments>
-            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\ItemProvider\ProductConfigReader</argument>
+            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Product_Config_Reader</argument>
         </arguments>
     </type>
-    <type name="Magento\Sitemap\Model\ItemProvider\CmsPage">
+    <type name="Magento\Sitemap\Model\Item_Provider\Cms_Page">
         <arguments>
-            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\ItemProvider\CmsPageConfigReader</argument>
+            <argument name="configReader" xsi:type="object">Magento\Sitemap\Model\Item_Provider\Cms_Page_Config_Reader</argument>
         </arguments>
     </type>
     <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
@@ -71,15 +71,15 @@
     </type>
     <type name="Magento\Sitemap\Model\Batch\Observer">
         <arguments>
-            <argument name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\ScopeConfigInterface</argument>
-            <argument name="collectionFactory" xsi:type="object">Magento\Sitemap\Model\ResourceModel\Sitemap\CollectionFactory</argument>
-            <argument name="batchSitemapFactory" xsi:type="object">Magento\Sitemap\Model\Batch\SitemapFactory</argument>
-            <argument name="emailNotification" xsi:type="object">Magento\Sitemap\Model\EmailNotification</argument>
+            <argument name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\Scope_Config_Interface</argument>
+            <argument name="collectionFactory" xsi:type="object">Magento\Sitemap\Model\Resource_Model\Sitemap\Collection_Factory</argument>
+            <argument name="batchSitemapFactory" xsi:type="object">Magento\Sitemap\Model\Batch\Sitemap_Factory</argument>
+            <argument name="emailNotification" xsi:type="object">Magento\Sitemap\Model\Email_Notification</argument>
             <argument name="appEmulation" xsi:type="object">Magento\Store\Model\App\Emulation</argument>
-            <argument name="logger" xsi:type="object">Psr\Log\LoggerInterface</argument>
+            <argument name="logger" xsi:type="object">Psr\Log\Logger_Interface</argument>
         </arguments>
     </type>
     <type name="Magento\Cron\Model\Config\Backend\Sitemap">
-        <plugin name="sitemap_extended_cron_config" type="Magento\Sitemap\Plugin\Cron\Model\Config\Backend\SitemapPlugin" />
+        <plugin name="sitemap_extended_cron_config" type="Magento\Sitemap\Plugin\Cron\Model\Config\Backend\Sitemap_Plugin" />
     </type>
 </config>

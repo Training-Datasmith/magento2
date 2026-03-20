@@ -11,24 +11,24 @@
     </type>
     <type name="Magento\Catalog\Block\Adminhtml\Product\Attribute\Edit\Tab\Main">
         <arguments>
-            <argument name="formFactory" xsi:type="object">Magento\Swatches\Block\Adminhtml\Product\Attribute\Edit\FormFactory</argument>
+            <argument name="formFactory" xsi:type="object">Magento\Swatches\Block\Adminhtml\Product\Attribute\Edit\Form_Factory</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Swatches\Block\Adminhtml\Product\Attribute\Edit\FormFactory" type="Magento\Framework\Data\FormFactory">
+    <virtualType name="Magento\Swatches\Block\Adminhtml\Product\Attribute\Edit\Form_Factory" type="Magento\Framework\Data\Form_Factory">
         <arguments>
             <argument name="instanceName" xsi:type="string">Magento\Swatches\Block\Adminhtml\Product\Attribute\Edit\Form</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\ConfigurableProduct\Controller\Adminhtml\Product\Attribute\GetAttributes">
+    <type name="Magento\Configurable_Product\Controller\Adminhtml\Product\Attribute\Get_Attributes">
         <arguments>
-            <argument name="attributesList" xsi:type="object">Magento\Swatches\Model\AttributesList</argument>
+            <argument name="attributesList" xsi:type="object">Magento\Swatches\Model\Attributes_List</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Eav\Attribute">
-        <plugin name="invalidate_caches_after_attribute_save" type="Magento\Swatches\Plugin\Catalog\CacheInvalidate" />
+    <type name="Magento\Catalog\Model\Resource_Model\Eav\Attribute">
+        <plugin name="invalidate_caches_after_attribute_save" type="Magento\Swatches\Plugin\Catalog\Cache_Invalidate" />
     </type>
     <type name="Magento\Eav\Model\Adminhtml\System\Config\Source\Inputtype">
-        <plugin name="append_compatible_input_types" type="Magento\Swatches\Plugin\Eav\System\Config\Source\InputtypePlugin" />
+        <plugin name="append_compatible_input_types" type="Magento\Swatches\Plugin\Eav\System\Config\Source\Inputtype_Plugin" />
     </type>
     <type name="Magento\Catalog\Controller\Adminhtml\Product\Attribute\Validate">
         <arguments>

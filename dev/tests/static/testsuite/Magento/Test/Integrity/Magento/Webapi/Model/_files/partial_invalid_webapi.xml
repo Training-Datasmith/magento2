@@ -8,7 +8,7 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <route url="/V1/customer/me" method="PATCH">
-        <service class="Magento\Customer\Api\CustomerRepositoryInterface" />
+        <service class="Magento\Customer\Api\Customer_Repository_Interface" />
         <resources>
             <resource ref="a resource" />
         </resources>
@@ -17,6 +17,6 @@
     </route>
     <route url="/V1/customers" method="POST"/>
     <route url="/V1/customers" method="PUT">
-        <service class="Magento\Customer\Api\CustomerRepositoryInterface" method="foo" />
+        <service class="Magento\Customer\Api\Customer_Repository_Interface" method="foo" />
     </route>
 </routes>

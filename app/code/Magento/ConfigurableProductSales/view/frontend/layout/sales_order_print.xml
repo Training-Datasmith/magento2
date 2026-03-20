@@ -10,7 +10,7 @@
         <referenceBlock name="order_items">
             <arguments>
                 <argument name="configurable_renderer_type_resolver" xsi:type="object">
-                    Magento\ConfigurableProductSales\ViewModel\ItemRendererTypeResolver
+                    Magento\Configurable_Product_Sales\View_Model\Item_Renderer_Type_Resolver
                 </argument>
             </arguments>
         </referenceBlock>

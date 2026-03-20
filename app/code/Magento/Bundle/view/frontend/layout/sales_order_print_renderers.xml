@@ -12,7 +12,7 @@
         </referenceBlock>
         <referenceBlock name="sales.order.print.renderers.bundle">
             <arguments>
-                <argument name="view_model" xsi:type="object">Magento\Bundle\ViewModel\Sales\Order\Items\Renderer</argument>
+                <argument name="view_model" xsi:type="object">Magento\Bundle\View_Model\Sales\Order\Items\Renderer</argument>
             </arguments>
         </referenceBlock>
     </body>

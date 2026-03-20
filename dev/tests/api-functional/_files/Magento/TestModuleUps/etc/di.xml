@@ -6,5 +6,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Ups\Model\Carrier" type="Magento\TestModuleUps\Model\Carrier"/>
+    <preference for="Magento\Ups\Model\Carrier" type="Magento\Test_Module_Ups\Model\Carrier"/>
 </config>

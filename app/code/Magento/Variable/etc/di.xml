@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Variable\Model\Config\Structure\AvailableVariables">
+    <type name="Magento\Variable\Model\Config\Structure\Available_Variables">
         <arguments>
             <argument name="configPaths" xsi:type="array">
                 <item name="web" xsi:type="array">
@@ -50,23 +50,23 @@
     </type>
     <type name="Magento\Variable\Model\Source\Variables">
         <arguments>
-            <argument name="configStructure" xsi:type="object">Magento\Variable\Model\Config\StructureVirtual</argument>
+            <argument name="configStructure" xsi:type="object">Magento\Variable\Model\Config\Structure_Virtual</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Variable\Model\Config\Structure\ReaderVirtual" type="Magento\Config\Model\Config\Structure\Reader">
+    <virtualType name="Magento\Variable\Model\Config\Structure\Reader_Virtual" type="Magento\Config\Model\Config\Structure\Reader">
         <arguments>
             <argument name="domDocumentClass" xsi:type="string">Magento\Variable\Model\Config\Structure\Dom</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Variable\Model\Config\StructureDataVirtual" type="Magento\Config\Model\Config\Structure\Data">
+    <virtualType name="Magento\Variable\Model\Config\Structure_Data_Virtual" type="Magento\Config\Model\Config\Structure\Data">
         <arguments>
             <argument name="cacheId" xsi:type="string">variable_system_configuration_structure</argument>
-            <argument name="reader" xsi:type="object">Magento\Variable\Model\Config\Structure\ReaderVirtual</argument>
+            <argument name="reader" xsi:type="object">Magento\Variable\Model\Config\Structure\Reader_Virtual</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Variable\Model\Config\StructureVirtual" type="Magento\Config\Model\Config\StructureLazy">
+    <virtualType name="Magento\Variable\Model\Config\Structure_Virtual" type="Magento\Config\Model\Config\Structure_Lazy">
         <arguments>
-            <argument name="structureData" xsi:type="object">Magento\Variable\Model\Config\StructureDataVirtual</argument>
+            <argument name="structureData" xsi:type="object">Magento\Variable\Model\Config\Structure_Data_Virtual</argument>
         </arguments>
     </virtualType>
 </config>

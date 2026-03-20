@@ -6,29 +6,29 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\InstantPurchase\Model\InstantPurchaseInterface" type="Magento\InstantPurchase\Model\InstantPurchaseChooser" />
-    <preference for="Magento\InstantPurchase\Model\PaymentMethodChoose\PaymentTokenChooserInterface" type="Magento\InstantPurchase\Model\PaymentMethodChoose\LastCreatedPaymentTokenChooser" />
-    <preference for="Magento\InstantPurchase\Model\ShippingAddressChoose\ShippingAddressChooserInterface" type="Magento\InstantPurchase\Model\ShippingAddressChoose\DefaultShippingAddressChooser" />
-    <preference for="Magento\InstantPurchase\Model\BillingAddressChoose\BillingAddressChooserInterface" type="Magento\InstantPurchase\Model\BillingAddressChoose\DefaultBillingAddressChooser" />
-    <preference for="Magento\InstantPurchase\Model\ShippingMethodChoose\ShippingMethodChooserInterface" type="Magento\InstantPurchase\Model\ShippingMethodChoose\CheapestMethodChooser" />
+    <preference for="Magento\Instant_Purchase\Model\Instant_Purchase_Interface" type="Magento\Instant_Purchase\Model\Instant_Purchase_Chooser" />
+    <preference for="Magento\Instant_Purchase\Model\Payment_Method_Choose\Payment_Token_Chooser_Interface" type="Magento\Instant_Purchase\Model\Payment_Method_Choose\Last_Created_Payment_Token_Chooser" />
+    <preference for="Magento\Instant_Purchase\Model\Shipping_Address_Choose\Shipping_Address_Chooser_Interface" type="Magento\Instant_Purchase\Model\Shipping_Address_Choose\Default_Shipping_Address_Chooser" />
+    <preference for="Magento\Instant_Purchase\Model\Billing_Address_Choose\Billing_Address_Chooser_Interface" type="Magento\Instant_Purchase\Model\Billing_Address_Choose\Default_Billing_Address_Chooser" />
+    <preference for="Magento\Instant_Purchase\Model\Shipping_Method_Choose\Shipping_Method_Chooser_Interface" type="Magento\Instant_Purchase\Model\Shipping_Method_Choose\Cheapest_Method_Chooser" />
 
-    <preference for="Magento\InstantPurchase\PaymentMethodIntegration\AvailabilityCheckerInterface" type="Magento\InstantPurchase\PaymentMethodIntegration\StaticAvailabilityChecker" />
-    <preference for="Magento\InstantPurchase\PaymentMethodIntegration\PaymentTokenFormatterInterface" type="Magento\InstantPurchase\PaymentMethodIntegration\SimplePaymentTokenFormatter" />
-    <preference for="Magento\InstantPurchase\PaymentMethodIntegration\PaymentAdditionalInformationProviderInterface" type="Magento\InstantPurchase\PaymentMethodIntegration\StaticAdditionalInformationProvider" />
+    <preference for="Magento\Instant_Purchase\Payment_Method_Integration\Availability_Checker_Interface" type="Magento\Instant_Purchase\Payment_Method_Integration\Static_Availability_Checker" />
+    <preference for="Magento\Instant_Purchase\Payment_Method_Integration\Payment_Token_Formatter_Interface" type="Magento\Instant_Purchase\Payment_Method_Integration\Simple_Payment_Token_Formatter" />
+    <preference for="Magento\Instant_Purchase\Payment_Method_Integration\Payment_Additional_Information_Provider_Interface" type="Magento\Instant_Purchase\Payment_Method_Integration\Static_Additional_Information_Provider" />
 
-    <type name="Magento\InstantPurchase\Model\ShippingMethodChoose\DeferredShippingMethodChooserPool">
+    <type name="Magento\Instant_Purchase\Model\Shipping_Method_Choose\Deferred_Shipping_Method_Chooser_Pool">
         <arguments>
             <argument name="choosers" xsi:type="array">
-                <item name="cheapest" xsi:type="object">Magento\InstantPurchase\Model\ShippingMethodChoose\CheapestMethodDeferredChooser</item>
+                <item name="cheapest" xsi:type="object">Magento\Instant_Purchase\Model\Shipping_Method_Choose\Cheapest_Method_Deferred_Chooser</item>
             </argument>
         </arguments>
     </type>
 
-    <type name="Magento\Framework\App\Request\Backpressure\CompositeRequestTypeExtractor">
+    <type name="Magento\Framework\App\Request\Backpressure\Composite_Request_Type_Extractor">
         <arguments>
             <argument name="extractors" xsi:type="array">
                 <item name="instantpurchase" xsi:type="object">
-                    Magento\InstantPurchase\Model\BackpressureTypeExtractor
+                    Magento\Instant_Purchase\Model\Backpressure_Type_Extractor
                 </item>
             </argument>
         </arguments>

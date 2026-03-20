@@ -6,22 +6,22 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Catalog\Model\ResourceModel\Eav\Attribute">
-        <plugin name="save_swatches_option_params" type="Magento\Swatches\Model\Plugin\EavAttribute"/>
+    <type name="Magento\Catalog\Model\Resource_Model\Eav\Attribute">
+        <plugin name="save_swatches_option_params" type="Magento\Swatches\Model\Plugin\Eav_Attribute"/>
     </type>
-    <type name="Magento\Catalog\Block\Product\AbstractProduct">
-        <plugin name="add_product_object_to_image_data_array" type="Magento\Swatches\Model\Plugin\ProductImage" />
+    <type name="Magento\Catalog\Block\Product\Abstract_Product">
+        <plugin name="add_product_object_to_image_data_array" type="Magento\Swatches\Model\Plugin\Product_Image" />
     </type>
     <type name="Magento\Catalog\Model\Product">
         <plugin name="exclude_swatch_attribute" type="Magento\Swatches\Model\Plugin\Product" />
     </type>
-    <type name="Magento\LayeredNavigation\Block\Navigation\FilterRenderer">
-        <plugin name="swatches_layered_renderer" type="Magento\Swatches\Model\Plugin\FilterRenderer" sortOrder="1" />
+    <type name="Magento\Layered_Navigation\Block\Navigation\Filter_Renderer">
+        <plugin name="swatches_layered_renderer" type="Magento\Swatches\Model\Plugin\Filter_Renderer" sortOrder="1" />
     </type>
-    <type name="Magento\ConfigurableProduct\Model\Product\Type\Configurable">
+    <type name="Magento\Configurable_Product\Model\Product\Type\Configurable">
         <plugin name="add_swatch_attributes_to_configurable" type="Magento\Swatches\Model\Plugin\Configurable" />
     </type>
-    <type name="Magento\ConfigurableProduct\Observer\HideUnsupportedAttributeTypes">
+    <type name="Magento\Configurable_Product\Observer\Hide_Unsupported_Attribute_Types">
         <arguments>
             <argument name="supportedTypes" xsi:type="array">
                 <item name="swatch_visual" xsi:type="string">swatch_visual</item>
@@ -29,7 +29,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\Attribute\FrontendType">
+    <type name="Magento\Eav\Model\Attribute\Frontend_Type">
         <arguments>
             <argument name="config" xsi:type="array">
                 <item name="select" xsi:type="array">
@@ -40,7 +40,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Swatches\Model\SwatchAttributeCodes">
+    <type name="Magento\Swatches\Model\Swatch_Attribute_Codes">
         <arguments>
             <argument name="cacheKey" xsi:type="string">swatch-attribute-list</argument>
             <argument name="cacheTags" xsi:type="array">
@@ -48,8 +48,8 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Attribute\OptionManagement">
-        <plugin name="swatches_product_attribute_optionmanagement_plugin" type="Magento\Swatches\Plugin\Eav\Model\Entity\Attribute\OptionManagement"/>
+    <type name="Magento\Catalog\Model\Product\Attribute\Option_Management">
+        <plugin name="swatches_product_attribute_optionmanagement_plugin" type="Magento\Swatches\Plugin\Eav\Model\Entity\Attribute\Option_Management"/>
     </type>
     <type name="Magento\Eav\Model\Config">
         <arguments>

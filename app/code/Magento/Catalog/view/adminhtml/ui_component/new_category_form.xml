@@ -15,7 +15,7 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Magento\Catalog\Block\Adminhtml\Product\Edit\Button\CreateCategory"/>
+            <button name="save" class="Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Create_Category"/>
         </buttons>
         <ajaxSaveType>simple</ajaxSaveType>
         <deps>
@@ -31,7 +31,7 @@
         <settings>
             <submitUrl path="catalog/category/save"/>
         </settings>
-        <dataProvider class="Magento\Catalog\Ui\DataProvider\Product\Form\NewCategoryDataProvider" name="new_category_form_data_source">
+        <dataProvider class="Magento\Catalog\Ui\Data_Provider\Product\Form\New_Category_Data_Provider" name="new_category_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>

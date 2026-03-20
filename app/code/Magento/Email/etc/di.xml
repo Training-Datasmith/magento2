@@ -6,12 +6,12 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Framework\Mail\TemplateInterface" type="Magento\Email\Model\Template" />
-    <preference for="Magento\Framework\Mail\Template\FactoryInterface" type="Magento\Framework\Mail\Template\Factory" />
-    <preference for="Magento\Framework\Mail\TransportInterface" type="Magento\Email\Model\Transport" />
-    <preference for="Magento\Framework\Mail\MessageInterface" type="Magento\Framework\Mail\Message" />
-    <preference for="Magento\Framework\Mail\Template\SenderResolverInterface" type="Magento\Email\Model\Template\SenderResolver" />
-    <type name="Magento\Email\Model\BackendTemplate">
+    <preference for="Magento\Framework\Mail\Template_Interface" type="Magento\Email\Model\Template" />
+    <preference for="Magento\Framework\Mail\Template\Factory_Interface" type="Magento\Framework\Mail\Template\Factory" />
+    <preference for="Magento\Framework\Mail\Transport_Interface" type="Magento\Email\Model\Transport" />
+    <preference for="Magento\Framework\Mail\Message_Interface" type="Magento\Framework\Mail\Message" />
+    <preference for="Magento\Framework\Mail\Template\Sender_Resolver_Interface" type="Magento\Email\Model\Template\Sender_Resolver" />
+    <type name="Magento\Email\Model\Backend_Template">
         <arguments>
             <argument name="urlModel" xsi:type="object" shared="false">Magento\Backend\Model\Url</argument>
         </arguments>
@@ -21,7 +21,7 @@
             <argument name="urlModel" xsi:type="object">Magento\Framework\Url</argument>
         </arguments>
     </type>
-    <type name="Magento\Theme\Model\Design\Config\MetadataProvider">
+    <type name="Magento\Theme\Model\Design\Config\Metadata_Provider">
         <arguments>
             <argument name="metadata" xsi:type="array">
                 <item name="email_logo" xsi:type="array">
@@ -57,14 +57,14 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Mail\TransportInterface">
-        <plugin name="WindowsSmtpConfig" type="Magento\Email\Model\Plugin\WindowsSmtpConfig" />
-        <plugin name="EmailDisable" type="Magento\Email\Model\Mail\TransportInterfacePlugin" />
+    <type name="Magento\Framework\Mail\Transport_Interface">
+        <plugin name="WindowsSmtpConfig" type="Magento\Email\Model\Plugin\Windows_Smtp_Config" />
+        <plugin name="EmailDisable" type="Magento\Email\Model\Mail\Transport_Interface_Plugin" />
     </type>
-    <type name="Magento\Email\Model\AbstractTemplate">
-        <plugin name="EmailTemplateLinkUrl" type="Magento\Email\Model\Plugin\GetUrl"/>
+    <type name="Magento\Email\Model\Abstract_Template">
+        <plugin name="EmailTemplateLinkUrl" type="Magento\Email\Model\Plugin\Get_Url"/>
     </type>
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="system/smtp/host" xsi:type="string">1</item>
@@ -78,25 +78,25 @@
     <type name="Magento\Framework\Filter\Template">
         <arguments>
             <argument name="directiveProcessors" xsi:type="array">
-                <item name="depend" sortOrder="100" xsi:type="object">Magento\Framework\Filter\DirectiveProcessor\DependDirective</item>
-                <item name="if" sortOrder="200" xsi:type="object">Magento\Framework\Filter\DirectiveProcessor\IfDirective</item>
-                <item name="template" sortOrder="300" xsi:type="object">Magento\Framework\Filter\DirectiveProcessor\TemplateDirective</item>
-                <item name="legacy" sortOrder="400" xsi:type="object">Magento\Framework\Filter\DirectiveProcessor\LegacyDirective</item>
+                <item name="depend" sortOrder="100" xsi:type="object">Magento\Framework\Filter\Directive_Processor\Depend_Directive</item>
+                <item name="if" sortOrder="200" xsi:type="object">Magento\Framework\Filter\Directive_Processor\If_Directive</item>
+                <item name="template" sortOrder="300" xsi:type="object">Magento\Framework\Filter\Directive_Processor\Template_Directive</item>
+                <item name="legacy" sortOrder="400" xsi:type="object">Magento\Framework\Filter\Directive_Processor\Legacy_Directive</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Filter\DirectiveProcessor\Filter\FilterPool">
+    <type name="Magento\Framework\Filter\Directive_Processor\Filter\Filter_Pool">
         <arguments>
             <argument name="filters" xsi:type="array">
-                <item name="nl2br" xsi:type="object">Magento\Framework\Filter\DirectiveProcessor\Filter\NewlineToBreakFilter</item>
-                <item name="escape" xsi:type="object">Magento\Framework\Filter\DirectiveProcessor\Filter\EscapeFilter</item>
+                <item name="nl2br" xsi:type="object">Magento\Framework\Filter\Directive_Processor\Filter\Newline_To_Break_Filter</item>
+                <item name="escape" xsi:type="object">Magento\Framework\Filter\Directive_Processor\Filter\Escape_Filter</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="emailTemplateCheck" xsi:type="object">Magento\Email\Console\Command\DatabaseTemplateCompatibilityCommand</item>
+                <item name="emailTemplateCheck" xsi:type="object">Magento\Email\Console\Command\Database_Template_Compatibility_Command</item>
             </argument>
         </arguments>
     </type>

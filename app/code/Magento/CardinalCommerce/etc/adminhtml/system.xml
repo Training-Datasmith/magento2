@@ -17,7 +17,7 @@
                     <comment><![CDATA[Please visit <a href="https://www.cardinalcommerce.com/" target="_blank">www.cardinalcommerce.com</a> to get the CardinalCommerce credentials and find out more details about PSD2 SCA requirements. For support contact <a href="mailto:support@cardinalcommerce.com">support@cardinalcommerce.com</a>.]]></comment>
                     <field id="environment" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1">
                         <label>Environment</label>
-                        <source_model>Magento\CardinalCommerce\Model\Adminhtml\Source\Environment</source_model>
+                        <source_model>Magento\Cardinal_Commerce\Model\Adminhtml\Source\Environment</source_model>
                         <config_path>three_d_secure/cardinal/environment</config_path>
                         <depends>
                             <field id="enabled_authorize">1</field>

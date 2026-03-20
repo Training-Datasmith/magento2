@@ -6,15 +6,15 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\MediaContentApi\Model\Composite\GetEntityContents">
+    <type name="Magento\Media_Content_Api\Model\Composite\Get_Entity_Contents">
         <arguments>
             <argument name="items" xsi:type="array">
-                <item name="catalog_product" xsi:type="object">Magento\MediaContentCatalog\Model\ResourceModel\GetEntityContent</item>
-                <item name="catalog_category" xsi:type="object">Magento\MediaContentCatalog\Model\ResourceModel\GetEntityContent</item>
+                <item name="catalog_product" xsi:type="object">Magento\Media_Content_Catalog\Model\Resource_Model\Get_Entity_Content</item>
+                <item name="catalog_category" xsi:type="object">Magento\Media_Content_Catalog\Model\Resource_Model\Get_Entity_Content</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentCatalog\Observer\ProductDelete">
+    <type name="Magento\Media_Content_Catalog\Observer\Product_Delete">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="description" xsi:type="string">description</item>
@@ -22,7 +22,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentCatalog\Observer\CategoryDelete">
+    <type name="Magento\Media_Content_Catalog\Observer\Category_Delete">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="image" xsi:type="string">image</item>
@@ -30,7 +30,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentCatalog\Observer\Category">
+    <type name="Magento\Media_Content_Catalog\Observer\Category">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="image" xsi:type="string">image</item>
@@ -38,7 +38,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentCatalog\Observer\Product">
+    <type name="Magento\Media_Content_Catalog\Observer\Product">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="description" xsi:type="string">description</item>
@@ -46,7 +46,7 @@
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\MediaContentCatalog\Model\ResourceModel\GetAssetIdsByProductStatus" type="Magento\MediaContentCatalog\Model\ResourceModel\GetAssetIdsByEavContentField">
+    <virtualType name="Magento\Media_Content_Catalog\Model\Resource_Model\Get_Asset_Ids_By_Product_Status" type="Magento\Media_Content_Catalog\Model\Resource_Model\Get_Asset_Ids_By_Eav_Content_Field">
         <arguments>
             <argument name="attributeCode" xsi:type="string">status</argument>
             <argument name="entityType" xsi:type="string">catalog_product</argument>
@@ -57,23 +57,23 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\MediaContentCatalog\Model\ResourceModel\GetAssetIdsByCategoryStatus" type="Magento\MediaContentCatalog\Model\ResourceModel\GetAssetIdsByEavContentField">
+    <virtualType name="Magento\Media_Content_Catalog\Model\Resource_Model\Get_Asset_Ids_By_Category_Status" type="Magento\Media_Content_Catalog\Model\Resource_Model\Get_Asset_Ids_By_Eav_Content_Field">
         <arguments>
             <argument name="attributeCode" xsi:type="string">is_active</argument>
             <argument name="entityType" xsi:type="string">catalog_category</argument>
             <argument name="entityTable" xsi:type="string">catalog_category_entity</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\MediaContentApi\Model\Composite\GetAssetIdsByContentField">
+    <type name="Magento\Media_Content_Api\Model\Composite\Get_Asset_Ids_By_Content_Field">
         <arguments>
             <argument name="fieldHandlers" xsi:type="array">
                 <item name="content_status" xsi:type="array">
-                    <item name="getAssetIdsByProductStatus" xsi:type="object">Magento\MediaContentCatalog\Model\ResourceModel\GetAssetIdsByProductStatus</item>
-                    <item name="getAssetIdsByCategoryStatus" xsi:type="object">Magento\MediaContentCatalog\Model\ResourceModel\GetAssetIdsByCategoryStatus</item>
+                    <item name="getAssetIdsByProductStatus" xsi:type="object">Magento\Media_Content_Catalog\Model\Resource_Model\Get_Asset_Ids_By_Product_Status</item>
+                    <item name="getAssetIdsByCategoryStatus" xsi:type="object">Magento\Media_Content_Catalog\Model\Resource_Model\Get_Asset_Ids_By_Category_Status</item>
                 </item>
                 <item name="store_id" xsi:type="array">
-                    <item name="getAssetIdsByProductStore" xsi:type="object">Magento\MediaContentCatalog\Model\ResourceModel\GetAssetIdsByProductStore</item>
-                    <item name="getAssetIdsByCategoryStore" xsi:type="object">Magento\MediaContentCatalog\Model\ResourceModel\GetAssetIdsByCategoryStore</item>
+                    <item name="getAssetIdsByProductStore" xsi:type="object">Magento\Media_Content_Catalog\Model\Resource_Model\Get_Asset_Ids_By_Product_Store</item>
+                    <item name="getAssetIdsByCategoryStore" xsi:type="object">Magento\Media_Content_Catalog\Model\Resource_Model\Get_Asset_Ids_By_Category_Store</item>
                 </item>
             </argument>
         </arguments>

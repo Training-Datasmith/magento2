@@ -6,12 +6,12 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Mview/etc/mview.xsd">
-    <view id="catalogrule_rule" class="Magento\CatalogRule\Model\Indexer\Rule\RuleProductIndexer" group="indexer">
+    <view id="catalogrule_rule" class="Magento\Catalog_Rule\Model\Indexer\Rule\Rule_Product_Indexer" group="indexer">
         <subscriptions>
             <table name="catalogrule" entity_column="rule_id" />
         </subscriptions>
     </view>
-    <view id="catalogrule_product" class="Magento\CatalogRule\Model\Indexer\Product\ProductRuleIndexer" group="indexer">
+    <view id="catalogrule_product" class="Magento\Catalog_Rule\Model\Indexer\Product\Product_Rule_Indexer" group="indexer">
         <subscriptions>
             <table name="catalog_product_entity" entity_column="entity_id" />
             <table name="catalog_product_entity_datetime" entity_column="entity_id" />

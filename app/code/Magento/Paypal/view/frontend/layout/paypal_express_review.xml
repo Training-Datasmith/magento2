@@ -16,22 +16,22 @@
             <block class="Magento\Framework\View\Element\Js\Components" name="paypal_express_review_head_components" template="Magento_Paypal::js/components.phtml"/>
         </referenceBlock>
         <referenceContainer name="page.messages">
-            <block class="Magento\Paypal\Block\Cart\ValidationMessages" name="paypal.validation.messages"/>
+            <block class="Magento\Paypal\Block\Cart\Validation_Messages" name="paypal.validation.messages"/>
         </referenceContainer>
         <referenceContainer name="content">
             <block class="Magento\Paypal\Block\Express\Review" name="paypal.express.review" template="Magento_Paypal::express/review.phtml">
                 <arguments>
-                    <argument name="PaypalFundingSourceDataProvider" xsi:type="object">Magento\Paypal\ViewModel\PaypalFundingSourceDataProvider</argument>
+                    <argument name="PaypalFundingSourceDataProvider" xsi:type="object">Magento\Paypal\View_Model\Paypal_Funding_Source_Data_Provider</argument>
                 </arguments>
                 <block class="Magento\Paypal\Block\Express\Review" name="express.review.shipping.method" as="shipping_method" template="Magento_Paypal::express/review/shipping/method.phtml"/>
-                <block class="Magento\Framework\View\Element\Text\ListText" name="paypal.additional.actions">
+                <block class="Magento\Framework\View\Element\Text\List_Text" name="paypal.additional.actions">
                     <block class="Magento\Checkout\Block\Cart\Coupon" name="paypal.cart.coupon" as="coupon" template="Magento_Checkout::cart/coupon.phtml"/>
                 </block>
                 <block class="Magento\Paypal\Block\Express\Review\Details" name="paypal.express.review.details" as="details" template="Magento_Paypal::express/review/details.phtml">
-                    <block class="Magento\Framework\View\Element\RendererList" name="checkout.onepage.review.item.renderers" as="renderer.list"/>
+                    <block class="Magento\Framework\View\Element\Renderer_List" name="checkout.onepage.review.item.renderers" as="renderer.list"/>
                     <block class="Magento\Checkout\Block\Cart\Totals" name="paypal.express.review.details.totals" as="totals" template="Magento_Paypal::checkout/onepage/review/totals.phtml"/>
                 </block>
-                <block class="Magento\CheckoutAgreements\Block\Agreements" name="paypal.express.review.details.agreements" as="agreements" template="Magento_CheckoutAgreements::additional_agreements.phtml"/>
+                <block class="Magento\Checkout_Agreements\Block\Agreements" name="paypal.express.review.details.agreements" as="agreements" template="Magento_CheckoutAgreements::additional_agreements.phtml"/>
             </block>
         </referenceContainer>
         <block class="Magento\Framework\View\Element\Template" name="additional.product.info" template="Magento_Theme::template.phtml"/>

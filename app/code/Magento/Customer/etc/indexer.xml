@@ -12,7 +12,7 @@
         <description translate="true">Rebuild Customer grid index</description>
 
         <fieldset name="customer" source="Magento\Customer\Model\Indexer\Source"
-                  provider="Magento\Customer\Model\Indexer\AttributeProvider">
+                  provider="Magento\Customer\Model\Indexer\Attribute_Provider">
             <field name="name" xsi:type="searchable" dataType="text" handler="CustomerNameHandler"/>
             <field name="email" xsi:type="searchable" dataType="varchar"/>
             <field name="group_id" xsi:type="filterable" dataType="int"/>
@@ -26,13 +26,13 @@
             <field name="lock_expires" xsi:type="filterable" dataType="timestamp" />
         </fieldset>
 
-        <fieldset name="shipping" source="Magento\Customer\Model\ResourceModel\Address\Collection">
+        <fieldset name="shipping" source="Magento\Customer\Model\Resource_Model\Address\Collection">
             <reference fieldset="customer" from="entity_id" to="default_shipping"/>
             <field name="full" xsi:type="searchable" dataType="text" handler="ShippingAddressHandler"/>
         </fieldset>
 
-        <fieldset name="billing" source="Magento\Customer\Model\ResourceModel\Address\Collection"
-                  provider="Magento\Customer\Model\Indexer\Address\AttributeProvider">
+        <fieldset name="billing" source="Magento\Customer\Model\Resource_Model\Address\Collection"
+                  provider="Magento\Customer\Model\Indexer\Address\Attribute_Provider">
             <reference fieldset="customer" from="entity_id" to="default_billing"/>
             <field name="full" xsi:type="searchable" dataType="text" handler="BillingAddressHandler"/>
             <field name="firstname" xsi:type="searchable" dataType="varchar"/>
@@ -49,7 +49,7 @@
             <field name="company" xsi:type="searchable" dataType="varchar"/>
         </fieldset>
 
-        <saveHandler class="Magento\Framework\Indexer\SaveHandler\Grid"/>
-        <structure class="Magento\Framework\Indexer\GridStructure"/>
+        <saveHandler class="Magento\Framework\Indexer\Save_Handler\Grid"/>
+        <structure class="Magento\Framework\Indexer\Grid_Structure"/>
     </indexer>
 </config>

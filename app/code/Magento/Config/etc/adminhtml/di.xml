@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Config\Model\Config\Backend\File\RequestData\RequestDataInterface" type="Magento\Config\Model\Config\Backend\File\RequestData" />
+    <preference for="Magento\Config\Model\Config\Backend\File\Request_Data\Request_Data_Interface" type="Magento\Config\Model\Config\Backend\File\Request_Data" />
     <type name="Magento\Config\Model\Config\Structure\Element\Iterator\Tab" shared="false" />
     <type name="Magento\Config\Model\Config\Structure\Element\Iterator\Section" shared="false" />
     <type name="Magento\Config\Model\Config\Backend\Locale">
         <plugin name="installed_currency_configuration_validation"
-                type="Magento\Config\Plugin\Model\Config\Backend\LocalePlugin" sortOrder="10" />
+                type="Magento\Config\Plugin\Model\Config\Backend\Locale_Plugin" sortOrder="10" />
     </type>
 </config>

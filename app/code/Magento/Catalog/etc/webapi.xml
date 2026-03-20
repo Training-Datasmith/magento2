@@ -10,235 +10,235 @@
 
     <!-- Product Service -->
     <route url="/V1/products" method="POST">
-        <service class="Magento\Catalog\Api\ProductRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Product_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
     <route url="/V1/products/:sku" method="PUT">
-        <service class="Magento\Catalog\Api\ProductRepositoryInterface" method="save" />
+        <service class="Magento\Catalog\Api\Product_Repository_Interface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
     <route url="/V1/products/:sku" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Catalog\Api\Product_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
     <route url="/V1/products" method="GET">
-        <service class="Magento\Catalog\Api\ProductRepositoryInterface" method="getList"/>
+        <service class="Magento\Catalog\Api\Product_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
     <route url="/V1/products/:sku" method="GET">
-        <service class="Magento\Catalog\Api\ProductRepositoryInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Product_Repository_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
     <route url="/V1/products/attributes/types" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeTypesListInterface" method="getItems"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Types_List_Interface" method="getItems"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeRepositoryInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Repository_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode/is-filterable" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeIsFilterableManagementInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Is_Filterable_Management_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeRepositoryInterface" method="getList" />
+        <service class="Magento\Catalog\Api\Product_Attribute_Repository_Interface" method="getList" />
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/categories/attributes/:attributeCode" method="GET">
-        <service class="Magento\Catalog\Api\CategoryAttributeRepositoryInterface" method="get" />
+        <service class="Magento\Catalog\Api\Category_Attribute_Repository_Interface" method="get" />
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/categories/attributes" method="GET">
-        <service class="Magento\Catalog\Api\CategoryAttributeRepositoryInterface" method="getList" />
+        <service class="Magento\Catalog\Api\Category_Attribute_Repository_Interface" method="getList" />
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/categories/attributes/:attributeCode/options" method="GET">
-        <service class="Magento\Catalog\Api\CategoryAttributeOptionManagementInterface" method="getItems" />
+        <service class="Magento\Catalog\Api\Category_Attribute_Option_Management_Interface" method="getItems" />
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes" method="POST">
-        <service class="Magento\Catalog\Api\ProductAttributeRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode" method="PUT">
-        <service class="Magento\Catalog\Api\ProductAttributeRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode/is-filterable/:isFilterable" method="PUT">
-        <service class="Magento\Catalog\Api\ProductAttributeIsFilterableManagementInterface" method="set"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Is_Filterable_Management_Interface" method="set"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductAttributeRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/types" method="GET">
-        <service class="Magento\Catalog\Api\ProductTypeListInterface" method="getProductTypes"/>
+        <service class="Magento\Catalog\Api\Product_Type_List_Interface" method="getProductTypes"/>
         <resources>
             <resource ref="Magento_Catalog::products"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/sets/list" method="GET">
-        <service class="Magento\Catalog\Api\AttributeSetRepositoryInterface" method="getList"/>
+        <service class="Magento\Catalog\Api\Attribute_Set_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/:attributeSetId" method="GET">
-        <service class="Magento\Catalog\Api\AttributeSetRepositoryInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Attribute_Set_Repository_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/:attributeSetId" method="DELETE">
-        <service class="Magento\Catalog\Api\AttributeSetRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Catalog\Api\Attribute_Set_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets" method="POST">
-        <service class="Magento\Catalog\Api\AttributeSetManagementInterface" method="create"/>
+        <service class="Magento\Catalog\Api\Attribute_Set_Management_Interface" method="create"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/:attributeSetId" method="PUT">
-        <service class="Magento\Catalog\Api\AttributeSetRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Attribute_Set_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/:attributeSetId/attributes" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeManagementInterface" method="getAttributes"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Management_Interface" method="getAttributes"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/attributes" method="POST">
-        <service class="Magento\Catalog\Api\ProductAttributeManagementInterface" method="assign"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Management_Interface" method="assign"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/:attributeSetId/attributes/:attributeCode" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductAttributeManagementInterface" method="unassign"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Management_Interface" method="unassign"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/groups/list" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeGroupRepositoryInterface" method="getList"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Group_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/groups" method="POST">
-        <service class="Magento\Catalog\Api\ProductAttributeGroupRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Group_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/:attributeSetId/groups" method="PUT">
-        <service class="Magento\Catalog\Api\ProductAttributeGroupRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Group_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attribute-sets/groups/:groupId" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductAttributeGroupRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Group_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_Catalog::sets"/>
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode/options" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeOptionManagementInterface" method="getItems"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Option_Management_Interface" method="getItems"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode/options" method="POST">
-        <service class="Magento\Catalog\Api\ProductAttributeOptionManagementInterface" method="add" />
+        <service class="Magento\Catalog\Api\Product_Attribute_Option_Management_Interface" method="add" />
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode/options/:optionId" method="PUT">
-        <service class="Magento\Catalog\Api\ProductAttributeOptionUpdateInterface" method="update" />
+        <service class="Magento\Catalog\Api\Product_Attribute_Option_Update_Interface" method="update" />
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/attributes/:attributeCode/options/:optionId" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductAttributeOptionManagementInterface" method="delete" />
+        <service class="Magento\Catalog\Api\Product_Attribute_Option_Management_Interface" method="delete" />
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes" />
         </resources>
     </route>
     <route url="/V1/products/media/types/:attributeSetName" method="GET">
-        <service class="Magento\Catalog\Api\ProductMediaAttributeManagementInterface" method="getList"/>
+        <service class="Magento\Catalog\Api\Product_Media_Attribute_Management_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/media/:entryId" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeMediaGalleryManagementInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Media_Gallery_Management_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::attributes_attributes"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/media" method="POST">
-        <service class="Magento\Catalog\Api\ProductAttributeMediaGalleryManagementInterface" method="create"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Media_Gallery_Management_Interface" method="create"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/media/:entryId" method="PUT">
-        <service class="Magento\Catalog\Api\ProductAttributeMediaGalleryManagementInterface" method="update"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Media_Gallery_Management_Interface" method="update"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/media/:entryId" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductAttributeMediaGalleryManagementInterface" method="remove"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Media_Gallery_Management_Interface" method="remove"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/media" method="GET">
-        <service class="Magento\Catalog\Api\ProductAttributeMediaGalleryManagementInterface" method="getList"/>
+        <service class="Magento\Catalog\Api\Product_Attribute_Media_Gallery_Management_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
@@ -246,134 +246,134 @@
 
     <!-- Tier Price -->
     <route url="/V1/products/:sku/group-prices/:customerGroupId/tiers" method="GET">
-        <service class="Magento\Catalog\Api\ProductTierPriceManagementInterface" method="getList"/>
+        <service class="Magento\Catalog\Api\Product_Tier_Price_Management_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/group-prices/:customerGroupId/tiers/:qty/price/:price" method="POST">
-        <service class="Magento\Catalog\Api\ProductTierPriceManagementInterface" method="add"/>
+        <service class="Magento\Catalog\Api\Product_Tier_Price_Management_Interface" method="add"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/group-prices/:customerGroupId/tiers/:qty" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductTierPriceManagementInterface" method="remove"/>
+        <service class="Magento\Catalog\Api\Product_Tier_Price_Management_Interface" method="remove"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/tier-prices-information" method="POST">
-        <service class="Magento\Catalog\Api\TierPriceStorageInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Tier_Price_Storage_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/tier-prices" method="POST">
-        <service class="Magento\Catalog\Api\TierPriceStorageInterface" method="update"/>
+        <service class="Magento\Catalog\Api\Tier_Price_Storage_Interface" method="update"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/tier-prices" method="PUT">
-        <service class="Magento\Catalog\Api\TierPriceStorageInterface" method="replace"/>
+        <service class="Magento\Catalog\Api\Tier_Price_Storage_Interface" method="replace"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/tier-prices-delete" method="POST">
-        <service class="Magento\Catalog\Api\TierPriceStorageInterface" method="delete"/>
+        <service class="Magento\Catalog\Api\Tier_Price_Storage_Interface" method="delete"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/base-prices-information" method="POST">
-        <service class="Magento\Catalog\Api\BasePriceStorageInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Base_Price_Storage_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/base-prices" method="POST">
-        <service class="Magento\Catalog\Api\BasePriceStorageInterface" method="update"/>
+        <service class="Magento\Catalog\Api\Base_Price_Storage_Interface" method="update"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/cost-information" method="POST">
-        <service class="Magento\Catalog\Api\CostStorageInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Cost_Storage_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/cost" method="POST">
-        <service class="Magento\Catalog\Api\CostStorageInterface" method="update"/>
+        <service class="Magento\Catalog\Api\Cost_Storage_Interface" method="update"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/cost-delete" method="POST">
-        <service class="Magento\Catalog\Api\CostStorageInterface" method="delete"/>
+        <service class="Magento\Catalog\Api\Cost_Storage_Interface" method="delete"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/special-price-information" method="POST">
-        <service class="Magento\Catalog\Api\SpecialPriceStorageInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Special_Price_Storage_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/special-price" method="POST">
-        <service class="Magento\Catalog\Api\SpecialPriceStorageInterface" method="update"/>
+        <service class="Magento\Catalog\Api\Special_Price_Storage_Interface" method="update"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/special-price-delete" method="POST">
-        <service class="Magento\Catalog\Api\SpecialPriceStorageInterface" method="delete"/>
+        <service class="Magento\Catalog\Api\Special_Price_Storage_Interface" method="delete"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
 
     <route url="/V1/categories/:categoryId" method="DELETE">
-        <service class="Magento\Catalog\Api\CategoryRepositoryInterface" method="deleteByIdentifier" />
+        <service class="Magento\Catalog\Api\Category_Repository_Interface" method="deleteByIdentifier" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories/:categoryId" method="GET">
-        <service class="Magento\Catalog\Api\CategoryRepositoryInterface" method="get" />
+        <service class="Magento\Catalog\Api\Category_Repository_Interface" method="get" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories" method="POST">
-        <service class="Magento\Catalog\Api\CategoryRepositoryInterface" method="save" />
+        <service class="Magento\Catalog\Api\Category_Repository_Interface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories" method="GET">
-        <service class="Magento\Catalog\Api\CategoryManagementInterface" method="getTree" />
+        <service class="Magento\Catalog\Api\Category_Management_Interface" method="getTree" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories/:id" method="PUT">
-        <service class="Magento\Catalog\Api\CategoryRepositoryInterface" method="save" />
+        <service class="Magento\Catalog\Api\Category_Repository_Interface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories/:categoryId/move" method="PUT">
-        <service class="Magento\Catalog\Api\CategoryManagementInterface" method="move" />
+        <service class="Magento\Catalog\Api\Category_Management_Interface" method="move" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories/list" method="GET">
-        <service class="Magento\Catalog\Api\CategoryListInterface" method="getList" />
+        <service class="Magento\Catalog\Api\Category_List_Interface" method="getList" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
@@ -381,37 +381,37 @@
 
     <!-- Product Custom Options -->
     <route url="/V1/products/options/types" method="GET">
-        <service class="Magento\Catalog\Api\ProductCustomOptionTypeListInterface" method="getItems"/>
+        <service class="Magento\Catalog\Api\Product_Custom_Option_Type_List_Interface" method="getItems"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/options" method="GET">
-        <service class="Magento\Catalog\Api\ProductCustomOptionRepositoryInterface" method="getList"/>
+        <service class="Magento\Catalog\Api\Product_Custom_Option_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/options/:optionId" method="GET">
-        <service class="Magento\Catalog\Api\ProductCustomOptionRepositoryInterface" method="get"/>
+        <service class="Magento\Catalog\Api\Product_Custom_Option_Repository_Interface" method="get"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/options" method="POST">
-        <service class="Magento\Catalog\Api\ProductCustomOptionRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Product_Custom_Option_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/options/:optionId" method="PUT">
-        <service class="Magento\Catalog\Api\ProductCustomOptionRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Product_Custom_Option_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/options/:optionId" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductCustomOptionRepositoryInterface" method="deleteByIdentifier"/>
+        <service class="Magento\Catalog\Api\Product_Custom_Option_Repository_Interface" method="deleteByIdentifier"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
@@ -419,37 +419,37 @@
 
     <!-- Product Links -->
     <route url="/V1/products/links/types" method="GET">
-        <service class="Magento\Catalog\Api\ProductLinkTypeListInterface" method="getItems"/>
+        <service class="Magento\Catalog\Api\Product_Link_Type_List_Interface" method="getItems"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/links/:type/attributes" method="GET">
-        <service class="Magento\Catalog\Api\ProductLinkTypeListInterface" method="getItemAttributes"/>
+        <service class="Magento\Catalog\Api\Product_Link_Type_List_Interface" method="getItemAttributes"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/links/:type" method="GET">
-        <service class="Magento\Catalog\Api\ProductLinkManagementInterface" method="getLinkedItemsByType"/>
+        <service class="Magento\Catalog\Api\Product_Link_Management_Interface" method="getLinkedItemsByType"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/links" method="POST">
-        <service class="Magento\Catalog\Api\ProductLinkManagementInterface" method="setProductLinks"/>
+        <service class="Magento\Catalog\Api\Product_Link_Management_Interface" method="setProductLinks"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/links/:type/:linkedProductSku" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductLinkRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Catalog\Api\Product_Link_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
     </route>
     <route url="/V1/products/:sku/links" method="PUT">
-        <service class="Magento\Catalog\Api\ProductLinkRepositoryInterface" method="save"/>
+        <service class="Magento\Catalog\Api\Product_Link_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Catalog::catalog"/>
         </resources>
@@ -457,25 +457,25 @@
 
     <!-- Category Product Links -->
     <route url="/V1/categories/:categoryId/products" method="GET">
-        <service class="Magento\Catalog\Api\CategoryLinkManagementInterface" method="getAssignedProducts" />
+        <service class="Magento\Catalog\Api\Category_Link_Management_Interface" method="getAssignedProducts" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories/:categoryId/products" method="POST">
-        <service class="Magento\Catalog\Api\CategoryLinkRepositoryInterface" method="save" />
+        <service class="Magento\Catalog\Api\Category_Link_Repository_Interface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories/:categoryId/products" method="PUT">
-        <service class="Magento\Catalog\Api\CategoryLinkRepositoryInterface" method="save" />
+        <service class="Magento\Catalog\Api\Category_Link_Repository_Interface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
     </route>
     <route url="/V1/categories/:categoryId/products/:sku" method="DELETE">
-        <service class="Magento\Catalog\Api\CategoryLinkRepositoryInterface" method="deleteByIds" />
+        <service class="Magento\Catalog\Api\Category_Link_Repository_Interface" method="deleteByIds" />
         <resources>
             <resource ref="Magento_Catalog::categories" />
         </resources>
@@ -483,25 +483,25 @@
 
     <!-- Product Website Links -->
     <route url="/V1/products/:sku/websites" method="POST">
-        <service class="Magento\Catalog\Api\ProductWebsiteLinkRepositoryInterface" method="save" />
+        <service class="Magento\Catalog\Api\Product_Website_Link_Repository_Interface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
     <route url="/V1/products/:sku/websites" method="PUT">
-        <service class="Magento\Catalog\Api\ProductWebsiteLinkRepositoryInterface" method="save" />
+        <service class="Magento\Catalog\Api\Product_Website_Link_Repository_Interface" method="save" />
         <resources>
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
     <route url="/V1/products/:sku/websites/:websiteId" method="DELETE">
-        <service class="Magento\Catalog\Api\ProductWebsiteLinkRepositoryInterface" method="deleteById" />
+        <service class="Magento\Catalog\Api\Product_Website_Link_Repository_Interface" method="deleteById" />
         <resources>
             <resource ref="Magento_Catalog::products" />
         </resources>
     </route>
     <route url="/V1/products-render-info" method="GET">
-        <service class="Magento\Catalog\Api\ProductRenderListInterface" method="getList"/>
+        <service class="Magento\Catalog\Api\Product_Render_List_Interface" method="getList"/>
         <resources>
             <resource ref="anonymous" />
         </resources>

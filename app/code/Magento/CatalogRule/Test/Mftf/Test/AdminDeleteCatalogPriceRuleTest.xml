@@ -54,7 +54,7 @@
                 <argument name="productAttributeLabel" value="{{colorProductAttribute.default_label}}"/>
             </actionGroup>
             <actionGroup ref="AdminOpenCatalogPriceRulePageActionGroup" stepKey="goToCatalogRuleGridPage"/>
-            <helper class="Magento\CatalogRule\Test\Mftf\Helper\CatalogPriceRuleHelper" method="deleteAllCatalogPriceRules" stepKey="deleteAllCatalogPriceRules">
+            <helper class="Magento\Catalog_Rule\Test\Mftf\Helper\Catalog_Price_Rule_Helper" method="deleteAllCatalogPriceRules" stepKey="deleteAllCatalogPriceRules">
                 <argument name="firstNotEmptyRow">{{AdminCatalogPriceRuleGrid.firstNotEmptyRow}}</argument>
                 <argument name="modalAcceptButton">{{AdminConfirmationModalSection.ok}}</argument>
                 <argument name="deleteButton">{{AdminNewCatalogPriceRule.delete}}</argument>

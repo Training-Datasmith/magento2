@@ -6,30 +6,30 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\App\FrontControllerInterface">
-        <plugin name="graphql-dispatch-plugin" type="Magento\GraphQlCache\Controller\Plugin\GraphQl"/>
-        <plugin name="front-controller-builtin-cache" type="Magento\PageCache\Model\App\FrontController\BuiltinPlugin"/>
-        <plugin name="front-controller-varnish-cache" type="Magento\PageCache\Model\App\FrontController\VarnishPlugin"/>
+    <type name="Magento\Framework\App\Front_Controller_Interface">
+        <plugin name="graphql-dispatch-plugin" type="Magento\Graph_Ql_Cache\Controller\Plugin\Graph_Ql"/>
+        <plugin name="front-controller-builtin-cache" type="Magento\Page_Cache\Model\App\Front_Controller\Builtin_Plugin"/>
+        <plugin name="front-controller-varnish-cache" type="Magento\Page_Cache\Model\App\Front_Controller\Varnish_Plugin"/>
     </type>
-    <type name="Magento\Framework\GraphQl\Query\ResolverInterface">
-        <plugin name="cache" type="Magento\GraphQlCache\Model\Plugin\Query\Resolver" sortOrder="10"/>
+    <type name="Magento\Framework\Graph_Ql\Query\Resolver_Interface">
+        <plugin name="cache" type="Magento\Graph_Ql_Cache\Model\Plugin\Query\Resolver" sortOrder="10"/>
     </type>
-    <type name="Magento\Framework\App\PageCache\Identifier">
+    <type name="Magento\Framework\App\Page_Cache\Identifier">
         <plugin name="core-app-area-design-exception-plugin"
-                type="Magento\GraphQlCache\Model\Plugin\App\PageCache\Identifier" sortOrder="1"/>
+                type="Magento\Graph_Ql_Cache\Model\Plugin\App\Page_Cache\Identifier" sortOrder="1"/>
     </type>
-    <type name="Magento\Framework\Controller\ResultInterface">
-        <plugin name="graphql-result-plugin" type="Magento\GraphQlCache\Controller\Plugin\GraphQl"/>
-        <plugin name="result-builtin-cache" type="Magento\PageCache\Model\Controller\Result\BuiltinPlugin"/>
-        <plugin name="result-varnish-cache" type="Magento\PageCache\Model\Controller\Result\VarnishPlugin"/>
+    <type name="Magento\Framework\Controller\Result_Interface">
+        <plugin name="graphql-result-plugin" type="Magento\Graph_Ql_Cache\Controller\Plugin\Graph_Ql"/>
+        <plugin name="result-builtin-cache" type="Magento\Page_Cache\Model\Controller\Result\Builtin_Plugin"/>
+        <plugin name="result-varnish-cache" type="Magento\Page_Cache\Model\Controller\Result\Varnish_Plugin"/>
     </type>
-    <type name="Magento\Integration\Api\UserTokenIssuerInterface">
-        <plugin name="set-context-after-token" type="Magento\GraphQlCache\Model\Plugin\Auth\TokenIssuer"/>
+    <type name="Magento\Integration\Api\User_Token_Issuer_Interface">
+        <plugin name="set-context-after-token" type="Magento\Graph_Ql_Cache\Model\Plugin\Auth\Token_Issuer"/>
     </type>
-    <type name="Magento\Integration\Api\UserTokenRevokerInterface">
-        <plugin name="set-guest-after-revoke" type="Magento\GraphQlCache\Model\Plugin\Auth\TokenRevoker"/>
+    <type name="Magento\Integration\Api\User_Token_Revoker_Interface">
+        <plugin name="set-guest-after-revoke" type="Magento\Graph_Ql_Cache\Model\Plugin\Auth\Token_Revoker"/>
     </type>
-    <type name="Magento\Framework\View\LayoutInterface">
-        <plugin name="add_block_cache_tags_to_query_cache" type="Magento\GraphQlCache\Model\Plugin\View\Layout"/>
+    <type name="Magento\Framework\View\Layout_Interface">
+        <plugin name="add_block_cache_tags_to_query_cache" type="Magento\Graph_Ql_Cache\Model\Plugin\View\Layout"/>
     </type>
 </config>

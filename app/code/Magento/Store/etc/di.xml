@@ -6,31 +6,31 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Store\Api\StoreRepositoryInterface" type="Magento\Store\Model\StoreRepository"/>
-    <preference for="Magento\Store\Api\GroupRepositoryInterface" type="Magento\Store\Model\GroupRepository"/>
-    <preference for="Magento\Store\Api\WebsiteRepositoryInterface" type="Magento\Store\Model\WebsiteRepository"/>
-    <preference for="Magento\Store\Api\Data\StoreInterface" type="Magento\Store\Model\Store"/>
-    <preference for="Magento\Store\Api\Data\GroupInterface" type="Magento\Store\Model\Group"/>
-    <preference for="Magento\Store\Api\Data\WebsiteInterface" type="Magento\Store\Model\Website"/>
-    <preference for="Magento\Store\Api\StoreWebsiteRelationInterface" type="Magento\Store\Model\StoreManager"/>
-    <preference for="Magento\Store\Api\StoreResolverInterface" type="Magento\Store\Model\StoreResolver\Proxy"/>
-    <preference for="Magento\Framework\App\Request\PathInfoProcessorInterface" type="Magento\Store\App\Request\PathInfoProcessor" />
-    <preference for="Magento\Store\Model\StoreManagerInterface" type="Magento\Store\Model\StoreManager" />
-    <preference for="Magento\Framework\App\Response\RedirectInterface" type="Magento\Store\App\Response\Redirect" />
-    <preference for="Magento\Store\Api\StoreCookieManagerInterface" type="Magento\Store\Model\StoreCookieManager"/>
-    <preference for="Magento\Store\Api\StoreConfigManagerInterface" type="Magento\Store\Model\Service\StoreConfigManager"/>
-    <preference for="Magento\Store\Api\Data\StoreConfigInterface" type="Magento\Store\Model\Data\StoreConfig"/>
-    <preference for="Magento\Store\Api\StoreManagementInterface" type="Magento\Store\Model\StoreManagement"/>
-    <preference for="Magento\Store\Api\WebsiteManagementInterface" type="Magento\Store\Model\WebsiteManagement"/>
-    <preference for="Magento\Framework\App\ScopeFallbackResolverInterface" type="Magento\Store\Model\ScopeFallbackResolver"/>
-    <preference for="Magento\Framework\App\ScopeTreeProviderInterface" type="Magento\Store\Model\ScopeTreeProvider"/>
-    <preference for="Magento\Framework\App\ScopeValidatorInterface" type="Magento\Store\Model\ScopeValidator"/>
-    <preference for="Magento\Store\Model\StoreSwitcherInterface" type="Magento\Store\Model\StoreSwitcher" />
-    <preference for="Magento\Store\Model\StoreSwitcher\RedirectDataPreprocessorInterface" type="Magento\Store\Model\StoreSwitcher\RedirectDataPreprocessorComposite" />
-    <preference for="Magento\Store\Model\StoreSwitcher\RedirectDataPostprocessorInterface" type="Magento\Store\Model\StoreSwitcher\RedirectDataPostprocessorComposite" />
-    <preference for="Magento\Store\Model\StoreSwitcher\RedirectDataSerializerInterface" type="Magento\Store\Model\StoreSwitcher\RedirectDataCacheSerializer" />
-    <preference for="Magento\Store\Model\StoreSwitcher\ContextInterface" type="Magento\Store\Model\StoreSwitcher\Context" />
-    <preference for="Magento\Store\Model\StoreSwitcher\RedirectDataInterface" type="Magento\Store\Model\StoreSwitcher\RedirectData" />
+    <preference for="Magento\Store\Api\Store_Repository_Interface" type="Magento\Store\Model\Store_Repository"/>
+    <preference for="Magento\Store\Api\Group_Repository_Interface" type="Magento\Store\Model\Group_Repository"/>
+    <preference for="Magento\Store\Api\Website_Repository_Interface" type="Magento\Store\Model\Website_Repository"/>
+    <preference for="Magento\Store\Api\Data\Store_Interface" type="Magento\Store\Model\Store"/>
+    <preference for="Magento\Store\Api\Data\Group_Interface" type="Magento\Store\Model\Group"/>
+    <preference for="Magento\Store\Api\Data\Website_Interface" type="Magento\Store\Model\Website"/>
+    <preference for="Magento\Store\Api\Store_Website_Relation_Interface" type="Magento\Store\Model\Store_Manager"/>
+    <preference for="Magento\Store\Api\Store_Resolver_Interface" type="Magento\Store\Model\Store_Resolver\Proxy"/>
+    <preference for="Magento\Framework\App\Request\Path_Info_Processor_Interface" type="Magento\Store\App\Request\Path_Info_Processor" />
+    <preference for="Magento\Store\Model\Store_Manager_Interface" type="Magento\Store\Model\Store_Manager" />
+    <preference for="Magento\Framework\App\Response\Redirect_Interface" type="Magento\Store\App\Response\Redirect" />
+    <preference for="Magento\Store\Api\Store_Cookie_Manager_Interface" type="Magento\Store\Model\Store_Cookie_Manager"/>
+    <preference for="Magento\Store\Api\Store_Config_Manager_Interface" type="Magento\Store\Model\Service\Store_Config_Manager"/>
+    <preference for="Magento\Store\Api\Data\Store_Config_Interface" type="Magento\Store\Model\Data\Store_Config"/>
+    <preference for="Magento\Store\Api\Store_Management_Interface" type="Magento\Store\Model\Store_Management"/>
+    <preference for="Magento\Store\Api\Website_Management_Interface" type="Magento\Store\Model\Website_Management"/>
+    <preference for="Magento\Framework\App\Scope_Fallback_Resolver_Interface" type="Magento\Store\Model\Scope_Fallback_Resolver"/>
+    <preference for="Magento\Framework\App\Scope_Tree_Provider_Interface" type="Magento\Store\Model\Scope_Tree_Provider"/>
+    <preference for="Magento\Framework\App\Scope_Validator_Interface" type="Magento\Store\Model\Scope_Validator"/>
+    <preference for="Magento\Store\Model\Store_Switcher_Interface" type="Magento\Store\Model\Store_Switcher" />
+    <preference for="Magento\Store\Model\Store_Switcher\Redirect_Data_Preprocessor_Interface" type="Magento\Store\Model\Store_Switcher\Redirect_Data_Preprocessor_Composite" />
+    <preference for="Magento\Store\Model\Store_Switcher\Redirect_Data_Postprocessor_Interface" type="Magento\Store\Model\Store_Switcher\Redirect_Data_Postprocessor_Composite" />
+    <preference for="Magento\Store\Model\Store_Switcher\Redirect_Data_Serializer_Interface" type="Magento\Store\Model\Store_Switcher\Redirect_Data_Cache_Serializer" />
+    <preference for="Magento\Store\Model\Store_Switcher\Context_Interface" type="Magento\Store\Model\Store_Switcher\Context" />
+    <preference for="Magento\Store\Model\Store_Switcher\Redirect_Data_Interface" type="Magento\Store\Model\Store_Switcher\Redirect_Data" />
     <type name="Magento\Framework\App\Http\Context">
         <arguments>
             <argument name="default" xsi:type="array">
@@ -39,11 +39,11 @@
         </arguments>
     </type>
     <type name="Magento\Framework\App\Response\Http">
-        <plugin name="genericHeaderPlugin" type="Magento\Framework\App\Response\HeaderManager"/>
+        <plugin name="genericHeaderPlugin" type="Magento\Framework\App\Response\Header_Manager"/>
     </type>
-    <type name="Magento\Framework\App\Response\HeaderProvider\XFrameOptions">
+    <type name="Magento\Framework\App\Response\Header_Provider\X_Frame_Options">
         <arguments>
-            <argument name="xFrameOpt" xsi:type="init_parameter">Magento\Framework\App\Response\HeaderProvider\XFrameOptions::DEPLOYMENT_CONFIG_X_FRAME_OPT</argument>
+            <argument name="xFrameOpt" xsi:type="init_parameter">Magento\Framework\App\Response\Header_Provider\X_Frame_Options::DEPLOYMENT_CONFIG_X_FRAME_OPT</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\View\Element\Template\File\Validator">
@@ -53,69 +53,69 @@
     </type>
     <type name="Magento\Store\Model\Resolver\Store">
         <arguments>
-            <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface\Proxy</argument>
+            <argument name="storeManager" xsi:type="object">Magento\Store\Model\Store_Manager_Interface\Proxy</argument>
         </arguments>
     </type>
     <type name="Magento\Store\Model\Resolver\Group">
         <arguments>
-            <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface\Proxy</argument>
+            <argument name="storeManager" xsi:type="object">Magento\Store\Model\Store_Manager_Interface\Proxy</argument>
         </arguments>
     </type>
     <type name="Magento\Store\Model\Resolver\Website">
         <arguments>
-        <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface\Proxy</argument>
+        <argument name="storeManager" xsi:type="object">Magento\Store\Model\Store_Manager_Interface\Proxy</argument>
         </arguments>
     </type>
-    <preference for="Magento\Framework\App\ScopeResolverInterface" type="Magento\Store\Model\Resolver\Store" />
-    <preference for="Magento\Framework\App\Router\PathConfigInterface" type="Magento\Store\Model\PathConfig" />
-    <type name="Magento\Framework\App\ActionInterface">
-        <plugin name="storeCheck" type="Magento\Store\App\Action\Plugin\StoreCheck"/>
+    <preference for="Magento\Framework\App\Scope_Resolver_Interface" type="Magento\Store\Model\Resolver\Store" />
+    <preference for="Magento\Framework\App\Router\Path_Config_Interface" type="Magento\Store\Model\Path_Config" />
+    <type name="Magento\Framework\App\Action_Interface">
+        <plugin name="storeCheck" type="Magento\Store\App\Action\Plugin\Store_Check"/>
     </type>
-    <type name="Magento\Framework\Url\SecurityInfo">
-        <plugin name="storeUrlSecurityInfo" type="Magento\Store\Url\Plugin\SecurityInfo"/>
+    <type name="Magento\Framework\Url\Security_Info">
+        <plugin name="storeUrlSecurityInfo" type="Magento\Store\Url\Plugin\Security_Info"/>
     </type>
-    <type name="Magento\Framework\Url\RouteParamsResolver">
-        <plugin name="storeUrlRouteParamsResolver" type="Magento\Store\Url\Plugin\RouteParamsResolver"/>
+    <type name="Magento\Framework\Url\Route_Params_Resolver">
+        <plugin name="storeUrlRouteParamsResolver" type="Magento\Store\Url\Plugin\Route_Params_Resolver"/>
     </type>
-    <type name="Magento\Store\Model\ResourceModel\Website\Collection">
+    <type name="Magento\Store\Model\Resource_Model\Website\Collection">
         <arguments>
-            <argument name="fetchStrategy" xsi:type="object">Magento\Store\Model\ResourceModel\Website\Collection\FetchStrategy</argument>
+            <argument name="fetchStrategy" xsi:type="object">Magento\Store\Model\Resource_Model\Website\Collection\Fetch_Strategy</argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\ResourceModel\Group\Collection">
+    <type name="Magento\Store\Model\Resource_Model\Group\Collection">
         <arguments>
-            <argument name="fetchStrategy" xsi:type="object">Magento\Store\Model\ResourceModel\Group\Collection\FetchStrategy</argument>
+            <argument name="fetchStrategy" xsi:type="object">Magento\Store\Model\Resource_Model\Group\Collection\Fetch_Strategy</argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\ResourceModel\Store\Collection">
+    <type name="Magento\Store\Model\Resource_Model\Store\Collection">
         <arguments>
-            <argument name="fetchStrategy" xsi:type="object">Magento\Store\Model\ResourceModel\Store\Collection\FetchStrategy</argument>
+            <argument name="fetchStrategy" xsi:type="object">Magento\Store\Model\Resource_Model\Store\Collection\Fetch_Strategy</argument>
         </arguments>
     </type>
     <type name="Magento\Store\Model\Store">
         <arguments>
             <argument name="session" xsi:type="object" shared="false">Magento\Framework\Session\Generic\Proxy</argument>
             <argument name="isCustomEntryPoint" xsi:type="init_parameter">Magento\Store\Model\Store::CUSTOM_ENTRY_POINT_PARAM</argument>
-            <argument name="url" xsi:type="object" shared="false">Magento\Framework\UrlInterface</argument>
+            <argument name="url" xsi:type="object" shared="false">Magento\Framework\Url_Interface</argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\StoreManager">
+    <type name="Magento\Store\Model\Store_Manager">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Framework\App\Cache\Type\Config</argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\StoreResolver">
+    <type name="Magento\Store\Model\Store_Resolver">
         <arguments>
-            <argument name="runMode" xsi:type="init_parameter">Magento\Store\Model\StoreManager::PARAM_RUN_TYPE</argument>
-            <argument name="scopeCode" xsi:type="init_parameter">Magento\Store\Model\StoreManager::PARAM_RUN_CODE</argument>
+            <argument name="runMode" xsi:type="init_parameter">Magento\Store\Model\Store_Manager::PARAM_RUN_TYPE</argument>
+            <argument name="scopeCode" xsi:type="init_parameter">Magento\Store\Model\Store_Manager::PARAM_RUN_CODE</argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\StoresData">
+    <type name="Magento\Store\Model\Stores_Data">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Framework\App\Cache\Type\Config</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Store\Model\ResourceModel\Group\Collection\FetchStrategy" type="Magento\Framework\Data\Collection\Db\FetchStrategy\Cache">
+    <virtualType name="Magento\Store\Model\Resource_Model\Group\Collection\Fetch_Strategy" type="Magento\Framework\Data\Collection\Db\Fetch_Strategy\Cache">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Framework\App\Cache\Type\Collection</argument>
             <argument name="cacheIdPrefix" xsi:type="string">app_</argument>
@@ -126,7 +126,7 @@
             <argument name="cacheLifetime" xsi:type="boolean">false</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Store\Model\ResourceModel\Store\Collection\FetchStrategy" type="Magento\Framework\Data\Collection\Db\FetchStrategy\Cache">
+    <virtualType name="Magento\Store\Model\Resource_Model\Store\Collection\Fetch_Strategy" type="Magento\Framework\Data\Collection\Db\Fetch_Strategy\Cache">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Framework\App\Cache\Type\Collection</argument>
             <argument name="cacheIdPrefix" xsi:type="string">app_</argument>
@@ -137,7 +137,7 @@
             <argument name="cacheLifetime" xsi:type="boolean">false</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Store\Model\ResourceModel\Website\Collection\FetchStrategy" type="Magento\Framework\Data\Collection\Db\FetchStrategy\Cache">
+    <virtualType name="Magento\Store\Model\Resource_Model\Website\Collection\Fetch_Strategy" type="Magento\Framework\Data\Collection\Db\Fetch_Strategy\Cache">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Framework\App\Cache\Type\Collection</argument>
             <argument name="cacheIdPrefix" xsi:type="string">app_</argument>
@@ -160,53 +160,53 @@
     </type>
     <type name="Magento\Framework\Module\Output\Config">
         <arguments>
-        <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+        <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\Session\Config">
         <arguments>
-        <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+        <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Session\SessionMaxSizeConfig">
+    <type name="Magento\Framework\Session\Session_Max_Size_Config">
         <arguments>
-            <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+            <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Session\SidResolver">
+    <type name="Magento\Framework\Session\Sid_Resolver">
         <arguments>
-        <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+        <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\View\Layout\Element\Layout">
         <arguments>
-            <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+            <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\DesignExceptions">
+    <type name="Magento\Framework\View\Design_Exceptions">
         <arguments>
             <argument name="exceptionConfigPath" xsi:type="string">design/theme/ua_regexp</argument>
-            <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+            <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\TemplateEngineFactory">
+    <type name="Magento\Framework\View\Template_Engine_Factory">
         <arguments>
             <argument name="engines" xsi:type="array">
-                <item name="phtml" xsi:type="string">Magento\Framework\View\TemplateEngine\Php</item>
+                <item name="phtml" xsi:type="string">Magento\Framework\View\Template_Engine\Php</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\Router\NoRouteHandlerList">
+    <type name="Magento\Framework\App\Router\No_Route_Handler_List">
         <arguments>
             <argument name="handlerClassesList" xsi:type="array">
                 <item name="default" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\Framework\App\Router\NoRouteHandler</item>
+                    <item name="class" xsi:type="string">Magento\Framework\App\Router\No_Route_Handler</item>
                     <item name="sortOrder" xsi:type="string">100</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\AreaList">
+    <type name="Magento\Framework\App\Area_List">
         <arguments>
             <argument name="areas" xsi:type="array">
                 <item name="frontend" xsi:type="array">
@@ -226,20 +226,20 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Reflection\MethodsMap">
+    <type name="Magento\Framework\Reflection\Methods_Map">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Framework\App\Cache\Type\Reflection</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\Url">
         <arguments>
-            <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+            <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\ScopeResolverPool">
+    <type name="Magento\Framework\App\Scope_Resolver_Pool">
         <arguments>
             <argument name="scopeResolvers" xsi:type="array">
-                <item name="default" xsi:type="object">Magento\Framework\App\ScopeResolver</item>
+                <item name="default" xsi:type="object">Magento\Framework\App\Scope_Resolver</item>
                 <item name="store" xsi:type="object">Magento\Store\Model\Resolver\Store</item>
                 <item name="stores" xsi:type="object">Magento\Store\Model\Resolver\Store</item>
                 <item name="group" xsi:type="object">Magento\Store\Model\Resolver\Group</item>
@@ -248,7 +248,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Model\ActionValidator\RemoveAction">
+    <type name="Magento\Framework\Model\Action_Validator\Remove_Action">
         <arguments>
             <argument name="protectedModels" xsi:type="array">
                 <item name="store" xsi:type="string">Magento\Store\Model\Store</item>
@@ -262,7 +262,7 @@
             <argument name="confPathToMapFile" xsi:type="string">app/etc/aliases_to_classes_map.json</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Module\Setup\MigrationData">
+    <type name="Magento\Framework\Module\Setup\Migration_Data">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="plain" xsi:type="string"><![CDATA[/^(?P<alias>[a-z]+[_a-z\d]*?\/[a-z]+[_a-z\d]*?)::.*?$/sui]]></item>
@@ -274,37 +274,37 @@
     </type>
     <type name="Magento\Framework\App\Helper\Context">
         <arguments>
-            <argument name="urlBuilder" xsi:type="object">Magento\Framework\UrlInterface</argument>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url_Interface</argument>
             <argument name="httpRequest" xsi:type="object">Magento\Framework\App\Request\Http\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\FrontController">
-        <plugin name="install" type="Magento\Framework\Module\Plugin\DbStatusValidator" sortOrder="40"/>
-        <plugin name="storeCookieValidate" type="Magento\Store\Model\Plugin\StoreCookie" sortOrder="10"/>
+    <type name="Magento\Framework\App\Front_Controller">
+        <plugin name="install" type="Magento\Framework\Module\Plugin\Db_Status_Validator" sortOrder="40"/>
+        <plugin name="storeCookieValidate" type="Magento\Store\Model\Plugin\Store_Cookie" sortOrder="10"/>
     </type>
-    <type name="Magento\Store\Model\Plugin\StoreCookie">
+    <type name="Magento\Store\Model\Plugin\Store_Cookie">
         <arguments>
-            <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface\Proxy</argument>
+            <argument name="storeManager" xsi:type="object">Magento\Store\Model\Store_Manager_Interface\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Module\Plugin\DbStatusValidator">
+    <type name="Magento\Framework\Module\Plugin\Db_Status_Validator">
         <arguments>
             <argument name="cache" xsi:type="object">Magento\Framework\App\Cache\Type\Config</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Stdlib\DateTime\Timezone">
+    <type name="Magento\Framework\Stdlib\Date_Time\Timezone">
         <arguments>
             <argument name="defaultTimezonePath" xsi:type="const">Magento\Directory\Helper\Data::XML_PATH_DEFAULT_TIMEZONE</argument>
-            <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+            <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\Locale\Resolver">
         <arguments>
             <argument name="defaultLocalePath" xsi:type="const">Magento\Directory\Helper\Data::XML_PATH_DEFAULT_LOCALE</argument>
-            <argument name="scopeType" xsi:type="const">Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+            <argument name="scopeType" xsi:type="const">Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\Config\Initial\SchemaLocator">
+    <type name="Magento\Framework\App\Config\Initial\Schema_Locator">
         <arguments>
             <argument name="moduleName" xsi:type="string">Magento_Store</argument>
         </arguments>
@@ -314,17 +314,17 @@
             <argument name="modulePrefix" xsi:type="string">store</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\Response\HeaderManager">
+    <type name="Magento\Framework\App\Response\Header_Manager">
         <arguments>
             <argument name="headerProviderList" xsi:type="array">
-                <item name="HSTSHeader" xsi:type="object">Magento\Store\Model\HeaderProvider\Hsts</item>
-                <item name="upgrade-insecure-requests" xsi:type="object">Magento\Store\Model\HeaderProvider\UpgradeInsecure</item>
-                <item name="x-content-type-options" xsi:type="object">Magento\Framework\App\Response\HeaderProvider\XContentTypeOptions</item>
-                <item name="x-xss-protection" xsi:type="object">Magento\Framework\App\Response\HeaderProvider\XssProtection</item>
+                <item name="HSTSHeader" xsi:type="object">Magento\Store\Model\Header_Provider\Hsts</item>
+                <item name="upgrade-insecure-requests" xsi:type="object">Magento\Store\Model\Header_Provider\Upgrade_Insecure</item>
+                <item name="x-content-type-options" xsi:type="object">Magento\Framework\App\Response\Header_Provider\X_Content_Type_Options</item>
+                <item name="x-xss-protection" xsi:type="object">Magento\Framework\App\Response\Header_Provider\Xss_Protection</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="systemConfigPostProcessorComposite" type="Magento\Framework\App\Config\PostProcessorComposite">
+    <virtualType name="systemConfigPostProcessorComposite" type="Magento\Framework\App\Config\Post_Processor_Composite">
         <arguments>
             <argument name="processors" xsi:type="array">
                 <item name="placeholder" xsi:type="object">Magento\Store\Model\Config\Processor\Placeholder</item>
@@ -343,12 +343,12 @@
             <argument name="source" xsi:type="object">scopesConfigSourceAggregatedProxy</argument>
         </arguments>
     </type>
-    <virtualType name="scopesConfigSourceAggregatedProxy" type="Magento\Framework\App\Config\ConfigSourceAggregated\Proxy">
+    <virtualType name="scopesConfigSourceAggregatedProxy" type="Magento\Framework\App\Config\Config_Source_Aggregated\Proxy">
         <arguments>
             <argument name="instanceName" xsi:type="string">scopesConfigSourceAggregated</argument>
         </arguments>
     </virtualType>
-    <virtualType name="scopesConfigSourceAggregated" type="Magento\Framework\App\Config\ConfigSourceAggregated">
+    <virtualType name="scopesConfigSourceAggregated" type="Magento\Framework\App\Config\Config_Source_Aggregated">
         <arguments>
             <argument name="sources" xsi:type="array">
                 <item name="initial" xsi:type="array">
@@ -356,19 +356,19 @@
                     <item name="sortOrder" xsi:type="string">10</item>
                 </item>
                 <item name="runtime" xsi:type="array">
-                    <item name="source" xsi:type="object">Magento\Store\App\Config\Source\RuntimeConfigSource</item>
+                    <item name="source" xsi:type="object">Magento\Store\App\Config\Source\Runtime_Config_Source</item>
                     <item name="sortOrder" xsi:type="string">0</item>
                 </item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="scopesConfigInitialDataProvider" type="Magento\Store\App\Config\Source\InitialConfigSource">
+    <virtualType name="scopesConfigInitialDataProvider" type="Magento\Store\App\Config\Source\Initial_Config_Source">
         <arguments>
-            <argument name="reader" xsi:type="object">Magento\Framework\App\DeploymentConfig\Reader</argument>
+            <argument name="reader" xsi:type="object">Magento\Framework\App\Deployment_Config\Reader</argument>
             <argument name="configType" xsi:type="const">Magento\Store\App\Config\Type\Scopes::CONFIG_TYPE</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Deploy\Console\Command\App\ApplicationDumpCommand">
+    <type name="Magento\Deploy\Console\Command\App\Application_Dump_Command">
         <arguments>
             <argument name="sources" xsi:type="array">
                 <item name="scopes" xsi:type="array">
@@ -378,15 +378,15 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="commandStoreList" xsi:type="object">Magento\Store\Console\Command\StoreListCommand</item>
-                <item name="commandWebsiteList" xsi:type="object">Magento\Store\Console\Command\WebsiteListCommand</item>
+                <item name="commandStoreList" xsi:type="object">Magento\Store\Console\Command\Store_List_Command</item>
+                <item name="commandWebsiteList" xsi:type="object">Magento\Store\Console\Command\Website_List_Command</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Deploy\Model\DeploymentConfig\ImporterPool">
+    <type name="Magento\Deploy\Model\Deployment_Config\Importer_Pool">
         <arguments>
             <argument name="importers" xsi:type="array">
                 <item name="scopes" xsi:type="array">
@@ -397,7 +397,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\Config\Importer\Processor\ProcessorFactory">
+    <type name="Magento\Store\Model\Config\Importer\Processor\Processor_Factory">
         <arguments>
             <argument name="processors" xsi:type="array">
                 <item name="create" xsi:type="string">Magento\Store\Model\Config\Importer\Processor\Create</item>
@@ -406,12 +406,12 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\Config\Importer\DataDifferenceCalculator">
+    <type name="Magento\Store\Model\Config\Importer\Data_Difference_Calculator">
         <arguments>
-            <argument name="runtimeConfigSource" xsi:type="object">Magento\Store\App\Config\Source\RuntimeConfigSource</argument>
+            <argument name="runtimeConfigSource" xsi:type="object">Magento\Store\App\Config\Source\Runtime_Config_Source</argument>
         </arguments>
     </type>
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="environment" xsi:type="array">
                 <item name="web/default/front" xsi:type="string">1</item>
@@ -429,48 +429,48 @@
     <type name="Magento\Framework\Data\Argument\Interpreter\Composite">
         <arguments>
             <argument name="interpreters" xsi:type="array">
-                <item name="serviceUrl" xsi:type="object">Magento\Store\Model\Argument\Interpreter\ServiceUrl</item>
+                <item name="serviceUrl" xsi:type="object">Magento\Store\Model\Argument\Interpreter\Service_Url</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\StoreSwitcher">
+    <type name="Magento\Store\Model\Store_Switcher">
         <arguments>
             <argument name="storeSwitchers" xsi:type="array">
-                <item name="cleanTargetUrl" xsi:type="object">Magento\Store\Model\StoreSwitcher\CleanTargetUrl</item>
-                <item name="manageStoreCookie" xsi:type="object">Magento\Store\Model\StoreSwitcher\ManageStoreCookie</item>
-                <item name="managePrivateContent" xsi:type="object">Magento\Store\Model\StoreSwitcher\ManagePrivateContent</item>
-                <item name="hashProcessor" xsi:type="object" sortOrder="1000">Magento\Store\Model\StoreSwitcher\HashProcessor</item>
+                <item name="cleanTargetUrl" xsi:type="object">Magento\Store\Model\Store_Switcher\Clean_Target_Url</item>
+                <item name="manageStoreCookie" xsi:type="object">Magento\Store\Model\Store_Switcher\Manage_Store_Cookie</item>
+                <item name="managePrivateContent" xsi:type="object">Magento\Store\Model\Store_Switcher\Manage_Private_Content</item>
+                <item name="hashProcessor" xsi:type="object" sortOrder="1000">Magento\Store\Model\Store_Switcher\Hash_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\Validation\StoreValidator">
+    <type name="Magento\Store\Model\Validation\Store_Validator">
         <arguments>
             <argument name="rules" xsi:type="array">
-                <item name="name" xsi:type="object">Magento\Store\Model\Validation\StoreNameValidator</item>
-                <item name="code" xsi:type="object">Magento\Store\Model\Validation\StoreCodeValidator</item>
+                <item name="name" xsi:type="object">Magento\Store\Model\Validation\Store_Name_Validator</item>
+                <item name="code" xsi:type="object">Magento\Store\Model\Validation\Store_Code_Validator</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Framework\App\Cache\Tag\Strategy\Factory">
         <arguments>
             <argument name="customStrategies" xsi:type="array">
-                <item name="Magento\Framework\App\Config\ValueInterface" xsi:type="object">
-                    Magento\Store\Model\Config\Cache\Tag\Strategy\StoreConfig
+                <item name="Magento\Framework\App\Config\Value_Interface" xsi:type="object">
+                    Magento\Store\Model\Config\Cache\Tag\Strategy\Store_Config
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\Config\Cache\Tag\Strategy\StoreConfig">
+    <type name="Magento\Store\Model\Config\Cache\Tag\Strategy\Store_Config">
         <arguments>
             <argument name="tagGenerator" xsi:type="object">
-                Magento\Store\Model\Config\Cache\Tag\Strategy\CompositeTagGenerator
+                Magento\Store\Model\Config\Cache\Tag\Strategy\Composite_Tag_Generator
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\State\ReloadProcessorComposite">
+    <type name="Magento\Framework\App\State\Reload_Processor_Composite">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="Magento_ApplicationServer::process" xsi:type="object">Magento\Store\Model\Config\ReloadDeploymentConfig</item>
+                <item name="Magento_ApplicationServer::process" xsi:type="object">Magento\Store\Model\Config\Reload_Deployment_Config</item>
             </argument>
         </arguments>
     </type>

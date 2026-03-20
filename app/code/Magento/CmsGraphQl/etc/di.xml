@@ -6,14 +6,14 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\TagResolver">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Tag_Resolver">
         <arguments>
             <argument name="invalidatableObjectTypes" xsi:type="array">
-                <item name="Magento\Cms\Api\Data\PageInterface" xsi:type="string">
-                    Magento\Cms\Api\Data\PageInterface
+                <item name="Magento\Cms\Api\Data\Page_Interface" xsi:type="string">
+                    Magento\Cms\Api\Data\Page_Interface
                 </item>
-                <item name="Magento\Cms\Api\Data\BlockInterface" xsi:type="string">
-                    Magento\Cms\Api\Data\BlockInterface
+                <item name="Magento\Cms\Api\Data\Block_Interface" xsi:type="string">
+                    Magento\Cms\Api\Data\Block_Interface
                 </item>
             </argument>
         </arguments>

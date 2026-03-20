@@ -13,6 +13,6 @@
             <description>Creates a folder (by enter key) in the Media Gallery based on the provided Folder.</description>
         </annotations>
 
-        <pressKey selector="{{MediaGallerySection.FolderName}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="acceptFolderName"/>
+        <pressKey selector="{{MediaGallerySection.FolderName}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="acceptFolderName"/>
     </actionGroup>
 </actionGroups>

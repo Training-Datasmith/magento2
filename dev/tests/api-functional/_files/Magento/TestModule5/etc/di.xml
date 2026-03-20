@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\TestModule5\Service\V1\AllSoapAndRestInterface" type="Magento\TestModule5\Service\V1\AllSoapAndRest" />
-    <preference for="Magento\TestModule5\Service\V2\AllSoapAndRestInterface" type="Magento\TestModule5\Service\V2\AllSoapAndRest" />
-    <preference for="Magento\TestModule5\Service\V1\OverrideServiceInterface" type="Magento\TestModule5\Service\V1\OverrideService" />
+    <preference for="Magento\Test_Module5\Service\V1\All_Soap_And_Rest_Interface" type="Magento\Test_Module5\Service\V1\All_Soap_And_Rest" />
+    <preference for="Magento\Test_Module5\Service\V2\All_Soap_And_Rest_Interface" type="Magento\Test_Module5\Service\V2\All_Soap_And_Rest" />
+    <preference for="Magento\Test_Module5\Service\V1\Override_Service_Interface" type="Magento\Test_Module5\Service\V1\Override_Service" />
 </config>

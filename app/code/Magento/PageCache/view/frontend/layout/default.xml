@@ -13,12 +13,12 @@
         <referenceBlock name="head.additional">
             <block name="form_key_provider" template="Magento_PageCache::form_key_provider.phtml">
                 <arguments>
-                    <argument name="form_key_provider" xsi:type="object">Magento\PageCache\ViewModel\FormKeyProvider</argument>
+                    <argument name="form_key_provider" xsi:type="object">Magento\Page_Cache\View_Model\Form_Key_Provider</argument>
                 </arguments>
             </block>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="Magento\PageCache\Block\Javascript" template="Magento_PageCache::javascript.phtml" name="pageCache" as="pageCache"/>
+            <block class="Magento\Page_Cache\Block\Javascript" template="Magento_PageCache::javascript.phtml" name="pageCache" as="pageCache"/>
         </referenceContainer>
     </body>
 </page>

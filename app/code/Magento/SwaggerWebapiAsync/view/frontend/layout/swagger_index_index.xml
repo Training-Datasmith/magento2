@@ -10,7 +10,7 @@
         <referenceBlock name="swaggerUiContent">
             <arguments>
                 <argument name="schema_types" xsi:type="array">
-                    <item name="async" xsi:type="object">Magento\SwaggerWebapiAsync\Model\SchemaType\Async</item>
+                    <item name="async" xsi:type="object">Magento\Swagger_Webapi_Async\Model\Schema_Type\Async</item>
                 </argument>
             </arguments>
         </referenceBlock>

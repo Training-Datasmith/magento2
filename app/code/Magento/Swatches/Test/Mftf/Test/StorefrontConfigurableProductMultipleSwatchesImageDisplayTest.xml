@@ -125,7 +125,7 @@
         <after>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
             <!-- Delete configurable product & its variants -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
             <!-- Delete attributes -->
             <deleteData createDataKey="createVisualSwatchAttribute" stepKey="deleteVisualSwatchAttribute"/>
             <deleteData createDataKey="createTextSwatchAttribute1" stepKey="deleteTextSwatchAttribute1"/>

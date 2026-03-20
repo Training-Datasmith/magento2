@@ -6,19 +6,19 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Framework\Search\Adapter\OptionsInterface" type="Magento\CatalogSearch\Model\Adapter\Options" />
-    <preference for="Magento\CatalogSearch\Model\Indexer\IndexSwitcherInterface" type="Magento\CatalogSearch\Model\Indexer\IndexSwitcherProxy"/>
-    <preference for="Magento\CatalogSearch\Model\Adapter\Aggregation\RequestCheckerInterface" type="Magento\CatalogSearch\Model\Adapter\Aggregation\RequestCheckerComposite"/>
-    <preference for="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchCriteriaResolverInterface" type="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchCriteriaResolver"/>
-    <preference for="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplierInterface" type="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\SearchResultApplier"/>
-    <preference for="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\TotalRecordsResolverInterface" type="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection\TotalRecordsResolver"/>
-    <preference for="Magento\CatalogSearch\Model\Search\ItemCollectionProviderInterface" type="Magento\CatalogSearch\Model\Search\ItemCollectionProvider"/>
-    <preference for="Magento\Framework\Indexer\IndexStructureInterface" type="Magento\CatalogSearch\Model\Indexer\IndexStructure" />
-    <preference for="Magento\CatalogSearch\Model\Search\Request\ModifierInterface" type="Magento\CatalogSearch\Model\Search\Request\ModifierComposite" />
+    <preference for="Magento\Framework\Search\Adapter\Options_Interface" type="Magento\Catalog_Search\Model\Adapter\Options" />
+    <preference for="Magento\Catalog_Search\Model\Indexer\Index_Switcher_Interface" type="Magento\Catalog_Search\Model\Indexer\Index_Switcher_Proxy"/>
+    <preference for="Magento\Catalog_Search\Model\Adapter\Aggregation\Request_Checker_Interface" type="Magento\Catalog_Search\Model\Adapter\Aggregation\Request_Checker_Composite"/>
+    <preference for="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection\Search_Criteria_Resolver_Interface" type="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection\Search_Criteria_Resolver"/>
+    <preference for="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection\Search_Result_Applier_Interface" type="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection\Search_Result_Applier"/>
+    <preference for="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection\Total_Records_Resolver_Interface" type="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection\Total_Records_Resolver"/>
+    <preference for="Magento\Catalog_Search\Model\Search\Item_Collection_Provider_Interface" type="Magento\Catalog_Search\Model\Search\Item_Collection_Provider"/>
+    <preference for="Magento\Framework\Indexer\Index_Structure_Interface" type="Magento\Catalog_Search\Model\Indexer\Index_Structure" />
+    <preference for="Magento\Catalog_Search\Model\Search\Request\Modifier_Interface" type="Magento\Catalog_Search\Model\Search\Request\Modifier_Composite" />
     <type name="Magento\Catalog\Model\Indexer\Product\Full">
         <arguments>
             <argument name="indexerList" xsi:type="array">
-                <item name="catalogsearch_fulltext" xsi:type="const">Magento\CatalogSearch\Model\Indexer\Fulltext::INDEXER_ID</item>
+                <item name="catalogsearch_fulltext" xsi:type="const">Magento\Catalog_Search\Model\Indexer\Fulltext::INDEXER_ID</item>
             </argument>
         </arguments>
     </type>
@@ -29,195 +29,195 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product">
-        <plugin name="catalogsearchFulltextProduct" type="Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\Product"/>
+    <type name="Magento\Catalog\Model\Resource_Model\Product">
+        <plugin name="catalogsearchFulltextProduct" type="Magento\Catalog_Search\Model\Indexer\Fulltext\Plugin\Product"/>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Category">
-        <plugin name="catalogsearchFulltextCategory" type="Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\Category"/>
+    <type name="Magento\Catalog\Model\Resource_Model\Category">
+        <plugin name="catalogsearchFulltextCategory" type="Magento\Catalog_Search\Model\Indexer\Fulltext\Plugin\Category"/>
     </type>
     <type name="Magento\Catalog\Model\Product\Action">
-        <plugin name="catalogsearchFulltextMassAction" type="Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\Product\Action"/>
+        <plugin name="catalogsearchFulltextMassAction" type="Magento\Catalog_Search\Model\Indexer\Fulltext\Plugin\Product\Action"/>
     </type>
-    <type name="Magento\Store\Model\ResourceModel\Store">
-        <plugin name="catalogsearchFulltextIndexerStoreView" type="Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\Store\View" />
+    <type name="Magento\Store\Model\Resource_Model\Store">
+        <plugin name="catalogsearchFulltextIndexerStoreView" type="Magento\Catalog_Search\Model\Indexer\Fulltext\Plugin\Store\View" />
     </type>
-    <type name="Magento\Store\Model\ResourceModel\Group">
-        <plugin name="catalogsearchFulltextIndexerStoreGroup" type="Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\Store\Group"/>
+    <type name="Magento\Store\Model\Resource_Model\Group">
+        <plugin name="catalogsearchFulltextIndexerStoreGroup" type="Magento\Catalog_Search\Model\Indexer\Fulltext\Plugin\Store\Group"/>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Attribute">
-        <plugin name="catalogsearchFulltextIndexerAttribute" type="Magento\CatalogSearch\Model\Indexer\Fulltext\Plugin\Attribute"/>
-        <plugin name="catalogsearchAttributeSearchWeightCache" type="Magento\CatalogSearch\Model\Attribute\SearchWeight"/>
+    <type name="Magento\Catalog\Model\Resource_Model\Attribute">
+        <plugin name="catalogsearchFulltextIndexerAttribute" type="Magento\Catalog_Search\Model\Indexer\Fulltext\Plugin\Attribute"/>
+        <plugin name="catalogsearchAttributeSearchWeightCache" type="Magento\Catalog_Search\Model\Attribute\Search_Weight"/>
     </type>
-    <type name="Magento\Framework\Search\EntityMetadata" />
-    <virtualType name="Magento\Framework\Search\ProductEntityMetadata" type="Magento\Framework\Search\EntityMetadata">
+    <type name="Magento\Framework\Search\Entity_Metadata" />
+    <virtualType name="Magento\Framework\Search\Product_Entity_Metadata" type="Magento\Framework\Search\Entity_Metadata">
         <arguments>
             <argument name="entityId" xsi:type="string">entity_id</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\Search\Request\Config\FilesystemReader">
-        <plugin name="catalogSearchDynamicFields"  type="Magento\CatalogSearch\Model\Search\ReaderPlugin" />
+    <type name="Magento\Framework\Search\Request\Config\Filesystem_Reader">
+        <plugin name="catalogSearchDynamicFields"  type="Magento\Catalog_Search\Model\Search\Reader_Plugin" />
     </type>
-    <type name="Magento\Backend\Controller\Adminhtml\Index\GlobalSearch">
+    <type name="Magento\Backend\Controller\Adminhtml\Index\Global_Search">
         <arguments>
             <argument name="searchModules" xsi:type="array">
                 <item name="products" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\CatalogSearch\Model\Search\Catalog</item>
+                    <item name="class" xsi:type="string">Magento\Catalog_Search\Model\Search\Catalog</item>
                     <item name="acl" xsi:type="string">Magento_Catalog::catalog</item>
                 </item>
                 <item name="categories" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\CatalogSearch\Model\Search\Category</item>
+                    <item name="class" xsi:type="string">Magento\Catalog_Search\Model\Search\Category</item>
                     <item name="acl" xsi:type="string">Magento_Catalog::categories</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Search\Model\SearchCollectionInterface" type="Magento\CatalogSearch\Model\ResourceModel\Search\Collection" />
-    <type name="Magento\Catalog\Model\Layer\Search\CollectionFilter">
-        <plugin name="searchQuery" type="Magento\CatalogSearch\Model\Layer\Search\Plugin\CollectionFilter" />
+    <preference for="Magento\Search\Model\Search_Collection_Interface" type="Magento\Catalog_Search\Model\Resource_Model\Search\Collection" />
+    <type name="Magento\Catalog\Model\Layer\Search\Collection_Filter">
+        <plugin name="searchQuery" type="Magento\Catalog_Search\Model\Layer\Search\Plugin\Collection_Filter" />
     </type>
-    <virtualType name="categoryFilterList" type="Magento\Catalog\Model\Layer\FilterList">
+    <virtualType name="categoryFilterList" type="Magento\Catalog\Model\Layer\Filter_List">
         <arguments>
             <argument name="filters" xsi:type="array">
-                <item name="attribute" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Attribute</item>
-                <item name="price" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Price</item>
-                <item name="decimal" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Decimal</item>
-                <item name="category" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Category</item>
+                <item name="attribute" xsi:type="string">Magento\Catalog_Search\Model\Layer\Filter\Attribute</item>
+                <item name="price" xsi:type="string">Magento\Catalog_Search\Model\Layer\Filter\Price</item>
+                <item name="decimal" xsi:type="string">Magento\Catalog_Search\Model\Layer\Filter\Decimal</item>
+                <item name="category" xsi:type="string">Magento\Catalog_Search\Model\Layer\Filter\Category</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="searchFilterList" type="Magento\Catalog\Model\Layer\FilterList">
+    <virtualType name="searchFilterList" type="Magento\Catalog\Model\Layer\Filter_List">
         <arguments>
             <argument name="filters" xsi:type="array">
-                <item name="attribute" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Attribute</item>
-                <item name="price" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Price</item>
-                <item name="decimal" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Decimal</item>
-                <item name="category" xsi:type="string">Magento\CatalogSearch\Model\Layer\Filter\Category</item>
+                <item name="attribute" xsi:type="string">Magento\Catalog_Search\Model\Layer\Filter\Attribute</item>
+                <item name="price" xsi:type="string">Magento\Catalog_Search\Model\Layer\Filter\Price</item>
+                <item name="decimal" xsi:type="string">Magento\Catalog_Search\Model\Layer\Filter\Decimal</item>
+                <item name="category" xsi:type="string">Magento\Catalog_Search\Model\Layer\Filter\Category</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\CatalogSearch\Model\ResourceModel\Fulltext\CollectionFactory" type="Magento\Catalog\Model\ResourceModel\Product\CollectionFactory">
+    <virtualType name="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection_Factory" type="Magento\Catalog\Model\Resource_Model\Product\Collection_Factory">
         <arguments>
-            <argument name="instanceName" xsi:type="string">Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection</argument>
+            <argument name="instanceName" xsi:type="string">Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider">
+    <type name="Magento\Catalog_Search\Model\Layer\Category\Item_Collection_Provider">
         <arguments>
-            <argument name="collectionFactory" xsi:type="object">Magento\CatalogSearch\Model\ResourceModel\Fulltext\CollectionFactory</argument>
+            <argument name="collectionFactory" xsi:type="object">Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection_Factory</argument>
         </arguments>
     </type>
 
-    <virtualType name="Magento\CatalogSearch\Model\ResourceModel\Fulltext\SearchCollection" type="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection">
+    <virtualType name="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Search_Collection" type="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection">
         <arguments>
             <argument name="searchRequestName" xsi:type="string">quick_search_container</argument>
         </arguments>
     </virtualType>
 
-    <virtualType name="Magento\CatalogSearch\Model\ResourceModel\Fulltext\SearchCollectionFactory" type="Magento\Catalog\Model\ResourceModel\Product\CollectionFactory">
+    <virtualType name="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Search_Collection_Factory" type="Magento\Catalog\Model\Resource_Model\Product\Collection_Factory">
         <arguments>
-            <argument name="instanceName" xsi:type="string">Magento\CatalogSearch\Model\ResourceModel\Fulltext\SearchCollection</argument>
+            <argument name="instanceName" xsi:type="string">Magento\Catalog_Search\Model\Resource_Model\Fulltext\Search_Collection</argument>
         </arguments>
     </virtualType>
 
-    <virtualType name="Magento\CatalogSearch\Model\Layer\Search\ItemCollectionProvider" type="Magento\Catalog\Model\Layer\Search\ItemCollectionProvider">
+    <virtualType name="Magento\Catalog_Search\Model\Layer\Search\Item_Collection_Provider" type="Magento\Catalog\Model\Layer\Search\Item_Collection_Provider">
         <arguments>
-            <argument name="collectionFactory" xsi:type="object">Magento\CatalogSearch\Model\ResourceModel\Fulltext\SearchCollectionFactory</argument>
+            <argument name="collectionFactory" xsi:type="object">Magento\Catalog_Search\Model\Resource_Model\Fulltext\Search_Collection_Factory</argument>
         </arguments>
     </virtualType>
 
-    <virtualType name="Magento\CatalogSearch\Model\Advanced\ItemCollectionProvider" type="Magento\Catalog\Model\Layer\Search\ItemCollectionProvider">
+    <virtualType name="Magento\Catalog_Search\Model\Advanced\Item_Collection_Provider" type="Magento\Catalog\Model\Layer\Search\Item_Collection_Provider">
         <arguments>
-            <argument name="collectionFactory" xsi:type="object">Magento\CatalogSearch\Model\ResourceModel\Advanced\CollectionFactory</argument>
+            <argument name="collectionFactory" xsi:type="object">Magento\Catalog_Search\Model\Resource_Model\Advanced\Collection_Factory</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\CatalogSearch\Model\ResourceModel\Advanced\CollectionFactory" type="Magento\Catalog\Model\ResourceModel\Product\CollectionFactory">
+    <virtualType name="Magento\Catalog_Search\Model\Resource_Model\Advanced\Collection_Factory" type="Magento\Catalog\Model\Resource_Model\Product\Collection_Factory">
         <arguments>
-            <argument name="instanceName" xsi:type="string">Magento\CatalogSearch\Model\ResourceModel\Advanced\Collection</argument>
+            <argument name="instanceName" xsi:type="string">Magento\Catalog_Search\Model\Resource_Model\Advanced\Collection</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\CatalogSearch\Model\Advanced">
+    <type name="Magento\Catalog_Search\Model\Advanced">
         <arguments>
-            <argument name="productCollectionFactory" xsi:type="object">Magento\CatalogSearch\Model\ResourceModel\Advanced\CollectionFactory</argument>
-            <argument name="collectionProvider" xsi:type="object">Magento\CatalogSearch\Model\Search\ItemCollectionProviderInterface</argument>
+            <argument name="productCollectionFactory" xsi:type="object">Magento\Catalog_Search\Model\Resource_Model\Advanced\Collection_Factory</argument>
+            <argument name="collectionProvider" xsi:type="object">Magento\Catalog_Search\Model\Search\Item_Collection_Provider_Interface</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\CatalogSearch\Model\Layer\Category\Context" type="Magento\Catalog\Model\Layer\Category\Context">
+    <virtualType name="Magento\Catalog_Search\Model\Layer\Category\Context" type="Magento\Catalog\Model\Layer\Category\Context">
         <arguments>
-            <argument name="collectionProvider" xsi:type="object">Magento\CatalogSearch\Model\Layer\Category\ItemCollectionProvider</argument>
+            <argument name="collectionProvider" xsi:type="object">Magento\Catalog_Search\Model\Layer\Category\Item_Collection_Provider</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\CatalogSearch\Model\Layer\Search\Context" type="Magento\Catalog\Model\Layer\Search\Context">
+    <virtualType name="Magento\Catalog_Search\Model\Layer\Search\Context" type="Magento\Catalog\Model\Layer\Search\Context">
         <arguments>
-            <argument name="collectionProvider" xsi:type="object">Magento\CatalogSearch\Model\Layer\Search\ItemCollectionProvider</argument>
-            <argument name="stateKey" xsi:type="object">Magento\CatalogSearch\Model\Layer\Search\StateKey</argument>
+            <argument name="collectionProvider" xsi:type="object">Magento\Catalog_Search\Model\Layer\Search\Item_Collection_Provider</argument>
+            <argument name="stateKey" xsi:type="object">Magento\Catalog_Search\Model\Layer\Search\State_Key</argument>
         </arguments>
     </virtualType>
     <type name="Magento\Catalog\Model\Layer\Category">
         <arguments>
-            <argument name="context" xsi:type="object">Magento\CatalogSearch\Model\Layer\Category\Context</argument>
+            <argument name="context" xsi:type="object">Magento\Catalog_Search\Model\Layer\Category\Context</argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Layer\Search">
         <arguments>
-            <argument name="context" xsi:type="object">Magento\CatalogSearch\Model\Layer\Search\Context</argument>
+            <argument name="context" xsi:type="object">Magento\Catalog_Search\Model\Layer\Search\Context</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Search\Adapter\Aggregation\AggregationResolver">
+    <type name="Magento\Framework\Search\Adapter\Aggregation\Aggregation_Resolver">
         <arguments>
             <argument name="resolvers" xsi:type="array">
-                <item name="catalogsearch_fulltext" xsi:type="object">Magento\CatalogSearch\Model\Adapter\Aggregation\AggregationResolver</item>
+                <item name="catalogsearch_fulltext" xsi:type="object">Magento\Catalog_Search\Model\Adapter\Aggregation\Aggregation_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\Search\RequestGenerator\GeneratorResolver">
+    <type name="Magento\Catalog_Search\Model\Search\Request_Generator\Generator_Resolver">
         <arguments>
-            <argument name="defaultGenerator" xsi:type="object">\Magento\CatalogSearch\Model\Search\RequestGenerator\General</argument>
+            <argument name="defaultGenerator" xsi:type="object">\Magento\Catalog_Search\Model\Search\Request_Generator\General</argument>
             <argument name="generators" xsi:type="array">
-                <item name="decimal" xsi:type="object">Magento\CatalogSearch\Model\Search\RequestGenerator\Decimal</item>
+                <item name="decimal" xsi:type="object">Magento\Catalog_Search\Model\Search\Request_Generator\Decimal</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\Adapter\Aggregation\RequestCheckerComposite">
+    <type name="Magento\Catalog_Search\Model\Adapter\Aggregation\Request_Checker_Composite">
         <arguments>
             <argument name="queryCheckers" xsi:type="array">
-                <item name="advanced_search_container" xsi:type="object">\Magento\CatalogSearch\Model\Adapter\Aggregation\Checker\Query\AdvancedSearch</item>
-                <item name="catalog_view_container" xsi:type="object">\Magento\CatalogSearch\Model\Adapter\Aggregation\Checker\Query\CatalogView</item>
+                <item name="advanced_search_container" xsi:type="object">\Magento\Catalog_Search\Model\Adapter\Aggregation\Checker\Query\Advanced_Search</item>
+                <item name="catalog_view_container" xsi:type="object">\Magento\Catalog_Search\Model\Adapter\Aggregation\Checker\Query\Catalog_View</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\Adapter\Aggregation\Checker\Query\AdvancedSearch">
+    <type name="Magento\Catalog_Search\Model\Adapter\Aggregation\Checker\Query\Advanced_Search">
         <arguments>
             <argument name="name" xsi:type="string">advanced_search_container</argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\Adapter\Aggregation\Checker\Query\CatalogView">
+    <type name="Magento\Catalog_Search\Model\Adapter\Aggregation\Checker\Query\Catalog_View">
         <arguments>
             <argument name="name" xsi:type="string">catalog_view_container</argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\Indexer\Fulltext">
+    <type name="Magento\Catalog_Search\Model\Indexer\Fulltext">
         <arguments>
             <argument name="dimensionProvider" xsi:type="object" shared="false">
-                Magento\Store\Model\StoreDimensionProvider
+                Magento\Store\Model\Store_Dimension_Provider
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\Entity\Setup\PropertyMapper\Composite">
+    <type name="Magento\Eav\Model\Entity\Setup\Property_Mapper\Composite">
         <arguments>
             <argument name="propertyMappers" xsi:type="array">
-                <item name="catalog_search" xsi:type="string">Magento\CatalogSearch\Model\ResourceModel\Setup\PropertyMapper</item>
+                <item name="catalog_search" xsi:type="string">Magento\Catalog_Search\Model\Resource_Model\Setup\Property_Mapper</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\Indexer\Fulltext\Action\DataProvider">
-        <plugin name="stockedProductsFilterPlugin" type="Magento\CatalogSearch\Model\Indexer\Plugin\StockedProductsFilterPlugin"/>
+    <type name="Magento\Catalog_Search\Model\Indexer\Fulltext\Action\Data_Provider">
+        <plugin name="stockedProductsFilterPlugin" type="Magento\Catalog_Search\Model\Indexer\Plugin\Stocked_Products_Filter_Plugin"/>
     </type>
-    <type name="Magento\CatalogSearch\Model\Indexer\Fulltext\Action\Full">
+    <type name="Magento\Catalog_Search\Model\Indexer\Fulltext\Action\Full">
         <arguments>
             <!-- @deprecated parameter indexIteratorFactory has been deprecated and not in use now -->
             <argument name="indexIteratorFactory" xsi:type="null" />
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\ResourceModel\Advanced\Collection">
+    <type name="Magento\Catalog_Search\Model\Resource_Model\Advanced\Collection">
         <arguments>
             <!-- @deprecated parameter requestBuilder has been deprecated and not in use now -->
             <argument name="requestBuilder" xsi:type="null" />
@@ -227,7 +227,7 @@
             <argument name="temporaryStorageFactory" xsi:type="null" />
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\ResourceModel\Fulltext\Collection">
+    <type name="Magento\Catalog_Search\Model\Resource_Model\Fulltext\Collection">
         <arguments>
             <!-- @deprecated parameter catalogSearchData has been deprecated and not in use now -->
             <argument name="catalogSearchData" xsi:type="null" />
@@ -239,16 +239,16 @@
             <argument name="temporaryStorageFactory" xsi:type="null" />
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\Search\Request\ModifierComposite">
+    <type name="Magento\Catalog_Search\Model\Search\Request\Modifier_Composite">
         <arguments>
             <argument name="modifiers" xsi:type="array">
-                <item name="search" xsi:type="object">Magento\CatalogSearch\Model\Search\Request\SearchModifier</item>
-                <item name="partial_search" xsi:type="object">Magento\CatalogSearch\Model\Search\Request\PartialSearchModifier</item>
-                <item name="match_queries" xsi:type="object">Magento\CatalogSearch\Model\Search\Request\MatchQueriesModifier</item>
+                <item name="search" xsi:type="object">Magento\Catalog_Search\Model\Search\Request\Search_Modifier</item>
+                <item name="partial_search" xsi:type="object">Magento\Catalog_Search\Model\Search\Request\Partial_Search_Modifier</item>
+                <item name="match_queries" xsi:type="object">Magento\Catalog_Search\Model\Search\Request\Match_Queries_Modifier</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogSearch\Model\Search\Request\MatchQueriesModifier">
+    <type name="Magento\Catalog_Search\Model\Search\Request\Match_Queries_Modifier">
         <arguments>
             <argument name="queries" xsi:type="array">
                 <item name="partial_search" xsi:type="array">

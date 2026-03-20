@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="clean_cache_by_tags">
-        <observer name="invalidate_graphql_resolver_cache" instance="Magento\GraphQlResolverCache\Observer\InvalidateGraphQlResolverCacheObserver"/>
+        <observer name="invalidate_graphql_resolver_cache" instance="Magento\Graph_Ql_Resolver_Cache\Observer\Invalidate_Graph_Ql_Resolver_Cache_Observer"/>
     </event>
 </config>

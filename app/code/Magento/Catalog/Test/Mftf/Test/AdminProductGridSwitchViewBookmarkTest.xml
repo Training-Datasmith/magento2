@@ -42,7 +42,7 @@
         <click selector="{{AdminGridDefaultViewControls.saveViewAs}}" stepKey="saveView"/>
         <waitForElementVisible selector="{{AdminGridDefaultViewControls.viewName}}" stepKey="waitForViewNameInput"/>
         <fillField selector="{{AdminGridDefaultViewControls.viewName}}" userInput="{{NewGridView.name}}" stepKey="inputViewName"/>
-        <pressKey selector="{{AdminGridDefaultViewControls.viewName}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="pressEnterKey"/>
+        <pressKey selector="{{AdminGridDefaultViewControls.viewName}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="pressEnterKey"/>
         <waitForElementNotVisible selector="{{AdminGridDefaultViewControls.viewName}}" stepKey="waitForViewNameInputGone"/>
 
         <waitForPageLoad stepKey="waitForGridLoad" time="10"/>

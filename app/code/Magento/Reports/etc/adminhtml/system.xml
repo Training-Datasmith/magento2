@@ -33,11 +33,11 @@
                 <label>Dashboard</label>
                 <field id="ytd_start" translate="label" type="select" sortOrder="1" showInDefault="1" canRestore="1">
                     <label>Year-To-Date Starts</label>
-                    <frontend_model>Magento\Reports\Block\Adminhtml\Config\Form\Field\YtdStart</frontend_model>
+                    <frontend_model>Magento\Reports\Block\Adminhtml\Config\Form\Field\Ytd_Start</frontend_model>
                 </field>
                 <field id="mtd_start" translate="label comment" type="select" sortOrder="2" showInDefault="1" canRestore="1">
                     <label>Current Month Starts</label>
-                    <frontend_model>Magento\Reports\Block\Adminhtml\Config\Form\Field\MtdStart</frontend_model>
+                    <frontend_model>Magento\Reports\Block\Adminhtml\Config\Form\Field\Mtd_Start</frontend_model>
                     <comment>Select day of the month.</comment>
                 </field>
             </group>

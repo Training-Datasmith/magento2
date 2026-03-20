@@ -7,13 +7,13 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Magento\Customer\Model\Customer" type="Magento\Customer\Model\Backend\Customer" />
-    <type name="Magento\Customer\Model\ResourceModel\Customer\Collection">
+    <type name="Magento\Customer\Model\Resource_Model\Customer\Collection">
         <arguments>
             <argument name="modelName" xsi:type="string">Magento\Customer\Model\Backend\Customer</argument>
         </arguments>
     </type>
-    <preference for="Magento\Framework\Session\SessionManagerInterface" type="Magento\Backend\Model\Session" />
-    <type name="Magento\Ui\Model\Export\MetadataProvider">
+    <preference for="Magento\Framework\Session\Session_Manager_Interface" type="Magento\Backend\Model\Session" />
+    <type name="Magento\Ui\Model\Export\Metadata_Provider">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="customer_listing" xsi:type="array">
@@ -23,26 +23,26 @@
             </argument>
         </arguments>
     </type>
-    <virtualType name="CustomerGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+    <virtualType name="CustomerGirdFilterPool" type="Magento\Framework\View\Element\Ui_Component\Data_Provider\Filter_Pool">
         <arguments>
             <argument name="appliers" xsi:type="array">
-                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
-                <item name="fulltext" xsi:type="object">Magento\Customer\Ui\Component\Listing\FulltextFilter</item>
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\Ui_Component\Data_Provider\Regular_Filter</item>
+                <item name="fulltext" xsi:type="object">Magento\Customer\Ui\Component\Listing\Fulltext_Filter</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="CustomerGridCollectionReporting" type="Magento\Framework\View\Element\UiComponent\DataProvider\Reporting">
+    <virtualType name="CustomerGridCollectionReporting" type="Magento\Framework\View\Element\Ui_Component\Data_Provider\Reporting">
         <arguments>
             <argument name="filterPool" xsi:type="object">CustomerGirdFilterPool</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Customer\Ui\Component\DataProvider">
+    <type name="Magento\Customer\Ui\Component\Data_Provider">
         <arguments>
             <argument name="reporting" xsi:type="object">CustomerGridCollectionReporting</argument>
         </arguments>
     </type>
     <type name="Magento\Store\Model\Website">
-        <plugin name="reindex_customer_grid_after_website_remove" type="Magento\Customer\Model\Plugin\CustomerGridIndexAfterWebsiteDelete" />
-        <plugin name="deleteCustomerGroupExcludedWebsiteAfterWebsiteDelete" type="Magento\Customer\Model\Plugin\Website\DeleteCustomerGroupExcludedWebsite"/>
+        <plugin name="reindex_customer_grid_after_website_remove" type="Magento\Customer\Model\Plugin\Customer_Grid_Index_After_Website_Delete" />
+        <plugin name="deleteCustomerGroupExcludedWebsiteAfterWebsiteDelete" type="Magento\Customer\Model\Plugin\Website\Delete_Customer_Group_Excluded_Website"/>
     </type>
 </config>

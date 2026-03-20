@@ -11,7 +11,7 @@
         <referenceContainer name="content">
             <block class="Magento\Sales\Block\Adminhtml\Order\Create\Sidebar\Reorder" template="Magento_Sales::order/create/sidebar/items.phtml" name="sidebar_reorder">
                 <arguments>
-                    <argument name="sideBarPermissionCheck" xsi:type="object">Magento\Sales\ViewModel\Order\Create\SidebarPermissionCheck</argument>
+                    <argument name="sideBarPermissionCheck" xsi:type="object">Magento\Sales\View_Model\Order\Create\Sidebar_Permission_Check</argument>
                 </arguments>
             </block>
         </referenceContainer>

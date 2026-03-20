@@ -25,7 +25,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Logging::system_magento_logging_bulk_operations</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="failed_operation_modal_listing_data_source">
+        <dataProvider class="Magento\Framework\View\Element\Ui_Component\Data_Provider\Data_Provider" name="failed_operation_modal_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>id</primaryFieldName>

@@ -13,9 +13,9 @@
         </settings>
         <container name="google_experiment_container" sortOrder="250">
             <htmlContent name="html_content">
-                <block name="googleOptimizerBlockAdminhtmlFormCmsPage" class="Magento\GoogleOptimizer\Block\Adminhtml\Form\CmsPage">
+                <block name="googleOptimizerBlockAdminhtmlFormCmsPage" class="Magento\Google_Optimizer\Block\Adminhtml\Form\Cms_Page">
                     <arguments>
-                        <argument name="code-entity" xsi:type="string">Magento\GoogleOptimizer\Block\Adminhtml\Cms\Page\EntityCmsPage</argument>
+                        <argument name="code-entity" xsi:type="string">Magento\Google_Optimizer\Block\Adminhtml\Cms\Page\Entity_Cms_Page</argument>
                         <argument name="form-name" xsi:type="string">cms_page_form</argument>
                     </arguments>
                 </block>

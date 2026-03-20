@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="customerUpdated" request="Magento\Customer\Api\Data\CustomerInterface" response="Magento\Customer\Api\Data\InvalidInterface">
-        <handler name="someHandlerName" type="Magento\Customer\Api\CustomerRepositoryInterface" method="save"/>
+    <topic name="customerUpdated" request="Magento\Customer\Api\Data\Customer_Interface" response="Magento\Customer\Api\Data\Invalid_Interface">
+        <handler name="someHandlerName" type="Magento\Customer\Api\Customer_Repository_Interface" method="save"/>
     </topic>
 </config>

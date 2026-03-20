@@ -6,15 +6,15 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Catalog\Helper\Product\ConfigurationPool">
+    <type name="Magento\Catalog\Helper\Product\Configuration_Pool">
         <arguments>
             <argument name="instancesByType" xsi:type="array">
                 <item name="bundle" xsi:type="object">Magento\Bundle\Helper\Catalog\Product\Configuration</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Bundle\Api\ProductLinkManagementInterface">
-        <plugin name="reindex_after_add_child_by_sku" type="Magento\Bundle\Plugin\Api\ProductLinkManagement\ReindexAfterAddChildBySkuPlugin"/>
-        <plugin name="reindex_after_remove_child" type="Magento\Bundle\Plugin\Api\ProductLinkManagement\ReindexAfterRemoveChildPlugin"/>
+    <type name="Magento\Bundle\Api\Product_Link_Management_Interface">
+        <plugin name="reindex_after_add_child_by_sku" type="Magento\Bundle\Plugin\Api\Product_Link_Management\Reindex_After_Add_Child_By_Sku_Plugin"/>
+        <plugin name="reindex_after_remove_child" type="Magento\Bundle\Plugin\Api\Product_Link_Management\Reindex_After_Remove_Child_Plugin"/>
     </type>
 </config>

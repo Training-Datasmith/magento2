@@ -16,17 +16,17 @@
             <argument name="storage" xsi:type="object">Magento\Wishlist\Model\Session\Storage</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\Url\SecurityInfo">
+    <type name="Magento\Framework\Url\Security_Info">
         <arguments>
             <argument name="secureUrlList" xsi:type="array">
                 <item name="wishlist" xsi:type="string">/wishlist/</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Section_Pool_Interface">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="wishlist" xsi:type="string">Magento\Wishlist\CustomerData\Wishlist</item>
+                <item name="wishlist" xsi:type="string">Magento\Wishlist\Customer_Data\Wishlist</item>
             </argument>
         </arguments>
     </type>
@@ -35,17 +35,17 @@
             <argument name="wishlistSession" xsi:type="object">Magento\Wishlist\Model\Session</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Element\Message\MessageConfigurationsPool">
+    <type name="Magento\Framework\View\Element\Message\Message_Configurations_Pool">
         <arguments>
             <argument name="configurationsMap" xsi:type="array">
                 <item name="addProductSuccessMessage" xsi:type="array">
-                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\Block_Renderer::CODE</item>
                     <item name="data" xsi:type="array">
                         <item name="template" xsi:type="string">Magento_Wishlist::messages/addProductSuccessMessage.phtml</item>
                     </item>
                 </item>
                 <item name="removeWishlistItemSuccessMessage" xsi:type="array">
-                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\BlockRenderer::CODE</item>
+                    <item name="renderer" xsi:type="const">\Magento\Framework\View\Element\Message\Renderer\Block_Renderer::CODE</item>
                     <item name="data" xsi:type="array">
                         <item name="template" xsi:type="string">Magento_Wishlist::messages/removeWishlistItemSuccessMessage.phtml</item>
                     </item>

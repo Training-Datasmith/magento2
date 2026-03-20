@@ -16,7 +16,7 @@
                 </field>
                 <field id="conversion_id" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Conversion ID</label>
-                    <backend_model>Magento\GoogleAdwords\Model\Config\Backend\ConversionId</backend_model>
+                    <backend_model>Magento\Google_Adwords\Model\Config\Backend\Conversion_Id</backend_model>
                     <validate>required-entry validate-number</validate>
                     <depends>
                         <field id="*/*/active">1</field>
@@ -24,7 +24,7 @@
                 </field>
                 <field id="conversion_language" translate="label" type="select" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Conversion Language</label>
-                    <source_model>Magento\GoogleAdwords\Model\Config\Source\Language</source_model>
+                    <source_model>Magento\Google_Adwords\Model\Config\Source\Language</source_model>
                     <depends>
                         <field id="*/*/active">1</field>
                     </depends>
@@ -37,7 +37,7 @@
                 </field>
                 <field id="conversion_color" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Conversion Color</label>
-                    <backend_model>Magento\GoogleAdwords\Model\Config\Backend\Color</backend_model>
+                    <backend_model>Magento\Google_Adwords\Model\Config\Backend\Color</backend_model>
                     <depends>
                         <field id="*/*/active">1</field>
                     </depends>
@@ -50,7 +50,7 @@
                 </field>
                 <field id="conversion_value_type" translate="label" type="select" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Conversion Value Type</label>
-                    <source_model>Magento\GoogleAdwords\Model\Config\Source\ValueType</source_model>
+                    <source_model>Magento\Google_Adwords\Model\Config\Source\Value_Type</source_model>
                     <depends>
                         <field id="*/*/active">1</field>
                     </depends>

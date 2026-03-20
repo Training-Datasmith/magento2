@@ -9,7 +9,7 @@
     <update handle="checkout_cart_item_renderers"/>
     <body>
         <referenceContainer name="page.messages">
-            <block class="Magento\Checkout\Block\Cart\ValidationMessages" name="checkout.cart.validationmessages"/>
+            <block class="Magento\Checkout\Block\Cart\Validation_Messages" name="checkout.cart.validationmessages"/>
         </referenceContainer>
         <referenceContainer name="content">
             <block class="Magento\Checkout\Block\Cart" name="checkout.cart" template="Magento_Checkout::cart.phtml" cacheable="false">
@@ -176,26 +176,26 @@
                             <block class="Magento\Checkout\Block\Cart" name="checkout.cart.methods.bottom" template="Magento_Checkout::cart/methods.phtml">
                                 <container name="checkout.cart.methods" as="methods" label="Payment Methods After Checkout Button">
                                     <block class="Magento\Checkout\Block\Onepage\Link" name="checkout.cart.methods.onepage.bottom" template="Magento_Checkout::onepage/link.phtml" />
-                                    <block class="Magento\Checkout\Block\QuoteShortcutButtons" name="checkout.cart.shortcut.buttons" />
+                                    <block class="Magento\Checkout\Block\Quote_Shortcut_Buttons" name="checkout.cart.shortcut.buttons" />
                                 </container>
                             </block>
                         </container>
                         <block class="Magento\Checkout\Block\Cart\Grid" name="checkout.cart.form" as="cart-items" template="Magento_Checkout::cart/form.phtml" after="cart.summary">
                             <arguments>
-                                <argument name="view_model" xsi:type="object">Magento\Checkout\ViewModel\Cart</argument>
+                                <argument name="view_model" xsi:type="object">Magento\Checkout\View_Model\Cart</argument>
                             </arguments>
-                            <block class="Magento\Framework\View\Element\RendererList" name="checkout.cart.item.renderers" as="renderer.list"/>
-                            <block class="Magento\Framework\View\Element\Text\ListText" name="checkout.cart.order.actions"/>
+                            <block class="Magento\Framework\View\Element\Renderer_List" name="checkout.cart.item.renderers" as="renderer.list"/>
+                            <block class="Magento\Framework\View\Element\Text\List_Text" name="checkout.cart.order.actions"/>
                         </block>
                         <container name="checkout.cart.widget" as="checkout_cart_widget" label="Shopping Cart Items After" after="cart-items"/>
                     </container>
                     <block class="Magento\Checkout\Block\Cart\Crosssell" name="checkout.cart.crosssell" template="Magento_Catalog::product/list/items.phtml" after="-" ifconfig="checkout/cart/crosssell_enabled">
                         <arguments>
                             <argument name="type" xsi:type="string">crosssell</argument>
-                            <argument name="view_model" xsi:type="object">Magento\Catalog\ViewModel\Product\Listing\PreparePostData</argument>
+                            <argument name="view_model" xsi:type="object">Magento\Catalog\View_Model\Product\Listing\Prepare_Post_Data</argument>
                         </arguments>
-                        <block class="Magento\Catalog\Block\Product\ProductList\Item\Container" name="crosssell.product.addto" as="addto">
-                            <block class="Magento\Catalog\Block\Product\ProductList\Item\AddTo\Compare"
+                        <block class="Magento\Catalog\Block\Product\Product_List\Item\Container" name="crosssell.product.addto" as="addto">
+                            <block class="Magento\Catalog\Block\Product\Product_List\Item\Add_To\Compare"
                                    name="crosssell.product.addto.compare" as="compare"
                                    template="Magento_Catalog::product/list/addto/compare.phtml"/>
                         </block>

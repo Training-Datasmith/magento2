@@ -11,7 +11,7 @@
             <block class="Magento\Integration\Block\Adminhtml\Integration\Grid" name="integration.grid" as="grid">
                 <arguments>
                     <argument name="id" xsi:type="string">integrationGrid</argument>
-                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Integration\Model\ResourceModel\Integration\Collection</argument>
+                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Integration\Model\Resource_Model\Integration\Collection</argument>
                     <argument name="use_ajax" xsi:type="string">1</argument>
                     <argument name="default_sort" xsi:type="string">integration_id</argument>
                     <argument name="default_dir" xsi:type="string">asc</argument>
@@ -19,7 +19,7 @@
                         <param name="_current">1</param>
                     </argument>
                 </arguments>
-                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="integration.grid.columnSet">
+                <block class="Magento\Backend\Block\Widget\Grid\Column_Set" as="grid.columnSet" name="integration.grid.columnSet">
                     <arguments>
                         <argument name="rowUrl" xsi:type="array">
                             <item name="path" xsi:type="string"/>

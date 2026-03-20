@@ -7,13 +7,13 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="customer_login">
-        <observer name="loadCustomerQuote" instance="Magento\Checkout\Observer\LoadCustomerQuoteObserver" />
+        <observer name="loadCustomerQuote" instance="Magento\Checkout\Observer\Load_Customer_Quote_Observer" />
     </event>
     <event name="customer_logout">
-        <observer name="unsetAll" instance="Magento\Checkout\Observer\UnsetAllObserver" />
+        <observer name="unsetAll" instance="Magento\Checkout\Observer\Unset_All_Observer" />
     </event>
     <event name="controller_action_predispatch_checkout_index_index">
         <observer name="cps_storefront_checkout_index_index_predispatch"
-                  instance="Magento\Checkout\Observer\CspPolicyObserver"/>
+                  instance="Magento\Checkout\Observer\Csp_Policy_Observer"/>
     </event>
 </config>

@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
-    <extension_attributes for="Magento\Quote\Api\Data\CartInterface">
-        <attribute code="shipping_assignments" type="Magento\Quote\Api\Data\ShippingAssignmentInterface[]" />
+    <extension_attributes for="Magento\Quote\Api\Data\Cart_Interface">
+        <attribute code="shipping_assignments" type="Magento\Quote\Api\Data\Shipping_Assignment_Interface[]" />
     </extension_attributes>
 
-    <extension_attributes for="Magento\Quote\Api\Data\TotalsInterface">
+    <extension_attributes for="Magento\Quote\Api\Data\Totals_Interface">
         <attribute code="coupon_label" type="string" />
     </extension_attributes>
 </config>

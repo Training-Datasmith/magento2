@@ -6,31 +6,31 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\MediaStorage\Helper\File\Storage">
+    <type name="Magento\Media_Storage\Helper\File\Storage">
         <arguments>
-            <argument name="storage" xsi:type="object">Magento\MediaStorage\Model\File\Storage\Proxy</argument>
+            <argument name="storage" xsi:type="object">Magento\Media_Storage\Model\File\Storage\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\MediaStorage\Helper\File\Storage\Database">
+    <type name="Magento\Media_Storage\Helper\File\Storage\Database">
         <arguments>
-            <argument name="fileStorage" xsi:type="object">Magento\MediaStorage\Model\File\Storage\File\Proxy</argument>
+            <argument name="fileStorage" xsi:type="object">Magento\Media_Storage\Model\File\Storage\File\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Asset\MergeService">
-        <plugin name="cleanMergedJsCss" type="Magento\MediaStorage\Model\Asset\Plugin\CleanMergedJsCss"/>
+    <type name="Magento\Framework\View\Asset\Merge_Service">
+        <plugin name="cleanMergedJsCss" type="Magento\Media_Storage\Model\Asset\Plugin\Clean_Merged_Js_Css"/>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="imagesResizeCommand" xsi:type="object">Magento\MediaStorage\Console\Command\ImagesResizeCommand</item>
+                <item name="imagesResizeCommand" xsi:type="object">Magento\Media_Storage\Console\Command\Images_Resize_Command</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaStorage\Console\Command\ImagesResizeCommand">
+    <type name="Magento\Media_Storage\Console\Command\Images_Resize_Command">
         <arguments>
             <argument name="appState" xsi:type="object">Magento\Framework\App\State\Proxy</argument>
-            <argument name="imageResize" xsi:type="object">Magento\MediaStorage\Service\ImageResize\Proxy</argument>
-            <argument name="imageResizeScheduler" xsi:type="object">Magento\MediaStorage\Service\ImageResizeScheduler\Proxy</argument>
+            <argument name="imageResize" xsi:type="object">Magento\Media_Storage\Service\Image_Resize\Proxy</argument>
+            <argument name="imageResizeScheduler" xsi:type="object">Magento\Media_Storage\Service\Image_Resize_Scheduler\Proxy</argument>
         </arguments>
     </type>
 </config>

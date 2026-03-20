@@ -12,12 +12,12 @@
                 <block class="Magento\Backend\Block\Widget\Grid" name="sales_order_status.grid" as="grid">
                     <arguments>
                         <argument name="id" xsi:type="string">sales_order_status_grid</argument>
-                        <argument name="dataSource" xsi:type="object" shared="false">Magento\Sales\Model\ResourceModel\Status\Collection</argument>
+                        <argument name="dataSource" xsi:type="object" shared="false">Magento\Sales\Model\Resource_Model\Status\Collection</argument>
                         <argument name="default_sort" xsi:type="string">state</argument>
                         <argument name="default_dir" xsi:type="string">desc</argument>
                         <argument name="pager_visibility" xsi:type="string">1</argument>
                     </arguments>
-                    <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" as="grid.columnSet" name="sales_order_status.grid.columnSet">
+                    <block class="Magento\Backend\Block\Widget\Grid\Column_Set" as="grid.columnSet" name="sales_order_status.grid.columnSet">
                         <arguments>
                             <argument name="rowUrl" xsi:type="array">
                                 <item name="path" xsi:type="string">sales/order_status/edit</item>

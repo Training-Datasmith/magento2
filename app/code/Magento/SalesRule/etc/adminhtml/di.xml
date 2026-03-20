@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\SalesRule\Helper\Coupon">
+    <type name="Magento\Sales_Rule\Helper\Coupon">
         <arguments>
             <argument name="couponParameters" xsi:type="array">
                 <item name="separator" xsi:type="string">-</item>
@@ -20,9 +20,9 @@
     </type>
 
     <preference
-            for="Magento\SalesRule\Model\Spi\CodeLimitManagerInterface"
-            type="Magento\SalesRule\Model\Coupon\AdminCodeLimitManager" />
+            for="Magento\Sales_Rule\Model\Spi\Code_Limit_Manager_Interface"
+            type="Magento\Sales_Rule\Model\Coupon\Admin_Code_Limit_Manager" />
     <preference
-        for="Magento\SalesRule\Model\Quote\GetCouponCodeLengthInterface"
-        type="Magento\SalesRule\Model\Quote\GetCouponCodeLength" />
+        for="Magento\Sales_Rule\Model\Quote\Get_Coupon_Code_Length_Interface"
+        type="Magento\Sales_Rule\Model\Quote\Get_Coupon_Code_Length" />
 </config>

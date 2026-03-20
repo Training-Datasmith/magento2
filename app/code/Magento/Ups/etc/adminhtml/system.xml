@@ -44,7 +44,7 @@
                 </field>
                 <field id="dest_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Destination Type</label>
-                    <source_model>Magento\Ups\Model\Config\Source\DestType</source_model>
+                    <source_model>Magento\Ups\Model\Config\Source\Dest_Type</source_model>
                 </field>
                 <field id="free_method" translate="label" type="select" sortOrder="200" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Free Method</label>
@@ -53,23 +53,23 @@
                 </field>
                 <field id="gateway_url" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Gateway URL</label>
-                    <backend_model>Magento\Ups\Model\Config\Backend\UpsUrl</backend_model>
+                    <backend_model>Magento\Ups\Model\Config\Backend\Ups_Url</backend_model>
                 </field>
                 <field id="gateway_xml_url" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Gateway XML URL</label>
-                    <backend_model>Magento\Ups\Model\Config\Backend\UpsUrl</backend_model>
+                    <backend_model>Magento\Ups\Model\Config\Backend\Ups_Url</backend_model>
                 </field>
                 <field id="gateway_rest_url" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Gateway REST URL</label>
-                    <backend_model>Magento\Ups\Model\Config\Backend\UpsUrl</backend_model>
+                    <backend_model>Magento\Ups\Model\Config\Backend\Ups_Url</backend_model>
                 </field>
                 <field id="handling_type" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Calculate Handling Fee</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Type</source_model>
                 </field>
                 <field id="handling_action" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Handling Applied</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingAction</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Action</source_model>
                 </field>
                 <field id="handling_fee" translate="label" type="text" sortOrder="130" showInDefault="1" showInWebsite="1">
                     <label>Handling Fee</label>
@@ -85,7 +85,7 @@
                 </field>
                 <field id="origin_shipment" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Origin of the Shipment</label>
-                    <source_model>Magento\Ups\Model\Config\Source\OriginShipment</source_model>
+                    <source_model>Magento\Ups\Model\Config\Source\Origin_Shipment</source_model>
                 </field>
                 <field id="password" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1">
                     <label>Password</label>
@@ -104,11 +104,11 @@
                 </field>
                 <field id="tracking_url" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Tracking XML URL</label>
-                    <backend_model>Magento\Ups\Model\Config\Backend\UpsUrl</backend_model>
+                    <backend_model>Magento\Ups\Model\Config\Backend\Ups_Url</backend_model>
                 </field>
                 <field id="tracking_rest_url" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Tracking REST URL</label>
-                    <backend_model>Magento\Ups\Model\Config\Backend\UpsUrl</backend_model>
+                    <backend_model>Magento\Ups\Model\Config\Backend\Ups_Url</backend_model>
                 </field>
                 <field id="type" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>UPS Type</label>

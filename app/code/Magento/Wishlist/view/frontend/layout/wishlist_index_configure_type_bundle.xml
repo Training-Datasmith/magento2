@@ -22,10 +22,10 @@
                        template="Magento_Catalog::product/view/addto.phtml" cacheable="false">
                     <block class="Magento\Wishlist\Block\Item\Configure" name="view.addto.wishlist.bundle"
                            template="Magento_Wishlist::item/configure/addto/wishlist.phtml" />
-                    <block class="Magento\Catalog\Block\Product\View\AddTo\Compare" name="view.addto.compare.bundle" after="view.addto.wishlist"
+                    <block class="Magento\Catalog\Block\Product\View\Add_To\Compare" name="view.addto.compare.bundle" after="view.addto.wishlist"
                            template="Magento_Catalog::product/view/addto/compare.phtml">
                         <arguments>
-                            <argument name="addToCompareViewModel" xsi:type="object">Magento\Catalog\ViewModel\Product\Checker\AddToCompareAvailability</argument>
+                            <argument name="addToCompareViewModel" xsi:type="object">Magento\Catalog\View_Model\Product\Checker\Add_To_Compare_Availability</argument>
                         </arguments>
                     </block>
                 </block>
@@ -39,27 +39,27 @@
                 </container>
                 <block class="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Select" name="product.info.bundle.options.select" as="select">
                     <arguments>
-                        <argument name="tier_price_renderer" xsi:type="object">\Magento\Bundle\Block\DataProviders\OptionPriceRenderer</argument>
-                        <argument name="validateQuantityViewModel" xsi:type="object">Magento\Bundle\ViewModel\ValidateQuantity</argument>
+                        <argument name="tier_price_renderer" xsi:type="object">\Magento\Bundle\Block\Data_Providers\Option_Price_Renderer</argument>
+                        <argument name="validateQuantityViewModel" xsi:type="object">Magento\Bundle\View_Model\Validate_Quantity</argument>
                     </arguments>
                 </block>
                 <block class="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Multi" name="product.info.bundle.options.multi" as="multi"/>
                 <block class="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Radio" name="product.info.bundle.options.radio" as="radio">
                     <arguments>
-                        <argument name="tier_price_renderer" xsi:type="object">\Magento\Bundle\Block\DataProviders\OptionPriceRenderer</argument>
-                        <argument name="validateQuantityViewModel" xsi:type="object">Magento\Bundle\ViewModel\ValidateQuantity</argument>
+                        <argument name="tier_price_renderer" xsi:type="object">\Magento\Bundle\Block\Data_Providers\Option_Price_Renderer</argument>
+                        <argument name="validateQuantityViewModel" xsi:type="object">Magento\Bundle\View_Model\Validate_Quantity</argument>
                     </arguments>
                 </block>
                 <block class="Magento\Bundle\Block\Catalog\Product\View\Type\Bundle\Option\Checkbox" name="product.info.bundle.options.checkbox" as="checkbox">
                     <arguments>
-                        <argument name="tier_price_renderer" xsi:type="object">\Magento\Bundle\Block\DataProviders\OptionPriceRenderer</argument>
+                        <argument name="tier_price_renderer" xsi:type="object">\Magento\Bundle\Block\Data_Providers\Option_Price_Renderer</argument>
                     </arguments>
                 </block>
             </block>
         </referenceBlock>
         <move element="product.price.tier" destination="product.info.options.wrapper.bottom" before="-" />
         <referenceBlock name="product.info.options.wrapper.bottom">
-            <block class="Magento\CatalogInventory\Block\Qtyincrements" name="product.info.qtyincrements" before="-" template="Magento_CatalogInventory::qtyincrements.phtml"/>
+            <block class="Magento\Catalog_Inventory\Block\Qtyincrements" name="product.info.qtyincrements" before="-" template="Magento_CatalogInventory::qtyincrements.phtml"/>
             <action method="unsetChild">
                 <argument name="block" xsi:type="string">product.info.addtocart</argument>
             </action>

@@ -6,14 +6,14 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Wishlist\Model\Wishlist\BuyRequest\BuyRequestBuilder">
+    <type name="Magento\Wishlist\Model\Wishlist\Buy_Request\Buy_Request_Builder">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="super_attribute" xsi:type="object">Magento\Wishlist\Model\Wishlist\BuyRequest\SuperAttributeDataProvider</item>
-                <item name="customizable_option" xsi:type="object">Magento\Wishlist\Model\Wishlist\BuyRequest\CustomizableOptionDataProvider</item>
-                <item name="bundle" xsi:type="object">Magento\Wishlist\Model\Wishlist\BuyRequest\BundleDataProvider</item>
-                <item name="downloadable" xsi:type="object">Magento\Wishlist\Model\Wishlist\BuyRequest\DownloadableLinkDataProvider</item>
-                <item name="grouped" xsi:type="object">Magento\Wishlist\Model\Wishlist\BuyRequest\SuperGroupDataProvider</item>
+                <item name="super_attribute" xsi:type="object">Magento\Wishlist\Model\Wishlist\Buy_Request\Super_Attribute_Data_Provider</item>
+                <item name="customizable_option" xsi:type="object">Magento\Wishlist\Model\Wishlist\Buy_Request\Customizable_Option_Data_Provider</item>
+                <item name="bundle" xsi:type="object">Magento\Wishlist\Model\Wishlist\Buy_Request\Bundle_Data_Provider</item>
+                <item name="downloadable" xsi:type="object">Magento\Wishlist\Model\Wishlist\Buy_Request\Downloadable_Link_Data_Provider</item>
+                <item name="grouped" xsi:type="object">Magento\Wishlist\Model\Wishlist\Buy_Request\Super_Group_Data_Provider</item>
             </argument>
         </arguments>
     </type>

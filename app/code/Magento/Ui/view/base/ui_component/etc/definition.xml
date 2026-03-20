@@ -6,7 +6,7 @@
  */
 -->
 <components xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_definition.xsd">
-    <dataSource class="Magento\Ui\Component\DataSource"/>
+    <dataSource class="Magento\Ui\Component\Data_Source"/>
     <listing sorting="true" class="Magento\Ui\Component\Listing" component="uiComponent">
         <argument name="data" xsi:type="array">
             <item name="template" xsi:type="string">templates/listing/default</item>
@@ -55,7 +55,7 @@
             <item name="template" xsi:type="string">templates/container/default</item>
         </argument>
     </container>
-    <massaction class="Magento\Ui\Component\MassAction" component="Magento_Ui/js/grid/massactions" displayArea="bottom"/>
+    <massaction class="Magento\Ui\Component\Mass_Action" component="Magento_Ui/js/grid/massactions" displayArea="bottom"/>
     <actions class="Magento\Ui\Component\Control\Action" component="Magento_Ui/js/grid/columns/actions"/>
     <action class="Magento\Ui\Component\Action" component="uiComponent"/>
 
@@ -87,7 +87,7 @@
             <label translate="true">Action</label>
         </settings>
     </actionsColumn>
-    <selectionsColumn class="Magento\Ui\Component\MassAction\Columns\Column" component="Magento_Ui/js/grid/columns/multiselect"/>
+    <selectionsColumn class="Magento\Ui\Component\Mass_Action\Columns\Column" component="Magento_Ui/js/grid/columns/multiselect"/>
 
     <component class="Magento\Ui\Component\Container" component="uiComponent"/>
 
@@ -110,13 +110,13 @@
 
 
     <!-- Form elements -->
-    <radioset class="Magento\Ui\Component\Form\Element\RadioSet" component="Magento_Ui/js/form/element/checkbox-set" template="ui/form/element/checkbox-set">
+    <radioset class="Magento\Ui\Component\Form\Element\Radio_Set" component="Magento_Ui/js/form/element/checkbox-set" template="ui/form/element/checkbox-set">
         <settings>
             <elementTmpl/>
             <multiple>false</multiple>
         </settings>
     </radioset>
-    <checkboxset class="Magento\Ui\Component\Form\Element\CheckboxSet" component="Magento_Ui/js/form/element/checkbox-set" template="ui/form/element/checkbox-set">
+    <checkboxset class="Magento\Ui\Component\Form\Element\Checkbox_Set" component="Magento_Ui/js/form/element/checkbox-set" template="ui/form/element/checkbox-set">
         <settings>
             <elementTmpl/>
             <multiple>true</multiple>
@@ -130,12 +130,12 @@
             </validation>
         </settings>
     </wysiwyg>
-    <actionDelete class="Magento\Ui\Component\Form\Element\ActionDelete" component="Magento_Ui/js/dynamic-rows/action-delete" template="ui/dynamic-rows/cells/action-delete"/>
+    <actionDelete class="Magento\Ui\Component\Form\Element\Action_Delete" component="Magento_Ui/js/dynamic-rows/action-delete" template="ui/dynamic-rows/cells/action-delete"/>
     <input class="Magento\Ui\Component\Form\Element\Input" component="Magento_Ui/js/form/element/abstract" template="ui/form/field"/>
     <hidden class="Magento\Ui\Component\Form\Element\Hidden" component="Magento_Ui/js/form/element/abstract" template="ui/form/element/hidden"/>
     <checkbox class="Magento\Ui\Component\Form\Element\Checkbox" component="Magento_Ui/js/form/element/single-checkbox" template="ui/form/field"/>
     <select class="Magento\Ui\Component\Form\Element\Select" component="Magento_Ui/js/form/element/select" template="ui/form/field"/>
-    <multiselect class="Magento\Ui\Component\Form\Element\MultiSelect" component="Magento_Ui/js/form/element/multiselect" template="ui/form/field">
+    <multiselect class="Magento\Ui\Component\Form\Element\Multi_Select" component="Magento_Ui/js/form/element/multiselect" template="ui/form/field">
         <argument name="data" xsi:type="array">
             <item name="template" xsi:type="string">ui/form/element/multiselect</item>
         </argument>
@@ -146,20 +146,20 @@
     <textarea class="Magento\Ui\Component\Form\Element\Textarea" component="Magento_Ui/js/form/element/textarea" template="ui/form/field"/>
     <multiline class="Magento\Ui\Component\Form\Element\Multiline" component="Magento_Ui/js/form/components/multiline"/>
     <range class="Magento\Ui\Component\Form\Element\Range" component="Magento_Ui/js/grid/filters/range"/>
-    <fileUploader class="Magento\Ui\Component\Form\Element\DataType\Media" component="Magento_Ui/js/form/element/file-uploader" template="ui/form/element/uploader/uploader"/>
-    <imageUploader class="Magento\Ui\Component\Form\Element\DataType\Media\Image" component="Magento_Ui/js/form/element/image-uploader" template="ui/form/element/uploader/image">
+    <fileUploader class="Magento\Ui\Component\Form\Element\Data_Type\Media" component="Magento_Ui/js/form/element/file-uploader" template="ui/form/element/uploader/uploader"/>
+    <imageUploader class="Magento\Ui\Component\Form\Element\Data_Type\Media\Image" component="Magento_Ui/js/form/element/image-uploader" template="ui/form/element/uploader/image">
         <settings>
             <initialMediaGalleryOpenSubpath>wysiwyg</initialMediaGalleryOpenSubpath>
         </settings>
     </imageUploader>
-    <colorPicker class="Magento\Ui\Component\Form\Element\ColorPicker" component="Magento_Ui/js/form/element/color-picker" template="ui/form/field">
+    <colorPicker class="Magento\Ui\Component\Form\Element\Color_Picker" component="Magento_Ui/js/form/element/color-picker" template="ui/form/field">
         <settings>
             <elementTmpl>ui/form/element/color-picker</elementTmpl>
             <colorFormat>rgb</colorFormat>
             <colorPickerMode>full</colorPickerMode>
         </settings>
     </colorPicker>
-    <urlInput class="Magento\Ui\Component\Form\Element\UrlInput" component="Magento_Ui/js/form/element/url-input" template="ui/form/element/url-input">
+    <urlInput class="Magento\Ui\Component\Form\Element\Url_Input" component="Magento_Ui/js/form/element/url-input" template="ui/form/element/url-input">
         <settings>
             <settingTemplate>ui/form/element/urlInput/setting</settingTemplate>
             <typeSelectorTemplate>ui/form/element/urlInput/typeSelector</typeSelectorTemplate>
@@ -169,27 +169,27 @@
     <!-- Form elements -->
 
     <!-- Form element data types -->
-    <text class="Magento\Ui\Component\Form\Element\DataType\Text">
+    <text class="Magento\Ui\Component\Form\Element\Data_Type\Text">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/element/text</item>
             </item>
         </argument>
     </text>
-    <number class="Magento\Ui\Component\Form\Element\DataType\Number"/>
-    <price class="Magento\Ui\Component\Form\Element\DataType\Price"/>
-    <image class="Magento\Ui\Component\Form\Element\DataType\Media" component="Magento_Ui/js/form/element/media" template="ui/form/field">
+    <number class="Magento\Ui\Component\Form\Element\Data_Type\Number"/>
+    <price class="Magento\Ui\Component\Form\Element\Data_Type\Price"/>
+    <image class="Magento\Ui\Component\Form\Element\Data_Type\Media" component="Magento_Ui/js/form/element/media" template="ui/form/field">
         <settings>
             <elementTmpl>ui/form/element/media</elementTmpl>
         </settings>
     </image>
-    <file class="Magento\Ui\Component\Form\Element\DataType\Media" component="Magento_Ui/js/form/element/media" template="ui/form/field">
+    <file class="Magento\Ui\Component\Form\Element\Data_Type\Media" component="Magento_Ui/js/form/element/media" template="ui/form/field">
         <settings>
             <elementTmpl>ui/form/element/media</elementTmpl>
         </settings>
     </file>
-    <date class="Magento\Ui\Component\Form\Element\DataType\Date" component="Magento_Ui/js/form/element/date" template="ui/form/field"/>
-    <boolean class="Magento\Ui\Component\Form\Element\DataType\Boolean" template="ui/form/field">
+    <date class="Magento\Ui\Component\Form\Element\Data_Type\Date" component="Magento_Ui/js/form/element/date" template="ui/form/field"/>
+    <boolean class="Magento\Ui\Component\Form\Element\Data_Type\Boolean" template="ui/form/field">
         <argument name="data" xsi:type="array">
             <item name="js_config" xsi:type="array">
                 <item name="component" xsi:type="string">Magento_Ui/js/form/element/abstract</item>
@@ -199,7 +199,7 @@
             <elementTmpl>ui/form/element/input</elementTmpl>
         </settings>
     </boolean>
-    <email class="Magento\Ui\Component\Form\Element\DataType\Email" component="Magento_Ui/js/form/element/abstract" template="ui/form/field">
+    <email class="Magento\Ui\Component\Form\Element\Data_Type\Email" component="Magento_Ui/js/form/element/abstract" template="ui/form/field">
         <settings>
             <elementTmpl>ui/form/element/email</elementTmpl>
         </settings>
@@ -258,7 +258,7 @@
             </storageConfig>
         </settings>
     </bookmark>
-    <exportButton class="Magento\Ui\Component\ExportButton" component="Magento_Ui/js/grid/export" displayArea="dataGridActions">
+    <exportButton class="Magento\Ui\Component\Export_Button" component="Magento_Ui/js/grid/export" displayArea="dataGridActions">
         <settings>
             <options>
                 <option name="csv" xsi:type="array">
@@ -285,6 +285,6 @@
     <listingToolbar class="Magento\Ui\Component\Container" component="Magento_Ui/js/grid/toolbar"/>
     <dynamicRows class="Magento\Ui\Component\Container" component="Magento_Ui/js/dynamic-rows/dynamic-rows" template="ui/dynamic-rows/templates/default">
     </dynamicRows>
-    <htmlContent class="Magento\Ui\Component\HtmlContent" component="Magento_Ui/js/form/components/html"/>
+    <htmlContent class="Magento\Ui\Component\Html_Content" component="Magento_Ui/js/form/components/html"/>
     <button class="Magento\Ui\Component\Container" component="Magento_Ui/js/form/components/button"/>
 </components>

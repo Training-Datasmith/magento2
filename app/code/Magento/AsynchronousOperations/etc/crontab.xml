@@ -7,10 +7,10 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
-        <job name="bulk_cleanup" instance="Magento\AsynchronousOperations\Cron\BulkCleanup" method="execute">
+        <job name="bulk_cleanup" instance="Magento\Asynchronous_Operations\Cron\Bulk_Cleanup" method="execute">
             <schedule>* * * * *</schedule>
         </job>
-        <job name="bulk_mark_incomplete_operations_as_failed" instance="Magento\AsynchronousOperations\Cron\MarkIncompleteOperationsAsFailed" method="execute">
+        <job name="bulk_mark_incomplete_operations_as_failed" instance="Magento\Asynchronous_Operations\Cron\Mark_Incomplete_Operations_As_Failed" method="execute">
             <schedule>*/10 * * * *</schedule>
         </job>
     </group>

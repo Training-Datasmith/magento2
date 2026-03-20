@@ -7,15 +7,15 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="admin_user_authenticate_after">
-        <observer name="magento_user" instance="Magento\User\Observer\Backend\AuthObserver" />
+        <observer name="magento_user" instance="Magento\User\Observer\Backend\Auth_Observer" />
     </event>
     <event name="controller_action_predispatch">
-        <observer name="magento_user" instance="Magento\User\Observer\Backend\ForceAdminPasswordChangeObserver" />
+        <observer name="magento_user" instance="Magento\User\Observer\Backend\Force_Admin_Password_Change_Observer" />
     </event>
     <event name="admin_user_save_after">
-        <observer name="magento_user" instance="Magento\User\Observer\Backend\TrackAdminNewPasswordObserver" />
+        <observer name="magento_user" instance="Magento\User\Observer\Backend\Track_Admin_New_Password_Observer" />
     </event>
     <event name="log_user_after_delete">
-        <observer name="magento_user" instance="Magento\User\Observer\ValidateModelDeleteAfter" />
+        <observer name="magento_user" instance="Magento\User\Observer\Validate_Model_Delete_After" />
     </event>
 </config>

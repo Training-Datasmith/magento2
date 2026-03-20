@@ -6,22 +6,22 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\TestModuleWebapiBackpressure\Api\TestReadServiceInterface"
-                type="Magento\TestModuleWebapiBackpressure\Model\TestReadService" />
-    <type name="Magento\Framework\Webapi\Backpressure\CompositeRequestTypeExtractor">
+    <preference for="Magento\Test_Module_Webapi_Backpressure\Api\Test_Read_Service_Interface"
+                type="Magento\Test_Module_Webapi_Backpressure\Model\Test_Read_Service" />
+    <type name="Magento\Framework\Webapi\Backpressure\Composite_Request_Type_Extractor">
         <arguments>
             <argument name="extractors" xsi:type="array">
                 <item name="webapitestbackpressure" xsi:type="object">
-                    Magento\TestModuleWebapiBackpressure\Model\TypeExtractor
+                    Magento\Test_Module_Webapi_Backpressure\Model\Type_Extractor
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\Backpressure\SlidingWindow\CompositeLimitConfigManager">
+    <type name="Magento\Framework\App\Backpressure\Sliding_Window\Composite_Limit_Config_Manager">
         <arguments>
             <argument name="configs" xsi:type="array">
                 <item name="testwebapibackpressure" xsi:type="object">
-                    Magento\TestModuleWebapiBackpressure\Model\LimitConfigManager
+                    Magento\Test_Module_Webapi_Backpressure\Model\Limit_Config_Manager
                 </item>
             </argument>
         </arguments>

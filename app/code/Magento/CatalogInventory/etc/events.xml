@@ -7,40 +7,40 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="catalog_block_product_status_display">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\DisplayProductStatusInfoObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Display_Product_Status_Info_Observer"/>
     </event>
     <event name="catalog_product_load_after">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\AddInventoryDataObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Add_Inventory_Data_Observer"/>
     </event>
     <event name="sales_quote_item_qty_set_after">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\QuantityValidatorObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Quantity_Validator_Observer"/>
     </event>
     <event name="checkout_submit_all_after">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\CheckoutAllSubmitAfterObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Checkout_All_Submit_After_Observer"/>
     </event>
     <event name="sales_model_service_quote_submit_before">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\SubtractQuoteInventoryObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Subtract_Quote_Inventory_Observer"/>
     </event>
     <event name="sales_model_service_quote_submit_success">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\ReindexQuoteInventoryObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Reindex_Quote_Inventory_Observer"/>
     </event>
     <event name="sales_model_service_quote_submit_failure">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\RevertQuoteInventoryObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Revert_Quote_Inventory_Observer"/>
     </event>
     <event name="sales_order_item_cancel">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\CancelOrderItemObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Cancel_Order_Item_Observer"/>
     </event>
     <event name="catalog_product_save_before">
-        <observer name="process_inventory_data" instance="Magento\CatalogInventory\Observer\ProcessInventoryDataObserver"/>
+        <observer name="process_inventory_data" instance="Magento\Catalog_Inventory\Observer\Process_Inventory_Data_Observer"/>
     </event>
     <event name="catalog_product_save_after">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\SaveInventoryDataObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Save_Inventory_Data_Observer"/>
     </event>
     <event name="admin_system_config_changed_section_cataloginventory">
-        <observer name="inventory" instance="Magento\CatalogInventory\Observer\UpdateItemsStockUponConfigChangeObserver"/>
-        <observer name="invalidatePriceIndex" instance="Magento\CatalogInventory\Observer\InvalidatePriceIndexUponConfigChangeObserver"/>
+        <observer name="inventory" instance="Magento\Catalog_Inventory\Observer\Update_Items_Stock_Upon_Config_Change_Observer"/>
+        <observer name="invalidatePriceIndex" instance="Magento\Catalog_Inventory\Observer\Invalidate_Price_Index_Upon_Config_Change_Observer"/>
     </event>
     <event name="sales_quote_item_collection_products_after_load">
-        <observer name="add_stock_items" instance="Magento\CatalogInventory\Observer\AddStockItemsObserver"/>
+        <observer name="add_stock_items" instance="Magento\Catalog_Inventory\Observer\Add_Stock_Items_Observer"/>
     </event>
 </config>

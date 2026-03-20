@@ -6,8 +6,8 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Framework\Module\SomeInterface" type="Magento\Framework\Module\ClassOne" />
-    <type name="Magento\Framework\Data\Collection\Db\FetchStrategy\Cache">
+    <preference for="Magento\Framework\Module\Some_Interface" type="Magento\Framework\Module\Class_One" />
+    <type name="Magento\Framework\Data\Collection\Db\Fetch_Strategy\Cache">
         <arguments>
             <argument name="cacheIdPrefix" xsi:type="string"><![CDATA[collection_]]></argument>
             <argument name="cacheLifetime" xsi:type="string">86400</argument>

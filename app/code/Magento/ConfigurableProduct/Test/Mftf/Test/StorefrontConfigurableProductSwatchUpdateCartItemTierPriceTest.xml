@@ -28,7 +28,7 @@
         <after>
             <deleteData createDataKey="createConfigurableProduct" stepKey="deleteConfigurableProduct"/>
             <!-- Delete configurable product variants via API using ProductApiHelper -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
             <actionGroup ref="DeleteProductAttributeActionGroup" stepKey="deleteColorAttribute">
                 <argument name="ProductAttribute" value="ProductColorAttribute"/>

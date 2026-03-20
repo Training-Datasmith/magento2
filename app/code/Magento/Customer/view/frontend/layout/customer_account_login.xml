@@ -16,12 +16,12 @@
                 <block class="Magento\Customer\Block\Form\Login" name="customer_form_login" template="Magento_Customer::form/login.phtml">
                     <container name="form.additional.info" as="form_additional_info"/>
                     <arguments>
-                        <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\ButtonLockManager</argument>
+                        <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\Button_Lock_Manager</argument>
                     </arguments>
                 </block>
                 <block class="Magento\Customer\Block\Form\Login\Info" name="customer.new" template="Magento_Customer::newcustomer.phtml"/>
             </container>
-            <block class="Magento\Cookie\Block\RequireCookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml">
+            <block class="Magento\Cookie\Block\Require_Cookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml">
                 <arguments>
                     <argument name="triggers" xsi:type="array">
                         <item name="loginButton" xsi:type="string">.action.login</item>

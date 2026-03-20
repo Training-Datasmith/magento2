@@ -32,11 +32,11 @@
                         <item name="namespace" xsi:type="string">recently_compared_product</item>
                         <item name="provider" xsi:type="string">compare-products</item>
                     </item>
-                    <item name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\ScopeConfigInterface</item>
+                    <item name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\Scope_Config_Interface</item>
                 </item>
             </argument>
         </argument>
-        <dataProvider class="\Magento\Catalog\Ui\DataProvider\Product\Listing\DataProvider" name="recently_compared_datasource">
+        <dataProvider class="\Magento\Catalog\Ui\Data_Provider\Product\Listing\Data_Provider" name="recently_compared_datasource">
             <settings>
                 <requestFieldName/>
                 <primaryFieldName/>

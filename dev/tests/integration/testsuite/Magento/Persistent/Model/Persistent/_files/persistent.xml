@@ -11,19 +11,19 @@
         <blocks>
             <reference id="reorder_sidebar">
                 <name_in_layout>sale.reorder.sidebar</name_in_layout>
-                <class>Magento\PersistentHistory\Model\Observer</class>
+                <class>Magento\Persistent_History\Model\Observer</class>
                 <method>initReorderSidebar</method>
                 <block_type>Magento\Sales\Block\Reorder\Sidebar</block_type>
             </reference>
             <reference id="viewed_products">
                 <name_in_layout>left.reports.product.viewed</name_in_layout>
-                <class>Magento\PersistentHistory\Model\Observer</class>
+                <class>Magento\Persistent_History\Model\Observer</class>
                 <method>emulateViewedProductsBlock</method>
                 <block_type>Magento\Sales\Block\Reorder\Sidebar</block_type>
             </reference>
             <reference id="compared_products">
                 <name_in_layout>right.reports.product.compared</name_in_layout>
-                <class>Magento\PersistentHistory\Model\Observer</class>
+                <class>Magento\Persistent_History\Model\Observer</class>
                 <method>emulateComparedProductsBlock</method>
                 <block_type>Magento\Reports\Block\Product\Compared</block_type>
             </reference>

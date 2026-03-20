@@ -26,7 +26,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Catalog::products</aclResource>
-        <dataProvider class="Magento\ConfigurableProduct\Ui\DataProvider\Attributes" name="product_attributes_listing_data_source">
+        <dataProvider class="Magento\Configurable_Product\Ui\Data_Provider\Attributes" name="product_attributes_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>attribute_id</primaryFieldName>

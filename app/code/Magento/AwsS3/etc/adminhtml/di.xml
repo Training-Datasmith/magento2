@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\RemoteStorage\Model\Config\Source\FileStorage">
+    <type name="Magento\Remote_Storage\Model\Config\Source\File_Storage">
         <arguments>
             <argument name="options" xsi:type="array">
                 <item name="aws-s3" xsi:type="array">

@@ -6,13 +6,13 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Sales\Model\Order\CreditmemoDocumentFactory">
-        <plugin name="sales_inventory_creditmemo_item_set_back_to_stock" type="Magento\SalesInventory\Model\Plugin\Order\CreditmemoDocumentFactoryPlugin"/>
+    <type name="Magento\Sales\Model\Order\Creditmemo_Document_Factory">
+        <plugin name="sales_inventory_creditmemo_item_set_back_to_stock" type="Magento\Sales_Inventory\Model\Plugin\Order\Creditmemo_Document_Factory_Plugin"/>
     </type>
-    <type name="Magento\Sales\Model\Order\Validation\RefundOrderInterface">
-        <plugin name="refundOrderValidationAfter" type="Magento\SalesInventory\Model\Plugin\Order\Validation\OrderRefundCreationArguments"/>
+    <type name="Magento\Sales\Model\Order\Validation\Refund_Order_Interface">
+        <plugin name="refundOrderValidationAfter" type="Magento\Sales_Inventory\Model\Plugin\Order\Validation\Order_Refund_Creation_Arguments"/>
     </type>
-    <type name="Magento\Sales\Model\Order\Validation\RefundInvoiceInterface">
-        <plugin name="refundInvoiceValidationAfter" type="Magento\SalesInventory\Model\Plugin\Order\Validation\InvoiceRefundCreationArguments"/>
+    <type name="Magento\Sales\Model\Order\Validation\Refund_Invoice_Interface">
+        <plugin name="refundInvoiceValidationAfter" type="Magento\Sales_Inventory\Model\Plugin\Order\Validation\Invoice_Refund_Creation_Arguments"/>
     </type>
 </config>

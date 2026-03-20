@@ -13,9 +13,9 @@
             </action>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="Magento\SendFriend\Block\Send" name="sendfriend.send" cacheable="false" template="Magento_SendFriend::send.phtml">
+            <block class="Magento\Send_Friend\Block\Send" name="sendfriend.send" cacheable="false" template="Magento_SendFriend::send.phtml">
                 <arguments>
-                    <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\ButtonLockManager</argument>
+                    <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\Button_Lock_Manager</argument>
                 </arguments>
                 <container name="form.additional.info" as="form_additional_info"/>
             </block>

@@ -7,7 +7,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="sales_order_place_after">
-        <observer name="sales_vat_request_params_order_comment" instance="Magento\Sales\Observer\Frontend\AddVatRequestParamsOrderComment" />
+        <observer name="sales_vat_request_params_order_comment" instance="Magento\Sales\Observer\Frontend\Add_Vat_Request_Params_Order_Comment" />
     </event>
     <event name="sales_order_process_relation">
         <observer name="sales_grid_order_sync_insert" instance="SalesOrderIndexGridSyncInsert" />
@@ -34,7 +34,7 @@
         <observer name="sales_grid_order_creditmemo_sync_remove" instance="SalesCreditmemoIndexGridSyncRemove" />
     </event>
     <event name="admin_sales_order_address_update">
-        <observer name="sales_grid_admin_refresh_grids" instance="Magento\Sales\Observer\GridProcessAddressChange" />
+        <observer name="sales_grid_admin_refresh_grids" instance="Magento\Sales\Observer\Grid_Process_Address_Change" />
     </event>
     <event name="config_data_dev_grid_async_indexing_disabled">
         <observer name="sales_grid_order_async_insert" instance="SalesOrderIndexGridAsyncInsertObserver" />
@@ -49,14 +49,14 @@
         <observer name="sales_send_order_creditmemo_emails" instance="SalesOrderCreditmemoSendEmailsObserver" />
     </event>
     <event name="store_add">
-        <observer name="magento_sequence" instance="Magento\SalesSequence\Observer\SequenceCreatorObserver" />
+        <observer name="magento_sequence" instance="Magento\Sales_Sequence\Observer\Sequence_Creator_Observer" />
     </event>
     <event name="customer_save_after_data_object">
         <observer
                 name="sales_assign_order_to_customer"
-                instance="Magento\Sales\Observer\AssignOrderToCustomerObserver" />
+                instance="Magento\Sales\Observer\Assign_Order_To_Customer_Observer" />
     </event>
     <event name="sales_order_save_after">
-        <observer name="store_status_change_observer" instance="Magento\Sales\Observer\StoreStatusChangeObserver" />
+        <observer name="store_status_change_observer" instance="Magento\Sales\Observer\Store_Status_Change_Observer" />
     </event>
 </config>

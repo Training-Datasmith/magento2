@@ -9,28 +9,28 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
 
     <route url="/V1/bulk/:bulkUuid/detailed-status" method="GET">
-        <service class="Magento\AsynchronousOperations\Api\BulkStatusInterface" method="getBulkDetailedStatus"/>
+        <service class="Magento\Asynchronous_Operations\Api\Bulk_Status_Interface" method="getBulkDetailedStatus"/>
         <resources>
             <resource ref="Magento_Logging::system_magento_logging_bulk_operations" />
         </resources>
     </route>
 
     <route url="/V1/bulk/:bulkUuid/status" method="GET">
-        <service class="Magento\AsynchronousOperations\Api\BulkStatusInterface" method="getBulkShortStatus"/>
+        <service class="Magento\Asynchronous_Operations\Api\Bulk_Status_Interface" method="getBulkShortStatus"/>
         <resources>
             <resource ref="Magento_Logging::system_magento_logging_bulk_operations" />
         </resources>
     </route>
 
     <route url="/V1/bulk/:bulkUuid/operation-status/:status" method="GET">
-        <service class="Magento\AsynchronousOperations\Api\BulkStatusInterface" method="getOperationsCountByBulkIdAndStatus"/>
+        <service class="Magento\Asynchronous_Operations\Api\Bulk_Status_Interface" method="getOperationsCountByBulkIdAndStatus"/>
         <resources>
             <resource ref="Magento_Logging::system_magento_logging_bulk_operations" />
         </resources>
     </route>
 
     <route url="/V1/bulk" method="GET">
-        <service class="Magento\AsynchronousOperations\Api\OperationRepositoryInterface" method="getList"/>
+        <service class="Magento\Asynchronous_Operations\Api\Operation_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Logging::system_magento_logging_bulk_operations" />
         </resources>

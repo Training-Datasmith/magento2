@@ -11,7 +11,7 @@
             <rule name="check_alnum_and_int_not_empty_and_have_valid_value">
                 <property_constraints>
                     <property name="int">
-                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\NotEmpty"/>
+                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\Not_Empty"/>
                     </property>
                 </property_constraints>
             </rule>

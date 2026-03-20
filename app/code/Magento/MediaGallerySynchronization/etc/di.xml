@@ -6,25 +6,25 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\MediaGallerySynchronizationApi\Api\SynchronizeInterface" type="Magento\MediaGallerySynchronization\Model\Synchronize"/>
-    <preference for="Magento\MediaGallerySynchronizationApi\Model\FetchBatchesInterface" type="Magento\MediaGallerySynchronization\Model\FetchBatches"/>
-    <preference for="Magento\MediaGallerySynchronizationApi\Api\SynchronizeFilesInterface" type="Magento\MediaGallerySynchronization\Model\SynchronizeFiles"/>
-    <preference for="Magento\MediaGallerySynchronizationApi\Model\CreateAssetFromFileInterface" type="Magento\MediaGallerySynchronization\Model\CreateAssetFromFile"/>
-    <type name="Magento\MediaGallerySynchronizationApi\Model\ImportFilesComposite">
+    <preference for="Magento\Media_Gallery_Synchronization_Api\Api\Synchronize_Interface" type="Magento\Media_Gallery_Synchronization\Model\Synchronize"/>
+    <preference for="Magento\Media_Gallery_Synchronization_Api\Model\Fetch_Batches_Interface" type="Magento\Media_Gallery_Synchronization\Model\Fetch_Batches"/>
+    <preference for="Magento\Media_Gallery_Synchronization_Api\Api\Synchronize_Files_Interface" type="Magento\Media_Gallery_Synchronization\Model\Synchronize_Files"/>
+    <preference for="Magento\Media_Gallery_Synchronization_Api\Model\Create_Asset_From_File_Interface" type="Magento\Media_Gallery_Synchronization\Model\Create_Asset_From_File"/>
+    <type name="Magento\Media_Gallery_Synchronization_Api\Model\Import_Files_Composite">
         <arguments>
             <argument name="importers" xsi:type="array">
-                <item name="10" xsi:type="object">Magento\MediaGallerySynchronization\Model\ImportMediaAsset</item>
+                <item name="10" xsi:type="object">Magento\Media_Gallery_Synchronization\Model\Import_Media_Asset</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaGallerySynchronizationApi\Model\SynchronizerPool">
+    <type name="Magento\Media_Gallery_Synchronization_Api\Model\Synchronizer_Pool">
         <arguments>
             <argument name="synchronizers" xsi:type="array">
-                <item name="media_gallery_asset_synchronizer" xsi:type="object">Magento\MediaGallerySynchronization\Model\SynchronizeFiles</item>
+                <item name="media_gallery_asset_synchronizer" xsi:type="object">Magento\Media_Gallery_Synchronization\Model\Synchronize_Files</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaGallerySynchronization\Model\FetchMediaStorageFileBatches">
+    <type name="Magento\Media_Gallery_Synchronization\Model\Fetch_Media_Storage_File_Batches">
         <arguments>
             <argument name="batchSize" xsi:type="number">100</argument>
             <argument name="fileExtensions" xsi:type="array">
@@ -35,24 +35,24 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaGallerySynchronization\Model\FetchBatches">
+    <type name="Magento\Media_Gallery_Synchronization\Model\Fetch_Batches">
         <arguments>
             <argument name="pageSize" xsi:type="number">100</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="mediaGallerySynchronization" xsi:type="object">Magento\MediaGallerySynchronization\Console\Command\Synchronize</item>
+                <item name="mediaGallerySynchronization" xsi:type="object">Magento\Media_Gallery_Synchronization\Console\Command\Synchronize</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Framework\App\Config\Value">
-        <plugin name="admin_system_config_adobe_stock_save_plugin" type="Magento\MediaGallerySynchronization\Plugin\MediaGallerySyncTrigger"/>
+        <plugin name="admin_system_config_adobe_stock_save_plugin" type="Magento\Media_Gallery_Synchronization\Plugin\Media_Gallery_Sync_Trigger"/>
     </type>
-    <type name="Magento\MediaGallerySynchronization\Console\Command\Synchronize">
+    <type name="Magento\Media_Gallery_Synchronization\Console\Command\Synchronize">
         <arguments>
-            <argument name="synchronizeAssets" xsi:type="object">Magento\MediaGallerySynchronizationApi\Api\SynchronizeInterface\Proxy</argument>
+            <argument name="synchronizeAssets" xsi:type="object">Magento\Media_Gallery_Synchronization_Api\Api\Synchronize_Interface\Proxy</argument>
         </arguments>
     </type>
 </config>

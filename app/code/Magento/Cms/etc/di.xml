@@ -6,18 +6,18 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Cms\Api\Data\PageSearchResultsInterface"
-                type="Magento\Cms\Model\PageSearchResults" />
-    <preference for="Magento\Cms\Api\Data\BlockSearchResultsInterface"
-                type="Magento\Cms\Model\BlockSearchResults" />
-    <preference for="Magento\Cms\Api\GetBlockByIdentifierInterface" type="Magento\Cms\Model\GetBlockByIdentifier" />
-    <preference for="Magento\Cms\Api\GetPageByIdentifierInterface" type="Magento\Cms\Model\GetPageByIdentifier" />
-    <preference for="Magento\Cms\Api\Data\PageInterface" type="Magento\Cms\Model\Page" />
-    <preference for="Magento\Cms\Api\Data\BlockInterface" type="Magento\Cms\Model\Block" />
-    <preference for="Magento\Cms\Api\BlockRepositoryInterface" type="Magento\Cms\Model\BlockRepository" />
-    <preference for="Magento\Cms\Api\PageRepositoryInterface" type="Magento\Cms\Model\PageRepository\ValidationComposite" />
-    <preference for="Magento\Ui\Component\Wysiwyg\ConfigInterface" type="Magento\Cms\Model\Wysiwyg\Config"/>
-    <preference for="Magento\Cms\Api\GetUtilityPageIdentifiersInterface" type="Magento\Cms\Model\GetUtilityPageIdentifiers" />
+    <preference for="Magento\Cms\Api\Data\Page_Search_Results_Interface"
+                type="Magento\Cms\Model\Page_Search_Results" />
+    <preference for="Magento\Cms\Api\Data\Block_Search_Results_Interface"
+                type="Magento\Cms\Model\Block_Search_Results" />
+    <preference for="Magento\Cms\Api\Get_Block_By_Identifier_Interface" type="Magento\Cms\Model\Get_Block_By_Identifier" />
+    <preference for="Magento\Cms\Api\Get_Page_By_Identifier_Interface" type="Magento\Cms\Model\Get_Page_By_Identifier" />
+    <preference for="Magento\Cms\Api\Data\Page_Interface" type="Magento\Cms\Model\Page" />
+    <preference for="Magento\Cms\Api\Data\Block_Interface" type="Magento\Cms\Model\Block" />
+    <preference for="Magento\Cms\Api\Block_Repository_Interface" type="Magento\Cms\Model\Block_Repository" />
+    <preference for="Magento\Cms\Api\Page_Repository_Interface" type="Magento\Cms\Model\Page_Repository\Validation_Composite" />
+    <preference for="Magento\Ui\Component\Wysiwyg\Config_Interface" type="Magento\Cms\Model\Wysiwyg\Config"/>
+    <preference for="Magento\Cms\Api\Get_Utility_Page_Identifiers_Interface" type="Magento\Cms\Model\Get_Utility_Page_Identifiers" />
     <type name="Magento\Cms\Model\Wysiwyg\Config">
         <arguments>
             <argument name="windowSize" xsi:type="array">
@@ -92,173 +92,173 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <type name="Magento\Framework\View\Element\Ui_Component\Data_Provider\Collection_Factory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="cms_page_listing_data_source" xsi:type="string">Magento\Cms\Model\ResourceModel\Page\Grid\Collection</item>
-                <item name="cms_block_listing_data_source" xsi:type="string">Magento\Cms\Model\ResourceModel\Block\Grid\Collection</item>
+                <item name="cms_page_listing_data_source" xsi:type="string">Magento\Cms\Model\Resource_Model\Page\Grid\Collection</item>
+                <item name="cms_block_listing_data_source" xsi:type="string">Magento\Cms\Model\Resource_Model\Block\Grid\Collection</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Cms\Model\ResourceModel\Page\Grid\Collection">
+    <type name="Magento\Cms\Model\Resource_Model\Page\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">cms_page</argument>
             <argument name="eventPrefix" xsi:type="string">cms_page_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">page_grid_collection</argument>
-            <argument name="resourceModel" xsi:type="string">Magento\Cms\Model\ResourceModel\Page</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Cms\Model\Resource_Model\Page</argument>
         </arguments>
     </type>
-    <type name="Magento\Cms\Model\ResourceModel\Block\Grid\Collection">
+    <type name="Magento\Cms\Model\Resource_Model\Block\Grid\Collection">
         <arguments>
             <argument name="mainTable" xsi:type="string">cms_block</argument>
             <argument name="eventPrefix" xsi:type="string">cms_block_grid_collection</argument>
             <argument name="eventObject" xsi:type="string">block_grid_collection</argument>
-            <argument name="resourceModel" xsi:type="string">Magento\Cms\Model\ResourceModel\Block</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Cms\Model\Resource_Model\Block</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Model\Entity\RepositoryFactory">
+    <type name="Magento\Framework\Model\Entity\Repository_Factory">
         <arguments>
             <argument name="entities" xsi:type="array">
-                <item name="Magento\Cms\Api\Data\PageInterface" xsi:type="string">Magento\Cms\Api\PageRepositoryInterface</item>
-                <item name="Magento\Cms\Api\Data\BlockInterface" xsi:type="string">Magento\Cms\Api\BlockRepositoryInterface</item>
+                <item name="Magento\Cms\Api\Data\Page_Interface" xsi:type="string">Magento\Cms\Api\Page_Repository_Interface</item>
+                <item name="Magento\Cms\Api\Data\Block_Interface" xsi:type="string">Magento\Cms\Api\Block_Repository_Interface</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\MetadataPool">
+    <type name="Magento\Framework\Entity_Manager\Metadata_Pool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Magento\Cms\Api\Data\PageInterface" xsi:type="array">
+                <item name="Magento\Cms\Api\Data\Page_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">cms_page</item>
                     <item name="identifierField" xsi:type="string">page_id</item>
                 </item>
-                <item name="Magento\Cms\Api\Data\BlockInterface" xsi:type="array">
+                <item name="Magento\Cms\Api\Data\Block_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">cms_block</item>
                     <item name="identifierField" xsi:type="string">block_id</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+    <type name="Magento\Framework\Entity_Manager\Operation\Extension_Pool">
         <arguments>
             <argument name="extensionActions" xsi:type="array">
-                <item name="Magento\Cms\Api\Data\PageInterface" xsi:type="array">
+                <item name="Magento\Cms\Api\Data\Page_Interface" xsi:type="array">
                     <item name="read" xsi:type="array">
-                        <item name="storeReader" xsi:type="string">Magento\Cms\Model\ResourceModel\Page\Relation\Store\ReadHandler</item>
+                        <item name="storeReader" xsi:type="string">Magento\Cms\Model\Resource_Model\Page\Relation\Store\Read_Handler</item>
                     </item>
                     <item name="create" xsi:type="array">
-                        <item name="storeCreator" xsi:type="string">Magento\Cms\Model\ResourceModel\Page\Relation\Store\SaveHandler</item>
+                        <item name="storeCreator" xsi:type="string">Magento\Cms\Model\Resource_Model\Page\Relation\Store\Save_Handler</item>
                     </item>
                     <item name="update" xsi:type="array">
-                        <item name="storeUpdater" xsi:type="string">Magento\Cms\Model\ResourceModel\Page\Relation\Store\SaveHandler</item>
+                        <item name="storeUpdater" xsi:type="string">Magento\Cms\Model\Resource_Model\Page\Relation\Store\Save_Handler</item>
                     </item>
                 </item>
-                <item name="Magento\Cms\Api\Data\BlockInterface" xsi:type="array">
+                <item name="Magento\Cms\Api\Data\Block_Interface" xsi:type="array">
                     <item name="read" xsi:type="array">
-                        <item name="storeReader" xsi:type="string">Magento\Cms\Model\ResourceModel\Block\Relation\Store\ReadHandler</item>
+                        <item name="storeReader" xsi:type="string">Magento\Cms\Model\Resource_Model\Block\Relation\Store\Read_Handler</item>
                     </item>
                     <item name="create" xsi:type="array">
-                        <item name="storeCreator" xsi:type="string">Magento\Cms\Model\ResourceModel\Block\Relation\Store\SaveHandler</item>
+                        <item name="storeCreator" xsi:type="string">Magento\Cms\Model\Resource_Model\Block\Relation\Store\Save_Handler</item>
                     </item>
                     <item name="update" xsi:type="array">
-                        <item name="storeUpdater" xsi:type="string">Magento\Cms\Model\ResourceModel\Block\Relation\Store\SaveHandler</item>
+                        <item name="storeUpdater" xsi:type="string">Magento\Cms\Model\Resource_Model\Block\Relation\Store\Save_Handler</item>
                     </item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\HydratorPool">
+    <type name="Magento\Framework\Entity_Manager\Hydrator_Pool">
         <arguments>
             <argument name="hydrators" xsi:type="array">
-                <item name="Magento\Cms\Api\Data\PageInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
-                <item name="Magento\Cms\Api\Data\BlockInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+                <item name="Magento\Cms\Api\Data\Page_Interface" xsi:type="string">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</item>
+                <item name="Magento\Cms\Api\Data\Block_Interface" xsi:type="string">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Cms\Model\Api\SearchCriteria\CollectionProcessor\PageFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Cms\Model\Api\Search_Criteria\Collection_Processor\Page_Filter_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="customFilters" xsi:type="array">
-                <item name="store_id" xsi:type="object">Magento\Cms\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\PageStoreFilter</item>
+                <item name="store_id" xsi:type="object">Magento\Cms\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Page_Store_Filter</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Cms\Model\Api\SearchCriteria\PageCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Cms\Model\Api\Search_Criteria\Page_Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\Cms\Model\Api\SearchCriteria\CollectionProcessor\PageFilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Cms\Model\Api\Search_Criteria\Collection_Processor\Page_Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Cms\Model\PageRepository">
+    <type name="Magento\Cms\Model\Page_Repository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Cms\Model\Api\SearchCriteria\PageCollectionProcessor</argument>
-            <argument name="hydrator" xsi:type="object">Magento\Framework\EntityManager\AbstractModelHydrator</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Cms\Model\Api\Search_Criteria\Page_Collection_Processor</argument>
+            <argument name="hydrator" xsi:type="object">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Cms\Model\Api\SearchCriteria\CollectionProcessor\BlockFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Cms\Model\Api\Search_Criteria\Collection_Processor\Block_Filter_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="customFilters" xsi:type="array">
-                <item name="store_id" xsi:type="object">Magento\Cms\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\BlockStoreFilter</item>
+                <item name="store_id" xsi:type="object">Magento\Cms\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Block_Store_Filter</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Cms\Model\Api\SearchCriteria\BlockCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Cms\Model\Api\Search_Criteria\Block_Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\Cms\Model\Api\SearchCriteria\CollectionProcessor\BlockFilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Cms\Model\Api\Search_Criteria\Collection_Processor\Block_Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Cms\Model\BlockRepository">
+    <type name="Magento\Cms\Model\Block_Repository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Cms\Model\Api\SearchCriteria\BlockCollectionProcessor</argument>
-            <argument name="hydrator" xsi:type="object">Magento\Framework\EntityManager\AbstractModelHydrator</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Cms\Model\Api\Search_Criteria\Block_Collection_Processor</argument>
+            <argument name="hydrator" xsi:type="object">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</argument>
         </arguments>
     </type>
 
-    <type name="Magento\Cms\Ui\Component\DataProvider">
+    <type name="Magento\Cms\Ui\Component\Data_Provider">
         <arguments>
             <argument name="additionalFilterPool" xsi:type="array">
-                <item name="fulltext" xsi:type="object">Magento\Cms\Ui\Component\Page\FulltextFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Cms\Ui\Component\Page\Fulltext_Filter</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Product">
         <plugin name="cms" type="Magento\Cms\Model\Plugin\Product" sortOrder="100"/>
     </type>
-    <type name="Magento\Cms\Model\PageRepository\ValidationComposite">
+    <type name="Magento\Cms\Model\Page_Repository\Validation_Composite">
         <arguments>
-            <argument name="repository" xsi:type="object">Magento\Cms\Model\PageRepository</argument>
+            <argument name="repository" xsi:type="object">Magento\Cms\Model\Page_Repository</argument>
             <argument name="validators" xsi:type="array">
-                <item name="layout_update" xsi:type="object">Magento\Cms\Model\PageRepository\Validator\LayoutUpdateValidator</item>
+                <item name="layout_update" xsi:type="object">Magento\Cms\Model\Page_Repository\Validator\Layout_Update_Validator</item>
             </argument>
-            <argument name="hydrator" xsi:type="object">Magento\Framework\EntityManager\AbstractModelHydrator</argument>
+            <argument name="hydrator" xsi:type="object">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</argument>
         </arguments>
     </type>
-    <preference for="Magento\Cms\Model\Page\CustomLayoutManagerInterface" type="Magento\Cms\Model\Page\CustomLayout\CustomLayoutManager" />
-    <type name="Magento\Cms\Model\Page\CustomLayout\CustomLayoutManager">
+    <preference for="Magento\Cms\Model\Page\Custom_Layout_Manager_Interface" type="Magento\Cms\Model\Page\Custom_Layout\Custom_Layout_Manager" />
+    <type name="Magento\Cms\Model\Page\Custom_Layout\Custom_Layout_Manager">
         <arguments>
-            <argument name="themeFactory" xsi:type="object">Magento\Framework\View\Design\Theme\FlyweightFactory\Proxy</argument>
+            <argument name="themeFactory" xsi:type="object">Magento\Framework\View\Design\Theme\Flyweight_Factory\Proxy</argument>
         </arguments>
     </type>
-    <preference for="Magento\Cms\Model\Page\CustomLayoutRepositoryInterface" type="Magento\Cms\Model\Page\CustomLayout\CustomLayoutRepository" />
+    <preference for="Magento\Cms\Model\Page\Custom_Layout_Repository_Interface" type="Magento\Cms\Model\Page\Custom_Layout\Custom_Layout_Repository" />
     <type name="Magento\Cms\Model\Wysiwyg\Validator">
         <arguments>
             <argument name="validator" xsi:type="object">DefaultWYSIWYGValidator</argument>
         </arguments>
     </type>
-    <preference for="Magento\Framework\Validator\HTML\WYSIWYGValidatorInterface" type="Magento\Cms\Model\Wysiwyg\Validator" />
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <preference for="Magento\Framework\Validator\HTML\WYSIWYG_Validator_Interface" type="Magento\Cms\Model\Wysiwyg\Validator" />
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="cms_wysiwyg_restrict" xsi:type="object">Magento\Cms\Command\WysiwygRestrictCommand</item>
+                <item name="cms_wysiwyg_restrict" xsi:type="object">Magento\Cms\Command\Wysiwyg_Restrict_Command</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="DefaultWYSIWYGValidator" type="Magento\Framework\Validator\HTML\ConfigurableWYSIWYGValidator">
+    <virtualType name="DefaultWYSIWYGValidator" type="Magento\Framework\Validator\HTML\Configurable_WYSIWYG_Validator">
         <arguments>
             <argument name="allowedTags" xsi:type="array">
                 <item name="div" xsi:type="string">div</item>
@@ -312,15 +312,15 @@
                 </item>
             </argument>
             <argument name="attributeValidators" xsi:type="array">
-                <item name="style" xsi:type="object">Magento\Framework\Validator\HTML\StyleAttributeValidator</item>
+                <item name="style" xsi:type="object">Magento\Framework\Validator\HTML\Style_Attribute_Validator</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Theme\Model\LayoutCacheTagResolverFactory">
+    <type name="Magento\Theme\Model\Layout_Cache_Tag_Resolver_Factory">
         <arguments>
             <argument name="cacheTagsResolvers" xsi:type="array">
                 <item name="Magento\Cms\Model\Page" xsi:type="object">
-                    Magento\Cms\Model\Page\LayoutCacheTagResolver
+                    Magento\Cms\Model\Page\Layout_Cache_Tag_Resolver
                 </item>
             </argument>
         </arguments>

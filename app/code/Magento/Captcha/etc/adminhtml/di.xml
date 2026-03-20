@@ -6,24 +6,24 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Captcha\Block\Captcha\DefaultCaptcha" type="Magento\Captcha\Block\Adminhtml\Captcha\DefaultCaptcha" />
-    <type name="Magento\Captcha\Model\DefaultModel">
+    <preference for="Magento\Captcha\Block\Captcha\Default_Captcha" type="Magento\Captcha\Block\Adminhtml\Captcha\Default_Captcha" />
+    <type name="Magento\Captcha\Model\Default_Model">
         <arguments>
             <argument name="session" xsi:type="object">Magento\Backend\Model\Auth\Session</argument>
             <argument name="captchaData" xsi:type="object">Magento\Captcha\Helper\Adminhtml\Data</argument>
         </arguments>
     </type>
-    <type name="Magento\Captcha\Observer\CheckUserCreateObserver">
+    <type name="Magento\Captcha\Observer\Check_User_Create_Observer">
         <arguments>
             <argument name="session" xsi:type="object">Magento\Backend\Model\Session</argument>
         </arguments>
     </type>
-    <type name="Magento\Captcha\Observer\CheckUserForgotPasswordBackendObserver">
+    <type name="Magento\Captcha\Observer\Check_User_Forgot_Password_Backend_Observer">
         <arguments>
             <argument name="session" xsi:type="object">Magento\Backend\Model\Session</argument>
         </arguments>
     </type>
-    <type name="Magento\Captcha\Observer\CheckUserLoginObserver">
+    <type name="Magento\Captcha\Observer\Check_User_Login_Observer">
         <arguments>
             <argument name="session" xsi:type="object">Magento\Backend\Model\Session</argument>
         </arguments>

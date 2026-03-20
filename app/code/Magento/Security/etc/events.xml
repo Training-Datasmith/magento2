@@ -8,9 +8,9 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="admin_user_save_after">
-        <observer name="add_user_expiration" instance="Magento\Security\Observer\AfterAdminUserSave"/>
+        <observer name="add_user_expiration" instance="Magento\Security\Observer\After_Admin_User_Save"/>
     </event>
     <event name="admin_user_authenticate_before">
-        <observer name="check_user_expiration" instance="Magento\Security\Observer\AdminUserAuthenticateBefore"/>
+        <observer name="check_user_expiration" instance="Magento\Security\Observer\Admin_User_Authenticate_Before"/>
     </event>
 </config>

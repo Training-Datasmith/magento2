@@ -20,7 +20,7 @@
                     <arguments>
                         <argument name="css_class" xsi:type="string">nav items</argument>
                     </arguments>
-                    <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-account-link">
+                    <block class="Magento\Customer\Block\Account\Sort_Link_Interface" name="customer-account-navigation-account-link">
                         <arguments>
                             <argument name="label" xsi:type="string" translate="true">My Account</argument>
                             <argument name="path" xsi:type="string">customer/account</argument>
@@ -32,14 +32,14 @@
                             <argument name="sortOrder" xsi:type="number">200</argument>
                         </arguments>
                     </block>
-                    <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-address-link">
+                    <block class="Magento\Customer\Block\Account\Sort_Link_Interface" name="customer-account-navigation-address-link">
                         <arguments>
                             <argument name="label" xsi:type="string" translate="true">Address Book</argument>
                             <argument name="path" xsi:type="string">customer/address</argument>
                             <argument name="sortOrder" xsi:type="number">190</argument>
                         </arguments>
                     </block>
-                    <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-account-edit-link">
+                    <block class="Magento\Customer\Block\Account\Sort_Link_Interface" name="customer-account-navigation-account-edit-link">
                         <arguments>
                             <argument name="label" xsi:type="string" translate="true">Account Information</argument>
                             <argument name="path" xsi:type="string">customer/account/edit</argument>

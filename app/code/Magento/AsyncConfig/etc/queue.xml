@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/queue.xsd">
     <broker topic="async_config.saveConfig" exchange="magento">
-        <queue name="saveConfig" consumer="saveConfigProcessor" handler="Magento\AsyncConfig\Model\Consumer::process"/>
+        <queue name="saveConfig" consumer="saveConfigProcessor" handler="Magento\Async_Config\Model\Consumer::process"/>
     </broker>
 </config>

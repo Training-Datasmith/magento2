@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="catalog_category_change_products">
-        <observer name="category_product_elasticsearch_indexer" instance="Magento\Elasticsearch\Observer\CategoryProductIndexer"/>
+        <observer name="category_product_elasticsearch_indexer" instance="Magento\Elasticsearch\Observer\Category_Product_Indexer"/>
     </event>
 </config>

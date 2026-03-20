@@ -6,12 +6,12 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Framework\Api\Data\VideoContentInterface" type="Magento\ProductVideo\Model\Product\Attribute\Media\VideoEntry" />
-    <preference for="Magento\Framework\Validator\ValidatorInterface" type="Magento\Framework\Validator\AllowedProtocols" />
-    <type name="Magento\Catalog\Model\Product\Attribute\Backend\Media\EntryConverterPool">
+    <preference for="Magento\Framework\Api\Data\Video_Content_Interface" type="Magento\Product_Video\Model\Product\Attribute\Media\Video_Entry" />
+    <preference for="Magento\Framework\Validator\Validator_Interface" type="Magento\Framework\Validator\Allowed_Protocols" />
+    <type name="Magento\Catalog\Model\Product\Attribute\Backend\Media\Entry_Converter_Pool">
         <arguments>
             <argument name="mediaGalleryEntryConvertersCollection" xsi:type="array">
-                <item name="external-video" xsi:type="object">Magento\ProductVideo\Model\Product\Attribute\Media\ExternalVideoEntryConverter</item>
+                <item name="external-video" xsi:type="object">Magento\Product_Video\Model\Product\Attribute\Media\External_Video_Entry_Converter</item>
             </argument>
         </arguments>
     </type>
@@ -30,31 +30,31 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\ProductVideo\Controller\Adminhtml\Product\Gallery\RetrieveImage">
+    <type name="Magento\Product_Video\Controller\Adminhtml\Product\Gallery\Retrieve_Image">
         <arguments>
             <argument name="fileDriver" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Xsd\Media\TypeDataExtractorPool">
+    <type name="Magento\Framework\View\Xsd\Media\Type_Data_Extractor_Pool">
         <arguments>
             <argument name="extractors" xsi:type="array">
-                <item name="videos" xsi:type="object">Magento\ProductVideo\Model\VideoExtractor</item>
+                <item name="videos" xsi:type="object">Magento\Product_Video\Model\Video_Extractor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Gallery\CreateHandler">
-        <plugin name="external_video_media_entry_saver" type="Magento\ProductVideo\Model\Plugin\Catalog\Product\Gallery\CreateHandler" />
+    <type name="Magento\Catalog\Model\Product\Gallery\Create_Handler">
+        <plugin name="external_video_media_entry_saver" type="Magento\Product_Video\Model\Plugin\Catalog\Product\Gallery\Create_Handler" />
     </type>
-    <type name="Magento\Catalog\Model\Product\Gallery\ReadHandler">
-        <plugin name="external_video_media_entry_reader" type="Magento\ProductVideo\Model\Plugin\Catalog\Product\Gallery\ReadHandler" />
+    <type name="Magento\Catalog\Model\Product\Gallery\Read_Handler">
+        <plugin name="external_video_media_entry_reader" type="Magento\Product_Video\Model\Plugin\Catalog\Product\Gallery\Read_Handler" />
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product\Gallery">
-        <plugin name="external_video_media_resource_backend" type="Magento\ProductVideo\Model\Plugin\ExternalVideoResourceBackend" />
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Gallery">
+        <plugin name="external_video_media_resource_backend" type="Magento\Product_Video\Model\Plugin\External_Video_Resource_Backend" />
     </type>
-    <type name="Magento\Catalog\Model\Product\Gallery\DefaultValueProcessor">
-        <plugin name="add_use_default_for_video" type="Magento\ProductVideo\Model\Plugin\Catalog\Product\Gallery\DefaultValueProcessor" />
+    <type name="Magento\Catalog\Model\Product\Gallery\Default_Value_Processor">
+        <plugin name="add_use_default_for_video" type="Magento\Product_Video\Model\Plugin\Catalog\Product\Gallery\Default_Value_Processor" />
     </type>
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="catalog/product_video/youtube_api_key" xsi:type="string">1</item>

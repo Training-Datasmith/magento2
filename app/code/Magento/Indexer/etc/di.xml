@@ -6,15 +6,15 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Framework\Mview\View\State\CollectionInterface" type="Magento\Indexer\Model\ResourceModel\Mview\View\State\Collection" />
-    <preference for="Magento\Framework\Mview\View\StateInterface" type="Magento\Indexer\Model\Mview\View\State" />
-    <preference for="Magento\Framework\Indexer\ConfigInterface" type="Magento\Indexer\Model\Config" />
-    <preference for="Magento\Framework\Indexer\IndexerInterface" type="Magento\Indexer\Model\Indexer\DependencyDecorator" />
-    <preference for="Magento\Framework\Indexer\Table\StrategyInterface" type="Magento\Framework\Indexer\Table\Strategy" />
-    <preference for="Magento\Framework\Indexer\StateInterface" type="Magento\Indexer\Model\Indexer\State" />
-    <preference for="Magento\Framework\Indexer\IndexMutexInterface" type="Magento\Indexer\Model\IndexMutex" />
-    <preference for="Magento\Framework\Indexer\DeferredCacheCleanerInterface" type="Magento\Indexer\Model\Indexer\DeferredCacheCleaner" />
-    <type name="Magento\Framework\Indexer\Table\StrategyInterface" shared="false" />
+    <preference for="Magento\Framework\Mview\View\State\Collection_Interface" type="Magento\Indexer\Model\Resource_Model\Mview\View\State\Collection" />
+    <preference for="Magento\Framework\Mview\View\State_Interface" type="Magento\Indexer\Model\Mview\View\State" />
+    <preference for="Magento\Framework\Indexer\Config_Interface" type="Magento\Indexer\Model\Config" />
+    <preference for="Magento\Framework\Indexer\Indexer_Interface" type="Magento\Indexer\Model\Indexer\Dependency_Decorator" />
+    <preference for="Magento\Framework\Indexer\Table\Strategy_Interface" type="Magento\Framework\Indexer\Table\Strategy" />
+    <preference for="Magento\Framework\Indexer\State_Interface" type="Magento\Indexer\Model\Indexer\State" />
+    <preference for="Magento\Framework\Indexer\Index_Mutex_Interface" type="Magento\Indexer\Model\Index_Mutex" />
+    <preference for="Magento\Framework\Indexer\Deferred_Cache_Cleaner_Interface" type="Magento\Indexer\Model\Indexer\Deferred_Cache_Cleaner" />
+    <type name="Magento\Framework\Indexer\Table\Strategy_Interface" shared="false" />
     <type name="Magento\Indexer\Model\Indexer">
         <arguments>
             <argument name="view" xsi:type="object" shared="false">Magento\Framework\Mview\View</argument>
@@ -25,19 +25,19 @@
             <argument name="configData" xsi:type="object">Magento\Indexer\Model\Config\Data\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Indexer\Model\HandlerPool">
+    <type name="Magento\Indexer\Model\Handler_Pool">
         <arguments>
-            <argument name="defaultHandler" xsi:type="object">Magento\Indexer\Model\Handler\DefaultHandler</argument>
+            <argument name="defaultHandler" xsi:type="object">Magento\Indexer\Model\Handler\Default_Handler</argument>
         </arguments>
     </type>
     <type name="Magento\Indexer\Model\Config\Data">
         <arguments>
-            <argument name="stateCollection" xsi:type="object" shared="false">Magento\Indexer\Model\ResourceModel\Indexer\State\Collection</argument>
+            <argument name="stateCollection" xsi:type="object" shared="false">Magento\Indexer\Model\Resource_Model\Indexer\State\Collection</argument>
         </arguments>
     </type>
     <type name="Magento\Framework\Mview\View\Subscription">
         <arguments>
-            <argument name="viewCollection" xsi:type="object" shared="false">Magento\Framework\Mview\View\CollectionInterface</argument>
+            <argument name="viewCollection" xsi:type="object" shared="false">Magento\Framework\Mview\View\Collection_Interface</argument>
             <argument name="ignoredUpdateColumns" xsi:type="array">
                 <item name="updated_at" xsi:type="string">updated_at</item>
             </argument>
@@ -45,41 +45,41 @@
     </type>
     <type name="Magento\Indexer\Model\Processor">
         <plugin name="page-cache-indexer-reindex-clean-cache"
-                type="Magento\Indexer\Model\Processor\CleanCache" sortOrder="10"/>
+                type="Magento\Indexer\Model\Processor\Clean_Cache" sortOrder="10"/>
     </type>
-    <type name="Magento\Indexer\Model\ProcessManager">
+    <type name="Magento\Indexer\Model\Process_Manager">
         <arguments>
-            <argument name="threadsCount" xsi:type="init_parameter">Magento\Indexer\Model\ProcessManager::THREADS_COUNT</argument>
+            <argument name="threadsCount" xsi:type="init_parameter">Magento\Indexer\Model\Process_Manager::THREADS_COUNT</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="info" xsi:type="object">Magento\Indexer\Console\Command\IndexerInfoCommand</item>
-                <item name="reindex" xsi:type="object">Magento\Indexer\Console\Command\IndexerReindexCommand</item>
-                <item name="set-mode" xsi:type="object">Magento\Indexer\Console\Command\IndexerSetModeCommand</item>
-                <item name="set-status" xsi:type="object">Magento\Indexer\Console\Command\IndexerSetStatusCommand</item>
-                <item name="show-mode" xsi:type="object">Magento\Indexer\Console\Command\IndexerShowModeCommand</item>
-                <item name="status" xsi:type="object">Magento\Indexer\Console\Command\IndexerStatusCommand</item>
-                <item name="reset" xsi:type="object">Magento\Indexer\Console\Command\IndexerResetStateCommand</item>
-                <item name="set-dimensions-mode" xsi:type="object">Magento\Indexer\Console\Command\IndexerSetDimensionsModeCommand</item>
-                <item name="show-dimensions-mode" xsi:type="object">Magento\Indexer\Console\Command\IndexerShowDimensionsModeCommand</item>
+                <item name="info" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Info_Command</item>
+                <item name="reindex" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Reindex_Command</item>
+                <item name="set-mode" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Set_Mode_Command</item>
+                <item name="set-status" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Set_Status_Command</item>
+                <item name="show-mode" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Show_Mode_Command</item>
+                <item name="status" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Status_Command</item>
+                <item name="reset" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Reset_State_Command</item>
+                <item name="set-dimensions-mode" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Set_Dimensions_Mode_Command</item>
+                <item name="show-dimensions-mode" xsi:type="object">Magento\Indexer\Console\Command\Indexer_Show_Dimensions_Mode_Command</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Framework\Indexer\BatchSizeManagementInterface" type="Magento\Framework\Indexer\BatchSizeManagement" />
-    <type name="Magento\Indexer\Model\Indexer\DependencyDecorator">
+    <preference for="Magento\Framework\Indexer\Batch_Size_Management_Interface" type="Magento\Framework\Indexer\Batch_Size_Management" />
+    <type name="Magento\Indexer\Model\Indexer\Dependency_Decorator">
         <arguments>
             <argument name="indexer" xsi:type="object" shared="false">Magento\Indexer\Model\Indexer</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Indexer\ActionInterface">
-        <plugin name="cache_cleaner_after_reindex" type="Magento\Indexer\Model\Indexer\CacheCleaner" />
+    <type name="Magento\Framework\Indexer\Action_Interface">
+        <plugin name="cache_cleaner_after_reindex" type="Magento\Indexer\Model\Indexer\Cache_Cleaner" />
     </type>
-    <type name="Magento\Framework\Indexer\CacheContext">
-        <plugin name="defer_cache_cleaning" type="Magento\Indexer\Model\Indexer\DeferCacheCleaning" />
+    <type name="Magento\Framework\Indexer\Cache_Context">
+        <plugin name="defer_cache_cleaning" type="Magento\Indexer\Model\Indexer\Defer_Cache_Cleaning" />
     </type>
-    <type name="Magento\Framework\Mview\ViewInterface">
-        <plugin name="skip_suspended_indexer_mview_update" type="Magento\Indexer\Plugin\Mview\ViewUpdatePlugin" sortOrder="10"/>
+    <type name="Magento\Framework\Mview\View_Interface">
+        <plugin name="skip_suspended_indexer_mview_update" type="Magento\Indexer\Plugin\Mview\View_Update_Plugin" sortOrder="10"/>
     </type>
 </config>

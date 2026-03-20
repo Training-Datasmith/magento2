@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\CatalogRule\Pricing\Price\CatalogRulePrice">
-        <plugin name="update_catalog_rule_price_for_logged_in_customer_group" type="Magento\CatalogRuleGraphQl\Plugin\Pricing\Price\UpdateCatalogRulePrice"/>
+    <type name="Magento\Catalog_Rule\Pricing\Price\Catalog_Rule_Price">
+        <plugin name="update_catalog_rule_price_for_logged_in_customer_group" type="Magento\Catalog_Rule_Graph_Ql\Plugin\Pricing\Price\Update_Catalog_Rule_Price"/>
     </type>
 </config>

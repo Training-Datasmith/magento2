@@ -7,24 +7,24 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="magento_catalogrule_api_data_ruleinterface_save_before">
-        <observer name="legacy_model_save" instance="Magento\Framework\EntityManager\Observer\BeforeEntitySave" />
+        <observer name="legacy_model_save" instance="Magento\Framework\Entity_Manager\Observer\Before_Entity_Save" />
     </event>
     <event name="magento_catalogrule_api_data_ruleinterface_save_after">
-        <observer name="legacy_model_save" instance="Magento\Framework\EntityManager\Observer\AfterEntitySave" />
+        <observer name="legacy_model_save" instance="Magento\Framework\Entity_Manager\Observer\After_Entity_Save" />
     </event>
     <event name="magento_catalogrule_api_data_ruleinterface_delete_before">
-        <observer name="legacy_model_delete" instance="Magento\Framework\EntityManager\Observer\BeforeEntityDelete" />
+        <observer name="legacy_model_delete" instance="Magento\Framework\Entity_Manager\Observer\Before_Entity_Delete" />
     </event>
     <event name="magento_catalogrule_api_data_ruleinterface_delete_after">
-        <observer name="legacy_model_delete" instance="Magento\Framework\EntityManager\Observer\AfterEntityDelete" />
+        <observer name="legacy_model_delete" instance="Magento\Framework\Entity_Manager\Observer\After_Entity_Delete" />
     </event>
     <event name="magento_catalogrule_api_data_ruleinterface_load_after">
-        <observer name="legacy_model_load" instance="Magento\Framework\EntityManager\Observer\AfterEntityLoad" />
+        <observer name="legacy_model_load" instance="Magento\Framework\Entity_Manager\Observer\After_Entity_Load" />
     </event>
     <event name="catalog_product_get_final_price">
-        <observer name="catalogrule" instance="Magento\CatalogRule\Observer\ProcessFrontFinalPriceObserver" />
+        <observer name="catalogrule" instance="Magento\Catalog_Rule\Observer\Process_Front_Final_Price_Observer" />
     </event>
     <event name="prepare_catalog_product_collection_prices">
-        <observer name="catalogrule" instance="Magento\CatalogRule\Observer\PrepareCatalogProductCollectionPricesObserver" />
+        <observer name="catalogrule" instance="Magento\Catalog_Rule\Observer\Prepare_Catalog_Product_Collection_Prices_Observer" />
     </event>
 </config>

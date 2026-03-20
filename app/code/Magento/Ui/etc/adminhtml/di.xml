@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Ui\DataProvider\Mapper\FormElement">
+    <type name="Magento\Ui\Data_Provider\Mapper\Form_Element">
         <arguments>
             <argument name="mappings" xsi:type="array">
                 <item name="text" xsi:type="string">input</item>
@@ -19,7 +19,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Ui\DataProvider\Mapper\MetaProperties">
+    <type name="Magento\Ui\Data_Provider\Mapper\Meta_Properties">
         <arguments>
             <argument name="mappings" xsi:type="array">
                 <item name="dataType" xsi:type="string">frontend_input</item>
@@ -34,36 +34,36 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Authorization\Model\CompositeUserContext">
+    <type name="Magento\Authorization\Model\Composite_User_Context">
         <arguments>
             <argument name="userContexts" xsi:type="array">
                 <item name="adminSessionUserContext" xsi:type="array">
-                    <item name="type" xsi:type="object">Magento\User\Model\Authorization\AdminSessionUserContext</item>
+                    <item name="type" xsi:type="object">Magento\User\Model\Authorization\Admin_Session_User_Context</item>
                     <item name="sortOrder" xsi:type="string">30</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Ui\Model\ColorPicker\ColorModesProvider">
+    <type name="Magento\Ui\Model\Color_Picker\Color_Modes_Provider">
         <arguments>
             <argument name="colorModesPool" xsi:type="array">
-                <item name="full" xsi:type="string">Magento\Ui\Model\ColorPicker\FullMode</item>
-                <item name="simple" xsi:type="string">Magento\Ui\Model\ColorPicker\SimpleMode</item>
-                <item name="noalpha" xsi:type="string">Magento\Ui\Model\ColorPicker\NoAlphaMode</item>
-                <item name="palette" xsi:type="string">Magento\Ui\Model\ColorPicker\PaletteOnlyMode</item>
+                <item name="full" xsi:type="string">Magento\Ui\Model\Color_Picker\Full_Mode</item>
+                <item name="simple" xsi:type="string">Magento\Ui\Model\Color_Picker\Simple_Mode</item>
+                <item name="noalpha" xsi:type="string">Magento\Ui\Model\Color_Picker\No_Alpha_Mode</item>
+                <item name="palette" xsi:type="string">Magento\Ui\Model\Color_Picker\Palette_Only_Mode</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Ui\Model\UrlInput\LinksConfigProvider">
+    <type name="Magento\Ui\Model\Url_Input\Links_Config_Provider">
         <arguments>
             <argument name="linksConfiguration" xsi:type="array">
-                <item name="default" xsi:type="string">Magento\Ui\Model\UrlInput\Url</item>
+                <item name="default" xsi:type="string">Magento\Ui\Model\Url_Input\Url</item>
             </argument>
         </arguments>
     </type>
 
     <!-- Plugin to automatically convert row1/row2/row3 format to numerically indexed arrays -->
-    <type name="Magento\Config\Model\Config\Backend\Serialized\ArraySerialized">
-        <plugin name="ui_array_serialized_plugin" type="Magento\Ui\Plugin\Config\Backend\ArraySerializedPlugin" />
+    <type name="Magento\Config\Model\Config\Backend\Serialized\Array_Serialized">
+        <plugin name="ui_array_serialized_plugin" type="Magento\Ui\Plugin\Config\Backend\Array_Serialized_Plugin" />
     </type>
 </config>

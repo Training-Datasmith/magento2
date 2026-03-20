@@ -10,6 +10,6 @@
         <arguments>
             <argument name="sourceSizeModel" xsi:type="object">Magento\Usps\Model\Source\Size</argument>
         </arguments>
-        <plugin name="usps" type="Magento\Usps\Block\Adminhtml\Order\Packaging\Plugin\DisplayGirth"/>
+        <plugin name="usps" type="Magento\Usps\Block\Adminhtml\Order\Packaging\Plugin\Display_Girth"/>
     </type>
 </config>

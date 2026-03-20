@@ -26,7 +26,7 @@
                 </field>
                 <field id="format" translate="label" type="select" sortOrder="30" showInDefault="1" canRestore="1">
                     <label>Code Format</label>
-                    <source_model>Magento\SalesRule\Model\System\Config\Source\Coupon\Format</source_model>
+                    <source_model>Magento\Sales_Rule\Model\System\Config\Source\Coupon\Format</source_model>
                 </field>
                 <field id="prefix" translate="label" type="text" sortOrder="40" showInDefault="1">
                     <label>Code Prefix</label>

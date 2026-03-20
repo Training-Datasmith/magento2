@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Customer\Model\Customer\DataProviderWithDefaultAddresses">
+    <type name="Magento\Customer\Model\Customer\Data_Provider_With_Default_Addresses">
         <plugin name="login_as_customer_customer_data_provider_plugin"
-                type="Magento\LoginAsCustomerAssistance\Plugin\DataProviderWithDefaultAddressesPlugin"/>
+                type="Magento\Login_As_Customer_Assistance\Plugin\Data_Provider_With_Default_Addresses_Plugin"/>
     </type>
     <type name="Magento\Customer\Model\Metadata\Form">
         <plugin name="login_as_customer_customer_data_validate_plugin"
-                type="Magento\LoginAsCustomerAssistance\Plugin\CustomerDataValidatePlugin"/>
+                type="Magento\Login_As_Customer_Assistance\Plugin\Customer_Data_Validate_Plugin"/>
     </type>
-    <type name="Magento\LoginAsCustomerAdminUi\Ui\Customer\Component\Button\DataProvider">
+    <type name="Magento\Login_As_Customer_Admin_Ui\Ui\Customer\Component\Button\Data_Provider">
         <plugin name="login_as_customer_button_data_provider_plugin"
-                type="Magento\LoginAsCustomerAssistance\Plugin\LoginAsCustomerButtonDataProviderPlugin"/>
+                type="Magento\Login_As_Customer_Assistance\Plugin\Login_As_Customer_Button_Data_Provider_Plugin"/>
     </type>
 </config>

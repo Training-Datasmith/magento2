@@ -41,7 +41,7 @@
             <deleteData createDataKey="simpleProduct3" stepKey="deleteSimpleProduct3"/>
             <deleteData createDataKey="simpleProduct4" stepKey="deleteSimpleProduct4"/>
             <!-- Delete bundle product via API -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
         </after>
         <!--Make category-->
         <actionGroup ref="AdminOpenCategoryPageActionGroup" stepKey="goToCategoryPage"/>

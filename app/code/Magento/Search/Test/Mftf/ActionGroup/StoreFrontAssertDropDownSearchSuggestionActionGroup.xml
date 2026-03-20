@@ -22,7 +22,7 @@
         <click selector="//div[@class='panel wrapper']" stepKey="clickOnSomewhere"/>
         <dontSee selector="{{StorefrontQuickSearchSection.searchDropDownSuggestion}}" stepKey="dontSeeDropDownSuggestion"/>
         <click selector="{{StorefrontQuickSearchSection.searchPhrase}}" stepKey="clickOnSearchPhrase"/>
-        <pressKey selector="{{StorefrontQuickSearchSection.searchPhrase}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::DOWN]" stepKey="pressDown"/>
+        <pressKey selector="{{StorefrontQuickSearchSection.searchPhrase}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::DOWN]" stepKey="pressDown"/>
         <waitForElementVisible selector="{{StorefrontQuickSearchSection.searchDropDownSuggestion}}" stepKey="WaitForSearchDropDownSuggestionSecond"/>
     </actionGroup>
 </actionGroups>

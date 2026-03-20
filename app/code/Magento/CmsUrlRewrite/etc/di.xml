@@ -6,14 +6,14 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Cms\Model\ResourceModel\Page">
-        <plugin name="cms_url_rewrite_plugin" type="Magento\CmsUrlRewrite\Plugin\Cms\Model\ResourceModel\Page"/>
+    <type name="Magento\Cms\Model\Resource_Model\Page">
+        <plugin name="cms_url_rewrite_plugin" type="Magento\Cms_Url_Rewrite\Plugin\Cms\Model\Resource_Model\Page"/>
     </type>
-    <type name="Magento\Cms\Model\PageRepository\ValidationComposite">
+    <type name="Magento\Cms\Model\Page_Repository\Validation_Composite">
         <plugin name="cms_validate_url_plugin"
-                type="Magento\CmsUrlRewrite\Plugin\Cms\Model\PageRepository\ValidationCompositePlugin" sortOrder="10"/>
+                type="Magento\Cms_Url_Rewrite\Plugin\Cms\Model\Page_Repository\Validation_Composite_Plugin" sortOrder="10"/>
     </type>
-    <type name="Magento\UrlRewrite\Model\UrlRewrite">
+    <type name="Magento\Url_Rewrite\Model\Url_Rewrite">
         <arguments>
             <argument name="entityToCacheTagMap" xsi:type="array">
                 <item name="cms-page" xsi:type="const">Magento\Cms\Model\Page::CACHE_TAG</item>

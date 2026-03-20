@@ -14,8 +14,8 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Magento\AsynchronousOperations\Block\Adminhtml\Bulk\Details\RetryButton"/>
-            <button name="back" class="Magento\AsynchronousOperations\Block\Adminhtml\Bulk\Details\BackButton"/>
+            <button name="save" class="Magento\Asynchronous_Operations\Block\Adminhtml\Bulk\Details\Retry_Button"/>
+            <button name="back" class="Magento\Asynchronous_Operations\Block\Adminhtml\Bulk\Details\Back_Button"/>
         </buttons>
         <namespace>bulk_details_form</namespace>
         <dataScope>data</dataScope>
@@ -32,7 +32,7 @@
         <settings>
             <submitUrl path="bulk/bulk/retry"/>
         </settings>
-        <dataProvider class="Magento\AsynchronousOperations\Ui\Component\Operation\DataProvider" name="bulk_details_form_data_source">
+        <dataProvider class="Magento\Asynchronous_Operations\Ui\Component\Operation\Data_Provider" name="bulk_details_form_data_source">
             <settings>
                 <requestFieldName>uuid</requestFieldName>
                 <primaryFieldName>uuid</primaryFieldName>

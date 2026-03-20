@@ -6,17 +6,17 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\EavGraphQl\Model\Output\GetAttributeDataInterface" type="Magento\EavGraphQl\Model\Output\GetAttributeDataComposite"/>
-    <preference for="Magento\EavGraphQl\Model\Output\Value\GetAttributeValueInterface" type="Magento\EavGraphQl\Model\Output\Value\GetAttributeValueComposite"/>
-    <preference for="Magento\EavGraphQl\Model\Output\Value\Options\GetAttributeSelectedOptionInterface" type="Magento\EavGraphQl\Model\Output\Value\Options\GetAttributeSelectedOptionComposite"/>
-    <type name="Magento\EavGraphQl\Model\Output\GetAttributeDataComposite">
+    <preference for="Magento\Eav_Graph_Ql\Model\Output\Get_Attribute_Data_Interface" type="Magento\Eav_Graph_Ql\Model\Output\Get_Attribute_Data_Composite"/>
+    <preference for="Magento\Eav_Graph_Ql\Model\Output\Value\Get_Attribute_Value_Interface" type="Magento\Eav_Graph_Ql\Model\Output\Value\Get_Attribute_Value_Composite"/>
+    <preference for="Magento\Eav_Graph_Ql\Model\Output\Value\Options\Get_Attribute_Selected_Option_Interface" type="Magento\Eav_Graph_Ql\Model\Output\Value\Options\Get_Attribute_Selected_Option_Composite"/>
+    <type name="Magento\Eav_Graph_Ql\Model\Output\Get_Attribute_Data_Composite">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="eav_attribute_data" xsi:type="object">Magento\EavGraphQl\Model\Output\GetAttributeData</item>
+                <item name="eav_attribute_data" xsi:type="object">Magento\Eav_Graph_Ql\Model\Output\Get_Attribute_Data</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Schema\Type\Enum\DefaultDataMapper">
+    <type name="Magento\Framework\Graph_Ql\Schema\Type\Enum\Default_Data_Mapper">
         <arguments>
             <argument name="map" xsi:type="array">
                 <item name="AttributeFrontendInputEnum" xsi:type="array">
@@ -39,14 +39,14 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\Output\Value\GetAttributeValueComposite">
+    <type name="Magento\Eav_Graph_Ql\Model\Output\Value\Get_Attribute_Value_Composite">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="default" xsi:type="object">Magento\EavGraphQl\Model\Output\Value\GetCustomAttributes</item>
+                <item name="default" xsi:type="object">Magento\Eav_Graph_Ql\Model\Output\Value\Get_Custom_Attributes</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\Output\Value\GetCustomAttributes">
+    <type name="Magento\Eav_Graph_Ql\Model\Output\Value\Get_Custom_Attributes">
         <arguments>
             <argument name="frontendInputs" xsi:type="array">
                 <item name="multiselect" xsi:type="string">multiselect</item>
@@ -54,14 +54,14 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\Output\Value\Options\GetAttributeSelectedOptionComposite">
+    <type name="Magento\Eav_Graph_Ql\Model\Output\Value\Options\Get_Attribute_Selected_Option_Composite">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="default" xsi:type="object">Magento\EavGraphQl\Model\Output\Value\Options\GetCustomSelectedOptionAttributes</item>
+                <item name="default" xsi:type="object">Magento\Eav_Graph_Ql\Model\Output\Value\Options\Get_Custom_Selected_Option_Attributes</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\TypeResolver\AttributeValue">
+    <type name="Magento\Eav_Graph_Ql\Model\Type_Resolver\Attribute_Value">
         <arguments>
             <argument name="frontendInputs" xsi:type="array">
                 <item name="multiselect" xsi:type="string">multiselect</item>

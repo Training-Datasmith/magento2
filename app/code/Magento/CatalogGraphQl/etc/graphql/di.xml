@@ -6,36 +6,36 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Catalog\Model\Product\Option\Type\Date" type="Magento\CatalogGraphQl\Model\Product\Option\DateType" />
-    <type name="Magento\CatalogGraphQl\Model\ProductInterfaceTypeResolverComposite">
+    <preference for="Magento\Catalog\Model\Product\Option\Type\Date" type="Magento\Catalog_Graph_Ql\Model\Product\Option\Date_Type" />
+    <type name="Magento\Catalog_Graph_Ql\Model\Product_Interface_Type_Resolver_Composite">
         <arguments>
             <argument name="productTypeNameResolvers" xsi:type="array">
-                <item name="catalog_type_resolver" xsi:type="object">Magento\CatalogGraphQl\Model\CatalogProductTypeResolver</item>
+                <item name="catalog_type_resolver" xsi:type="object">Magento\Catalog_Graph_Ql\Model\Catalog_Product_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogGraphQl\Model\ProductLinkTypeResolverComposite">
+    <type name="Magento\Catalog_Graph_Ql\Model\Product_Link_Type_Resolver_Composite">
         <arguments>
             <argument name="productLinksTypeNameResolvers" xsi:type="array">
-                <item name="catalog_product_link_type_resolver" xsi:type="object">Magento\CatalogGraphQl\Model\ProductLinksTypeResolver</item>
+                <item name="catalog_product_link_type_resolver" xsi:type="object">Magento\Catalog_Graph_Ql\Model\Product_Links_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogGraphQl\Model\LayerFilterItemTypeResolverComposite">
+    <type name="Magento\Catalog_Graph_Ql\Model\Layer_Filter_Item_Type_Resolver_Composite">
         <arguments>
             <argument name="typeResolvers" xsi:type="array">
-                <item name="layer_filter_item" xsi:type="object">Magento\CatalogGraphQl\Model\LayerFilterItemTypeResolver</item>
+                <item name="layer_filter_item" xsi:type="object">Magento\Catalog_Graph_Ql\Model\Layer_Filter_Item_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogGraphQl\Model\AggregationOptionTypeResolverComposite">
+    <type name="Magento\Catalog_Graph_Ql\Model\Aggregation_Option_Type_Resolver_Composite">
         <arguments>
             <argument name="typeResolvers" xsi:type="array">
-                <item name="aggregation_option" xsi:type="object">Magento\CatalogGraphQl\Model\AggregationOptionTypeResolver</item>
+                <item name="aggregation_option" xsi:type="object">Magento\Catalog_Graph_Ql\Model\Aggregation_Option_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Schema\Type\Entity\DefaultMapper">
+    <type name="Magento\Framework\Graph_Ql\Schema\Type\Entity\Default_Mapper">
         <arguments>
             <argument name="map" xsi:type="array">
                 <item name="catalog_product" xsi:type="array">
@@ -64,34 +64,34 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogGraphQl\Model\Layer\Context">
+    <type name="Magento\Catalog_Graph_Ql\Model\Layer\Context">
         <arguments>
-            <argument name="collectionProvider" xsi:type="object">Magento\CatalogGraphQl\Model\Layer\CollectionProvider</argument>
-            <argument name="stateKey" xsi:type="object">Magento\Catalog\Model\Layer\Category\StateKey</argument>
-            <argument name="collectionFilter" xsi:type="object">Magento\Catalog\Model\Layer\Category\CollectionFilter</argument>
+            <argument name="collectionProvider" xsi:type="object">Magento\Catalog_Graph_Ql\Model\Layer\Collection_Provider</argument>
+            <argument name="stateKey" xsi:type="object">Magento\Catalog\Model\Layer\Category\State_Key</argument>
+            <argument name="collectionFilter" xsi:type="object">Magento\Catalog\Model\Layer\Category\Collection_Filter</argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Layer\Search">
         <arguments>
-            <argument name="context" xsi:type="object">Magento\CatalogGraphQl\Model\Layer\Context</argument>
+            <argument name="context" xsi:type="object">Magento\Catalog_Graph_Ql\Model\Layer\Context</argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogGraphQl\Model\Layer\CollectionProvider">
+    <type name="Magento\Catalog_Graph_Ql\Model\Layer\Collection_Provider">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\ProductCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Catalog\Model\Api\Search_Criteria\Product_Collection_Processor</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\ProductFilterProcessor" type="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Catalog\Model\Api\Search_Criteria\Collection_Processor\Product_Filter_Processor" type="Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="customFilters" xsi:type="array">
-                <item name="price" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\ProductPriceFilter</item>
-                <item name="min_price" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\ProductPriceFilter</item>
-                <item name="max_price" xsi:type="object">Magento\Catalog\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\ProductPriceFilter</item>
-                <item name="category_id" xsi:type="object">Magento\CatalogGraphQl\Model\Resolver\Products\SearchCriteria\CollectionProcessor\FilterProcessor\CategoryFilter</item>
+                <item name="price" xsi:type="object">Magento\Catalog\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Product_Price_Filter</item>
+                <item name="min_price" xsi:type="object">Magento\Catalog\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Product_Price_Filter</item>
+                <item name="max_price" xsi:type="object">Magento\Catalog\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Product_Price_Filter</item>
+                <item name="category_id" xsi:type="object">Magento\Catalog_Graph_Ql\Model\Resolver\Products\Search_Criteria\Collection_Processor\Filter_Processor\Category_Filter</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+    <type name="Magento\Store_Graph_Ql\Model\Resolver\Store\Store_Config_Data_Provider">
         <arguments>
             <argument name="extendedConfigData" xsi:type="array">
                 <item name="product_url_suffix" xsi:type="string">catalog/seo/product_url_suffix</item>
@@ -107,26 +107,26 @@
         </arguments>
     </type>
 
-    <type name="Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\LayerBuilder">
+    <type name="Magento\Catalog_Graph_Ql\Data_Provider\Product\Layered_Navigation\Layer_Builder">
         <arguments>
             <argument name="builders" xsi:type="array">
-                <item name="price_bucket" xsi:type="object">Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\Builder\Price</item>
-                <item name="category_bucket" xsi:type="object">Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\Builder\Category</item>
-                <item name="attribute_bucket" xsi:type="object">Magento\CatalogGraphQl\DataProvider\Product\LayeredNavigation\Builder\Attribute</item>
+                <item name="price_bucket" xsi:type="object">Magento\Catalog_Graph_Ql\Data_Provider\Product\Layered_Navigation\Builder\Price</item>
+                <item name="category_bucket" xsi:type="object">Magento\Catalog_Graph_Ql\Data_Provider\Product\Layered_Navigation\Builder\Category</item>
+                <item name="attribute_bucket" xsi:type="object">Magento\Catalog_Graph_Ql\Data_Provider\Product\Layered_Navigation\Builder\Attribute</item>
             </argument>
         </arguments>
     </type>
 
 
-    <type name="Magento\CatalogGraphQl\Model\Resolver\Product\Price\ProviderPool">
+    <type name="Magento\Catalog_Graph_Ql\Model\Resolver\Product\Price\Provider_Pool">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="default" xsi:type="object">Magento\CatalogGraphQl\Model\Resolver\Product\Price\Provider</item>
+                <item name="default" xsi:type="object">Magento\Catalog_Graph_Ql\Model\Resolver\Product\Price\Provider</item>
             </argument>
         </arguments>
     </type>
 
-    <type name="Magento\CatalogGraphQl\Model\Resolver\Products\DataProvider\Product\CollectionProcessor\AttributeProcessor">
+    <type name="Magento\Catalog_Graph_Ql\Model\Resolver\Products\Data_Provider\Product\Collection_Processor\Attribute_Processor">
         <arguments>
             <argument name="fieldToAttributeMap" xsi:type="array">
                 <item name="price_range" xsi:type="array">
@@ -163,24 +163,24 @@
         </arguments>
     </type>
 
-    <type name="Magento\Catalog\Block\Product\ImageFactory">
-        <plugin name="designLoader" type="Magento\CatalogGraphQl\Plugin\DesignLoader" />
+    <type name="Magento\Catalog\Block\Product\Image_Factory">
+        <plugin name="designLoader" type="Magento\Catalog_Graph_Ql\Plugin\Design_Loader" />
     </type>
 
-    <type name="Magento\CatalogGraphQl\Model\Config\CategoryAttributeReader">
+    <type name="Magento\Catalog_Graph_Ql\Model\Config\Category_Attribute_Reader">
         <arguments>
             <argument name="categoryAttributeResolvers" xsi:type="array">
-                <item name="image" xsi:type="string">Magento\CatalogGraphQl\Model\Resolver\Category\Image</item>
+                <item name="image" xsi:type="string">Magento\Catalog_Graph_Ql\Model\Resolver\Category\Image</item>
             </argument>
         </arguments>
     </type>
 
     <type name="Magento\Catalog\Helper\Data">
         <arguments>
-            <argument name="templateFilterModel" xsi:type="string">Magento\Widget\Model\Template\FilterEmulate</argument>
+            <argument name="templateFilterModel" xsi:type="string">Magento\Widget\Model\Template\Filter_Emulate</argument>
         </arguments>
     </type>
-    <type name="Magento\WishlistGraphQl\Model\Resolver\Type\WishlistItemType">
+    <type name="Magento\Wishlist_Graph_Ql\Model\Resolver\Type\Wishlist_Item_Type">
         <arguments>
             <argument name="supportedTypes" xsi:type="array">
                 <item name="simple" xsi:type="string">SimpleWishlistItem</item>
@@ -188,27 +188,27 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Api\ProductRepositoryInterface">
-        <plugin name="availableProductsFilter" type="Magento\CatalogGraphQl\Plugin\AvailableProductsFilter" />
+    <type name="Magento\Catalog\Api\Product_Repository_Interface">
+        <plugin name="availableProductsFilter" type="Magento\Catalog_Graph_Ql\Plugin\Available_Products_Filter" />
     </type>
-    <type name="Magento\CatalogGraphQl\Model\Category\Hydrator">
+    <type name="Magento\Catalog_Graph_Ql\Model\Category\Hydrator">
         <arguments>
-            <argument name="dataObjectProcessor" xsi:type="object">Magento\CatalogGraphQl\Category\DataObjectProcessor</argument>
+            <argument name="dataObjectProcessor" xsi:type="object">Magento\Catalog_Graph_Ql\Category\Data_Object_Processor</argument>
         </arguments>
     </type>
     <virtualType
-        name="Magento\CatalogGraphQl\Category\DataObjectProcessor"
-        type="Magento\Framework\Reflection\DataObjectProcessor"
+        name="Magento\Catalog_Graph_Ql\Category\Data_Object_Processor"
+        type="Magento\Framework\Reflection\Data_Object_Processor"
     >
         <arguments>
             <argument name="excludedMethodsClassMap" xsi:type="array">
-                <item name="Magento\Catalog\Api\Data\CategoryInterface" xsi:type="array">
+                <item name="Magento\Catalog\Api\Data\Category_Interface" xsi:type="array">
                     <item name="getChildren" xsi:type="string">getChildren</item>
                 </item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\EavGraphQl\Model\TypeResolver\AttributeMetadata">
+    <type name="Magento\Eav_Graph_Ql\Model\Type_Resolver\Attribute_Metadata">
         <arguments>
             <argument name="entityTypes" xsi:type="array">
                 <item name="CATALOG_PRODUCT" xsi:type="string">CatalogAttributeMetadata</item>
@@ -216,7 +216,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Schema\Type\Enum\DefaultDataMapper">
+    <type name="Magento\Framework\Graph_Ql\Schema\Type\Enum\Default_Data_Mapper">
         <arguments>
             <argument name="map" xsi:type="array">
                 <item name="AttributeEntityTypeEnum" xsi:type="array">
@@ -226,7 +226,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\Output\GetAttributeDataComposite">
+    <type name="Magento\Eav_Graph_Ql\Model\Output\Get_Attribute_Data_Composite">
         <arguments>
             <argument name="providers" xsi:type="array">
                 <item name="catalog_product" xsi:type="object">GetCatalogProductAttributesMetadata</item>
@@ -234,61 +234,61 @@
             </argument>
         </arguments>
     </type>
-    <virtualType name="GetCatalogProductAttributesMetadata" type="Magento\CatalogGraphQl\Model\Output\AttributeMetadata">
+    <virtualType name="GetCatalogProductAttributesMetadata" type="Magento\Catalog_Graph_Ql\Model\Output\Attribute_Metadata">
         <arguments>
             <argument name="entityType" xsi:type="string">catalog_product</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GetCatalogCategoryAttributesMetadata" type="Magento\CatalogGraphQl\Model\Output\AttributeMetadata">
+    <virtualType name="GetCatalogCategoryAttributesMetadata" type="Magento\Catalog_Graph_Ql\Model\Output\Attribute_Metadata">
         <arguments>
             <argument name="entityType" xsi:type="string">catalog_category</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\ResolverIdentityClassProvider">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Resolver_Identity_Class_Provider">
         <arguments>
             <argument name="cacheableResolverClassNameIdentityMap" xsi:type="array">
-                <item name="Magento\CatalogGraphQl\Model\Resolver\Product\MediaGallery" xsi:type="string">
-                    Magento\CatalogGraphQl\Model\Resolver\Cache\Product\MediaGallery\ResolverCacheIdentity
+                <item name="Magento\Catalog_Graph_Ql\Model\Resolver\Product\Media_Gallery" xsi:type="string">
+                    Magento\Catalog_Graph_Ql\Model\Resolver\Cache\Product\Media_Gallery\Resolver_Cache_Identity
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\HydratorDehydratorProvider">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Hydrator_Dehydrator_Provider">
         <arguments>
             <argument name="hydratorConfig" xsi:type="array">
-                <item name="Magento\CatalogGraphQl\Model\Resolver\Product\MediaGallery" xsi:type="array">
+                <item name="Magento\Catalog_Graph_Ql\Model\Resolver\Product\Media_Gallery" xsi:type="array">
                     <item name="model_hydrator" xsi:type="array">
                         <item name="sortOrder" xsi:type="string">10</item>
-                        <item name="class" xsi:type="string">Magento\CatalogGraphQl\Model\Resolver\Cache\Product\MediaGallery\ProductModelHydrator</item>
+                        <item name="class" xsi:type="string">Magento\Catalog_Graph_Ql\Model\Resolver\Cache\Product\Media_Gallery\Product_Model_Hydrator</item>
                     </item>
                 </item>
             </argument>
             <argument name="dehydratorConfig" xsi:type="array">
-                <item name="Magento\CatalogGraphQl\Model\Resolver\Product\MediaGallery" xsi:type="array">
+                <item name="Magento\Catalog_Graph_Ql\Model\Resolver\Product\Media_Gallery" xsi:type="array">
                     <item name="model_dehydrator" xsi:type="array">
                         <item name="sortOrder" xsi:type="string">10</item>
-                        <item name="class" xsi:type="string">Magento\CatalogGraphQl\Model\Resolver\Cache\Product\MediaGallery\ProductModelDehydrator</item>
+                        <item name="class" xsi:type="string">Magento\Catalog_Graph_Ql\Model\Resolver\Cache\Product\Media_Gallery\Product_Model_Dehydrator</item>
                     </item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\Calculator\Provider">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Cache_Key\Calculator\Provider">
         <arguments>
             <argument name="factorProviders" xsi:type="array">
-                <item name="Magento\CatalogGraphQl\Model\Resolver\Product\MediaGallery" xsi:type="array">
-                    <item name="parent_entity_id" xsi:type="string">Magento\CatalogGraphQl\Model\Resolver\CacheKey\FactorProvider\ParentProductEntityId</item>
-                    <item name="store" xsi:type="string">Magento\StoreGraphQl\Model\Resolver\CacheKey\FactorProvider\Store</item>
+                <item name="Magento\Catalog_Graph_Ql\Model\Resolver\Product\Media_Gallery" xsi:type="array">
+                    <item name="parent_entity_id" xsi:type="string">Magento\Catalog_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Parent_Product_Entity_Id</item>
+                    <item name="store" xsi:type="string">Magento\Store_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Store</item>
                 </item>
             </argument>
         </arguments>
     </type>
 
-    <type name="Magento\CatalogGraphQl\Model\Resolver\Products">
-        <plugin name="originalProductSortOrder" type="Magento\CatalogGraphQl\Plugin\ProductAttributeSortInput" />
+    <type name="Magento\Catalog_Graph_Ql\Model\Resolver\Products">
+        <plugin name="originalProductSortOrder" type="Magento\Catalog_Graph_Ql\Plugin\Product_Attribute_Sort_Input" />
     </type>
 
-    <type name="Magento\CatalogGraphQl\Model\Resolver\Category\Products">
-        <plugin name="originalCategoryProductSortOrder" type="Magento\CatalogGraphQl\Plugin\ProductAttributeSortInput" />
+    <type name="Magento\Catalog_Graph_Ql\Model\Resolver\Category\Products">
+        <plugin name="originalCategoryProductSortOrder" type="Magento\Catalog_Graph_Ql\Plugin\Product_Attribute_Sort_Input" />
     </type>
 </config>

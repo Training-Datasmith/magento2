@@ -7,8 +7,8 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/queue.xsd">
     <broker topic="deprecated.config.async.string.topic">
-        <queue consumer="deprecatedConfigAsyncStringConsumer" name="deprecated.config.queue.1" consumerInstance="Magento\Framework\MessageQueue\BatchConsumer" maxMessages="200"/>
-        <queue consumer="deprecatedConfigAsyncMixedConsumer" name="deprecated.config.queue.3" handler="Magento\TestModuleMessageQueueConfiguration\AsyncHandler::methodWithMixedParam"/>
+        <queue consumer="deprecatedConfigAsyncStringConsumer" name="deprecated.config.queue.1" consumerInstance="Magento\Framework\Message_Queue\Batch_Consumer" maxMessages="200"/>
+        <queue consumer="deprecatedConfigAsyncMixedConsumer" name="deprecated.config.queue.3" handler="Magento\Test_Module_Message_Queue_Configuration\Async_Handler::methodWithMixedParam"/>
     </broker>
     <broker topic="deprecated.config.async.bool.topic" type="db" exchange="deprecatedExchange">
         <queue consumer="deprecatedConfigAsyncBoolConsumer" name="deprecated.config.queue.2" />
@@ -17,11 +17,11 @@
         <queue consumer="deprecatedConfigSyncBoolConsumer" name="deprecated.config.queue.4"/>
     </broker>
     <broker topic="overlapping.topic.declaration" exchange="overlappingDeprecatedExchange">
-        <queue consumer="overlappingConsumerDeclaration" name="consumer.config.queue" consumerInstance="Magento\Framework\MessageQueue\BatchConsumer" maxMessages="222" handler="Magento\TestModuleMessageQueueConfiguration\AsyncHandler::methodWithMixedParam"/>
+        <queue consumer="overlappingConsumerDeclaration" name="consumer.config.queue" consumerInstance="Magento\Framework\Message_Queue\Batch_Consumer" maxMessages="222" handler="Magento\Test_Module_Message_Queue_Configuration\Async_Handler::methodWithMixedParam"/>
     </broker>
 
     <!-- Stomp brokers -->
     <broker topic="stomp.topic.declaration">
-        <queue consumer="stompConsumerDeclaration" name="stomp.consumer.config.queue" consumerInstance="Magento\Framework\MessageQueue\BatchConsumer" maxMessages="222" handler="Magento\TestModuleMessageQueueConfiguration\AsyncHandler::methodWithMixedParam"/>
+        <queue consumer="stompConsumerDeclaration" name="stomp.consumer.config.queue" consumerInstance="Magento\Framework\Message_Queue\Batch_Consumer" maxMessages="222" handler="Magento\Test_Module_Message_Queue_Configuration\Async_Handler::methodWithMixedParam"/>
     </broker>
 </config>

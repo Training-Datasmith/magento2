@@ -6,31 +6,31 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Webapi\Model\Authorization\OauthUserContext">
+    <type name="Magento\Webapi\Model\Authorization\Oauth_User_Context">
         <arguments>
             <argument name="request" xsi:type="object">Magento\Framework\Webapi\Rest\Request</argument>
         </arguments>
     </type>
-    <type name="Magento\Authorization\Model\CompositeUserContext">
+    <type name="Magento\Authorization\Model\Composite_User_Context">
         <arguments>
             <argument name="userContexts" xsi:type="array">
                 <item name="tokenUserContext" xsi:type="array">
-                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\TokenUserContext</item>
+                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\Token_User_Context</item>
                     <item name="sortOrder" xsi:type="string">10</item>
                 </item>
                 <item name="oauthUserContext" xsi:type="array">
-                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\OauthUserContext</item>
+                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\Oauth_User_Context</item>
                     <item name="sortOrder" xsi:type="string">40</item>
                 </item>
                 <item name="guestUserContext" xsi:type="array">
-                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\GuestUserContext</item>
+                    <item name="type" xsi:type="object">Magento\Webapi\Model\Authorization\Guest_User_Context</item>
                     <item name="sortOrder" xsi:type="string">100</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Framework\App\FrontControllerInterface" type="Magento\Webapi\Controller\Rest" />
-    <preference for="Magento\Framework\Model\ActionValidator\RemoveAction" type="Magento\Framework\Model\ActionValidator\RemoveAction\Allowed" />
+    <preference for="Magento\Framework\App\Front_Controller_Interface" type="Magento\Webapi\Controller\Rest" />
+    <preference for="Magento\Framework\Model\Action_Validator\Remove_Action" type="Magento\Framework\Model\Action_Validator\Remove_Action\Allowed" />
     <type name="Magento\Webapi\Controller\Rest\Router\Route" shared="false" />
     <type name="Magento\Webapi\Controller\Rest">
         <arguments>
@@ -40,47 +40,47 @@
             <argument name="oauthHelper" xsi:type="object">Magento\Framework\Oauth\Helper\Request\Proxy</argument>
         </arguments>
     </type>
-    <preference for="Magento\Framework\Authorization\RoleLocatorInterface" type="Magento\Webapi\Model\WebapiRoleLocator" />
+    <preference for="Magento\Framework\Authorization\Role_Locator_Interface" type="Magento\Webapi\Model\Webapi_Role_Locator" />
     <type name="Magento\Framework\Authorization">
-        <plugin name="guestAuthorization" type="Magento\Webapi\Model\Plugin\GuestAuthorization" />
+        <plugin name="guestAuthorization" type="Magento\Webapi\Model\Plugin\Guest_Authorization" />
     </type>
 
     <!-- Configuration to check that the permissions are checked on fields -->
-    <virtualType name="Magento\Framework\Reflection\ExtensionAttributesProcessorPermissionChecked" type="Magento\Framework\Reflection\ExtensionAttributesProcessor">
+    <virtualType name="Magento\Framework\Reflection\Extension_Attributes_Processor_Permission_Checked" type="Magento\Framework\Reflection\Extension_Attributes_Processor">
         <arguments>
             <argument name="isPermissionChecked" xsi:type="boolean">true</argument>
-            <argument name="dataObjectProcessor" xsi:type="object">Magento\Framework\Reflection\DataObjectProcessor\Proxy</argument>
+            <argument name="dataObjectProcessor" xsi:type="object">Magento\Framework\Reflection\Data_Object_Processor\Proxy</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Framework\Reflection\DataObjectProcessorPermissionChecked" type="Magento\Framework\Reflection\DataObjectProcessor">
+    <virtualType name="Magento\Framework\Reflection\Data_Object_Processor_Permission_Checked" type="Magento\Framework\Reflection\Data_Object_Processor">
         <arguments>
-            <argument name="extensionAttributesProcessor" xsi:type="object">Magento\Framework\Reflection\ExtensionAttributesProcessorPermissionChecked</argument>
-            <argument name="customAttributesProcessor" xsi:type="object">Magento\Framework\Reflection\CustomAttributesProcessor\Proxy</argument>
+            <argument name="extensionAttributesProcessor" xsi:type="object">Magento\Framework\Reflection\Extension_Attributes_Processor_Permission_Checked</argument>
+            <argument name="customAttributesProcessor" xsi:type="object">Magento\Framework\Reflection\Custom_Attributes_Processor\Proxy</argument>
         </arguments>
     </virtualType>
 
-    <type name="Magento\Customer\Model\Authorization\CustomerSessionUserContext">
-        <plugin name="webApiCustomerSessionUserContext" type="Magento\Webapi\Model\Plugin\Authorization\CustomerSessionUserContext" />
+    <type name="Magento\Customer\Model\Authorization\Customer_Session_User_Context">
+        <plugin name="webApiCustomerSessionUserContext" type="Magento\Webapi\Model\Plugin\Authorization\Customer_Session_User_Context" />
     </type>
 
-    <type name="Magento\Framework\Webapi\ServiceOutputProcessor">
+    <type name="Magento\Framework\Webapi\Service_Output_Processor">
         <arguments>
-            <argument name="dataObjectProcessor" xsi:type="object">Magento\Framework\Reflection\DataObjectProcessorPermissionChecked</argument>
+            <argument name="dataObjectProcessor" xsi:type="object">Magento\Framework\Reflection\Data_Object_Processor_Permission_Checked</argument>
         </arguments>
     </type>
     <!-- End of configuration to check that permissions are checked on fields -->
 
-    <preference for="Magento\Webapi\Controller\Rest\RequestProcessorInterface" type="Magento\Webapi\Controller\Rest\RequestProcessorPool" />
+    <preference for="Magento\Webapi\Controller\Rest\Request_Processor_Interface" type="Magento\Webapi\Controller\Rest\Request_Processor_Pool" />
 
-    <type name="Magento\Webapi\Controller\Rest\RequestProcessorPool">
+    <type name="Magento\Webapi\Controller\Rest\Request_Processor_Pool">
         <arguments>
             <argument name="requestProcessors" xsi:type="array">
-                <item name="syncSchema" xsi:type="object" sortOrder="50">Magento\Webapi\Controller\Rest\SchemaRequestProcessor</item>
-                <item name="sync" xsi:type="object" sortOrder="100">Magento\Webapi\Controller\Rest\SynchronousRequestProcessor</item>
+                <item name="syncSchema" xsi:type="object" sortOrder="50">Magento\Webapi\Controller\Rest\Schema_Request_Processor</item>
+                <item name="sync" xsi:type="object" sortOrder="100">Magento\Webapi\Controller\Rest\Synchronous_Request_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Store\Model\Validation\StoreCodeValidator">
-        <plugin name="check_if_parsed_store_code_is_valid" type="Magento\Webapi\Model\Plugin\Store\Model\Validation\StoreCodeValidator"/>
+    <type name="Magento\Store\Model\Validation\Store_Code_Validator">
+        <plugin name="check_if_parsed_store_code_is_valid" type="Magento\Webapi\Model\Plugin\Store\Model\Validation\Store_Code_Validator"/>
     </type>
 </config>

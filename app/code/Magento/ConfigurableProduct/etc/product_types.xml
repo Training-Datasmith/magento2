@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Catalog:etc/product_types.xsd">
-    <type name="configurable" label="Configurable Product" modelInstance="Magento\ConfigurableProduct\Model\Product\Type\Configurable" composite='true' indexPriority="30" sortOrder="20">
-        <priceModel instance="Magento\ConfigurableProduct\Model\Product\Type\Configurable\Price" />
-        <indexerModel instance="Magento\ConfigurableProduct\Model\ResourceModel\Product\Indexer\Price\Configurable" />
-        <stockIndexerModel instance="Magento\ConfigurableProduct\Model\ResourceModel\Indexer\Stock\Configurable" />
+    <type name="configurable" label="Configurable Product" modelInstance="Magento\Configurable_Product\Model\Product\Type\Configurable" composite='true' indexPriority="30" sortOrder="20">
+        <priceModel instance="Magento\Configurable_Product\Model\Product\Type\Configurable\Price" />
+        <indexerModel instance="Magento\Configurable_Product\Model\Resource_Model\Product\Indexer\Price\Configurable" />
+        <stockIndexerModel instance="Magento\Configurable_Product\Model\Resource_Model\Indexer\Stock\Configurable" />
         <customAttributes>
             <attribute name="refundable" value="true"/>
         </customAttributes>

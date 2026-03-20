@@ -42,7 +42,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="rawOptions" xsi:type="boolean">true</item>
-                            <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="value" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                         </item>
                     </argument>
                     <settings>
@@ -65,7 +65,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="value" xsi:type="string">1</item>
-                            <item name="valueFromConfig" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="valueFromConfig" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                             <item name="keyInConfiguration" xsi:type="string">manage_stock</item>
                         </item>
                     </argument>
@@ -79,7 +79,7 @@
                         </imports>
                     </settings>
                     <formElements>
-                        <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                        <checkbox class="Magento\Catalog_Inventory\Ui\Component\Product\Form\Element\Use_Config_Settings">
                             <settings>
                                 <description translate="true">Use Config Settings</description>
                                 <valueMap>
@@ -122,7 +122,7 @@
                 <field name="min_qty" formElement="input">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="value" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                         </item>
                     </argument>
                     <settings>
@@ -141,7 +141,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="value" xsi:type="string">1</item>
-                            <item name="valueFromConfig" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="valueFromConfig" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                             <item name="keyInConfiguration" xsi:type="string">min_qty</item>
                         </item>
                     </argument>
@@ -155,7 +155,7 @@
                         </imports>
                     </settings>
                     <formElements>
-                        <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                        <checkbox class="Magento\Catalog_Inventory\Ui\Component\Product\Form\Element\Use_Config_Settings">
                             <settings>
                                 <description translate="true">Use Config Settings</description>
                                 <valueMap>
@@ -180,7 +180,7 @@
                 <field name="min_sale_qty" component="Magento_CatalogInventory/js/components/qty-validator-changer" sortOrder="0" formElement="input">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="value" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                         </item>
                     </argument>
                     <settings>
@@ -203,7 +203,7 @@
                             <item name="value" xsi:type="string">1</item>
                             <item name="inputField" xsi:type="string">ns = ${ $.ns }, index=min_sale_qty</item>
                             <item name="dynamicRowsField" xsi:type="string">ns = ${ $.ns }, index=min_qty_allowed_in_shopping_cart</item>
-                            <item name="valueFromConfig" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="valueFromConfig" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                             <item name="keyInConfiguration" xsi:type="string">min_sale_qty</item>
                             <item name="unserialized" xsi:type="boolean">true</item>
                         </item>
@@ -219,7 +219,7 @@
                         </imports>
                     </settings>
                     <formElements>
-                        <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                        <checkbox class="Magento\Catalog_Inventory\Ui\Component\Product\Form\Element\Use_Config_Settings">
                             <settings>
                                 <description translate="true">Use Config Settings</description>
                                 <valueMap>
@@ -259,7 +259,7 @@
                             <formElements>
                                 <select>
                                     <settings>
-                                        <options class="Magento\Customer\Model\Customer\Source\GroupSourceInterface"/>
+                                        <options class="Magento\Customer\Model\Customer\Source\Group_Source_Interface"/>
                                     </settings>
                                 </select>
                             </formElements>
@@ -286,7 +286,7 @@
                 <field name="max_sale_qty" formElement="input">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="value" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                         </item>
                     </argument>
                     <settings>
@@ -306,7 +306,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="value" xsi:type="string">1</item>
-                            <item name="valueFromConfig" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="valueFromConfig" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                             <item name="keyInConfiguration" xsi:type="string">max_sale_qty</item>
                         </item>
                     </argument>
@@ -320,7 +320,7 @@
                         </imports>
                     </settings>
                     <formElements>
-                        <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                        <checkbox class="Magento\Catalog_Inventory\Ui\Component\Product\Form\Element\Use_Config_Settings">
                             <settings>
                                 <description translate="true">Use Config Settings</description>
                                 <valueMap>
@@ -403,7 +403,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="rawOptions" xsi:type="boolean">true</item>
-                            <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="value" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                         </item>
                     </argument>
                     <settings>
@@ -417,7 +417,7 @@
                     <formElements>
                         <select>
                             <settings>
-                                <options class="Magento\CatalogInventory\Model\Source\Backorders"/>
+                                <options class="Magento\Catalog_Inventory\Model\Source\Backorders"/>
                             </settings>
                         </select>
                     </formElements>
@@ -426,7 +426,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="value" xsi:type="string">1</item>
-                            <item name="valueFromConfig" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="valueFromConfig" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                             <item name="keyInConfiguration" xsi:type="string">backorders</item>
                         </item>
                     </argument>
@@ -440,7 +440,7 @@
                         </imports>
                     </settings>
                     <formElements>
-                        <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                        <checkbox class="Magento\Catalog_Inventory\Ui\Component\Product\Form\Element\Use_Config_Settings">
                             <settings>
                                 <description translate="true">Use Config Settings</description>
                                 <valueMap>
@@ -465,7 +465,7 @@
                 <field name="notify_stock_qty" formElement="input">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="value" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                         </item>
                     </argument>
                     <settings>
@@ -484,7 +484,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="value" xsi:type="string">1</item>
-                            <item name="valueFromConfig" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="valueFromConfig" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                             <item name="keyInConfiguration" xsi:type="string">notify_stock_qty</item>
                         </item>
                     </argument>
@@ -498,7 +498,7 @@
                         </imports>
                     </settings>
                     <formElements>
-                        <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                        <checkbox class="Magento\Catalog_Inventory\Ui\Component\Product\Form\Element\Use_Config_Settings">
                             <settings>
                                 <description translate="true">Use Config Settings</description>
                                 <valueMap>
@@ -521,7 +521,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="rawOptions" xsi:type="boolean">true</item>
-                            <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="value" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                         </item>
                     </argument>
                     <settings>
@@ -544,7 +544,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="value" xsi:type="string">1</item>
-                            <item name="valueFromConfig" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="valueFromConfig" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                             <item name="keyInConfiguration" xsi:type="string">enable_qty_increments</item>
                         </item>
                     </argument>
@@ -558,7 +558,7 @@
                         </imports>
                     </settings>
                     <formElements>
-                        <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                        <checkbox class="Magento\Catalog_Inventory\Ui\Component\Product\Form\Element\Use_Config_Settings">
                             <settings>
                                 <description translate="true">Use Config Settings</description>
                                 <valueMap>
@@ -583,7 +583,7 @@
                 <field name="qty_increments" component="Magento_CatalogInventory/js/components/qty-validator-changer" formElement="input">
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
-                            <item name="value" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="value" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                         </item>
                     </argument>
                     <settings>
@@ -604,7 +604,7 @@
                     <argument name="data" xsi:type="array">
                         <item name="config" xsi:type="array">
                             <item name="value" xsi:type="string">1</item>
-                            <item name="valueFromConfig" xsi:type="object">Magento\CatalogInventory\Model\Source\StockConfiguration</item>
+                            <item name="valueFromConfig" xsi:type="object">Magento\Catalog_Inventory\Model\Source\Stock_Configuration</item>
                             <item name="keyInConfiguration" xsi:type="string">qty_increments</item>
                         </item>
                     </argument>
@@ -618,7 +618,7 @@
                         </imports>
                     </settings>
                     <formElements>
-                        <checkbox class="Magento\CatalogInventory\Ui\Component\Product\Form\Element\UseConfigSettings">
+                        <checkbox class="Magento\Catalog_Inventory\Ui\Component\Product\Form\Element\Use_Config_Settings">
                             <settings>
                                 <description translate="true">Use Config Settings</description>
                                 <valueMap>
@@ -657,7 +657,7 @@
                     <formElements>
                         <select>
                             <settings>
-                                <options class="Magento\CatalogInventory\Model\Source\Stock"/>
+                                <options class="Magento\Catalog_Inventory\Model\Source\Stock"/>
                             </settings>
                         </select>
                     </formElements>

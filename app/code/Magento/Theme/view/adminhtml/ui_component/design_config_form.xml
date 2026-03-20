@@ -15,9 +15,9 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save_and_continue" class="Magento\Theme\Block\Adminhtml\Design\Config\Edit\SaveAndContinueButton"/>
-            <button name="save" class="Magento\Theme\Block\Adminhtml\Design\Config\Edit\SaveButton"/>
-            <button name="back" class="Magento\Theme\Block\Adminhtml\Design\Config\Edit\BackButton"/>
+            <button name="save_and_continue" class="Magento\Theme\Block\Adminhtml\Design\Config\Edit\Save_And_Continue_Button"/>
+            <button name="save" class="Magento\Theme\Block\Adminhtml\Design\Config\Edit\Save_Button"/>
+            <button name="back" class="Magento\Theme\Block\Adminhtml\Design\Config\Edit\Back_Button"/>
         </buttons>
         <namespace>design_config_form</namespace>
         <dataScope>data</dataScope>
@@ -34,7 +34,7 @@
         <settings>
             <submitUrl path="theme/design_config/save"/>
         </settings>
-        <dataProvider class="Magento\Theme\Model\Design\Config\DataProvider" name="design_config_form_data_source">
+        <dataProvider class="Magento\Theme\Model\Design\Config\Data_Provider" name="design_config_form_data_source">
             <settings>
                 <clientConfig>
                     <param name="validateBeforeSave" xsi:type="boolean">false</param>
@@ -293,7 +293,7 @@
                     <scopeLabel>[WEBSITE]</scopeLabel>
                 </settings>
             </field>
-            <field name="reset_to_defaults" class="Magento\Theme\Ui\Component\Design\Config\SearchRobots\ResetButton" component="Magento_Theme/js/form/component/robots-reset-button" template="Magento_Theme/form/button-field" formElement="button">
+            <field name="reset_to_defaults" class="Magento\Theme\Ui\Component\Design\Config\Search_Robots\Reset_Button" component="Magento_Theme/js/form/component/robots-reset-button" template="Magento_Theme/form/button-field" formElement="button">
                 <settings>
                     <notice translate="true">This action will delete your custom instructions and reset robots.txt file to system's default settings.</notice>
                     <dataScope>reset_to_defaults</dataScope>

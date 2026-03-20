@@ -17,7 +17,7 @@
         </action>
     </referenceBlock>
     <referenceBlock name="some_element_1"/>
-    <block name="test.nonexisting.block" class="Magento\Framework\View\Element\Text\ListText"/>
+    <block name="test.nonexisting.block" class="Magento\Framework\View\Element\Text\List_Text"/>
     <referenceBlock name="test.nonexisting.block" remove="true"/>
     <referenceBlock name="test.nonexisting.block">
         <action method="getSomething"/>

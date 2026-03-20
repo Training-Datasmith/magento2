@@ -36,7 +36,7 @@
                 </field>
                 <field id="image_include" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Add Images into Sitemap</label>
-                    <source_model>Magento\Sitemap\Model\Source\Product\Image\IncludeImage</source_model>
+                    <source_model>Magento\Sitemap\Model\Source\Product\Image\Include_Image</source_model>
                 </field>
             </group>
             <group id="page" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -72,7 +72,7 @@
                 <field id="generation_method" translate="label comment" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Generation Method</label>
                     <comment>Standard method processes all data in memory. Batch method uses memory-optimized processing for large catalogs.</comment>
-                    <source_model>Magento\Sitemap\Model\Config\Source\GenerationMethod</source_model>
+                    <source_model>Magento\Sitemap\Model\Config\Source\Generation_Method</source_model>
                     <depends>
                         <field id="enabled">1</field>
                     </depends>

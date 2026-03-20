@@ -28,7 +28,7 @@
             <!-- Delete category -->
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
             <!-- Delete configurable product & its variants via API using ProductApiHelper -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
             <!-- Delete product attributes -->
             <actionGroup ref="DeleteProductAttributeByCodeActionGroup" stepKey="deleteVisualAttribute">
                 <argument name="attribute_code" value="visual_swatch_attr"/>

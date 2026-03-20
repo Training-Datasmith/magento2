@@ -6,17 +6,17 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\GraphQl\Controller\HttpRequestProcessor">
+    <type name="Magento\Graph_Ql\Controller\Http_Request_Processor">
         <arguments>
             <argument name="graphQlHeaders" xsi:type="array">
-                <item name="Content-Currency" xsi:type="object">Magento\DirectoryGraphQl\Controller\HttpHeaderProcessor\CurrencyProcessor</item>
+                <item name="Content-Currency" xsi:type="object">Magento\Directory_Graph_Ql\Controller\Http_Header_Processor\Currency_Processor</item>
             </argument>
             <argument name="requestValidators" xsi:type="array">
-                <item name="currencyValidator" xsi:type="object">Magento\DirectoryGraphQl\Controller\HttpRequestValidator\CurrencyValidator</item>
+                <item name="currencyValidator" xsi:type="object">Magento\Directory_Graph_Ql\Controller\Http_Request_Validator\Currency_Validator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\DirectoryGraphQl\Controller\HttpHeaderProcessor\CurrencyProcessor">
+    <type name="Magento\Directory_Graph_Ql\Controller\Http_Header_Processor\Currency_Processor">
         <arguments>
             <argument name="session" xsi:type="object">Magento\Framework\Session\Generic\Proxy</argument>
         </arguments>

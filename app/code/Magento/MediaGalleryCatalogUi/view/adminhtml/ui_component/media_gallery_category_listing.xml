@@ -28,7 +28,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Cms::media_gallery</aclResource>
-        <dataProvider class="Magento\MediaGalleryCatalogUi\Model\Listing\DataProvider" name="media_gallery_category_listing_data_source">
+        <dataProvider class="Magento\Media_Gallery_Catalog_Ui\Model\Listing\Data_Provider" name="media_gallery_category_listing_data_source">
             <settings>
                 <requestFieldName>entity_id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -57,7 +57,7 @@
                 name="asset_id"
                 provider="${ $.parentName }"
                 sortOrder="10"
-                class="Magento\MediaGalleryUi\Ui\Component\Listing\Filters\Asset"
+                class="Magento\Media_Gallery_Ui\Ui\Component\Listing\Filters\Asset"
                 component="Magento_Ui/js/grid/filters/elements/ui-select"
                 template="Magento_MediaGalleryUi/grid/filters/elements/ui-select">
                 <argument name="data" xsi:type="array">
@@ -142,7 +142,7 @@
                 <label translate="true">ID</label>
             </settings>
         </column>
-        <column name="image" component="Magento_Ui/js/grid/columns/thumbnail" class="Magento\MediaGalleryCatalogUi\Ui\Component\Listing\Columns\Thumbnail">
+        <column name="image" component="Magento_Ui/js/grid/columns/thumbnail" class="Magento\Media_Gallery_Catalog_Ui\Ui\Component\Listing\Columns\Thumbnail">
             <settings>
                 <sortable>false</sortable>
                 <label translate="true">Image</label>
@@ -153,7 +153,7 @@
                 <label translate="true">Name</label>
             </settings>
         </column>
-        <column name="path" class="Magento\MediaGalleryCatalogUi\Ui\Component\Listing\Columns\Path">
+        <column name="path" class="Magento\Media_Gallery_Catalog_Ui\Ui\Component\Listing\Columns\Path">
             <settings>
                 <label translate="true">Path</label>
             </settings>
@@ -168,17 +168,17 @@
                 <label translate="true">Products</label>
             </settings>
         </column>
-        <column name="include_in_menu" class="Magento\MediaGalleryCatalogUi\Ui\Component\Listing\Columns\InMenu">
+        <column name="include_in_menu" class="Magento\Media_Gallery_Catalog_Ui\Ui\Component\Listing\Columns\In_Menu">
             <settings>
                 <label translate="true">In Menu</label>
             </settings>
         </column>
-        <column name="is_active" class="Magento\MediaGalleryCatalogUi\Ui\Component\Listing\Columns\IsActive">
+        <column name="is_active" class="Magento\Media_Gallery_Catalog_Ui\Ui\Component\Listing\Columns\Is_Active">
             <settings>
                 <label translate="true">Enabled</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\MediaGalleryCatalogUi\Ui\Component\Listing\Columns\CategoryActions" sortOrder="1000">
+        <actionsColumn name="actions" class="Magento\Media_Gallery_Catalog_Ui\Ui\Component\Listing\Columns\Category_Actions" sortOrder="1000">
             <settings>
                 <indexField>entity_id</indexField>
             </settings>

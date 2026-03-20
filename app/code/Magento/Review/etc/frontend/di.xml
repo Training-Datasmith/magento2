@@ -21,19 +21,19 @@
             <argument name="reviewSession" xsi:type="object">Magento\Review\Model\Session</argument>
         </arguments>
     </type>
-    <type name="Magento\Review\CustomerData\Review">
+    <type name="Magento\Review\Customer_Data\Review">
         <arguments>
             <argument name="reviewSession" xsi:type="object">Magento\Review\Model\Session</argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Section_Pool_Interface">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="review" xsi:type="string">Magento\Review\CustomerData\Review</item>
+                <item name="review" xsi:type="string">Magento\Review\Customer_Data\Review</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Url\SecurityInfo">
+    <type name="Magento\Framework\Url\Security_Info">
         <arguments>
             <argument name="secureUrlList" xsi:type="array">
                 <item name="review_customer" xsi:type="string">/review/customer/</item>

@@ -25,18 +25,18 @@
         </annotations>
 
         <before>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="createDirectory" stepKey="createDirectoryForImportImages">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="createDirectory" stepKey="createDirectoryForImportImages">
                 <argument name="path">var/import/images/test_image_duplication</argument>
             </helper>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="copyFromLocal" stepKey="copyProductBaseImage">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="copyFromLocal" stepKey="copyProductBaseImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/{{placeholderBaseImage.file}}</argument>
                 <argument name="destination">var/import/images/test_image_duplication/{{placeholderBaseImage.file}}</argument>
             </helper>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="copyFromLocal" stepKey="copyProductSmallImage">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="copyFromLocal" stepKey="copyProductSmallImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/{{placeholderSmallImage.file}}</argument>
                 <argument name="destination">var/import/images/test_image_duplication/{{placeholderSmallImage.file}}</argument>
             </helper>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="copyFromLocal" stepKey="copyProductThumbImage">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="copyFromLocal" stepKey="copyProductThumbImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/{{placeholderThumbnailImage.file}}</argument>
                 <argument name="destination">var/import/images/test_image_duplication/{{placeholderThumbnailImage.file}}</argument>
             </helper>
@@ -55,7 +55,7 @@
             <remove keyForRemoval="deleteProductImageDirectory"/>
             <comment userInput="BIC workaround" stepKey="deleteImportFilesDirectoryS3" after="deleteCategory"/>
 
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="deleteDirectory" stepKey="deleteImportImagesFilesDirectoryS3" after="deleteImportFilesDirectoryS3">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="deleteDirectory" stepKey="deleteImportImagesFilesDirectoryS3" after="deleteImportFilesDirectoryS3">
                 <argument name="path">var/import/images/test_image_duplication</argument>
             </helper>
             <actionGroup ref="CliCacheFlushActionGroup" stepKey="flushCache" after="deleteImportImagesFilesDirectoryS3">

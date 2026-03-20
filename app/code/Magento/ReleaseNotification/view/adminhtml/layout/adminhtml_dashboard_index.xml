@@ -10,7 +10,7 @@
     <body>
         <referenceContainer name="content">
             <uiComponent name="release_notification">
-                <visibilityCondition name="can_view_notification" className="Magento\ReleaseNotification\Model\Condition\CanViewNotification"/>
+                <visibilityCondition name="can_view_notification" className="Magento\Release_Notification\Model\Condition\Can_View_Notification"/>
             </uiComponent>
         </referenceContainer>
     </body>

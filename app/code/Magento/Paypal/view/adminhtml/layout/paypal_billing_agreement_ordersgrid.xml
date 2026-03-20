@@ -10,7 +10,7 @@
     <referenceBlock name="sales.order.grid">
         <arguments>
             <argument name="dataSource" xsi:type="object" shared="false">
-                <updater>Magento\Paypal\Model\Billing\Agreement\OrdersUpdater</updater>
+                <updater>Magento\Paypal\Model\Billing\Agreement\Orders_Updater</updater>
             </argument>
             <argument name="grid_url" xsi:type="url" path="*/*/ordersgrid"/>
         </arguments>

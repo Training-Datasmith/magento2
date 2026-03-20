@@ -17,7 +17,7 @@
         <click selector="{{AdminCreateNewReviewSection.addNewReviewButton}}" stepKey="clickOnNewReview"/>
         <!--Select Product by SKU and Create Review -->
         <fillField selector="{{AdminCreateNewReviewSection.filterName}}" userInput="{{sku}}" stepKey="fillValue"/>
-        <pressKey parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" selector="{{AdminCreateNewReviewSection.filterName}}" stepKey="pressEnter"/>
+        <pressKey parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" selector="{{AdminCreateNewReviewSection.filterName}}" stepKey="pressEnter"/>
         <waitForElementClickable selector="{{AdminCreateNewReviewSection.firstRowReview}}" stepKey="waitForVisibleReviewButton"/>
         <executeJS function="jQuery('{{AdminCreateNewReviewSection.firstRowReview}}').click()" stepKey="addNewReviewBySKU"/>
         <waitForPageLoad stepKey="waitForPageLoad"/>

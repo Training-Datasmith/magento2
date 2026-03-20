@@ -20,14 +20,14 @@
                 </field>
                 <field id="gateway_url" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Gateway URL</label>
-                    <backend_model>Magento\Usps\Model\Config\Backend\UspsUrl</backend_model>
+                    <backend_model>Magento\Usps\Model\Config\Backend\Usps_Url</backend_model>
                     <depends>
                         <field id="usps_type">USPS_XML</field>
                     </depends>
                 </field>
                 <field id="gateway_rest_prod_url" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Gateway URL</label>
-                    <backend_model>Magento\Usps\Model\Config\Backend\UspsUrl</backend_model>
+                    <backend_model>Magento\Usps\Model\Config\Backend\Usps_Url</backend_model>
                     <depends>
                         <field id="usps_type">USPS_REST</field>
                         <field id="mode">1</field>
@@ -35,7 +35,7 @@
                 </field>
                 <field id="gateway_rest_dev_url" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Gateway URL</label>
-                    <backend_model>Magento\Usps\Model\Config\Backend\UspsUrl</backend_model>
+                    <backend_model>Magento\Usps\Model\Config\Backend\Usps_Url</backend_model>
                     <depends>
                         <field id="usps_type">USPS_REST</field>
                         <field id="mode">0</field>
@@ -43,7 +43,7 @@
                 </field>
                 <field id="gateway_secure_url" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Secure Gateway URL</label>
-                    <backend_model>Magento\Usps\Model\Config\Backend\UspsUrl</backend_model>
+                    <backend_model>Magento\Usps\Model\Config\Backend\Usps_Url</backend_model>
                     <depends>
                         <field id="usps_type">USPS_XML</field>
                     </depends>
@@ -88,7 +88,7 @@
                 </field>
                 <field id="price_type" translate="label" type="select" sortOrder="57" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Pricing Options</label>
-                    <source_model>Magento\Usps\Model\Config\Source\PriceType</source_model>
+                    <source_model>Magento\Usps\Model\Config\Source\Price_Type</source_model>
                     <depends>
                         <field id="usps_type">USPS_REST</field>
                     </depends>
@@ -188,11 +188,11 @@
                 </field>
                 <field id="handling_type" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Calculate Handling Fee</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Type</source_model>
                 </field>
                 <field id="handling_action" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Handling Applied</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingAction</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Action</source_model>
                 </field>
                 <field id="handling_fee" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1">
                     <label>Handling Fee</label>
@@ -208,7 +208,7 @@
                 </field>
                 <field id="rest_allowed_methods" translate="label" type="multiselect" sortOrder="130" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Allowed Methods</label>
-                    <source_model>Magento\Usps\Model\Source\RestMethod</source_model>
+                    <source_model>Magento\Usps\Model\Source\Rest_Method</source_model>
                     <can_be_empty>1</can_be_empty>
                     <depends>
                         <field id="usps_type">USPS_REST</field>

@@ -8,42 +8,42 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
     <indexer id="catalogsearch_fulltext" view_id="catalogsearch_fulltext"
-             class="Magento\CatalogSearch\Model\Indexer\Fulltext"
+             class="Magento\Catalog_Search\Model\Indexer\Fulltext"
              primary="first">
 
         <title translate="true">Catalog Search</title>
         <description translate="true">Rebuild Catalog product fulltext search index</description>
 
-        <fieldset name="first" source="MagentoModule\ServiceClassOrRepositoryClass"
-                  provider="Magento\Indexer\Model\Fieldset\ProductFieldset">
+        <fieldset name="first" source="Magento_Module\Service_Class_Or_Repository_Class"
+                  provider="Magento\Indexer\Model\Fieldset\Product_Fieldset">
             <field name="title_alias" origin="title" xsi:type="searchable" dataType="text">
-                <filter class="Magento\Framework\Search\Index\Filter\LowercaseFilter"/>
+                <filter class="Magento\Framework\Search\Index\Filter\Lowercase_Filter"/>
             </field>
             <field name="identifier" xsi:type="filterable" handler="Magento\Framework\Search\Index\Handler"/>
         </fieldset>
 
-        <fieldset name="second" source="MagentoModule\ServiceClassOrRepositoryClass">
+        <fieldset name="second" source="Magento_Module\Service_Class_Or_Repository_Class">
             <reference fieldset="first" from="id_field" to="second_entity_id"/>
             <field name="title" xsi:type="searchable"/>
         </fieldset>
 
-        <saveHandler class="Magento\Cms\Model\Indexer\StoreResource"/>
-        <structure class="Magento\Cms\Model\Indexer\IndexStructure"/>
+        <saveHandler class="Magento\Cms\Model\Indexer\Store_Resource"/>
+        <structure class="Magento\Cms\Model\Indexer\Index_Structure"/>
         <dependencies>
             <indexer id="indexer_2"/>
         </dependencies>
     </indexer>
     <indexer id="indexer_2" view_id="indexer_2"
-             class="Magento\Module\IndexerSecond">
+             class="Magento\Module\Indexer_Second">
         <dependencies>
             <indexer id="indexer_4" />
         </dependencies>
     </indexer>
     <indexer id="indexer_3" view_id="indexer_3"
-             class="Magento\Module\IndexerThird">
+             class="Magento\Module\Indexer_Third">
     </indexer>
     <indexer id="indexer_4" view_id="indexer_4"
-             class="Magento\Module\IndexerFourth">
+             class="Magento\Module\Indexer_Fourth">
         <dependencies>
             <indexer id="catalogsearch_fulltext" />
         </dependencies>

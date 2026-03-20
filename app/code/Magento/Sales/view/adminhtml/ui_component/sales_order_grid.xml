@@ -30,7 +30,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Sales::sales_order</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="sales_order_grid_data_source">
+        <dataProvider class="Magento\Framework\View\Element\Ui_Component\Data_Provider\Data_Provider" name="sales_order_grid_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>main_table.entity_id</primaryFieldName>
@@ -175,7 +175,7 @@
                 <label translate="true">Grand Total (Base)</label>
             </settings>
         </column>
-        <column name="grand_total" class="Magento\Sales\Ui\Component\Listing\Column\PurchasedPrice">
+        <column name="grand_total" class="Magento\Sales\Ui\Component\Listing\Column\Purchased_Price">
             <settings>
                 <filter>textRange</filter>
                 <label translate="true">Grand Total (Purchased)</label>
@@ -258,14 +258,14 @@
                 <visible>false</visible>
             </settings>
         </column>
-        <column name="total_refunded" class="Magento\Sales\Ui\Component\Listing\Column\PurchasedPrice">
+        <column name="total_refunded" class="Magento\Sales\Ui\Component\Listing\Column\Purchased_Price">
             <settings>
                 <filter>textRange</filter>
                 <label translate="true">Total Refunded</label>
                 <visible>false</visible>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Sales\Ui\Component\Listing\Column\ViewAction">
+        <actionsColumn name="actions" class="Magento\Sales\Ui\Component\Listing\Column\View_Action">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="viewUrlPath" xsi:type="string">sales/order/view</item>

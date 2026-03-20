@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Catalog\Model\ResourceModel\Product\Collection">
-        <plugin name="add_stock_information" type="Magento\CatalogInventory\Model\AddStockStatusToCollection" />
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Collection">
+        <plugin name="add_stock_information" type="Magento\Catalog_Inventory\Model\Add_Stock_Status_To_Collection" />
     </type>
 </config>

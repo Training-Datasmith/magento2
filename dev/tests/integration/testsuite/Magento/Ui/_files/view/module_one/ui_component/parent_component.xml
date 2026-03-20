@@ -13,7 +13,7 @@
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
-        <dataProvider class="Magento_Test\DataProvider" name="test_component_data_source">
+        <dataProvider class="Magento_Test\Data_Provider" name="test_component_data_source">
             <settings>
                 <requestFieldName>identity</requestFieldName>
                 <primaryFieldName>identity</primaryFieldName>

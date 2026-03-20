@@ -13,32 +13,32 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Deploy\Model\Deploy\LocaleDeploy">
+    <type name="Magento\Deploy\Model\Deploy\Locale_Deploy">
         <arguments>
             <argument name="alternativeSources" xsi:type="array">
                 <item name="css" xsi:type="object">AlternativeSourceProcessors</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\FrontControllerInterface">
-        <plugin name="configHash" type="Magento\Deploy\Model\Plugin\ConfigChangeDetector" sortOrder="50"/>
+    <type name="Magento\Framework\App\Front_Controller_Interface">
+        <plugin name="configHash" type="Magento\Deploy\Model\Plugin\Config_Change_Detector" sortOrder="50"/>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="setModeCommand" xsi:type="object">Magento\Deploy\Console\Command\SetModeCommand</item>
-                <item name="showModeCommand" xsi:type="object">Magento\Deploy\Console\Command\ShowModeCommand</item>
-                <item name="dumpApplicationCommand" xsi:type="object">\Magento\Deploy\Console\Command\App\ApplicationDumpCommand</item>
-                <item name="sensitiveConfigSetCommand" xsi:type="object">\Magento\Deploy\Console\Command\App\SensitiveConfigSetCommand</item>
-                <item name="configImportCommand" xsi:type="object">Magento\Deploy\Console\Command\App\ConfigImportCommand</item>
-                <item name="configStatusCommand" xsi:type="object">Magento\Deploy\Console\Command\App\ConfigStatusCommand</item>
+                <item name="setModeCommand" xsi:type="object">Magento\Deploy\Console\Command\Set_Mode_Command</item>
+                <item name="showModeCommand" xsi:type="object">Magento\Deploy\Console\Command\Show_Mode_Command</item>
+                <item name="dumpApplicationCommand" xsi:type="object">\Magento\Deploy\Console\Command\App\Application_Dump_Command</item>
+                <item name="sensitiveConfigSetCommand" xsi:type="object">\Magento\Deploy\Console\Command\App\Sensitive_Config_Set_Command</item>
+                <item name="configImportCommand" xsi:type="object">Magento\Deploy\Console\Command\App\Config_Import_Command</item>
+                <item name="configStatusCommand" xsi:type="object">Magento\Deploy\Console\Command\App\Config_Status_Command</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Deploy\Console\Command\App\ConfigImportCommand">
+    <type name="Magento\Deploy\Console\Command\App\Config_Import_Command">
         <arguments>
-            <argument name="adminhtmlAreaProcessor" xsi:type="object">Magento\Config\Console\Command\EmulatedAdminhtmlAreaProcessor\Proxy</argument>
-            <argument name="areaList" xsi:type="object">Magento\Framework\App\AreaList\Proxy</argument>
+            <argument name="adminhtmlAreaProcessor" xsi:type="object">Magento\Config\Console\Command\Emulated_Adminhtml_Area_Processor\Proxy</argument>
+            <argument name="areaList" xsi:type="object">Magento\Framework\App\Area_List\Proxy</argument>
         </arguments>
     </type>
     <type name="Magento\Deploy\Model\Filesystem">
@@ -46,17 +46,17 @@
             <argument name="shell" xsi:type="object">Magento\Framework\App\Shell</argument>
         </arguments>
     </type>
-    <type name="Magento\Deploy\Console\Command\App\SensitiveConfigSet\CollectorFactory">
+    <type name="Magento\Deploy\Console\Command\App\Sensitive_Config_Set\Collector_Factory">
         <arguments>
             <argument name="types" xsi:type="array">
-                <item name="interactive" xsi:type="string">Magento\Deploy\Console\Command\App\SensitiveConfigSet\InteractiveCollector</item>
-                <item name="simple" xsi:type="string">Magento\Deploy\Console\Command\App\SensitiveConfigSet\SimpleCollector</item>
+                <item name="interactive" xsi:type="string">Magento\Deploy\Console\Command\App\Sensitive_Config_Set\Interactive_Collector</item>
+                <item name="simple" xsi:type="string">Magento\Deploy\Console\Command\App\Sensitive_Config_Set\Simple_Collector</item>
             </argument>
         </arguments>
     </type>
 
-    <preference for="Magento\Deploy\Package\BundleInterface" type="Magento\Deploy\Package\Bundle\RequireJs"/>
-    <type name="Magento\Deploy\Source\SourcePool">
+    <preference for="Magento\Deploy\Package\Bundle_Interface" type="Magento\Deploy\Package\Bundle\Require_Js"/>
+    <type name="Magento\Deploy\Source\Source_Pool">
         <arguments>
             <argument name="sources" xsi:type="array">
                 <item name="lib" xsi:type="object">Magento\Deploy\Source\Lib</item>
@@ -68,12 +68,12 @@
     <type name="Magento\Deploy\Package\Package">
         <arguments>
             <argument name="preProcessors" xsi:type="array">
-                <item name="less" xsi:type="object">Magento\Deploy\Package\Processor\PreProcessor\Less</item>
-                <item name="css" xsi:type="object">Magento\Deploy\Package\Processor\PreProcessor\Css</item>
+                <item name="less" xsi:type="object">Magento\Deploy\Package\Processor\Pre_Processor\Less</item>
+                <item name="css" xsi:type="object">Magento\Deploy\Package\Processor\Pre_Processor\Css</item>
             </argument>
             <argument name="postProcessors" xsi:type="array">
-                <item name="map" xsi:type="object">Magento\Deploy\Package\Processor\PostProcessor\Map</item>
-                <item name="cssUrls" xsi:type="object">Magento\Deploy\Package\Processor\PostProcessor\CssUrls</item>
+                <item name="map" xsi:type="object">Magento\Deploy\Package\Processor\Post_Processor\Map</item>
+                <item name="cssUrls" xsi:type="object">Magento\Deploy\Package\Processor\Post_Processor\Css_Urls</item>
             </argument>
         </arguments>
     </type>

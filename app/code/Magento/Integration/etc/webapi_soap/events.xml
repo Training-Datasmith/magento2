@@ -7,9 +7,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="customer_login">
-        <observer name="customer_log_login" instance="Magento\Customer\Observer\LogLastLoginAtObserver" />
+        <observer name="customer_log_login" instance="Magento\Customer\Observer\Log_Last_Login_At_Observer" />
     </event>
     <event name="customer_customer_authenticated">
-        <observer name="customer_unlock" instance="Magento\Customer\Observer\CustomerLoginSuccessObserver" />
+        <observer name="customer_unlock" instance="Magento\Customer\Observer\Customer_Login_Success_Observer" />
     </event>
 </config>

@@ -6,17 +6,17 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\GraphQl\Model\Query\Logger\LoggerPool">
+    <type name="Magento\Graph_Ql\Model\Query\Logger\Logger_Pool">
         <arguments>
             <argument name="loggers" xsi:type="array">
-                <item name="newRelic" xsi:type="object">Magento\GraphQlNewRelic\Model\Query\Logger\NewRelic</item>
+                <item name="newRelic" xsi:type="object">Magento\Graph_Ql_New_Relic\Model\Query\Logger\New_Relic</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Exception\ExceptionFormatter">
-        <plugin name="report-exception-to-new-relic" type="Magento\GraphQlNewRelic\Plugin\ReportException" sortOrder="50"/>
+    <type name="Magento\Framework\Graph_Ql\Exception\Exception_Formatter">
+        <plugin name="report-exception-to-new-relic" type="Magento\Graph_Ql_New_Relic\Plugin\Report_Exception" sortOrder="50"/>
     </type>
-    <type name="Magento\Framework\GraphQl\Query\ErrorHandler">
-        <plugin name="report-error-to-new-relic" type="Magento\GraphQlNewRelic\Plugin\ReportError" sortOrder="50"/>
+    <type name="Magento\Framework\Graph_Ql\Query\Error_Handler">
+        <plugin name="report-error-to-new-relic" type="Magento\Graph_Ql_New_Relic\Plugin\Report_Error" sortOrder="50"/>
     </type>
 </config>

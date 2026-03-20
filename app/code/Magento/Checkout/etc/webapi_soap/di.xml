@@ -6,19 +6,19 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Checkout\Api\GuestPaymentInformationManagementInterface">
-        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\VerifyIsGuestCheckoutEnabledBeforeSavePaymentInformation"/>
+    <type name="Magento\Checkout\Api\Guest_Payment_Information_Management_Interface">
+        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\Verify_Is_Guest_Checkout_Enabled_Before_Save_Payment_Information"/>
     </type>
-    <type name="Magento\Checkout\Api\GuestShippingInformationManagementInterface">
-        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\VerifyIsGuestCheckoutEnabledBeforeSaveShippingInformation"/>
+    <type name="Magento\Checkout\Api\Guest_Shipping_Information_Management_Interface">
+        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\Verify_Is_Guest_Checkout_Enabled_Before_Save_Shipping_Information"/>
     </type>
-    <type name="Magento\Quote\Api\GuestCartManagementInterface">
-        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\VerifyIsGuestCheckoutEnabledBeforePlaceOrder"/>
+    <type name="Magento\Quote\Api\Guest_Cart_Management_Interface">
+        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\Verify_Is_Guest_Checkout_Enabled_Before_Place_Order"/>
     </type>
-    <type name="Magento\Quote\Api\GuestPaymentMethodManagementInterface">
-        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\VerifyIsGuestCheckoutEnabledBeforeSetPaymentMethod"/>
+    <type name="Magento\Quote\Api\Guest_Payment_Method_Management_Interface">
+        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\Verify_Is_Guest_Checkout_Enabled_Before_Set_Payment_Method"/>
     </type>
-    <type name="Magento\Quote\Api\GuestBillingAddressManagementInterface">
-        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\VerifyIsGuestCheckoutEnabledBeforeAssignBillingAddress"/>
+    <type name="Magento\Quote\Api\Guest_Billing_Address_Management_Interface">
+        <plugin name="verify_is_guest_checkout_enabled" type="Magento\Checkout\Plugin\Api\Verify_Is_Guest_Checkout_Enabled_Before_Assign_Billing_Address"/>
     </type>
 </config>

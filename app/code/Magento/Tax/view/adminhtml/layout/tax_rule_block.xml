@@ -11,12 +11,12 @@
             <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.block.tax.rule.grid" as="grid">
                 <arguments>
                     <argument name="id" xsi:type="string">taxRuleGrid</argument>
-                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Tax\Model\TaxRuleCollection</argument>
+                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Tax\Model\Tax_Rule_Collection</argument>
                     <argument name="default_sort" xsi:type="string">tax_rule_id</argument>
                     <argument name="default_dir" xsi:type="string">ASC</argument>
                     <argument name="save_parameters_in_session" xsi:type="string">1</argument>
                 </arguments>
-                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.block.tax.rule.columnSet" as="grid.columnSet">
+                <block class="Magento\Backend\Block\Widget\Grid\Column_Set" name="adminhtml.block.tax.rule.columnSet" as="grid.columnSet">
                     <arguments>
                         <argument name="rowUrl" xsi:type="array">
                             <item name="path" xsi:type="string">tax/*/edit</item>
@@ -43,7 +43,7 @@
                             <argument name="filter_index" xsi:type="string">ctc.customer_tax_class_id</argument>
                             <argument name="show_missing_option_values" xsi:type="string">1</argument>
                             <argument name="type" xsi:type="string">options</argument>
-                            <argument name="options" xsi:type="options" model="Magento\Tax\Model\TaxClass\Source\Customer"/>
+                            <argument name="options" xsi:type="options" model="Magento\Tax\Model\Tax_Class\Source\Customer"/>
                         </arguments>
                     </block>
                     <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.block.tax.rule.columnSet.product_tax_classes" as="product_tax_classes">
@@ -54,7 +54,7 @@
                             <argument name="filter_index" xsi:type="string">ptc.product_tax_class_id</argument>
                             <argument name="show_missing_option_values" xsi:type="string">1</argument>
                             <argument name="type" xsi:type="string">options</argument>
-                            <argument name="options" xsi:type="options" model="Magento\Tax\Model\TaxClass\Source\Product"/>
+                            <argument name="options" xsi:type="options" model="Magento\Tax\Model\Tax_Class\Source\Product"/>
                         </arguments>
                     </block>
                     <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.block.tax.rule.columnSet.tax_rates_codes" as="tax_rates_codes">

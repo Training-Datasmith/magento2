@@ -28,7 +28,7 @@
                 </field>
                 <field id="display_billing_address_on" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Display Billing Address On</label>
-                    <source_model>Magento\Checkout\Model\Adminhtml\BillingAddressDisplayOptions</source_model>
+                    <source_model>Magento\Checkout\Model\Adminhtml\Billing_Address_Display_Options</source_model>
                 </field>
                 <field id="max_items_display_count" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Maximum Number of Items to Display in Order Summary</label>
@@ -59,7 +59,7 @@
                 </field>
                 <field id="cart_merge_preference" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Cart Merge Preference</label>
-                    <source_model>Magento\Checkout\Model\Config\Source\CartMergePreference</source_model>
+                    <source_model>Magento\Checkout\Model\Config\Source\Cart_Merge_Preference</source_model>
                     <comment>Select how cart item quantities should be merged</comment>
                 </field>
             </group>

@@ -18,7 +18,7 @@
         <reloadItem>product-details.attribute_set_id:value</reloadItem>
         <buttons>
             <button name="save" class="Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Save"/>
-            <button name="addAttribute" class="Magento\Catalog\Block\Adminhtml\Product\Edit\Button\AddAttribute"/>
+            <button name="addAttribute" class="Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Add_Attribute"/>
             <button name="back" class="Magento\Catalog\Block\Adminhtml\Product\Edit\Button\Back"/>
         </buttons>
         <deps>
@@ -31,7 +31,7 @@
                 <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
             </item>
         </argument>
-        <dataProvider class="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider" name="product_form_data_source">
+        <dataProvider class="Magento\Catalog\Ui\Data_Provider\Product\Form\Product_Data_Provider" name="product_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -59,7 +59,7 @@
                         <item name="parentComponent" xsi:type="string">product_form.product_form.block_gallery.block_gallery</item>
                     </argument>
                 </arguments>
-                <block class="Magento\ProductVideo\Block\Adminhtml\Product\Edit\NewVideo" name="new-video" template="Magento_ProductVideo::product/edit/slideout/form.phtml"/>
+                <block class="Magento\Product_Video\Block\Adminhtml\Product\Edit\New_Video" name="new-video" template="Magento_ProductVideo::product/edit/slideout/form.phtml"/>
             </block>
         </block>
     </htmlContent>

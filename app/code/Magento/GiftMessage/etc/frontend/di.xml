@@ -6,14 +6,14 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\GiftMessage\Model\Plugin\QuoteItem" shared="false" />
-    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
-        <plugin name="gift_message_quote_item_conversion" type="Magento\GiftMessage\Model\Plugin\QuoteItem"/>
+    <type name="Magento\Gift_Message\Model\Plugin\Quote_Item" shared="false" />
+    <type name="Magento\Quote\Model\Quote\Item\To_Order_Item">
+        <plugin name="gift_message_quote_item_conversion" type="Magento\Gift_Message\Model\Plugin\Quote_Item"/>
     </type>
     <type name="Magento\Multishipping\Block\Checkout\Shipping">
-        <plugin name="getItemsBoxTextAfter" type="Magento\GiftMessage\Block\Message\Multishipping\Plugin\ItemsBox"/>
+        <plugin name="getItemsBoxTextAfter" type="Magento\Gift_Message\Block\Message\Multishipping\Plugin\Items_Box"/>
     </type>
-    <type name="Magento\GiftMessage\Helper\Message">
+    <type name="Magento\Gift_Message\Helper\Message">
         <arguments>
             <argument name="skipMessageCheck" xsi:type="array">
                 <item name="checkout_page" xsi:type="string">onepage_checkout</item>
@@ -21,29 +21,29 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GiftMessage\Model\Type\Plugin\Onepage" shared="false" />
-    <type name="Magento\GiftMessage\Model\Type\Plugin\Multishipping" shared="false" />
+    <type name="Magento\Gift_Message\Model\Type\Plugin\Onepage" shared="false" />
+    <type name="Magento\Gift_Message\Model\Type\Plugin\Multishipping" shared="false" />
     <type name="Magento\Checkout\Model\Type\Onepage">
-        <plugin name="save_gift_message" type="Magento\GiftMessage\Model\Type\Plugin\Onepage"/>
+        <plugin name="save_gift_message" type="Magento\Gift_Message\Model\Type\Plugin\Onepage"/>
     </type>
     <type name="Magento\Multishipping\Model\Checkout\Type\Multishipping">
-        <plugin name="save_gift_messages" type="Magento\GiftMessage\Model\Type\Plugin\Multishipping"/>
+        <plugin name="save_gift_messages" type="Magento\Gift_Message\Model\Type\Plugin\Multishipping"/>
     </type>
-    <type name="Magento\GiftMessage\Model\CompositeConfigProvider">
+    <type name="Magento\Gift_Message\Model\Composite_Config_Provider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="gift_message_config_provider" xsi:type="object">Magento\GiftMessage\Model\GiftMessageConfigProvider</item>
+                <item name="gift_message_config_provider" xsi:type="object">Magento\Gift_Message\Model\Gift_Message_Config_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GiftMessage\Block\Cart\Item\Renderer\Actions\GiftOptions">
+    <type name="Magento\Gift_Message\Block\Cart\Item\Renderer\Actions\Gift_Options">
         <arguments>
             <argument name="layoutProcessors" xsi:type="array">
-                <item name="itemIdProcessor" xsi:type="object">Magento\GiftMessage\Block\Cart\Item\Renderer\Actions\ItemIdProcessor</item>
+                <item name="itemIdProcessor" xsi:type="object">Magento\Gift_Message\Block\Cart\Item\Renderer\Actions\Item_Id_Processor</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Quote\Model\Quote\Item\Processor">
-        <plugin name="mergeQuoteItems" type="Magento\GiftMessage\Model\Plugin\MergeQuoteItems"/>
+        <plugin name="mergeQuoteItems" type="Magento\Gift_Message\Model\Plugin\Merge_Quote_Items"/>
     </type>
 </config>

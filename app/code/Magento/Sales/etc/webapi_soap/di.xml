@@ -6,24 +6,24 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Sales\Model\ResourceModel\Order">
-        <plugin name="authorization" type="Magento\Sales\Model\ResourceModel\Order\Plugin\Authorization" />
+    <type name="Magento\Sales\Model\Resource_Model\Order">
+        <plugin name="authorization" type="Magento\Sales\Model\Resource_Model\Order\Plugin\Authorization" />
     </type>
-    <type name="Magento\Sales\Api\ShipmentRepositoryInterface">
-        <plugin name="convert_blob_to_string" type="Magento\Sales\Plugin\ShippingLabelConverter" />
+    <type name="Magento\Sales\Api\Shipment_Repository_Interface">
+        <plugin name="convert_blob_to_string" type="Magento\Sales\Plugin\Shipping_Label_Converter" />
     </type>
-    <type name="Magento\Framework\Reflection\DataObjectProcessor">
+    <type name="Magento\Framework\Reflection\Data_Object_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="Magento\Sales\Model\Order\Item" xsi:type="object">Magento\Sales\Model\Order\Webapi\ChangeOutputArray\Proxy</item>
+                <item name="Magento\Sales\Model\Order\Item" xsi:type="object">Magento\Sales\Model\Order\Webapi\Change_Output_Array\Proxy</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Model\Service\InvoiceService">
-        <plugin name="addTransactionCommentAfterCapture" type="Magento\Sales\Plugin\Model\Service\Invoice\AddTransactionCommentAfterCapture"/>
+    <type name="Magento\Sales\Model\Service\Invoice_Service">
+        <plugin name="addTransactionCommentAfterCapture" type="Magento\Sales\Plugin\Model\Service\Invoice\Add_Transaction_Comment_After_Capture"/>
     </type>
-    <type name="Magento\Sales\Model\ResourceModel\Order\Relation">
+    <type name="Magento\Sales\Model\Resource_Model\Order\Relation">
         <plugin name="add_existing_product_options"
-                type="Magento\Sales\Plugin\Model\ResourceModel\Order\Relation\AddExistingItemProductOptions"/>
+                type="Magento\Sales\Plugin\Model\Resource_Model\Order\Relation\Add_Existing_Item_Product_Options"/>
     </type>
 </config>

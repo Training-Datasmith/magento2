@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\SomeModule\Some\Class">
+    <type name="Magento\Some_Module\Some\Class">
         <arguments>
             <argument name="argument1" xsi:type="object">someVirtualType1</argument>
             <argument name="argument2" xsi:type="object">someVirtualType2</argument>

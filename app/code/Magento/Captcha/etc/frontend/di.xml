@@ -6,48 +6,48 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+    <type name="Magento\Checkout\Model\Composite_Config_Provider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="checkout_captcha_config_provider" xsi:type="object">Magento\Captcha\Model\Checkout\ConfigProvider</item>
+                <item name="checkout_captcha_config_provider" xsi:type="object">Magento\Captcha\Model\Checkout\Config_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Captcha\Model\Checkout\ConfigProvider">
+    <type name="Magento\Captcha\Model\Checkout\Config_Provider">
         <arguments>
             <argument name="formIds" xsi:type="array">
                 <item name="user_login" xsi:type="string">user_login</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Captcha\CustomerData\Captcha">
+    <type name="Magento\Captcha\Customer_Data\Captcha">
         <arguments>
             <argument name="formIds" xsi:type="array">
                 <item name="user_login" xsi:type="string">user_login</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Section_Pool_Interface">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="captcha" xsi:type="string">Magento\Captcha\CustomerData\Captcha</item>
+                <item name="captcha" xsi:type="string">Magento\Captcha\Customer_Data\Captcha</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Api\OrderManagementInterface">
-        <plugin name="reset_payment_attempts_after_order_is_placed_plugin" type="Magento\Captcha\Plugin\ResetPaymentAttemptsAfterOrderIsPlacedPlugin"/>
+    <type name="Magento\Sales\Api\Order_Management_Interface">
+        <plugin name="reset_payment_attempts_after_order_is_placed_plugin" type="Magento\Captcha\Plugin\Reset_Payment_Attempts_After_Order_Is_Placed_Plugin"/>
     </type>
     <type name="Magento\Checkout\Block\Onepage">
         <arguments>
             <argument name="layoutProcessors" xsi:type="array">
-                <item name="captcha_processor" xsi:type="object">Magento\Captcha\Block\CheckoutLayoutProcessor</item>
+                <item name="captcha_processor" xsi:type="object">Magento\Captcha\Block\Checkout_Layout_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Block\Account\AuthenticationPopup">
+    <type name="Magento\Customer\Block\Account\Authentication_Popup">
         <arguments>
             <argument name="layoutProcessors" xsi:type="array">
-                <item name="authentication_popup_processor" xsi:type="object">Magento\Captcha\Block\Customer\AuthenticationPopup\LayoutProcessor</item>
+                <item name="authentication_popup_processor" xsi:type="object">Magento\Captcha\Block\Customer\Authentication_Popup\Layout_Processor</item>
             </argument>
         </arguments>
     </type>

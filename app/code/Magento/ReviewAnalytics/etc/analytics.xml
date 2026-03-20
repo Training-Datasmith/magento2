@@ -8,7 +8,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Analytics:etc/analytics.xsd">
     <file name="reviews">
         <providers>
-            <reportProvider name="reviews" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider name="reviews" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>reviews</name>
                 </parameters>
@@ -17,7 +17,7 @@
     </file>
     <file name="rating_option_votes">
         <providers>
-            <reportProvider  name="rating_option_votes" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider  name="rating_option_votes" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>rating_option_votes</name>
                 </parameters>

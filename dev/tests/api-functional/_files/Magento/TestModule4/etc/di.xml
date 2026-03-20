@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\TestModule4\Service\V1\DataObjectServiceInterface" type="Magento\TestModule4\Service\V1\DataObjectService" />
-    <preference for="Magento\TestModule4\Service\V1\Entity\ExtensibleRequestInterface" type="Magento\TestModule4\Service\V1\Entity\ExtensibleRequest" />
-    <type name="Magento\TestModule4\Service\V1\Entity\ExtensibleRequest">
+    <preference for="Magento\Test_Module4\Service\V1\Data_Object_Service_Interface" type="Magento\Test_Module4\Service\V1\Data_Object_Service" />
+    <preference for="Magento\Test_Module4\Service\V1\Entity\Extensible_Request_Interface" type="Magento\Test_Module4\Service\V1\Entity\Extensible_Request" />
+    <type name="Magento\Test_Module4\Service\V1\Entity\Extensible_Request">
         <arguments>
-            <argument name="resource" xsi:type="object">Magento\TestModule4\Model\ResourceModel\Item</argument>
+            <argument name="resource" xsi:type="object">Magento\Test_Module4\Model\Resource_Model\Item</argument>
         </arguments>
     </type>
 </config>

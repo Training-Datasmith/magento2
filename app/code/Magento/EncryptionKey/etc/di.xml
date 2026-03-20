@@ -6,17 +6,17 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="\Magento\EncryptionKey\Setup\Patch\Data\SodiumChachaPatch">
+    <type name="\Magento\Encryption_Key\Setup\Patch\Data\Sodium_Chacha_Patch">
         <arguments>
             <argument name="structure" xsi:type="object">Magento\Config\Model\Config\Structure\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Console\CommandList">
+    <type name="Magento\Framework\Console\Command_List">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="encryption_update_key_command" xsi:type="object">Magento\EncryptionKey\Console\Command\UpdateEncryptionKeyCommand</item>
-                <item name="encryption_data_re-encrypt_command" xsi:type="object">Magento\EncryptionKey\Console\Command\ReEncryptDataCommand</item>
-                <item name="encryption_data_list-re-encryptors_command" xsi:type="object">Magento\EncryptionKey\Console\Command\ListReEncryptorsCommand</item>
+                <item name="encryption_update_key_command" xsi:type="object">Magento\Encryption_Key\Console\Command\Update_Encryption_Key_Command</item>
+                <item name="encryption_data_re-encrypt_command" xsi:type="object">Magento\Encryption_Key\Console\Command\Re_Encrypt_Data_Command</item>
+                <item name="encryption_data_list-re-encryptors_command" xsi:type="object">Magento\Encryption_Key\Console\Command\List_Re_Encryptors_Command</item>
             </argument>
         </arguments>
     </type>

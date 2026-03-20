@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+    <type name="Magento\Checkout\Model\Composite_Config_Provider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="checkout_agreements_config_provider" xsi:type="object">Magento\CheckoutAgreements\Model\AgreementsConfigProvider</item>
+                <item name="checkout_agreements_config_provider" xsi:type="object">Magento\Checkout_Agreements\Model\Agreements_Config_Provider</item>
             </argument>
         </arguments>
     </type>

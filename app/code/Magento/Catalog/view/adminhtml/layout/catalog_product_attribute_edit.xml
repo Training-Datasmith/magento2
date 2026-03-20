@@ -24,7 +24,7 @@
         <referenceContainer name="js">
             <block class="Magento\Backend\Block\Template" name="attribute_edit_js" template="Magento_Catalog::catalog/product/attribute/js.phtml">
                 <arguments>
-                    <argument name="view_model" xsi:type="object">Magento\Catalog\ViewModel\Attribute\ProductAttributeHelper</argument>
+                    <argument name="view_model" xsi:type="object">Magento\Catalog\View_Model\Attribute\Product_Attribute_Helper</argument>
                 </arguments>
             </block>
         </referenceContainer>

@@ -8,7 +8,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Analytics:etc/analytics.xsd">
     <file name="wishlists">
         <providers>
-            <reportProvider name="wishlists" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider name="wishlists" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>wishlists</name>
                 </parameters>
@@ -17,7 +17,7 @@
     </file>
     <file name="wishlist_items">
         <providers>
-            <reportProvider name="wishlist_items" class="Magento\Analytics\ReportXml\ReportProvider">
+            <reportProvider name="wishlist_items" class="Magento\Analytics\Report_Xml\Report_Provider">
                 <parameters>
                     <name>wishlist_items</name>
                 </parameters>

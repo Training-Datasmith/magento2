@@ -6,18 +6,18 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\TestModule1\Service\V1\AllSoapAndRestInterface" type="Magento\TestModule1\Service\V1\AllSoapAndRest" />
-    <preference for="Magento\TestModule1\Service\V2\AllSoapAndRestInterface" type="Magento\TestModule1\Service\V2\AllSoapAndRest" />
+    <preference for="Magento\Test_Module1\Service\V1\All_Soap_And_Rest_Interface" type="Magento\Test_Module1\Service\V1\All_Soap_And_Rest" />
+    <preference for="Magento\Test_Module1\Service\V2\All_Soap_And_Rest_Interface" type="Magento\Test_Module1\Service\V2\All_Soap_And_Rest" />
 
-    <virtualType name="Magento\TestModule1\Service\Config\TestModule1MetadataConfig" type="Magento\Framework\Api\ExtensionAttribute\Config\MetadataConfig">
+    <virtualType name="Magento\Test_Module1\Service\Config\Test_Module1Metadata_Config" type="Magento\Framework\Api\Extension_Attribute\Config\Metadata_Config">
         <arguments>
-            <argument name="attributeMetadataBuilder" xsi:type="object">Magento\TestModuleMSC\Model\Data\Eav\AttributeMetadataBuilder</argument>
-            <argument name="dataObjectClassName" xsi:type="string">Magento\TestModule1\Service\V1\Entity\Item</argument>
+            <argument name="attributeMetadataBuilder" xsi:type="object">Magento\Test_Module_MSC\Model\Data\Eav\Attribute_Metadata_Builder</argument>
+            <argument name="dataObjectClassName" xsi:type="string">Magento\Test_Module1\Service\V1\Entity\Item</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\TestModule1\Service\V1\Entity\ItemBuilder">
+    <type name="Magento\Test_Module1\Service\V1\Entity\Item_Builder">
         <arguments>
-            <argument name="metadataService" xsi:type="object">Magento\TestModule1\Service\Config\TestModule1MetadataConfig</argument>
+            <argument name="metadataService" xsi:type="object">Magento\Test_Module1\Service\Config\Test_Module1Metadata_Config</argument>
         </arguments>
     </type>
 </config>

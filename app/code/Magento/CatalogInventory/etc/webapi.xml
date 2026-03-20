@@ -8,25 +8,25 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <route url="/V1/stockItems/:productSku" method="GET">
-        <service class="Magento\CatalogInventory\Api\StockRegistryInterface" method="getStockItemBySku"/>
+        <service class="Magento\Catalog_Inventory\Api\Stock_Registry_Interface" method="getStockItemBySku"/>
         <resources>
             <resource ref="Magento_Catalog::catalog_inventory"/>
         </resources>
     </route>
     <route url="/V1/products/:productSku/stockItems/:itemId" method="PUT">
-        <service class="Magento\CatalogInventory\Api\StockRegistryInterface" method="updateStockItemBySku"/>
+        <service class="Magento\Catalog_Inventory\Api\Stock_Registry_Interface" method="updateStockItemBySku"/>
         <resources>
             <resource ref="Magento_Catalog::catalog_inventory"/>
         </resources>
     </route>
     <route url="/V1/stockItems/lowStock/" method="GET">
-        <service class="Magento\CatalogInventory\Api\StockRegistryInterface" method="getLowStockItems"/>
+        <service class="Magento\Catalog_Inventory\Api\Stock_Registry_Interface" method="getLowStockItems"/>
         <resources>
             <resource ref="Magento_Catalog::catalog_inventory"/>
         </resources>
     </route>
     <route url="/V1/stockStatuses/:productSku" method="GET">
-        <service class="Magento\CatalogInventory\Api\StockRegistryInterface" method="getStockStatusBySku"/>
+        <service class="Magento\Catalog_Inventory\Api\Stock_Registry_Interface" method="getStockStatusBySku"/>
         <resources>
             <resource ref="Magento_Catalog::catalog_inventory"/>
         </resources>

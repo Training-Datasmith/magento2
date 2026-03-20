@@ -15,6 +15,6 @@
 
         <waitForElementVisible selector="{{AdminProductFormSection.productPrice}}" stepKey="waitForPriceField"/>
         <fillField selector="{{AdminProductFormSection.productPrice}}" userInput="{{price}}" stepKey="fillPriceField"/>
-        <pressKey selector="{{AdminProductFormSection.productPrice}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="pressEnterButton"/>
+        <pressKey selector="{{AdminProductFormSection.productPrice}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="pressEnterButton"/>
     </actionGroup>
 </actionGroups>

@@ -27,7 +27,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Variable::variable</aclResource>
-        <dataProvider class="Magento\Variable\Ui\Component\VariablesDataProvider"
+        <dataProvider class="Magento\Variable\Ui\Component\Variables_Data_Provider"
                       name="variables_data_source">
             <settings>
                 <requestFieldName>code</requestFieldName>

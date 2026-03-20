@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Wishlist\Model\AuthenticationStateInterface" type="Magento\Wishlist\Model\AuthenticationState" />
-    <preference for="Magento\Wishlist\Controller\WishlistProviderInterface" type="Magento\Wishlist\Controller\WishlistProvider" />
-    <type name="Magento\Wishlist\Model\ResourceModel\Item\Collection\Grid">
+    <preference for="Magento\Wishlist\Model\Authentication_State_Interface" type="Magento\Wishlist\Model\Authentication_State" />
+    <preference for="Magento\Wishlist\Controller\Wishlist_Provider_Interface" type="Magento\Wishlist\Controller\Wishlist_Provider" />
+    <type name="Magento\Wishlist\Model\Resource_Model\Item\Collection\Grid">
         <arguments>
-            <argument name="resource" xsi:type="object">Magento\Wishlist\Model\ResourceModel\Item</argument>
+            <argument name="resource" xsi:type="object">Magento\Wishlist\Model\Resource_Model\Item</argument>
         </arguments>
     </type>
     <type name="Magento\Wishlist\Helper\Data">
@@ -18,7 +18,7 @@
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Wishlist\Controller\AbstractIndex">
+    <type name="Magento\Wishlist\Controller\Abstract_Index">
         <plugin name="authentication" type="Magento\Wishlist\Controller\Index\Plugin" sortOrder="10"/>
     </type>
     <virtualType name="Magento\Wishlist\Block\Context" type="Magento\Catalog\Block\Product\Context">
@@ -26,7 +26,7 @@
             <argument name="wishlistHelper" xsi:type="object">Magento\Wishlist\Helper\Rss</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\App\Rss\RssManagerInterface">
+    <type name="Magento\Framework\App\Rss\Rss_Manager_Interface">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
                 <item name="wishlist" xsi:type="string">Magento\Wishlist\Model\Rss\Wishlist</item>
@@ -36,48 +36,48 @@
     <virtualType name="Magento\Bundle\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="wishlist_configured_price" xsi:type="string">Magento\Bundle\Pricing\Price\ConfiguredPrice</item>
+                <item name="wishlist_configured_price" xsi:type="string">Magento\Bundle\Pricing\Price\Configured_Price</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="Magento\Catalog\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="wishlist_configured_price" xsi:type="string">Magento\Catalog\Pricing\Price\ConfiguredPrice</item>
+                <item name="wishlist_configured_price" xsi:type="string">Magento\Catalog\Pricing\Price\Configured_Price</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\ConfigurableProduct\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
+    <virtualType name="Magento\Configurable_Product\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="wishlist_configured_price" xsi:type="string">Magento\Wishlist\Pricing\ConfiguredPrice\ConfigurableProduct</item>
+                <item name="wishlist_configured_price" xsi:type="string">Magento\Wishlist\Pricing\Configured_Price\Configurable_Product</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="Magento\Downloadable\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="wishlist_configured_price" xsi:type="string">Magento\Wishlist\Pricing\ConfiguredPrice\Downloadable</item>
+                <item name="wishlist_configured_price" xsi:type="string">Magento\Wishlist\Pricing\Configured_Price\Downloadable</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\GroupedProduct\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
+    <virtualType name="Magento\Grouped_Product\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="wishlist_configured_price" xsi:type="string">Magento\GroupedProduct\Pricing\Price\ConfiguredPrice</item>
+                <item name="wishlist_configured_price" xsi:type="string">Magento\Grouped_Product\Pricing\Price\Configured_Price</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Catalog\Ui\DataProvider\Product\Listing\DataProvider">
-        <plugin name="wishlistSettingsDataProvider" type="Magento\Wishlist\Plugin\Ui\DataProvider\WishlistSettings"/>
+    <type name="Magento\Catalog\Ui\Data_Provider\Product\Listing\Data_Provider">
+        <plugin name="wishlistSettingsDataProvider" type="Magento\Wishlist\Plugin\Ui\Data_Provider\Wishlist_Settings"/>
     </type>
-    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorComposite">
+    <type name="Magento\Catalog\Ui\Data_Provider\Product\Product_Render_Collector_Composite">
         <arguments>
             <argument name="productProviders" xsi:type="array">
-                <item name="wishlist_url" xsi:type="object">\Magento\Wishlist\Ui\DataProvider\Product\Collector\Button</item>
+                <item name="wishlist_url" xsi:type="object">\Magento\Wishlist\Ui\Data_Provider\Product\Collector\Button</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Wishlist\Model\ResourceModel\Item\Product\CollectionBuilderInterface"
-                type="Magento\Wishlist\Model\ResourceModel\Item\Product\CollectionBuilder"/>
+    <preference for="Magento\Wishlist\Model\Resource_Model\Item\Product\Collection_Builder_Interface"
+                type="Magento\Wishlist\Model\Resource_Model\Item\Product\Collection_Builder"/>
 </config>

@@ -25,7 +25,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Catalog::products</aclResource>
-        <dataProvider class="Magento\Catalog\Ui\DataProvider\Product\Related\RelatedDataProvider" name="related_product_listing_data_source">
+        <dataProvider class="Magento\Catalog\Ui\Data_Provider\Product\Related\Related_Data_Provider" name="related_product_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -95,13 +95,13 @@
         </column>
         <column name="attribute_set_id" component="Magento_Ui/js/grid/columns/select" sortOrder="40">
             <settings>
-                <options class="Magento\Catalog\Model\Product\AttributeSet\Options"/>
+                <options class="Magento\Catalog\Model\Product\Attribute_Set\Options"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Attribute Set</label>
             </settings>
         </column>
-        <column name="attribute_set_text" class="Magento\Catalog\Ui\Component\Listing\Columns\AttributeSetText" sortOrder="41">
+        <column name="attribute_set_text" class="Magento\Catalog\Ui\Component\Listing\Columns\Attribute_Set_Text" sortOrder="41">
             <settings>
                 <label translate="true">AttributeSetText</label>
                 <visible>false</visible>
@@ -115,7 +115,7 @@
                 <label translate="true">Status</label>
             </settings>
         </column>
-        <column name="status_text" class="Magento\Catalog\Ui\Component\Listing\Columns\StatusText" sortOrder="51">
+        <column name="status_text" class="Magento\Catalog\Ui\Component\Listing\Columns\Status_Text" sortOrder="51">
             <settings>
                 <label translate="true">StatusText</label>
                 <visible>false</visible>

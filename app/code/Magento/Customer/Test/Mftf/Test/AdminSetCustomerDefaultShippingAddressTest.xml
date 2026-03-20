@@ -44,7 +44,7 @@
         <waitForPageLoad stepKey="waitForAddresses"/>
         <conditionalClick selector="{{AdminCustomerAddressFiltersSection.clearAll}}" dependentSelector="{{AdminCustomerAddressFiltersSection.clearAll}}" visible="true" stepKey="clickOnButtonToRemoveFiltersIfPresent"/>
         <fillField userInput="{{US_Address_NY_Not_Default_Address.street[0]}}" selector="{{AdminCustomerAddressesGridActionsSection.search}}" stepKey="fillCustomerAddressStreetInSearchByKeyword"/>
-        <pressKey parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" selector="{{AdminCustomerAddressesGridActionsSection.search}}" stepKey="pressEnterKey"/>
+        <pressKey parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" selector="{{AdminCustomerAddressesGridActionsSection.search}}" stepKey="pressEnterKey"/>
         <waitForPageLoad stepKey="waitForCustomerAddressesGridPageLoad"/>
         <see userInput="The customer does not have default shipping address" selector="{{AdminCustomerAddressesDefaultShippingSection.address}}" stepKey="assertThatThereIsNoDefaultShippingAddress"/>
         <seeNumberOfElements userInput="1" selector="{{AdminCustomerAddressesGridSection.rowsInGrid}}" stepKey="seeOnlyOneCustomerAddressesInGrid"/>

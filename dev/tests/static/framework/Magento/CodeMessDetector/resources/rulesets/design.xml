@@ -11,7 +11,7 @@
          xsi:schemaLocation="http://pmd.sf.net/ruleset/1.0.0 http://pmd.sf.net/ruleset_xml_schema.xsd"
          xsi:noNamespaceSchemaLocation="http://pmd.sf.net/ruleset_xml_schema.xsd">
     <rule name="AllPurposeAction"
-          class="Magento\CodeMessDetector\Rule\Design\AllPurposeAction"
+          class="Magento\Code_Mess_Detector\Rule\Design\All_Purpose_Action"
           message= "The class {0} does not restrict processed HTTP methods by implementing a Http*Method name*ActionInterface">
         <description>
             <![CDATA[
@@ -36,12 +36,12 @@ class PostOrder implements ActionInterface
         </example>
     </rule>
     <rule name="CookieAndSessionMisuse"
-          class="Magento\CodeMessDetector\Rule\Design\CookieAndSessionMisuse"
+          class="Magento\Code_Mess_Detector\Rule\Design\Cookie_And_Session_Misuse"
           message= "The class {0} uses sessions or cookies while not being a part of HTML Presentation layer">
         <description>
             <![CDATA[
 Sessions and cookies must only be used in classes directly responsible for HTML presentation because Web APIs do not
-rely on cookies and sessions. If you need to get current user use Magento\Authorization\Model\UserContextInterface
+rely on cookies and sessions. If you need to get current user use Magento\Authorization\Model\User_Context_Interface
             ]]>
         </description>
         <priority>2</priority>

@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="customerDeletedNumbers" schema="V55\Customer\Api\CustomerRepositoryInterface::delete99">
-        <handler name="customHandler" type="V55\Customer\Api\CustomerRepositoryInterface" method="deleteById99"/>
+    <topic name="customerDeletedNumbers" schema="V55\Customer\Api\Customer_Repository_Interface::delete99">
+        <handler name="customHandler" type="V55\Customer\Api\Customer_Repository_Interface" method="deleteById99"/>
     </topic>
 </config>

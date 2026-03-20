@@ -60,16 +60,16 @@
 
 
         <!-- Verify Images & Directories in S3 & Local File System -->
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3BaseImageExists">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3BaseImageExists">
             <argument name="filePath">media/wysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3ThumbnailImageExists">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3ThumbnailImageExists">
             <argument name="filePath">media/.thumbswysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalBaseImageDirectoryDoesNotExist">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalBaseImageDirectoryDoesNotExist">
             <argument name="path">pub/media/.renditions/wysiwyg/{{AdminMediaGalleryFolderData.name}}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertLocalThumbnailImageExists">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertLocalThumbnailImageExists">
             <argument name="filePath">pub/media/.thumbswysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
 
@@ -98,16 +98,16 @@
         </actionGroup>
 
         <!-- Verify Images in S3 & Local File System -->
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3BaseImageExists2">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3BaseImageExists2">
             <argument name="filePath">media/wysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3ThumbnailImageExists2">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3ThumbnailImageExists2">
             <argument name="filePath">media/.thumbswysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertLocalBaseImageExists2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertLocalBaseImageExists2">
             <argument name="filePath">pub/media/.renditions/wysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertLocalThumbnailImageExists2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertLocalThumbnailImageExists2">
             <argument name="filePath">pub/media/.thumbswysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
 
@@ -129,22 +129,22 @@
         </actionGroup>
 
         <!-- Verify Images & Directories in S3 & Local File System -->
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertDirectoryExists" stepKey="assertS31stCreatedBaseFolderExists">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertDirectoryExists" stepKey="assertS31stCreatedBaseFolderExists">
             <argument name="path">media/wysiwyg/{{AdminMediaGalleryFolderData.name}}</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertDirectoryDoesNotExist" stepKey="assertS32ndCreatedBaseFolderDoesNotExist">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertDirectoryDoesNotExist" stepKey="assertS32ndCreatedBaseFolderDoesNotExist">
             <argument name="path">media/wysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3ThumbnailImageExists3">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3ThumbnailImageExists3">
             <argument name="filePath">media/.thumbswysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertDirectoryExists" stepKey="assertLocal1stCreatedBaseFolderExists">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertDirectoryExists" stepKey="assertLocal1stCreatedBaseFolderExists">
             <argument name="path">pub/media/.renditions/wysiwyg/{{AdminMediaGalleryFolderData.name}}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertDirectoryDoesNotExist" stepKey="assertLocal2ndCreatedBaseFolderDoesNotExist">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertDirectoryDoesNotExist" stepKey="assertLocal2ndCreatedBaseFolderDoesNotExist">
             <argument name="path">pub/media/.renditions/wysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertLocalThumbnailImageExists3">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertLocalThumbnailImageExists3">
             <argument name="filePath">pub/media/.thumbswysiwyg/{{AdminMediaGalleryFolderData.name}}/{{AdminMediaGalleryFolder2Data.name}}/{{ImageUpload.file}}</argument>
         </helper>
     </test>

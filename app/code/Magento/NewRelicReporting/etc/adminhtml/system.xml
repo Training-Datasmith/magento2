@@ -19,7 +19,7 @@
                 </field>
                 <field id="api_mode" translate="label comment" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Deployment API Mode</label>
-                    <source_model>Magento\NewRelicReporting\Model\Config\Source\ApiMode</source_model>
+                    <source_model>Magento\New_Relic_Reporting\Model\Config\Source\Api_Mode</source_model>
                     <comment>Choose between legacy v2 REST API or modern NerdGraph (GraphQL)</comment>
                     <depends>
                         <field id="enable">1</field>

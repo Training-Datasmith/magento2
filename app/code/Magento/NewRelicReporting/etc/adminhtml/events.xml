@@ -7,25 +7,25 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="adminhtml_cache_flush_system">
-        <observer name="newrelicreporting_observer_report_system_cache_flush" instance="Magento\NewRelicReporting\Model\Observer\ReportSystemCacheFlush" />
-        <observer name="newrelicreporting_newrelic_report_system_cache_flush" instance="Magento\NewRelicReporting\Model\Observer\ReportSystemCacheFlushToNewRelic" />
+        <observer name="newrelicreporting_observer_report_system_cache_flush" instance="Magento\New_Relic_Reporting\Model\Observer\Report_System_Cache_Flush" />
+        <observer name="newrelicreporting_newrelic_report_system_cache_flush" instance="Magento\New_Relic_Reporting\Model\Observer\Report_System_Cache_Flush_To_New_Relic" />
     </event>
     <event name="controller_action_predispatch_adminhtml">
-        <observer name="newrelicreporting_observer_report_concurrent_admins" instance="Magento\NewRelicReporting\Model\Observer\ReportConcurrentAdmins" />
-        <observer name="newrelicreporting_newrelic_report_oncurrent_admins" instance="Magento\NewRelicReporting\Model\Observer\ReportConcurrentAdminsToNewRelic" />
+        <observer name="newrelicreporting_observer_report_concurrent_admins" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Concurrent_Admins" />
+        <observer name="newrelicreporting_newrelic_report_oncurrent_admins" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Concurrent_Admins_To_New_Relic" />
     </event>
     <event name="catalog_product_save_before">
-        <observer name="newrelicreporting_observer_report_product_save" instance="Magento\NewRelicReporting\Model\Observer\ReportProductSaved" />
-        <observer name="newrelicreporting_newrelic_report_product_save" instance="Magento\NewRelicReporting\Model\Observer\ReportProductSavedToNewRelic" />
+        <observer name="newrelicreporting_observer_report_product_save" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Product_Saved" />
+        <observer name="newrelicreporting_newrelic_report_product_save" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Product_Saved_To_New_Relic" />
     </event>
     <event name="catalog_product_delete_after_done">
-        <observer name="newrelicreporting_observer_report_product_delete" instance="Magento\NewRelicReporting\Model\Observer\ReportProductDeleted" />
-        <observer name="newrelicreporting_newrelic_report_product_delete" instance="Magento\NewRelicReporting\Model\Observer\ReportProductDeletedToNewRelic" />
+        <observer name="newrelicreporting_observer_report_product_delete" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Product_Deleted" />
+        <observer name="newrelicreporting_newrelic_report_product_delete" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Product_Deleted_To_New_Relic" />
     </event>
     <event name="admin_system_config_changed_section_newrelicreporting">
-        <observer name="newrelicreporting_observer_check_config" instance="Magento\NewRelicReporting\Model\Observer\CheckConfig"/>
+        <observer name="newrelicreporting_observer_check_config" instance="Magento\New_Relic_Reporting\Model\Observer\Check_Config"/>
     </event>
     <event name="controller_front_send_response_before">
-        <observer name="newrelicreporting_observer_controller_front_send_response_before" instance="Magento\NewRelicReporting\Observer\DisableBrowserMonitoringAutomaticInjection" />
+        <observer name="newrelicreporting_observer_controller_front_send_response_before" instance="Magento\New_Relic_Reporting\Observer\Disable_Browser_Monitoring_Automatic_Injection" />
     </event>
 </config>

@@ -61,7 +61,7 @@
             <argument name="rowIndex" value="0"/>
         </actionGroup>
         <!-- Verify that the file exists on server -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions"
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions"
                 method="assertFileExists"
                 stepKey="assertExportFileExists">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
@@ -87,7 +87,7 @@
         <grabAttributeFrom userInput="href"
                            selector="{{AdminExportAttributeSection.download('0')}}"
                            stepKey="grabExportUrl"/>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers"
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers"
                 method="assertCurlResponseHeadersContainsString"
                 stepKey="assertDownloadFileContainsConfigurableProduct">
             <argument name="url">{$grabExportUrl}</argument>

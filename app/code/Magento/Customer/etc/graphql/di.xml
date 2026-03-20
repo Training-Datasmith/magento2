@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Authorization\Model\CompositeUserContext">
+    <type name="Magento\Authorization\Model\Composite_User_Context">
         <arguments>
             <argument name="userContexts" xsi:type="array">
                 <item name="customerSessionUserContext" xsi:type="array">
-                    <item name="type" xsi:type="object">Magento\Customer\Model\Authorization\CustomerSessionUserContext</item>
+                    <item name="type" xsi:type="object">Magento\Customer\Model\Authorization\Customer_Session_User_Context</item>
                     <item name="sortOrder" xsi:type="string">20</item>
                 </item>
             </argument>

@@ -6,19 +6,19 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\MediaGalleryUiApi\Api\ConfigInterface" type="Magento\MediaGalleryUi\Model\Config"/>
-    <preference for="Magento\MediaGalleryUiApi\Api\Data\InsertImageDataInterface" type="\Magento\MediaGalleryUi\Model\InsertImageData"/>
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+    <preference for="Magento\Media_Gallery_Ui_Api\Api\Config_Interface" type="Magento\Media_Gallery_Ui\Model\Config"/>
+    <preference for="Magento\Media_Gallery_Ui_Api\Api\Data\Insert_Image_Data_Interface" type="\Magento\Media_Gallery_Ui\Model\Insert_Image_Data"/>
+    <type name="Magento\Framework\View\Element\Ui_Component\Data_Provider\Collection_Factory">
         <arguments>
             <argument name="collections" xsi:type="array">
-                <item name="media_gallery_listing_data_source" xsi:type="string">Magento\MediaGalleryUi\Ui\Component\Listing\Provider</item>
+                <item name="media_gallery_listing_data_source" xsi:type="string">Magento\Media_Gallery_Ui\Ui\Component\Listing\Provider</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="mediaGallerySearchResult" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+    <virtualType name="mediaGallerySearchResult" type="Magento\Framework\View\Element\Ui_Component\Data_Provider\Search_Result">
         <arguments>
             <argument name="mainTable" xsi:type="string">media_gallery_asset_grid</argument>
-            <argument name="resourceModel" xsi:type="string">Magento\MediaGalleryUi\Model\ResourceModel\Grid\Asset</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Media_Gallery_Ui\Model\Resource_Model\Grid\Asset</argument>
         </arguments>
     </virtualType>
     <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
@@ -29,7 +29,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaGallerySynchronizationApi\Model\ImportFilesComposite">
-        <plugin name="createMediaGalleryThumbnails" type="Magento\MediaGalleryUi\Plugin\CreateThumbnails"/>
+    <type name="Magento\Media_Gallery_Synchronization_Api\Model\Import_Files_Composite">
+        <plugin name="createMediaGalleryThumbnails" type="Magento\Media_Gallery_Ui\Plugin\Create_Thumbnails"/>
     </type>
 </config>

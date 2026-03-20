@@ -67,7 +67,7 @@
         <see userInput="{{customVariable.code}}"  stepKey="seeCustomVariable"/>
         <seeElement selector="{{VariableSection.SearchTxtbox}}"  stepKey="searchBox"/>
         <!--press Enter-->
-        <pressKey selector="{{VariableSection.SearchTxtbox}}" parameterArray="['Test Variable',\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="pressKeyEnter"/>
+        <pressKey selector="{{VariableSection.SearchTxtbox}}" parameterArray="['Test Variable',\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="pressKeyEnter"/>
         <waitForPageLoad stepKey="waitForPageLoad5" />
         <!--see result-->
         <see selector="{{VariableSection.searchResult(customVariable.code)}}" userInput="{{customVariable.code}}" stepKey="seeResult" />

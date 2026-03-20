@@ -43,7 +43,7 @@
                 <argument name="customerEmail" value="CustomerEntityOne.email"/>
             </actionGroup>
             <!-- delete Category and Products -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
             <deleteData createDataKey="category" stepKey="deleteCategory"/>
             <!-- Logout -->
             <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>

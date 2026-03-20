@@ -6,5 +6,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="customerRetrieved" schema="Magento\Customer\Api\NotExistingInterface::someMethod"/>
+    <topic name="customerRetrieved" schema="Magento\Customer\Api\Not_Existing_Interface::someMethod"/>
 </config>

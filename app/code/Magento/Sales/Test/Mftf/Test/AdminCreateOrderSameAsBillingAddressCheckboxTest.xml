@@ -71,7 +71,7 @@
             <argument name="address" value="US_Address_NY_Not_Default_Address"/>
         </actionGroup>
         <scrollTo selector="section#order-addresses" stepKey="scrollToSameAsBillingAddress2"/>
-        <helper class="\Magento\Sales\Test\Mftf\Helper\AdminProductPage" method="rapidChecksOnCheckBox" stepKey="rapidClickOnSameAsBillingAddressCheckbox">
+        <helper class="\Magento\Sales\Test\Mftf\Helper\Admin_Product_Page" method="rapidChecksOnCheckBox" stepKey="rapidClickOnSameAsBillingAddressCheckbox">
             <argument name="context">{{AdminOrderFormShippingAddressSection.SameAsBilling}}</argument>
             <argument name="count">5</argument>
         </helper>

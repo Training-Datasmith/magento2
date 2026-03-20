@@ -7,7 +7,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
-        <job name="catalogrule_apply_all" instance="Magento\CatalogRule\Cron\DailyCatalogUpdate" method="execute">
+        <job name="catalogrule_apply_all" instance="Magento\Catalog_Rule\Cron\Daily_Catalog_Update" method="execute">
             <schedule>0 1 * * *</schedule>
         </job>
     </group>

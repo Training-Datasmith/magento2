@@ -20,7 +20,7 @@
         <click selector="{{MediaGallerySection.CreateFolder}}" stepKey="createFolder"/>
         <waitForElementVisible selector="{{MediaGallerySection.FolderName}}" stepKey="waitForPopUp"/>
         <fillField selector="{{MediaGallerySection.FolderName}}" userInput="{{ImageFolder.name}}" stepKey="fillFolderName"/>
-        <pressKey selector="{{MediaGallerySection.FolderName}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="cancelFolderName"/>
+        <pressKey selector="{{MediaGallerySection.FolderName}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="cancelFolderName"/>
         <waitForPageLoad stepKey="waitForPopUpHide"/>
         <dontSeeElement selector="{{ImageFolder.name}}" stepKey="dontSeeFolderName"/>
     </actionGroup>

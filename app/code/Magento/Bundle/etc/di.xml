@@ -6,18 +6,18 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Bundle\Api\ProductOptionTypeListInterface" type="Magento\Bundle\Model\OptionTypeList" />
-    <preference for="Magento\Bundle\Api\Data\OptionTypeInterface" type="Magento\Bundle\Model\Source\Option\Type" />
-    <preference for="Magento\Bundle\Api\ProductLinkManagementInterface" type="Magento\Bundle\Model\LinkManagement" />
-    <preference for="Magento\Bundle\Api\ProductLinkManagementAddChildrenInterface" type="Magento\Bundle\Model\LinkManagement" />
-    <preference for="Magento\Bundle\Api\Data\LinkInterface" type="Magento\Bundle\Model\Link" />
-    <preference for="Magento\Bundle\Api\ProductOptionRepositoryInterface" type="Magento\Bundle\Model\OptionRepository" />
-    <preference for="Magento\Bundle\Api\ProductOptionManagementInterface" type="Magento\Bundle\Model\OptionManagement" />
-    <preference for="Magento\Bundle\Api\Data\OptionInterface" type="Magento\Bundle\Model\Option" />
-    <preference for="Magento\Bundle\Api\Data\BundleOptionInterface" type="Magento\Bundle\Model\BundleOption" />
-    <preference for="Magento\Bundle\Pricing\Adjustment\SelectionPriceListProviderInterface" type="Magento\Bundle\Pricing\Adjustment\DefaultSelectionPriceListProvider" />
-    <preference for="Magento\Bundle\Model\ResourceModel\Indexer\StockStatusQueryProcessorInterface" type="Magento\Bundle\Model\ResourceModel\Indexer\DefaultInventoryStockStatusQueryProcessor" />
-    <preference for="Magento\Bundle\Model\ResourceModel\Indexer\SelectionPriceModifierInterface" type="Magento\Bundle\Model\ResourceModel\Indexer\CompositeSelectionPriceModifier" />
+    <preference for="Magento\Bundle\Api\Product_Option_Type_List_Interface" type="Magento\Bundle\Model\Option_Type_List" />
+    <preference for="Magento\Bundle\Api\Data\Option_Type_Interface" type="Magento\Bundle\Model\Source\Option\Type" />
+    <preference for="Magento\Bundle\Api\Product_Link_Management_Interface" type="Magento\Bundle\Model\Link_Management" />
+    <preference for="Magento\Bundle\Api\Product_Link_Management_Add_Children_Interface" type="Magento\Bundle\Model\Link_Management" />
+    <preference for="Magento\Bundle\Api\Data\Link_Interface" type="Magento\Bundle\Model\Link" />
+    <preference for="Magento\Bundle\Api\Product_Option_Repository_Interface" type="Magento\Bundle\Model\Option_Repository" />
+    <preference for="Magento\Bundle\Api\Product_Option_Management_Interface" type="Magento\Bundle\Model\Option_Management" />
+    <preference for="Magento\Bundle\Api\Data\Option_Interface" type="Magento\Bundle\Model\Option" />
+    <preference for="Magento\Bundle\Api\Data\Bundle_Option_Interface" type="Magento\Bundle\Model\Bundle_Option" />
+    <preference for="Magento\Bundle\Pricing\Adjustment\Selection_Price_List_Provider_Interface" type="Magento\Bundle\Pricing\Adjustment\Default_Selection_Price_List_Provider" />
+    <preference for="Magento\Bundle\Model\Resource_Model\Indexer\Stock_Status_Query_Processor_Interface" type="Magento\Bundle\Model\Resource_Model\Indexer\Default_Inventory_Stock_Status_Query_Processor" />
+    <preference for="Magento\Bundle\Model\Resource_Model\Indexer\Selection_Price_Modifier_Interface" type="Magento\Bundle\Model\Resource_Model\Indexer\Composite_Selection_Price_Modifier" />
     <type name="Magento\Bundle\Model\Source\Option\Type">
         <arguments>
             <argument name="options" xsi:type="array">
@@ -28,17 +28,17 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\CatalogPrice">
+    <type name="Magento\Catalog\Model\Product\Catalog_Price">
         <arguments>
             <argument name="priceModelPool" xsi:type="array">
-                <item name="bundle" xsi:type="string">Magento\Bundle\Model\Product\CatalogPrice</item>
+                <item name="bundle" xsi:type="string">Magento\Bundle\Model\Product\Catalog_Price</item>
             </argument>
         </arguments>
     </type>
     <virtualType name="Magento\Bundle\Pricing\Adjustment\Collection" type="Magento\Framework\Pricing\Adjustment\Collection">
     </virtualType>
-    <preference for="Magento\Bundle\Pricing\Adjustment\BundleCalculatorInterface" type="Magento\Bundle\Pricing\Adjustment\Calculator" />
-    <virtualType name="Magento\Bundle\Pricing\PriceInfo" type="Magento\Framework\Pricing\PriceInfo\Base">
+    <preference for="Magento\Bundle\Pricing\Adjustment\Bundle_Calculator_Interface" type="Magento\Bundle\Pricing\Adjustment\Calculator" />
+    <virtualType name="Magento\Bundle\Pricing\Price_Info" type="Magento\Framework\Pricing\Price_Info\Base">
         <arguments>
             <argument name="adjustmentCollection" xsi:type="object">Magento\Bundle\Pricing\Adjustment\Collection</argument>
         </arguments>
@@ -46,17 +46,17 @@
     <virtualType name="Magento\Bundle\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="regular_price" xsi:type="string">Magento\Bundle\Pricing\Price\BundleRegularPrice</item>
-                <item name="final_price" xsi:type="string">Magento\Bundle\Pricing\Price\FinalPrice</item>
-                <item name="tier_price" xsi:type="string">Magento\Bundle\Pricing\Price\TierPrice</item>
-                <item name="special_price" xsi:type="string">Magento\Bundle\Pricing\Price\SpecialPrice</item>
-                <item name="custom_option_price" xsi:type="string">Magento\Catalog\Pricing\Price\CustomOptionPrice</item>
-                <item name="base_price" xsi:type="string">Magento\Catalog\Pricing\Price\BasePrice</item>
-                <item name="configured_price" xsi:type="string">Magento\Bundle\Pricing\Price\ConfiguredPrice</item>
-                <item name="configured_regular_price" xsi:type="string">Magento\Bundle\Pricing\Price\ConfiguredRegularPrice</item>
-                <item name="bundle_option" xsi:type="string">Magento\Bundle\Pricing\Price\BundleOptionPrice</item>
-                <item name="bundle_option_regular_price" xsi:type="string">Magento\Bundle\Pricing\Price\BundleOptionRegularPrice</item>
-                <item name="catalog_rule_price" xsi:type="string">Magento\CatalogRule\Pricing\Price\CatalogRulePrice</item>
+                <item name="regular_price" xsi:type="string">Magento\Bundle\Pricing\Price\Bundle_Regular_Price</item>
+                <item name="final_price" xsi:type="string">Magento\Bundle\Pricing\Price\Final_Price</item>
+                <item name="tier_price" xsi:type="string">Magento\Bundle\Pricing\Price\Tier_Price</item>
+                <item name="special_price" xsi:type="string">Magento\Bundle\Pricing\Price\Special_Price</item>
+                <item name="custom_option_price" xsi:type="string">Magento\Catalog\Pricing\Price\Custom_Option_Price</item>
+                <item name="base_price" xsi:type="string">Magento\Catalog\Pricing\Price\Base_Price</item>
+                <item name="configured_price" xsi:type="string">Magento\Bundle\Pricing\Price\Configured_Price</item>
+                <item name="configured_regular_price" xsi:type="string">Magento\Bundle\Pricing\Price\Configured_Regular_Price</item>
+                <item name="bundle_option" xsi:type="string">Magento\Bundle\Pricing\Price\Bundle_Option_Price</item>
+                <item name="bundle_option_regular_price" xsi:type="string">Magento\Bundle\Pricing\Price\Bundle_Option_Regular_Price</item>
+                <item name="catalog_rule_price" xsi:type="string">Magento\Catalog_Rule\Pricing\Price\Catalog_Rule_Price</item>
             </argument>
         </arguments>
     </virtualType>
@@ -65,52 +65,52 @@
             <argument name="pool" xsi:type="object">Magento\Bundle\Pricing\Price\Pool</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\Pricing\PriceInfo\Factory">
+    <type name="Magento\Framework\Pricing\Price_Info\Factory">
         <arguments>
             <argument name="types" xsi:type="array">
                 <item name="bundle" xsi:type="array">
-                    <item name="infoClass" xsi:type="string">Magento\Bundle\Pricing\PriceInfo</item>
+                    <item name="infoClass" xsi:type="string">Magento\Bundle\Pricing\Price_Info</item>
                     <item name="prices" xsi:type="string">Magento\Bundle\Pricing\Price\Collection</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Bundle\Pricing\Price\BundleRegularPrice">
+    <type name="Magento\Bundle\Pricing\Price\Bundle_Regular_Price">
         <arguments>
-            <argument name="calculator" xsi:type="object">Magento\Bundle\Pricing\Adjustment\BundleCalculatorInterface</argument>
+            <argument name="calculator" xsi:type="object">Magento\Bundle\Pricing\Adjustment\Bundle_Calculator_Interface</argument>
         </arguments>
     </type>
-    <type name="Magento\Bundle\Pricing\Price\FinalPrice">
+    <type name="Magento\Bundle\Pricing\Price\Final_Price">
         <arguments>
-            <argument name="calculator" xsi:type="object">Magento\Bundle\Pricing\Adjustment\BundleCalculatorInterface</argument>
+            <argument name="calculator" xsi:type="object">Magento\Bundle\Pricing\Adjustment\Bundle_Calculator_Interface</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Pricing\Price\ConfiguredPriceSelection">
+    <type name="Magento\Catalog\Pricing\Price\Configured_Price_Selection">
         <arguments>
-            <argument name="calculator" xsi:type="object">Magento\Bundle\Pricing\Adjustment\BundleCalculatorInterface</argument>
+            <argument name="calculator" xsi:type="object">Magento\Bundle\Pricing\Adjustment\Bundle_Calculator_Interface</argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Product\Attribute\Backend\Price">
-        <plugin name="bundle" type="Magento\Bundle\Model\Plugin\PriceBackend" sortOrder="100" />
+        <plugin name="bundle" type="Magento\Bundle\Model\Plugin\Price_Backend" sortOrder="100" />
     </type>
     <type name="Magento\Catalog\Model\Product">
-        <plugin name="add_bundle_parent_identities" type="Magento\Bundle\Model\Plugin\ProductIdentitiesExtender" sortOrder="100" />
+        <plugin name="add_bundle_parent_identities" type="Magento\Bundle\Model\Plugin\Product_Identities_Extender" sortOrder="100" />
     </type>
     <type name="Magento\Sales\Model\Order\Item">
         <plugin name="bundle" type="Magento\Bundle\Model\Sales\Order\Plugin\Item" sortOrder="100" />
     </type>
-    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+    <type name="Magento\Framework\Entity_Manager\Operation\Extension_Pool">
         <arguments>
             <argument name="extensionActions" xsi:type="array">
-                <item name="Magento\Catalog\Api\Data\ProductInterface" xsi:type="array">
+                <item name="Magento\Catalog\Api\Data\Product_Interface" xsi:type="array">
                     <item name="create" xsi:type="array">
-                        <item name="create_bundle_options" xsi:type="string">Magento\Bundle\Model\Product\SaveHandler</item>
+                        <item name="create_bundle_options" xsi:type="string">Magento\Bundle\Model\Product\Save_Handler</item>
                     </item>
                     <item name="update" xsi:type="array">
-                        <item name="update_bundle_options" xsi:type="string">Magento\Bundle\Model\Product\SaveHandler</item>
+                        <item name="update_bundle_options" xsi:type="string">Magento\Bundle\Model\Product\Save_Handler</item>
                     </item>
                     <item name="read" xsi:type="array">
-                        <item name="read_bundle_options" xsi:type="string">Magento\Bundle\Model\Product\ReadHandler</item>
+                        <item name="read_bundle_options" xsi:type="string">Magento\Bundle\Model\Product\Read_Handler</item>
                     </item>
                 </item>
             </argument>
@@ -118,8 +118,8 @@
     </type>
     <type name="Magento\Bundle\Model\Product\Type">
         <arguments>
-            <argument name="stockRegistry" xsi:type="object">Magento\CatalogInventory\Api\StockRegistryInterface\Proxy</argument>
-            <argument name="stockState" xsi:type="object">Magento\CatalogInventory\Api\StockStateInterface\Proxy</argument>
+            <argument name="stockRegistry" xsi:type="object">Magento\Catalog_Inventory\Api\Stock_Registry_Interface\Proxy</argument>
+            <argument name="stockState" xsi:type="object">Magento\Catalog_Inventory\Api\Stock_State_Interface\Proxy</argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Helper\Product">
@@ -131,31 +131,31 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
-        <plugin name="append_bundle_data_to_order" type="Magento\Bundle\Model\Plugin\QuoteItem"/>
+    <type name="Magento\Quote\Model\Quote\Item\To_Order_Item">
+        <plugin name="append_bundle_data_to_order" type="Magento\Bundle\Model\Plugin\Quote_Item"/>
     </type>
     <type name="Magento\Quote\Model\Quote\Item\Repository">
         <arguments>
             <argument name="cartItemProcessors" xsi:type="array">
-                <item name="bundle" xsi:type="object">\Magento\Bundle\Model\CartItemProcessor\Proxy</item>
+                <item name="bundle" xsi:type="object">\Magento\Bundle\Model\Cart_Item_Processor\Proxy</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Api\OrderItemRepositoryInterface">
+    <type name="Magento\Sales\Api\Order_Item_Repository_Interface">
         <arguments>
             <argument name="processorPool" xsi:type="array">
-                <item name="bundle" xsi:type="object">Magento\Bundle\Model\ProductOptionProcessor</item>
+                <item name="bundle" xsi:type="object">Magento\Bundle\Model\Product_Option_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Model\Order\ProductOption">
+    <type name="Magento\Sales\Model\Order\Product_Option">
         <arguments>
             <argument name="processorPool" xsi:type="array">
-                <item name="bundle" xsi:type="object">Magento\Bundle\Model\ProductOptionProcessor</item>
+                <item name="bundle" xsi:type="object">Magento\Bundle\Model\Product_Option_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Bundle\Ui\DataProvider\Product\Listing\Collector\BundlePrice">
+    <type name="Magento\Bundle\Ui\Data_Provider\Product\Listing\Collector\Bundle_Price">
         <arguments>
             <argument name="excludeAdjustments" xsi:type="array">
                 <item name="weee" xsi:type="string">weee</item>
@@ -163,47 +163,47 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorComposite">
+    <type name="Magento\Catalog\Ui\Data_Provider\Product\Product_Render_Collector_Composite">
         <arguments>
             <argument name="productProviders" xsi:type="array">
-                <item name="bundle_price" xsi:type="object">\Magento\Bundle\Ui\DataProvider\Product\Listing\Collector\BundlePrice</item>
+                <item name="bundle_price" xsi:type="object">\Magento\Bundle\Ui\Data_Provider\Product\Listing\Collector\Bundle_Price</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Price\SpecialPriceStorage">
+    <type name="Magento\Catalog\Model\Product\Price\Special_Price_Storage">
         <arguments>
             <argument name="allowedProductTypes" xsi:type="array">
                 <item name="2" xsi:type="string">bundle</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BatchSizeCalculator">
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Indexer\Price\Batch_Size_Calculator">
         <arguments>
             <argument name="estimators" xsi:type="array">
-                <item name="bundle" xsi:type="object">Magento\Catalog\Model\Indexer\Price\CompositeProductBatchSizeManagement</item>
+                <item name="bundle" xsi:type="object">Magento\Catalog\Model\Indexer\Price\Composite_Product_Batch_Size_Management</item>
             </argument>
             <argument name="batchSizeAdjusters" xsi:type="array">
-                <item name="bundle" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\CompositeProductBatchSizeAdjuster</item>
+                <item name="bundle" xsi:type="object">Magento\Catalog\Model\Resource_Model\Product\Indexer\Price\Composite_Product_Batch_Size_Adjuster</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Bundle\Model\ResourceModel\Indexer\Price">
+    <type name="Magento\Bundle\Model\Resource_Model\Indexer\Price">
         <arguments>
-            <argument name="tableStrategy" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\Indexer\TemporaryTableStrategy</argument>
+            <argument name="tableStrategy" xsi:type="object">Magento\Catalog\Model\Resource_Model\Product\Indexer\Temporary_Table_Strategy</argument>
             <argument name="connectionName" xsi:type="string">indexer</argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogInventory\Model\Indexer\Stock\Action\Full">
+    <type name="Magento\Catalog_Inventory\Model\Indexer\Stock\Action\Full">
         <arguments>
             <argument name="batchRowsCount" xsi:type="array">
                 <item name="bundle" xsi:type="number">136</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\MetadataPool">
+    <type name="Magento\Framework\Entity_Manager\Metadata_Pool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Magento\Bundle\Api\Data\OptionInterface" xsi:type="array">
+                <item name="Magento\Bundle\Api\Data\Option_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">catalog_product_bundle_option</item>
                     <item name="identifierField" xsi:type="string">option_id</item>
                 </item>
@@ -214,15 +214,15 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\HydratorPool">
+    <type name="Magento\Framework\Entity_Manager\Hydrator_Pool">
         <arguments>
             <argument name="hydrators" xsi:type="array">
-                <item name="Magento\Bundle\Api\Data\OptionInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
-                <item name="Magento\Bundle\Model\Selection" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+                <item name="Magento\Bundle\Api\Data\Option_Interface" xsi:type="string">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</item>
+                <item name="Magento\Bundle\Model\Selection" xsi:type="string">Magento\Framework\Entity_Manager\Abstract_Model_Hydrator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesRule\Model\Quote\ChildrenValidationLocator">
+    <type name="Magento\Sales_Rule\Model\Quote\Children_Validation_Locator">
         <arguments>
             <argument name="productTypeChildrenValidationMap" xsi:type="array">
                 <item name="bundle" xsi:type="boolean">false</item>
@@ -242,33 +242,33 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Model\Order\Shipment\ShipmentItemsValidator">
+    <type name="Magento\Sales\Model\Order\Shipment\Shipment_Items_Validator">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="shipment_type" xsi:type="object">Magento\Bundle\Model\Sales\Order\Shipment\BundleShipmentTypeValidator</item>
+                <item name="shipment_type" xsi:type="object">Magento\Bundle\Model\Sales\Order\Shipment\Bundle_Shipment_Type_Validator</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Quote\Model\Quote\Item\Option\Comparator">
         <arguments>
             <argument name="customComparators" xsi:type="array">
-                <item name="bundle_selection_attributes" xsi:type="object">Magento\Bundle\Model\Quote\Item\Option\BundleSelectionAttributesComparator</item>
+                <item name="bundle_selection_attributes" xsi:type="object">Magento\Bundle\Model\Quote\Item\Option\Bundle_Selection_Attributes_Comparator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\QuoteManagement">
+    <type name="Magento\Quote\Model\Quote_Management">
         <plugin name="update_bundle_quote_item_options"
-                type="Magento\Bundle\Plugin\Quote\UpdateBundleQuoteItemOptions"
+                type="Magento\Bundle\Plugin\Quote\Update_Bundle_Quote_Item_Options"
                 sortOrder="10"/>
     </type>
-    <type name="Magento\Bundle\Model\ProductRelationsProcessorComposite">
+    <type name="Magento\Bundle\Model\Product_Relations_Processor_Composite">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="quote_recollect" xsi:type="object">Magento\Bundle\Model\QuoteRecollectProcessor</item>
+                <item name="quote_recollect" xsi:type="object">Magento\Bundle\Model\Quote_Recollect_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Bundle\Model\QuoteRecollectProcessor">
+    <type name="Magento\Bundle\Model\Quote_Recollect_Processor">
         <arguments>
             <argument name="comparisonFieldsTypeMapper" xsi:type="array">
                 <item name="sku" xsi:type="string">string</item>
@@ -279,28 +279,28 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogInventory\Observer\SaveInventoryDataObserver">
+    <type name="Magento\Catalog_Inventory\Observer\Save_Inventory_Data_Observer">
         <arguments>
             <argument name="parentItemProcessorPool" xsi:type="array">
-                <item name="bundle" xsi:type="object">Magento\Bundle\Model\Inventory\ParentItemProcessor</item>
+                <item name="bundle" xsi:type="object">Magento\Bundle\Model\Inventory\Parent_Item_Processor</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Quote\Model\Quote\Address\Total\Subtotal">
         <plugin name="update_bundle_quote_item_base_original_price"
-                type="Magento\Bundle\Plugin\Quote\UpdateBundleQuoteItemBaseOriginalPrice"
+                type="Magento\Bundle\Plugin\Quote\Update_Bundle_Quote_Item_Base_Original_Price"
                 sortOrder="10"/>
     </type>
-    <type name="Magento\Bundle\Model\ResourceModel\Indexer\CompositeSelectionPriceModifier">
+    <type name="Magento\Bundle\Model\Resource_Model\Indexer\Composite_Selection_Price_Modifier">
         <arguments>
             <argument name="modifiers" xsi:type="array">
-                <item name="inventory" xsi:type="object">Magento\Bundle\Model\ResourceModel\Indexer\SelectionPriceModifier</item>
+                <item name="inventory" xsi:type="object">Magento\Bundle\Model\Resource_Model\Indexer\Selection_Price_Modifier</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Tax\Block\Item\Price\Renderer">
         <plugin name="bundle_get_block_item_price"
-                type="Magento\Bundle\Plugin\Tax\BlockItemPriceRenderer"
+                type="Magento\Bundle\Plugin\Tax\Block_Item_Price_Renderer"
                 sortOrder="10"/>
     </type>
 </config>

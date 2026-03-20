@@ -14,7 +14,7 @@
                     <argument name="position" xsi:type="number">0</argument>
                 </arguments>
             </block>
-            <block class="Magento\Paypal\Block\PayLater\Banner" name="top.container.paylater"
+            <block class="Magento\Paypal\Block\Pay_Later\Banner" name="top.container.paylater"
                    template="Magento_Paypal::paylater/banner.phtml">
                 <arguments>
                     <argument name="placement" xsi:type="string">product</argument>
@@ -43,7 +43,7 @@
                     <argument name="position" xsi:type="number">1</argument>
                 </arguments>
             </block>
-            <block class="Magento\Paypal\Block\PayLater\Banner" name="product.info.addtocart.paylater"
+            <block class="Magento\Paypal\Block\Pay_Later\Banner" name="product.info.addtocart.paylater"
                    template="Magento_Paypal::paylater/banner.phtml">
                 <arguments>
                     <argument name="placement" xsi:type="string">product</argument>
@@ -66,7 +66,7 @@
             </block>
         </referenceContainer>
         <referenceBlock name="product.info.addtocart.additional">
-            <block class="Magento\Paypal\Block\PayLater\Banner" name="product.info.addtocart.additional.paylater"
+            <block class="Magento\Paypal\Block\Pay_Later\Banner" name="product.info.addtocart.additional.paylater"
                    template="Magento_Paypal::paylater/banner.phtml">
                 <arguments>
                     <argument name="placement" xsi:type="string">product</argument>

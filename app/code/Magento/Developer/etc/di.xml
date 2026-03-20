@@ -11,31 +11,31 @@
 
     <type name="Magento\Framework\View\Result\Page">
         <arguments>
-            <argument name="pageConfigRendererFactory" xsi:type="object">Magento\Developer\Model\View\Page\Config\RendererFactory</argument>
+            <argument name="pageConfigRendererFactory" xsi:type="object">Magento\Developer\Model\View\Page\Config\Renderer_Factory</argument>
         </arguments>
     </type>
-    <type name="Magento\Developer\Console\Command\XmlCatalogGenerateCommand">
+    <type name="Magento\Developer\Console\Command\Xml_Catalog_Generate_Command">
         <arguments>
             <argument name="formats" xsi:type="array">
-                <item name="phpstorm" xsi:type="object">Magento\Developer\Model\XmlCatalog\Format\PhpStorm</item>
-                <item name="vscode" xsi:type="object">Magento\Developer\Model\XmlCatalog\Format\VsCode</item>
+                <item name="phpstorm" xsi:type="object">Magento\Developer\Model\Xml_Catalog\Format\Php_Storm</item>
+                <item name="vscode" xsi:type="object">Magento\Developer\Model\Xml_Catalog\Format\Vs_Code</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Developer\Model\View\Page\Config\RendererFactory">
+    <type name="Magento\Developer\Model\View\Page\Config\Renderer_Factory">
         <arguments>
             <argument name="rendererTypes" xsi:type="array">
-                <item name="client_side_compilation" xsi:type="string">Magento\Developer\Model\View\Page\Config\ClientSideLessCompilation\Renderer</item>
+                <item name="client_side_compilation" xsi:type="string">Magento\Developer\Model\View\Page\Config\Client_Side_Less_Compilation\Renderer</item>
                 <item name="server_side_compilation" xsi:type="string">Magento\Framework\View\Page\Config\Renderer</item>
             </argument>
         </arguments>
     </type>
 
-    <virtualType name="AssetMaterializationStrategyFactoryForSourceThemeDeploy" type="Magento\Framework\App\View\Asset\MaterializationStrategy\Factory">
+    <virtualType name="AssetMaterializationStrategyFactoryForSourceThemeDeploy" type="Magento\Framework\App\View\Asset\Materialization_Strategy\Factory">
         <arguments>
             <argument name="strategiesList" xsi:type="array">
-                <item name="symlink" xsi:type="object">Magento\Framework\App\View\Asset\MaterializationStrategy\Symlink</item>
-                <item name="copy" xsi:type="object">Magento\Framework\App\View\Asset\MaterializationStrategy\Copy</item>
+                <item name="symlink" xsi:type="object">Magento\Framework\App\View\Asset\Materialization_Strategy\Symlink</item>
+                <item name="copy" xsi:type="object">Magento\Framework\App\View\Asset\Materialization_Strategy\Copy</item>
             </argument>
         </arguments>
     </virtualType>
@@ -46,25 +46,25 @@
         </arguments>
     </virtualType>
 
-    <!-- Configuration for \Magento\Developer\Console\Command\SourceThemeDeployCommand -->
-    <virtualType name="FileGeneratorPublicationDecoratorForSourceThemeDeploy" type="Magento\Developer\Model\Css\PreProcessor\FileGenerator\PublicationDecorator">
+    <!-- Configuration for \Magento\Developer\Console\Command\Source_Theme_Deploy_Command -->
+    <virtualType name="FileGeneratorPublicationDecoratorForSourceThemeDeploy" type="Magento\Developer\Model\Css\Pre_Processor\File_Generator\Publication_Decorator">
         <arguments>
             <argument name="hasRelatedPublishing" xsi:type="boolean">true</argument>
             <argument name="assetRepository" xsi:type="object">AssetRepositoryForSourceThemeDeploy</argument>
             <argument name="assetPublisher" xsi:type="object">AssetPublisherForSymlink</argument>
         </arguments>
     </virtualType>
-    <virtualType name="PreProcessorInstructionImportForSourceThemeDeploy" type="Magento\Framework\Css\PreProcessor\Instruction\Import">
+    <virtualType name="PreProcessorInstructionImportForSourceThemeDeploy" type="Magento\Framework\Css\Pre_Processor\Instruction\Import">
         <arguments>
             <argument name="relatedFileGenerator" xsi:type="object">FileGeneratorPublicationDecoratorForSourceThemeDeploy</argument>
         </arguments>
     </virtualType>
-    <virtualType name="AssetPreProcessorPoolForSourceThemeDeploy" type="Magento\Framework\View\Asset\PreProcessor\Pool">
+    <virtualType name="AssetPreProcessorPoolForSourceThemeDeploy" type="Magento\Framework\View\Asset\Pre_Processor\Pool">
         <arguments>
             <argument name="preprocessors" xsi:type="array">
                 <item name="less" xsi:type="array">
                     <item name="magento_import" xsi:type="array">
-                        <item name="class" xsi:type="string">Magento\Framework\Css\PreProcessor\Instruction\MagentoImport</item>
+                        <item name="class" xsi:type="string">Magento\Framework\Css\Pre_Processor\Instruction\Magento_Import</item>
                     </item>
                     <item name="import" xsi:type="array">
                         <item name="after" xsi:type="string">magento_import</item>
@@ -84,81 +84,81 @@
             <argument name="assetSource" xsi:type="object">AssetSourceForSourceThemeDeploy</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Developer\Console\Command\SourceThemeDeployCommand">
+    <type name="Magento\Developer\Console\Command\Source_Theme_Deploy_Command">
         <arguments>
             <argument name="assetPublisher" xsi:type="object">AssetPublisherForSymlink</argument>
             <argument name="assetRepository" xsi:type="object">AssetRepositoryForSourceThemeDeploy</argument>
         </arguments>
     </type>
-    <!-- End configuration for \Magento\Developer\Console\Command\SourceThemeDeployCommand -->
+    <!-- End configuration for \Magento\Developer\Console\Command\Source_Theme_Deploy_Command -->
 
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="dev_tests_run" xsi:type="object">Magento\Developer\Console\Command\DevTestsRunCommand</item>
-                <item name="whitelist_generation" xsi:type="object">Magento\Developer\Console\Command\TablesWhitelistGenerateCommand</item>
-                <item name="dev_source_theme_deploy" xsi:type="object">Magento\Developer\Console\Command\SourceThemeDeployCommand</item>
-                <item name="xml_converter" xsi:type="object">Magento\Developer\Console\Command\XmlConverterCommand</item>
-                <item name="xml_catalog_generator" xsi:type="object">Magento\Developer\Console\Command\XmlCatalogGenerateCommand</item>
-                <item name="dev_di_info" xsi:type="object">Magento\Developer\Console\Command\DiInfoCommand</item>
-                <item name="dev_query_log_enable" xsi:type="object">Magento\Developer\Console\Command\QueryLogEnableCommand</item>
-                <item name="dev_query_log_disable" xsi:type="object">Magento\Developer\Console\Command\QueryLogDisableCommand</item>
-                <item name="dev_template_hints_disable" xsi:type="object">Magento\Developer\Console\Command\TemplateHintsDisableCommand</item>
-                <item name="dev_template_hints_enable" xsi:type="object">Magento\Developer\Console\Command\TemplateHintsEnableCommand</item>
-                <item name="dev_template_hints_status" xsi:type="object">Magento\Developer\Console\Command\TemplateHintsStatusCommand</item>
-                <item name="dev_profiler_disable" xsi:type="object">Magento\Developer\Console\Command\ProfilerDisableCommand</item>
-                <item name="dev_profiler_enable" xsi:type="object">Magento\Developer\Console\Command\ProfilerEnableCommand</item>
-                <item name="dev_generate_patch" xsi:type="object">Magento\Developer\Console\Command\GeneratePatchCommand</item>
+                <item name="dev_tests_run" xsi:type="object">Magento\Developer\Console\Command\Dev_Tests_Run_Command</item>
+                <item name="whitelist_generation" xsi:type="object">Magento\Developer\Console\Command\Tables_Whitelist_Generate_Command</item>
+                <item name="dev_source_theme_deploy" xsi:type="object">Magento\Developer\Console\Command\Source_Theme_Deploy_Command</item>
+                <item name="xml_converter" xsi:type="object">Magento\Developer\Console\Command\Xml_Converter_Command</item>
+                <item name="xml_catalog_generator" xsi:type="object">Magento\Developer\Console\Command\Xml_Catalog_Generate_Command</item>
+                <item name="dev_di_info" xsi:type="object">Magento\Developer\Console\Command\Di_Info_Command</item>
+                <item name="dev_query_log_enable" xsi:type="object">Magento\Developer\Console\Command\Query_Log_Enable_Command</item>
+                <item name="dev_query_log_disable" xsi:type="object">Magento\Developer\Console\Command\Query_Log_Disable_Command</item>
+                <item name="dev_template_hints_disable" xsi:type="object">Magento\Developer\Console\Command\Template_Hints_Disable_Command</item>
+                <item name="dev_template_hints_enable" xsi:type="object">Magento\Developer\Console\Command\Template_Hints_Enable_Command</item>
+                <item name="dev_template_hints_status" xsi:type="object">Magento\Developer\Console\Command\Template_Hints_Status_Command</item>
+                <item name="dev_profiler_disable" xsi:type="object">Magento\Developer\Console\Command\Profiler_Disable_Command</item>
+                <item name="dev_profiler_enable" xsi:type="object">Magento\Developer\Console\Command\Profiler_Enable_Command</item>
+                <item name="dev_generate_patch" xsi:type="object">Magento\Developer\Console\Command\Generate_Patch_Command</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="cssMinificationAdapter" type="Magento\Framework\Code\Minifier\Adapter\Css\CSSmin" />
-    <virtualType name="jsMinificationAdapter" type="Magento\Framework\Code\Minifier\Adapter\Js\JShrink" />
-    <virtualType name="cssMinificationProcessor" type="Magento\Framework\View\Asset\PreProcessor\Minify">
+    <virtualType name="cssMinificationAdapter" type="Magento\Framework\Code\Minifier\Adapter\Css\CS_Smin" />
+    <virtualType name="jsMinificationAdapter" type="Magento\Framework\Code\Minifier\Adapter\Js\J_Shrink" />
+    <virtualType name="cssMinificationProcessor" type="Magento\Framework\View\Asset\Pre_Processor\Minify">
         <arguments>
             <argument name="adapter" xsi:type="object">cssMinificationAdapter</argument>
         </arguments>
     </virtualType>
-    <virtualType name="jsMinificationProcessor" type="Magento\Framework\View\Asset\PreProcessor\Minify">
+    <virtualType name="jsMinificationProcessor" type="Magento\Framework\View\Asset\Pre_Processor\Minify">
         <arguments>
             <argument name="adapter" xsi:type="object">jsMinificationAdapter</argument>
         </arguments>
     </virtualType>
 
-    <!-- Configuration for Magento\Framework\Css\PreProcessor\Instruction\Import base flow -->
-    <virtualType name="FileGeneratorPublicationDecoratorForBaseFlow" type="Magento\Developer\Model\Css\PreProcessor\FileGenerator\PublicationDecorator">
+    <!-- Configuration for Magento\Framework\Css\Pre_Processor\Instruction\Import base flow -->
+    <virtualType name="FileGeneratorPublicationDecoratorForBaseFlow" type="Magento\Developer\Model\Css\Pre_Processor\File_Generator\Publication_Decorator">
         <arguments>
             <argument name="hasRelatedPublishing" xsi:type="boolean">false</argument>
             <argument name="assetPublisher" xsi:type="object">AssetPublisherForSymlink</argument>
         </arguments>
     </virtualType>
-    <virtualType name="PreProcessorInstructionImportForBaseFlow" type="Magento\Framework\Css\PreProcessor\Instruction\Import">
+    <virtualType name="PreProcessorInstructionImportForBaseFlow" type="Magento\Framework\Css\Pre_Processor\Instruction\Import">
         <arguments>
             <argument name="relatedFileGenerator" xsi:type="object">FileGeneratorPublicationDecoratorForBaseFlow</argument>
         </arguments>
     </virtualType>
-    <!-- End configuration for Magento\Framework\Css\PreProcessor\Instruction\Import base flow -->
+    <!-- End configuration for Magento\Framework\Css\Pre_Processor\Instruction\Import base flow -->
 
-    <type name="Magento\Developer\Model\View\Asset\PreProcessor\FrontendCompilation">
+    <type name="Magento\Developer\Model\View\Asset\Pre_Processor\Frontend_Compilation">
         <arguments>
             <argument name="alternativeSource" xsi:type="object">AlternativeSourceProcessors</argument>
-            <argument name="lockerProcess" xsi:type="object">Magento\Framework\View\Asset\LockerProcess</argument>
+            <argument name="lockerProcess" xsi:type="object">Magento\Framework\View\Asset\Locker_Process</argument>
             <argument name="lockName" xsi:type="string">frontend-compilation-source</argument>
         </arguments>
     </type>
-    <type name="Magento\Developer\Model\View\Asset\PreProcessor\PreprocessorStrategy">
+    <type name="Magento\Developer\Model\View\Asset\Pre_Processor\Preprocessor_Strategy">
         <arguments>
             <argument name="alternativeSource" xsi:type="object">AlternativeSourceProcessors</argument>
         </arguments>
     </type>
 
     <!-- @api -->
-    <virtualType name="AssetPreProcessorPool" type="Magento\Framework\View\Asset\PreProcessor\Pool">
+    <virtualType name="AssetPreProcessorPool" type="Magento\Framework\View\Asset\Pre_Processor\Pool">
         <arguments>
             <argument name="preprocessors" xsi:type="array">
                 <item name="less" xsi:type="array">
                     <item name="magento_import" xsi:type="array">
-                        <item name="class" xsi:type="string">Magento\Framework\Css\PreProcessor\Instruction\MagentoImport</item>
+                        <item name="class" xsi:type="string">Magento\Framework\Css\Pre_Processor\Instruction\Magento_Import</item>
                     </item>
                     <item name="import" xsi:type="array">
                         <item name="after" xsi:type="string">magento_import</item>
@@ -167,15 +167,15 @@
                 </item>
                 <item name="css" xsi:type="array">
                     <item name="preprocessorStrategy" xsi:type="array">
-                        <item name="class" xsi:type="string">Magento\Developer\Model\View\Asset\PreProcessor\PreprocessorStrategy</item>
+                        <item name="class" xsi:type="string">Magento\Developer\Model\View\Asset\Pre_Processor\Preprocessor_Strategy</item>
                     </item>
                     <item name="variable_notation" xsi:type="array">
                         <item name="after" xsi:type="string">preprocessorStrategy</item>
-                        <item name="class" xsi:type="string">Magento\Framework\View\Asset\PreProcessor\VariableNotation</item>
+                        <item name="class" xsi:type="string">Magento\Framework\View\Asset\Pre_Processor\Variable_Notation</item>
                     </item>
                     <item name="module_notation" xsi:type="array">
                         <item name="after" xsi:type="string">variable_notation</item>
-                        <item name="class" xsi:type="string">Magento\Framework\View\Asset\PreProcessor\ModuleNotation</item>
+                        <item name="class" xsi:type="string">Magento\Framework\View\Asset\Pre_Processor\Module_Notation</item>
                     </item>
                     <item name="css_min" xsi:type="array">
                         <item name="after" xsi:type="string">module_notation</item>
@@ -197,25 +197,25 @@
         </arguments>
     </type>
 
-    <type name="Magento\Framework\Css\PreProcessor\Instruction\MagentoImport">
+    <type name="Magento\Framework\Css\Pre_Processor\Instruction\Magento_Import">
         <arguments>
-            <argument name="fileSource" xsi:type="object">Magento\Framework\Css\PreProcessor\File\Collector\Aggregated</argument>
+            <argument name="fileSource" xsi:type="object">Magento\Framework\Css\Pre_Processor\File\Collector\Aggregated</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Css\PreProcessor\File\Collector\Aggregated">
+    <type name="Magento\Framework\Css\Pre_Processor\File\Collector\Aggregated">
         <arguments>
-            <argument name="libraryFiles" xsi:type="object">Magento\Framework\Css\PreProcessor\File\Collector\Library</argument>
+            <argument name="libraryFiles" xsi:type="object">Magento\Framework\Css\Pre_Processor\File\Collector\Library</argument>
             <argument name="baseFiles" xsi:type="object">cssSourceBaseFilesSorted</argument>
             <argument name="overriddenBaseFiles" xsi:type="object">cssSourceOverriddenBaseFiles</argument>
         </arguments>
     </type>
 
-    <virtualType name="cssSourceBaseFilesSorted" type="Magento\Framework\View\File\Collector\Decorator\ModuleDependency">
+    <virtualType name="cssSourceBaseFilesSorted" type="Magento\Framework\View\File\Collector\Decorator\Module_Dependency">
         <arguments>
             <argument name="subject" xsi:type="object">cssSourceBaseFilesFiltered</argument>
         </arguments>
     </virtualType>
-    <virtualType name="cssSourceBaseFilesFiltered" type="Magento\Framework\View\File\Collector\Decorator\ModuleOutput">
+    <virtualType name="cssSourceBaseFilesFiltered" type="Magento\Framework\View\File\Collector\Decorator\Module_Output">
         <arguments>
             <argument name="subject" xsi:type="object">cssSourceBaseFiles</argument>
         </arguments>
@@ -232,7 +232,7 @@
         </arguments>
     </virtualType>
 
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="dev/restrict/allow_ips" xsi:type="string">1</item>
@@ -243,7 +243,7 @@
         </arguments>
     </type>
 
-    <type name="Magento\Developer\Model\TemplateEngine\Plugin\DebugHints">
+    <type name="Magento\Developer\Model\Template_Engine\Plugin\Debug_Hints">
         <arguments>
             <argument name="debugHintsPath" xsi:type="string">dev/debug/template_hints_storefront</argument>
             <argument name="debugHintsWithParam" xsi:type="string">dev/debug/template_hints_storefront_show_with_parameter</argument>

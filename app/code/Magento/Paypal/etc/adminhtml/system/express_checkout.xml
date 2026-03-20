@@ -94,7 +94,7 @@
                     <!-- productIntentID -->
                     <attribute type="product_intent_id">pp_express</attribute>
 
-                    <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\ApiWizard</frontend_model>
+                    <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Api_Wizard</frontend_model>
                     <attribute type="shared">1</attribute>
                 </field>
                 <field id="sandbox_flag" translate="label" type="select" sortOrder="80" showInDefault="1" showInWebsite="1">
@@ -155,7 +155,7 @@
                 </comment>
                 <config_path>payment/paypal_express/in_context</config_path>
                 <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Enable\InContextApi</frontend_model>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Enable\In_Context_Api</frontend_model>
                 <requires>
                     <field id="enable_express_checkout"/>
                 </requires>
@@ -164,7 +164,7 @@
                 <label>Merchant Account ID</label>
                 <tooltip>You can look up your merchant ID by logging into https://www.paypal.com/. Click the profile icon on the top right side of the page and then select Profile and settings in the Business Profile menu. (If you do not see the profile icon at the top of the page, click Profile, which appears in the top menu when the My Account tab is selected.) Click My business info on the left, and the Merchant account ID is displayed in the list of profile items on the right.</tooltip>
                 <config_path>payment/paypal_express/merchant_id</config_path>
-                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Depends\MerchantId</frontend_model>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Depends\Merchant_Id</frontend_model>
                 <validate>required-entry</validate>
                 <depends>
                     <field id="enable_in_context_checkout">1</field>
@@ -178,7 +178,7 @@
                 </comment>
                 <config_path>payment/paypal_express_bml/active</config_path>
                 <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Enable\BmlApi</frontend_model>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Enable\Bml_Api</frontend_model>
                 <requires>
                     <field id="enable_express_checkout"/>
                 </requires>
@@ -188,7 +188,7 @@
                 <config_path>payment/paypal_express_bml/sort_order</config_path>
                 <frontend_class>validate-number</frontend_class>
                 <attribute type="shared">1</attribute>
-                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Depends\BmlApiSortOrder</frontend_model>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Depends\Bml_Api_Sort_Order</frontend_model>
                 <depends>
                     <field id="enable_express_checkout_bml">1</field>
                 </depends>
@@ -197,7 +197,7 @@
                 <label>Enable PayPal Pay Later Experience</label>
                 <config_path>payment/paypal_paylater/experience_active</config_path>
                 <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\PayLaterLink</frontend_model>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Pay_Later_Link</frontend_model>
                 <attribute type="shared">1</attribute>
             </field>
             <group id="advertise_bml" translate="label comment" showInDefault="1" showInWebsite="1" sortOrder="30">
@@ -223,7 +223,7 @@
                 <field id="bml_wizard" translate="button_label" sortOrder="15" showInDefault="1" showInWebsite="1">
                     <button_label>Get Publisher ID from PayPal</button_label>
                     <button_url><![CDATA[https://financing.paypal.com/ppfinportal/cart/index?dcp=4eff8563b9cc505e0b9afaff3256705081553c79]]></button_url>
-                    <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\BmlApiWizard</frontend_model>
+                    <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Bml_Api_Wizard</frontend_model>
                 </field>
                 <group id="settings_bml_homepage" translate="label" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
                     <label>Home Page</label>
@@ -236,20 +236,20 @@
                     <field id="bml_homepage_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_express_bml/homepage_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlPosition::getBmlPositionsHP</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Position::getBmlPositionsHP</source_model>
                         <attribute type="shared">1</attribute>
                     </field>
                     <field id="bml_homepage_size1" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Size</label>
                         <config_path>payment/paypal_express_bml/homepage_size</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlSize::getBmlSizeHPH</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Size::getBmlSizeHPH</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="bml_homepage_position">0</field>
                         </depends>
                     </field>
                     <field id="bml_homepage_size2" extends="payment_all_paypal/express_checkout/express_checkout_required/advertise_bml/settings_bml_homepage/bml_homepage_size1">
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlSize::getBmlSizeHPS</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Size::getBmlSizeHPS</source_model>
                         <depends>
                             <field id="bml_homepage_position">1</field>
                         </depends>
@@ -266,18 +266,18 @@
                     <field id="bml_categorypage_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_express_bml/categorypage_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlPosition::getBmlPositionsCCP</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Position::getBmlPositionsCCP</source_model>
                         <attribute type="shared">1</attribute>
                     </field>
                     <field id="bml_categorypage_size1" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Size</label>
                         <config_path>payment/paypal_express_bml/categorypage_size</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlSize::getBmlSizeCCPC</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Size::getBmlSizeCCPC</source_model>
                         <attribute type="shared">1</attribute>
                         <depends><field id="bml_categorypage_position">0</field></depends>
                     </field>
                     <field id="bml_categorypage_size2" extends="payment_all_paypal/express_checkout/express_checkout_required/advertise_bml/settings_bml_categorypage/bml_categorypage_size1">
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlSize::getBmlSizeCCPS</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Size::getBmlSizeCCPS</source_model>
                         <depends><field id="bml_categorypage_position">1</field></depends>
                     </field>
                 </group>
@@ -292,18 +292,18 @@
                     <field id="bml_productpage_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_express_bml/productpage_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlPosition::getBmlPositionsCPP</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Position::getBmlPositionsCPP</source_model>
                         <attribute type="shared">1</attribute>
                     </field>
                     <field id="bml_productpage_size1" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Size</label>
                         <config_path>payment/paypal_express_bml/productpage_size</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlSize::getBmlSizeCPPC</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Size::getBmlSizeCPPC</source_model>
                         <attribute type="shared">1</attribute>
                         <depends><field id="bml_productpage_position">0</field></depends>
                     </field>
                     <field id="bml_productpage_size2" extends="payment_all_paypal/express_checkout/express_checkout_required/advertise_bml/settings_bml_productpage/bml_productpage_size1">
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlSize::getBmlSizeCPPN</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Size::getBmlSizeCPPN</source_model>
                         <depends><field id="bml_productpage_position">1</field></depends>
                     </field>
                 </group>
@@ -318,18 +318,18 @@
                     <field id="bml_checkout_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_express_bml/checkout_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlPosition::getBmlPositionsCheckout</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Position::getBmlPositionsCheckout</source_model>
                         <attribute type="shared">1</attribute>
                     </field>
                     <field id="bml_checkout_size1" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Size</label>
                         <config_path>payment/paypal_express_bml/checkout_size</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlSize::getBmlSizeCheckoutC</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Size::getBmlSizeCheckoutC</source_model>
                         <attribute type="shared">1</attribute>
                         <depends><field id="bml_checkout_position">0</field></depends>
                     </field>
                     <field id="bml_checkout_size2" extends="payment_all_paypal/express_checkout/express_checkout_required/advertise_bml/settings_bml_checkout/bml_checkout_size1">
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BmlSize::getBmlSizeCheckoutN</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Bml_Size::getBmlSizeCheckoutN</source_model>
                         <attribute type="shared">1</attribute>
                         <depends><field id="bml_checkout_position">1</field></depends>
                     </field>
@@ -360,7 +360,7 @@
                     <field id="paylater_homepage_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_paylater/homepage_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Position::getPositionsHP</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Position::getPositionsHP</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_homepage_display">1</field>
@@ -369,7 +369,7 @@
                     <field id="paylater_homepage_stylelayout" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Style Layout</label>
                         <config_path>payment/paypal_paylater/homepage_stylelayout</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\StyleLayout</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Style_Layout</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_homepage_display">1</field>
@@ -378,7 +378,7 @@
                     <field id="paylater_homepage_logotype" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="40">
                         <label>Logo Type</label>
                         <config_path>payment/paypal_paylater/homepage_logotype</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoType</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Type</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_homepage_display">1</field>
@@ -388,7 +388,7 @@
                     <field id="paylater_homepage_logoposition" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="50">
                         <label>Logo Position</label>
                         <config_path>payment/paypal_paylater/homepage_logoposition</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoPosition</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Position</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_homepage_display">1</field>
@@ -399,7 +399,7 @@
                     <field id="paylater_homepage_textcolor" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="60">
                         <label>Text Color</label>
                         <config_path>payment/paypal_paylater/homepage_textcolor</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextColor</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_homepage_display">1</field>
@@ -409,7 +409,7 @@
                     <field id="paylater_homepage_textsize" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="70">
                         <label>Text Size</label>
                         <config_path>payment/paypal_paylater/homepage_textsize</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextSize</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Size</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_homepage_display">1</field>
@@ -419,7 +419,7 @@
                     <field id="paylater_homepage_ratio" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="80">
                         <label>Ratio</label>
                         <config_path>payment/paypal_paylater/homepage_ratio</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Ratio</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Ratio</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_homepage_display">1</field>
@@ -429,7 +429,7 @@
                     <field id="paylater_homepage_color" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="90">
                         <label>Color</label>
                         <config_path>payment/paypal_paylater/homepage_color</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Color</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_homepage_display">1</field>
@@ -451,7 +451,7 @@
                     <field id="paylater_productpage_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_paylater/productpage_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Position::getPositionsCPP</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Position::getPositionsCPP</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_productpage_display">1</field>
@@ -460,7 +460,7 @@
                     <field id="paylater_productpage_stylelayout" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Style Layout</label>
                         <config_path>payment/paypal_paylater/productpage_stylelayout</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\StyleLayout</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Style_Layout</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_productpage_display">1</field>
@@ -469,7 +469,7 @@
                     <field id="paylater_productpage_logotype" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="40">
                         <label>Logo Type</label>
                         <config_path>payment/paypal_paylater/productpage_logotype</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoType</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Type</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_productpage_display">1</field>
@@ -479,7 +479,7 @@
                     <field id="paylater_productpage_logoposition" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="50">
                         <label>Logo Position</label>
                         <config_path>payment/paypal_paylater/productpage_logoposition</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoPosition</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Position</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_productpage_display">1</field>
@@ -490,7 +490,7 @@
                     <field id="paylater_productpage_textcolor" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="60">
                         <label>Text Color</label>
                         <config_path>payment/paypal_paylater/productpage_textcolor</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextColor</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_productpage_display">1</field>
@@ -500,7 +500,7 @@
                     <field id="paylater_productpage_textsize" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="70">
                         <label>Text Size</label>
                         <config_path>payment/paypal_paylater/productpage_textsize</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextSize</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Size</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_productpage_display">1</field>
@@ -510,7 +510,7 @@
                     <field id="paylater_productpage_ratio" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="80">
                         <label>Ratio</label>
                         <config_path>payment/paypal_paylater/productpage_ratio</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Ratio</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Ratio</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_productpage_display">1</field>
@@ -520,7 +520,7 @@
                     <field id="paylater_productpage_color" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="90">
                         <label>Color</label>
                         <config_path>payment/paypal_paylater/productpage_color</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Color</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_productpage_display">1</field>
@@ -542,7 +542,7 @@
                     <field id="paylater_cartpage_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_paylater/cartpage_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Position::getPositionsCart</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Position::getPositionsCart</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_cartpage_display">1</field>
@@ -551,7 +551,7 @@
                     <field id="paylater_cartpage_stylelayout" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Style Layout</label>
                         <config_path>payment/paypal_paylater/cartpage_stylelayout</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\StyleLayout</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Style_Layout</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_cartpage_display">1</field>
@@ -560,7 +560,7 @@
                     <field id="paylater_cartpage_logotype" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="40">
                         <label>Logo Type</label>
                         <config_path>payment/paypal_paylater/cartpage_logotype</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoType</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Type</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_cartpage_display">1</field>
@@ -570,7 +570,7 @@
                     <field id="paylater_cartpage_logoposition" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="50">
                         <label>Logo Position</label>
                         <config_path>payment/paypal_paylater/cartpage_logoposition</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoPosition</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Position</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_cartpage_display">1</field>
@@ -581,7 +581,7 @@
                     <field id="paylater_cartpage_textcolor" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="60">
                         <label>Text Color</label>
                         <config_path>payment/paypal_paylater/cartpage_textcolor</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextColor</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_cartpage_display">1</field>
@@ -591,7 +591,7 @@
                     <field id="paylater_cartpage_textsize" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="70">
                         <label>Text Size</label>
                         <config_path>payment/paypal_paylater/cartpage_textsize</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextSize</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Size</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_cartpage_display">1</field>
@@ -601,7 +601,7 @@
                     <field id="paylater_cartpage_ratio" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="80">
                         <label>Ratio</label>
                         <config_path>payment/paypal_paylater/cartpage_ratio</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Ratio</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Ratio</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_cartpage_display">1</field>
@@ -611,7 +611,7 @@
                     <field id="paylater_cartpage_color" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="90">
                         <label>Color</label>
                         <config_path>payment/paypal_paylater/cartpage_color</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Color</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_cartpage_display">1</field>
@@ -633,7 +633,7 @@
                     <field id="paylater_checkout_payment_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_paylater/checkout_payment_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Position::getPositionsCheckout</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Position::getPositionsCheckout</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_checkout_payment_display">1</field>
@@ -642,7 +642,7 @@
                     <field id="paylater_checkout_payment_stylelayout" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Style Layout</label>
                         <config_path>payment/paypal_paylater/checkout_payment_stylelayout</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\StyleLayout</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Style_Layout</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_checkout_payment_display">1</field>
@@ -651,7 +651,7 @@
                     <field id="paylater_checkout_payment_logotype" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="40">
                         <label>Logo Type</label>
                         <config_path>payment/paypal_paylater/checkout_payment_logotype</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoType</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Type</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_checkout_payment_display">1</field>
@@ -661,7 +661,7 @@
                     <field id="paylater_checkout_payment_logoposition" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="50">
                         <label>Logo Position</label>
                         <config_path>payment/paypal_paylater/checkout_payment_logoposition</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoPosition</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Position</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_checkout_payment_display">1</field>
@@ -672,7 +672,7 @@
                     <field id="paylater_checkout_payment_textcolor" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="60">
                         <label>Text Color</label>
                         <config_path>payment/paypal_paylater/checkout_payment_textcolor</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextColor</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_checkout_payment_display">1</field>
@@ -682,7 +682,7 @@
                     <field id="paylater_checkout_payment_textsize" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="70">
                         <label>Text Size</label>
                         <config_path>payment/paypal_paylater/checkout_payment_textsize</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextSize</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Size</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_checkout_payment_display">1</field>
@@ -692,7 +692,7 @@
                     <field id="paylater_checkout_payment_ratio" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="80">
                         <label>Ratio</label>
                         <config_path>payment/paypal_paylater/checkout_payment_ratio</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Ratio</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Ratio</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_checkout_payment_display">1</field>
@@ -702,7 +702,7 @@
                     <field id="paylater_checkout_payment_color" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="90">
                         <label>Color</label>
                         <config_path>payment/paypal_paylater/checkout_payment_color</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Color</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_checkout_payment_display">1</field>
@@ -724,7 +724,7 @@
                     <field id="paylater_categorypage_position" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="20">
                         <label>Position</label>
                         <config_path>payment/paypal_paylater/categorypage_position</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Position::getPositionsCategoryPage</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Position::getPositionsCategoryPage</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_categorypage_display">1</field>
@@ -733,7 +733,7 @@
                     <field id="paylater_categorypage_stylelayout" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="30">
                         <label>Style Layout</label>
                         <config_path>payment/paypal_paylater/categorypage_stylelayout</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\StyleLayout</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Style_Layout</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_categorypage_display">1</field>
@@ -742,7 +742,7 @@
                     <field id="paylater_categorypage_logotype" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="40">
                         <label>Logo Type</label>
                         <config_path>payment/paypal_paylater/categorypage_logotype</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoType</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Type</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_categorypage_display">1</field>
@@ -752,7 +752,7 @@
                     <field id="paylater_categorypage_logoposition" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="50">
                         <label>Logo Position</label>
                         <config_path>payment/paypal_paylater/categorypage_logoposition</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\LogoPosition</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Logo_Position</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_categorypage_display">1</field>
@@ -763,7 +763,7 @@
                     <field id="paylater_categorypage_textcolor" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="60">
                         <label>Text Color</label>
                         <config_path>payment/paypal_paylater/categorypage_textcolor</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextColor</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_categorypage_display">1</field>
@@ -773,7 +773,7 @@
                     <field id="paylater_categorypage_textsize" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="70">
                         <label>Text Size</label>
                         <config_path>payment/paypal_paylater/categorypage_textsize</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\TextSize</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Text_Size</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_categorypage_display">1</field>
@@ -783,7 +783,7 @@
                     <field id="paylater_categorypage_ratio" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="80">
                         <label>Ratio</label>
                         <config_path>payment/paypal_paylater/categorypage_ratio</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Ratio</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Ratio</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_categorypage_display">1</field>
@@ -793,7 +793,7 @@
                     <field id="paylater_categorypage_color" translate="label" type="select" showInDefault="1" showInWebsite="1" sortOrder="90">
                         <label>Color</label>
                         <config_path>payment/paypal_paylater/categorypage_color</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PayLater\Color</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Pay_Later\Color</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="paylater_categorypage_display">1</field>
@@ -821,7 +821,7 @@
             <field id="payment_action" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1">
                 <label>Payment Action</label>
                 <config_path>payment/paypal_express/payment_action</config_path>
-                <source_model>Magento\Paypal\Model\System\Config\Source\PaymentActions\Express</source_model>
+                <source_model>Magento\Paypal\Model\System\Config\Source\Payment_Actions\Express</source_model>
                 <attribute type="shared">1</attribute>
             </field>
             <field id="visible_on_product" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -878,7 +878,7 @@
                 <field id="specificcountry" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1">
                     <label>Countries Payment Applicable From</label>
                     <config_path>payment/paypal_express/specificcountry</config_path>
-                    <source_model>Magento\Paypal\Model\System\Config\Source\BuyerCountry</source_model>
+                    <source_model>Magento\Paypal\Model\System\Config\Source\Buyer_Country</source_model>
                     <attribute type="shared">1</attribute>
                     <depends>
                         <field id="allowspecific">1</field>
@@ -930,7 +930,7 @@
                     <label>Require Customer's Billing Address</label>
                     <comment>This feature needs be enabled first for the merchant account through PayPal technical support.</comment>
                     <config_path>payment/paypal_express/require_billing_address</config_path>
-                    <source_model>Magento\Paypal\Model\System\Config\Source\RequireBillingAddress</source_model>
+                    <source_model>Magento\Paypal\Model\System\Config\Source\Require_Billing_Address</source_model>
                     <attribute type="shared">1</attribute>
                 </field>
                 <field id="allow_ba_signup" translate="label comment tooltip" type="select" sortOrder="90" showInDefault="1" showInWebsite="1">
@@ -974,7 +974,7 @@
                     <field id="payment_action" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1">
                         <label>Payment Action</label>
                         <config_path>payment/paypal_billing_agreement/payment_action</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\PaymentActions</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Payment_Actions</source_model>
                         <attribute type="shared">1</attribute>
                     </field>
                     <field id="allowspecific" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1">
@@ -986,7 +986,7 @@
                     <field id="specificcountry" translate="label" type="multiselect" sortOrder="60" showInDefault="1" showInWebsite="1">
                         <label>Countries Payment Applicable From</label>
                         <config_path>payment/paypal_billing_agreement/specificcountry</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\BuyerCountry</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Buyer_Country</source_model>
                         <attribute type="shared">1</attribute>
                         <depends>
                             <field id="allowspecific">1</field>
@@ -1076,7 +1076,7 @@
                         <label>Schedule</label>
                         <comment>PayPal retains reports for 45 days.</comment>
                         <config_path>paypal/fetch_reports/schedule</config_path>
-                        <source_model>Magento\Paypal\Model\System\Config\Source\FetchingSchedule</source_model>
+                        <source_model>Magento\Paypal\Model\System\Config\Source\Fetching_Schedule</source_model>
                         <attribute type="shared">1</attribute>
                     </field>
                     <field id="settlement_reports_time" translate="label" type="time" sortOrder="100" showInDefault="1">
@@ -1154,8 +1154,8 @@
                             <label>Label</label>
                             <comment><![CDATA[The installment feature is available only in these locales: en_MX, es_MX, en_BR, pt_BR.]]></comment>
                             <config_path>paypal/style/checkout_page_button_label</config_path>
-                            <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Depends\ButtonStylesLabel</frontend_model>
-                            <source_model>Magento\Paypal\Model\System\Config\Source\ButtonStyles::getLabel</source_model>
+                            <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Field\Depends\Button_Styles_Label</frontend_model>
+                            <source_model>Magento\Paypal\Model\System\Config\Source\Button_Styles::getLabel</source_model>
                             <depends>
                                 <field id="checkout_page_button_customize">1</field>
                             </depends>
@@ -1164,7 +1164,7 @@
                         <field id="checkout_page_button_mx_installment_period" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
                             <label>Mexico Installment Period</label>
                             <config_path>paypal/style/checkout_page_button_mx_installment_period</config_path>
-                            <source_model>Magento\Paypal\Model\System\Config\Source\ButtonStyles::getMxInstallmentPeriod</source_model>
+                            <source_model>Magento\Paypal\Model\System\Config\Source\Button_Styles::getMxInstallmentPeriod</source_model>
                             <depends>
                                 <field id="checkout_page_button_customize">1</field>
                                 <field id="checkout_page_button_label">installment</field>
@@ -1174,7 +1174,7 @@
                         <field id="checkout_page_button_br_installment_period" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
                             <label>Brazil Installment Period</label>
                             <config_path>paypal/style/checkout_page_button_br_installment_period</config_path>
-                            <source_model>Magento\Paypal\Model\System\Config\Source\ButtonStyles::getBrInstallmentPeriod</source_model>
+                            <source_model>Magento\Paypal\Model\System\Config\Source\Button_Styles::getBrInstallmentPeriod</source_model>
                             <depends>
                                 <field id="checkout_page_button_customize">1</field>
                                 <field id="checkout_page_button_label">installment</field>
@@ -1184,7 +1184,7 @@
                         <field id="checkout_page_button_layout" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
                             <label>Layout</label>
                             <config_path>paypal/style/checkout_page_button_layout</config_path>
-                            <source_model>Magento\Paypal\Model\System\Config\Source\ButtonStyles::getLayout</source_model>
+                            <source_model>Magento\Paypal\Model\System\Config\Source\Button_Styles::getLayout</source_model>
                             <depends>
                                 <field id="checkout_page_button_customize">1</field>
                                 <field id="checkout_page_button_label" negative="1">credit</field>
@@ -1194,7 +1194,7 @@
                         <field id="checkout_page_button_shape" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="50">
                             <label>Shape</label>
                             <config_path>paypal/style/checkout_page_button_shape</config_path>
-                            <source_model>Magento\Paypal\Model\System\Config\Source\ButtonStyles::getShape</source_model>
+                            <source_model>Magento\Paypal\Model\System\Config\Source\Button_Styles::getShape</source_model>
                             <depends>
                                 <field id="checkout_page_button_customize">1</field>
                             </depends>
@@ -1203,7 +1203,7 @@
                         <field id="checkout_page_button_color" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="60">
                             <label>Color</label>
                             <config_path>paypal/style/checkout_page_button_color</config_path>
-                            <source_model>Magento\Paypal\Model\System\Config\Source\ButtonStyles::getColor</source_model>
+                            <source_model>Magento\Paypal\Model\System\Config\Source\Button_Styles::getColor</source_model>
                             <depends>
                                 <field id="checkout_page_button_customize">1</field>
                                 <field id="checkout_page_button_label" negative="1">credit</field>
@@ -1359,8 +1359,8 @@
                                 offered and the currency offered by the merchant is USD.]]>
                             </comment>
                             <config_path>paypal/style/disable_funding_options</config_path>
-                            <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\MultiSelect\DisabledFundingOptions</frontend_model>
-                            <source_model>Magento\Paypal\Model\System\Config\Source\DisableFundingOptions</source_model>
+                            <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Multi_Select\Disabled_Funding_Options</frontend_model>
+                            <source_model>Magento\Paypal\Model\System\Config\Source\Disable_Funding_Options</source_model>
                             <attribute type="shared">1</attribute>
                             <can_be_empty>1</can_be_empty>
                         </field>

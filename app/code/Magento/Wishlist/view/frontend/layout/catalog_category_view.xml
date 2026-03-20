@@ -8,7 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Cookie\Block\RequireCookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml">
+            <block class="Magento\Cookie\Block\Require_Cookie" name="require-cookie" template="Magento_Cookie::require_cookie.phtml">
                 <arguments>
                     <argument name="triggers" xsi:type="array">
                         <item name="addToWishlistLink" xsi:type="string">.action.towishlist</item>
@@ -16,12 +16,12 @@
                 </arguments>
             </block>
             <referenceBlock name="category.product.addto">
-                <block class="Magento\Wishlist\Block\Catalog\Product\ProductList\Item\AddTo\Wishlist"
+                <block class="Magento\Wishlist\Block\Catalog\Product\Product_List\Item\Add_To\Wishlist"
                        name="category.product.addto.wishlist" as="wishlist" before="compare"
                        template="Magento_Wishlist::catalog/product/list/addto/wishlist.phtml"/>
             </referenceBlock>
             <referenceContainer name="category.product.list.additional">
-                <block class="Magento\Wishlist\Block\AddToWishlist"
+                <block class="Magento\Wishlist\Block\Add_To_Wishlist"
                     name="category.product.list.additional.wishlist_addto"
                     template="Magento_Wishlist::addto.phtml"/>
             </referenceContainer>

@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Customer\CustomerData\SectionPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Section_Pool_Interface">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="instant-purchase" xsi:type="string">Magento\InstantPurchase\CustomerData\InstantPurchase</item>
+                <item name="instant-purchase" xsi:type="string">Magento\Instant_Purchase\Customer_Data\Instant_Purchase</item>
             </argument>
         </arguments>
     </type>

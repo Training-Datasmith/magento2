@@ -9,7 +9,7 @@
     <container name="root">
         <block class="Magento\Catalog\Block\Adminhtml\Product\Composite\Fieldset" name="product.composite.fieldset">
             <block class="Magento\Catalog\Block\Adminhtml\Product\Composite\Fieldset\Options" name="product.composite.fieldset.options" template="Magento_Catalog::catalog/product/composite/fieldset/options.phtml">
-                <block class="Magento\Catalog\Block\Product\View\Options\Type\DefaultType" name="product.composite.fieldset.options.default" as="default" template="Magento_Catalog::catalog/product/composite/fieldset/options/type/default.phtml"/>
+                <block class="Magento\Catalog\Block\Product\View\Options\Type\Default_Type" name="product.composite.fieldset.options.default" as="default" template="Magento_Catalog::catalog/product/composite/fieldset/options/type/default.phtml"/>
                 <block class="Magento\Catalog\Block\Product\View\Options\Type\Text" name="product.composite.fieldset.options.text" as="text" template="Magento_Catalog::catalog/product/composite/fieldset/options/type/text.phtml"/>
                 <block class="Magento\Catalog\Block\Product\View\Options\Type\File" name="product.composite.fieldset.options.file" as="file" template="Magento_Catalog::catalog/product/composite/fieldset/options/type/file.phtml"/>
                 <block class="Magento\Catalog\Block\Product\View\Options\Type\Select" name="product.composite.fieldset.options.select" as="select" template="Magento_Catalog::catalog/product/composite/fieldset/options/type/select.phtml"/>

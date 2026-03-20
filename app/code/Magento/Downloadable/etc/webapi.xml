@@ -8,49 +8,49 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <route url="/V1/products/:sku/downloadable-links" method="GET">
-        <service class="Magento\Downloadable\Api\LinkRepositoryInterface" method="getList"/>
+        <service class="Magento\Downloadable\Api\Link_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Downloadable::downloadable" />
         </resources>
     </route>
     <route url="/V1/products/:sku/downloadable-links/samples" method="GET">
-        <service class="Magento\Downloadable\Api\SampleRepositoryInterface" method="getList"/>
+        <service class="Magento\Downloadable\Api\Sample_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Downloadable::downloadable" />
         </resources>
     </route>
     <route url="/V1/products/:sku/downloadable-links" method="POST">
-        <service class="Magento\Downloadable\Api\LinkRepositoryInterface" method="save"/>
+        <service class="Magento\Downloadable\Api\Link_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Downloadable::downloadable" />
         </resources>
     </route>
     <route url="/V1/products/:sku/downloadable-links/:id" method="PUT">
-        <service class="Magento\Downloadable\Api\LinkRepositoryInterface" method="save"/>
+        <service class="Magento\Downloadable\Api\Link_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Downloadable::downloadable" />
         </resources>
     </route>
     <route url="/V1/products/downloadable-links/:id" method="DELETE">
-        <service class="Magento\Downloadable\Api\LinkRepositoryInterface" method="delete"/>
+        <service class="Magento\Downloadable\Api\Link_Repository_Interface" method="delete"/>
         <resources>
             <resource ref="Magento_Downloadable::downloadable" />
         </resources>
     </route>
     <route url="/V1/products/:sku/downloadable-links/samples" method="POST">
-        <service class="Magento\Downloadable\Api\SampleRepositoryInterface" method="save"/>
+        <service class="Magento\Downloadable\Api\Sample_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Downloadable::downloadable" />
         </resources>
     </route>
     <route url="/V1/products/:sku/downloadable-links/samples/:id" method="PUT">
-    <service class="Magento\Downloadable\Api\SampleRepositoryInterface" method="save"/>
+    <service class="Magento\Downloadable\Api\Sample_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Downloadable::downloadable" />
         </resources>
     </route>
     <route url="/V1/products/downloadable-links/samples/:id" method="DELETE">
-        <service class="Magento\Downloadable\Api\SampleRepositoryInterface" method="delete"/>
+        <service class="Magento\Downloadable\Api\Sample_Repository_Interface" method="delete"/>
         <resources>
             <resource ref="Magento_Downloadable::downloadable" />
         </resources>

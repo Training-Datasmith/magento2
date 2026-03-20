@@ -80,7 +80,7 @@
         <conditionalClick selector="{{AdminProductImagesSection.roleSmall}}" dependentSelector="{{AdminProductImagesSection.isSmallSelected}}" visible="true" stepKey="small1"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleThumbnail}}" dependentSelector="{{AdminProductImagesSection.isThumbnailSelected}}" visible="true" stepKey="thumbnail1"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleSwatch}}" dependentSelector="{{AdminProductImagesSection.isSwatchSelected}}" visible="true" stepKey="swatch1"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc1"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc1"/>
         <actionGroup ref="AdminProductFormSaveActionGroup" stepKey="saveProduct"/>
         <!-- Go to the product page and see the Base image-->
         <amOnPage url="{{StorefrontProductPage.url($SimpleProduct1.custom_attributes[url_key]$)}}" stepKey="goToProductPage"/>
@@ -100,7 +100,7 @@
         <click selector="{{AdminProductImagesSection.nthProductImage('1')}}" stepKey="openImageDetails2"/>
         <waitForPageLoad stepKey="waitForSlideout2"/>
         <click selector="{{AdminProductImagesSection.hideFromProductPageLabel}}" stepKey="selectHideFromProductPage"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc2"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc2"/>
         <actionGroup ref="AdminProductFormSaveActionGroup" stepKey="saveProduct1"/>
         <!-- Go to the product page and see the Base image-->
         <amOnPage url="{{StorefrontProductPage.url($SimpleProduct1.custom_attributes[url_key]$)}}" stepKey="goToProductPage1"/>
@@ -126,7 +126,7 @@
         <conditionalClick selector="{{AdminProductImagesSection.roleSmall}}" dependentSelector="{{AdminProductImagesSection.isSmallSelected}}" visible="false" stepKey="small21"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleThumbnail}}" dependentSelector="{{AdminProductImagesSection.isThumbnailSelected}}" visible="true" stepKey="thumbnail21"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleSwatch}}" dependentSelector="{{AdminProductImagesSection.isSwatchSelected}}" visible="true" stepKey="swatch21"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc21"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc21"/>
         <actionGroup ref="AdminProductFormSaveActionGroup" stepKey="saveProduct21"/>
         <!-- Go to the product page and see the Small image-->
         <amOnPage url="{{StorefrontProductPage.url($SimpleProduct2.custom_attributes[url_key]$)}}" stepKey="goToProductPage21"/>
@@ -147,7 +147,7 @@
         <click selector="{{AdminProductImagesSection.nthProductImage('1')}}" stepKey="openImageDetails22"/>
         <waitForPageLoad stepKey="waitForSlideout22"/>
         <click selector="{{AdminProductImagesSection.hideFromProductPageLabel}}" stepKey="selectHideFromProductPage22"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc22"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc22"/>
         <actionGroup ref="AdminProductFormSaveActionGroup" stepKey="saveProduct22"/>
         <!-- Go to the product page and see the Base image-->
         <amOnPage url="{{StorefrontProductPage.url($SimpleProduct2.custom_attributes[url_key]$)}}" stepKey="goToProductPage22"/>
@@ -177,7 +177,7 @@
         <conditionalClick selector="{{AdminProductImagesSection.roleSmall}}" dependentSelector="{{AdminProductImagesSection.isSmallSelected}}" visible="true" stepKey="small31"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleThumbnail}}" dependentSelector="{{AdminProductImagesSection.isThumbnailSelected}}" visible="false" stepKey="thumbnail31"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleSwatch}}" dependentSelector="{{AdminProductImagesSection.isSwatchSelected}}" visible="true" stepKey="swatch31"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc31"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc31"/>
         <actionGroup ref="AdminProductFormSaveActionGroup" stepKey="saveProduct31"/>
         <waitForPageLoad stepKey="wait7"/>
         <amOnPage url="{{ProductCatalogPage.url}}" stepKey="goToProductPage32" />
@@ -205,7 +205,7 @@
         <click selector="{{AdminProductImagesSection.nthProductImage('1')}}" stepKey="openImageDetails321"/>
         <waitForPageLoad stepKey="waitForSlideout32"/>
         <click selector="{{AdminProductImagesSection.hideFromProductPageLabel}}" stepKey="selectHideFromProductPage32"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc32"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc32"/>
         <actionGroup ref="AdminProductFormSaveActionGroup" stepKey="saveProduct32"/>
         <!--Go to the product page and see the Base image-->
         <amOnPage url="{{StorefrontProductPage.url($SimpleProduct3.custom_attributes[url_key]$)}}" stepKey="goToProductPage322"/>
@@ -231,7 +231,7 @@
         <conditionalClick selector="{{AdminProductImagesSection.roleSmall}}" dependentSelector="{{AdminProductImagesSection.isSmallSelected}}" visible="false" stepKey="small41"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleThumbnail}}" dependentSelector="{{AdminProductImagesSection.isThumbnailSelected}}" visible="false" stepKey="thumbnail41"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleSwatch}}" dependentSelector="{{AdminProductImagesSection.isSwatchSelected}}" visible="false" stepKey="swatch41"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc41"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc41"/>
         <actionGroup ref="AdminProductFormSaveActionGroup" stepKey="saveProduct41"/>
         <waitForPageLoad stepKey="wait9"/>
         <!-- Go to product page and filter product-->

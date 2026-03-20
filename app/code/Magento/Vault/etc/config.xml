@@ -10,7 +10,7 @@
         <payment>
             <vault>
                 <debug>1</debug>
-                <model>Magento\Vault\Model\VaultPaymentInterface</model>
+                <model>Magento\Vault\Model\Vault_Payment_Interface</model>
             </vault>
         </payment>
     </default>

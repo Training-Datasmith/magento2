@@ -30,14 +30,14 @@
                 </field>
                 <field id="generate_category_product_rewrites" translate="label comment" type="select" sortOrder="6" showInDefault="1" canRestore="1">
                     <label>Generate "category/product" URL Rewrites</label>
-                    <backend_model>Magento\CatalogUrlRewrite\Model\TableCleaner</backend_model>
+                    <backend_model>Magento\Catalog_Url_Rewrite\Model\Table_Cleaner</backend_model>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment><![CDATA[<strong class="colorRed">Warning!</strong> Turning this option off will result in permanent removal of category/product URL rewrites without an ability to restore them.]]></comment>
                     <frontend_class>generate_category_product_rewrites</frontend_class>
                 </field>
                 <field id="product_rewrite_context" translate="label comment" type="select" sortOrder="7" showInDefault="1" canRestore="1">
                     <label>Product URL Rewrite Scope</label>
-                    <source_model>Magento\CatalogUrlRewrite\Model\System\Config\Source\UrlRewriteContext</source_model>
+                    <source_model>Magento\Catalog_Url_Rewrite\Model\System\Config\Source\Url_Rewrite_Context</source_model>
                     <comment>When editing a product URL rewrites can be generated in website or in view scope.</comment>
                 </field>
             </group>

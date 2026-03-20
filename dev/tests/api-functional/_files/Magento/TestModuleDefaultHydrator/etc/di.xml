@@ -6,71 +6,71 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\TestModuleDefaultHydrator\Api\CustomerPersistenceInterface" type="Magento\TestModuleDefaultHydrator\Model\CustomerPersistence" />
-    <preference for="Magento\TestModuleDefaultHydrator\Api\Data\ExtensionAttributeInterface" type="Magento\TestModuleDefaultHydrator\Model\Data\ExtensionAttribute" />
-    <type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+    <preference for="Magento\Test_Module_Default_Hydrator\Api\Customer_Persistence_Interface" type="Magento\Test_Module_Default_Hydrator\Model\Customer_Persistence" />
+    <preference for="Magento\Test_Module_Default_Hydrator\Api\Data\Extension_Attribute_Interface" type="Magento\Test_Module_Default_Hydrator\Model\Data\Extension_Attribute" />
+    <type name="Magento\Framework\Entity_Manager\Operation\Extension_Pool">
         <arguments>
             <argument name="extensionActions" xsi:type="array">
-                <item name="Magento\Customer\Api\Data\CustomerInterface" xsi:type="array">
+                <item name="Magento\Customer\Api\Data\Customer_Interface" xsi:type="array">
                     <item name="read" xsi:type="array">
-                        <item name="extensionAttribute" xsi:type="string">Magento\TestModuleDefaultHydrator\Model\ResourceModel\ReadHandler</item>
-                        <item name="address" xsi:type="string">Magento\TestModuleDefaultHydrator\Model\ResourceModel\Address\ReadHandler</item>
+                        <item name="extensionAttribute" xsi:type="string">Magento\Test_Module_Default_Hydrator\Model\Resource_Model\Read_Handler</item>
+                        <item name="address" xsi:type="string">Magento\Test_Module_Default_Hydrator\Model\Resource_Model\Address\Read_Handler</item>
                     </item>
                     <item name="create" xsi:type="array">
-                        <item name="extensionAttribute" xsi:type="string">Magento\TestModuleDefaultHydrator\Model\ResourceModel\SaveHandler</item>
-                        <item name="address" xsi:type="string">Magento\TestModuleDefaultHydrator\Model\ResourceModel\Address\SaveHandler</item>
+                        <item name="extensionAttribute" xsi:type="string">Magento\Test_Module_Default_Hydrator\Model\Resource_Model\Save_Handler</item>
+                        <item name="address" xsi:type="string">Magento\Test_Module_Default_Hydrator\Model\Resource_Model\Address\Save_Handler</item>
                     </item>
                     <item name="update" xsi:type="array">
-                        <item name="extensionAttribute" xsi:type="string">Magento\TestModuleDefaultHydrator\Model\ResourceModel\SaveHandler</item>
-                        <item name="address" xsi:type="string">Magento\TestModuleDefaultHydrator\Model\ResourceModel\Address\SaveHandler</item>
+                        <item name="extensionAttribute" xsi:type="string">Magento\Test_Module_Default_Hydrator\Model\Resource_Model\Save_Handler</item>
+                        <item name="address" xsi:type="string">Magento\Test_Module_Default_Hydrator\Model\Resource_Model\Address\Save_Handler</item>
                     </item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\MetadataPool">
+    <type name="Magento\Framework\Entity_Manager\Metadata_Pool">
         <arguments>
             <argument name="metadata" xsi:type="array">
-                <item name="Magento\Customer\Api\Data\CustomerInterface" xsi:type="array">
+                <item name="Magento\Customer\Api\Data\Customer_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">customer_entity</item>
                     <item name="eavEntityType" xsi:type="string">customer</item>
                     <item name="identifierField" xsi:type="string">entity_id</item>
                 </item>
-                <item name="Magento\Customer\Api\Data\AddressInterface" xsi:type="array">
+                <item name="Magento\Customer\Api\Data\Address_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">customer_address_entity</item>
                     <item name="eavEntityType" xsi:type="string">customer_address</item>
                     <item name="identifierField" xsi:type="string">entity_id</item>
                 </item>
-                <item name="Magento\TestModuleDefaultHydrator\Api\Data\ExtensionAttributeInterface" xsi:type="array">
+                <item name="Magento\Test_Module_Default_Hydrator\Api\Data\Extension_Attribute_Interface" xsi:type="array">
                     <item name="entityTableName" xsi:type="string">testmodule_default_hydrator_extension_attribute_entity</item>
                     <item name="identifierField" xsi:type="string">entity_id</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\Mapper">
+    <type name="Magento\Framework\Entity_Manager\Mapper">
         <arguments>
             <argument name="config" xsi:type="array">
-                <item name="Magento\Customer\Api\Data\CustomerInterface" xsi:type="array">
+                <item name="Magento\Customer\Api\Data\Customer_Interface" xsi:type="array">
                     <item name="entity_id" xsi:type="string">id</item>
                 </item>
-                <item name="Magento\Customer\Api\Data\AddressInterface" xsi:type="array">
+                <item name="Magento\Customer\Api\Data\Address_Interface" xsi:type="array">
                     <item name="parent_id" xsi:type="string">customer_id</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="customerAddressMapper" type="Magento\Framework\EntityManager\CompositeMapper">
+    <virtualType name="customerAddressMapper" type="Magento\Framework\Entity_Manager\Composite_Mapper">
         <arguments>
             <argument name="mappers" xsi:type="array">
-                <item name="addressMapper" xsi:type="object">Magento\TestModuleDefaultHydrator\Model\Address\Mapper</item>
+                <item name="addressMapper" xsi:type="object">Magento\Test_Module_Default_Hydrator\Model\Address\Mapper</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\EntityManager\MapperPool">
+    <type name="Magento\Framework\Entity_Manager\Mapper_Pool">
         <arguments>
             <argument name="mappers" xsi:type="array">
-                <item name="Magento\Customer\Api\Data\AddressInterface" xsi:type="string">customerAddressMapper</item>
+                <item name="Magento\Customer\Api\Data\Address_Interface" xsi:type="string">customerAddressMapper</item>
             </argument>
         </arguments>
     </type>

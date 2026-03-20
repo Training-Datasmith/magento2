@@ -53,7 +53,7 @@
         <fillField selector="{{AdminProductFormSection.productSku}}" userInput="{{updateVirtualProductWithTierPriceInStock.sku}}" stepKey="fillProductSku"/>
         <fillField selector="{{AdminProductFormSection.productPrice}}" userInput="{{updateVirtualProductWithTierPriceInStock.price}}" stepKey="fillProductPrice"/>
         <!-- Press enter to validate advanced pricing link -->
-        <pressKey selector="{{AdminProductFormSection.productPrice}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="pressEnterKey"/>
+        <pressKey selector="{{AdminProductFormSection.productPrice}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="pressEnterKey"/>
         <click selector="{{AdminProductFormSection.advancedPricingLink}}" stepKey="clickAdvancedPricingLink"/>
         <click selector="{{AdminProductFormAdvancedPricingSection.customerGroupPriceAddButton}}" stepKey="clickCustomerGroupPriceAddButton"/>
         <scrollTo selector="{{AdminProductFormAdvancedPricingSection.productTierPriceQtyInput('0')}}" x="50" y="0" stepKey="scrollToProductTierPriceQuantityInputTextBox"/>

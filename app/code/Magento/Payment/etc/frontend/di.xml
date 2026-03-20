@@ -6,20 +6,20 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Payment\Model\CcGenericConfigProvider">
+    <type name="Magento\Payment\Model\Cc_Generic_Config_Provider">
         <arguments>
             <argument name="methodCodes" xsi:type="array"/>
         </arguments>
     </type>
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+    <type name="Magento\Checkout\Model\Composite_Config_Provider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="ccform" xsi:type="object">Magento\Payment\Model\CcGenericConfigProvider</item>
-                <item name="cc_card_config_provider" xsi:type="object">Magento\Payment\Model\CcConfigProvider</item>
+                <item name="ccform" xsi:type="object">Magento\Payment\Model\Cc_Generic_Config_Provider</item>
+                <item name="cc_card_config_provider" xsi:type="object">Magento\Payment\Model\Cc_Config_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
-        <plugin name="ProcessPaymentConfiguration" type="Magento\Payment\Plugin\PaymentConfigurationProcess"/>
+    <type name="Magento\Checkout\Block\Checkout\Layout_Processor">
+        <plugin name="ProcessPaymentConfiguration" type="Magento\Payment\Plugin\Payment_Configuration_Process"/>
     </type>
 </config>

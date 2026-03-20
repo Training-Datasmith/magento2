@@ -7,10 +7,10 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
-    <extension_attributes for="Magento\Sales\Api\Data\ShipmentInterface">
+    <extension_attributes for="Magento\Sales\Api\Data\Shipment_Interface">
         <attribute code="test_attribute_value" type="string"/>
     </extension_attributes>
-    <extension_attributes for="Magento\Sales\Api\Data\ShipmentCreationArgumentsInterface">
+    <extension_attributes for="Magento\Sales\Api\Data\Shipment_Creation_Arguments_Interface">
         <attribute code="test_attribute_value" type="string"/>
     </extension_attributes>
 </config>

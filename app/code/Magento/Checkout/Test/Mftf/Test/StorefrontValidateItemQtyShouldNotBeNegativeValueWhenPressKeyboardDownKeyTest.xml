@@ -38,8 +38,8 @@
         <!--Click on mini cart-->
         <actionGroup ref="StorefrontClickOnMiniCartActionGroup" stepKey="clickOnMiniCart"/>
         <waitForElementVisible selector="{{StorefrontMinicartSection.quantity}}" stepKey="waitForElementQty"/>
-        <pressKey selector="{{StorefrontMinicartSection.itemQuantity($$createProduct.name$$)}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::DOWN]" stepKey="pressKeyDown1"/>
-        <pressKey selector="{{StorefrontMinicartSection.itemQuantity($$createProduct.name$$)}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::DOWN]" stepKey="pressKeyDown2"/>
+        <pressKey selector="{{StorefrontMinicartSection.itemQuantity($$createProduct.name$$)}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::DOWN]" stepKey="pressKeyDown1"/>
+        <pressKey selector="{{StorefrontMinicartSection.itemQuantity($$createProduct.name$$)}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::DOWN]" stepKey="pressKeyDown2"/>
         <grabValueFrom selector="{{StorefrontMinicartSection.itemQuantity($$createProduct.name$$)}}" stepKey="grabProductQtyInMinicart"/>
         <assertGreaterThanOrEqual stepKey="validateMiniCartQtyValueGreaterThanZero">
             <actualResult type="const">$grabProductQtyInMinicart</actualResult>
@@ -48,8 +48,8 @@
         <!--Click on view and edit cart link-->
         <actionGroup ref="ClickViewAndEditCartFromMiniCartActionGroup" stepKey="goToShoppingCartFromMiniCart"/>
         <waitForPageLoad stepKey="waitForViewAndEditCartToOpen"/>
-        <pressKey selector="{{CheckoutCartProductSection.ProductQuantityByName($$createProduct.name$$)}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::DOWN]" stepKey="pressCartQuantityKeyDown1"/>
-        <pressKey selector="{{CheckoutCartProductSection.ProductQuantityByName($$createProduct.name$$)}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::DOWN]" stepKey="pressCartQuantityKeyDown2"/>
+        <pressKey selector="{{CheckoutCartProductSection.ProductQuantityByName($$createProduct.name$$)}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::DOWN]" stepKey="pressCartQuantityKeyDown1"/>
+        <pressKey selector="{{CheckoutCartProductSection.ProductQuantityByName($$createProduct.name$$)}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::DOWN]" stepKey="pressCartQuantityKeyDown2"/>
         <grabValueFrom selector="{{CheckoutCartProductSection.ProductQuantityByName($$createProduct.name$$)}}" stepKey="grabProductQtyInCart"/>
         <assertGreaterThanOrEqual stepKey="validateCartQtyValueGreaterThanZero">
             <actualResult type="const">$grabProductQtyInCart</actualResult>

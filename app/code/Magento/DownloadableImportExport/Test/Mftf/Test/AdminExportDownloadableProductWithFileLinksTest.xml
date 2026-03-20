@@ -47,7 +47,7 @@
             <!-- Delete Data -->
             <deleteData createDataKey="createProduct" stepKey="deleteConfigProduct"/>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
-            <helper class="\Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
+            <helper class="\Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
                 <argument name="path">var/export</argument>
             </helper>
             <actionGroup ref="CliIndexerReindexActionGroup" stepKey="reindexInvalidatedIndices">
@@ -77,18 +77,18 @@
         </actionGroup>
 
         <!-- Validate Export File on File System -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertExportFileExists">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertExportFileExists">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createProduct.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableLink">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableLink">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">title=$addDownloadableLink.link[title]$,sort_order=$addDownloadableLink.link[sort_order]$,sample_type=$addDownloadableLink.link[sample_type]$,sample_file=/a/d/$addDownloadableLink.link[sample_file_content][name]$,price=$addDownloadableLink.link[price]$0000,number_of_downloads=$addDownloadableLink.link[number_of_downloads]$,is_shareable=$addDownloadableLink.link[is_shareable]$,link_type=$addDownloadableLink.link[link_type]$,link_file=/m/a/$addDownloadableLink.link[link_file_content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableSampleLink">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDownloadableSampleLink">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">title=$addDownloadableSamples.sample[title]$,sample_type=$addDownloadableSamples.sample[sample_type]$,sample_file=/t/e/$addDownloadableSamples.sample[sample_file_content][name]$</argument>
         </helper>
@@ -100,15 +100,15 @@
 
         <!-- Validate Downloaded Export File on File System -->
         <grabAttributeFrom userInput="href" selector="{{AdminExportAttributeSection.download('0')}}" stepKey="grabExportUrl"/>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDownloadableProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDownloadableProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createProduct.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDownloadableLink">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDownloadableLink">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">title=$addDownloadableLink.link[title]$,sort_order=$addDownloadableLink.link[sort_order]$,sample_type=$addDownloadableLink.link[sample_type]$,sample_file=/a/d/$addDownloadableLink.link[sample_file_content][name]$,price=$addDownloadableLink.link[price]$0000,number_of_downloads=$addDownloadableLink.link[number_of_downloads]$,is_shareable=$addDownloadableLink.link[is_shareable]$,link_type=$addDownloadableLink.link[link_type]$,link_file=/m/a/$addDownloadableLink.link[link_file_content][name]$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDownloadableSampleLink">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDownloadableSampleLink">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">title=$addDownloadableSamples.sample[title]$,sample_type=$addDownloadableSamples.sample[sample_type]$,sample_file=/t/e/$addDownloadableSamples.sample[sample_file_content][name]$</argument>
         </helper>
@@ -117,7 +117,7 @@
         <actionGroup ref="DeleteExportedFileActionGroup" stepKey="deleteExportedFile">
             <argument name="fileName" value="{$getFilename}"/>
         </actionGroup>
-        <helper class="\Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
+        <helper class="\Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
         </helper>
     </test>

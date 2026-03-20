@@ -7,13 +7,13 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Webapi\Model\Config\Converter">
-        <plugin name="webapiResourceSecurity" type="Magento\WebapiSecurity\Model\Plugin\AnonymousResourceSecurity" />
+        <plugin name="webapiResourceSecurity" type="Magento\Webapi_Security\Model\Plugin\Anonymous_Resource_Security" />
     </type>
     <type name="Magento\Framework\App\Config\Value">
-        <plugin name="webapiResourceSecurityCacheInvalidate" type="Magento\WebapiSecurity\Model\Plugin\CacheInvalidator" />
+        <plugin name="webapiResourceSecurityCacheInvalidate" type="Magento\Webapi_Security\Model\Plugin\Cache_Invalidator" />
     </type>
 
-    <type name="Magento\WebapiSecurity\Model\Plugin\AnonymousResourceSecurity">
+    <type name="Magento\Webapi_Security\Model\Plugin\Anonymous_Resource_Security">
         <arguments>
             <argument name="resources" xsi:type="array">
                 <item name="/V1/products::GET" xsi:type="string"/>

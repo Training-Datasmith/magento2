@@ -6,64 +6,64 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Eav\Model\Entity\Setup\PropertyMapperInterface" type="Magento\Eav\Model\Entity\Setup\PropertyMapper\Composite" />
-    <preference for="Magento\Eav\Model\Entity\AttributeLoaderInterface" type="Magento\Eav\Model\Entity\AttributeLoader" />
-    <preference for="Magento\Eav\Model\Entity\Attribute\UniqueValidationInterface" type="Magento\Eav\Model\Entity\Attribute\UniqueValidator" />
-    <preference for="Magento\Eav\Model\ReservedAttributeCheckerInterface" type="Magento\Eav\Model\ReservedAttributeChecker" />
-    <preference for="Magento\Eav\Api\Data\AttributeInterface" type="Magento\Eav\Model\Entity\Attribute" />
-    <preference for="Magento\Eav\Api\AttributeRepositoryInterface" type="Magento\Eav\Model\AttributeRepository" />
-    <preference for="Magento\Eav\Api\Data\AttributeGroupInterface" type="Magento\Eav\Model\Entity\Attribute\Group" />
-    <preference for="Magento\Eav\Api\AttributeGroupRepositoryInterface" type="Magento\Eav\Model\Attribute\GroupRepository" />
-    <preference for="Magento\Eav\Api\AttributeSetRepositoryInterface" type="Magento\Eav\Model\AttributeSetRepository" />
-    <preference for="Magento\Eav\Api\AttributeSetManagementInterface" type="Magento\Eav\Model\AttributeSetManagement" />
-    <preference for="Magento\Eav\Api\Data\AttributeSetInterface" type="Magento\Eav\Model\Entity\Attribute\Set" />
-    <preference for="Magento\Eav\Api\AttributeManagementInterface" type="Magento\Eav\Model\AttributeManagement" />
-    <preference for="Magento\Eav\Api\Data\AttributeFrontendLabelInterface" type="Magento\Eav\Model\Entity\Attribute\FrontendLabel" />
-    <preference for="Magento\Eav\Api\Data\AttributeOptionInterface" type="Magento\Eav\Model\Entity\Attribute\Option" />
-    <preference for="Magento\Eav\Api\AttributeOptionManagementInterface" type="Magento\Eav\Model\Entity\Attribute\OptionManagement" />
-    <preference for="Magento\Eav\Api\AttributeOptionUpdateInterface" type="Magento\Eav\Model\Entity\Attribute\OptionManagement" />
-    <preference for="Magento\Eav\Api\Data\AttributeOptionLabelInterface" type="Magento\Eav\Model\Entity\Attribute\OptionLabel" />
-    <preference for="Magento\Eav\Api\Data\AttributeValidationRuleInterface" type="Magento\Eav\Model\Entity\Attribute\ValidationRule" />
-    <preference for="Magento\Eav\Api\Data\AttributeSearchResultsInterface" type="Magento\Eav\Model\AttributeSearchResults" />
-    <preference for="Magento\Eav\Api\Data\AttributeSetSearchResultsInterface" type="Magento\Eav\Model\AttributeSetSearchResults" />
-    <preference for="Magento\Eav\Api\Data\AttributeGroupSearchResultsInterface" type="Magento\Eav\Model\AttributeGroupSearchResults" />
-    <preference for="Magento\Framework\Webapi\CustomAttributeTypeLocatorInterface" type="Magento\Eav\Model\TypeLocator" />
+    <preference for="Magento\Eav\Model\Entity\Setup\Property_Mapper_Interface" type="Magento\Eav\Model\Entity\Setup\Property_Mapper\Composite" />
+    <preference for="Magento\Eav\Model\Entity\Attribute_Loader_Interface" type="Magento\Eav\Model\Entity\Attribute_Loader" />
+    <preference for="Magento\Eav\Model\Entity\Attribute\Unique_Validation_Interface" type="Magento\Eav\Model\Entity\Attribute\Unique_Validator" />
+    <preference for="Magento\Eav\Model\Reserved_Attribute_Checker_Interface" type="Magento\Eav\Model\Reserved_Attribute_Checker" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Interface" type="Magento\Eav\Model\Entity\Attribute" />
+    <preference for="Magento\Eav\Api\Attribute_Repository_Interface" type="Magento\Eav\Model\Attribute_Repository" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Group_Interface" type="Magento\Eav\Model\Entity\Attribute\Group" />
+    <preference for="Magento\Eav\Api\Attribute_Group_Repository_Interface" type="Magento\Eav\Model\Attribute\Group_Repository" />
+    <preference for="Magento\Eav\Api\Attribute_Set_Repository_Interface" type="Magento\Eav\Model\Attribute_Set_Repository" />
+    <preference for="Magento\Eav\Api\Attribute_Set_Management_Interface" type="Magento\Eav\Model\Attribute_Set_Management" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Set_Interface" type="Magento\Eav\Model\Entity\Attribute\Set" />
+    <preference for="Magento\Eav\Api\Attribute_Management_Interface" type="Magento\Eav\Model\Attribute_Management" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Frontend_Label_Interface" type="Magento\Eav\Model\Entity\Attribute\Frontend_Label" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Option_Interface" type="Magento\Eav\Model\Entity\Attribute\Option" />
+    <preference for="Magento\Eav\Api\Attribute_Option_Management_Interface" type="Magento\Eav\Model\Entity\Attribute\Option_Management" />
+    <preference for="Magento\Eav\Api\Attribute_Option_Update_Interface" type="Magento\Eav\Model\Entity\Attribute\Option_Management" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Option_Label_Interface" type="Magento\Eav\Model\Entity\Attribute\Option_Label" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Validation_Rule_Interface" type="Magento\Eav\Model\Entity\Attribute\Validation_Rule" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Search_Results_Interface" type="Magento\Eav\Model\Attribute_Search_Results" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Set_Search_Results_Interface" type="Magento\Eav\Model\Attribute_Set_Search_Results" />
+    <preference for="Magento\Eav\Api\Data\Attribute_Group_Search_Results_Interface" type="Magento\Eav\Model\Attribute_Group_Search_Results" />
+    <preference for="Magento\Framework\Webapi\Custom_Attribute_Type_Locator_Interface" type="Magento\Eav\Model\Type_Locator" />
 
     <type name="Magento\Eav\Model\Entity\Attribute\Config">
         <arguments>
             <argument name="reader" xsi:type="object">Magento\Eav\Model\Entity\Attribute\Config\Reader\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\ResourceModel\Helper">
+    <type name="Magento\Eav\Model\Resource_Model\Helper">
         <arguments>
             <argument name="modulePrefix" xsi:type="string">eav</argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\Entity\Setup\PropertyMapper\Composite">
+    <type name="Magento\Eav\Model\Entity\Setup\Property_Mapper\Composite">
         <arguments>
             <argument name="propertyMappers" xsi:type="array">
-                <item name="default" xsi:type="string">Magento\Eav\Model\Entity\Setup\PropertyMapper</item>
+                <item name="default" xsi:type="string">Magento\Eav\Model\Entity\Setup\Property_Mapper</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\ResourceModel\Entity\Attribute">
-        <plugin name="storeLabelCaching" type="Magento\Eav\Plugin\Model\ResourceModel\Entity\Attribute" />
+    <type name="Magento\Eav\Model\Resource_Model\Entity\Attribute">
+        <plugin name="storeLabelCaching" type="Magento\Eav\Plugin\Model\Resource_Model\Entity\Attribute" />
     </type>
-    <type name="Magento\Framework\Webapi\ServiceTypeToEntityTypeMap">
+    <type name="Magento\Framework\Webapi\Service_Type_To_Entity_Type_Map">
         <arguments>
             <argument name="serviceTypeToEntityTypeMap" xsi:type="array" />
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\TypeLocator">
+    <type name="Magento\Eav\Model\Type_Locator">
         <arguments>
             <argument name="typeLocators" xsi:type="array">
-                <item name="simpleType" sortOrder="50" xsi:type="object">Magento\Eav\Model\TypeLocator\SimpleType</item>
-                <item name="complexType" sortOrder="10" xsi:type="object">Magento\Eav\Model\TypeLocator\ComplexType</item>
-                <item name="serviceClassType" sortOrder="0" xsi:type="object">Magento\Eav\Model\TypeLocator\ServiceClassLocator</item>
+                <item name="simpleType" sortOrder="50" xsi:type="object">Magento\Eav\Model\Type_Locator\Simple_Type</item>
+                <item name="complexType" sortOrder="10" xsi:type="object">Magento\Eav\Model\Type_Locator\Complex_Type</item>
+                <item name="serviceClassType" sortOrder="0" xsi:type="object">Magento\Eav\Model\Type_Locator\Service_Class_Locator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\TypeLocator\ComplexType">
+    <type name="Magento\Eav\Model\Type_Locator\Complex_Type">
         <arguments>
             <argument name="backendModelToAttributeTypeMap" xsi:type="array">
                 <item name="Magento\Eav\Model\Attribute\Data\Text" xsi:type="string">string</item>
@@ -71,115 +71,115 @@
                 <item name="Magento\Eav\Model\Attribute\Data\Boolean" xsi:type="string">boolean</item>
                 <item name="Magento\Eav\Model\Attribute\Data\File" xsi:type="string">string</item>
                 <item name="Magento\Eav\Model\Attribute\Data\Hidden" xsi:type="string">string</item>
-                <item name="Magento\Eav\Model\Attribute\Data\Image" xsi:type="string">Magento\Framework\Api\Data\ImageContentInterface</item>
+                <item name="Magento\Eav\Model\Attribute\Data\Image" xsi:type="string">Magento\Framework\Api\Data\Image_Content_Interface</item>
                 <item name="Magento\Eav\Model\Attribute\Data\Multiline" xsi:type="string">string</item>
                 <item name="Magento\Eav\Model\Attribute\Data\Multiselect" xsi:type="string">string</item>
                 <item name="Magento\Eav\Model\Attribute\Data\Select" xsi:type="string">string</item>
                 <item name="Magento\Eav\Model\Attribute\Data\Textarea" xsi:type="string">string</item>
-                <item name="Magento\Eav\Model\Entity\Attribute\Backend\DefaultBackend" xsi:type="string">string</item>
+                <item name="Magento\Eav\Model\Entity\Attribute\Backend\Default_Backend" xsi:type="string">string</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Eav\Model\Entity\Attribute">
         <arguments>
-            <argument name="reservedAttributeList" xsi:type="object">Magento\Catalog\Model\Product\ReservedAttributeList\Proxy</argument>
+            <argument name="reservedAttributeList" xsi:type="object">Magento\Catalog\Model\Product\Reserved_Attribute_List\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\Operation\AttributePool">
+    <type name="Magento\Framework\Entity_Manager\Operation\Attribute_Pool">
         <arguments>
             <argument name="extensionActions" xsi:type="array">
                 <item name="eav" xsi:type="array">
                     <item name="default" xsi:type="array">
-                        <item name="read" xsi:type="string">Magento\Eav\Model\ResourceModel\ReadHandler</item>
-                        <item name="create" xsi:type="string">Magento\Eav\Model\ResourceModel\CreateHandler</item>
-                        <item name="update" xsi:type="string">Magento\Eav\Model\ResourceModel\UpdateHandler</item>
+                        <item name="read" xsi:type="string">Magento\Eav\Model\Resource_Model\Read_Handler</item>
+                        <item name="create" xsi:type="string">Magento\Eav\Model\Resource_Model\Create_Handler</item>
+                        <item name="update" xsi:type="string">Magento\Eav\Model\Resource_Model\Update_Handler</item>
                     </item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Model\EntitySnapshot\AttributeProvider">
+    <type name="Magento\Framework\Model\Entity_Snapshot\Attribute_Provider">
         <arguments>
             <argument name="providers" xsi:type="array">
                 <item name="default" xsi:type="array">
-                    <item name="eav" xsi:type="string">\Magento\Eav\Model\AttributeProvider</item>
+                    <item name="eav" xsi:type="string">\Magento\Eav\Model\Attribute_Provider</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Eav\Model\Entity\AbstractEntity">
-        <plugin name="clean_cache" type="Magento\Framework\App\Cache\FlushCacheByTags" />
+    <type name="Magento\Eav\Model\Entity\Abstract_Entity">
+        <plugin name="clean_cache" type="Magento\Framework\App\Cache\Flush_Cache_By_Tags" />
     </type>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Eav\Model\AttributeRepository">
+    <type name="Magento\Eav\Model\Attribute_Repository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\AttributeCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Attribute_Collection_Processor</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\AttributeCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Attribute_Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeFilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeSortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Filter_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="fieldMapping" xsi:type="array">
                 <item name="attribute_id" xsi:type="string">main_table.attribute_id</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeSortingProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Sorting_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor">
         <arguments>
             <argument name="fieldMapping" xsi:type="array">
                 <item name="attribute_id" xsi:type="string">main_table.attribute_id</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeSetFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Set_Filter_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="customFilters" xsi:type="array">
-                <item name="entity_type_code" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\AttributeSetEntityTypeCodeFilter</item>
+                <item name="entity_type_code" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Attribute_Set_Entity_Type_Code_Filter</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\AttributeSetCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Attribute_Set_Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeSetFilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Set_Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Eav\Model\AttributeSetRepository">
+    <type name="Magento\Eav\Model\Attribute_Set_Repository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\AttributeSetCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Attribute_Set_Collection_Processor</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeGroupFilterProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\FilterProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Group_Filter_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Filter_Processor">
         <arguments>
             <argument name="fieldMapping" xsi:type="array">
                 <item name="attribute_group_code" xsi:type="string">main_table.attribute_group_code</item>
             </argument>
             <argument name="customFilters" xsi:type="array">
-                <item name="attribute_set_id" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\AttributeGroupAttributeSetIdFilter</item>
-                <item name="attribute_group_code" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\FilterProcessor\AttributeGroupCodeFilter</item>
+                <item name="attribute_set_id" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Attribute_Group_Attribute_Set_Id_Filter</item>
+                <item name="attribute_group_code" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Filter_Processor\Attribute_Group_Code_Filter</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeGroupSortingProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor\SortingProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Group_Sorting_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor\Sorting_Processor">
         <arguments>
             <argument name="fieldMapping" xsi:type="array">
                 <item name="attribute_group_code" xsi:type="string">main_table.attribute_group_code</item>
@@ -189,25 +189,25 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Eav\Model\Api\SearchCriteria\AttributeGroupCollectionProcessor" type="Magento\Framework\Api\SearchCriteria\CollectionProcessor">
+    <virtualType name="Magento\Eav\Model\Api\Search_Criteria\Attribute_Group_Collection_Processor" type="Magento\Framework\Api\Search_Criteria\Collection_Processor">
         <arguments>
             <argument name="processors" xsi:type="array">
-                <item name="filters" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeGroupFilterProcessor</item>
-                <item name="sorting" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\CollectionProcessor\AttributeGroupSortingProcessor</item>
-                <item name="pagination" xsi:type="object">Magento\Framework\Api\SearchCriteria\CollectionProcessor\PaginationProcessor</item>
+                <item name="filters" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Group_Filter_Processor</item>
+                <item name="sorting" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Collection_Processor\Attribute_Group_Sorting_Processor</item>
+                <item name="pagination" xsi:type="object">Magento\Framework\Api\Search_Criteria\Collection_Processor\Pagination_Processor</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Eav\Model\Attribute\GroupRepository">
+    <type name="Magento\Eav\Model\Attribute\Group_Repository">
         <arguments>
-            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\SearchCriteria\AttributeGroupCollectionProcessor</argument>
+            <argument name="collectionProcessor" xsi:type="object">Magento\Eav\Model\Api\Search_Criteria\Attribute_Group_Collection_Processor</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\EntityManager\CompositeMapper">
+    <type name="Magento\Framework\Entity_Manager\Composite_Mapper">
         <arguments>
             <argument name="mappers" xsi:type="array">
-                <item name="mapper" xsi:type="object">Magento\Framework\EntityManager\Mapper</item>
-                <item name="customAttributesMapper" xsi:type="object">Magento\Eav\Model\CustomAttributesMapper</item>
+                <item name="mapper" xsi:type="object">Magento\Framework\Entity_Manager\Mapper</item>
+                <item name="customAttributesMapper" xsi:type="object">Magento\Eav\Model\Custom_Attributes_Mapper</item>
             </argument>
         </arguments>
     </type>
@@ -224,19 +224,19 @@
 
     <type name="Magento\Eav\Model\Entity\Attribute\Source\Table">
         <arguments>
-            <argument name="storeManager" xsi:type="object">Magento\Store\Model\StoreManagerInterface\Proxy</argument>
+            <argument name="storeManager" xsi:type="object">Magento\Store\Model\Store_Manager_Interface\Proxy</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Eav\Model\Mview\ChangelogBatchWalker" type="Magento\Framework\Mview\View\ChangelogBatchWalker">
+    <virtualType name="Magento\Eav\Model\Mview\Changelog_Batch_Walker" type="Magento\Framework\Mview\View\Changelog_Batch_Walker">
         <arguments>
-            <argument name="idsContext" xsi:type="object">Magento\Eav\Model\Mview\ChangelogBatchWalker\IdsContext</argument>
+            <argument name="idsContext" xsi:type="object">Magento\Eav\Model\Mview\Changelog_Batch_Walker\Ids_Context</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Eav\Model\Mview\ChangelogBatchWalker\IdsContext" type="Magento\Framework\Mview\View\ChangelogBatchWalker\IdsContext">
+    <virtualType name="Magento\Eav\Model\Mview\Changelog_Batch_Walker\Ids_Context" type="Magento\Framework\Mview\View\Changelog_Batch_Walker\Ids_Context">
         <arguments>
-            <argument name="tableBuilder" xsi:type="object">Magento\Eav\Model\Mview\ChangelogBatchWalker\IdsTableBuilder</argument>
-            <argument name="selectBuilder" xsi:type="object">Magento\Eav\Model\Mview\ChangelogBatchWalker\IdsSelectBuilder</argument>
-            <argument name="fetcher" xsi:type="object">Magento\Eav\Model\Mview\ChangelogBatchWalker\IdsFetcher</argument>
+            <argument name="tableBuilder" xsi:type="object">Magento\Eav\Model\Mview\Changelog_Batch_Walker\Ids_Table_Builder</argument>
+            <argument name="selectBuilder" xsi:type="object">Magento\Eav\Model\Mview\Changelog_Batch_Walker\Ids_Select_Builder</argument>
+            <argument name="fetcher" xsi:type="object">Magento\Eav\Model\Mview\Changelog_Batch_Walker\Ids_Fetcher</argument>
         </arguments>
     </virtualType>
 </config>

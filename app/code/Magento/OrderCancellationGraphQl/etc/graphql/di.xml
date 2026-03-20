@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+    <type name="Magento\Store_Graph_Ql\Model\Resolver\Store\Store_Config_Data_Provider">
         <arguments>
             <argument name="extendedConfigData" xsi:type="array">
                 <item name="order_cancellation_enabled" xsi:type="string">sales/cancellation/enabled</item>
@@ -14,14 +14,14 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\SalesGraphQl\Model\GetOrderAvailableActions">
+    <type name="Magento\Sales_Graph_Ql\Model\Get_Order_Available_Actions">
         <arguments>
             <argument name="actions" xsi:type="array">
-                <item name="cancel_action" xsi:type="object">Magento\OrderCancellationGraphQl\Model\GetOrderCancellationAvailableActions</item>
+                <item name="cancel_action" xsi:type="object">Magento\Order_Cancellation_Graph_Ql\Model\Get_Order_Cancellation_Available_Actions</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\OrderCancellationGraphQl\Model\Resolver\CancelOrderError">
+    <type name="Magento\Order_Cancellation_Graph_Ql\Model\Resolver\Cancel_Order_Error">
         <arguments>
             <argument name="errorMessageCodesMapper" xsi:type="array">
                 <item name="order cancellation is not enabled for requested store." xsi:type="string">ORDER_CANCELLATION_DISABLED</item>
@@ -32,10 +32,10 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\OrderCancellation\Model\CancelOrder">
-        <plugin name="validateCancelOrderReason" type="Magento\OrderCancellationGraphQl\Plugin\Model\CancelOrder"/>
+    <type name="Magento\Order_Cancellation\Model\Cancel_Order">
+        <plugin name="validateCancelOrderReason" type="Magento\Order_Cancellation_Graph_Ql\Plugin\Model\Cancel_Order"/>
     </type>
-    <type name="Magento\OrderCancellationGraphQl\Model\CancelOrderGuest">
-        <plugin name="validateCancelGuestOrderReason" type="Magento\OrderCancellationGraphQl\Plugin\Model\CancelOrderGuest"/>
+    <type name="Magento\Order_Cancellation_Graph_Ql\Model\Cancel_Order_Guest">
+        <plugin name="validateCancelGuestOrderReason" type="Magento\Order_Cancellation_Graph_Ql\Plugin\Model\Cancel_Order_Guest"/>
     </type>
 </config>

@@ -6,15 +6,15 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Catalog\Block\Product\ReviewRendererInterface" type="Magento\Review\Block\Product\ReviewRenderer" />
-    <type name="Magento\Framework\Model\ActionValidator\RemoveAction">
+    <preference for="Magento\Catalog\Block\Product\Review_Renderer_Interface" type="Magento\Review\Block\Product\Review_Renderer" />
+    <type name="Magento\Framework\Model\Action_Validator\Remove_Action">
         <arguments>
             <argument name="protectedModels" xsi:type="array">
                 <item name="review" xsi:type="string">Magento\Review\Model\Review</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\ReservedAttributeList">
+    <type name="Magento\Catalog\Model\Product\Reserved_Attribute_List">
         <arguments>
             <argument name="allowedAttributes" xsi:type="array">
                 <item name="rating_summary" xsi:type="string">rating_summary</item>
@@ -26,15 +26,15 @@
             <argument name="urlModel" xsi:type="object">Magento\Framework\Url</argument>
         </arguments>
     </type>
-    <type name="Magento\Review\Model\ResourceModel\Rating\Option">
+    <type name="Magento\Review\Model\Resource_Model\Rating\Option">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorComposite">
+    <type name="Magento\Catalog\Ui\Data_Provider\Product\Product_Render_Collector_Composite">
         <arguments>
             <argument name="productProviders" xsi:type="array">
-                <item name="review" xsi:type="object">\Magento\Review\Ui\DataProvider\Product\Listing\Collector\Review</item>
+                <item name="review" xsi:type="object">\Magento\Review\Ui\Data_Provider\Product\Listing\Collector\Review</item>
             </argument>
         </arguments>
     </type>

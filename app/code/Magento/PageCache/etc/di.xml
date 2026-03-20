@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\App\PageCache\Identifier">
-        <plugin name="core-app-area-design-exception-plugin" type="Magento\PageCache\Model\App\CacheIdentifierPlugin" sortOrder="10"/>
+    <type name="Magento\Framework\App\Page_Cache\Identifier">
+        <plugin name="core-app-area-design-exception-plugin" type="Magento\Page_Cache\Model\App\Cache_Identifier_Plugin" sortOrder="10"/>
     </type>
-    <type name="Magento\PageCache\Model\App\Request\Http\IdentifierForSave">
-        <plugin name="core-app-area-design-exception-plugin-for-save" type="Magento\PageCache\Model\App\CacheIdentifierForSavePlugin" sortOrder="10"/>
+    <type name="Magento\Page_Cache\Model\App\Request\Http\Identifier_For_Save">
+        <plugin name="core-app-area-design-exception-plugin-for-save" type="Magento\Page_Cache\Model\App\Cache_Identifier_For_Save_Plugin" sortOrder="10"/>
     </type>
-    <type name="Magento\Framework\App\PageCache\Cache">
-        <plugin name="fpc-type-plugin" type="Magento\PageCache\Model\App\PageCachePlugin"/>
+    <type name="Magento\Framework\App\Page_Cache\Cache">
+        <plugin name="fpc-type-plugin" type="Magento\Page_Cache\Model\App\Page_Cache_Plugin"/>
     </type>
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="system/full_page_cache/varnish/access_list" xsi:type="string">1</item>
@@ -27,28 +27,28 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\Console\CommandListInterface">
+    <type name="Magento\Framework\Console\Command_List_Interface">
         <arguments>
             <argument name="commands" xsi:type="array">
-                <item name="VarnishGenerateVclCommand" xsi:type="object">Magento\PageCache\Console\Command\GenerateVclCommand</item>
+                <item name="VarnishGenerateVclCommand" xsi:type="object">Magento\Page_Cache\Console\Command\Generate_Vcl_Command</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\PageCache\Controller\Block">
+    <type name="Magento\Page_Cache\Controller\Block">
         <arguments>
-            <argument name="layoutCacheKey" xsi:type="object">Magento\Framework\View\Layout\LayoutCacheKeyInterface</argument>
-            <argument name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\ScopeConfigInterface\Proxy</argument>
+            <argument name="layoutCacheKey" xsi:type="object">Magento\Framework\View\Layout\Layout_Cache_Key_Interface</argument>
+            <argument name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\Scope_Config_Interface\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\App\Cache\RuntimeStaleCacheStateModifier">
+    <type name="Magento\Framework\App\Cache\Runtime_Stale_Cache_State_Modifier">
         <arguments>
             <argument name="cacheTypes" xsi:type="array">
-                <item name="full_page_cache" xsi:type="const">Magento\PageCache\Model\Cache\Type::TYPE_IDENTIFIER</item>
+                <item name="full_page_cache" xsi:type="const">Magento\Page_Cache\Model\Cache\Type::TYPE_IDENTIFIER</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\PageCache\Model\VclGeneratorInterface" type="Magento\PageCache\Model\Varnish\VclGenerator"/>
-    <preference for="Magento\PageCache\Model\VclTemplateLocatorInterface" type="Magento\PageCache\Model\Varnish\VclTemplateLocator"/>
-    <preference for="Magento\PageCache\Model\Spi\PageCacheTagsPreprocessorInterface" type="Magento\PageCache\Model\PageCacheTagsPreprocessorComposite"/>
-    <preference for="Magento\Framework\App\PageCache\IdentifierInterface" type="Magento\PageCache\Model\App\Request\Http\IdentifierForSave"/>
+    <preference for="Magento\Page_Cache\Model\Vcl_Generator_Interface" type="Magento\Page_Cache\Model\Varnish\Vcl_Generator"/>
+    <preference for="Magento\Page_Cache\Model\Vcl_Template_Locator_Interface" type="Magento\Page_Cache\Model\Varnish\Vcl_Template_Locator"/>
+    <preference for="Magento\Page_Cache\Model\Spi\Page_Cache_Tags_Preprocessor_Interface" type="Magento\Page_Cache\Model\Page_Cache_Tags_Preprocessor_Composite"/>
+    <preference for="Magento\Framework\App\Page_Cache\Identifier_Interface" type="Magento\Page_Cache\Model\App\Request\Http\Identifier_For_Save"/>
 </config>

@@ -12,7 +12,7 @@
                 <argument name="template" xsi:type="string">Magento_OrderCancellationUi::order/history.phtml</argument>
             </action>
             <arguments>
-                <argument name="view_model" xsi:type="object">Magento\OrderCancellationUi\ViewModel\Config</argument>
+                <argument name="view_model" xsi:type="object">Magento\Order_Cancellation_Ui\View_Model\Config</argument>
             </arguments>
         </referenceBlock>
     </body>

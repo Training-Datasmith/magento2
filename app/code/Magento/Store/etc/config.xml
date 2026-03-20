@@ -42,7 +42,7 @@
                     </GD2>
                     <IMAGEMAGICK>
                         <title>ImageMagick</title>
-                        <class>Magento\Framework\Image\Adapter\ImageMagick</class>
+                        <class>Magento\Framework\Image\Adapter\Image_Magick</class>
                     </IMAGEMAGICK>
                 </adapters>
             </image>

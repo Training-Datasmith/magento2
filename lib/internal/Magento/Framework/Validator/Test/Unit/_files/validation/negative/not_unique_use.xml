@@ -10,7 +10,7 @@
         <rules>
             <rule name="test_rule_sku">
                 <entity_constraints>
-                    <constraint class="Magento\Framework\Validator\Test\Unit\Test\NotEmpty"/>
+                    <constraint class="Magento\Framework\Validator\Test\Unit\Test\Not_Empty"/>
                 </entity_constraints>
             </rule>
         </rules>

@@ -11,7 +11,7 @@
         <referenceBlock name="integration_edit_tabs">
             <block class="Magento\Integration\Block\Adminhtml\Integration\Edit\Tab\Webapi" name="integration_edit_tab_webapi" template="Magento_Integration::resourcetree.phtml">
                 <arguments>
-                    <argument name="json_serializer" xsi:type="object">Magento\Integration\ViewModel\JsonSerializer</argument>
+                    <argument name="json_serializer" xsi:type="object">Magento\Integration\View_Model\Json_Serializer</argument>
                 </arguments>
             </block>
             <action method="addTabAfter">

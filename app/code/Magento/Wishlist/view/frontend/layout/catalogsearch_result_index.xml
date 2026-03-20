@@ -9,13 +9,13 @@
     <body>
         <referenceContainer name="content">
             <referenceBlock name="catalogsearch.product.addto">
-                <block class="Magento\Wishlist\Block\Catalog\Product\ProductList\Item\AddTo\Wishlist"
+                <block class="Magento\Wishlist\Block\Catalog\Product\Product_List\Item\Add_To\Wishlist"
                        name="catalogsearch.product.addto.wishlist" as="wishlist" before="compare"
                        template="Magento_Wishlist::catalog/product/list/addto/wishlist.phtml"/>
             </referenceBlock>
         </referenceContainer>
         <referenceBlock name="wishlist_page_head_components">
-            <block class="Magento\Wishlist\Block\AddToWishlist"
+            <block class="Magento\Wishlist\Block\Add_To_Wishlist"
                 name="catalogsearch.wishlist_addto"
                 template="Magento_Wishlist::addto.phtml"/>
         </referenceBlock>

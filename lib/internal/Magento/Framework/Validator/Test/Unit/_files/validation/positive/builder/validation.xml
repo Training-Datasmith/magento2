@@ -11,7 +11,7 @@
             <rule name="rules_for_builder">
                 <property_constraints>
                     <property name="int">
-                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\NotEmpty"/>
+                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\Not_Empty"/>
                         <constraint class="Validator_Stub" alias="stub">
                             <argument>
                                 test_string_argument

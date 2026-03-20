@@ -7,9 +7,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="catalog_product_view_config">
-        <observer name="tax" instance="\Magento\Tax\Observer\UpdateProductOptionsObserver" />
+        <observer name="tax" instance="\Magento\Tax\Observer\Update_Product_Options_Observer" />
     </event>
     <event name="catalog_product_option_price_configuration_after">
-        <observer name="tax" instance="Magento\Tax\Observer\GetPriceConfigurationObserver"/>
+        <observer name="tax" instance="Magento\Tax\Observer\Get_Price_Configuration_Observer"/>
     </event>
 </config>

@@ -9,31 +9,31 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <!-- Sale Rule CRUD -->
     <route url="/V1/salesRules/:ruleId" method="GET">
-        <service class="Magento\SalesRule\Api\RuleRepositoryInterface" method="getById"/>
+        <service class="Magento\Sales_Rule\Api\Rule_Repository_Interface" method="getById"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/salesRules/search" method="GET">
-        <service class="Magento\SalesRule\Api\RuleRepositoryInterface" method="getList"/>
+        <service class="Magento\Sales_Rule\Api\Rule_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/salesRules" method="POST">
-        <service class="Magento\SalesRule\Api\RuleRepositoryInterface" method="save"/>
+        <service class="Magento\Sales_Rule\Api\Rule_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/salesRules/:ruleId" method="PUT">
-        <service class="Magento\SalesRule\Api\RuleRepositoryInterface" method="save"/>
+        <service class="Magento\Sales_Rule\Api\Rule_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/salesRules/:ruleId" method="DELETE">
-        <service class="Magento\SalesRule\Api\RuleRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Sales_Rule\Api\Rule_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
@@ -41,31 +41,31 @@
 
     <!-- Coupon CRUD -->
     <route url="/V1/coupons/:couponId" method="GET">
-        <service class="Magento\SalesRule\Api\CouponRepositoryInterface" method="getById"/>
+        <service class="Magento\Sales_Rule\Api\Coupon_Repository_Interface" method="getById"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/coupons/search" method="GET">
-        <service class="Magento\SalesRule\Api\CouponRepositoryInterface" method="getList"/>
+        <service class="Magento\Sales_Rule\Api\Coupon_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/coupons" method="POST">
-        <service class="Magento\SalesRule\Api\CouponRepositoryInterface" method="save"/>
+        <service class="Magento\Sales_Rule\Api\Coupon_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/coupons/:couponId" method="PUT">
-        <service class="Magento\SalesRule\Api\CouponRepositoryInterface" method="save"/>
+        <service class="Magento\Sales_Rule\Api\Coupon_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/coupons/:couponId" method="DELETE">
-        <service class="Magento\SalesRule\Api\CouponRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Sales_Rule\Api\Coupon_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
@@ -73,19 +73,19 @@
 
     <!-- Coupon Management -->
     <route url="/V1/coupons/generate" method="POST">
-        <service class="Magento\SalesRule\Api\CouponManagementInterface" method="generate"/>
+        <service class="Magento\Sales_Rule\Api\Coupon_Management_Interface" method="generate"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/coupons/deleteByIds" method="POST">
-        <service class="Magento\SalesRule\Api\CouponManagementInterface" method="deleteByIds"/>
+        <service class="Magento\Sales_Rule\Api\Coupon_Management_Interface" method="deleteByIds"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>
     </route>
     <route url="/V1/coupons/deleteByCodes" method="POST">
-        <service class="Magento\SalesRule\Api\CouponManagementInterface" method="deleteByCodes"/>
+        <service class="Magento\Sales_Rule\Api\Coupon_Management_Interface" method="deleteByCodes"/>
         <resources>
             <resource ref="Magento_SalesRule::quote"/>
         </resources>

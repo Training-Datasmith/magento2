@@ -7,7 +7,7 @@
 -->
 <layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
     <referenceContainer name="content">
-        <block class="Magento\LoginAsCustomerAdminUi\Block\Adminhtml\ConfirmationPopup"
+        <block class="Magento\Login_As_Customer_Admin_Ui\Block\Adminhtml\Confirmation_Popup"
                name="lac.confirmation.popup"
                template="Magento_LoginAsCustomerAdminUi::confirmation-popup.phtml">
             <arguments>

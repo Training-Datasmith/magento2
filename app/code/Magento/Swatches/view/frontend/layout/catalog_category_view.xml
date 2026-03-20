@@ -15,7 +15,7 @@
                    ifconfig="catalog/frontend/show_swatches_in_product_list">
                 <arguments>
                     <argument name="configurable_view_model"
-                              xsi:type="object">Magento\Swatches\ViewModel\Product\Renderer\Configurable</argument>
+                              xsi:type="object">Magento\Swatches\View_Model\Product\Renderer\Configurable</argument>
                 </arguments>
             </block>
         </referenceBlock>

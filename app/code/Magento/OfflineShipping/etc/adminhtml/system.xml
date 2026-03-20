@@ -23,7 +23,7 @@
                 </field>
                 <field id="handling_type" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Calculate Handling Fee</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Type</source_model>
                 </field>
                 <field id="handling_fee" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" >
                     <label>Handling Fee</label>
@@ -38,7 +38,7 @@
                 </field>
                 <field id="type" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Type</label>
-                    <source_model>Magento\OfflineShipping\Model\Config\Source\Flatrate</source_model>
+                    <source_model>Magento\Offline_Shipping\Model\Config\Source\Flatrate</source_model>
                 </field>
                 <field id="sallowspecific" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Ship to Applicable Countries</label>
@@ -63,7 +63,7 @@
                 <label>Table Rates</label>
                 <field id="handling_type" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Calculate Handling Fee</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Type</source_model>
                 </field>
                 <field id="handling_fee" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1">
                     <label>Handling Fee</label>
@@ -75,18 +75,18 @@
                 </field>
                 <field id="condition_name" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Condition</label>
-                    <source_model>Magento\OfflineShipping\Model\Config\Source\Tablerate</source_model>
+                    <source_model>Magento\Offline_Shipping\Model\Config\Source\Tablerate</source_model>
                 </field>
                 <field id="include_virtual_price" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Include Virtual Products in Price Calculation</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="export" translate="label" type="Magento\OfflineShipping\Block\Adminhtml\Form\Field\Export" sortOrder="5" showInWebsite="1">
+                <field id="export" translate="label" type="Magento\Offline_Shipping\Block\Adminhtml\Form\Field\Export" sortOrder="5" showInWebsite="1">
                     <label>Export</label>
                 </field>
-                <field id="import" translate="label" type="Magento\OfflineShipping\Block\Adminhtml\Form\Field\Import" sortOrder="6" showInWebsite="1">
+                <field id="import" translate="label" type="Magento\Offline_Shipping\Block\Adminhtml\Form\Field\Import" sortOrder="6" showInWebsite="1">
                     <label>Import</label>
-                    <backend_model>Magento\OfflineShipping\Model\Config\Backend\Tablerate</backend_model>
+                    <backend_model>Magento\Offline_Shipping\Model\Config\Backend\Tablerate</backend_model>
                 </field>
                 <field id="name" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Method Name</label>

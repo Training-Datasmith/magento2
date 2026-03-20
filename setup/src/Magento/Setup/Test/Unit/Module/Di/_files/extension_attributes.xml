@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
-    <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
-        <attribute code="gift_message" type="Magento\GiftMessage\Api\Data\MessageInterface" />
+    <extension_attributes for="Magento\Sales\Api\Data\Order_Interface">
+        <attribute code="gift_message" type="Magento\Gift_Message\Api\Data\Message_Interface" />
     </extension_attributes>
-    <extension_attributes for="Magento\Sales\Api\Data\OrderItemInterface">
-        <attribute code="gift_message" type="Magento\GiftMessage\Api\Data\MessageInterface" />
+    <extension_attributes for="Magento\Sales\Api\Data\Order_Item_Interface">
+        <attribute code="gift_message" type="Magento\Gift_Message\Api\Data\Message_Interface" />
     </extension_attributes>
 </config>

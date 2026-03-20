@@ -52,10 +52,10 @@
         <executeJS function="return '{$createProductImage2.entry[content][name]$}'.charAt(2)" stepKey="secondCharacterImage2FileName"/>
 
         <!-- Verify Images Are in Local File System -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertLocalImage1Exists">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertLocalImage1Exists">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage1FileName}/{$secondCharacterImage1FileName}/$createProductImage1.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertLocalImage2Exists">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertLocalImage2Exists">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage2FileName}/{$secondCharacterImage2FileName}/$createProductImage2.entry[content][name]$</argument>
         </helper>
 
@@ -65,7 +65,7 @@
         </actionGroup>
         <waitForElementVisible selector="{{StorefrontProductMediaSection.productImageActive($createProductImage2.entry[content][name]$)}}" stepKey="seeFirstImage1"/>
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.productImageActive($createProductImage2.entry[content][name]$)}}" stepKey="firstImageSrc1"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertFirstImageContent1">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertFirstImageContent1">
             <argument name="url">{$firstImageSrc1}</argument>
             <argument name="expectedString">{{RedPngImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$firstImageSrc1}" did not render image: {{RedPngImageContent.baseImage_md5}}</argument>
@@ -73,7 +73,7 @@
         <click selector="{{StorefrontProductMediaSection.productImageInFotorama($createProductImage1.entry[content][name]$)}}" stepKey="clickSecondImage"/>
         <waitForElementVisible selector="{{StorefrontProductMediaSection.productImageActive($createProductImage1.entry[content][name]$)}}" stepKey="seeSecondImage1"/>
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.productImageActive($createProductImage1.entry[content][name]$)}}" stepKey="secondImageSrc1"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertSecondImageContent1">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertSecondImageContent1">
             <argument name="url">{$secondImageSrc1}</argument>
             <argument name="expectedString">{{BluePngImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$secondImageSrc1}" did not render image: {{BluePngImageContent.baseImage_md5}}</argument>
@@ -84,13 +84,13 @@
         <magentoCLI command="remote-storage:sync" timeout="120" stepKey="syncRemoteStorage"/>
 
         <!-- Verify Images Are in AWS S3 -->
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3Image1Exists">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3Image1Exists">
             <argument name="filePath">media/catalog/product/{$firstCharacterImage1FileName}/{$secondCharacterImage1FileName}/$createProductImage1.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3Image2Exists">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3Image2Exists">
             <argument name="filePath">media/catalog/product/{$firstCharacterImage2FileName}/{$secondCharacterImage2FileName}/$createProductImage2.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertDirectoryNotEmpty" stepKey="assertS3CacheDirectoryNotEmpty">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertDirectoryNotEmpty" stepKey="assertS3CacheDirectoryNotEmpty">
             <argument name="path">media/catalog/product/cache/</argument>
         </helper>
 
@@ -98,7 +98,7 @@
         <actionGroup ref="AdminLoginActionGroup" stepKey="loginAsAdmin"/>
         <actionGroup ref="AdminGoToCacheManagementPageActionGroup" stepKey="goToCacheManagementPage"/>
         <actionGroup ref="AdminClickFlushCatalogImagesCacheActionGroup" stepKey="clearCatalogImageCache"/>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertDirectoryEmpty" stepKey="assertS3CacheDirectoryEmpty">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertDirectoryEmpty" stepKey="assertS3CacheDirectoryEmpty">
             <argument name="path">media/catalog/product/cache/</argument>
         </helper>
         <actionGroup ref="CliCacheFlushActionGroup" stepKey="flushPageCache">
@@ -109,7 +109,7 @@
         </actionGroup>
         <waitForElementVisible selector="{{StorefrontProductMediaSection.productImageActive($createProductImage2.entry[content][name]$)}}" stepKey="seeFirstImage2"/>
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.productImageActive($createProductImage2.entry[content][name]$)}}" stepKey="firstImageSrc2"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertFirstImageContent2">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertFirstImageContent2">
             <argument name="url">{$firstImageSrc2}</argument>
             <argument name="expectedString">{{RedPngImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$firstImageSrc2}" did not render image: {{RedPngImageContent.baseImage_md5}}</argument>
@@ -117,36 +117,36 @@
         <click selector="{{StorefrontProductMediaSection.productImageInFotorama($createProductImage1.entry[content][name]$)}}" stepKey="clickSecondImage2"/>
         <waitForElementVisible selector="{{StorefrontProductMediaSection.productImageActive($createProductImage1.entry[content][name]$)}}" stepKey="seeSecondImage2"/>
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.productImageActive($createProductImage1.entry[content][name]$)}}" stepKey="secondImageSrc2"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertSecondImageContent2">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertSecondImageContent2">
             <argument name="url">{$secondImageSrc2}</argument>
             <argument name="expectedString">{{BluePngImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$secondImageSrc2}" did not render image: {{BluePngImageContent.baseImage_md5}}</argument>
         </helper>
 
         <!-- Delete Images on Local File System -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteFileIfExists" stepKey="deleteLocalImage1">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteFileIfExists" stepKey="deleteLocalImage1">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage1FileName}/{$secondCharacterImage1FileName}/$createProductImage1.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertLocalImage1IsDeleted">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertLocalImage1IsDeleted">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage1FileName}/{$secondCharacterImage1FileName}/$createProductImage1.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteFileIfExists" stepKey="deleteLocalImage2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteFileIfExists" stepKey="deleteLocalImage2">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage2FileName}/{$secondCharacterImage2FileName}/$createProductImage2.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertLocalImage2IsDeleted">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertLocalImage2IsDeleted">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage2FileName}/{$secondCharacterImage2FileName}/$createProductImage2.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteDirectory" stepKey="deleteLocalCacheDirectory">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteDirectory" stepKey="deleteLocalCacheDirectory">
             <argument name="path">pub/media/catalog/product/cache/</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalCacheDirectoryDeleted">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalCacheDirectoryDeleted">
             <argument name="path">pub/media/catalog/product/cache/</argument>
         </helper>
 
         <!-- S3 - Clean Cache & Verify Images on Product Storefront Page -->
         <actionGroup ref="AdminGoToCacheManagementPageActionGroup" stepKey="goToCacheManagementPage2"/>
         <actionGroup ref="AdminClickFlushCatalogImagesCacheActionGroup" stepKey="clearCatalogImageCache2"/>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertDirectoryEmpty" stepKey="assertS3CacheDirectoryEmpty2">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertDirectoryEmpty" stepKey="assertS3CacheDirectoryEmpty2">
             <argument name="path">media/catalog/product/cache/</argument>
         </helper>
         <actionGroup ref="CliCacheFlushActionGroup" stepKey="flushPageCache2">
@@ -154,13 +154,13 @@
         </actionGroup>
 
         <!-- Assert Local File System Images & Cached Images Are Still Non-Existent -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertLocalImage1IsDeleted2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertLocalImage1IsDeleted2">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage1FileName}/{$secondCharacterImage1FileName}/$createProductImage1.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertLocalImage2IsDeleted2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertLocalImage2IsDeleted2">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage2FileName}/{$secondCharacterImage2FileName}/$createProductImage2.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalCacheDirectoryDeleted2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalCacheDirectoryDeleted2">
             <argument name="path">pub/media/catalog/product/cache/</argument>
         </helper>
 
@@ -168,29 +168,29 @@
         <actionGroup ref="StorefrontOpenProductEntityPageActionGroup" stepKey="goToProductOnStorefront3">
             <argument name="product" value="$$createProduct$$"/>
         </actionGroup>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3Image1Exists2">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3Image1Exists2">
             <argument name="filePath">media/catalog/product/{$firstCharacterImage1FileName}/{$secondCharacterImage1FileName}/$createProductImage1.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertFileExists" stepKey="assertS3Image2Exists2">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertFileExists" stepKey="assertS3Image2Exists2">
             <argument name="filePath">media/catalog/product/{$firstCharacterImage2FileName}/{$secondCharacterImage2FileName}/$createProductImage2.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="assertDirectoryNotEmpty" stepKey="assertS3CacheDirectoryNotEmpty2">
+        <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="assertDirectoryNotEmpty" stepKey="assertS3CacheDirectoryNotEmpty2">
             <argument name="path">media/catalog/product/cache/</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertLocalImage1IsDeleted3">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertLocalImage1IsDeleted3">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage1FileName}/{$secondCharacterImage1FileName}/$createProductImage1.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertLocalImage2IsDeleted3">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertLocalImage2IsDeleted3">
             <argument name="filePath">pub/media/catalog/product/{$firstCharacterImage2FileName}/{$secondCharacterImage2FileName}/$createProductImage2.entry[content][name]$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalCacheDirectoryGone">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalCacheDirectoryGone">
             <argument name="path">pub/media/catalog/product/cache/</argument>
         </helper>
 
         <!-- Verify Product Images Render Correctly When Images Initially Only Exist in S3 -->
         <waitForElementVisible selector="{{StorefrontProductMediaSection.productImageActive($createProductImage2.entry[content][name]$)}}" stepKey="seeFirstImage3"/>
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.productImageActive($createProductImage2.entry[content][name]$)}}" stepKey="firstImageSrc3"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertFirstImageContent3">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertFirstImageContent3">
             <argument name="url">{$firstImageSrc3}</argument>
             <argument name="expectedString">{{RedPngImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$firstImageSrc3}" did not render image: {{RedPngImageContent.baseImage_md5}}</argument>
@@ -198,7 +198,7 @@
         <click selector="{{StorefrontProductMediaSection.productImageInFotorama($createProductImage1.entry[content][name]$)}}" stepKey="clickSecondImage3"/>
         <waitForElementVisible selector="{{StorefrontProductMediaSection.productImageActive($createProductImage1.entry[content][name]$)}}" stepKey="seeSecondImage3"/>
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.productImageActive($createProductImage1.entry[content][name]$)}}" stepKey="secondImageSrc3"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertSecondImageContent3">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertSecondImageContent3">
             <argument name="url">{$secondImageSrc3}</argument>
             <argument name="expectedString">{{BluePngImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$secondImageSrc3}" did not render image: {{BluePngImageContent.baseImage_md5}}</argument>
@@ -208,7 +208,7 @@
         <magentoCLI command="setup:config:set {{RemoteStorageAwsS3ConfigData.disable_options}}" stepKey="disableRemoteStorage"/>
         <actionGroup ref="AdminGoToCacheManagementPageActionGroup" stepKey="goToCacheManagementPage3"/>
         <actionGroup ref="AdminClickFlushCatalogImagesCacheActionGroup" stepKey="clearCatalogImageCache3"/>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalCacheDirectoryEmpty2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertDirectoryDoesNotExist" stepKey="assertLocalCacheDirectoryEmpty2">
             <argument name="path">pub/media/catalog/product/cache/</argument>
         </helper>
         <actionGroup ref="CliCacheFlushActionGroup" stepKey="flushPageCache3">
@@ -219,7 +219,7 @@
         </actionGroup>
         <waitForElementVisible selector="{{StorefrontProductMediaSection.productImageActive($createProductImage2.entry[content][name]$)}}" stepKey="seeFirstImage4"/>
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.productImageActive($createProductImage2.entry[content][name]$)}}" stepKey="firstImageSrc4"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertFirstImageContent4">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertFirstImageContent4">
             <argument name="url">{$firstImageSrc4}</argument>
             <argument name="expectedString">{{MagentoPlaceHolderImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$firstImageSrc4}" did not render image: {{MagentoPlaceHolderImageContent.baseImage_md5}}</argument>
@@ -227,7 +227,7 @@
         <click selector="{{StorefrontProductMediaSection.productImageInFotorama($createProductImage1.entry[content][name]$)}}" stepKey="clickSecondImage4"/>
         <waitForElementVisible selector="{{StorefrontProductMediaSection.productImageActive($createProductImage1.entry[content][name]$)}}" stepKey="seeSecondImage4"/>
         <grabAttributeFrom userInput="src" selector="{{StorefrontProductMediaSection.productImageActive($createProductImage1.entry[content][name]$)}}" stepKey="secondImageSrc4"/>
-        <helper class="Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertImageContentIsEqual" stepKey="assertSecondImageContent4">
+        <helper class="Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertImageContentIsEqual" stepKey="assertSecondImageContent4">
             <argument name="url">{$secondImageSrc4}</argument>
             <argument name="expectedString">{{MagentoPlaceHolderImageContent.baseImage_md5}}</argument>
             <argument name="message">Url: "{$secondImageSrc4}" did not render image: {{MagentoPlaceHolderImageContent.baseImage_md5}}</argument>

@@ -17,7 +17,7 @@
         <waitForElementVisible selector="{{AdminDataGridPaginationSection.currentPage}}" stepKey="waitForInputVisible"/>
         <clearField selector="{{AdminDataGridPaginationSection.currentPage}}" stepKey="clearInput"/>
         <fillField selector="{{AdminDataGridPaginationSection.currentPage}}" userInput="{{pageNumber}}"  stepKey="fillPageNumber"/>
-        <pressKey selector="{{AdminDataGridPaginationSection.currentPage}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::TAB]" stepKey="unFocusField"/>
+        <pressKey selector="{{AdminDataGridPaginationSection.currentPage}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::TAB]" stepKey="unFocusField"/>
         <waitForPageLoad stepKey="waitForPageLoad" />
     </actionGroup>
 </actionGroups>

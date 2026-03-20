@@ -10,7 +10,7 @@
         <referenceBlock name="product_tabs">
             <action method="addTab">
                 <argument name="name" xsi:type="string">google-experiment</argument>
-                <argument name="block" xsi:type="string">Magento\GoogleOptimizer\Block\Adminhtml\Catalog\Product\Edit\Tab\Googleoptimizer</argument>
+                <argument name="block" xsi:type="string">Magento\Google_Optimizer\Block\Adminhtml\Catalog\Product\Edit\Tab\Googleoptimizer</argument>
             </action>
         </referenceBlock>
     </body>

@@ -7,8 +7,8 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\PageCache\Model\Config">
+    <type name="Magento\Page_Cache\Model\Config">
         <plugin name="login-as-customer-disable-page-cache"
-                type="Magento\LoginAsCustomerPageCache\Plugin\PageCache\Model\Config\DisablePageCacheIfNeededPlugin"/>
+                type="Magento\Login_As_Customer_Page_Cache\Plugin\Page_Cache\Model\Config\Disable_Page_Cache_If_Needed_Plugin"/>
     </type>
 </config>

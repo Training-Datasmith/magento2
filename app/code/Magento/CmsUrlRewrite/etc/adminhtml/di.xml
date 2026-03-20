@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Store\Model\ResourceModel\Store">
-        <plugin name="update_cms_url_rewrites_after_store_save" type="Magento\CmsUrlRewrite\Plugin\Cms\Model\Store\View"/>
+    <type name="Magento\Store\Model\Resource_Model\Store">
+        <plugin name="update_cms_url_rewrites_after_store_save" type="Magento\Cms_Url_Rewrite\Plugin\Cms\Model\Store\View"/>
     </type>
-    <preference for="Magento\Cms\Model\Page\TargetUrlBuilderInterface" type="Magento\CmsUrlRewrite\Model\Page\TargetUrlBuilder"/>
-    <type name="Magento\CmsUrlRewrite\Model\Page\TargetUrlBuilder">
+    <preference for="Magento\Cms\Model\Page\Target_Url_Builder_Interface" type="Magento\Cms_Url_Rewrite\Model\Page\Target_Url_Builder"/>
+    <type name="Magento\Cms_Url_Rewrite\Model\Page\Target_Url_Builder">
         <arguments>
             <argument name="frontendUrlBuilder" xsi:type="object">Magento\Framework\Url</argument>
         </arguments>

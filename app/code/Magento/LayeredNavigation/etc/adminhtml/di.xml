@@ -7,7 +7,7 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Catalog\Model\Product\Attribute\Frontend\Inputtype\Presentation">
-        <plugin name="adjust_searchable_attribute_values" type="Magento\LayeredNavigation\Plugin\Save\AdjustAttributeSearchable" sortOrder="1" disabled="false" />
+        <plugin name="adjust_searchable_attribute_values" type="Magento\Layered_Navigation\Plugin\Save\Adjust_Attribute_Searchable" sortOrder="1" disabled="false" />
     </type>
 </config>
 

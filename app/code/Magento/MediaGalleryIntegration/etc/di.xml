@@ -7,9 +7,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Framework\File\Uploader">
-        <plugin name="save_asset_image" type="Magento\MediaGalleryIntegration\Plugin\SaveImageInformation"/>
+        <plugin name="save_asset_image" type="Magento\Media_Gallery_Integration\Plugin\Save_Image_Information"/>
     </type>
-    <type name="Magento\MediaGalleryIntegration\Plugin\SaveImageInformation">
+    <type name="Magento\Media_Gallery_Integration\Plugin\Save_Image_Information">
         <arguments>
             <argument name="imageExtensions" xsi:type="array">
                 <item name="jpg" xsi:type="string">jpg</item>

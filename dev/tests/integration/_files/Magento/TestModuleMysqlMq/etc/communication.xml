@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="demo.exception" request="Magento\TestModuleMysqlMq\Model\DataObject"/>
-    <topic name="demo.connection.exception" request="Magento\TestModuleMysqlMq\Model\DataObject"/>
-    <topic name="test.schema.defined.by.method" schema="Magento\TestModuleMysqlMq\Model\DataObjectRepository::delayedOperation" is_synchronous="false"/>
-    <topic name="demo.object.created" request="Magento\TestModuleMysqlMq\Model\DataObject"/>
-    <topic name="demo.object.updated" request="Magento\TestModuleMysqlMq\Model\DataObject"/>
-    <topic name="demo.object.custom.created" request="Magento\TestModuleMysqlMq\Model\DataObject"/>
+    <topic name="demo.exception" request="Magento\Test_Module_Mysql_Mq\Model\Data_Object"/>
+    <topic name="demo.connection.exception" request="Magento\Test_Module_Mysql_Mq\Model\Data_Object"/>
+    <topic name="test.schema.defined.by.method" schema="Magento\Test_Module_Mysql_Mq\Model\Data_Object_Repository::delayedOperation" is_synchronous="false"/>
+    <topic name="demo.object.created" request="Magento\Test_Module_Mysql_Mq\Model\Data_Object"/>
+    <topic name="demo.object.updated" request="Magento\Test_Module_Mysql_Mq\Model\Data_Object"/>
+    <topic name="demo.object.custom.created" request="Magento\Test_Module_Mysql_Mq\Model\Data_Object"/>
 </config>

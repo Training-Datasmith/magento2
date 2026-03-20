@@ -15,9 +15,9 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Magento\Cms\Block\Adminhtml\Block\Edit\SaveButton"/>
-            <button name="delete" class="Magento\Cms\Block\Adminhtml\Block\Edit\DeleteButton"/>
-            <button name="back" class="Magento\Cms\Block\Adminhtml\Block\Edit\BackButton"/>
+            <button name="save" class="Magento\Cms\Block\Adminhtml\Block\Edit\Save_Button"/>
+            <button name="delete" class="Magento\Cms\Block\Adminhtml\Block\Edit\Delete_Button"/>
+            <button name="back" class="Magento\Cms\Block\Adminhtml\Block\Edit\Back_Button"/>
         </buttons>
         <namespace>cms_block_form</namespace>
         <dataScope>data</dataScope>
@@ -34,7 +34,7 @@
         <settings>
             <submitUrl path="cms/block/save"/>
         </settings>
-        <dataProvider class="Magento\Cms\Model\Block\DataProvider" name="block_form_data_source">
+        <dataProvider class="Magento\Cms\Model\Block\Data_Provider" name="block_form_data_source">
             <settings>
                 <requestFieldName>block_id</requestFieldName>
                 <primaryFieldName>block_id</primaryFieldName>
@@ -112,7 +112,7 @@
                 <dataScope>identifier</dataScope>
             </settings>
         </field>
-        <field name="storeviews" formElement="multiselect" class="Magento\Store\Ui\Component\Form\Field\StoreView">
+        <field name="storeviews" formElement="multiselect" class="Magento\Store\Ui\Component\Form\Field\Store_View">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">block</item>

@@ -8,47 +8,47 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Catalog\Block\Widget\Link">
         <arguments>
-            <argument name="urlFinder" xsi:type="object">Magento\CatalogUrlRewrite\Model\Storage\DbStorage</argument>
+            <argument name="urlFinder" xsi:type="object">Magento\Catalog_Url_Rewrite\Model\Storage\Db_Storage</argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Product\Url">
         <arguments>
-            <argument name="urlFinder" xsi:type="object">Magento\CatalogUrlRewrite\Model\Storage\DbStorage</argument>
+            <argument name="urlFinder" xsi:type="object">Magento\Catalog_Url_Rewrite\Model\Storage\Db_Storage</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Category">
-        <plugin name="category_move_plugin" type="Magento\CatalogUrlRewrite\Model\Category\Plugin\Category\Move"/>
-        <plugin name="category_delete_plugin" type="Magento\CatalogUrlRewrite\Model\Category\Plugin\Category\Remove"/>
-        <plugin name="update_url_path_for_different_stores" type="Magento\CatalogUrlRewrite\Model\Category\Plugin\Category\UpdateUrlPath"/>
+    <type name="Magento\Catalog\Model\Resource_Model\Category">
+        <plugin name="category_move_plugin" type="Magento\Catalog_Url_Rewrite\Model\Category\Plugin\Category\Move"/>
+        <plugin name="category_delete_plugin" type="Magento\Catalog_Url_Rewrite\Model\Category\Plugin\Category\Remove"/>
+        <plugin name="update_url_path_for_different_stores" type="Magento\Catalog_Url_Rewrite\Model\Category\Plugin\Category\Update_Url_Path"/>
     </type>
-    <type name="Magento\UrlRewrite\Model\StorageInterface">
-        <plugin name="storage_plugin" type="Magento\CatalogUrlRewrite\Model\Category\Plugin\Storage"/>
+    <type name="Magento\Url_Rewrite\Model\Storage_Interface">
+        <plugin name="storage_plugin" type="Magento\Catalog_Url_Rewrite\Model\Category\Plugin\Storage"/>
     </type>
-    <type name="Magento\CatalogUrlRewrite\Model\Storage\DbStorage">
-        <plugin name="dynamic_storage_plugin" type="Magento\CatalogUrlRewrite\Plugin\DynamicCategoryRewrites"/>
+    <type name="Magento\Catalog_Url_Rewrite\Model\Storage\Db_Storage">
+        <plugin name="dynamic_storage_plugin" type="Magento\Catalog_Url_Rewrite\Plugin\Dynamic_Category_Rewrites"/>
     </type>
     <type name="Magento\Catalog\Model\Product\Action">
-        <plugin name="update_url_rewrites_after_websites_update_plugin" type="Magento\CatalogUrlRewrite\Plugin\Catalog\Model\Product\UpdateProductWebsiteUrlRewrites"/>
+        <plugin name="update_url_rewrites_after_websites_update_plugin" type="Magento\Catalog_Url_Rewrite\Plugin\Catalog\Model\Product\Update_Product_Website_Url_Rewrites"/>
     </type>
-    <type name="Magento\CatalogUrlRewrite\Model\Map\UrlRewriteFinder">
+    <type name="Magento\Catalog_Url_Rewrite\Model\Map\Url_Rewrite_Finder">
         <arguments>
             <argument name="urlRewriteClassNames" xsi:type="array">
-                <item name="product" xsi:type="string">Magento\CatalogUrlRewrite\Model\Map\DataProductUrlRewriteDatabaseMap</item>
-                <item name="category" xsi:type="string">Magento\CatalogUrlRewrite\Model\Map\DataCategoryUrlRewriteDatabaseMap</item>
+                <item name="product" xsi:type="string">Magento\Catalog_Url_Rewrite\Model\Map\Data_Product_Url_Rewrite_Database_Map</item>
+                <item name="category" xsi:type="string">Magento\Catalog_Url_Rewrite\Model\Map\Data_Category_Url_Rewrite_Database_Map</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\UrlRewrite\Model\CompositeUrlFinder">
+    <type name="Magento\Url_Rewrite\Model\Composite_Url_Finder">
         <arguments>
             <argument name="children" xsi:type="array">
                 <item name="catalog" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\CatalogUrlRewrite\Model\Storage\DbStorage</item>
+                    <item name="class" xsi:type="string">Magento\Catalog_Url_Rewrite\Model\Storage\Db_Storage</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\UrlRewrite\Model\UrlRewrite">
+    <type name="Magento\Url_Rewrite\Model\Url_Rewrite">
         <arguments>
             <argument name="entityToCacheTagMap" xsi:type="array">
                 <item name="product" xsi:type="const">Magento\Catalog\Model\Product::CACHE_TAG</item>

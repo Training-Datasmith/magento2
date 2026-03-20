@@ -6,13 +6,13 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Framework\Translate\Inline\ConfigInterface" type="Magento\Backend\Model\Translate\Inline\Config" />
-    <type name="Magento\Translation\Model\ResourceModel\Translate">
+    <preference for="Magento\Framework\Translate\Inline\Config_Interface" type="Magento\Backend\Model\Translate\Inline\Config" />
+    <type name="Magento\Translation\Model\Resource_Model\Translate">
         <arguments>
             <argument name="scope" xsi:type="string">admin</argument>
         </arguments>
     </type>
-    <type name="Magento\Translation\Model\ResourceModel\StringUtils">
+    <type name="Magento\Translation\Model\Resource_Model\String_Utils">
         <arguments>
             <argument name="scope" xsi:type="string">admin</argument>
         </arguments>
@@ -21,8 +21,8 @@
         <arguments>
             <argument name="templateFileName" xsi:type="string">Magento_Translation::translate_inline.phtml</argument>
             <argument name="translatorRoute" xsi:type="string">adminhtml/ajax/translate</argument>
-            <argument name="layout" xsi:type="object">Magento\Framework\View\LayoutInterface\Proxy</argument>
-            <argument name="url" xsi:type="object">Magento\Backend\Model\UrlInterface</argument>
+            <argument name="layout" xsi:type="object">Magento\Framework\View\Layout_Interface\Proxy</argument>
+            <argument name="url" xsi:type="object">Magento\Backend\Model\Url_Interface</argument>
             <argument name="scope" xsi:type="string">admin</argument>
         </arguments>
     </type>

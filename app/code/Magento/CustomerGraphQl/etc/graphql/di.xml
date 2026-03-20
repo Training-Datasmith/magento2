@@ -6,32 +6,32 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\CustomerGraphQl\Model\Customer\UpdateCustomerData">
+    <type name="Magento\Customer_Graph_Ql\Model\Customer\Update_Customer_Data">
         <arguments>
             <argument name="restrictedKeys" xsi:type="array">
-                <item name="email" xsi:type="const">Magento\Customer\Api\Data\CustomerInterface::EMAIL</item>
+                <item name="email" xsi:type="const">Magento\Customer\Api\Data\Customer_Interface::EMAIL</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQl\Model\Query\ContextFactory">
+    <type name="Magento\Graph_Ql\Model\Query\Context_Factory">
         <arguments>
             <argument name="contextParametersProcessors" xsi:type="array">
-                <item name="add_user_info_to_context" xsi:type="object">Magento\CustomerGraphQl\Model\Context\AddUserInfoToContext</item>
-                <item name="add_customer_group_to_context" xsi:type="object">Magento\CustomerGraphQl\Model\Context\AddCustomerGroupToContext</item>
+                <item name="add_user_info_to_context" xsi:type="object">Magento\Customer_Graph_Ql\Model\Context\Add_User_Info_To_Context</item>
+                <item name="add_customer_group_to_context" xsi:type="object">Magento\Customer_Graph_Ql\Model\Context\Add_Customer_Group_To_Context</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CustomerGraphQl\Model\Context\AddUserInfoToContext">
+    <type name="Magento\Customer_Graph_Ql\Model\Context\Add_User_Info_To_Context">
         <arguments>
             <argument name="session" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\CustomerGraphQl\Plugin\ClearCustomerSessionAfterRequest">
+    <type name="Magento\Customer_Graph_Ql\Plugin\Clear_Customer_Session_After_Request">
         <arguments>
             <argument name="session" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+    <type name="Magento\Store_Graph_Ql\Model\Resolver\Store\Store_Config_Data_Provider">
         <arguments>
             <argument name="extendedConfigData" xsi:type="array">
                 <item name="required_character_classes_number" xsi:type="string">customer/password/required_character_classes_number</item>
@@ -42,7 +42,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\TypeResolver\AttributeMetadata">
+    <type name="Magento\Eav_Graph_Ql\Model\Type_Resolver\Attribute_Metadata">
         <arguments>
             <argument name="entityTypes" xsi:type="array">
                 <item name="CUSTOMER" xsi:type="string">CustomerAttributeMetadata</item>
@@ -50,7 +50,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\Output\GetAttributeDataComposite">
+    <type name="Magento\Eav_Graph_Ql\Model\Output\Get_Attribute_Data_Composite">
         <arguments>
             <argument name="providers" xsi:type="array">
                 <item name="customer" xsi:type="object">GetCustomerAttributesMetadata</item>
@@ -58,40 +58,40 @@
             </argument>
         </arguments>
     </type>
-    <virtualType name="GetCustomerAttributesMetadata" type="Magento\CustomerGraphQl\Model\Output\CustomerAttributeMetadata">
+    <virtualType name="GetCustomerAttributesMetadata" type="Magento\Customer_Graph_Ql\Model\Output\Customer_Attribute_Metadata">
         <arguments>
-            <argument name="metadata" xsi:type="object">Magento\Customer\Model\Metadata\CustomerMetadata</argument>
+            <argument name="metadata" xsi:type="object">Magento\Customer\Model\Metadata\Customer_Metadata</argument>
             <argument name="entityType" xsi:type="string">customer</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GetCustomerAddressAttributesMetadata" type="Magento\CustomerGraphQl\Model\Output\CustomerAttributeMetadata">
+    <virtualType name="GetCustomerAddressAttributesMetadata" type="Magento\Customer_Graph_Ql\Model\Output\Customer_Attribute_Metadata">
         <arguments>
-            <argument name="metadata" xsi:type="object">Magento\Customer\Model\Metadata\AddressMetadata</argument>
+            <argument name="metadata" xsi:type="object">Magento\Customer\Model\Metadata\Address_Metadata</argument>
             <argument name="entityType" xsi:type="string">customer_address</argument>
         </arguments>
     </virtualType>
     <!-- Validate input customer data -->
-    <type name="Magento\CustomerGraphQl\Model\Customer\ValidateCustomerData">
+    <type name="Magento\Customer_Graph_Ql\Model\Customer\Validate_Customer_Data">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="validateEmail" xsi:type="object">Magento\CustomerGraphQl\Model\Customer\ValidateCustomerData\ValidateEmail</item>
-                <item name="validateGender" xsi:type="object">Magento\CustomerGraphQl\Model\Customer\ValidateCustomerData\ValidateGender</item>
+                <item name="validateEmail" xsi:type="object">Magento\Customer_Graph_Ql\Model\Customer\Validate_Customer_Data\Validate_Email</item>
+                <item name="validateGender" xsi:type="object">Magento\Customer_Graph_Ql\Model\Customer\Validate_Customer_Data\Validate_Gender</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQl\Controller\GraphQl">
-        <plugin name="ClearCustomerSessionAfterRequest" type="Magento\CustomerGraphQl\Plugin\ClearCustomerSessionAfterRequest" sortOrder="1" disabled="false" />
+    <type name="Magento\Graph_Ql\Controller\Graph_Ql">
+        <plugin name="ClearCustomerSessionAfterRequest" type="Magento\Customer_Graph_Ql\Plugin\Clear_Customer_Session_After_Request" sortOrder="1" disabled="false" />
     </type>
-    <type name="Magento\GraphQlCache\Model\CacheId\CacheIdCalculator">
+    <type name="Magento\Graph_Ql_Cache\Model\Cache_Id\Cache_Id_Calculator">
         <arguments>
             <argument name="idFactorProviders" xsi:type="array">
-                <item name="customergroup" xsi:type="object">Magento\CustomerGraphQl\CacheIdFactorProviders\CustomerGroupProvider</item>
-                <item name="customertaxrate" xsi:type="object">Magento\CustomerGraphQl\CacheIdFactorProviders\CustomerTaxRateProvider</item>
-                <item name="isloggedin" xsi:type="object">Magento\CustomerGraphQl\CacheIdFactorProviders\IsLoggedInProvider</item>
+                <item name="customergroup" xsi:type="object">Magento\Customer_Graph_Ql\Cache_Id_Factor_Providers\Customer_Group_Provider</item>
+                <item name="customertaxrate" xsi:type="object">Magento\Customer_Graph_Ql\Cache_Id_Factor_Providers\Customer_Tax_Rate_Provider</item>
+                <item name="isloggedin" xsi:type="object">Magento\Customer_Graph_Ql\Cache_Id_Factor_Providers\Is_Logged_In_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Schema\Type\Enum\DefaultDataMapper">
+    <type name="Magento\Framework\Graph_Ql\Schema\Type\Enum\Default_Data_Mapper">
         <arguments>
             <argument name="map" xsi:type="array">
                 <item name="AttributeEntityTypeEnum" xsi:type="array">
@@ -119,7 +119,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\GetAttributesFormComposite">
+    <type name="Magento\Eav_Graph_Ql\Model\Get_Attributes_Form_Composite">
         <arguments>
             <argument name="providers" xsi:type="array">
                 <item name="customer" xsi:type="object">GetCustomerAttributesForm</item>
@@ -127,27 +127,27 @@
             </argument>
         </arguments>
     </type>
-    <virtualType name="GetCustomerAttributesForm" type="Magento\CustomerGraphQl\Model\Customer\GetAttributesForm">
+    <virtualType name="GetCustomerAttributesForm" type="Magento\Customer_Graph_Ql\Model\Customer\Get_Attributes_Form">
         <arguments>
-            <argument name="metadata" xsi:type="object">Magento\Customer\Api\CustomerMetadataInterface</argument>
+            <argument name="metadata" xsi:type="object">Magento\Customer\Api\Customer_Metadata_Interface</argument>
             <argument name="type" xsi:type="string">customer</argument>
         </arguments>
     </virtualType>
-    <virtualType name="GetCustomerAddressAttributesForm" type="Magento\CustomerGraphQl\Model\Customer\GetAttributesForm">
+    <virtualType name="GetCustomerAddressAttributesForm" type="Magento\Customer_Graph_Ql\Model\Customer\Get_Attributes_Form">
         <arguments>
-            <argument name="metadata" xsi:type="object">Magento\Customer\Api\AddressMetadataInterface</argument>
+            <argument name="metadata" xsi:type="object">Magento\Customer\Api\Address_Metadata_Interface</argument>
             <argument name="type" xsi:type="string">customer_address</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\EavGraphQl\Model\GetAttributeValueComposite">
+    <type name="Magento\Eav_Graph_Ql\Model\Get_Attribute_Value_Composite">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="customer" xsi:type="object">Magento\CustomerGraphQl\Model\Customer\GetCustomAttributes</item>
-                <item name="customer_address" xsi:type="object">Magento\CustomerGraphQl\Model\Customer\GetCustomAttributes</item>
+                <item name="customer" xsi:type="object">Magento\Customer_Graph_Ql\Model\Customer\Get_Custom_Attributes</item>
+                <item name="customer_address" xsi:type="object">Magento\Customer_Graph_Ql\Model\Customer\Get_Custom_Attributes</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CustomerGraphQl\Model\Customer\GetCustomAttributes">
+    <type name="Magento\Customer_Graph_Ql\Model\Customer\Get_Custom_Attributes">
         <arguments>
             <argument name="frontendInputs" xsi:type="array">
                 <item name="multiselect" xsi:type="string">multiselect</item>
@@ -155,15 +155,15 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\GetAttributeSelectedOptionComposite">
+    <type name="Magento\Eav_Graph_Ql\Model\Get_Attribute_Selected_Option_Composite">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="customer" xsi:type="object">Magento\CustomerGraphQl\Model\Customer\GetCustomSelectedOptionAttributes</item>
-                <item name="customer_address" xsi:type="object">Magento\CustomerGraphQl\Model\Customer\GetCustomSelectedOptionAttributes</item>
+                <item name="customer" xsi:type="object">Magento\Customer_Graph_Ql\Model\Customer\Get_Custom_Selected_Option_Attributes</item>
+                <item name="customer_address" xsi:type="object">Magento\Customer_Graph_Ql\Model\Customer\Get_Custom_Selected_Option_Attributes</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\EavGraphQl\Model\TypeResolver\AttributeValue">
+    <type name="Magento\Eav_Graph_Ql\Model\Type_Resolver\Attribute_Value">
         <arguments>
             <argument name="frontendInputs" xsi:type="array">
                 <item name="multiselect" xsi:type="string">multiselect</item>
@@ -171,52 +171,52 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\ResolverIdentityClassProvider">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Resolver_Identity_Class_Provider">
         <arguments>
             <argument name="cacheableResolverClassNameIdentityMap" xsi:type="array">
-                <item name="Magento\CustomerGraphQl\Model\Resolver\Customer" xsi:type="string">
-                    Magento\CustomerGraphQl\Model\Resolver\Cache\Customer\ResolverCacheIdentity
+                <item name="Magento\Customer_Graph_Ql\Model\Resolver\Customer" xsi:type="string">
+                    Magento\Customer_Graph_Ql\Model\Resolver\Cache\Customer\Resolver_Cache_Identity
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\HydratorDehydratorProvider">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Hydrator_Dehydrator_Provider">
         <arguments>
             <argument name="hydratorConfig" xsi:type="array">
-                <item name="Magento\CustomerGraphQl\Model\Resolver\Customer" xsi:type="array">
+                <item name="Magento\Customer_Graph_Ql\Model\Resolver\Customer" xsi:type="array">
                     <item name="model_hydrator" xsi:type="array">
                         <item name="sortOrder" xsi:type="string">10</item>
-                        <item name="class" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\Cache\Customer\ModelHydrator</item>
+                        <item name="class" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache\Customer\Model_Hydrator</item>
                     </item>
                 </item>
             </argument>
             <argument name="dehydratorConfig" xsi:type="array">
-                <item name="Magento\CustomerGraphQl\Model\Resolver\Customer" xsi:type="array">
+                <item name="Magento\Customer_Graph_Ql\Model\Resolver\Customer" xsi:type="array">
                     <item name="model_dehydrator" xsi:type="array">
                         <item name="sortOrder" xsi:type="string">10</item>
-                        <item name="class" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\Cache\Customer\ModelDehydrator</item>
+                        <item name="class" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache\Customer\Model_Dehydrator</item>
                     </item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\Calculator\Provider">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Cache_Key\Calculator\Provider">
         <arguments>
             <argument name="factorProviders" xsi:type="array">
-                <item name="Magento\CustomerGraphQl\Model\Resolver\Customer" xsi:type="array">
-                    <item name="current_customer_id" xsi:type="string">Magento\CustomerGraphQl\Model\Resolver\CacheKey\FactorProvider\CurrentCustomerId</item>
+                <item name="Magento\Customer_Graph_Ql\Model\Resolver\Customer" xsi:type="array">
+                    <item name="current_customer_id" xsi:type="string">Magento\Customer_Graph_Ql\Model\Resolver\Cache_Key\Factor_Provider\Current_Customer_Id</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\Model\AccountManagement">
+    <type name="Magento\Customer\Model\Account_Management">
         <plugin name="merge_order_after_customer_signup"
-                type="Magento\CustomerGraphQl\Plugin\Model\MergeGuestOrder" />
+                type="Magento\Customer_Graph_Ql\Plugin\Model\Merge_Guest_Order" />
     </type>
-    <type name="Magento\GraphQl\Controller\HttpRequestProcessor">
+    <type name="Magento\Graph_Ql\Controller\Http_Request_Processor">
         <arguments>
             <argument name="requestValidators" xsi:type="array">
-                <item name="authorizationValidator" xsi:type="object">Magento\CustomerGraphQl\Controller\HttpRequestValidator\AuthorizationRequestValidator</item>
+                <item name="authorizationValidator" xsi:type="object">Magento\Customer_Graph_Ql\Controller\Http_Request_Validator\Authorization_Request_Validator</item>
             </argument>
         </arguments>
     </type>

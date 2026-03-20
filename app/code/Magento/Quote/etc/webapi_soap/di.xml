@@ -6,21 +6,21 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Quote\Model\GuestCart\GuestCartManagement">
-        <plugin name="authorization" type="Magento\Quote\Model\GuestCartManagement\Plugin\Authorization" />
+    <type name="Magento\Quote\Model\Guest_Cart\Guest_Cart_Management">
+        <plugin name="authorization" type="Magento\Quote\Model\Guest_Cart_Management\Plugin\Authorization" />
     </type>
-    <type name="Magento\Quote\Model\QuoteRepository">
-        <plugin name="accessControl" type="Magento\Quote\Model\QuoteRepository\Plugin\AccessChangeQuoteControl" />
-        <plugin name="authorization" type="Magento\Quote\Model\QuoteRepository\Plugin\Authorization" />
+    <type name="Magento\Quote\Model\Quote_Repository">
+        <plugin name="accessControl" type="Magento\Quote\Model\Quote_Repository\Plugin\Access_Change_Quote_Control" />
+        <plugin name="authorization" type="Magento\Quote\Model\Quote_Repository\Plugin\Authorization" />
     </type>
     <type name="Magento\Quote\Model\Quote">
-        <plugin name="updateQuoteStoreId" type="Magento\Quote\Model\Quote\Plugin\UpdateQuoteStoreId" />
+        <plugin name="updateQuoteStoreId" type="Magento\Quote\Model\Quote\Plugin\Update_Quote_Store_Id" />
     </type>
-    <virtualType name="Magento\Quote\Model\Quote\Item\CartItemValidatorChainOnSave" type="Magento\Quote\Model\Quote\Item\CartItemValidatorChain">
+    <virtualType name="Magento\Quote\Model\Quote\Item\Cart_Item_Validator_Chain_On_Save" type="Magento\Quote\Model\Quote\Item\Cart_Item_Validator_Chain">
         <arguments>
             <argument name="breakChainOnFailure" xsi:type="boolean">true</argument>
             <argument name="validators" xsi:type="array">
-                <item name="cart_item_custom_options_validator" xsi:type="object">Magento\Quote\Model\Quote\Item\CartItemCustomOptionsValidator</item>
+                <item name="cart_item_custom_options_validator" xsi:type="object">Magento\Quote\Model\Quote\Item\Cart_Item_Custom_Options_Validator</item>
             </argument>
         </arguments>
     </virtualType>

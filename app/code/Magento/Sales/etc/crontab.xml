@@ -7,24 +7,24 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
-        <job name="sales_clean_quotes" instance="Magento\Sales\Cron\CleanExpiredQuotes" method="execute">
+        <job name="sales_clean_quotes" instance="Magento\Sales\Cron\Clean_Expired_Quotes" method="execute">
             <schedule>0 0 * * *</schedule>
         </job>
-        <job name="sales_clean_orders" instance="Magento\Sales\Model\CronJob\CleanExpiredOrders" method="execute">
+        <job name="sales_clean_orders" instance="Magento\Sales\Model\Cron_Job\Clean_Expired_Orders" method="execute">
             <schedule>0 * * * *</schedule>
         </job>
-        <job name="aggregate_sales_report_order_data" instance="Magento\Sales\Model\CronJob\AggregateSalesReportOrderData" method="execute">
+        <job name="aggregate_sales_report_order_data" instance="Magento\Sales\Model\Cron_Job\Aggregate_Sales_Report_Order_Data" method="execute">
             <schedule>0 0 * * *</schedule>
         </job>
         <job name="aggregate_sales_report_invoiced_data"
-             instance="Magento\Sales\Model\CronJob\AggregateSalesReportInvoicedData" method="execute">
+             instance="Magento\Sales\Model\Cron_Job\Aggregate_Sales_Report_Invoiced_Data" method="execute">
             <schedule>0 0 * * *</schedule>
         </job>
-        <job name="aggregate_sales_report_refunded_data" instance="Magento\Sales\Model\CronJob\AggregateSalesReportRefundedData" method="execute">
+        <job name="aggregate_sales_report_refunded_data" instance="Magento\Sales\Model\Cron_Job\Aggregate_Sales_Report_Refunded_Data" method="execute">
             <schedule>0 0 * * *</schedule>
         </job>
         <job name="aggregate_sales_report_bestsellers_data"
-             instance="Magento\Sales\Model\CronJob\AggregateSalesReportBestsellersData" method="execute">
+             instance="Magento\Sales\Model\Cron_Job\Aggregate_Sales_Report_Bestsellers_Data" method="execute">
             <schedule>0 0 * * *</schedule>
         </job>
         <job name="sales_grid_order_async_insert" instance="SalesOrderIndexGridAsyncInsertCron" method="execute">

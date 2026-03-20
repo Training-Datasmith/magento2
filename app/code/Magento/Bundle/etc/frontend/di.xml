@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Catalog\Helper\Product\ConfigurationPool">
+    <type name="Magento\Catalog\Helper\Product\Configuration_Pool">
         <arguments>
             <argument name="instancesByType" xsi:type="array">
                 <item name="bundle" xsi:type="object">Magento\Bundle\Helper\Catalog\Product\Configuration</item>
@@ -14,12 +14,12 @@
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Product">
-        <plugin name="add_bundle_child_identities" type="Magento\Bundle\Model\Plugin\Frontend\ProductIdentitiesExtender" sortOrder="100"/>
+        <plugin name="add_bundle_child_identities" type="Magento\Bundle\Model\Plugin\Frontend\Product_Identities_Extender" sortOrder="100"/>
     </type>
-    <type name="Magento\Catalog\Model\Product\Type\AbstractType">
-        <plugin name="add_to_cart_single_option" type="Magento\Bundle\Plugin\Catalog\Model\Product\Type\AbstractType" />
+    <type name="Magento\Catalog\Model\Product\Type\Abstract_Type">
+        <plugin name="add_to_cart_single_option" type="Magento\Bundle\Plugin\Catalog\Model\Product\Type\Abstract_Type" />
     </type>
-    <type name="Magento\Catalog\ViewModel\Product\OptionsData">
-        <plugin name="add_bundle_options_data" type="Magento\Bundle\Plugin\Catalog\ViewModel\Product\AddBundleOptionsData" />
+    <type name="Magento\Catalog\View_Model\Product\Options_Data">
+        <plugin name="add_bundle_options_data" type="Magento\Bundle\Plugin\Catalog\View_Model\Product\Add_Bundle_Options_Data" />
     </type>
 </config>

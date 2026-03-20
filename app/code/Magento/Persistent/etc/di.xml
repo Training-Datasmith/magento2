@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Quote\Model\AddressAdditionalDataProcessor">
-        <plugin name="persistent_remember_me_checkbox_processor" type="Magento\Persistent\Model\Checkout\AddressDataProcessorPlugin" />
+    <type name="Magento\Quote\Model\Address_Additional_Data_Processor">
+        <plugin name="persistent_remember_me_checkbox_processor" type="Magento\Persistent\Model\Checkout\Address_Data_Processor_Plugin" />
     </type>
-    <type name="Magento\Customer\CustomerData\Customer">
-        <plugin name="section_data" type="Magento\Persistent\Model\Plugin\CustomerData" />
+    <type name="Magento\Customer\Customer_Data\Customer">
+        <plugin name="section_data" type="Magento\Persistent\Model\Plugin\Customer_Data" />
     </type>
     <type name="Magento\Persistent\Model\Customer\Authorization">
         <arguments>
@@ -22,10 +22,10 @@
             <argument name="checkoutSession" xsi:type="object">Magento\Checkout\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\QuoteManagement">
-        <plugin name="persistent_convert_customer_cart_to_guest_cart" type="Magento\Persistent\Model\Plugin\ConvertCustomerCartToGuest" />
+    <type name="Magento\Quote\Model\Quote_Management">
+        <plugin name="persistent_convert_customer_cart_to_guest_cart" type="Magento\Persistent\Model\Plugin\Convert_Customer_Cart_To_Guest" />
     </type>
-    <type name="Magento\Persistent\Model\CleanExpiredPersistentQuotes">
+    <type name="Magento\Persistent\Model\Clean_Expired_Persistent_Quotes">
         <arguments>
             <argument name="batchSize" xsi:type="number">500</argument>
         </arguments>

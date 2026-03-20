@@ -7,7 +7,7 @@
 -->
 <layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/layout_generic.xsd">
     <referenceContainer name="content">
-        <block class="Magento\LoginAsCustomerAssistance\Block\Adminhtml\NotAllowedPopup" name="lac.not.allowed.popup" template="Magento_LoginAsCustomerAssistance::not-allowed-popup.phtml">
+        <block class="Magento\Login_As_Customer_Assistance\Block\Adminhtml\Not_Allowed_Popup" name="lac.not.allowed.popup" template="Magento_LoginAsCustomerAssistance::not-allowed-popup.phtml">
             <arguments>
                 <argument name="jsLayout" xsi:type="array">
                     <item name="components" xsi:type="array">

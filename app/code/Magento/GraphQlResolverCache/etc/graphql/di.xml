@@ -6,20 +6,20 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\Calculator\ProviderInterface" type="Magento\GraphQlResolverCache\Model\Resolver\Result\CacheKey\Calculator\Provider" />
-    <preference for="Magento\GraphQlResolverCache\Model\Resolver\Result\HydratorProviderInterface" type="Magento\GraphQlResolverCache\Model\Resolver\Result\HydratorDehydratorProvider"/>
-    <preference for="Magento\GraphQlResolverCache\Model\Resolver\Result\DehydratorProviderInterface" type="Magento\GraphQlResolverCache\Model\Resolver\Result\HydratorDehydratorProvider"/>
-    <preference for="Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessorInterface" type="Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessor"/>
-    <preference for="Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessor\FlagSetter\FlagSetterInterface" type="Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessor\FlagSetter\SingleObject"/>
-    <preference for="Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessor\FlagGetter\FlagGetterInterface" type="Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessor\FlagGetter\SingleObject"/>
-    <type name="Magento\Framework\GraphQl\Query\ResolverInterface">
-        <plugin name="cacheResolverResult" type="Magento\GraphQlResolverCache\Model\Plugin\Resolver\Cache" sortOrder="20"/>
+    <preference for="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Cache_Key\Calculator\Provider_Interface" type="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Cache_Key\Calculator\Provider" />
+    <preference for="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Hydrator_Provider_Interface" type="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Hydrator_Dehydrator_Provider"/>
+    <preference for="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Dehydrator_Provider_Interface" type="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Hydrator_Dehydrator_Provider"/>
+    <preference for="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Value_Processor_Interface" type="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Value_Processor"/>
+    <preference for="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Value_Processor\Flag_Setter\Flag_Setter_Interface" type="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Value_Processor\Flag_Setter\Single_Object"/>
+    <preference for="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Value_Processor\Flag_Getter\Flag_Getter_Interface" type="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Value_Processor\Flag_Getter\Single_Object"/>
+    <type name="Magento\Framework\Graph_Ql\Query\Resolver_Interface">
+        <plugin name="cacheResolverResult" type="Magento\Graph_Ql_Resolver_Cache\Model\Plugin\Resolver\Cache" sortOrder="20"/>
     </type>
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessor">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Value_Processor">
         <arguments>
             <argument name="typeConfig" xsi:type="array">
                 <item name="setters" xsi:type="array">
-                    <item name="Magento\Framework\GraphQl\Schema\Type\ListOfType" xsi:type="string">Magento\GraphQlResolverCache\Model\Resolver\Result\ValueProcessor\FlagSetter\ListOfObjects</item>
+                    <item name="Magento\Framework\Graph_Ql\Schema\Type\List_Of_Type" xsi:type="string">Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Value_Processor\Flag_Setter\List_Of_Objects</item>
                 </item>
             </argument>
         </arguments>

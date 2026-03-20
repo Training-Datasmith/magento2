@@ -12,17 +12,17 @@
 
         <before>
             <!-- Copy Images to Import Directory for Product Images -->
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\FileAssertions" method="createDirectory" stepKey="createDirectoryForImportImages">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\File_Assertions" method="createDirectory" stepKey="createDirectoryForImportImages">
                 <argument name="path">var/import/images/test_image_long_name</argument>
             </helper>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\FileAssertions" method="copyFromLocal" stepKey="copyProductBaseImage">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\File_Assertions" method="copyFromLocal" stepKey="copyProductBaseImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/{{placeholderBaseImageLongName.file}}</argument>
                 <argument name="destination">var/import/images/test_image_long_name/{{placeholderBaseImageLongName.file}}</argument>
             </helper>
         </before>
 
         <after>
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\FileAssertions" method="deleteDirectory" stepKey="deleteProductImageDirectory">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\File_Assertions" method="deleteDirectory" stepKey="deleteProductImageDirectory">
                 <argument name="path">var/import/images/test_image_long_name</argument>
             </helper>
         </after>

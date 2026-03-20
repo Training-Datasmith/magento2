@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\AppInterface">
-        <plugin name="application-performance-monitor" type="Magento\ApplicationPerformanceMonitor\Plugin\ApplicationPerformanceMonitor" sortOrder="50"/>
+    <type name="Magento\Framework\App_Interface">
+        <plugin name="application-performance-monitor" type="Magento\Application_Performance_Monitor\Plugin\Application_Performance_Monitor" sortOrder="50"/>
     </type>
-    <type name="Magento\ApplicationPerformanceMonitor\Profiler\Profiler">
+    <type name="Magento\Application_Performance_Monitor\Profiler\Profiler">
         <arguments>
             <argument name="inputs" xsi:type="array">
-                <item name="GeneralInput" xsi:type="object">Magento\ApplicationPerformanceMonitor\Profiler\Input\GeneralInput</item>
+                <item name="GeneralInput" xsi:type="object">Magento\Application_Performance_Monitor\Profiler\Input\General_Input</item>
             </argument>
             <argument name="outputs" xsi:type="array">
-                <item name="LoggerOutput" xsi:type="object">Magento\ApplicationPerformanceMonitor\Profiler\Output\LoggerOutput</item>
+                <item name="LoggerOutput" xsi:type="object">Magento\Application_Performance_Monitor\Profiler\Output\Logger_Output</item>
             </argument>
         </arguments>
     </type>

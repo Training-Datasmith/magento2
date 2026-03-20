@@ -6,11 +6,11 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+    <virtualType name="Magento\Catalog\Ui\Data_Provider\Product\Form\Modifier\Pool">
         <arguments>
             <argument name="modifiers" xsi:type="array">
                 <item name="gift-message" xsi:type="array">
-                    <item name="class" xsi:type="string">Magento\GiftMessage\Ui\DataProvider\Product\Modifier\GiftMessage</item>
+                    <item name="class" xsi:type="string">Magento\Gift_Message\Ui\Data_Provider\Product\Modifier\Gift_Message</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                 </item>
             </argument>

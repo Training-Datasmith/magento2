@@ -7,7 +7,7 @@
 -->
 <widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
-    <widget id="new_products" class="Magento\Catalog\Block\Product\Widget\NewWidget" is_email_compatible="true"
+    <widget id="new_products" class="Magento\Catalog\Block\Product\Widget\New_Widget" is_email_compatible="true"
             placeholder_image="Magento_Catalog::images/product_widget_new.png">
         <label translate="true">Catalog New Products List</label>
         <description translate="true">List of Products that are set as New</description>

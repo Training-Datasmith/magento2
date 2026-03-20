@@ -6,20 +6,20 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="customerCreated" request="Magento\Customer\Api\Data\CustomerInterface"/>
+    <topic name="customerCreated" request="Magento\Customer\Api\Data\Customer_Interface"/>
     <topic name="customerAdded" request="string[]">
-        <handler name="customerCreatedFirst" type="Magento\Customer\Api\CustomerRepositoryInterface" method="save"/>
-        <handler name="customerCreatedSecond" type="Magento\Customer\Api\CustomerRepositoryInterface" method="delete"/>
-        <handler name="saveNameNotDisabled" type="Magento\Customer\Api\CustomerRepositoryInterface" method="save" disabled="false"/>
-        <handler name="saveNameNotDisabledDigit" type="Magento\Customer\Api\CustomerRepositoryInterface" method="save" disabled="0"/>
-        <handler name="saveNameDisabledDigit" type="Magento\Customer\Api\CustomerRepositoryInterface" method="save" disabled="1"/>
+        <handler name="customerCreatedFirst" type="Magento\Customer\Api\Customer_Repository_Interface" method="save"/>
+        <handler name="customerCreatedSecond" type="Magento\Customer\Api\Customer_Repository_Interface" method="delete"/>
+        <handler name="saveNameNotDisabled" type="Magento\Customer\Api\Customer_Repository_Interface" method="save" disabled="false"/>
+        <handler name="saveNameNotDisabledDigit" type="Magento\Customer\Api\Customer_Repository_Interface" method="save" disabled="0"/>
+        <handler name="saveNameDisabledDigit" type="Magento\Customer\Api\Customer_Repository_Interface" method="save" disabled="1"/>
     </topic>
-    <topic name="customerUpdated" request="Magento\Customer\Api\Data\CustomerInterface" response="Magento\Customer\Api\Data\CustomerInterface[]">
-        <handler name="saveName" type="Magento\Customer\Api\CustomerRepositoryInterface" method="save" disabled="true"/>
-        <handler name="updateName" type="Magento\Customer\Api\CustomerRepositoryInterface" method="save"/>
+    <topic name="customerUpdated" request="Magento\Customer\Api\Data\Customer_Interface" response="Magento\Customer\Api\Data\Customer_Interface[]">
+        <handler name="saveName" type="Magento\Customer\Api\Customer_Repository_Interface" method="save" disabled="true"/>
+        <handler name="updateName" type="Magento\Customer\Api\Customer_Repository_Interface" method="save"/>
     </topic>
-    <topic name="customerRetrieved" schema="Magento\Customer\Api\CustomerRepositoryInterface::get"/>
-    <topic name="customerDeleted" schema="Magento\Customer\Api\CustomerRepositoryInterface::delete">
-        <handler name="customHandler" type="Magento\Customer\Api\CustomerRepositoryInterface" method="deleteById"/>
+    <topic name="customerRetrieved" schema="Magento\Customer\Api\Customer_Repository_Interface::get"/>
+    <topic name="customerDeleted" schema="Magento\Customer\Api\Customer_Repository_Interface::delete">
+        <handler name="customHandler" type="Magento\Customer\Api\Customer_Repository_Interface" method="deleteById"/>
     </topic>
 </config>

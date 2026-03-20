@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="catalog_product_generate_urls" request="Magento\AsynchronousOperations\Api\Data\OperationInterface">
-        <handler name="catalog_product_generate_urls" type="Magento\CatalogUrlRewrite\Model\UpdateProductUrlRewrite" method="process" />
+    <topic name="catalog_product_generate_urls" request="Magento\Asynchronous_Operations\Api\Data\Operation_Interface">
+        <handler name="catalog_product_generate_urls" type="Magento\Catalog_Url_Rewrite\Model\Update_Product_Url_Rewrite" method="process" />
     </topic>
 </config>

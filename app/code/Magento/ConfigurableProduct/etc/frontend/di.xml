@@ -7,23 +7,23 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\ConfigurableProduct\Model\ResourceModel\Attribute\OptionSelectBuilderInterface">
-        <plugin name="Magento_ConfigurableProduct_Plugin_Model_ResourceModel_Attribute_InStockOptionSelectBuilder" type="Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Attribute\InStockOptionSelectBuilder"/>
-        <plugin name="option_select_website_filter" type="Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Attribute\ScopedOptionSelectBuilder"/>
+    <type name="Magento\Configurable_Product\Model\Resource_Model\Attribute\Option_Select_Builder_Interface">
+        <plugin name="Magento_ConfigurableProduct_Plugin_Model_ResourceModel_Attribute_InStockOptionSelectBuilder" type="Magento\Configurable_Product\Plugin\Model\Resource_Model\Attribute\In_Stock_Option_Select_Builder"/>
+        <plugin name="option_select_website_filter" type="Magento\Configurable_Product\Plugin\Model\Resource_Model\Attribute\Scoped_Option_Select_Builder"/>
     </type>
-    <type name="Magento\ConfigurableProduct\Model\Product\Type\Configurable">
-        <plugin name="used_products_cache" type="Magento\ConfigurableProduct\Model\Plugin\Frontend\UsedProductsCache" />
-        <plugin name="used_products_website_filter" type="Magento\ConfigurableProduct\Model\Plugin\Frontend\UsedProductsWebsiteFilter" />
+    <type name="Magento\Configurable_Product\Model\Product\Type\Configurable">
+        <plugin name="used_products_cache" type="Magento\Configurable_Product\Model\Plugin\Frontend\Used_Products_Cache" />
+        <plugin name="used_products_website_filter" type="Magento\Configurable_Product\Model\Plugin\Frontend\Used_Products_Website_Filter" />
     </type>
-    <type name="Magento\ConfigurableProduct\Pricing\Price\ConfigurableOptionsCompositeFilter">
+    <type name="Magento\Configurable_Product\Pricing\Price\Configurable_Options_Composite_Filter">
         <arguments>
             <argument name="configurableOptionsFilters" xsi:type="array">
-                <item name="status" xsi:type="object">Magento\ConfigurableProduct\Pricing\Price\ConfigurableOptionsStatusFilter</item>
-                <item name="stock_status" xsi:type="object">Magento\ConfigurableProduct\Pricing\Price\ConfigurableOptionsStockStatusFilter</item>
+                <item name="status" xsi:type="object">Magento\Configurable_Product\Pricing\Price\Configurable_Options_Status_Filter</item>
+                <item name="stock_status" xsi:type="object">Magento\Configurable_Product\Pricing\Price\Configurable_Options_Stock_Status_Filter</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogWidget\Block\Product\ProductsList">
-        <plugin name="configurable_product_widget_product_list" type="Magento\ConfigurableProduct\Plugin\CatalogWidget\Block\Product\ProductsListPlugin" sortOrder="2"/>
+    <type name="Magento\Catalog_Widget\Block\Product\Products_List">
+        <plugin name="configurable_product_widget_product_list" type="Magento\Configurable_Product\Plugin\Catalog_Widget\Block\Product\Products_List_Plugin" sortOrder="2"/>
     </type>
 </config>

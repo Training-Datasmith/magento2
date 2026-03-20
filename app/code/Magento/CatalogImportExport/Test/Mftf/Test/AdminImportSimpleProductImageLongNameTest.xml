@@ -28,10 +28,10 @@
                 <requiredEntity createDataKey="createCategory"/>
             </createData>
             <!-- Copy Image to Import Directory for Product Images -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="createDirectory" stepKey="createDirectoryForImportImages">
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="createDirectory" stepKey="createDirectoryForImportImages">
                 <argument name="path">var/import/images/test_image_long_name</argument>
             </helper>
-            <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="copy" stepKey="copyProductBaseImage">
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="copy" stepKey="copyProductBaseImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/{{placeholderBaseImageLongName.file}}</argument>
                 <argument name="destination">var/import/images/test_image_long_name/{{placeholderBaseImageLongName.file}}</argument>
             </helper>
@@ -42,7 +42,7 @@
         <after>
             <deleteData createDataKey="createProduct" stepKey="deleteProduct"/>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
-            <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteDirectory" stepKey="deleteProductImageDirectory">
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteDirectory" stepKey="deleteProductImageDirectory">
                 <argument name="path">var/import/images/test_image_long_name</argument>
             </helper>
             <actionGroup ref="AdminLogoutActionGroup" stepKey="logoutFromAdmin"/>

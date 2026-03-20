@@ -7,9 +7,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="checkout_onepage_controller_success_action">
-        <observer name="google_analytics4_order_success" instance="Magento\GoogleGtag\Observer\SetGoogleAnalyticsOnOrderSuccessPageViewObserver" />
+        <observer name="google_analytics4_order_success" instance="Magento\Google_Gtag\Observer\Set_Google_Analytics_On_Order_Success_Page_View_Observer" />
     </event>
     <event name="multishipping_checkout_controller_success_action">
-        <observer name="google_analytics4_order_success" instance="Magento\GoogleGtag\Observer\SetGoogleAnalyticsOnOrderSuccessPageViewObserver" />
+        <observer name="google_analytics4_order_success" instance="Magento\Google_Gtag\Observer\Set_Google_Analytics_On_Order_Success_Page_View_Observer" />
     </event>
 </config>

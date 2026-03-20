@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
-    <extension_attributes for="Magento\Catalog\Api\Data\ProductRenderInterface">
-        <attribute code="wishlist_button" type="Magento\Catalog\Api\Data\ProductRender\ButtonInterface"/>
+    <extension_attributes for="Magento\Catalog\Api\Data\Product_Render_Interface">
+        <attribute code="wishlist_button" type="Magento\Catalog\Api\Data\Product_Render\Button_Interface"/>
     </extension_attributes>
 </config>

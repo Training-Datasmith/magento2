@@ -9,18 +9,18 @@
     <body>
         <referenceContainer name="notifications">
             <uiComponent name="notification_area" aclResource="Magento_AdminNotification::show_list"/>
-            <block class="Magento\AdminNotification\Block\System\Messages\UnreadMessagePopup"
+            <block class="Magento\Admin_Notification\Block\System\Messages\Unread_Message_Popup"
                    name="unread_system_messages"
                    as="unread_system_messages"
                    template="Magento_AdminNotification::system/messages/popup.phtml"/>
-            <block class="Magento\AdminNotification\Block\Window"
+            <block class="Magento\Admin_Notification\Block\Window"
                    name="notification_window"
                    as="notification_window"
                    aclResource="Magento_AdminNotification::show_toolbar"
                    template="Magento_AdminNotification::notification/window.phtml"/>
         </referenceContainer>
         <referenceContainer name="header">
-            <block class="Magento\AdminNotification\Block\ToolbarEntry"
+            <block class="Magento\Admin_Notification\Block\Toolbar_Entry"
                    name="notification.messages"
                    before="user"
                    aclResource="Magento_AdminNotification::show_toolbar"

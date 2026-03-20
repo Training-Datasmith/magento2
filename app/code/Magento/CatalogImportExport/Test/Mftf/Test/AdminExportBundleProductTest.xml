@@ -101,7 +101,7 @@
             <deleteData createDataKey="firstSimpleProductForFixedWithAttribute" stepKey="deleteFirstSimpleProductForFixedWithAttribute"/>
             <deleteData createDataKey="secondSimpleProductForFixedWithAttribute" stepKey="deleteSecondSimpleProductForFixedWithAttribute"/>
             <deleteData createDataKey="createProductAttribute" stepKey="deleteProductAttribute"/>
-            <helper class="\Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
+            <helper class="\Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
                 <argument name="path">var/export</argument>
             </helper>
             <actionGroup ref="CliIndexerReindexActionGroup" stepKey="reindexInvalidatedIndices">
@@ -128,82 +128,82 @@
         </actionGroup>
 
         <!-- Validate Export File on File System: Dynamic Bundle Product -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertExportFileExists">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertExportFileExists">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFirstSimpleProductForDynamicBundledProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFirstSimpleProductForDynamicBundledProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$firstSimpleProductForDynamic.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsSecondSimpleProductForDynamicBundledProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsSecondSimpleProductForDynamicBundledProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$secondSimpleProductForDynamic.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDynamicBundleProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDynamicBundleProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createDynamicBundleProduct.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDynamicBundleProductOption1">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDynamicBundleProductOption1">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">name=$createFirstBundleOption.option[title]$,type=$createFirstBundleOption.option[type]$,required=$createFirstBundleOption.option[required]$,sku=$$firstSimpleProductForDynamic.sku$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDynamicBundleProductOption2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDynamicBundleProductOption2">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">name=$createFirstBundleOption.option[title]$,type=$createFirstBundleOption.option[type]$,required=$createFirstBundleOption.option[required]$,sku=$$secondSimpleProductForDynamic.sku$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsDynamicPriceBundleProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsDynamicPriceBundleProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">0.000000,,,,$$createDynamicBundleProduct.sku$$</argument>
         </helper>
 
         <!-- Validate Export File on File System: Fixed Bundle Product -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFirstSimpleProductForFixedBundledProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFirstSimpleProductForFixedBundledProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$firstSimpleProductForFixed.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsSecondSimpleProductForFixedBundledProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsSecondSimpleProductForFixedBundledProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$secondSimpleProductForFixed.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createFixedBundleProduct.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductOption1">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductOption1">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">name=$createSecondBundleOption.option[title]$,type=$createSecondBundleOption.option[type]$,required=$createSecondBundleOption.option[required]$,sku=$$firstSimpleProductForFixed.sku$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductOption2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductOption2">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">name=$createSecondBundleOption.option[title]$,type=$createSecondBundleOption.option[type]$,required=$createSecondBundleOption.option[required]$,sku=$$secondSimpleProductForFixed.sku$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedPriceBundleProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedPriceBundleProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createFixedBundleProduct.price$$0000,,,,$$createFixedBundleProduct.sku$$</argument>
         </helper>
 
         <!-- Validate Export File on File System: Fixed Bundle Product with Attribute -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFirstSimpleProductForFixedBundledProductWithAttribute">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFirstSimpleProductForFixedBundledProductWithAttribute">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$firstSimpleProductForFixedWithAttribute.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsSecondSimpleProductForFixedBundledProductWithAttribute">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsSecondSimpleProductForFixedBundledProductWithAttribute">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$secondSimpleProductForFixedWithAttribute.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductWithAttribute">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductWithAttribute">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createFixedBundleProductWithAttribute.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductWithAttributeOption1">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductWithAttributeOption1">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">name=$createBundleOptionWithAttribute.option[title]$,type=$createBundleOptionWithAttribute.option[type]$,required=$createBundleOptionWithAttribute.option[required]$,sku=$$firstSimpleProductForFixedWithAttribute.sku$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductWithAttributeOption2">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedBundleProductWithAttributeOption2">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">name=$createBundleOptionWithAttribute.option[title]$,type=$createBundleOptionWithAttribute.option[type]$,required=$createBundleOptionWithAttribute.option[required]$,sku=$$secondSimpleProductForFixedWithAttribute.sku$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedPriceBundleProductWithAttribute">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFixedPriceBundleProductWithAttribute">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createFixedBundleProductWithAttribute.price$$0000,,,,$$createFixedBundleProductWithAttribute.sku$$</argument>
         </helper>
@@ -215,79 +215,79 @@
 
         <!-- Validate Downloaded Export File on File System: Dynamic Bundle Product -->
         <grabAttributeFrom userInput="href" selector="{{AdminExportAttributeSection.download('0')}}" stepKey="grabExportUrl"/>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFirstSimpleProductForDynamicBundledProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFirstSimpleProductForDynamicBundledProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$firstSimpleProductForDynamic.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsSecondSimpleProductForDynamicBundledProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsSecondSimpleProductForDynamicBundledProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$secondSimpleProductForDynamic.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDynamicBundleProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDynamicBundleProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createDynamicBundleProduct.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDynamicBundleProductOption1">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDynamicBundleProductOption1">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">name=$createFirstBundleOption.option[title]$,type=$createFirstBundleOption.option[type]$,required=$createFirstBundleOption.option[required]$,sku=$$firstSimpleProductForDynamic.sku$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDynamicBundleProductOption2">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDynamicBundleProductOption2">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">name=$createFirstBundleOption.option[title]$,type=$createFirstBundleOption.option[type]$,required=$createFirstBundleOption.option[required]$,sku=$$secondSimpleProductForDynamic.sku$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDynamicPriceBundleProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsDynamicPriceBundleProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">0.000000,,,,$$createDynamicBundleProduct.sku$$</argument>
         </helper>
 
         <!-- Validate Downloaded Export File on File System: Fixed Bundle Product -->
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFirstSimpleProductForFixedBundledProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFirstSimpleProductForFixedBundledProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$firstSimpleProductForFixed.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsSecondSimpleProductForFixedBundledProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsSecondSimpleProductForFixedBundledProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$secondSimpleProductForFixed.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createFixedBundleProduct.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductOption1">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductOption1">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">name=$createSecondBundleOption.option[title]$,type=$createSecondBundleOption.option[type]$,required=$createSecondBundleOption.option[required]$,sku=$$firstSimpleProductForFixed.sku$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductOption2">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductOption2">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">name=$createSecondBundleOption.option[title]$,type=$createSecondBundleOption.option[type]$,required=$createSecondBundleOption.option[required]$,sku=$$secondSimpleProductForFixed.sku$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedPriceBundleProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedPriceBundleProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createFixedBundleProduct.price$$0000,,,,$$createFixedBundleProduct.sku$$</argument>
         </helper>
 
         <!-- Validate Downloaded Export File on File System: Fixed Bundle Product with Attribute -->
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFirstSimpleProductForFixedBundledProductWithAttribute">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFirstSimpleProductForFixedBundledProductWithAttribute">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$firstSimpleProductForFixedWithAttribute.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsSecondSimpleProductForFixedBundledProductWithAttribute">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsSecondSimpleProductForFixedBundledProductWithAttribute">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$secondSimpleProductForFixedWithAttribute.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductWithAttribute">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductWithAttribute">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createFixedBundleProductWithAttribute.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductWithAttributeOption1">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductWithAttributeOption1">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">name=$createBundleOptionWithAttribute.option[title]$,type=$createBundleOptionWithAttribute.option[type]$,required=$createBundleOptionWithAttribute.option[required]$,sku=$$firstSimpleProductForFixedWithAttribute.sku$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductWithAttributeOption2">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedBundleProductWithAttributeOption2">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">name=$createBundleOptionWithAttribute.option[title]$,type=$createBundleOptionWithAttribute.option[type]$,required=$createBundleOptionWithAttribute.option[required]$,sku=$$secondSimpleProductForFixedWithAttribute.sku$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedPriceBundleProductWithAttribute">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFixedPriceBundleProductWithAttribute">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createFixedBundleProductWithAttribute.price$$0000,,,,$$createFixedBundleProductWithAttribute.sku$$</argument>
         </helper>
@@ -296,7 +296,7 @@
         <actionGroup ref="DeleteExportedFileActionGroup" stepKey="deleteExportedFile">
             <argument name="fileName" value="{$getFilename}"/>
         </actionGroup>
-        <helper class="\Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
+        <helper class="\Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
         </helper>
     </test>

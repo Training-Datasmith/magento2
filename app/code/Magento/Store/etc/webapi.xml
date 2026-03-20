@@ -9,7 +9,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <!-- StoreView -->
     <route url="/V1/store/storeViews" method="GET">
-        <service class="Magento\Store\Api\StoreRepositoryInterface" method="getList"/>
+        <service class="Magento\Store\Api\Store_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Backend::store"/>
         </resources>
@@ -17,7 +17,7 @@
 
     <!-- Store Groups-->
     <route url="/V1/store/storeGroups" method="GET">
-        <service class="Magento\Store\Api\GroupRepositoryInterface" method="getList"/>
+        <service class="Magento\Store\Api\Group_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Backend::store"/>
         </resources>
@@ -25,7 +25,7 @@
 
     <!-- Website -->
     <route url="/V1/store/websites" method="GET">
-        <service class="Magento\Store\Api\WebsiteRepositoryInterface" method="getList"/>
+        <service class="Magento\Store\Api\Website_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Backend::store"/>
         </resources>
@@ -33,7 +33,7 @@
 
     <!-- Store Config -->
     <route url="/V1/store/storeConfigs" method="GET">
-        <service class="Magento\Store\Api\StoreConfigManagerInterface" method="getStoreConfigs"/>
+        <service class="Magento\Store\Api\Store_Config_Manager_Interface" method="getStoreConfigs"/>
         <resources>
             <resource ref="Magento_Backend::store"/>
         </resources>

@@ -10,7 +10,7 @@
         <payment>
             <checkmo>
                 <active>1</active>
-                <model>Magento\OfflinePayments\Model\Checkmo</model>
+                <model>Magento\Offline_Payments\Model\Checkmo</model>
                 <order_status>pending</order_status>
                 <title>Check / Money order</title>
                 <allowspecific>0</allowspecific>
@@ -18,7 +18,7 @@
             </checkmo>
             <purchaseorder>
                 <active>0</active>
-                <model>Magento\OfflinePayments\Model\Purchaseorder</model>
+                <model>Magento\Offline_Payments\Model\Purchaseorder</model>
                 <order_status>pending</order_status>
                 <title>Purchase Order</title>
                 <allowspecific>0</allowspecific>
@@ -26,7 +26,7 @@
             </purchaseorder>
             <banktransfer>
                 <active>0</active>
-                <model>Magento\OfflinePayments\Model\Banktransfer</model>
+                <model>Magento\Offline_Payments\Model\Banktransfer</model>
                 <order_status>pending</order_status>
                 <title>Bank Transfer Payment</title>
                 <allowspecific>0</allowspecific>
@@ -34,7 +34,7 @@
             </banktransfer>
             <cashondelivery>
                 <active>0</active>
-                <model>Magento\OfflinePayments\Model\Cashondelivery</model>
+                <model>Magento\Offline_Payments\Model\Cashondelivery</model>
                 <order_status>pending</order_status>
                 <title>Cash On Delivery</title>
                 <allowspecific>0</allowspecific>

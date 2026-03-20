@@ -15,11 +15,11 @@
     </argument>
     <settings>
         <buttons>
-            <button name="delete" class="Magento\CatalogRule\Block\Adminhtml\Edit\DeleteButton"/>
-            <button name="save_and_apply" class="Magento\CatalogRule\Block\Adminhtml\Edit\SaveAndApplyButton"/>
-            <button name="save_and_continue" class="Magento\CatalogRule\Block\Adminhtml\Edit\SaveAndContinueButton"/>
-            <button name="reset" class="Magento\CatalogRule\Block\Adminhtml\Edit\ResetButton"/>
-            <button name="save" class="Magento\CatalogRule\Block\Adminhtml\Edit\SaveButton"/>
+            <button name="delete" class="Magento\Catalog_Rule\Block\Adminhtml\Edit\Delete_Button"/>
+            <button name="save_and_apply" class="Magento\Catalog_Rule\Block\Adminhtml\Edit\Save_And_Apply_Button"/>
+            <button name="save_and_continue" class="Magento\Catalog_Rule\Block\Adminhtml\Edit\Save_And_Continue_Button"/>
+            <button name="reset" class="Magento\Catalog_Rule\Block\Adminhtml\Edit\Reset_Button"/>
+            <button name="save" class="Magento\Catalog_Rule\Block\Adminhtml\Edit\Save_Button"/>
             <button name="back">
                 <url path="*/*/"/>
                 <class>back</class>
@@ -41,7 +41,7 @@
         <settings>
             <submitUrl path="catalog_rule/promo_catalog/save"/>
         </settings>
-        <dataProvider class="Magento\CatalogRule\Model\Rule\DataProvider" name="catalog_rule_form_data_source">
+        <dataProvider class="Magento\Catalog_Rule\Model\Rule\Data_Provider" name="catalog_rule_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>rule_id</primaryFieldName>
@@ -142,7 +142,7 @@
             <formElements>
                 <multiselect>
                     <settings>
-                        <options class="Magento\CatalogRule\Model\Rule\WebsitesOptionsProvider"/>
+                        <options class="Magento\Catalog_Rule\Model\Rule\Websites_Options_Provider"/>
                     </settings>
                 </multiselect>
             </formElements>
@@ -164,7 +164,7 @@
             <formElements>
                 <multiselect>
                     <settings>
-                        <options class="Magento\CatalogRule\Model\Rule\CustomerGroupsOptionsProvider"/>
+                        <options class="Magento\Catalog_Rule\Model\Rule\Customer_Groups_Options_Provider"/>
                     </settings>
                 </multiselect>
             </formElements>
@@ -293,7 +293,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Magento\CatalogRule\Model\Rule\Action\SimpleActionOptionsProvider"/>
+                        <options class="Magento\Catalog_Rule\Model\Rule\Action\Simple_Action_Options_Provider"/>
                     </settings>
                 </select>
             </formElements>
@@ -359,6 +359,6 @@
                 <componentType>fieldset</componentType>
             </wrapper>
         </settings>
-        <block class="Magento\CatalogRule\Block\Adminhtml\Promo\Catalog\Edit\Tab\Conditions" name="promo_catalog_edit_tab"/>
+        <block class="Magento\Catalog_Rule\Block\Adminhtml\Promo\Catalog\Edit\Tab\Conditions" name="promo_catalog_edit_tab"/>
     </htmlContent>
 </form>

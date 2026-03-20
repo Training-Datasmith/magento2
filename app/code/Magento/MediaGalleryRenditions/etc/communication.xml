@@ -9,6 +9,6 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
     <topic name="media.gallery.renditions.update" is_synchronous="false" request="string[]">
         <handler name="media.gallery.renditions.update.handler"
-                 type="Magento\MediaGalleryRenditions\Model\Queue\UpdateRenditions" method="execute"/>
+                 type="Magento\Media_Gallery_Renditions\Model\Queue\Update_Renditions" method="execute"/>
     </topic>
 </config>

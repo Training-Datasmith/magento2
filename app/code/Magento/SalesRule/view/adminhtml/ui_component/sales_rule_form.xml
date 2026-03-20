@@ -15,10 +15,10 @@
     </argument>
     <settings>
         <buttons>
-            <button name="delete" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\DeleteButton"/>
-            <button name="save_and_continue" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\SaveAndContinueButton"/>
-            <button name="reset" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\ResetButton"/>
-            <button name="save" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\SaveButton"/>
+            <button name="delete" class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Delete_Button"/>
+            <button name="save_and_continue" class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Save_And_Continue_Button"/>
+            <button name="reset" class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Reset_Button"/>
+            <button name="save" class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Save_Button"/>
             <button name="back">
                 <url path="*/*/"/>
                 <class>back</class>
@@ -40,7 +40,7 @@
         <settings>
             <submitUrl path="sales_rule/promo_quote/save"/>
         </settings>
-        <dataProvider class="Magento\SalesRule\Model\Rule\DataProvider" name="sales_rule_form_data_source">
+        <dataProvider class="Magento\Sales_Rule\Model\Rule\Data_Provider" name="sales_rule_form_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>rule_id</primaryFieldName>
@@ -393,7 +393,7 @@
         </settings>
         <container name="conditions_apply_to" sortOrder="10">
             <htmlContent name="html_content">
-                <block name="conditions_apply_to" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Conditions" />
+                <block name="conditions_apply_to" class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Tab\Conditions" />
             </htmlContent>
         </container>
     </fieldset>
@@ -518,7 +518,7 @@
         </field>
         <container name="actions_apply_to" sortOrder="40">
             <htmlContent name="html_content">
-                <block name="actions_apply_to" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Actions"/>
+                <block name="actions_apply_to" class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Tab\Actions"/>
             </htmlContent>
         </container>
     </fieldset>
@@ -541,7 +541,7 @@
         </field>
         <container name="store_view_labels" sortOrder="40">
             <htmlContent name="html_content">
-                <block name="store_view_labels" class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Labels">
+                <block name="store_view_labels" class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Tab\Labels">
                     <arguments>
                         <argument name="target_form" xsi:type="string">sales_rule_form</argument>
                     </arguments>
@@ -555,9 +555,9 @@
             <label translate="true">Manage Coupon Codes</label>
         </settings>
         <htmlContent name="html_content">
-            <block class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Coupons" name="promo_sales_rule_edit_tab_coupons" as="promo_sales_rule_edit_tab_coupons" template="Magento_SalesRule::tab/coupons.phtml">
-                <block class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Coupons\Form" name="promo_quote_edit_tab_coupons_form"/>
-                <block class="Magento\SalesRule\Block\Adminhtml\Promo\Quote\Edit\Tab\Coupons\Grid" name="promo_quote_edit_tab_coupons_grid"/>
+            <block class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Tab\Coupons" name="promo_sales_rule_edit_tab_coupons" as="promo_sales_rule_edit_tab_coupons" template="Magento_SalesRule::tab/coupons.phtml">
+                <block class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Tab\Coupons\Form" name="promo_quote_edit_tab_coupons_form"/>
+                <block class="Magento\Sales_Rule\Block\Adminhtml\Promo\Quote\Edit\Tab\Coupons\Grid" name="promo_quote_edit_tab_coupons_grid"/>
             </block>
         </htmlContent>
     </fieldset>

@@ -10,7 +10,7 @@
     <body>
         <block class="Magento\Sales\Block\Order\Email\Shipment\Items" name="sales.order.email.shipment.track" template="Magento_Sales::email/shipment/track.phtml" cacheable="false">
             <arguments>
-                <argument name="tracking_url" xsi:type="object">Magento\Sales\Block\DataProviders\Email\Shipment\TrackingUrl</argument>
+                <argument name="tracking_url" xsi:type="object">Magento\Sales\Block\Data_Providers\Email\Shipment\Tracking_Url</argument>
             </arguments>
         </block>
     </body>

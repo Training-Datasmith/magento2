@@ -19,10 +19,10 @@
         <referenceContainer name="root">
             <block name="preview.page.content" class="Magento\Backend\Block\Page" template="Magento_Email::preview/iframeswitcher.phtml">
                 <arguments>
-                    <argument name="preview_form_view_model" xsi:type="object">Magento\Email\ViewModel\Template\Preview\Form</argument>
+                    <argument name="preview_form_view_model" xsi:type="object">Magento\Email\View_Model\Template\Preview\Form</argument>
                 </arguments>
             </block>
-            <block class="Magento\RequireJs\Block\Html\Head\Config" name="requirejs-config"/>
+            <block class="Magento\Require_Js\Block\Html\Head\Config" name="requirejs-config"/>
         </referenceContainer>
     </body>
 </page>

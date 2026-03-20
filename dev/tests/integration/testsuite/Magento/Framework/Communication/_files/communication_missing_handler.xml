@@ -6,5 +6,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Communication/etc/communication.xsd">
-    <topic name="customerUpdated" request="Magento\Customer\Api\Data\CustomerInterface" response="Magento\Customer\Api\Data\CustomerInterface"/>
+    <topic name="customerUpdated" request="Magento\Customer\Api\Data\Customer_Interface" response="Magento\Customer\Api\Data\Customer_Interface"/>
 </config>

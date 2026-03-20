@@ -15,9 +15,9 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save" class="Magento\Cms\Block\Adminhtml\Page\Edit\SaveButton"/>
-            <button name="delete" class="Magento\Cms\Block\Adminhtml\Page\Edit\DeleteButton"/>
-            <button name="back" class="Magento\Cms\Block\Adminhtml\Page\Edit\BackButton"/>
+            <button name="save" class="Magento\Cms\Block\Adminhtml\Page\Edit\Save_Button"/>
+            <button name="delete" class="Magento\Cms\Block\Adminhtml\Page\Edit\Delete_Button"/>
+            <button name="back" class="Magento\Cms\Block\Adminhtml\Page\Edit\Back_Button"/>
         </buttons>
         <namespace>cms_page_form</namespace>
         <dataScope>data</dataScope>
@@ -34,7 +34,7 @@
         <settings>
             <submitUrl path="cms/page/save"/>
         </settings>
-        <dataProvider class="Magento\Cms\Model\Page\DataProvider" name="page_form_data_source">
+        <dataProvider class="Magento\Cms\Model\Page\Data_Provider" name="page_form_data_source">
             <settings>
                 <requestFieldName>page_id</requestFieldName>
                 <primaryFieldName>page_id</primaryFieldName>
@@ -229,7 +229,7 @@
             <collapsible>true</collapsible>
             <label translate="true">Design</label>
         </settings>
-        <field name="page_layout" formElement="select" class="Magento\Cms\Ui\Component\Form\Field\PageLayout">
+        <field name="page_layout" formElement="select" class="Magento\Cms\Ui\Component\Form\Field\Page_Layout">
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="source" xsi:type="string">page</item>
@@ -243,7 +243,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Magento\Cms\Model\Page\Source\PageLayout"/>
+                        <options class="Magento\Cms\Model\Page\Source\Page_Layout"/>
                     </settings>
                 </select>
             </formElements>
@@ -352,7 +352,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Magento\Cms\Model\Page\Source\PageLayout"/>
+                        <options class="Magento\Cms\Model\Page\Source\Page_Layout"/>
                         <caption translate="true">-- Please Select --</caption>
                     </settings>
                 </select>

@@ -7,30 +7,30 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="catalog_product_compare_remove_product">
-        <observer name="reports" instance="Magento\Reports\Observer\CatalogProductCompareClearObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Catalog_Product_Compare_Clear_Observer" />
     </event>
     <event name="customer_login">
-        <observer name="reports" instance="Magento\Reports\Observer\CustomerLoginObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Customer_Login_Observer" />
     </event>
     <event name="customer_logout">
-        <observer name="reports" instance="Magento\Reports\Observer\CustomerLogoutObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Customer_Logout_Observer" />
     </event>
     <event name="sendfriend_product">
-        <observer name="reports" instance="Magento\Reports\Observer\SendfriendProductObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Sendfriend_Product_Observer" />
     </event>
     <event name="catalog_product_compare_add_product">
-        <observer name="reports" instance="Magento\Reports\Observer\CatalogProductCompareAddProductObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Catalog_Product_Compare_Add_Product_Observer" />
     </event>
     <event name="catalog_product_compare_item_collection_clear">
-        <observer name="reports" instance="Magento\Reports\Observer\CatalogProductCompareClearObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Catalog_Product_Compare_Clear_Observer" />
     </event>
     <event name="sales_quote_item_save_before">
-        <observer name="reports" instance="Magento\Reports\Observer\CheckoutCartAddProductObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Checkout_Cart_Add_Product_Observer" />
     </event>
     <event name="wishlist_add_product">
-        <observer name="reports" instance="Magento\Reports\Observer\WishlistAddProductObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Wishlist_Add_Product_Observer" />
     </event>
     <event name="wishlist_share">
-        <observer name="reports" instance="Magento\Reports\Observer\WishlistShareObserver" />
+        <observer name="reports" instance="Magento\Reports\Observer\Wishlist_Share_Observer" />
     </event>
 </config>

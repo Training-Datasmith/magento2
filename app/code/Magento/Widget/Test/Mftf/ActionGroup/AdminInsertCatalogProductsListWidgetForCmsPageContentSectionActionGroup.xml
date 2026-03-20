@@ -30,7 +30,7 @@
         <selectOption selector="{{AdminNewWidgetSection.template}}" userInput="{{template}}" stepKey="selectTemplate"/>
         <fillField selector="{{AdminNewWidgetSection.cacheLifetime}}" userInput="{{cacheLifetime}}" stepKey="fillCacheLifetime"/>
         <click selector="{{AdminNewWidgetSection.addNewCondition}}" stepKey="clickAddNewCondition"/>
-        <selectOption selector="{{AdminNewWidgetSection.selectCondition}}" userInput="Magento\CatalogWidget\Model\Rule\Condition\Product|category_ids" stepKey="selectCondition"/>
+        <selectOption selector="{{AdminNewWidgetSection.selectCondition}}" userInput="Magento\Catalog_Widget\Model\Rule\Condition\Product|category_ids" stepKey="selectCondition"/>
         <waitForElement selector="{{AdminNewWidgetSection.ruleParameter}}" stepKey="waitRuleParameter"/>
         <click selector="{{AdminNewWidgetSection.ruleParameter}}" stepKey="clickRuleParameter"/>
         <click selector="{{AdminNewWidgetSection.openChooser}}" stepKey="clickChooser"/>

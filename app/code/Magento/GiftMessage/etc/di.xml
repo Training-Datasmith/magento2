@@ -13,20 +13,20 @@
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\GiftMessage\Api\CartRepositoryInterface" type="Magento\GiftMessage\Model\CartRepository"/>
-    <preference for="Magento\GiftMessage\Api\ItemRepositoryInterface" type="Magento\GiftMessage\Model\ItemRepository"/>
-    <preference for="Magento\GiftMessage\Api\GuestCartRepositoryInterface" type="Magento\GiftMessage\Model\GuestCartRepository"/>
-    <preference for="Magento\GiftMessage\Api\GuestItemRepositoryInterface" type="Magento\GiftMessage\Model\GuestItemRepository"/>
-    <preference for="Magento\GiftMessage\Api\OrderRepositoryInterface" type="Magento\GiftMessage\Model\OrderRepository"/>
-    <preference for="Magento\GiftMessage\Api\OrderItemRepositoryInterface" type="Magento\GiftMessage\Model\OrderItemRepository"/>
-    <preference for="Magento\GiftMessage\Api\Data\MessageInterface" type="Magento\GiftMessage\Model\Message"/>
-    <type name="Magento\GiftMessage\Model\Plugin\QuoteItem" shared="false" />
-    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
-        <plugin name="gift_message_quote_item_conversion" type="Magento\GiftMessage\Model\Plugin\QuoteItem"/>
+    <preference for="Magento\Gift_Message\Api\Cart_Repository_Interface" type="Magento\Gift_Message\Model\Cart_Repository"/>
+    <preference for="Magento\Gift_Message\Api\Item_Repository_Interface" type="Magento\Gift_Message\Model\Item_Repository"/>
+    <preference for="Magento\Gift_Message\Api\Guest_Cart_Repository_Interface" type="Magento\Gift_Message\Model\Guest_Cart_Repository"/>
+    <preference for="Magento\Gift_Message\Api\Guest_Item_Repository_Interface" type="Magento\Gift_Message\Model\Guest_Item_Repository"/>
+    <preference for="Magento\Gift_Message\Api\Order_Repository_Interface" type="Magento\Gift_Message\Model\Order_Repository"/>
+    <preference for="Magento\Gift_Message\Api\Order_Item_Repository_Interface" type="Magento\Gift_Message\Model\Order_Item_Repository"/>
+    <preference for="Magento\Gift_Message\Api\Data\Message_Interface" type="Magento\Gift_Message\Model\Message"/>
+    <type name="Magento\Gift_Message\Model\Plugin\Quote_Item" shared="false" />
+    <type name="Magento\Quote\Model\Quote\Item\To_Order_Item">
+        <plugin name="gift_message_quote_item_conversion" type="Magento\Gift_Message\Model\Plugin\Quote_Item"/>
     </type>
-    <type name="Magento\Sales\Api\OrderRepositoryInterface">
-        <plugin name="save_gift_message" type="Magento\GiftMessage\Model\Plugin\OrderSave"/>
-        <plugin name="get_gift_message" type="Magento\GiftMessage\Model\Plugin\OrderGet"/>
+    <type name="Magento\Sales\Api\Order_Repository_Interface">
+        <plugin name="save_gift_message" type="Magento\Gift_Message\Model\Plugin\Order_Save"/>
+        <plugin name="get_gift_message" type="Magento\Gift_Message\Model\Plugin\Order_Get"/>
     </type>
     <type name="Magento\Eav\Model\Config">
         <arguments>
@@ -37,7 +37,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Api\OrderItemRepositoryInterface">
-        <plugin name="get_gift_message" type="Magento\GiftMessage\Model\Plugin\OrderItemGet"/>
+    <type name="Magento\Sales\Api\Order_Item_Repository_Interface">
+        <plugin name="get_gift_message" type="Magento\Gift_Message\Model\Plugin\Order_Item_Get"/>
     </type>
 </config>

@@ -12,7 +12,7 @@
                 <label>Media Gallery</label>
                 <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Enable Old Media Gallery</label>
-                    <source_model>Magento\MediaGalleryUi\Model\Config\MediaGallery\Yesno</source_model>
+                    <source_model>Magento\Media_Gallery_Ui\Model\Config\Media_Gallery\Yesno</source_model>
                     <config_path>system/media_gallery/enabled</config_path>
                 </field>
             </group>

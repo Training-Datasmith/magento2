@@ -11,7 +11,7 @@
             <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.cache.grid" as="grid">
                 <arguments>
                     <argument name="id" xsi:type="string">cache_grid</argument>
-                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Backend\Model\Cache\ResourceModel\Grid\Collection</argument>
+                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Backend\Model\Cache\Resource_Model\Grid\Collection</argument>
                     <argument name="pager_visibility" xsi:type="string">0</argument>
                 </arguments>
                 <block class="Magento\Backend\Block\Widget\Grid\Massaction" name="adminhtml.cache.massaction" as="grid.massaction">
@@ -23,12 +23,12 @@
                             <item name="enable" xsi:type="array">
                                 <item name="label" xsi:type="string" translate="true">Enable</item>
                                 <item name="url" xsi:type="string">adminhtml/*/massEnable</item>
-                                <item name="visible" xsi:type="object">Magento\Backend\Block\Cache\Grid\Massaction\ProductionModeVisibilityChecker</item>
+                                <item name="visible" xsi:type="object">Magento\Backend\Block\Cache\Grid\Massaction\Production_Mode_Visibility_Checker</item>
                             </item>
                             <item name="disable" xsi:type="array">
                                 <item name="label" xsi:type="string" translate="true">Disable</item>
                                 <item name="url" xsi:type="string">adminhtml/*/massDisable</item>
-                                <item name="visible" xsi:type="object">Magento\Backend\Block\Cache\Grid\Massaction\ProductionModeVisibilityChecker</item>
+                                <item name="visible" xsi:type="object">Magento\Backend\Block\Cache\Grid\Massaction\Production_Mode_Visibility_Checker</item>
                             </item>
                             <item name="refresh" xsi:type="array">
                                 <item name="label" xsi:type="string" translate="true">Refresh</item>
@@ -38,7 +38,7 @@
                         </argument>
                     </arguments>
                 </block>
-                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.cache.grid.columnSet" as="grid.columnSet">
+                <block class="Magento\Backend\Block\Widget\Grid\Column_Set" name="adminhtml.cache.grid.columnSet" as="grid.columnSet">
                     <arguments>
                         <argument name="filter_visibility" xsi:type="string">0</argument>
                     </arguments>

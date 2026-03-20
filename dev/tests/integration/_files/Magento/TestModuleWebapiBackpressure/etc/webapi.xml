@@ -9,7 +9,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
 
     <route url="/V1/test-module-webapi-backpressure/read" method="GET">
-        <service class="Magento\TestModuleWebapiBackpressure\Api\TestReadServiceInterface" method="read"/>
+        <service class="Magento\Test_Module_Webapi_Backpressure\Api\Test_Read_Service_Interface" method="read"/>
         <resources>
             <resource ref="anonymous" />
         </resources>

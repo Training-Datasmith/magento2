@@ -6,24 +6,24 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\CustomUrlLocator">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Custom_Url_Locator">
         <arguments>
             <argument name="urlLocators" xsi:type="array">
-                <item name="homePageUrlLocator" xsi:type="object">Magento\CmsUrlRewriteGraphQl\Model\Resolver\UrlRewrite\HomePageUrlLocator</item>
+                <item name="homePageUrlLocator" xsi:type="object">Magento\Cms_Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Home_Page_Url_Locator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\UrlRewriteGraphQl\Model\Resolver\UrlRewrite\UrlResolverIdentity">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Url_Resolver_Identity">
         <arguments>
             <argument name="urlResolverIdentities" xsi:type="array">
-                <item name="cms_page" xsi:type="object">Magento\CmsUrlRewriteGraphQl\Model\Resolver\UrlRewrite\CmsUrlResolverIdentity</item>
+                <item name="cms_page" xsi:type="object">Magento\Cms_Url_Rewrite_Graph_Ql\Model\Resolver\Url_Rewrite\Cms_Url_Resolver_Identity</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\UrlRewriteGraphQl\Model\DataProvider\EntityDataProviderComposite">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Data_Provider\Entity_Data_Provider_Composite">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
-                <item name="cms_page" xsi:type="object">Magento\CmsUrlRewriteGraphQl\Model\DataProvider\UrlRewrite\Page</item>
+                <item name="cms_page" xsi:type="object">Magento\Cms_Url_Rewrite_Graph_Ql\Model\Data_Provider\Url_Rewrite\Page</item>
             </argument>
         </arguments>
     </type>

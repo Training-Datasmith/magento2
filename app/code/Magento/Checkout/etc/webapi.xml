@@ -10,7 +10,7 @@
 
     <!-- Managing shipping guest information -->
     <route url="/V1/guest-carts/:cartId/shipping-information" method="POST">
-        <service class="Magento\Checkout\Api\GuestShippingInformationManagementInterface" method="saveAddressInformation"/>
+        <service class="Magento\Checkout\Api\Guest_Shipping_Information_Management_Interface" method="saveAddressInformation"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
@@ -18,7 +18,7 @@
 
     <!-- Managing My shipping information -->
     <route url="/V1/carts/mine/shipping-information" method="POST">
-        <service class="Magento\Checkout\Api\ShippingInformationManagementInterface" method="saveAddressInformation"/>
+        <service class="Magento\Checkout\Api\Shipping_Information_Management_Interface" method="saveAddressInformation"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -29,7 +29,7 @@
 
     <!-- Managing shipping information-->
     <route url="/V1/carts/:cartId/shipping-information" method="POST">
-        <service class="Magento\Checkout\Api\ShippingInformationManagementInterface" method="saveAddressInformation"/>
+        <service class="Magento\Checkout\Api\Shipping_Information_Management_Interface" method="saveAddressInformation"/>
         <resources>
             <resource ref="Magento_Cart::manage" />
         </resources>
@@ -37,7 +37,7 @@
 
     <!-- Managing totals information -->
     <route url="/V1/carts/:cartId/totals-information" method="POST">
-        <service class="Magento\Checkout\Api\TotalsInformationManagementInterface" method="calculate"/>
+        <service class="Magento\Checkout\Api\Totals_Information_Management_Interface" method="calculate"/>
         <resources>
             <resource ref="Magento_Cart::manage" />
         </resources>
@@ -45,7 +45,7 @@
 
     <!-- Managing guest totals information -->
     <route url="/V1/guest-carts/:cartId/totals-information" method="POST">
-        <service class="Magento\Checkout\Api\GuestTotalsInformationManagementInterface" method="calculate"/>
+        <service class="Magento\Checkout\Api\Guest_Totals_Information_Management_Interface" method="calculate"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
@@ -53,7 +53,7 @@
 
     <!-- Managing My totals information -->
     <route url="/V1/carts/mine/totals-information" method="POST">
-        <service class="Magento\Checkout\Api\TotalsInformationManagementInterface" method="calculate"/>
+        <service class="Magento\Checkout\Api\Totals_Information_Management_Interface" method="calculate"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -64,21 +64,21 @@
 
     <!-- Guest place order with payment information saving -->
     <route url="/V1/guest-carts/:cartId/payment-information" method="POST">
-        <service class="Magento\Checkout\Api\GuestPaymentInformationManagementInterface" method="savePaymentInformationAndPlaceOrder"/>
+        <service class="Magento\Checkout\Api\Guest_Payment_Information_Management_Interface" method="savePaymentInformationAndPlaceOrder"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
     </route>
     <!-- Guest place order with payment information saving -->
     <route url="/V1/guest-carts/:cartId/payment-information" method="GET">
-        <service class="Magento\Checkout\Api\GuestPaymentInformationManagementInterface" method="getPaymentInformation"/>
+        <service class="Magento\Checkout\Api\Guest_Payment_Information_Management_Interface" method="getPaymentInformation"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
     </route>
     <!-- My place order with payment information saving -->
     <route url="/V1/carts/mine/payment-information" method="POST">
-        <service class="Magento\Checkout\Api\PaymentInformationManagementInterface" method="savePaymentInformationAndPlaceOrder"/>
+        <service class="Magento\Checkout\Api\Payment_Information_Management_Interface" method="savePaymentInformationAndPlaceOrder"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -88,7 +88,7 @@
     </route>
     <!-- Get payment information -->
     <route url="/V1/carts/mine/payment-information" method="GET">
-        <service class="Magento\Checkout\Api\PaymentInformationManagementInterface" method="getPaymentInformation"/>
+        <service class="Magento\Checkout\Api\Payment_Information_Management_Interface" method="getPaymentInformation"/>
         <resources>
             <resource ref="self" />
         </resources>
@@ -99,14 +99,14 @@
 
     <!-- Managing payment guest information -->
     <route url="/V1/guest-carts/:cartId/set-payment-information" method="POST">
-        <service class="Magento\Checkout\Api\GuestPaymentInformationManagementInterface" method="savePaymentInformation"/>
+        <service class="Magento\Checkout\Api\Guest_Payment_Information_Management_Interface" method="savePaymentInformation"/>
         <resources>
             <resource ref="anonymous" />
         </resources>
     </route>
     <!-- Managing My payment information -->
     <route url="/V1/carts/mine/set-payment-information" method="POST">
-        <service class="Magento\Checkout\Api\PaymentInformationManagementInterface" method="savePaymentInformation"/>
+        <service class="Magento\Checkout\Api\Payment_Information_Management_Interface" method="savePaymentInformation"/>
         <resources>
             <resource ref="self" />
         </resources>

@@ -25,7 +25,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Review::reviews_all</aclResource>
-        <dataProvider class="Magento\Review\Ui\DataProvider\Product\ReviewDataProvider" name="review_listing_data_source">
+        <dataProvider class="Magento\Review\Ui\Data_Provider\Product\Review_Data_Provider" name="review_listing_data_source">
             <settings>
                 <requestFieldName>entity_id</requestFieldName>
                 <primaryFieldName>review_id</primaryFieldName>
@@ -145,7 +145,7 @@
                 <label translate="true">SKU</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Review\Ui\Component\Listing\Columns\ReviewActions" sortOrder="100">
+        <actionsColumn name="actions" class="Magento\Review\Ui\Component\Listing\Columns\Review_Actions" sortOrder="100">
             <settings>
                 <indexField>entity_id</indexField>
             </settings>

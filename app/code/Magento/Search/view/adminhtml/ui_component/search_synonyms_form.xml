@@ -15,11 +15,11 @@
     </argument>
     <settings>
         <buttons>
-            <button name="save_and_continue" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\SaveAndContinueButton"/>
-            <button name="save" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\SaveButton"/>
-            <button name="reset" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\ResetButton"/>
-            <button name="delete" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\DeleteButton"/>
-            <button name="back" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\BackButton"/>
+            <button name="save_and_continue" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\Save_And_Continue_Button"/>
+            <button name="save" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\Save_Button"/>
+            <button name="reset" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\Reset_Button"/>
+            <button name="delete" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\Delete_Button"/>
+            <button name="back" class="Magento\Search\Block\Adminhtml\Synonyms\Edit\Back_Button"/>
         </buttons>
         <namespace>search_synonyms_form</namespace>
         <dataScope>data</dataScope>
@@ -36,7 +36,7 @@
         <settings>
             <submitUrl path="search/synonyms/save"/>
         </settings>
-        <dataProvider class="Magento\Search\Model\Synonym\DataProvider" name="synonyms_form_data_source">
+        <dataProvider class="Magento\Search\Model\Synonym\Data_Provider" name="synonyms_form_data_source">
             <settings>
                 <requestFieldName>group_id</requestFieldName>
                 <primaryFieldName>group_id</primaryFieldName>

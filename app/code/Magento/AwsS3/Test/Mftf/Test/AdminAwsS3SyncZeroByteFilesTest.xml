@@ -26,7 +26,7 @@
             <!-- Enable AWS S3 Remote Storage & Sync -->
             <magentoCLI command="setup:config:set {{RemoteStorageAwsS3ConfigData.enable_options}}" stepKey="enableRemoteStorage"/>
             <!-- Copy Images to Import Directory for Product Images -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="copy" stepKey="copyProductBaseImage">
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="copy" stepKey="copyProductBaseImage">
                 <argument name="source">dev/tests/acceptance/tests/_data/empty.jpg</argument>
                 <argument name="destination">pub/media/empty.jpg</argument>
             </helper>
@@ -34,11 +34,11 @@
 
         <after>
             <!-- Delete Images on Local File System -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteFileIfExists" stepKey="deleteLocalImage">
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteFileIfExists" stepKey="deleteLocalImage">
                 <argument name="filePath">pub/media/empty.jpg</argument>
             </helper>
             <!-- Delete Images on S3 System -->
-            <helper class="Magento\AwsS3\Test\Mftf\Helper\S3FileAssertions" method="deleteFileIfExists" stepKey="deleteS3Image">
+            <helper class="Magento\Aws_S3\Test\Mftf\Helper\S3File_Assertions" method="deleteFileIfExists" stepKey="deleteS3Image">
                 <argument name="filePath">pub/media/empty.jpg</argument>
             </helper>
             <!-- Disable AWS S3 Remote Storage -->

@@ -60,7 +60,7 @@
         <conditionalClick selector="{{AdminProductImagesSection.roleSmall}}" dependentSelector="{{AdminProductImagesSection.isSmallSelected}}" visible="true" stepKey="small1"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleThumbnail}}" dependentSelector="{{AdminProductImagesSection.isThumbnailSelected}}" visible="true" stepKey="thumbnail1"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleSwatch}}" dependentSelector="{{AdminProductImagesSection.isSwatchSelected}}" visible="true" stepKey="swatch1"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc1"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc1"/>
         <waitForPageLoad stepKey="waitForHide1"/>
 
         <!-- Upload and set Small image -->
@@ -75,7 +75,7 @@
         <conditionalClick selector="{{AdminProductImagesSection.roleSmall}}" dependentSelector="{{AdminProductImagesSection.isSmallSelected}}" visible="false" stepKey="small2"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleThumbnail}}" dependentSelector="{{AdminProductImagesSection.isThumbnailSelected}}" visible="true" stepKey="thumbnail2"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleSwatch}}" dependentSelector="{{AdminProductImagesSection.isSwatchSelected}}" visible="true" stepKey="swatch2"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc2"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc2"/>
         <waitForPageLoad stepKey="waitForHide2"/>
 
         <!-- Upload and set Thumbnail image -->
@@ -90,7 +90,7 @@
         <conditionalClick selector="{{AdminProductImagesSection.roleSmall}}" dependentSelector="{{AdminProductImagesSection.isSmallSelected}}" visible="true" stepKey="small3"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleThumbnail}}" dependentSelector="{{AdminProductImagesSection.isThumbnailSelected}}" visible="false" stepKey="thumbnail3"/>
         <conditionalClick selector="{{AdminProductImagesSection.roleSwatch}}" dependentSelector="{{AdminProductImagesSection.isSwatchSelected}}" visible="true" stepKey="swatch3"/>
-        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ESCAPE]" stepKey="pressEsc3"/>
+        <pressKey selector="{{AdminProductImagesSection.altText}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ESCAPE]" stepKey="pressEsc3"/>
         <waitForPageLoad stepKey="waitForHide3"/>
 
         <!-- Save the product with all 3 images -->

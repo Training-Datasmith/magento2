@@ -12,12 +12,12 @@
                 <label>JWT Authentication</label>
                 <field id="jwt_alg" translate="label comment" type="select" sortOrder="1" showInDefault="1">
                     <label>Algorithm to sign/encrypt JWTs used for authentication</label>
-                    <source_model>Magento\JwtUserToken\Model\Config\JwtAlgorithmSource</source_model>
+                    <source_model>Magento\Jwt_User_Token\Model\Config\Jwt_Algorithm_Source</source_model>
                     <comment>Selected algorithm will define JWT type used (JWS or JWE)</comment>
                 </field>
                 <field id="jwe_alg" translate="label comment" type="select" sortOrder="2" showInDefault="1">
                     <label>Content encryption algorithm for JWEs</label>
-                    <source_model>Magento\JwtUserToken\Model\Config\JweAlgorithmSource</source_model>
+                    <source_model>Magento\Jwt_User_Token\Model\Config\Jwe_Algorithm_Source</source_model>
                     <comment>Encryption algorithm for JWT content to be used when JWE algorithm is selected</comment>
                 </field>
                 <field id="customer_expiration" translate="label comment" type="text" sortOrder="3" showInDefault="1">

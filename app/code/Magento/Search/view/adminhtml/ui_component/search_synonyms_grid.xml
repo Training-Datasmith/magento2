@@ -32,7 +32,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Search::synonyms</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="search_synonyms_grid_data_source">
+        <dataProvider class="Magento\Framework\View\Element\Ui_Component\Data_Provider\Data_Provider" name="search_synonyms_grid_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>group_id</primaryFieldName>
@@ -120,12 +120,12 @@
                 <label translate="true">Website</label>
             </settings>
         </column>
-        <column name="store_id" class="Magento\Search\Ui\Component\Listing\Column\StoreView" sortOrder="40">
+        <column name="store_id" class="Magento\Search\Ui\Component\Listing\Column\Store_View" sortOrder="40">
             <settings>
                 <label translate="true">Store View</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Search\Ui\Component\Listing\Column\SynonymActions">
+        <actionsColumn name="actions" class="Magento\Search\Ui\Component\Listing\Column\Synonym_Actions">
             <settings>
                 <indexField>group_id</indexField>
                 <resizeEnabled>false</resizeEnabled>

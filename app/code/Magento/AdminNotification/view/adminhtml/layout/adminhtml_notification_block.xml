@@ -11,12 +11,12 @@
             <block class="Magento\Backend\Block\Widget\Grid" name="adminhtml.notification.container.grid" as="grid">
                 <arguments>
                     <argument name="id" xsi:type="string">notificationGrid</argument>
-                    <argument name="dataSource" xsi:type="object" shared="false">Magento\AdminNotification\Model\ResourceModel\Grid\Collection</argument>
+                    <argument name="dataSource" xsi:type="object" shared="false">Magento\Admin_Notification\Model\Resource_Model\Grid\Collection</argument>
                     <argument name="default_dir" xsi:type="string">DESC</argument>
                     <argument name="default_sort" xsi:type="string">date_added</argument>
                     <argument name="save_parameters_in_session" xsi:type="string">1</argument>
                 </arguments>
-                <block class="Magento\Backend\Block\Widget\Grid\ColumnSet" name="adminhtml.notification.container.grid.columnSet" as="grid.columnSet">
+                <block class="Magento\Backend\Block\Widget\Grid\Column_Set" name="adminhtml.notification.container.grid.columnSet" as="grid.columnSet">
                     <arguments>
                         <argument name="filter_visibility" xsi:type="string">0</argument>
                     </arguments>
@@ -24,7 +24,7 @@
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Severity</argument>
                             <argument name="index" xsi:type="string">severity</argument>
-                            <argument name="renderer" xsi:type="string">Magento\AdminNotification\Block\Grid\Renderer\Severity</argument>
+                            <argument name="renderer" xsi:type="string">Magento\Admin_Notification\Block\Grid\Renderer\Severity</argument>
                         </arguments>
                     </block>
                     <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.notification.container.grid.columnSet.date_added" as="date_added">
@@ -41,14 +41,14 @@
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Message</argument>
                             <argument name="index" xsi:type="string">title</argument>
-                            <argument name="renderer" xsi:type="string">Magento\AdminNotification\Block\Grid\Renderer\Notice</argument>
+                            <argument name="renderer" xsi:type="string">Magento\Admin_Notification\Block\Grid\Renderer\Notice</argument>
                         </arguments>
                     </block>
                     <block class="Magento\Backend\Block\Widget\Grid\Column" name="adminhtml.notification.container.grid.columnSet.actions" as="actions">
                         <arguments>
                             <argument name="header" xsi:type="string" translate="true">Actions</argument>
                             <argument name="sortable" xsi:type="string">0</argument>
-                            <argument name="renderer" xsi:type="string">Magento\AdminNotification\Block\Grid\Renderer\Actions</argument>
+                            <argument name="renderer" xsi:type="string">Magento\Admin_Notification\Block\Grid\Renderer\Actions</argument>
                         </arguments>
                     </block>
                 </block>
@@ -61,13 +61,13 @@
                             <item name="mark_as_read" xsi:type="array">
                                 <item name="label" xsi:type="string" translate="true">Mark as Read</item>
                                 <item name="url" xsi:type="string">*/*/massMarkAsRead</item>
-                                <item name="visible" xsi:type="object">Magento\AdminNotification\Block\Grid\MassAction\MarkAsReadVisibility</item>
+                                <item name="visible" xsi:type="object">Magento\Admin_Notification\Block\Grid\Mass_Action\Mark_As_Read_Visibility</item>
                             </item>
                             <item name="remove" xsi:type="array">
                                 <item name="label" xsi:type="string" translate="true">Remove</item>
                                 <item name="url" xsi:type="string">*/*/massRemove</item>
                                 <item name="confirm" xsi:type="string" translate="true">Are you sure?</item>
-                                <item name="visible" xsi:type="object">Magento\AdminNotification\Block\Grid\MassAction\RemoveVisibility</item>
+                                <item name="visible" xsi:type="object">Magento\Admin_Notification\Block\Grid\Mass_Action\Remove_Visibility</item>
                             </item>
                         </argument>
                     </arguments>

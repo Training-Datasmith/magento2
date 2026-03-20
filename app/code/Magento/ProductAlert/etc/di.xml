@@ -13,7 +13,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="catalog/productalert_cron/error_email" xsi:type="string">1</item>
@@ -21,6 +21,6 @@
         </arguments>
     </type>
     <type name="Magento\Framework\View\Element\Template\File\Resolver">
-        <plugin name="updateThemeParams" type="Magento\ProductAlert\Model\UpdateThemeParams"/>
+        <plugin name="updateThemeParams" type="Magento\Product_Alert\Model\Update_Theme_Params"/>
     </type>
 </config>

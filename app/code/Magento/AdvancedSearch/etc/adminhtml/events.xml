@@ -9,7 +9,7 @@
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="catalogsearch_query_save_after">
         <observer name="magento_advancedsearch_recommendations"
-                  instance="Magento\AdvancedSearch\Model\Recommendations\SaveSearchQueryRelationsObserver"
+                  instance="Magento\Advanced_Search\Model\Recommendations\Save_Search_Query_Relations_Observer"
                  />
     </event>
 </config>

@@ -11,9 +11,9 @@
     </head>
     <body>
         <referenceContainer name="content">
-            <block class="Magento\Contact\Block\ContactForm" name="contactForm" template="Magento_Contact::form.phtml">
+            <block class="Magento\Contact\Block\Contact_Form" name="contactForm" template="Magento_Contact::form.phtml">
                 <arguments>
-                    <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\ButtonLockManager</argument>
+                    <argument name="button_lock_manager" xsi:type="object">Magento\Framework\View\Element\Button_Lock_Manager</argument>
                 </arguments>
                 <container name="form.additional.info" label="Form Additional Info"/>
             </block>

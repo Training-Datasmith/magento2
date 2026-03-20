@@ -14,7 +14,7 @@
                         <item name="render_template" xsi:type="string">Magento_Bundle::product/price/tier_prices.phtml</item>
                     </item>
                     <item name="final_price" xsi:type="array">
-                        <item name="render_class" xsi:type="string">Magento\Bundle\Pricing\Render\FinalPriceBox</item>
+                        <item name="render_class" xsi:type="string">Magento\Bundle\Pricing\Render\Final_Price_Box</item>
                         <item name="render_template" xsi:type="string">Magento_Bundle::product/price/final_price.phtml</item>
                     </item>
                     <item name="bundle_option" xsi:type="array">

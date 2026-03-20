@@ -13,7 +13,7 @@
     </argument>
     <settings>
         <buttons>
-            <button name="add" class="Magento\Customer\Block\Adminhtml\Group\AddCustomerGroupButton"/>
+            <button name="add" class="Magento\Customer\Block\Adminhtml\Group\Add_Customer_Group_Button"/>
         </buttons>
         <spinner>customer_group_columns</spinner>
         <deps>
@@ -28,7 +28,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Customer::group</aclResource>
-        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="customer_group_listing_data_source">
+        <dataProvider class="Magento\Framework\View\Element\Ui_Component\Data_Provider\Data_Provider" name="customer_group_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>customer_group_id</primaryFieldName>
@@ -57,13 +57,13 @@
         </column>
         <column name="tax_class_id" component="Magento_Ui/js/grid/columns/select">
             <settings>
-                <options class="Magento\Tax\Model\TaxClass\Source\Customer"/>
+                <options class="Magento\Tax\Model\Tax_Class\Source\Customer"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Tax Class</label>
             </settings>
         </column>
-        <actionsColumn name="actions" class="Magento\Customer\Ui\Component\Listing\Column\GroupActions">
+        <actionsColumn name="actions" class="Magento\Customer\Ui\Component\Listing\Column\Group_Actions">
             <settings>
                 <indexField>customer_group_id</indexField>
             </settings>

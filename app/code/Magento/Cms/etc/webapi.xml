@@ -9,62 +9,62 @@
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <!-- Cms Page -->
     <route url="/V1/cmsPage/:pageId" method="GET">
-        <service class="Magento\Cms\Api\PageRepositoryInterface" method="getById"/>
+        <service class="Magento\Cms\Api\Page_Repository_Interface" method="getById"/>
         <resources>
             <resource ref="Magento_Cms::page"/>
         </resources>
     </route>
     <route url="/V1/cmsPage/search" method="GET">
-        <service class="Magento\Cms\Api\PageRepositoryInterface" method="getList"/>
+        <service class="Magento\Cms\Api\Page_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Cms::page"/>
         </resources>
     </route>
     <route url="/V1/cmsPage" method="POST">
-        <service class="Magento\Cms\Api\PageRepositoryInterface" method="save"/>
+        <service class="Magento\Cms\Api\Page_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Cms::save"/>
         </resources>
     </route>
     <route url="/V1/cmsPage/:id" method="PUT">
-        <service class="Magento\Cms\Api\PageRepositoryInterface" method="save"/>
+        <service class="Magento\Cms\Api\Page_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Cms::save"/>
         </resources>
     </route>
     <route url="/V1/cmsPage/:pageId" method="DELETE">
-        <service class="Magento\Cms\Api\PageRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Cms\Api\Page_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_Cms::page_delete"/>
         </resources>
     </route>
     <!-- Cms Block -->
     <route url="/V1/cmsBlock/:blockId" method="GET">
-        <service class="Magento\Cms\Api\BlockRepositoryInterface" method="getById"/>
+        <service class="Magento\Cms\Api\Block_Repository_Interface" method="getById"/>
         <resources>
             <resource ref="Magento_Cms::block"/>
         </resources>
     </route>
     <route url="/V1/cmsBlock/search" method="GET">
-        <service class="Magento\Cms\Api\BlockRepositoryInterface" method="getList"/>
+        <service class="Magento\Cms\Api\Block_Repository_Interface" method="getList"/>
         <resources>
             <resource ref="Magento_Cms::block"/>
         </resources>
     </route>
     <route url="/V1/cmsBlock" method="POST">
-        <service class="Magento\Cms\Api\BlockRepositoryInterface" method="save"/>
+        <service class="Magento\Cms\Api\Block_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Cms::block"/>
         </resources>
     </route>
     <route url="/V1/cmsBlock/:id" method="PUT">
-        <service class="Magento\Cms\Api\BlockRepositoryInterface" method="save"/>
+        <service class="Magento\Cms\Api\Block_Repository_Interface" method="save"/>
         <resources>
             <resource ref="Magento_Cms::block"/>
         </resources>
     </route>
     <route url="/V1/cmsBlock/:blockId" method="DELETE">
-        <service class="Magento\Cms\Api\BlockRepositoryInterface" method="deleteById"/>
+        <service class="Magento\Cms\Api\Block_Repository_Interface" method="deleteById"/>
         <resources>
             <resource ref="Magento_Cms::block"/>
         </resources>

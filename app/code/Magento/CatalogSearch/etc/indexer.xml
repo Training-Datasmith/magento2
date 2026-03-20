@@ -6,9 +6,9 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Indexer/etc/indexer.xsd">
-    <indexer id="catalogsearch_fulltext" view_id="catalogsearch_fulltext" class="Magento\CatalogSearch\Model\Indexer\Fulltext">
+    <indexer id="catalogsearch_fulltext" view_id="catalogsearch_fulltext" class="Magento\Catalog_Search\Model\Indexer\Fulltext">
         <title translate="true">Catalog Search</title>
         <description translate="true">Rebuild Catalog product fulltext search index</description>
-        <structure class="Magento\CatalogSearch\Model\Indexer\IndexStructure" />
+        <structure class="Magento\Catalog_Search\Model\Indexer\Index_Structure" />
     </indexer>
 </config>

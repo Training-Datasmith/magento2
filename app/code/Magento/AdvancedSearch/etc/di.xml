@@ -6,44 +6,44 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\AdvancedSearch\Model\Client\ClientFactoryInterface" type="Magento\AdvancedSearch\Model\Client\ClientFactory" />
-    <type name="Magento\AdvancedSearch\Block\Recommendations">
+    <preference for="Magento\Advanced_Search\Model\Client\Client_Factory_Interface" type="Magento\Advanced_Search\Model\Client\Client_Factory" />
+    <type name="Magento\Advanced_Search\Block\Recommendations">
         <arguments>
-            <argument name="searchDataProvider" xsi:type="object">Magento\AdvancedSearch\Model\Recommendations\DataProvider</argument>
+            <argument name="searchDataProvider" xsi:type="object">Magento\Advanced_Search\Model\Recommendations\Data_Provider</argument>
             <argument name="title" xsi:type="string" translatable="true">Related search terms</argument>
         </arguments>
     </type>
-    <type name="Magento\AdvancedSearch\Block\Suggestions">
+    <type name="Magento\Advanced_Search\Block\Suggestions">
         <arguments>
-            <argument name="searchDataProvider" xsi:type="object">Magento\AdvancedSearch\Model\SuggestedQueries</argument>
+            <argument name="searchDataProvider" xsi:type="object">Magento\Advanced_Search\Model\Suggested_Queries</argument>
             <argument name="title" xsi:type="string" translatable="true">Did you mean</argument>
         </arguments>
     </type>
-    <type name="Magento\AdvancedSearch\Model\Client\ClientResolver">
+    <type name="Magento\Advanced_Search\Model\Client\Client_Resolver">
         <arguments>
-            <argument name="path" xsi:type="const">Magento\CatalogSearch\Model\ResourceModel\EngineInterface::CONFIG_ENGINE_PATH</argument>
-            <argument name="scopeType" xsi:type="const">\Magento\Store\Model\ScopeInterface::SCOPE_STORE</argument>
+            <argument name="path" xsi:type="const">Magento\Catalog_Search\Model\Resource_Model\Engine_Interface::CONFIG_ENGINE_PATH</argument>
+            <argument name="scopeType" xsi:type="const">\Magento\Store\Model\Scope_Interface::SCOPE_STORE</argument>
         </arguments>
     </type>
-    <type name="Magento\AdvancedSearch\Model\SuggestedQueries">
+    <type name="Magento\Advanced_Search\Model\Suggested_Queries">
         <arguments>
             <argument name="data" xsi:type="array">
-                <item name="mysql" xsi:type="string">Magento\AdvancedSearch\Model\DataProvider\Suggestions</item>
+                <item name="mysql" xsi:type="string">Magento\Advanced_Search\Model\Data_Provider\Suggestions</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\AdvancedSearch\Model\ResourceModel\Index">
+    <type name="Magento\Advanced_Search\Model\Resource_Model\Index">
         <arguments>
             <argument name="tableResolver" xsi:type="object">
-                Magento\Catalog\Model\Indexer\Product\Price\PriceTableResolver
+                Magento\Catalog\Model\Indexer\Product\Price\Price_Table_Resolver
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\AdvancedSearch\Model\Adapter\DataMapper\AdditionalFieldsProviderInterface" type="Magento\AdvancedSearch\Model\Adapter\DataMapper\AdditionalFieldsProvider" />
+    <preference for="Magento\Advanced_Search\Model\Adapter\Data_Mapper\Additional_Fields_Provider_Interface" type="Magento\Advanced_Search\Model\Adapter\Data_Mapper\Additional_Fields_Provider" />
     <type name="Magento\Search\Model\Autocomplete">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
-                <item name="10" xsi:type="object">Magento\AdvancedSearch\Model\DataProvider\AutocompleteSuggestions</item>
+                <item name="10" xsi:type="object">Magento\Advanced_Search\Model\Data_Provider\Autocomplete_Suggestions</item>
             </argument>
         </arguments>
     </type>

@@ -6,51 +6,51 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Integration\Api\IntegrationServiceInterface" type="Magento\Integration\Model\IntegrationService" />
-    <preference for="Magento\Integration\Api\AuthorizationServiceInterface" type="Magento\Integration\Model\AuthorizationService" />
-    <preference for="Magento\Integration\Api\OauthServiceInterface" type="Magento\Integration\Model\OauthService" />
-    <preference for="Magento\Framework\Oauth\ConsumerInterface" type="Magento\Integration\Model\Oauth\Consumer"/>
-    <preference for="Magento\Framework\Oauth\NonceGeneratorInterface" type="Magento\Integration\Model\Oauth\Nonce\Generator"/>
-    <preference for="Magento\Framework\Oauth\TokenProviderInterface" type="Magento\Integration\Model\Oauth\Token\Provider"/>
-    <preference for="Magento\Integration\Api\CustomerTokenServiceInterface" type="Magento\Integration\Model\CustomerTokenService" />
-    <preference for="Magento\Integration\Api\AdminTokenServiceInterface" type="Magento\Integration\Model\AdminTokenService" />
-    <preference for="Magento\Integration\Model\Oauth\Token\RequestLog\ReaderInterface" type="Magento\Integration\Model\ResourceModel\Oauth\Token\RequestLog" />
-    <preference for="Magento\Integration\Model\Oauth\Token\RequestLog\WriterInterface" type="Magento\Integration\Model\ResourceModel\Oauth\Token\RequestLog" />
+    <preference for="Magento\Integration\Api\Integration_Service_Interface" type="Magento\Integration\Model\Integration_Service" />
+    <preference for="Magento\Integration\Api\Authorization_Service_Interface" type="Magento\Integration\Model\Authorization_Service" />
+    <preference for="Magento\Integration\Api\Oauth_Service_Interface" type="Magento\Integration\Model\Oauth_Service" />
+    <preference for="Magento\Framework\Oauth\Consumer_Interface" type="Magento\Integration\Model\Oauth\Consumer"/>
+    <preference for="Magento\Framework\Oauth\Nonce_Generator_Interface" type="Magento\Integration\Model\Oauth\Nonce\Generator"/>
+    <preference for="Magento\Framework\Oauth\Token_Provider_Interface" type="Magento\Integration\Model\Oauth\Token\Provider"/>
+    <preference for="Magento\Integration\Api\Customer_Token_Service_Interface" type="Magento\Integration\Model\Customer_Token_Service" />
+    <preference for="Magento\Integration\Api\Admin_Token_Service_Interface" type="Magento\Integration\Model\Admin_Token_Service" />
+    <preference for="Magento\Integration\Model\Oauth\Token\Request_Log\Reader_Interface" type="Magento\Integration\Model\Resource_Model\Oauth\Token\Request_Log" />
+    <preference for="Magento\Integration\Model\Oauth\Token\Request_Log\Writer_Interface" type="Magento\Integration\Model\Resource_Model\Oauth\Token\Request_Log" />
     <type name="Magento\Integration\Model\Oauth\Nonce\Generator">
         <arguments>
-            <argument name="date" xsi:type="object">Magento\Framework\Stdlib\DateTime\DateTime\Proxy</argument>
+            <argument name="date" xsi:type="object">Magento\Framework\Stdlib\Date_Time\Date_Time\Proxy</argument>
         </arguments>
     </type>
     <type name="Magento\Integration\Model\Oauth\Token\Provider">
         <arguments>
-            <argument name="date" xsi:type="object">Magento\Framework\Stdlib\DateTime\DateTime\Proxy</argument>
+            <argument name="date" xsi:type="object">Magento\Framework\Stdlib\Date_Time\Date_Time\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Integration\Api\IntegrationServiceInterface">
+    <type name="Magento\Integration\Api\Integration_Service_Interface">
         <plugin name="webapiIntegrationService" type="Magento\Integration\Model\Plugin\Integration"/>
     </type>
     <type name="Magento\User\Model\User">
-        <plugin name="revokeTokensFromInactiveAdmins" type="Magento\Integration\Plugin\Model\AdminUser" />
+        <plugin name="revokeTokensFromInactiveAdmins" type="Magento\Integration\Plugin\Model\Admin_User" />
     </type>
     <type name="Magento\Customer\Model\Customer">
-        <plugin name="revokeTokensFromInactiveCustomers" type="Magento\Integration\Plugin\Model\CustomerUser" />
+        <plugin name="revokeTokensFromInactiveCustomers" type="Magento\Integration\Plugin\Model\Customer_User" />
     </type>
-    <type name="Magento\Integration\Model\CompositeUserTokenValidator">
+    <type name="Magento\Integration\Model\Composite_User_Token_Validator">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="expiration" xsi:type="object">Magento\Integration\Model\UserToken\ExpirationValidator</item>
+                <item name="expiration" xsi:type="object">Magento\Integration\Model\User_Token\Expiration_Validator</item>
             </argument>
         </arguments>
     </type>
-    <preference for="Magento\Integration\Api\Data\UserTokenParametersInterface" type="Magento\Integration\Model\UserToken\UserTokenParameters" />
-    <preference for="Magento\Integration\Api\UserTokenValidatorInterface" type="Magento\Integration\Model\CompositeUserTokenValidator" />
-    <preference for="Magento\Integration\Api\UserTokenIssuerInterface" type="Magento\Integration\Model\OpaqueToken\Issuer" />
-    <preference for="Magento\Integration\Api\UserTokenReaderInterface" type="Magento\Integration\Model\CompositeTokenReader" />
-    <preference for="Magento\Integration\Api\UserTokenRevokerInterface" type="Magento\Integration\Model\OpaqueToken\Revoker" />
-    <type name="Magento\Integration\Model\CompositeTokenReader">
+    <preference for="Magento\Integration\Api\Data\User_Token_Parameters_Interface" type="Magento\Integration\Model\User_Token\User_Token_Parameters" />
+    <preference for="Magento\Integration\Api\User_Token_Validator_Interface" type="Magento\Integration\Model\Composite_User_Token_Validator" />
+    <preference for="Magento\Integration\Api\User_Token_Issuer_Interface" type="Magento\Integration\Model\Opaque_Token\Issuer" />
+    <preference for="Magento\Integration\Api\User_Token_Reader_Interface" type="Magento\Integration\Model\Composite_Token_Reader" />
+    <preference for="Magento\Integration\Api\User_Token_Revoker_Interface" type="Magento\Integration\Model\Opaque_Token\Revoker" />
+    <type name="Magento\Integration\Model\Composite_Token_Reader">
         <arguments>
             <argument name="readers" xsi:type="array">
-                <item name="5" xsi:type="object">Magento\Integration\Model\OpaqueToken\Reader</item>
+                <item name="5" xsi:type="object">Magento\Integration\Model\Opaque_Token\Reader</item>
             </argument>
         </arguments>
     </type>

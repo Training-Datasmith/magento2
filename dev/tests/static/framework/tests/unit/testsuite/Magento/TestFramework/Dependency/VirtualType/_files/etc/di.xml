@@ -14,7 +14,7 @@
     </virtualType>
     <type name="Magento\External\Class">
         <arguments>
-            <argument name="argument1" xsi:type="object">Magento\ExternalModule4\Some\Argument3</argument>
+            <argument name="argument1" xsi:type="object">Magento\External_Module4\Some\Argument3</argument>
             <argument name="argument2" xsi:type="object">ExternalVirtualType</argument>
         </arguments>
     </type>

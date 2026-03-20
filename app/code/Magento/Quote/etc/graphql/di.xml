@@ -6,10 +6,10 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Quote\Model\Cart\BuyRequest\BuyRequestBuilder">
+    <type name="Magento\Quote\Model\Cart\Buy_Request\Buy_Request_Builder">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="customizable_option" xsi:type="object">Magento\Quote\Model\Cart\BuyRequest\CustomizableOptionDataProvider</item>
+                <item name="customizable_option" xsi:type="object">Magento\Quote\Model\Cart\Buy_Request\Customizable_Option_Data_Provider</item>
             </argument>
         </arguments>
     </type>

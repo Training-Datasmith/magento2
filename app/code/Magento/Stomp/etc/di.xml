@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\MessageQueue\PublisherPool">
+    <type name="Magento\Framework\Message_Queue\Publisher_Pool">
         <arguments>
             <argument name="publishers" xsi:type="array">
                 <item name="async" xsi:type="array">
@@ -18,7 +18,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\Bulk\PublisherPool">
+    <type name="Magento\Framework\Message_Queue\Bulk\Publisher_Pool">
         <arguments>
             <argument name="publishers" xsi:type="array">
                 <item name="async" xsi:type="array">
@@ -30,37 +30,37 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\QueueFactory">
+    <type name="Magento\Framework\Message_Queue\Queue_Factory">
         <arguments>
             <argument name="queueFactories" xsi:type="array">
-                <item name="stomp" xsi:type="object">Magento\Framework\Stomp\QueueFactory</item>
+                <item name="stomp" xsi:type="object">Magento\Framework\Stomp\Queue_Factory</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\Bulk\Queue\QueueFactory">
+    <type name="Magento\Framework\Message_Queue\Bulk\Queue\Queue_Factory">
         <arguments>
             <argument name="queueFactories" xsi:type="array">
-                <item name="stomp" xsi:type="object">Magento\Framework\Stomp\Bulk\QueueFactory</item>
+                <item name="stomp" xsi:type="object">Magento\Framework\Stomp\Bulk\Queue_Factory</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\MessageQueue\ConnectionTypeResolver">
+    <type name="Magento\Framework\Message_Queue\Connection_Type_Resolver">
         <arguments>
             <argument name="resolvers" xsi:type="array">
-                <item name="stomp" xsi:type="object">Magento\Framework\Stomp\ConnectionTypeResolver</item>
+                <item name="stomp" xsi:type="object">Magento\Framework\Stomp\Connection_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\AsynchronousOperations\Model\VirtualType\PublisherPool" type="Magento\Framework\MessageQueue\PublisherPool">
+    <virtualType name="Magento\Asynchronous_Operations\Model\Virtual_Type\Publisher_Pool" type="Magento\Framework\Message_Queue\Publisher_Pool">
         <arguments>
             <argument name="publishers" xsi:type="array">
                 <item name="async" xsi:type="array">
-                    <item name="stomp" xsi:type="object">Magento\Stomp\Model\MassPublisher</item>
+                    <item name="stomp" xsi:type="object">Magento\Stomp\Model\Mass_Publisher</item>
                 </item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Framework\Stomp\Bulk\QueueFactory" type="Magento\Framework\Stomp\QueueFactory">
+    <virtualType name="Magento\Framework\Stomp\Bulk\Queue_Factory" type="Magento\Framework\Stomp\Queue_Factory">
         <arguments>
             <argument name="instanceName" xsi:type="string">\Magento\Framework\Stomp\Bulk\Queue</argument>
         </arguments>

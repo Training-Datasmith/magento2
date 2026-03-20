@@ -11,20 +11,20 @@
             <rule name="check_alnum_and_int_not_empty_and_have_valid_value">
                 <property_constraints >
                     <property name="alnum">
-                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\NotEmpty"/>
+                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\Not_Empty"/>
                         <constraint class="Magento\Framework\Validator\Test\Unit\Test\Alnum"/>
                     </property>
                     <property name="int">
-                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\IsInt"/>
+                        <constraint class="Magento\Framework\Validator\Test\Unit\Test\Is_Int"/>
                     </property>
                 </property_constraints>
                 <entity_constraints>
-                    <constraint class="Magento\Framework\Validator\Test\Unit\Test\IsTrue"/>
+                    <constraint class="Magento\Framework\Validator\Test\Unit\Test\Is_True"/>
                 </entity_constraints>
             </rule>
             <rule name="always_true">
                 <entity_constraints>
-                    <constraint alias="alias" class="Magento\Framework\Validator\Test\Unit\Test\IsTrue"/>
+                    <constraint alias="alias" class="Magento\Framework\Validator\Test\Unit\Test\Is_True"/>
                 </entity_constraints>
             </rule>
         </rules>

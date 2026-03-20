@@ -16,27 +16,27 @@
             <argument name="storage" xsi:type="object">Magento\Paypal\Model\Session\Storage</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Paypal\Controller\Express\AbstractExpress">
+    <type name="Magento\Paypal\Controller\Express\Abstract_Express">
         <arguments>
             <argument name="paypalSession" xsi:type="object">Magento\Paypal\Model\Session</argument>
         </arguments>
     </type>
-    <type name="Magento\Paypal\Controller\Express\GetToken">
+    <type name="Magento\Paypal\Controller\Express\Get_Token">
         <arguments>
             <argument name="paypalSession" xsi:type="object">Magento\Paypal\Model\Session</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\Paypal\Model\PayflowSession\Storage" type="Magento\Framework\Session\Storage">
+    <virtualType name="Magento\Paypal\Model\Payflow_Session\Storage" type="Magento\Framework\Session\Storage">
         <arguments>
             <argument name="namespace" xsi:type="string">paypal_payflow</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\Paypal\Model\PayflowSession" type="Magento\Framework\Session\Generic">
+    <virtualType name="Magento\Paypal\Model\Payflow_Session" type="Magento\Framework\Session\Generic">
         <arguments>
-            <argument name="storage" xsi:type="object">Magento\Paypal\Model\PayflowSession\Storage</argument>
+            <argument name="storage" xsi:type="object">Magento\Paypal\Model\Payflow_Session\Storage</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\Url\SecurityInfo">
+    <type name="Magento\Framework\Url\Security_Info">
         <arguments>
             <argument name="secureUrlList" xsi:type="array">
                 <item name="paypal_billing" xsi:type="string">/paypal/billing/</item>
@@ -53,7 +53,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Paypal\Controller\Transparent\RequestSecureToken">
+    <type name="Magento\Paypal\Controller\Transparent\Request_Secure_Token">
         <arguments>
             <argument name="sessionManager" xsi:type="object">Magento\Checkout\Model\Session</argument>
         </arguments>
@@ -65,29 +65,29 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Payment\Model\CcGenericConfigProvider">
+    <type name="Magento\Payment\Model\Cc_Generic_Config_Provider">
         <arguments>
             <argument name="methodCodes" xsi:type="array">
                 <item name="payflowpro" xsi:type="const">Magento\Paypal\Model\Config::METHOD_PAYFLOWPRO</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="PaypalIframeCcConfigProvider" type="Magento\Payment\Model\IframeConfigProvider">
+    <virtualType name="PaypalIframeCcConfigProvider" type="Magento\Payment\Model\Iframe_Config_Provider">
         <arguments>
             <argument name="methodCode" xsi:type="const">Magento\Paypal\Model\Config::METHOD_PAYFLOWPRO</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+    <type name="Magento\Checkout\Model\Composite_Config_Provider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="paypal_express_config_provider" xsi:type="object">Magento\Paypal\Model\ExpressConfigProvider</item>
-                <item name="paypal_iframe_config_provider" xsi:type="object">Magento\Paypal\Model\IframeConfigProvider</item>
-                <item name="paypal_billing_agreement_config_provider" xsi:type="object">Magento\Paypal\Model\BillingAgreementConfigProvider</item>
+                <item name="paypal_express_config_provider" xsi:type="object">Magento\Paypal\Model\Express_Config_Provider</item>
+                <item name="paypal_iframe_config_provider" xsi:type="object">Magento\Paypal\Model\Iframe_Config_Provider</item>
+                <item name="paypal_billing_agreement_config_provider" xsi:type="object">Magento\Paypal\Model\Billing_Agreement_Config_Provider</item>
                 <item name="paypal_iframe_cc_config_provider" xsi:type="object">PaypalIframeCcConfigProvider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Paypal\Block\Express\InContext\Minicart\SmartButton">
+    <type name="Magento\Paypal\Block\Express\In_Context\Minicart\Smart_Button">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="template" xsi:type="string">Magento_Paypal::express/in-context/shortcut/button.phtml</item>
@@ -98,7 +98,7 @@
             <argument name="payment" xsi:type="object">Magento\Paypal\Model\Express</argument>
         </arguments>
     </type>
-    <type name="Magento\Paypal\Block\Express\InContext\SmartButton">
+    <type name="Magento\Paypal\Block\Express\In_Context\Smart_Button">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="alias" xsi:type="string">product.info.addtocart.paypalexpress</item>
@@ -108,26 +108,26 @@
     </type>
 
 
-    <type name="Magento\Vault\Model\Ui\TokensConfigProvider">
+    <type name="Magento\Vault\Model\Ui\Tokens_Config_Provider">
         <arguments>
             <argument name="tokenUiComponentProviders" xsi:type="array">
-                <item name="payflowpro" xsi:type="object">Magento\Paypal\Model\Payflow\Ui\TokenUiComponentProvider</item>
+                <item name="payflowpro" xsi:type="object">Magento\Paypal\Model\Payflow\Ui\Token_Ui_Component_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Customer\CustomerData\SectionPool">
+    <type name="Magento\Customer\Customer_Data\Section_Pool">
         <arguments>
             <argument name="sectionSourceMap" xsi:type="array">
-                <item name="paypal-billing-agreement" xsi:type="string">Magento\Paypal\CustomerData\BillingAgreement</item>
-                <item name="paypal-buyer-country" xsi:type="string">Magento\Paypal\CustomerData\BuyerCountry</item>
+                <item name="paypal-billing-agreement" xsi:type="string">Magento\Paypal\Customer_Data\Billing_Agreement</item>
+                <item name="paypal-buyer-country" xsi:type="string">Magento\Paypal\Customer_Data\Buyer_Country</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\QuoteRepository\SaveHandler">
-        <plugin name="paypal-cartitem" type="Magento\Paypal\Model\Express\QuotePlugin"/>
+    <type name="Magento\Quote\Model\Quote_Repository\Save_Handler">
+        <plugin name="paypal-cartitem" type="Magento\Paypal\Model\Express\Quote_Plugin"/>
     </type>
 
-    <type name="Magento\Paypal\Model\SmartButtonConfig">
+    <type name="Magento\Paypal\Model\Smart_Button_Config">
         <arguments>
             <argument name="defaultStyles" xsi:type="array">
                 <item name="checkout" xsi:type="array">
@@ -159,18 +159,18 @@
                     <item name="label" xsi:type="string">buynow</item>
                 </item>
             </argument>
-            <argument name="localeResolver" xsi:type="object">Magento\Paypal\Model\Express\LocaleResolver</argument>
+            <argument name="localeResolver" xsi:type="object">Magento\Paypal\Model\Express\Locale_Resolver</argument>
         </arguments>
     </type>
-    <type name="Magento\Paypal\Block\Express\InContext\Component">
+    <type name="Magento\Paypal\Block\Express\In_Context\Component">
         <arguments>
-            <argument name="localeResolver" xsi:type="object">Magento\Paypal\Model\Express\LocaleResolver</argument>
+            <argument name="localeResolver" xsi:type="object">Magento\Paypal\Model\Express\Locale_Resolver</argument>
         </arguments>
     </type>
     <type name="Magento\Checkout\Controller\Index\Index">
-        <plugin name="sdk_url_configuration" type="Magento\Paypal\Plugin\CheckoutIndex" />
+        <plugin name="sdk_url_configuration" type="Magento\Paypal\Plugin\Checkout_Index" />
     </type>
-    <type name="Magento\Paypal\Model\SdkUrl">
+    <type name="Magento\Paypal\Model\Sdk_Url">
         <arguments>
             <argument name="disallowedFundingMap" xsi:type="array">
                 <item name="CREDIT" xsi:type="string">credit</item>
@@ -191,13 +191,13 @@
                 <item name="venmo" xsi:type="string">venmo</item>
                 <item name="paylater" xsi:type="string">paylater</item>
             </argument>
-            <argument name="localeResolver" xsi:type="object">Magento\Paypal\Model\Express\LocaleResolver</argument>
+            <argument name="localeResolver" xsi:type="object">Magento\Paypal\Model\Express\Locale_Resolver</argument>
         </arguments>
     </type>
     <type name="Magento\Checkout\Block\Onepage">
         <arguments>
             <argument name="layoutProcessors" xsi:type="array">
-                <item name="payLater" xsi:type="object">Magento\Paypal\Block\PayLater\LayoutProcessor</item>
+                <item name="payLater" xsi:type="object">Magento\Paypal\Block\Pay_Later\Layout_Processor</item>
             </argument>
         </arguments>
     </type>

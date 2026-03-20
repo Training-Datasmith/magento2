@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\LoginAsCustomerApi\Api\IsLoginAsCustomerEnabledForCustomerInterface"
-                type="Magento\LoginAsCustomerApi\Model\IsLoginAsCustomerEnabledForCustomerChain"/>
+    <preference for="Magento\Login_As_Customer_Api\Api\Is_Login_As_Customer_Enabled_For_Customer_Interface"
+                type="Magento\Login_As_Customer_Api\Model\Is_Login_As_Customer_Enabled_For_Customer_Chain"/>
 </config>

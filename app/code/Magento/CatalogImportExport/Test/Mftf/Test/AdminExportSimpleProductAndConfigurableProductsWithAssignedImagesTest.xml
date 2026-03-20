@@ -111,7 +111,7 @@
             <deleteData createDataKey="createConfigSecondChildProduct" stepKey="deleteConfigSecondChildProduct"/>
             <deleteData createDataKey="createConfigProductAttribute" stepKey="deleteConfigProductAttribute"/>
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
-            <helper class="\Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
+            <helper class="\Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="deleteDirectory" stepKey="deleteExportFileDirectory">
                 <argument name="path">var/export</argument>
             </helper>
             <actionGroup ref="CliIndexerReindexActionGroup" stepKey="reindexInvalidatedIndices">
@@ -141,30 +141,30 @@
         </actionGroup>
 
         <!-- Validate Export File on File System: Configurable Product -->
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileExists" stepKey="assertExportFileExists">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileExists" stepKey="assertExportFileExists">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createConfigProduct.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsFirstChildSimpleProductOption">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsFirstChildSimpleProductOption">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">sku=$$createConfigFirstChildProduct.sku$$,$$createConfigProductAttribute.attribute_code$$=option1</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsSecondChildSimpleProductOption">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsSecondChildSimpleProductOption">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">sku=$$createConfigSecondChildProduct.sku$$,$$createConfigProductAttribute.attribute_code$$=option2</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProductImage">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileContainsString" stepKey="assertExportFileContainsConfigurableProductImage">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$createConfigProductImage.entry[content][name]$,"$createConfigProductImage.entry[label]$"</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotContainString" stepKey="assertExportFileDoesNotContainFirstSimpleProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotContainString" stepKey="assertExportFileDoesNotContainFirstSimpleProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createConfigFirstChildProduct.name$$</argument>
         </helper>
-        <helper class="Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotContainString" stepKey="assertExportFileDoesNotContainSecondSimpleProduct">
+        <helper class="Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotContainString" stepKey="assertExportFileDoesNotContainSecondSimpleProduct">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
             <argument name="text">$$createConfigSecondChildProduct.name$$</argument>
         </helper>
@@ -176,27 +176,27 @@
 
         <!-- Validate Downloaded Export File on File System: Configurable Product -->
         <grabAttributeFrom userInput="href" selector="{{AdminExportAttributeSection.download('0')}}" stepKey="grabExportUrl"/>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsConfigurableProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsConfigurableProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createConfigProduct.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFirstChildSimpleProductOption">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsFirstChildSimpleProductOption">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">sku=$$createConfigFirstChildProduct.sku$$,$$createConfigProductAttribute.attribute_code$$=option1</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsSecondChildSimpleProductOption">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsSecondChildSimpleProductOption">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">sku=$$createConfigSecondChildProduct.sku$$,$$createConfigProductAttribute.attribute_code$$=option2</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsConfigurableProductImage">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseContainsString" stepKey="assertDownloadFileContainsConfigurableProductImage">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$createConfigProductImage.entry[content][name]$,"$createConfigProductImage.entry[label]$"</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseDoesNotContainString" stepKey="assertDownloadFileDoesNotContainFirstSimpleProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseDoesNotContainString" stepKey="assertDownloadFileDoesNotContainFirstSimpleProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createConfigFirstChildProduct.name$$</argument>
         </helper>
-        <helper class="\Magento\Backend\Test\Mftf\Helper\CurlHelpers" method="assertCurlResponseDoesNotContainString" stepKey="assertDownloadFileDoesNotContainSecondSimpleProduct">
+        <helper class="\Magento\Backend\Test\Mftf\Helper\Curl_Helpers" method="assertCurlResponseDoesNotContainString" stepKey="assertDownloadFileDoesNotContainSecondSimpleProduct">
             <argument name="url">{$grabExportUrl}</argument>
             <argument name="expectedString">$$createConfigSecondChildProduct.name$$</argument>
         </helper>
@@ -205,7 +205,7 @@
         <actionGroup ref="DeleteExportedFileActionGroup" stepKey="deleteExportedFile">
             <argument name="fileName" value="{$getFilename}"/>
         </actionGroup>
-        <helper class="\Magento\Catalog\Test\Mftf\Helper\LocalFileAssertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
+        <helper class="\Magento\Catalog\Test\Mftf\Helper\Local_File_Assertions" method="assertFileDoesNotExist" stepKey="assertExportFileDeleted">
             <argument name="filePath">var/export/{$grabNameFile}</argument>
         </helper>
     </test>

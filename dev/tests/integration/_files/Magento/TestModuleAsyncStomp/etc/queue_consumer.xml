@@ -6,10 +6,10 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/consumer.xsd">
     <consumer name="stomp.queue.for.multiple.topics.test.c" queue="stomp.queue.for.multiple.topics.test.c"/>
-    <consumer name="stomp.mixed.sync.and.async.queue.consumer" connection="stomp" queue="stomp.mixed.sync.and.async.queue" handler="Magento\TestModuleAsyncStomp\Model\RequestHandler::process"/>
+    <consumer name="stomp.mixed.sync.and.async.queue.consumer" connection="stomp" queue="stomp.mixed.sync.and.async.queue" handler="Magento\Test_Module_Async_Stomp\Model\Request_Handler::process"/>
     <!-- Consumers for wildcard queues -->
-    <consumer name="stomp.wildcard.queue.one.consumer" connection="stomp" queue="stomp.wildcard.queue.one" handler="Magento\TestModuleAsyncStomp\Model\WildCardHandler::methodOne"/>
-    <consumer name="stomp.wildcard.queue.two.consumer" connection="stomp" queue="stomp.wildcard.queue.two" handler="Magento\TestModuleAsyncStomp\Model\WildCardHandler::methodTwo"/>
+    <consumer name="stomp.wildcard.queue.one.consumer" connection="stomp" queue="stomp.wildcard.queue.one" handler="Magento\Test_Module_Async_Stomp\Model\Wild_Card_Handler::methodOne"/>
+    <consumer name="stomp.wildcard.queue.two.consumer" connection="stomp" queue="stomp.wildcard.queue.two" handler="Magento\Test_Module_Async_Stomp\Model\Wild_Card_Handler::methodTwo"/>
 
     <!-- Consumers for AsyncMultipleTopicsWithEachQueueTest -->
     <consumer name="stomp.queue.for.multiple.topics.test.y" queue="stomp.queue.for.multiple.topics.test.y" connection="stomp"/>

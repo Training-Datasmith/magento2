@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Catalog\Model\Product">
-        <plugin name="apply_catalog_rules_after_product_save_and_reindex" type="Magento\CatalogRule\Plugin\Indexer\Product\Save\ApplyRulesAfterReindex"/>
+        <plugin name="apply_catalog_rules_after_product_save_and_reindex" type="Magento\Catalog_Rule\Plugin\Indexer\Product\Save\Apply_Rules_After_Reindex"/>
     </type>
 </config>

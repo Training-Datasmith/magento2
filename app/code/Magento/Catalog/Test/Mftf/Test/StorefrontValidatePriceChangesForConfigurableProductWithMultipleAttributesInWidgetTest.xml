@@ -76,7 +76,7 @@
             <!-- Delete category -->
             <deleteData createDataKey="createCategory" stepKey="deleteCategory"/>
             <!-- Delete configurable product & its variants via API using ProductApiHelper -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
             <!-- Delete widget -->
             <actionGroup ref="AdminDeleteWidgetActionGroup" stepKey="deleteWidget">
                 <argument name="widget" value="SampleCatalogProductsListWidget"/>

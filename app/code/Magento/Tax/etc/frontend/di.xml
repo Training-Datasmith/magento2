@@ -8,35 +8,35 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Tax\Model\Calculation">
         <arguments>
-            <argument name="customerAccountManagement" xsi:type="object">Magento\Customer\Api\AccountManagementInterface\Proxy</argument>
-            <argument name="customerGroupManagement" xsi:type="object">Magento\Customer\Api\GroupManagementInterface\Proxy</argument>
-            <argument name="customerGroupRepository" xsi:type="object">Magento\Customer\Api\GroupRepositoryInterface\Proxy</argument>
-            <argument name="customerRepository" xsi:type="object">Magento\Customer\Api\CustomerRepositoryInterface\Proxy</argument>
+            <argument name="customerAccountManagement" xsi:type="object">Magento\Customer\Api\Account_Management_Interface\Proxy</argument>
+            <argument name="customerGroupManagement" xsi:type="object">Magento\Customer\Api\Group_Management_Interface\Proxy</argument>
+            <argument name="customerGroupRepository" xsi:type="object">Magento\Customer\Api\Group_Repository_Interface\Proxy</argument>
+            <argument name="customerRepository" xsi:type="object">Magento\Customer\Api\Customer_Repository_Interface\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Checkout\CustomerData\Cart">
-        <plugin name="cart_private_data_tax" type="Magento\Tax\Plugin\Checkout\CustomerData\Cart"/>
+    <type name="Magento\Checkout\Customer_Data\Cart">
+        <plugin name="cart_private_data_tax" type="Magento\Tax\Plugin\Checkout\Customer_Data\Cart"/>
     </type>
-    <type name="Magento\Customer\CustomerData\JsLayoutDataProviderPoolInterface">
+    <type name="Magento\Customer\Customer_Data\Js_Layout_Data_Provider_Pool_Interface">
         <arguments>
             <argument name="jsLayoutDataProviders" xsi:type="array">
-                <item name="checkout_totals" xsi:type="object">Magento\Tax\CustomerData\CheckoutTotalsJsLayoutDataProvider</item>
+                <item name="checkout_totals" xsi:type="object">Magento\Tax\Customer_Data\Checkout_Totals_Js_Layout_Data_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Checkout\Model\CompositeConfigProvider">
+    <type name="Magento\Checkout\Model\Composite_Config_Provider">
         <arguments>
             <argument name="configProviders" xsi:type="array">
-                <item name="tax_config_provider" xsi:type="object">Magento\Tax\Model\TaxConfigProvider</item>
+                <item name="tax_config_provider" xsi:type="object">Magento\Tax\Model\Tax_Config_Provider</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Framework\View\Layout">
         <plugin name="tax-session-depersonalize"
-                type="Magento\Tax\Model\Layout\DepersonalizePlugin" sortOrder="20"/>
+                type="Magento\Tax\Model\Layout\Depersonalize_Plugin" sortOrder="20"/>
     </type>
-    <type name="Magento\Framework\App\ActionInterface">
+    <type name="Magento\Framework\App\Action_Interface">
         <plugin name="tax-app-action-dispatchController-context-plugin"
-                type="Magento\Tax\Model\App\Action\ContextPlugin"/>
+                type="Magento\Tax\Model\App\Action\Context_Plugin"/>
     </type>
 </config>

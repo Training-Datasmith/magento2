@@ -6,39 +6,39 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\MediaContentSynchronizationApi\Model\SynchronizerPool">
+    <type name="Magento\Media_Content_Synchronization_Api\Model\Synchronizer_Pool">
         <arguments>
             <argument name="synchronizers" xsi:type="array">
-                <item name="media_content_block_synchronizer" xsi:type="object">Magento\MediaContentSynchronizationCms\Model\Synchronizer\Block</item>
-                <item name="media_content_page_synchronizer" xsi:type="object">Magento\MediaContentSynchronizationCms\Model\Synchronizer\Page</item>
+                <item name="media_content_block_synchronizer" xsi:type="object">Magento\Media_Content_Synchronization_Cms\Model\Synchronizer\Block</item>
+                <item name="media_content_page_synchronizer" xsi:type="object">Magento\Media_Content_Synchronization_Cms\Model\Synchronizer\Page</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentSynchronizationApi\Model\SynchronizeIdentitiesPool">
+    <type name="Magento\Media_Content_Synchronization_Api\Model\Synchronize_Identities_Pool">
         <arguments>
             <argument name="synchronizers" xsi:type="array">
                 <item name="media_content_cms"
-                      xsi:type="object">Magento\MediaContentSynchronizationCms\Model\Synchronizer\SynchronizeIdentities
+                      xsi:type="object">Magento\Media_Content_Synchronization_Cms\Model\Synchronizer\Synchronize_Identities
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentSynchronizationApi\Model\GetEntitiesInterface">
+    <type name="Magento\Media_Content_Synchronization_Api\Model\Get_Entities_Interface">
         <arguments>
             <argument name="entities" xsi:type="array">
-                <item name="cms_block" xsi:type="string">Magento\Cms\Api\Data\BlockInterface</item>
-                <item name="cms_page" xsi:type="string">Magento\Cms\Api\Data\PageInterface</item>
+                <item name="cms_block" xsi:type="string">Magento\Cms\Api\Data\Block_Interface</item>
+                <item name="cms_page" xsi:type="string">Magento\Cms\Api\Data\Page_Interface</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentSynchronizationCms\Model\Synchronizer\Block">
+    <type name="Magento\Media_Content_Synchronization_Cms\Model\Synchronizer\Block">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="content" xsi:type="string">content</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\MediaContentSynchronizationCms\Model\Synchronizer\Page">
+    <type name="Magento\Media_Content_Synchronization_Cms\Model\Synchronizer\Page">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="content" xsi:type="string">content</item>

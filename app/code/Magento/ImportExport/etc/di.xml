@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\ImportExport\Model\Import\ConfigInterface" type="Magento\ImportExport\Model\Import\Config" />
-    <preference for="Magento\ImportExport\Model\Export\ConfigInterface" type="Magento\ImportExport\Model\Export\Config" />
-    <preference for="Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregatorInterface" type="Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregator" />
-    <preference for="Magento\ImportExport\Model\Report\ReportProcessorInterface" type="Magento\ImportExport\Model\Report\Csv" />
-    <preference for="Magento\ImportExport\Api\Data\ExportInfoInterface" type="Magento\ImportExport\Model\Export\Entity\ExportInfo" />
-    <preference for="Magento\ImportExport\Api\Data\LocalizedExportInfoInterface" type="Magento\ImportExport\Model\Export\Entity\ExportInfo" />
-    <preference for="Magento\ImportExport\Api\Data\FieldsEnclosureAwareExportInfoInterface" type="Magento\ImportExport\Model\Export\Entity\ExportInfo" />
-    <preference for="Magento\ImportExport\Api\ExportManagementInterface" type="Magento\ImportExport\Model\Export\ExportManagement" />
-    <preference for="Magento\ImportExport\Model\LocaleEmulatorInterface" type="Magento\ImportExport\Model\LocaleEmulator\Proxy" />
-    <preference for="Magento\ImportExport\Model\Export\EntityFiltersProviderInterface" type="Magento\ImportExport\Model\Export\EntityFiltersProvider"/>
+    <preference for="Magento\Import_Export\Model\Import\Config_Interface" type="Magento\Import_Export\Model\Import\Config" />
+    <preference for="Magento\Import_Export\Model\Export\Config_Interface" type="Magento\Import_Export\Model\Export\Config" />
+    <preference for="Magento\Import_Export\Model\Import\Error_Processing\Processing_Error_Aggregator_Interface" type="Magento\Import_Export\Model\Import\Error_Processing\Processing_Error_Aggregator" />
+    <preference for="Magento\Import_Export\Model\Report\Report_Processor_Interface" type="Magento\Import_Export\Model\Report\Csv" />
+    <preference for="Magento\Import_Export\Api\Data\Export_Info_Interface" type="Magento\Import_Export\Model\Export\Entity\Export_Info" />
+    <preference for="Magento\Import_Export\Api\Data\Localized_Export_Info_Interface" type="Magento\Import_Export\Model\Export\Entity\Export_Info" />
+    <preference for="Magento\Import_Export\Api\Data\Fields_Enclosure_Aware_Export_Info_Interface" type="Magento\Import_Export\Model\Export\Entity\Export_Info" />
+    <preference for="Magento\Import_Export\Api\Export_Management_Interface" type="Magento\Import_Export\Model\Export\Export_Management" />
+    <preference for="Magento\Import_Export\Model\Locale_Emulator_Interface" type="Magento\Import_Export\Model\Locale_Emulator\Proxy" />
+    <preference for="Magento\Import_Export\Model\Export\Entity_Filters_Provider_Interface" type="Magento\Import_Export\Model\Export\Entity_Filters_Provider"/>
     <type name="Magento\Framework\Module\Setup\Migration">
         <arguments>
             <argument name="compositeModules" xsi:type="array">
@@ -23,7 +23,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\ImportExport\Model\Import\SampleFileProvider">
+    <type name="Magento\Import_Export\Model\Import\Sample_File_Provider">
         <arguments>
             <argument name="samples" xsi:type="array">
                 <item name="advanced_pricing" xsi:type="string">Magento_ImportExport</item>
@@ -35,25 +35,25 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\ImportExport\Model\LocalizedFileName">
+    <type name="Magento\Import_Export\Model\Localized_File_Name">
         <arguments>
             <argument name="dateFormats" xsi:type="array">
                 <item name="Ymd_His" xsi:type="string">Ymd_His</item>
             </argument>
         </arguments>
     </type>
-    <virtualType name="Magento\ImportExport\Model\DefaultLocaleResolver" type="Magento\Framework\Locale\Resolver">
+    <virtualType name="Magento\Import_Export\Model\Default_Locale_Resolver" type="Magento\Framework\Locale\Resolver">
         <arguments>
             <argument name="defaultLocalePath" xsi:type="const">Magento\Directory\Helper\Data::XML_PATH_DEFAULT_LOCALE</argument>
-            <argument name="scopeType" xsi:type="const">Magento\Framework\App\Config\ScopeConfigInterface::SCOPE_TYPE_DEFAULT</argument>
+            <argument name="scopeType" xsi:type="const">Magento\Framework\App\Config\Scope_Config_Interface::SCOPE_TYPE_DEFAULT</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\ImportExport\Model\LocaleEmulator">
+    <type name="Magento\Import_Export\Model\Locale_Emulator">
         <arguments>
-            <argument name="defaultLocaleResolver" xsi:type="object">Magento\ImportExport\Model\DefaultLocaleResolver</argument>
+            <argument name="defaultLocaleResolver" xsi:type="object">Magento\Import_Export\Model\Default_Locale_Resolver</argument>
         </arguments>
     </type>
-    <type name="Magento\ImportExport\Model\Import">
-        <plugin name="import_defer_cache" type="Magento\ImportExport\Plugin\DeferCacheCleaningUntilImportIsComplete" sortOrder="1"/>
+    <type name="Magento\Import_Export\Model\Import">
+        <plugin name="import_defer_cache" type="Magento\Import_Export\Plugin\Defer_Cache_Cleaning_Until_Import_Is_Complete" sortOrder="1"/>
     </type>
 </config>

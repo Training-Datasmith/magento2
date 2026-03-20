@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Config\Model\Config\TypePool">
+    <type name="Magento\Config\Model\Config\Type_Pool">
         <arguments>
             <argument name="sensitive" xsi:type="array">
                 <item name="carriers/ups/username" xsi:type="string">1</item>
@@ -31,7 +31,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Shipping\Block\DataProviders\Tracking\DeliveryDateTitle">
-        <plugin name="ups_update_delivery_date_title" type="Magento\Ups\Plugin\Block\DataProviders\Tracking\ChangeTitle"/>
+    <type name="Magento\Shipping\Block\Data_Providers\Tracking\Delivery_Date_Title">
+        <plugin name="ups_update_delivery_date_title" type="Magento\Ups\Plugin\Block\Data_Providers\Tracking\Change_Title"/>
     </type>
 </config>

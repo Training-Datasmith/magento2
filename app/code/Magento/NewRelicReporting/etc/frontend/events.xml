@@ -7,10 +7,10 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="controller_action_predispatch">
-        <observer name="newrelicreporting_observer_report_concurrent_users" instance="Magento\NewRelicReporting\Model\Observer\ReportConcurrentUsers" />
-        <observer name="newrelicreporting_newrelic_report_concurrent_users" instance="Magento\NewRelicReporting\Model\Observer\ReportConcurrentUsersToNewRelic" />
+        <observer name="newrelicreporting_observer_report_concurrent_users" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Concurrent_Users" />
+        <observer name="newrelicreporting_newrelic_report_concurrent_users" instance="Magento\New_Relic_Reporting\Model\Observer\Report_Concurrent_Users_To_New_Relic" />
     </event>
     <event name="controller_front_send_response_before">
-        <observer name="newrelicreporting_observer_controller_front_send_response_before" instance="Magento\NewRelicReporting\Observer\DisableBrowserMonitoringAutomaticInjection" />
+        <observer name="newrelicreporting_observer_controller_front_send_response_before" instance="Magento\New_Relic_Reporting\Observer\Disable_Browser_Monitoring_Automatic_Injection" />
     </event>
 </config>

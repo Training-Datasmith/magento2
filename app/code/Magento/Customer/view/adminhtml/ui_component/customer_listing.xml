@@ -29,7 +29,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Customer::manage</aclResource>
-        <dataProvider class="Magento\Customer\Ui\Component\DataProvider" name="customer_listing_data_source">
+        <dataProvider class="Magento\Customer\Ui\Component\Data_Provider" name="customer_listing_data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -79,7 +79,7 @@
                 <settings>
                     <type>assign_to_group</type>
                     <label translate="true">Assign a Customer Group</label>
-                    <actions class="Magento\Customer\Ui\Component\MassAction\Group\Options"/>
+                    <actions class="Magento\Customer\Ui\Component\Mass_Action\Group\Options"/>
                 </settings>
             </action>
             <action name="edit">
@@ -168,7 +168,7 @@
         </column>
         <column name="billing_country_id" component="Magento_Ui/js/grid/columns/select" sortOrder="80">
             <settings>
-                <options class="Magento\Customer\Model\ResourceModel\Address\Attribute\Source\CountryWithWebsites"/>
+                <options class="Magento\Customer\Model\Resource_Model\Address\Attribute\Source\Country_With_Websites"/>
                 <filter>select</filter>
                 <dataType>select</dataType>
                 <label translate="true">Country</label>
@@ -189,7 +189,7 @@
         </column>
         <column name="website_id" class="Magento\Customer\Ui\Component\Listing\Column\Websites" component="Magento_Ui/js/grid/columns/select" sortOrder="110">
             <settings>
-                <options class="Magento\Store\Model\ResourceModel\Website\Collection"/>
+                <options class="Magento\Store\Model\Resource_Model\Website\Collection"/>
                 <filter>select</filter>
                 <editor>
                     <editorType>select</editorType>
@@ -302,7 +302,7 @@
                 <visible>false</visible>
             </settings>
         </column>
-        <column name="lock_expires" class="Magento\Customer\Ui\Component\Listing\Column\AccountLock" sortOrder="270">
+        <column name="lock_expires" class="Magento\Customer\Ui\Component\Listing\Column\Account_Lock" sortOrder="270">
             <settings>
                 <label translate="true">Account Lock</label>
                 <visible>false</visible>

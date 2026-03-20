@@ -6,16 +6,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Customer\Model\Group\RetrieverInterface"
-                type="Magento\Sales\Model\CustomerGroupRetriever"/>
-    <type name="Magento\Framework\App\Rss\RssManagerInterface">
+    <preference for="Magento\Customer\Model\Group\Retriever_Interface"
+                type="Magento\Sales\Model\Customer_Group_Retriever"/>
+    <type name="Magento\Framework\App\Rss\Rss_Manager_Interface">
         <arguments>
             <argument name="dataProviders" xsi:type="array">
-                <item name="new_order" xsi:type="string">Magento\Sales\Model\Rss\NewOrder</item>
+                <item name="new_order" xsi:type="string">Magento\Sales\Model\Rss\New_Order</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Ui\Model\Export\MetadataProvider">
+    <type name="Magento\Ui\Model\Export\Metadata_Provider">
         <arguments>
             <argument name="data" xsi:type="array">
                 <item name="sales_order_grid" xsi:type="array">
@@ -47,48 +47,48 @@
                 </item>
             </argument>
         </arguments>
-        <plugin name="orderGridExportFilterColumnPlugin" type="Magento\Sales\Plugin\Model\Export\OrderGridExportFilterColumn"/>
+        <plugin name="orderGridExportFilterColumnPlugin" type="Magento\Sales\Plugin\Model\Export\Order_Grid_Export_Filter_Column"/>
     </type>
-    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\DataProvider\ProductCollection">
+    <type name="Magento\Sales\Block\Adminhtml\Order\Create\Search\Grid\Data_Provider\Product_Collection">
         <arguments>
-            <argument name="collectionFactory" xsi:type="object">\Magento\Catalog\Ui\DataProvider\Product\ProductCollectionFactory</argument>
+            <argument name="collectionFactory" xsi:type="object">\Magento\Catalog\Ui\Data_Provider\Product\Product_Collection_Factory</argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Model\AdminOrder\Create">
+    <type name="Magento\Sales\Model\Admin_Order\Create">
         <arguments>
             <!-- Default specifications according to Magento\Sales\Block\Adminhtml\Order\Create\Billing\Method\Form::_canUseMethod -->
             <argument name="paymentMethodSpecifications" xsi:type="array">
                 <item name="internal" xsi:type="array">
-                    <item name="type" xsi:type="const">Magento\Payment\Model\MethodInterface::CHECK_USE_INTERNAL</item>
+                    <item name="type" xsi:type="const">Magento\Payment\Model\Method_Interface::CHECK_USE_INTERNAL</item>
                     <item name="sortOrder" xsi:type="number">10</item>
                     <item name="disabled" xsi:type="boolean">false</item>
                 </item>
                 <item name="country" xsi:type="array">
-                    <item name="type" xsi:type="const">Magento\Payment\Model\MethodInterface::CHECK_USE_FOR_COUNTRY</item>
+                    <item name="type" xsi:type="const">Magento\Payment\Model\Method_Interface::CHECK_USE_FOR_COUNTRY</item>
                     <item name="sortOrder" xsi:type="number">20</item>
                     <item name="disabled" xsi:type="boolean">false</item>
                 </item>
                 <item name="currency" xsi:type="array">
-                    <item name="type" xsi:type="const">Magento\Payment\Model\MethodInterface::CHECK_USE_FOR_CURRENCY</item>
+                    <item name="type" xsi:type="const">Magento\Payment\Model\Method_Interface::CHECK_USE_FOR_CURRENCY</item>
                     <item name="sortOrder" xsi:type="number">30</item>
                     <item name="disabled" xsi:type="boolean">false</item>
                 </item>
                 <item name="total" xsi:type="array">
-                    <item name="type" xsi:type="const">Magento\Payment\Model\MethodInterface::CHECK_ORDER_TOTAL_MIN_MAX</item>
+                    <item name="type" xsi:type="const">Magento\Payment\Model\Method_Interface::CHECK_ORDER_TOTAL_MIN_MAX</item>
                     <item name="sortOrder" xsi:type="number">40</item>
                     <item name="disabled" xsi:type="boolean">false</item>
                 </item>
                 <item name="zero_total" xsi:type="array">
-                    <item name="type" xsi:type="const">Magento\Payment\Model\MethodInterface::CHECK_ZERO_TOTAL</item>
+                    <item name="type" xsi:type="const">Magento\Payment\Model\Method_Interface::CHECK_ZERO_TOTAL</item>
                     <item name="sortOrder" xsi:type="number">50</item>
                     <item name="disabled" xsi:type="boolean">false</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter">
+    <type name="Magento\Framework\View\Element\Ui_Component\Data_Provider\Fulltext_Filter">
         <plugin name="ordergrid_fulltext_fallback"
-                type="Magento\Sales\Plugin\SearchCriteria\FulltextFilterPlugin"
+                type="Magento\Sales\Plugin\Search_Criteria\Fulltext_Filter_Plugin"
                 sortOrder="10"/>
     </type>
 </config>

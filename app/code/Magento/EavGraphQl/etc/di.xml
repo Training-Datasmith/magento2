@@ -7,9 +7,9 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <type name="Magento\Eav\Model\Entity\Attribute">
-        <plugin name="entityAttributeChangePlugin" type="Magento\EavGraphQl\Plugin\Eav\AttributePlugin" />
+        <plugin name="entityAttributeChangePlugin" type="Magento\Eav_Graph_Ql\Plugin\Eav\Attribute_Plugin" />
     </type>
-    <type name="Magento\EavGraphQl\Model\Output\GetAttributeData">
+    <type name="Magento\Eav_Graph_Ql\Model\Output\Get_Attribute_Data">
         <arguments>
             <argument name="skipOptionsForAttributeCodes" xsi:type="array">
                 <item name="region_id" xsi:type="string">region_id</item>

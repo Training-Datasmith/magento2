@@ -16,7 +16,7 @@
             <formElements>
                 <select>
                     <settings>
-                        <options class="Magento\OfflineShipping\Model\Source\SalesRule\FreeShippingOptions"/>
+                        <options class="Magento\Offline_Shipping\Model\Source\Sales_Rule\Free_Shipping_Options"/>
                         <caption translate="true">-- Please Select --</caption>
                     </settings>
                 </select>

@@ -10,8 +10,8 @@
         <referenceContainer name="header-wrapper">
             <block class="Magento\Framework\View\Element\Template" name="top.search" as="topSearch" template="Magento_Search::form.mini.phtml">
                 <arguments>
-                    <argument name="configProvider" xsi:type="object">Magento\Search\ViewModel\ConfigProvider</argument>
-                    <argument name="additionalSearchFormData" xsi:type="object">Magento\Search\ViewModel\AdditionalSearchFormData</argument>
+                    <argument name="configProvider" xsi:type="object">Magento\Search\View_Model\Config_Provider</argument>
+                    <argument name="additionalSearchFormData" xsi:type="object">Magento\Search\View_Model\Additional_Search_Form_Data</argument>
                 </arguments>
             </block>
         </referenceContainer>

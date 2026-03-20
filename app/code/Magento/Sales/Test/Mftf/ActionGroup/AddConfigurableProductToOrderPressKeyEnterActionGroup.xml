@@ -32,7 +32,7 @@
         <fillField userInput="{{quantity}}" selector="{{AdminOrderFormConfigureProductSection.quantity}}" stepKey="fillQty"/>
         <wait time="2" stepKey="waitForValidateOptions"/>
         <!--Press Key ENTER-->
-        <pressKey selector="{{AdminOrderFormConfigureProductSection.quantity}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::ENTER]" stepKey="pressKeyEnter"/>
+        <pressKey selector="{{AdminOrderFormConfigureProductSection.quantity}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::ENTER]" stepKey="pressKeyEnter"/>
         <scrollTo selector="{{AdminOrderFormItemsSection.addSelected}}" x="0" y="-100" stepKey="scrollToAddSelectedButton"/>
         <click selector="{{AdminOrderFormItemsSection.addSelected}}" stepKey="clickAddSelectedProducts"/>
     </actionGroup>

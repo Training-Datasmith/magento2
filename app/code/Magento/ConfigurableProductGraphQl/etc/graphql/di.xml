@@ -6,14 +6,14 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\CatalogGraphQl\Model\ProductInterfaceTypeResolverComposite">
+    <type name="Magento\Catalog_Graph_Ql\Model\Product_Interface_Type_Resolver_Composite">
         <arguments>
             <argument name="productTypeNameResolvers" xsi:type="array">
-                <item name="configurable_product_type_resolver" xsi:type="object">Magento\ConfigurableProductGraphQl\Model\ConfigurableProductTypeResolver</item>
+                <item name="configurable_product_type_resolver" xsi:type="object">Magento\Configurable_Product_Graph_Ql\Model\Configurable_Product_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Schema\Type\Entity\DefaultMapper">
+    <type name="Magento\Framework\Graph_Ql\Schema\Type\Entity\Default_Mapper">
         <arguments>
             <argument name="map" xsi:type="array">
                 <item name="catalog_product" xsi:type="array">
@@ -22,21 +22,21 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\Cart\BuyRequest\BuyRequestBuilder">
+    <type name="Magento\Quote_Graph_Ql\Model\Cart\Buy_Request\Buy_Request_Builder">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="super_attribute" xsi:type="object">Magento\ConfigurableProductGraphQl\Model\Cart\BuyRequest\SuperAttributeDataProvider</item>
+                <item name="super_attribute" xsi:type="object">Magento\Configurable_Product_Graph_Ql\Model\Cart\Buy_Request\Super_Attribute_Data_Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogGraphQl\Model\Resolver\Product\Price\ProviderPool">
+    <type name="Magento\Catalog_Graph_Ql\Model\Resolver\Product\Price\Provider_Pool">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="configurable" xsi:type="object">Magento\ConfigurableProductGraphQl\Model\Resolver\Product\Price\Provider</item>
+                <item name="configurable" xsi:type="object">Magento\Configurable_Product_Graph_Ql\Model\Resolver\Product\Price\Provider</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\WishlistGraphQl\Model\Resolver\Type\WishlistItemType">
+    <type name="Magento\Wishlist_Graph_Ql\Model\Resolver\Type\Wishlist_Item_Type">
         <arguments>
             <argument name="supportedTypes" xsi:type="array">
                 <item name="configurable" xsi:type="string">ConfigurableWishlistItem</item>
@@ -44,16 +44,16 @@
         </arguments>
     </type>
 
-    <type name="Magento\ConfigurableProduct\Model\Product\Type\Configurable">
-        <plugin name="used_products_cache_graphql" type="Magento\ConfigurableProduct\Model\Plugin\Frontend\UsedProductsCache" />
+    <type name="Magento\Configurable_Product\Model\Product\Type\Configurable">
+        <plugin name="used_products_cache_graphql" type="Magento\Configurable_Product\Model\Plugin\Frontend\Used_Products_Cache" />
     </type>
 
-    <type name="Magento\ConfigurableProduct\Model\ResourceModel\Attribute\OptionSelectBuilderInterface">
-        <plugin name="Magento_ConfigurableProduct_Plugin_Model_ResourceModel_Attribute_InStockOptionSelectBuilder_GraphQl" type="Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Attribute\InStockOptionSelectBuilder"/>
-        <plugin name="option_select_website_filter" type="Magento\ConfigurableProduct\Plugin\Model\ResourceModel\Attribute\ScopedOptionSelectBuilder"/>
+    <type name="Magento\Configurable_Product\Model\Resource_Model\Attribute\Option_Select_Builder_Interface">
+        <plugin name="Magento_ConfigurableProduct_Plugin_Model_ResourceModel_Attribute_InStockOptionSelectBuilder_GraphQl" type="Magento\Configurable_Product\Plugin\Model\Resource_Model\Attribute\In_Stock_Option_Select_Builder"/>
+        <plugin name="option_select_website_filter" type="Magento\Configurable_Product\Plugin\Model\Resource_Model\Attribute\Scoped_Option_Select_Builder"/>
     </type>
 
-    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+    <type name="Magento\Store_Graph_Ql\Model\Resolver\Store\Store_Config_Data_Provider">
         <arguments>
             <argument name="extendedConfigData" xsi:type="array">
                 <item name="configurable_thumbnail_source" xsi:type="string">checkout/cart/configurable_product_image</item>
@@ -61,31 +61,31 @@
         </arguments>
     </type>
 
-    <type name="Magento\UrlRewriteGraphQl\Model\RoutableInterfaceTypeResolver">
+    <type name="Magento\Url_Rewrite_Graph_Ql\Model\Routable_Interface_Type_Resolver">
         <arguments>
             <argument name="productTypeNameResolvers" xsi:type="array">
-                <item name="configurable_product_type_resolver" xsi:type="object">Magento\ConfigurableProductGraphQl\Model\ConfigurableProductTypeResolver</item>
+                <item name="configurable_product_type_resolver" xsi:type="object">Magento\Configurable_Product_Graph_Ql\Model\Configurable_Product_Type_Resolver</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\ConfigurableProduct\Model\Product\Configuration\Item\ItemProductResolver">
-        <plugin name="configured_variant" type="Magento\ConfigurableProductGraphQl\Plugin\Product\Configuration\Item\ItemResolver"/>
+    <type name="Magento\Configurable_Product\Model\Product\Configuration\Item\Item_Product_Resolver">
+        <plugin name="configured_variant" type="Magento\Configurable_Product_Graph_Ql\Plugin\Product\Configuration\Item\Item_Resolver"/>
     </type>
-    <type name="Magento\ConfigurableProduct\Pricing\Price\ConfigurableOptionsCompositeFilter">
+    <type name="Magento\Configurable_Product\Pricing\Price\Configurable_Options_Composite_Filter">
         <arguments>
             <argument name="configurableOptionsFilters" xsi:type="array">
-                <item name="status" xsi:type="object">Magento\ConfigurableProduct\Pricing\Price\ConfigurableOptionsStatusFilter</item>
-                <item name="stock_status" xsi:type="object">Magento\ConfigurableProduct\Pricing\Price\ConfigurableOptionsStockStatusFilter</item>
+                <item name="status" xsi:type="object">Magento\Configurable_Product\Pricing\Price\Configurable_Options_Status_Filter</item>
+                <item name="stock_status" xsi:type="object">Magento\Configurable_Product\Pricing\Price\Configurable_Options_Stock_Status_Filter</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Product\Collection">
-        <plugin name="add_stock_information" type="Magento\ConfigurableProductGraphQl\Plugin\AddStockStatusToCollection" />
+    <type name="Magento\Configurable_Product\Model\Resource_Model\Product\Type\Configurable\Product\Collection">
+        <plugin name="add_stock_information" type="Magento\Configurable_Product_Graph_Ql\Plugin\Add_Stock_Status_To_Collection" />
     </type>
     <type name="Magento\Quote\Model\Quote">
-        <plugin name="update_customized_options" type="Magento\ConfigurableProductGraphQl\Plugin\Quote\UpdateCustomizedOptions"/>
+        <plugin name="update_customized_options" type="Magento\Configurable_Product_Graph_Ql\Plugin\Quote\Update_Customized_Options"/>
     </type>
-    <type name="Magento\SalesGraphQl\Model\TypeResolver\OrderItem">
+    <type name="Magento\Sales_Graph_Ql\Model\Type_Resolver\Order_Item">
         <arguments>
             <argument name="productTypeMap" xsi:type="array">
                 <item name="configurable" xsi:type="string">ConfigurableOrderItem</item>

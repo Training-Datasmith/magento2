@@ -19,7 +19,7 @@
         <scrollTo selector="{{AdminNewCatalogPriceRule.conditionsTabTitle}}" stepKey="scrollToConditionsFieldset"/>
         <waitForElementVisible selector="{{AdminNewCatalogPriceRuleConditions.newCondition}}" stepKey="waitForNewConditionButton"/>
         <click selector="{{AdminNewCatalogPriceRuleConditions.newCondition}}" stepKey="clickAddNewConditionButton"/>
-        <selectOption selector="{{AdminNewCatalogPriceRuleConditions.conditionSelect('1')}}" userInput="Magento\CatalogRule\Model\Rule\Condition\Product|sku" stepKey="selectConditionTypeSku"/>
+        <selectOption selector="{{AdminNewCatalogPriceRuleConditions.conditionSelect('1')}}" userInput="Magento\Catalog_Rule\Model\Rule\Condition\Product|sku" stepKey="selectConditionTypeSku"/>
         <waitForPageLoad stepKey="waitConditionFormRefresh"/>
         <click selector="{{AdminNewCatalogPriceRuleConditions.targetEllipsis('1')}}" stepKey="clickEllipsis"/>
         <fillField selector="{{AdminNewCatalogPriceRuleConditions.targetInput('1', '1')}}" userInput="{{productSku}}" stepKey="fillProductSku"/>

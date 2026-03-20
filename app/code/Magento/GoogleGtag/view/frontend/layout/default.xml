@@ -8,7 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceBlock name="head.additional">
-            <block class="Magento\GoogleGtag\Block\Ga"
+            <block class="Magento\Google_Gtag\Block\Ga"
                    name="google_gtag_analytics"
                    as="google_gtag_analytics"
                    template="Magento_GoogleGtag::ga.phtml"
@@ -18,7 +18,7 @@
                    template="Magento_GoogleGtag::head.phtml"
                    ifconfig="google/gtag/adwords/active">
                 <arguments>
-                    <argument name="view_model" xsi:type="object">Magento\GoogleGtag\ViewModel\Adwords</argument>
+                    <argument name="view_model" xsi:type="object">Magento\Google_Gtag\View_Model\Adwords</argument>
                 </arguments>
             </block>
         </referenceBlock>

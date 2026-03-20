@@ -6,13 +6,13 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Api/etc/extension_attributes.xsd">
-    <extension_attributes for="Magento\Tax\Api\Data\TaxRateInterface">
+    <extension_attributes for="Magento\Tax\Api\Data\Tax_Rate_Interface">
     </extension_attributes>
     <extension_attributes for="Magento\Catalog\Api\Data\Product">
-        <attribute code="stock_item" type="Magento\CatalogInventory\Api\Data\StockItem" />
+        <attribute code="stock_item" type="Magento\Catalog_Inventory\Api\Data\Stock_Item" />
     </extension_attributes>
-    <extension_attributes for="Magento\Customer\Api\Data\CustomerInterface">
-        <attribute code="custom_1" type="Magento\Customer\Api\Data\CustomerCustom" />
-        <attribute code="custom_2" type="Magento\CustomerExtra\Service\V1\Data\CustomerCustom21" />
+    <extension_attributes for="Magento\Customer\Api\Data\Customer_Interface">
+        <attribute code="custom_1" type="Magento\Customer\Api\Data\Customer_Custom" />
+        <attribute code="custom_2" type="Magento\Customer_Extra\Service\V1\Data\Customer_Custom21" />
     </extension_attributes>
 </config>

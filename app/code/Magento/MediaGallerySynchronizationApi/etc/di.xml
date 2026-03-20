@@ -6,5 +6,5 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\MediaGallerySynchronizationApi\Model\ImportFilesInterface" type="Magento\MediaGallerySynchronizationApi\Model\ImportFilesComposite"/>
+    <preference for="Magento\Media_Gallery_Synchronization_Api\Model\Import_Files_Interface" type="Magento\Media_Gallery_Synchronization_Api\Model\Import_Files_Composite"/>
 </config>

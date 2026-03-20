@@ -22,7 +22,7 @@
         <waitForElementVisible selector="{{AdminCartPriceRulesFormSection.apply}}" stepKey="waitActionsFieldsetFullyOpened"/>
         <selectOption selector="{{AdminCartPriceRulesFormSection.apply}}" userInput="{{apply}}" stepKey="fillDiscountType"/>
         <fillField selector="{{AdminCartPriceRulesFormSection.discountAmount}}" userInput="{{discountAmount}}" stepKey="fillDiscountAmount"/>
-        <pressKey selector="{{AdminCartPriceRulesFormSection.discountAmount}}" parameterArray="[\Facebook\WebDriver\WebDriverKeys::TAB]" stepKey="pressTab"/>
+        <pressKey selector="{{AdminCartPriceRulesFormSection.discountAmount}}" parameterArray="[\Facebook\Web_Driver\Web_Driver_Keys::TAB]" stepKey="pressTab"/>
         <conditionalClick selector="{{AdminCartPriceRulesFormSection.discardSubsequentRulesLabel}}" dependentSelector="{{AdminCartPriceRulesFormSection.discardSubsequentRulesByStatus(discardSubsequentRules)}}" visible="false" stepKey="fillDiscardSubsequentRules"/>
     </actionGroup>
 </actionGroups>

@@ -10,7 +10,7 @@
         <block class="Magento\Shipping\Block\Adminhtml\View\Comments" name="shipment_comments">
             <block class="Magento\Sales\Block\Adminhtml\Order\Comments\View" name="order_comments" template="Magento_Sales::order/comments/view.phtml">
                 <arguments>
-                    <argument name="editCommentCheck" xsi:type="object">Magento\Sales\ViewModel\Order\Entity\EditCommentCheck</argument>
+                    <argument name="editCommentCheck" xsi:type="object">Magento\Sales\View_Model\Order\Entity\Edit_Comment_Check</argument>
                 </arguments>
             </block>
         </block>

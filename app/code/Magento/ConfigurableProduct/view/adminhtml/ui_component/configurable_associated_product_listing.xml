@@ -28,7 +28,7 @@
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Magento_Catalog::products</aclResource>
-        <dataProvider class="Magento\Catalog\Ui\DataProvider\Product\ProductDataProvider" name="data_source">
+        <dataProvider class="Magento\Catalog\Ui\Data_Provider\Product\Product_Data_Provider" name="data_source">
             <settings>
                 <requestFieldName>id</requestFieldName>
                 <primaryFieldName>entity_id</primaryFieldName>
@@ -45,7 +45,7 @@
                         <item name="filters_modifier" xsi:type="array"/>
                     </item>
                     <item name="observers" xsi:type="array">
-                        <item name="filters" xsi:type="object">Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Filters</item>
+                        <item name="filters" xsi:type="object">Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Filters</item>
                     </item>
                 </item>
             </argument>
@@ -68,7 +68,7 @@
         </filters>
         <paging name="listing_paging"/>
     </listingToolbar>
-    <columns name="product_columns" class="Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Columns">
+    <columns name="product_columns" class="Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Columns">
         <settings>
             <childDefaults>
                 <param name="fieldAction" xsi:type="array">
@@ -101,7 +101,7 @@
                 <sortable>false</sortable>
             </settings>
         </column>
-        <column name="name" class="Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Columns\Name" sortOrder="30">
+        <column name="name" class="Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Columns\Name" sortOrder="30">
             <settings>
                 <addField>true</addField>
                 <filter>text</filter>
@@ -114,7 +114,7 @@
                 <label translate="true">SKU</label>
             </settings>
         </column>
-        <column name="price" class="Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Columns\Price" sortOrder="70">
+        <column name="price" class="Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Columns\Price" sortOrder="70">
             <settings>
                 <addField>true</addField>
                 <filter>textRange</filter>
@@ -144,7 +144,7 @@
                 <label translate="true">Status</label>
             </settings>
         </column>
-        <column name="attributes" class="Magento\ConfigurableProduct\Ui\Component\Listing\AssociatedProduct\Columns\Attributes" sortOrder="99">
+        <column name="attributes" class="Magento\Configurable_Product\Ui\Component\Listing\Associated_Product\Columns\Attributes" sortOrder="99">
             <settings>
                 <addField>true</addField>
                 <label translate="true">Attributes</label>

@@ -10,9 +10,9 @@
     <body>
         <referenceBlock name="search_result_list">
             <container name="additional" label="Additional Info" after="product_list_toolbar">
-                <block class="Magento\AdvancedSearch\Block\Suggestions"
+                <block class="Magento\Advanced_Search\Block\Suggestions"
                        name="search_suggestions"/>
-                <block class="Magento\AdvancedSearch\Block\Recommendations"
+                <block class="Magento\Advanced_Search\Block\Recommendations"
                        name="search_recommendations"/>
             </container>
         </referenceBlock>

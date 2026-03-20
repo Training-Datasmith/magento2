@@ -6,55 +6,55 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\MediaGalleryApi\Api\Data\KeywordInterface" type="Magento\MediaGallery\Model\Keyword"/>
-    <preference for="Magento\MediaGalleryApi\Api\Data\AssetInterface" type="Magento\MediaGallery\Model\Asset"/>
-    <preference for="Magento\MediaGalleryApi\Api\Data\AssetKeywordsInterface" type="Magento\MediaGallery\Model\AssetKeywords"/>
-    <preference for="Magento\MediaGalleryApi\Model\Asset\Command\GetByIdInterface" type="Magento\MediaGallery\Model\Asset\Command\GetById"/>
-    <preference for="Magento\MediaGalleryApi\Model\Asset\Command\SaveInterface" type="Magento\MediaGallery\Model\Asset\Command\Save"/>
-    <preference for="Magento\MediaGalleryApi\Model\Asset\Command\GetByPathInterface" type="Magento\MediaGallery\Model\Asset\Command\GetByPath"/>
-    <preference for="Magento\MediaGalleryApi\Model\Asset\Command\DeleteByPathInterface" type="Magento\MediaGallery\Model\Asset\Command\DeleteByPath"/>
-    <preference for="Magento\MediaGalleryApi\Model\Asset\Command\DeleteByDirectoryPathInterface" type="Magento\MediaGallery\Model\Asset\Command\DeleteByDirectoryPath"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Data\Keyword_Interface" type="Magento\Media_Gallery\Model\Keyword"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Data\Asset_Interface" type="Magento\Media_Gallery\Model\Asset"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Data\Asset_Keywords_Interface" type="Magento\Media_Gallery\Model\Asset_Keywords"/>
+    <preference for="Magento\Media_Gallery_Api\Model\Asset\Command\Get_By_Id_Interface" type="Magento\Media_Gallery\Model\Asset\Command\Get_By_Id"/>
+    <preference for="Magento\Media_Gallery_Api\Model\Asset\Command\Save_Interface" type="Magento\Media_Gallery\Model\Asset\Command\Save"/>
+    <preference for="Magento\Media_Gallery_Api\Model\Asset\Command\Get_By_Path_Interface" type="Magento\Media_Gallery\Model\Asset\Command\Get_By_Path"/>
+    <preference for="Magento\Media_Gallery_Api\Model\Asset\Command\Delete_By_Path_Interface" type="Magento\Media_Gallery\Model\Asset\Command\Delete_By_Path"/>
+    <preference for="Magento\Media_Gallery_Api\Model\Asset\Command\Delete_By_Directory_Path_Interface" type="Magento\Media_Gallery\Model\Asset\Command\Delete_By_Directory_Path"/>
 
-    <preference for="Magento\MediaGalleryApi\Model\Keyword\Command\GetAssetKeywordsInterface" type="Magento\MediaGallery\Model\Keyword\Command\GetAssetKeywords"/>
-    <preference for="Magento\MediaGalleryApi\Model\Keyword\Command\SaveAssetKeywordsInterface" type="Magento\MediaGallery\Model\Keyword\Command\SaveAssetKeywords"/>
+    <preference for="Magento\Media_Gallery_Api\Model\Keyword\Command\Get_Asset_Keywords_Interface" type="Magento\Media_Gallery\Model\Keyword\Command\Get_Asset_Keywords"/>
+    <preference for="Magento\Media_Gallery_Api\Model\Keyword\Command\Save_Asset_Keywords_Interface" type="Magento\Media_Gallery\Model\Keyword\Command\Save_Asset_Keywords"/>
 
-    <preference for="Magento\MediaGalleryApi\Api\CreateDirectoriesByPathsInterface" type="Magento\MediaGallery\Model\Directory\Command\CreateByPaths"/>
-    <preference for="Magento\MediaGalleryApi\Api\DeleteDirectoriesByPathsInterface" type="Magento\MediaGallery\Model\Directory\Command\DeleteByPaths"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Create_Directories_By_Paths_Interface" type="Magento\Media_Gallery\Model\Directory\Command\Create_By_Paths"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Delete_Directories_By_Paths_Interface" type="Magento\Media_Gallery\Model\Directory\Command\Delete_By_Paths"/>
 
-    <preference for="Magento\MediaGalleryApi\Api\IsPathExcludedInterface" type="Magento\MediaGallery\Model\Directory\IsExcluded"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Is_Path_Excluded_Interface" type="Magento\Media_Gallery\Model\Directory\Is_Excluded"/>
 
-    <preference for="Magento\MediaGalleryApi\Api\DeleteAssetsByPathsInterface" type="Magento\MediaGallery\Model\ResourceModel\DeleteAssetsByPaths"/>
-    <preference for="Magento\MediaGalleryApi\Api\GetAssetsByIdsInterface" type="Magento\MediaGallery\Model\ResourceModel\GetAssetsByIds"/>
-    <preference for="Magento\MediaGalleryApi\Api\GetAssetsByPathsInterface" type="Magento\MediaGallery\Model\ResourceModel\GetAssetsByPaths"/>
-    <preference for="Magento\MediaGalleryApi\Api\SaveAssetsInterface" type="Magento\MediaGallery\Model\ResourceModel\SaveAssets"/>
-    <preference for="Magento\MediaGalleryApi\Api\GetAssetsKeywordsInterface" type="Magento\MediaGallery\Model\ResourceModel\Keyword\GetAssetsKeywords"/>
-    <preference for="Magento\MediaGalleryApi\Api\SaveAssetsKeywordsInterface" type="Magento\MediaGallery\Model\ResourceModel\Keyword\SaveAssetsKeywords"/>
-    <preference for="Magento\MediaGalleryApi\Api\SearchAssetsInterface" type="Magento\MediaGallery\Model\SearchAssets"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Delete_Assets_By_Paths_Interface" type="Magento\Media_Gallery\Model\Resource_Model\Delete_Assets_By_Paths"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Get_Assets_By_Ids_Interface" type="Magento\Media_Gallery\Model\Resource_Model\Get_Assets_By_Ids"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Get_Assets_By_Paths_Interface" type="Magento\Media_Gallery\Model\Resource_Model\Get_Assets_By_Paths"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Save_Assets_Interface" type="Magento\Media_Gallery\Model\Resource_Model\Save_Assets"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Get_Assets_Keywords_Interface" type="Magento\Media_Gallery\Model\Resource_Model\Keyword\Get_Assets_Keywords"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Save_Assets_Keywords_Interface" type="Magento\Media_Gallery\Model\Resource_Model\Keyword\Save_Assets_Keywords"/>
+    <preference for="Magento\Media_Gallery_Api\Api\Search_Assets_Interface" type="Magento\Media_Gallery\Model\Search_Assets"/>
 
     <type name="Magento\Cms\Model\Wysiwyg\Images\Storage">
-        <plugin name="media_gallery_image_remove_metadata_after_wysiwyg" type="Magento\MediaGallery\Plugin\Wysiwyg\Images\Storage"
+        <plugin name="media_gallery_image_remove_metadata_after_wysiwyg" type="Magento\Media_Gallery\Plugin\Wysiwyg\Images\Storage"
                 sortOrder="10" disabled="false"/>
     </type>
-    <virtualType name="Magento\MediaGallery\Model\Directory\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
+    <virtualType name="Magento\Media_Gallery\Model\Directory\Config\Reader" type="Magento\Framework\Config\Reader\Filesystem">
         <arguments>
             <argument name="fileName" xsi:type="string">directory.xml</argument>
-            <argument name="converter" xsi:type="object">Magento\MediaGallery\Model\Directory\Config\Converter</argument>
-            <argument name="schemaLocator" xsi:type="object">Magento\MediaGallery\Model\Directory\Config\SchemaLocator</argument>
+            <argument name="converter" xsi:type="object">Magento\Media_Gallery\Model\Directory\Config\Converter</argument>
+            <argument name="schemaLocator" xsi:type="object">Magento\Media_Gallery\Model\Directory\Config\Schema_Locator</argument>
             <argument name="idAttributes" xsi:type="array">
                 <item name="/config/exclude/patterns/pattern" xsi:type="string">name</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\MediaGallery\Model\Directory\Config\Data" type="Magento\Framework\Config\Data">
+    <virtualType name="Magento\Media_Gallery\Model\Directory\Config\Data" type="Magento\Framework\Config\Data">
         <arguments>
-            <argument name="reader" xsi:type="object">Magento\MediaGallery\Model\Directory\Config\Reader</argument>
+            <argument name="reader" xsi:type="object">Magento\Media_Gallery\Model\Directory\Config\Reader</argument>
             <argument name="cacheId" xsi:type="string">Media_Gallery_Patterns_CacheId</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\MediaGallery\Model\Directory\ExcludedPatternsConfig">
+    <type name="Magento\Media_Gallery\Model\Directory\Excluded_Patterns_Config">
         <arguments>
-            <argument name="data" xsi:type="object">Magento\MediaGallery\Model\Directory\Config\Data</argument>
+            <argument name="data" xsi:type="object">Magento\Media_Gallery\Model\Directory\Config\Data</argument>
         </arguments>
     </type>
-    <preference for="Magento\MediaGalleryApi\Model\ExcludedPatternsConfigInterface" type="Magento\MediaGallery\Model\Directory\ExcludedPatternsConfig"/>
+    <preference for="Magento\Media_Gallery_Api\Model\Excluded_Patterns_Config_Interface" type="Magento\Media_Gallery\Model\Directory\Excluded_Patterns_Config"/>
 </config>

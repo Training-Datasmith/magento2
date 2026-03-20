@@ -9,7 +9,7 @@
     <body>
         <referenceBlock name="sales.order.info.buttons" template="Magento_OrderCancellationUi::order/info/buttons.phtml">
             <arguments>
-                <argument name="view_model" xsi:type="object">Magento\OrderCancellationUi\ViewModel\Config</argument>
+                <argument name="view_model" xsi:type="object">Magento\Order_Cancellation_Ui\View_Model\Config</argument>
             </arguments>
         </referenceBlock>
     </body>

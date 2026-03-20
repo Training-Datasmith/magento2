@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\GraphQlResolverCache\Model\Resolver\Result\TagResolver">
+    <type name="Magento\Graph_Ql_Resolver_Cache\Model\Resolver\Result\Tag_Resolver">
         <arguments>
             <argument name="invalidatableObjectTypes" xsi:type="array">
                 <item name="Magento\Customer\Model\Customer" xsi:type="string">
@@ -25,10 +25,10 @@
         <arguments>
             <argument name="customStrategies" xsi:type="array">
                 <item name="Magento\Customer\Model\Customer" xsi:type="object">
-                    Magento\CustomerGraphQl\Model\Resolver\Cache\Customer\TagsStrategy
+                    Magento\Customer_Graph_Ql\Model\Resolver\Cache\Customer\Tags_Strategy
                 </item>
                 <item name="Magento\Customer\Model\Address" xsi:type="object">
-                    Magento\CustomerGraphQl\Model\Resolver\Cache\Customer\Address\TagsStrategy
+                    Magento\Customer_Graph_Ql\Model\Resolver\Cache\Customer\Address\Tags_Strategy
                 </item>
             </argument>
         </arguments>

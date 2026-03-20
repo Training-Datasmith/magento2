@@ -22,7 +22,7 @@
         <referenceContainer name="content">
             <block class="Magento\Sales\Block\Order\View" name="sales.order.view" cacheable="false">
                 <block class="Magento\Sales\Block\Order\Items" name="order_items" template="Magento_Sales::order/items.phtml">
-                    <block class="Magento\Framework\View\Element\RendererList" name="sales.order.items.renderers" as="renderer.list" />
+                    <block class="Magento\Framework\View\Element\Renderer_List" name="sales.order.items.renderers" as="renderer.list" />
                     <block class="Magento\Theme\Block\Html\Pager" name="sales_order_item_pager"/>
                     <block class="Magento\Sales\Block\Order\Totals" name="order_totals" template="Magento_Sales::order/totals.phtml">
                         <arguments>

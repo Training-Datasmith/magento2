@@ -6,50 +6,50 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\QuoteGraphQl\Model\Cart\SetShippingAddressesOnCartInterface"
-                type="Magento\QuoteGraphQl\Model\Cart\SetShippingAddressesOnCart"/>
-    <preference for="Magento\QuoteGraphQl\Model\Cart\SetShippingMethodsOnCartInterface"
-                type="Magento\QuoteGraphQl\Model\Cart\SetShippingMethodsOnCart"/>
-    <preference for="Magento\QuoteGraphQl\Model\Cart\MergeCarts\CartQuantityValidatorInterface"
-                type="Magento\QuoteGraphQl\Model\Cart\MergeCarts\CartQuantityValidator"/>
-    <type name="Magento\QuoteGraphQl\Model\Cart\BuyRequest\BuyRequestBuilder">
+    <preference for="Magento\Quote_Graph_Ql\Model\Cart\Set_Shipping_Addresses_On_Cart_Interface"
+                type="Magento\Quote_Graph_Ql\Model\Cart\Set_Shipping_Addresses_On_Cart"/>
+    <preference for="Magento\Quote_Graph_Ql\Model\Cart\Set_Shipping_Methods_On_Cart_Interface"
+                type="Magento\Quote_Graph_Ql\Model\Cart\Set_Shipping_Methods_On_Cart"/>
+    <preference for="Magento\Quote_Graph_Ql\Model\Cart\Merge_Carts\Cart_Quantity_Validator_Interface"
+                type="Magento\Quote_Graph_Ql\Model\Cart\Merge_Carts\Cart_Quantity_Validator"/>
+    <type name="Magento\Quote_Graph_Ql\Model\Cart\Buy_Request\Buy_Request_Builder">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="quantity" xsi:type="object">Magento\QuoteGraphQl\Model\Cart\BuyRequest\QuantityDataProvider</item>
-                <item name="customizable_options" xsi:type="object">Magento\QuoteGraphQl\Model\Cart\BuyRequest\CustomizableOptionsDataProvider</item>
+                <item name="quantity" xsi:type="object">Magento\Quote_Graph_Ql\Model\Cart\Buy_Request\Quantity_Data_Provider</item>
+                <item name="customizable_options" xsi:type="object">Magento\Quote_Graph_Ql\Model\Cart\Buy_Request\Customizable_Options_Data_Provider</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Quote\Model\Quote\Config">
-        <plugin name="append_requested_graphql_attributes" type="Magento\QuoteGraphQl\Plugin\ProductAttributesExtender"/>
+        <plugin name="append_requested_graphql_attributes" type="Magento\Quote_Graph_Ql\Plugin\Product_Attributes_Extender"/>
     </type>
-    <type name="Magento\Framework\GraphQl\Query\ResolverInterface">
-        <plugin name="reset-totals" type="Magento\QuoteGraphQl\Plugin\ResetStoredTotalsBeforeTopResolver" sortOrder="1"/>
+    <type name="Magento\Framework\Graph_Ql\Query\Resolver_Interface">
+        <plugin name="reset-totals" type="Magento\Quote_Graph_Ql\Plugin\Reset_Stored_Totals_Before_Top_Resolver" sortOrder="1"/>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\Cart\TotalsCollector">
+    <type name="Magento\Quote_Graph_Ql\Model\Cart\Totals_Collector">
         <arguments>
-            <argument name="quoteTotalsCollector" xsi:type="object">Magento\Quote\Model\Quote\TotalsCollector\Proxy</argument>
+            <argument name="quoteTotalsCollector" xsi:type="object">Magento\Quote\Model\Quote\Totals_Collector\Proxy</argument>
         </arguments>
     </type>
-    <virtualType name="Magento\QuoteGraphQl\Helper\Error\PlaceOrderMessageFormatter" type="Magento\GraphQl\Helper\Error\AggregateExceptionMessageFormatter">
+    <virtualType name="Magento\Quote_Graph_Ql\Helper\Error\Place_Order_Message_Formatter" type="Magento\Graph_Ql\Helper\Error\Aggregate_Exception_Message_Formatter">
         <arguments>
             <argument name="messageFormatters" xsi:type="array">
-                <item name="graphql" xsi:type="object">Magento\GraphQl\Helper\Error\MessageFormatters\GraphQlExceptionMessageFormatter</item>
-                <item name="no_such_entity" xsi:type="object">Magento\GraphQl\Helper\Error\MessageFormatters\NoSuchEntityExceptionMessageFormatter</item>
-                <item name="validation" xsi:type="object">Magento\GraphQl\Helper\Error\MessageFormatters\ValidationExceptionMessageFormatter</item>
-                <item name="payment" xsi:type="object">Magento\GraphQl\Helper\Error\MessageFormatters\PaymentExceptionMessageFormatter</item>
-                <item name="payment_gateway_command" xsi:type="object">Magento\PaymentGraphQl\Helper\Error\MessageFormatters\GatewayCommandExceptionMessageFormatter</item>
-                <item name="payment_gateway_http_client" xsi:type="object">Magento\PaymentGraphQl\Helper\Error\MessageFormatters\GatewayHttpClientExceptionMessageFormatter</item>
-                <item name="stock_state" xsi:type="object">Magento\CatalogInventoryGraphQl\Helper\Error\MessageFormatters\StockStateExceptionMessageFormatter</item>
+                <item name="graphql" xsi:type="object">Magento\Graph_Ql\Helper\Error\Message_Formatters\Graph_Ql_Exception_Message_Formatter</item>
+                <item name="no_such_entity" xsi:type="object">Magento\Graph_Ql\Helper\Error\Message_Formatters\No_Such_Entity_Exception_Message_Formatter</item>
+                <item name="validation" xsi:type="object">Magento\Graph_Ql\Helper\Error\Message_Formatters\Validation_Exception_Message_Formatter</item>
+                <item name="payment" xsi:type="object">Magento\Graph_Ql\Helper\Error\Message_Formatters\Payment_Exception_Message_Formatter</item>
+                <item name="payment_gateway_command" xsi:type="object">Magento\Payment_Graph_Ql\Helper\Error\Message_Formatters\Gateway_Command_Exception_Message_Formatter</item>
+                <item name="payment_gateway_http_client" xsi:type="object">Magento\Payment_Graph_Ql\Helper\Error\Message_Formatters\Gateway_Http_Client_Exception_Message_Formatter</item>
+                <item name="stock_state" xsi:type="object">Magento\Catalog_Inventory_Graph_Ql\Helper\Error\Message_Formatters\Stock_State_Exception_Message_Formatter</item>
             </argument>
         </arguments>
     </virtualType>
-    <type name="Magento\QuoteGraphQl\Model\OrderErrorProcessor">
+    <type name="Magento\Quote_Graph_Ql\Model\Order_Error_Processor">
         <arguments>
-            <argument name="errorMessageFormatter" xsi:type="object">Magento\QuoteGraphQl\Helper\Error\PlaceOrderMessageFormatter</argument>
+            <argument name="errorMessageFormatter" xsi:type="object">Magento\Quote_Graph_Ql\Helper\Error\Place_Order_Message_Formatter</argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Schema\Type\Enum\DefaultDataMapper">
+    <type name="Magento\Framework\Graph_Ql\Schema\Type\Enum\Default_Data_Mapper">
         <arguments>
             <argument name="map" xsi:type="array">
                 <item name="CartItemErrorType" xsi:type="array">
@@ -60,7 +60,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\StoreGraphQl\Model\Resolver\Store\StoreConfigDataProvider">
+    <type name="Magento\Store_Graph_Ql\Model\Resolver\Store\Store_Config_Data_Provider">
         <arguments>
             <argument name="extendedConfigData" xsi:type="array">
                 <item name="is_guest_checkout_enabled" xsi:type="string">checkout/options/guest_checkout</item>
@@ -77,14 +77,14 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\QuoteManagement">
+    <type name="Magento\Quote\Model\Quote_Management">
         <plugin name="merge_guest_orders_with_customer_after_place"
-                type="Magento\QuoteGraphQl\Plugin\Model\MergeGuestOrder" />
+                type="Magento\Quote_Graph_Ql\Plugin\Model\Merge_Guest_Order" />
         <plugin name="validate_payment_method_on_place_order"
-                type="Magento\QuoteGraphQl\Plugin\Quote\ValidatePaymentOnPlaceOrder"
+                type="Magento\Quote_Graph_Ql\Plugin\Quote\Validate_Payment_On_Place_Order"
                 sortOrder="10"/>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\Resolver\UpdateCartItems">
+    <type name="Magento\Quote_Graph_Ql\Model\Resolver\Update_Cart_Items">
         <arguments>
             <argument name="messageCodesMapper" xsi:type="array">
                 <item name="The requested qty" xsi:type="string">INSUFFICIENT_STOCK</item>
@@ -96,30 +96,30 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\CustomerManagement">
+    <type name="Magento\Quote\Model\Customer_Management">
         <plugin name="billing_address_save_same_as_shipping"
-                type="Magento\QuoteGraphQl\Plugin\CustomerManagementPlugin"/>
+                type="Magento\Quote_Graph_Ql\Plugin\Customer_Management_Plugin"/>
     </type>
-    <type name="Magento\Payment\Model\MethodList">
-        <plugin name="restrict_payment_methods_graphql" type="Magento\QuoteGraphQl\Plugin\Model\RestrictPaymentMethods"/>
+    <type name="Magento\Payment\Model\Method_List">
+        <plugin name="restrict_payment_methods_graphql" type="Magento\Quote_Graph_Ql\Plugin\Model\Restrict_Payment_Methods"/>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\Resolver\MergeCarts">
+    <type name="Magento\Quote_Graph_Ql\Model\Resolver\Merge_Carts">
         <arguments>
             <argument name="fields" xsi:type="array">
                 <item name="gift_message_id" xsi:type="string">gift_message_id</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Framework\GraphQl\Query\QueryDataFormatter">
+    <type name="Magento\Framework\Graph_Ql\Query\Query_Data_Formatter">
         <arguments>
             <argument name="formatters" xsi:type="array">
-                <item name="process_order_response_formatter" xsi:type="object">Magento\QuoteGraphQl\Model\OrderResponseFormatter</item>
+                <item name="process_order_response_formatter" xsi:type="object">Magento\Quote_Graph_Ql\Model\Order_Response_Formatter</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Quote\Model\ValidationRules\ShippingMethodValidationRule">
+    <type name="Magento\Quote\Model\Validation_Rules\Shipping_Method_Validation_Rule">
         <plugin name="shipping_method_validation_plugin"
-                type="Magento\QuoteGraphQl\Plugin\ShippingMethodValidationRulePlugin"
+                type="Magento\Quote_Graph_Ql\Plugin\Shipping_Method_Validation_Rule_Plugin"
                 sortOrder="10"
                 disabled="false"/>
     </type>

@@ -6,7 +6,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Framework\GraphQl\Query\FieldTranslator">
+    <type name="Magento\Framework\Graph_Ql\Query\Field_Translator">
         <arguments>
             <argument name="translationMap" xsi:type="array">
                 <item name="ship_bundle_items" xsi:type="string">shipment_type</item>
@@ -16,7 +16,7 @@
             </argument>
         </arguments>
     </type>
-    <type name="Magento\QuoteGraphQl\Model\Resolver\CartItemTypeResolver">
+    <type name="Magento\Quote_Graph_Ql\Model\Resolver\Cart_Item_Type_Resolver">
         <arguments>
             <argument name="supportedTypes" xsi:type="array">
                 <item name="bundle" xsi:type="string">BundleCartItem</item>

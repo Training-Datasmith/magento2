@@ -8,7 +8,7 @@
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
     <route url="/V1/testmodule1" method="POST">
-        <service class="Magento\TestModule1\Service\V1\AllSoapAndRestInterface" method="create"/>
+        <service class="Magento\Test_Module1\Service\V1\All_Soap_And_Rest_Interface" method="create"/>
         <resources>
             <resource ref="Magento_Test1::resource1"/>
         </resources>
@@ -17,14 +17,14 @@
         </data>
     </route>
     <route url="/V2/testmodule1/:id" method="PUT">
-        <service class="Magento\TestModule1\Service\V2\AllSoapAndRestInterface" method="update"/>
+        <service class="Magento\Test_Module1\Service\V2\All_Soap_And_Rest_Interface" method="update"/>
         <resources>
             <resource ref="Magento_Test1::resource1"/>
             <resource ref="Magento_Test1::resource2"/>
         </resources>
     </route>
     <route url="/V2/testmodule1/:id" method="DELETE">
-        <service class="Magento\TestModule1\Service\V2\AllSoapAndRestInterface" method="delete"/>
+        <service class="Magento\Test_Module1\Service\V2\All_Soap_And_Rest_Interface" method="delete"/>
         <resources>
             <resource ref="Magento_Test1::resource1"/>
             <resource ref="Magento_Test1::resource2"/>

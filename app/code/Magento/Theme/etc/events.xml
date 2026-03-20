@@ -7,15 +7,15 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="theme_delete_before">
-        <observer name="clean_theme_related_content" instance="Magento\Theme\Observer\CleanThemeRelatedContentObserver" />
+        <observer name="clean_theme_related_content" instance="Magento\Theme\Observer\Clean_Theme_Related_Content_Observer" />
     </event>
     <event name="theme_save_after">
-        <observer name="check_theme_is_assigned" instance="Magento\Theme\Observer\CheckThemeIsAssignedObserver" />
+        <observer name="check_theme_is_assigned" instance="Magento\Theme\Observer\Check_Theme_Is_Assigned_Observer" />
     </event>
     <event name="admin_system_config_changed_section_general">
-        <observer name="move_store_level_design_config_to_website_scope_on_single_store_mode" instance="Magento\Theme\Observer\MoveStoreLevelDesignConfigToWebsiteScopeOnSingleStoreMode" />
+        <observer name="move_store_level_design_config_to_website_scope_on_single_store_mode" instance="Magento\Theme\Observer\Move_Store_Level_Design_Config_To_Website_Scope_On_Single_Store_Mode" />
     </event>
     <event name="clean_cache_by_tags">
-        <observer name="invalidate_layout_cache" instance="Magento\Theme\Observer\InvalidateLayoutCacheObserver"/>
+        <observer name="invalidate_layout_cache" instance="Magento\Theme\Observer\Invalidate_Layout_Cache_Observer"/>
     </event>
 </config>

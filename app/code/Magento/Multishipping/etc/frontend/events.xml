@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="checkout_cart_save_before">
-        <observer name="magento_multishipping_disabler" instance="Magento\Multishipping\Observer\DisableMultishippingObserver"/>
+        <observer name="magento_multishipping_disabler" instance="Magento\Multishipping\Observer\Disable_Multishipping_Observer"/>
     </event>
 </config>

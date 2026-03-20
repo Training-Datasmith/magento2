@@ -55,21 +55,21 @@
                 </field>
                 <field id="production_webservices_url" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Web-Services URL (Production)</label>
-                    <backend_model>Magento\Fedex\Model\Config\Backend\FedexUrl</backend_model>
+                    <backend_model>Magento\Fedex\Model\Config\Backend\Fedex_Url</backend_model>
                     <depends>
                         <field id="sandbox_mode">0</field>
                     </depends>
                 </field>
                 <field id="sandbox_webservices_url" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Web-Services URL (Sandbox)</label>
-                    <backend_model>Magento\Fedex\Model\Config\Backend\FedexUrl</backend_model>
+                    <backend_model>Magento\Fedex\Model\Config\Backend\Fedex_Url</backend_model>
                     <depends>
                         <field id="sandbox_mode">1</field>
                     </depends>
                 </field>
                 <field id="pickup_type" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>PickUp Type</label>
-                    <source_model>Magento\Fedex\Model\Source\PickupType</source_model>
+                    <source_model>Magento\Fedex\Model\Source\Pickup_Type</source_model>
                 </field>
                 <field id="shipment_requesttype" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Packages Request Type</label>
@@ -89,11 +89,11 @@
                 </field>
                 <field id="handling_type" translate="label" type="select" sortOrder="150" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Calculate Handling Fee</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Type</source_model>
                 </field>
                 <field id="handling_action" translate="label" type="select" sortOrder="160" showInDefault="1" showInWebsite="1" canRestore="1">
                     <label>Handling Applied</label>
-                    <source_model>Magento\Shipping\Model\Source\HandlingAction</source_model>
+                    <source_model>Magento\Shipping\Model\Source\Handling_Action</source_model>
                 </field>
                 <field id="handling_fee" translate="label" type="text" sortOrder="170" showInDefault="1" showInWebsite="1">
                     <label>Handling Fee</label>

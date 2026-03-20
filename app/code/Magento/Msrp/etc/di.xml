@@ -6,19 +6,19 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="\Magento\Msrp\Api\Data\ProductRender\MsrpPriceInfoInterface" type="\Magento\Msrp\Model\ProductRender\MsrpPriceInfo" />
-    <preference for="\Magento\Msrp\Pricing\MsrpPriceCalculatorInterface" type="\Magento\Msrp\Pricing\MsrpPriceCalculator"/>
+    <preference for="\Magento\Msrp\Api\Data\Product_Render\Msrp_Price_Info_Interface" type="\Magento\Msrp\Model\Product_Render\Msrp_Price_Info" />
+    <preference for="\Magento\Msrp\Pricing\Msrp_Price_Calculator_Interface" type="\Magento\Msrp\Pricing\Msrp_Price_Calculator"/>
     <virtualType name="Magento\Catalog\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="msrp_price" xsi:type="string">Magento\Msrp\Pricing\Price\MsrpPrice</item>
+                <item name="msrp_price" xsi:type="string">Magento\Msrp\Pricing\Price\Msrp_Price</item>
             </argument>
         </arguments>
     </virtualType>
     <virtualType name="Magento\Bundle\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="msrp_price" xsi:type="string">Magento\Msrp\Pricing\Price\MsrpPrice</item>
+                <item name="msrp_price" xsi:type="string">Magento\Msrp\Pricing\Price\Msrp_Price</item>
             </argument>
         </arguments>
     </virtualType>
@@ -38,14 +38,14 @@
             <argument name="productOptions" xsi:type="object">Magento\Msrp\Model\Product\Options\Proxy</argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Ui\DataProvider\Product\ProductRenderCollectorComposite">
+    <type name="Magento\Catalog\Ui\Data_Provider\Product\Product_Render_Collector_Composite">
         <arguments>
             <argument name="productProviders" xsi:type="array">
-                <item name="msrp_price" xsi:type="object">\Magento\Msrp\Ui\DataProvider\Product\Listing\Collector\MsrpPrice</item>
+                <item name="msrp_price" xsi:type="object">\Magento\Msrp\Ui\Data_Provider\Product\Listing\Collector\Msrp_Price</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ProductRenderList">
+    <type name="Magento\Catalog\Model\Product_Render_List">
         <arguments>
             <argument name="productAttributes" xsi:type="array">
                 <item name="msrp" xsi:type="string">msrp</item>

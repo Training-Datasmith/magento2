@@ -6,125 +6,125 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\GroupedProduct\Api\Data\GroupedOptionsInterface" type="Magento\GroupedProduct\Model\Quote\Item\GroupedOptions" />
+    <preference for="Magento\Grouped_Product\Api\Data\Grouped_Options_Interface" type="Magento\Grouped_Product\Model\Quote\Item\Grouped_Options" />
 
-    <type name="Magento\Quote\Model\Quote\Item\RelatedProducts">
+    <type name="Magento\Quote\Model\Quote\Item\Related_Products">
         <arguments>
             <argument name="relatedProductTypes" xsi:type="array">
-                <item name="grouped" xsi:type="const">Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE</item>
+                <item name="grouped" xsi:type="const">Magento\Grouped_Product\Model\Product\Type\Grouped::TYPE_CODE</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\LinkTypeProvider">
+    <type name="Magento\Catalog\Model\Product\Link_Type_Provider">
         <arguments>
             <argument name="linkTypes" xsi:type="array">
-                <item name="associated" xsi:type="const">Magento\GroupedProduct\Model\ResourceModel\Product\Link::LINK_TYPE_GROUPED</item>
+                <item name="associated" xsi:type="const">Magento\Grouped_Product\Model\Resource_Model\Product\Link::LINK_TYPE_GROUPED</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Sales\Model\ResourceModel\Report\Bestsellers">
+    <type name="Magento\Sales\Model\Resource_Model\Report\Bestsellers">
         <arguments>
             <argument name="ignoredProductTypes" xsi:type="array">
-                <item name="grouped" xsi:type="const">Magento\GroupedProduct\Model\Product\Type\Grouped::TYPE_CODE</item>
+                <item name="grouped" xsi:type="const">Magento\Grouped_Product\Model\Product\Type\Grouped::TYPE_CODE</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\CatalogPrice">
+    <type name="Magento\Catalog\Model\Product\Catalog_Price">
         <arguments>
             <argument name="priceModelPool" xsi:type="array">
-                <item name="grouped" xsi:type="string">Magento\GroupedProduct\Model\Product\CatalogPrice</item>
+                <item name="grouped" xsi:type="string">Magento\Grouped_Product\Model\Product\Catalog_Price</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Catalog\Model\Product\Type">
-        <plugin name="grouped_output" type="Magento\GroupedProduct\Model\Product\Type\Plugin" />
+        <plugin name="grouped_output" type="Magento\Grouped_Product\Model\Product\Type\Plugin" />
     </type>
-    <type name="Magento\Catalog\Model\Product\CartConfiguration">
-        <plugin name="isProductConfigured" type="Magento\GroupedProduct\Model\Product\Cart\Configuration\Plugin\Grouped" />
+    <type name="Magento\Catalog\Model\Product\Cart_Configuration">
+        <plugin name="isProductConfigured" type="Magento\Grouped_Product\Model\Product\Cart\Configuration\Plugin\Grouped" />
     </type>
     <type name="Magento\Catalog\Helper\Product\Configuration">
-        <plugin name="grouped_options" type="Magento\GroupedProduct\Helper\Product\Configuration\Plugin\Grouped"/>
+        <plugin name="grouped_options" type="Magento\Grouped_Product\Helper\Product\Configuration\Plugin\Grouped"/>
     </type>
-    <virtualType name="Magento\GroupedProduct\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
+    <virtualType name="Magento\Grouped_Product\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
         <arguments>
             <argument name="prices" xsi:type="array">
-                <item name="final_price" xsi:type="string">Magento\GroupedProduct\Pricing\Price\FinalPrice</item>
-                <item name="configured_price" xsi:type="string">Magento\GroupedProduct\Pricing\Price\ConfiguredPrice</item>
-                <item name="configured_regular_price" xsi:type="string">Magento\GroupedProduct\Pricing\Price\ConfiguredRegularPrice</item>
+                <item name="final_price" xsi:type="string">Magento\Grouped_Product\Pricing\Price\Final_Price</item>
+                <item name="configured_price" xsi:type="string">Magento\Grouped_Product\Pricing\Price\Configured_Price</item>
+                <item name="configured_regular_price" xsi:type="string">Magento\Grouped_Product\Pricing\Price\Configured_Regular_Price</item>
             </argument>
             <argument name="target" xsi:type="object">Magento\Catalog\Pricing\Price\Pool</argument>
         </arguments>
     </virtualType>
-    <virtualType name="Magento\GroupedProduct\Pricing\Price\Collection" type="Magento\Framework\Pricing\Price\Collection">
+    <virtualType name="Magento\Grouped_Product\Pricing\Price\Collection" type="Magento\Framework\Pricing\Price\Collection">
         <arguments>
-            <argument name="pool" xsi:type="object">Magento\GroupedProduct\Pricing\Price\Pool</argument>
+            <argument name="pool" xsi:type="object">Magento\Grouped_Product\Pricing\Price\Pool</argument>
         </arguments>
     </virtualType>
-    <type name="Magento\Framework\Pricing\PriceInfo\Factory">
+    <type name="Magento\Framework\Pricing\Price_Info\Factory">
         <arguments>
             <argument name="types" xsi:type="array">
                 <item name="grouped" xsi:type="array">
-                    <item name="infoClass" xsi:type="string">Magento\Framework\Pricing\PriceInfo\Base</item>
-                    <item name="prices" xsi:type="string">Magento\GroupedProduct\Pricing\Price\Collection</item>
+                    <item name="infoClass" xsi:type="string">Magento\Framework\Pricing\Price_Info\Base</item>
+                    <item name="prices" xsi:type="string">Magento\Grouped_Product\Pricing\Price\Collection</item>
                 </item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ProductLink\CollectionProvider">
+    <type name="Magento\Catalog\Model\Product_Link\Collection_Provider">
         <arguments>
             <argument name="providers" xsi:type="array">
-                <item name="associated" xsi:type="object">Magento\GroupedProduct\Model\Product\Link\CollectionProvider\Grouped</item>
+                <item name="associated" xsi:type="object">Magento\Grouped_Product\Model\Product\Link\Collection_Provider\Grouped</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Initialization\Helper\ProductLinks">
-        <plugin name="GroupedProduct" type="Magento\GroupedProduct\Model\Product\Initialization\Helper\ProductLinks\Plugin\Grouped" />
+    <type name="Magento\Catalog\Model\Product\Initialization\Helper\Product_Links">
+        <plugin name="GroupedProduct" type="Magento\Grouped_Product\Model\Product\Initialization\Helper\Product_Links\Plugin\Grouped" />
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product\Link">
-        <plugin name="groupedProductLinkProcessor" type="Magento\GroupedProduct\Model\ResourceModel\Product\Link\RelationPersister" />
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Link">
+        <plugin name="groupedProductLinkProcessor" type="Magento\Grouped_Product\Model\Resource_Model\Product\Link\Relation_Persister" />
     </type>
-    <type name="Magento\Catalog\Model\ProductLink\Converter\ConverterPool">
+    <type name="Magento\Catalog\Model\Product_Link\Converter\Converter_Pool">
         <arguments>
             <argument name="converters" xsi:type="array">
-                <item name="associated" xsi:type="object">\Magento\GroupedProduct\Model\Product\Link\ProductEntity\Converter</item>
+                <item name="associated" xsi:type="object">\Magento\Grouped_Product\Model\Product\Link\Product_Entity\Converter</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\BatchSizeCalculator">
+    <type name="Magento\Catalog\Model\Resource_Model\Product\Indexer\Price\Batch_Size_Calculator">
         <arguments>
             <argument name="estimators" xsi:type="array">
-                <item name="grouped" xsi:type="object">Magento\Catalog\Model\Indexer\Price\CompositeProductBatchSizeManagement</item>
+                <item name="grouped" xsi:type="object">Magento\Catalog\Model\Indexer\Price\Composite_Product_Batch_Size_Management</item>
             </argument>
             <argument name="batchSizeAdjusters" xsi:type="array">
-                <item name="grouped" xsi:type="object">Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\CompositeProductBatchSizeAdjuster</item>
+                <item name="grouped" xsi:type="object">Magento\Catalog\Model\Resource_Model\Product\Indexer\Price\Composite_Product_Batch_Size_Adjuster</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Catalog\Model\Product\Configuration\Item\ItemResolverComposite">
+    <type name="Magento\Catalog\Model\Product\Configuration\Item\Item_Resolver_Composite">
         <arguments>
             <argument name="itemResolvers" xsi:type="array">
-                <item name="grouped" xsi:type="string">Magento\GroupedProduct\Model\Product\Configuration\Item\ItemProductResolver</item>
+                <item name="grouped" xsi:type="string">Magento\Grouped_Product\Model\Product\Configuration\Item\Item_Product_Resolver</item>
             </argument>
         </arguments>
     </type>
     <type name="Magento\Quote\Model\Quote\Item\Repository">
         <arguments>
             <argument name="cartItemProcessors" xsi:type="array">
-                <item name="grouped" xsi:type="object">Magento\GroupedProduct\Model\Quote\Item\CartItemProcessor\Proxy</item>
+                <item name="grouped" xsi:type="object">Magento\Grouped_Product\Model\Quote\Item\Cart_Item_Processor\Proxy</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogInventory\Observer\SaveInventoryDataObserver">
+    <type name="Magento\Catalog_Inventory\Observer\Save_Inventory_Data_Observer">
         <arguments>
             <argument name="parentItemProcessorPool" xsi:type="array">
-                <item name="grouped" xsi:type="object"> Magento\GroupedProduct\Model\Inventory\ParentItemProcessor</item>
+                <item name="grouped" xsi:type="object"> Magento\Grouped_Product\Model\Inventory\Parent_Item_Processor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\CatalogInventory\Plugin\MassUpdateProductAttribute">
+    <type name="Magento\Catalog_Inventory\Plugin\Mass_Update_Product_Attribute">
         <arguments>
             <argument name="parentItemProcessorPool" xsi:type="array">
-                <item name="grouped" xsi:type="object"> Magento\GroupedProduct\Model\Inventory\ParentItemProcessor</item>
+                <item name="grouped" xsi:type="object"> Magento\Grouped_Product\Model\Inventory\Parent_Item_Processor</item>
             </argument>
         </arguments>
     </type>

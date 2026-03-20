@@ -21,7 +21,7 @@
         <before>
             <createData entity="SimpleSubCategory" stepKey="createCategory"/>
 
-            <helper class="\Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="createProduct" stepKey="createProducts">
+            <helper class="\Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="createProduct" stepKey="createProducts">
                 <argument name="categoryStepKey">createCategory</argument>
                 <argument name="count">12</argument>
             </helper>
@@ -39,7 +39,7 @@
             <magentoCLI command="config:set {{DefaultStoreFrontProductsSortBy.path}} {{DefaultStoreFrontProductsSortBy.value}}" stepKey="setDefaultProductSortBy"/>
             <magentoCLI command="config:set {{DefaultStoreFrontAllProductsPerPage.path}} {{DefaultStoreFrontAllProductsPerPage.value}}" stepKey="setDefaultAllProductsPerPage"/>
             <!-- Delete simple product created via API -->
-            <helper class="Magento\Catalog\Test\Mftf\Helper\ProductApiHelper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
+            <helper class="Magento\Catalog\Test\Mftf\Helper\Product_Api_Helper" method="deleteAllProductsApi" stepKey="deleteAllProductsViaApi"/>
             <!-- Log out -->
             <actionGroup ref="AdminLogoutActionGroup" stepKey="logout"/>
         </after>

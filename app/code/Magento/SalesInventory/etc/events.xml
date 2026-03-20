@@ -7,6 +7,6 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
     <event name="sales_order_creditmemo_save_after">
-        <observer name="inventory" instance="Magento\SalesInventory\Observer\RefundOrderInventoryObserver"/>
+        <observer name="inventory" instance="Magento\Sales_Inventory\Observer\Refund_Order_Inventory_Observer"/>
     </event>
 </config>

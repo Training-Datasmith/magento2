@@ -6,28 +6,28 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Magento\Integration\Api\UserTokenIssuerInterface" type="Magento\JwtUserToken\Model\Issuer" />
-    <preference for="Magento\Integration\Api\UserTokenReaderInterface" type="Magento\Integration\Model\CompositeTokenReader" />
-    <preference for="Magento\Integration\Api\UserTokenRevokerInterface" type="Magento\JwtUserToken\Model\Revoker" />
-    <preference for="Magento\JwtUserToken\Model\JwtSettingsProviderInterface" type="Magento\JwtUserToken\Model\ConfigurableJwtSettingsProvider" />
-    <preference for="Magento\JwtUserToken\Api\ConfigReaderInterface" type="Magento\JwtUserToken\Model\Config\ConfigReader" />
-    <type name="Magento\JwtUserToken\Model\ResourceModel\FastStorageRevokedWrapper">
+    <preference for="Magento\Integration\Api\User_Token_Issuer_Interface" type="Magento\Jwt_User_Token\Model\Issuer" />
+    <preference for="Magento\Integration\Api\User_Token_Reader_Interface" type="Magento\Integration\Model\Composite_Token_Reader" />
+    <preference for="Magento\Integration\Api\User_Token_Revoker_Interface" type="Magento\Jwt_User_Token\Model\Revoker" />
+    <preference for="Magento\Jwt_User_Token\Model\Jwt_Settings_Provider_Interface" type="Magento\Jwt_User_Token\Model\Configurable_Jwt_Settings_Provider" />
+    <preference for="Magento\Jwt_User_Token\Api\Config_Reader_Interface" type="Magento\Jwt_User_Token\Model\Config\Config_Reader" />
+    <type name="Magento\Jwt_User_Token\Model\Resource_Model\Fast_Storage_Revoked_Wrapper">
         <arguments>
-            <argument name="slowRepo" xsi:type="object">Magento\JwtUserToken\Model\ResourceModel\RevokedRepository</argument>
+            <argument name="slowRepo" xsi:type="object">Magento\Jwt_User_Token\Model\Resource_Model\Revoked_Repository</argument>
         </arguments>
     </type>
-    <preference for="Magento\JwtUserToken\Api\RevokedRepositoryInterface" type="Magento\JwtUserToken\Model\ResourceModel\FastStorageRevokedWrapper" />
-    <type name="Magento\Integration\Model\CompositeUserTokenValidator">
+    <preference for="Magento\Jwt_User_Token\Api\Revoked_Repository_Interface" type="Magento\Jwt_User_Token\Model\Resource_Model\Fast_Storage_Revoked_Wrapper" />
+    <type name="Magento\Integration\Model\Composite_User_Token_Validator">
         <arguments>
             <argument name="validators" xsi:type="array">
-                <item name="jwt_revoked" xsi:type="object">Magento\JwtUserToken\Model\RevokedValidator</item>
+                <item name="jwt_revoked" xsi:type="object">Magento\Jwt_User_Token\Model\Revoked_Validator</item>
             </argument>
         </arguments>
     </type>
-    <type name="Magento\Integration\Model\CompositeTokenReader">
+    <type name="Magento\Integration\Model\Composite_Token_Reader">
         <arguments>
             <argument name="readers" xsi:type="array">
-                <item name="10" xsi:type="object">Magento\JwtUserToken\Model\Reader</item>
+                <item name="10" xsi:type="object">Magento\Jwt_User_Token\Model\Reader</item>
             </argument>
         </arguments>
     </type>
