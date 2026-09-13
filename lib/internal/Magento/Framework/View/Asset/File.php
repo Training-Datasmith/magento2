@@ -190,7 +190,11 @@ class File implements MergeableInterface
         $attempt    = 0;
         while ($attempt < self::MAX_READ_ATTEMPTS) {
             $attempt++;
-            $content = trim($this->source->getContent($this));
+            $rawContent = $this->source->getContent($this);
+            if ($rawContent === false) {
+                $rawContent = '';
+            }
+            $content = trim((string) $rawContent);
 
             if ($content) {
                 return $content;

@@ -55,7 +55,7 @@ class TaxRatesFixture extends Fixture
             'type' => 'fixtureModel/vnd.ms-excel',
             'tmp_name' => $filename,
             'error' => 0,
-            'size' => filesize($filename),
+            'size' => filesize((string) $filename),
         ];
         $importHandler = $this->fixtureModel->getObjectManager()
             ->create(\Magento\TaxImportExport\Model\Rate\CsvImportHandler::class);

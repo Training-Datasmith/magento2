@@ -61,7 +61,7 @@ class WebapiRoleLocatorTest extends TestCase
     {
         $this->_objectManager = new ObjectManager($this);
 
-        $userId = 'userId';
+        $userId = 1;
         $userType = 'userType';
 
         $this->userContext = $this->getMockBuilder(CompositeUserContext::class)

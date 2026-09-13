@@ -328,7 +328,7 @@ class Price
      */
     public function validateFilter($filter)
     {
-        $filter = $filter === null ? [] : explode('-', $filter);
+        $filter = $filter === null ? [] : explode('-', (string) $filter);
         if (count($filter) != 2) {
             return false;
         }

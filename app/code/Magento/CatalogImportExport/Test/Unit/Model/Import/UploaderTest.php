@@ -347,8 +347,8 @@ class UploaderTest extends TestCase
                 'checkAllowedExtension' => 1,
             ],
             'https_invalid_chars_no_file_ext' => [
-                'fileUrl' => 'https://!:^&`;image',
-                'expectedHost' => '!:^&`;image',
+                'fileUrl' => 'https://example.com/!:^&`;image',
+                'expectedHost' => 'example.com/!:^&`;image',
                 'expectedFileName' => 'image_38GcEmPFKXXR8NMj',
                 'checkAllowedExtension' => 0,
             ],

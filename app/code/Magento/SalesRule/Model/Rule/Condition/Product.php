@@ -38,11 +38,11 @@ class Product extends \Magento\Rule\Model\Condition\Product\AbstractProduct
     public function getAttribute(): string
     {
         $attribute = $this->getData('attribute');
-        if ($attribute !== null && strpos($attribute, '::') !== false) {
+        if (is_string($attribute) && strpos($attribute, '::') !== false) {
             list(, $attribute) = explode('::', $attribute);
         }
 
-        return $attribute;
+        return is_string($attribute) ? $attribute : (string) $attribute;
     }
 
     /**
@@ -123,9 +123,9 @@ class Product extends \Magento\Rule\Model\Condition\Product\AbstractProduct
      * @param string $value
      * @return void
      */
-    public function setAttribute(string $value)
+    public function setAttribute($value)
     {
-        if (strpos($value, '::') !== false) {
+        if (is_string($value) && strpos($value, '::') !== false) {
             list($scope, $attribute) = explode('::', $value);
             $this->setData('attribute_scope', $scope);
             $this->setData('attribute', $attribute);
@@ -248,7 +248,7 @@ class Product extends \Magento\Rule\Model\Condition\Product\AbstractProduct
      */
     private function getFormattedPrice($value)
     {
-        $value = preg_replace('/[^0-9^\^.,-]/m', '', $value);
+        $value = preg_replace('/[^0-9^\^.,-]/m', '', (string) $value);
 
         /**
          * If the comma is the third symbol in the number, we consider it to be a decimal separator

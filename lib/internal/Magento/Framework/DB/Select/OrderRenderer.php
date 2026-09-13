@@ -49,7 +49,7 @@ class OrderRenderer implements RendererInterface
                         $order[] = $this->quote->quoteIdentifier($term[0]) . ' ' . $term[1];
                     }
                 } elseif (is_numeric($term) && (string)(int)$term == $term) {
-                    $order[] = (int)trim($term);
+                    $order[] = (int)trim((string) $term);
                 } else {
                     $order[] = $this->quote->quoteIdentifier($term);
                 }

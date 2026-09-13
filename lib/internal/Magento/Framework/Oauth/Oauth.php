@@ -221,7 +221,7 @@ class Oauth implements OauthInterface
         ];
         foreach ($params as $key => $value) {
             if (!in_array($key, $requiredParams)) {
-                $params[$key] = urldecode($value);
+                $params[$key] = urldecode((string) $value);
             }
         }
 

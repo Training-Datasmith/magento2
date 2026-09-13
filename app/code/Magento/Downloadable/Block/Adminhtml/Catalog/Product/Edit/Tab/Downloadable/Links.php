@@ -332,7 +332,7 @@ class Links extends \Magento\Backend\Block\Template
      */
     public function getPriceValue($value)
     {
-        return number_format($value, 2, null, '');
+        return number_format((float) $value, 2, null, '');
     }
 
     /**

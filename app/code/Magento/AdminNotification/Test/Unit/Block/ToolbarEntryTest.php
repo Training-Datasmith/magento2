@@ -50,7 +50,7 @@ class ToolbarEntryTest extends TestCase
 
         $block = $objectManagerHelper->getObject(
             ToolbarEntry::class,
-            ['notificationList' => $notificationList]
+            ['_notificationList' => $notificationList]
         );
 
         return $block;
@@ -85,7 +85,7 @@ class ToolbarEntryTest extends TestCase
         /** @var ToolbarEntry $model */
         $model = $helper->getObject(
             ToolbarEntry::class,
-            ['notificationList' => $notificationList]
+            ['_notificationList' => $notificationList]
         );
 
         // 2. Set expectations

@@ -116,13 +116,15 @@ class IndexerReindexCommand extends AbstractIndexerManageCommand
                 }
                 $endTime = new \DateTimeImmutable();
                 $interval = $startTime->diff($endTime);
-                $days = $interval->format('%d');
-                $hours = $days > 0 ? $days * 24 + $interval->format('%H') : $interval->format('%H');
+                $days = (int) $interval->format('%d');
+                $hours = $days > 0
+                    ? (string) ($days * 24 + (int) $interval->format('%H'))
+                    : $interval->format('%H');
                 $minutes = $interval->format('%I');
                 $seconds = $interval->format('%S');
 
                 $output->writeln(
-                    __('has been rebuilt successfully in %1:%2:%3', $hours, $minutes, $seconds)
+                    (string) __('has been rebuilt successfully in %1:%2:%3', $hours, $minutes, $seconds)
                 );
             } catch (\Throwable $e) {
                 $output->writeln('process error during indexation process:');

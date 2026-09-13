@@ -1238,7 +1238,9 @@ class Nvp extends \Magento\Paypal\Model\Api\AbstractApi
             $this->getCurl()->close();
 
             throw new ClientException(
-                __('Payment Gateway is unreachable at the moment. Please use another payment option.')
+                (string) __(
+                    'Payment Gateway is unreachable at the moment. Please use another payment option.'
+                )
             );
         }
         // cUrl resource must be closed after checking it for errors
@@ -1275,7 +1277,9 @@ class Nvp extends \Magento\Paypal\Model\Api\AbstractApi
 
         $this->handleConnectionErrors();
         if (!$this->_validateResponse($methodName, $response)) {
-            $this->_logger->critical(new \Exception(__('PayPal response hasn\'t required fields.')));
+            $this->_logger->critical(
+                new \Exception((string) __('PayPal response hasn\'t required fields.'))
+            );
             throw new \Magento\Framework\Exception\LocalizedException(
                 __('Something went wrong while processing your order.')
             );

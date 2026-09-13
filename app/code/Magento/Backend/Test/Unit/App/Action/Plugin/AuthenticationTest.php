@@ -43,7 +43,7 @@ class AuthenticationTest extends TestCase
         $objectManager = new ObjectManager($this);
         $this->plugin = $objectManager->getObject(
             Authentication::class,
-            ['auth' => $this->auth]
+            ['_auth' => $this->auth]
         );
     }
 

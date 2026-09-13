@@ -98,7 +98,8 @@ class Utility
             return $rule->getIsValidForAddress($address);
         }
 
-        if (!$this->validateCoupon->execute($rule, $address, $address->getQuote()->getCouponCode())) {
+        $couponCode = $address->getQuote()->getCouponCode();
+        if (!$this->validateCoupon->execute($rule, $address, $couponCode !== null ? (string) $couponCode : null)) {
             return false;
         }
 

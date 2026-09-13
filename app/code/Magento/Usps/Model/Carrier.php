@@ -2029,7 +2029,7 @@ class Carrier extends AbstractCarrierOnline implements \Magento\Shipping\Model\C
             }
             $itemDetail = $shippingContents->addChild('ItemDetail');
             $itemDetail->addChild('Description', $item->getName());
-            $ceiledQty = ceil($item->getQty());
+            $ceiledQty = ceil((float) $item->getQty());
             if ($ceiledQty < 1) {
                 $ceiledQty = 1;
             }

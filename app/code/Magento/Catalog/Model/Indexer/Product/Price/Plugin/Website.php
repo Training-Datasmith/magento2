@@ -106,7 +106,7 @@ class Website
      *
      * @return Dimension[][]
      */
-    private function getAffectedDimensions(string $websiteId): array
+    private function getAffectedDimensions(int|string $websiteId): array
     {
         $currentDimensions = $this->dimensionModeConfiguration->getDimensionConfiguration();
         // do not return dimensions if Website dimension is not present in configuration
@@ -115,7 +115,7 @@ class Website
         }
         $websiteDimension = $this->dimensionFactory->create(
             WebsiteDimensionProvider::DIMENSION_NAME,
-            $websiteId
+            (string) $websiteId
         );
 
         $dimensions = [];

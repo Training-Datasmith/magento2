@@ -42,6 +42,9 @@ class Json implements SerializerInterface
                 'Unable to unserialize value. Error: Parameter must be a string type, null given.'
             );
         }
+        if (!is_string($string)) {
+            throw new \InvalidArgumentException('Unable to unserialize value.');
+        }
         $result = json_decode($string, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {

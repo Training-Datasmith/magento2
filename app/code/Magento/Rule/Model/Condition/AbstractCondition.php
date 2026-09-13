@@ -894,7 +894,7 @@ abstract class AbstractCondition extends \Magento\Framework\DataObject implement
     {
         if ($strict && is_numeric($validatedValue) && is_numeric($value)) {
             $pattern = '/^0\d+$/';
-            if (preg_match($pattern, $validatedValue) || preg_match($pattern, $value)) {
+            if (preg_match($pattern, (string) $validatedValue) || preg_match($pattern, (string) $value)) {
                 return $validatedValue === $value;
             }
             return $validatedValue == $value;

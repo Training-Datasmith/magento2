@@ -140,7 +140,7 @@ class MessageValidator
 
         if ($realType !== $compareType) {
             throw new InvalidArgumentException(
-                new Phrase(
+                (string) new Phrase(
                     'Data in topic "%topic" must be of type "%expectedType". '
                     . '"%actualType" given.',
                     [
@@ -176,7 +176,7 @@ class MessageValidator
 
         if (!($message instanceof $compareType)) {
             throw new InvalidArgumentException(
-                new Phrase(
+                (string) new Phrase(
                     'Data in topic "%topic" must be of type "%expectedType". '
                     . '"%actualType" given.',
                     [

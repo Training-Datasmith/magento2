@@ -28,6 +28,46 @@ use Magento\Framework\Controller\ResultFactory;
 class Context extends \Magento\Framework\App\Action\Context
 {
     /**
+     * @var \Magento\Backend\Model\Session
+     */
+    protected $_session;
+
+    /**
+     * @var \Magento\Framework\AuthorizationInterface
+     */
+    protected $_authorization;
+
+    /**
+     * @var \Magento\Backend\Model\Auth
+     */
+    protected $_auth;
+
+    /**
+     * @var \Magento\Backend\Helper\Data
+     */
+    protected $_helper;
+
+    /**
+     * @var \Magento\Backend\Model\UrlInterface
+     */
+    protected $_backendUrl;
+
+    /**
+     * @var \Magento\Framework\Data\Form\FormKey\Validator
+     */
+    protected $_formKeyValidator;
+
+    /**
+     * @var \Magento\Framework\Locale\ResolverInterface
+     */
+    protected $_localeResolver;
+
+    /**
+     * @var bool
+     */
+    protected $_canUseBaseUrl;
+
+    /**
      * @param bool $_canUseBaseUrl
      * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
@@ -43,14 +83,14 @@ class Context extends \Magento\Framework\App\Action\Context
         \Magento\Framework\Message\ManagerInterface $messageManager,
         \Magento\Backend\Model\View\Result\RedirectFactory $resultRedirectFactory,
         ResultFactory $resultFactory,
-        protected \Magento\Backend\Model\Session $_session,
-        protected \Magento\Framework\AuthorizationInterface $_authorization,
-        protected \Magento\Backend\Model\Auth $_auth,
-        protected \Magento\Backend\Helper\Data $_helper,
-        protected \Magento\Backend\Model\UrlInterface $_backendUrl,
-        protected \Magento\Framework\Data\Form\FormKey\Validator $_formKeyValidator,
-        protected \Magento\Framework\Locale\ResolverInterface $_localeResolver,
-        protected $_canUseBaseUrl = false
+        \Magento\Backend\Model\Session $_session,
+        \Magento\Framework\AuthorizationInterface $_authorization,
+        \Magento\Backend\Model\Auth $_auth,
+        \Magento\Backend\Helper\Data $_helper,
+        \Magento\Backend\Model\UrlInterface $_backendUrl,
+        \Magento\Framework\Data\Form\FormKey\Validator $_formKeyValidator,
+        \Magento\Framework\Locale\ResolverInterface $_localeResolver,
+        $_canUseBaseUrl = false
     ) {
         parent::__construct(
             $request,
@@ -65,6 +105,14 @@ class Context extends \Magento\Framework\App\Action\Context
             $resultRedirectFactory,
             $resultFactory
         );
+        $this->_session = $_session;
+        $this->_authorization = $_authorization;
+        $this->_auth = $_auth;
+        $this->_helper = $_helper;
+        $this->_backendUrl = $_backendUrl;
+        $this->_formKeyValidator = $_formKeyValidator;
+        $this->_localeResolver = $_localeResolver;
+        $this->_canUseBaseUrl = $_canUseBaseUrl;
     }
 
     /**

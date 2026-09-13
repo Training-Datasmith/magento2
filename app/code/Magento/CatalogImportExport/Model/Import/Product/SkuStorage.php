@@ -98,8 +98,11 @@ class SkuStorage
      * @param string $key
      * @return bool
      */
-    public function has(string $key): bool
+    public function has(string|false|null $key): bool
     {
+        if ($key === false || $key === null || $key === '') {
+            return false;
+        }
         $this->init();
         $key = strtolower($key);
         return isset($this->rows[$key]);

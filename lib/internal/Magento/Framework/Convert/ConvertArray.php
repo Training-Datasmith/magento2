@@ -92,10 +92,10 @@ XML;
                         );
                     }
                     $hasStringKey = true;
-                    $xml->addChild($key, $value);
+                    $xml->addChild($key, (string) $value);
                 } elseif (is_int($key)) {
                     $hasNumericKey = true;
-                    $xml->addChild($key, $value);
+                    $xml->addChild((string) $key, (string) $value);
                 }
             } else {
                 $xml->addChild($key);

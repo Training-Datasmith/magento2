@@ -48,7 +48,7 @@ class Index extends Template
 
         if (!array_key_exists($schemaTypeCode, $this->getSchemaTypes())) {
             throw new \UnexpectedValueException(
-                new Phrase('Unknown schema type supplied')
+                (string) new Phrase('Unknown schema type supplied')
             );
         }
 

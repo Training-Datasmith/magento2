@@ -103,7 +103,8 @@ HTML;
     protected function _getSpecificCountryElementId()
     {
         $id = $this->getId();
-        $element = $id !== null ? substr($id, 0, strrpos($id, 'allowspecific')) : '';
+        $position = $id !== null ? strrpos($id, 'allowspecific') : false;
+        $element = ($id !== null && $position !== false) ? substr($id, 0, $position) : '';
         return $element . 'specificcountry';
     }
 }

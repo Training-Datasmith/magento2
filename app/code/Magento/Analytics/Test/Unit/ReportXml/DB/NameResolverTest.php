@@ -64,11 +64,17 @@ class NameResolverTest extends TestCase
     {
         $elementName = 'elementName';
 
-        $this->nameResolverMock
-            ->expects($this->once())
-            ->method('getName')
-            ->with($elementConfig)
-            ->willReturn($elementName);
+        if ($elementAlias === null) {
+            $this->nameResolverMock
+                ->expects($this->once())
+                ->method('getName')
+                ->with($elementConfig)
+                ->willReturn($elementName);
+        } else {
+            $this->nameResolverMock
+                ->expects($this->never())
+                ->method('getName');
+        }
 
         $this->assertSame($elementAlias ?: $elementName, $this->nameResolverMock->getAlias($elementConfig));
     }

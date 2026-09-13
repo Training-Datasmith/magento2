@@ -19,8 +19,12 @@ class StatusMapper
     /**
      * Map operation status to bulk summary status
      */
-    public function operationStatusToBulkSummaryStatus(int $operationStatus): ?int
+    public function operationStatusToBulkSummaryStatus(int|string|null $operationStatus): ?int
     {
+        if ($operationStatus === null || (!is_int($operationStatus) && !is_numeric($operationStatus))) {
+            return null;
+        }
+        $operationStatus = (int) $operationStatus;
         $statusMapping = [
             OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED => BulkSummaryInterface::FINISHED_WITH_FAILURE,
             OperationInterface::STATUS_TYPE_RETRIABLY_FAILED => BulkSummaryInterface::FINISHED_WITH_FAILURE,
@@ -37,8 +41,12 @@ class StatusMapper
      *
      * @return int|null
      */
-    public function bulkSummaryStatusToOperationStatus(int $bulkStatus): array|int|null
+    public function bulkSummaryStatusToOperationStatus(int|string|null $bulkStatus): array|int|null
     {
+        if ($bulkStatus === null || (!is_int($bulkStatus) && !is_numeric($bulkStatus))) {
+            return null;
+        }
+        $bulkStatus = (int) $bulkStatus;
         $statusMapping = [
             BulkSummaryInterface::FINISHED_WITH_FAILURE => [
                 OperationInterface::STATUS_TYPE_NOT_RETRIABLY_FAILED,

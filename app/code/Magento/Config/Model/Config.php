@@ -277,10 +277,10 @@ class Config extends \Magento\Framework\DataObject
      * @param string $fieldId
      * @return Field
      */
-    private function getField(string $sectionId, string $groupId, string $fieldId): Field
+    private function getField(string $sectionId, int|string $groupId, string $fieldId): Field
     {
         /** @var \Magento\Config\Model\Config\Structure\Element\Group $group */
-        $group = $this->_configStructure->getElement($sectionId . '/' . $groupId);
+        $group = $this->_configStructure->getElement($sectionId . '/' . (string) $groupId);
         $fieldPath = $group->getPath() . '/' . $this->getOriginalFieldId($group, $fieldId);
         $field = $this->_configStructure->getElement($fieldPath);
 
@@ -348,7 +348,7 @@ class Config extends \Magento\Framework\DataObject
      */
     private function getChangedPaths(
         string $sectionId,
-        string $groupId,
+        int|string $groupId,
         array $groupData,
         array &$oldConfig,
         array &$extraOldGroups

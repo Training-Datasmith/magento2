@@ -510,7 +510,7 @@ class Uploader
 
         if (strlen($fileInfo['basename'] ?? '') > self::MAX_FILE_NAME_LENGTH) {
             throw new \LengthException(
-                __('Filename is too long; must be %1 characters or less', self::MAX_FILE_NAME_LENGTH)
+                (string) __('Filename is too long; must be %1 characters or less', self::MAX_FILE_NAME_LENGTH)
             );
         }
 

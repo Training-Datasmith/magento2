@@ -78,7 +78,7 @@ class Generator extends AbstractSource
             if (is_callable($dynamicValue)) {
                 $row[$key] = call_user_func($dynamicValue, $index);
             } else {
-                $row[$key] = str_replace('%s', $index, $dynamicValue);
+                $row[$key] = str_replace('%s', (string) $index, $dynamicValue);
             }
         }
         return $row;

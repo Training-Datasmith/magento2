@@ -52,7 +52,7 @@ class Authentication
             if (!$this->_auth->isLoggedIn()) {
                 $this->_processNotLoggedInUser($request);
             } else {
-                $this->_auth->getAuthStorage()->prolong();
+                $this->_auth->getAuthStorage()?->prolong();
 
                 $backendApp = null;
                 if ($request->getParam('app')) {
@@ -67,7 +67,7 @@ class Authentication
                 }
             }
         }
-        $this->_auth->getAuthStorage()->refreshAcl();
+        $this->_auth->getAuthStorage()?->refreshAcl();
         return $proceed($request);
     }
 

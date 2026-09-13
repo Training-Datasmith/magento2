@@ -230,7 +230,7 @@ class Http extends Request implements
     public function setRouteName($route)
     {
         $this->route = $route;
-        $module = $this->routeConfig->getRouteFrontName($route);
+        $module = $this->routeConfig?->getRouteFrontName($route);
         if ($module) {
             $this->setModuleName($module);
         }

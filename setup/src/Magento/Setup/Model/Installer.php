@@ -1877,7 +1877,7 @@ class Installer
                     ->get($indexerId);
                 $model->reindexAll();
             }
-            $this->log->log(__('%1 indexer(s) are indexed.', count($indexerIds)));
+            $this->log->log((string) __('%1 indexer(s) are indexed.', count($indexerIds)));
         } catch (LocalizedException $e) {
             $this->log->log($e->getMessage());
         } catch (\Exception $e) {

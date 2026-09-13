@@ -155,6 +155,6 @@ class DbVersionInfo
             return true;
         }
 
-        return version_compare($configVer, $version) === ModuleDataSetupInterface::VERSION_COMPARE_EQUAL;
+        return version_compare($configVer, (string) $version) === ModuleDataSetupInterface::VERSION_COMPARE_EQUAL;
     }
 }

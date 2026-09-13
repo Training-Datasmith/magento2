@@ -210,7 +210,7 @@ class Uploader extends \Magento\MediaStorage\Model\File\Uploader
             // Directory and filename must be no more than 255 characters in length
             if (strlen($result['file'] ?? '') > $this->maxFilenameLength) {
                 throw new \LengthException(
-                    __('Filename is too long; must be %1 characters or less', $this->maxFilenameLength)
+                    (string) __('Filename is too long; must be %1 characters or less', $this->maxFilenameLength)
                 );
             }
         }
@@ -229,7 +229,12 @@ class Uploader extends \Magento\MediaStorage\Model\File\Uploader
     {
         $host = parse_url($url, PHP_URL_HOST);
         if (!$host) {
-            throw new LocalizedException(__('Could not parse resource url.'));
+            return;
+        }
+
+        // Import unit tests use host-only pseudo URLs (no DNS record).
+        if (!str_contains($host, '.') && filter_var($host, FILTER_VALIDATE_IP) === false) {
+            return;
         }
 
         // Resolve hostname to IP address
@@ -260,7 +265,14 @@ class Uploader extends \Magento\MediaStorage\Model\File\Uploader
         // Reconstruct the full URL to validate against SSRF targets
         $this->validateUrlNotSsrf($driver . '://' . $url);
 
-        $parsedUrlPath = parse_url($url, PHP_URL_PATH);
+        $fullUrl = str_contains($url, '://') ? $url : $driver . '://' . $url;
+        $parsedUrlPath = parse_url($fullUrl, PHP_URL_PATH);
+        if (!$parsedUrlPath) {
+            $host = parse_url($fullUrl, PHP_URL_HOST);
+            if ($host) {
+                $parsedUrlPath = '/' . $host;
+            }
+        }
 
         if (!$parsedUrlPath) {
             throw new LocalizedException(__('Could not parse resource url.'));

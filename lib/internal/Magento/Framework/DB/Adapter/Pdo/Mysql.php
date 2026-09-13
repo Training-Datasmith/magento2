@@ -634,7 +634,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     protected function _checkDdlTransaction($sql)
     {
         if ($this->getTransactionLevel() > 0) {
-            $sql = $sql !== null ? ltrim(preg_replace('/\s+/', ' ', $sql)) : '';
+            $sql = $sql !== null ? ltrim(preg_replace('/\s+/', ' ', (string) $sql)) : '';
             $sqlMessage = explode(' ', $sql, 3);
             $startSql = strtolower(substr($sqlMessage[0], 0, 3));
             if (in_array($startSql, $this->_ddlRoutines) && strcasecmp($sqlMessage[1], 'temporary') !== 0) {
@@ -744,7 +744,7 @@ class Mysql extends \Zend_Db_Adapter_Pdo_Mysql implements AdapterInterface, Rese
     public function query($sql, $bind = [])
     {
         if ($sql !== null &&
-            strpos(rtrim($sql, " \t\n\r\0;"), ';') !== false &&
+            strpos(rtrim((string) $sql, " \t\n\r\0;"), ';') !== false &&
             count($this->_splitMultiQuery($sql)) > 1
         ) {
             throw new \Magento\Framework\Exception\LocalizedException(

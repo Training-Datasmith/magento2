@@ -218,7 +218,7 @@ class TierPriceManagement implements \Magento\Catalog\Api\ProductTierPriceManage
      * @param array $priceArray
      * @return bool
      */
-    private function isCustomerGroupApplicable(string $customerGroupId, array $priceArray): bool
+    private function isCustomerGroupApplicable(int|string $customerGroupId, array $priceArray): bool
     {
         return ($customerGroupId === 'all' && $priceArray['all_groups'])
             || (is_numeric($customerGroupId) && (int)$priceArray['cust_group'] === (int)$customerGroupId);

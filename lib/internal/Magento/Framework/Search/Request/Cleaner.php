@@ -66,7 +66,7 @@ class Cleaner implements ResetAfterRequestInterface
 
         if (empty($requestData['queries']) && empty($requestData['filters'])) {
             throw new EmptyRequestDataException(
-                new Phrase("The request query and filters aren't set. Verify the query and filters and try again.")
+                (string) new Phrase("The request query and filters aren't set. Verify the query and filters and try again.")
             );
         }
 

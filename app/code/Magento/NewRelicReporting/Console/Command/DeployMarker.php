@@ -114,8 +114,8 @@ class DeployMarker extends Command
         try {
             $result = $this->deploymentsFactory->create()->setDeployment(
                 $input->getArgument('message'),
-                $input->getArgument('change_log') ?: false,
-                $this->serviceShellUser->get($input->getArgument('user')) ?: false,
+                $input->getArgument('change_log') ?: null,
+                $this->serviceShellUser->get($input->getArgument('user')) ?: null,
                 $input->getArgument('revision'),
                 $input->getOption('commit'),
                 $input->getOption('deep-link'),

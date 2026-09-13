@@ -171,7 +171,7 @@ class ObjectManager
         foreach (array_diff_key($arguments, $constructArguments) as $key => $value) {
             $propertyReflectionClass = $reflectionClass;
             while ($propertyReflectionClass) {
-                if ($propertyReflectionClass->hasProperty($key)) {
+                if ($propertyReflectionClass->hasProperty(is_string($key) ? $key : (string) $key)) {
                     $reflectionProperty = $propertyReflectionClass->getProperty($key);
                     $reflectionProperty->setValue($newObject, $value);
                     break;
@@ -267,8 +267,9 @@ class ObjectManager
             $argClassName = null;
             $defaultValue = null;
 
-            if (array_key_exists($parameterName, $arguments)) {
-                $constructArguments[$parameterName] = $arguments[$parameterName];
+            $argumentKey = $this->resolveConstructorArgumentKey($parameterName, $arguments);
+            if ($argumentKey !== null) {
+                $constructArguments[$parameterName] = $arguments[$argumentKey];
                 continue;
             }
 
@@ -297,6 +298,27 @@ class ObjectManager
             $constructArguments[$parameterName] = null === $object ? $defaultValue : $object;
         }
         return $constructArguments;
+    }
+
+    /**
+     * Match constructor parameter names with legacy test harness argument keys (e.g. auth vs $_auth).
+     *
+     * @param string $parameterName
+     * @param array $arguments
+     * @return string|null
+     */
+    private function resolveConstructorArgumentKey(string $parameterName, array $arguments): ?string
+    {
+        if (array_key_exists($parameterName, $arguments)) {
+            return $parameterName;
+        }
+        if ($parameterName !== '' && $parameterName[0] === '_') {
+            $legacyName = substr($parameterName, 1);
+            if (array_key_exists($legacyName, $arguments)) {
+                return $legacyName;
+            }
+        }
+        return null;
     }
 
     /**

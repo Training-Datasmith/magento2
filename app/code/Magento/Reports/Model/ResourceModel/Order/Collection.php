@@ -443,9 +443,9 @@ class Collection extends \Magento\Sales\Model\ResourceModel\Order\Collection
 
             case '1m':
                 $dateStart->setDate(
-                    $dateStart->format('Y'),
-                    $dateStart->format('m'),
-                    $this->_scopeConfig->getValue(
+                    (int) $dateStart->format('Y'),
+                    (int) $dateStart->format('m'),
+                    (int) $this->_scopeConfig->getValue(
                         'reports/dashboard/mtd_start',
                         \Magento\Store\Model\ScopeInterface::SCOPE_STORE
                     )
@@ -461,14 +461,14 @@ class Collection extends \Magento\Sales\Model\ResourceModel\Order\Collection
             case '2y':
                 $startMonthDay = explode(
                     ',',
-                    $this->_scopeConfig->getValue(
+                    (string) $this->_scopeConfig->getValue(
                         'reports/dashboard/ytd_start',
                         \Magento\Store\Model\ScopeInterface::SCOPE_STORE
                     )
                 );
                 $startMonth = isset($startMonthDay[0]) ? (int)$startMonthDay[0] : 1;
                 $startDay = isset($startMonthDay[1]) ? (int)$startMonthDay[1] : 1;
-                $dateStart->setDate($dateStart->format('Y'), $startMonth, $startDay);
+                $dateStart->setDate((int) $dateStart->format('Y'), $startMonth, $startDay);
                 if ($range == '2y') {
                     $dateStart->modify('-1 year');
                 }

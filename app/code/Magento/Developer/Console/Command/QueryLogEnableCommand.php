@@ -117,7 +117,7 @@ class QueryLogEnableCommand extends Command
         $logIndexCheck = $input->getOption(self::INPUT_ARG_LOG_INDEX_CHECK);
 
         $data[LoggerProxy::PARAM_LOG_ALL] = (int)($logAllQueries != 'false');
-        $data[LoggerProxy::PARAM_QUERY_TIME] = number_format($logQueryTime, 3);
+        $data[LoggerProxy::PARAM_QUERY_TIME] = number_format((float) $logQueryTime, 3);
         $data[LoggerProxy::PARAM_CALL_STACK] = (int)($logCallStack != 'false');
         $data[LoggerProxy::PARAM_INDEX_CHECK] = (int)($logIndexCheck != 'false');
 

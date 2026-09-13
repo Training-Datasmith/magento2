@@ -405,12 +405,12 @@ class AfterImportDataObserver implements ObserverInterface
      * @param Product[] $products
      * @return void
      */
-    private function addProductToImport(Product $product, string $storeId, array &$products): void
+    private function addProductToImport(Product $product, int|string $storeId, array &$products): void
     {
         if ($product->getVisibility() == (string)Visibility::getOptionArray()[Visibility::VISIBILITY_NOT_VISIBLE]) {
             return;
         }
-        $products[$product->getId()][$storeId] = $product;
+        $products[$product->getId()][(string) $storeId] = $product;
     }
 
     /**

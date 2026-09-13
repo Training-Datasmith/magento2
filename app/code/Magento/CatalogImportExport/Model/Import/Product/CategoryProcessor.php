@@ -83,7 +83,7 @@ class CategoryProcessor
             $collection->setStoreId(\Magento\Store\Model\Store::DEFAULT_STORE_ID);
             /* @var $collection \Magento\Catalog\Model\ResourceModel\Category\Collection */
             foreach ($collection as $category) {
-                $structure = explode(self::DELIMITER_CATEGORY, $category->getPath());
+                $structure = explode(self::DELIMITER_CATEGORY, (string) $category->getPath());
                 $pathSize = count($structure);
 
                 $this->categoriesCache[$category->getId()] = $category;

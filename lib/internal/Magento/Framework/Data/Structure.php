@@ -68,7 +68,7 @@ class Structure implements ResetAfterRequestInterface
                         throw new LocalizedException(
                             new \Magento\Framework\Phrase(
                                 '"%2" is an invalid format of "%1" group. Verify the format and try again.',
-                                [$groupName, var_export($group, 1)]
+                                [$groupName, var_export($group, true)]
                             )
                         );
                     }
@@ -114,7 +114,7 @@ class Structure implements ResetAfterRequestInterface
                 throw new LocalizedException(
                     new \Magento\Framework\Phrase(
                         'The "%1" format of children is invalid. Verify and try again.',
-                        [var_export($children, 1)]
+                        [var_export($children, true)]
                     )
                 );
             }
@@ -675,7 +675,7 @@ class Structure implements ResetAfterRequestInterface
     {
         if (!is_array($value)) {
             throw new LocalizedException(
-                new \Magento\Framework\Phrase('An array expected: %1', [var_export($value, 1)])
+                new \Magento\Framework\Phrase('An array expected: %1', [var_export($value, true)])
             );
         }
     }

@@ -34,11 +34,11 @@ class ReportStatus
     /**
      * Is report for specified event type is enabled in system configuration
      *
-     * @param string $reportEventType
+     * @param int|string $reportEventType
      * @return bool
      * @throws InputException
      */
-    public function isReportEnabled(string $reportEventType): bool
+    public function isReportEnabled(int|string $reportEventType): bool
     {
         return $this->scopeConfig->isSetFlag('reports/options/enabled')
             && $this->scopeConfig->isSetFlag($this->getConfigPathByEventType($reportEventType));
@@ -47,11 +47,11 @@ class ReportStatus
     /**
      * Get Config Path By Event Type
      *
-     * @param string $reportEventType
+     * @param int|string $reportEventType
      * @return string
      * @throws InputException
      */
-    private function getConfigPathByEventType(string $reportEventType): string
+    private function getConfigPathByEventType(int|string $reportEventType): string
     {
         $typeToPathMap = [
             Event::EVENT_PRODUCT_VIEW => 'reports/options/product_view_enabled',

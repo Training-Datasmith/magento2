@@ -227,7 +227,10 @@ class Date extends \Magento\Backend\Block\Widget\Grid\Column\Filter\AbstractFilt
             $adminTimeZone
         );
         $simpleRes = new \DateTime('now', $adminTimeZone);
-        $simpleRes->setTimestamp($formatter->parse($date));
+        $timestamp = $formatter->parse((string) $date);
+        if ($timestamp !== false) {
+            $simpleRes->setTimestamp((int) $timestamp);
+        }
         $simpleRes->setTime(0, 0, 0);
         $simpleRes->setTimezone(new \DateTimeZone('UTC'));
         return $simpleRes;

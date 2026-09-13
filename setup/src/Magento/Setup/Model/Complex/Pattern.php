@@ -108,7 +108,7 @@ class Pattern
                 if (is_callable($row[$key])) {
                     $row[$key] = call_user_func($row[$key], $index, $generatorKey);
                 } else {
-                    $row[$key] = str_replace('%s', $index, $row[$key]);
+                    $row[$key] = str_replace('%s', (string) $index, $row[$key]);
                 }
             } else {
                 $row[$key] = '';

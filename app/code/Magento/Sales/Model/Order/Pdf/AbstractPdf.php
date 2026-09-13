@@ -218,6 +218,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
     public function widthForStringUsingFontSize($string, $font, $fontSize)
     {
         // phpcs:ignore Generic.PHP.NoSilencedErrors
+        $string = (string) $string;
         $drawingString = '"libiconv"' == ICONV_IMPL ? iconv(
             'UTF-8',
             'UTF-16BE//IGNORE',
@@ -357,7 +358,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
         $values = $configAddress ? explode("\n", $configAddress) : [];
         foreach ($values as $value) {
             if ($value !== '') {
-                $value = preg_replace('/<br[^>]*>/i', "\n", $value);
+                $value = preg_replace('/<br[^>]*>/i', "\n", (string) $value);
                 foreach ($this->string->split($value, 45, true, true) as $_value) {
                     $page->drawText(
                         trim(strip_tags($_value ?: '')),
@@ -586,7 +587,7 @@ abstract class AbstractPdf extends \Magento\Framework\DataObject
         foreach ($payment as $value) {
             if ($value && trim($value) != '') {
                 //Printing "Payment Method" lines
-                $value = preg_replace('/<br[^>]*>/i', "\n", $value);
+                $value = preg_replace('/<br[^>]*>/i', "\n", (string) $value);
                 foreach ($this->string->split($value, 45, true, true) as $_value) {
                     $page->drawText(strip_tags(trim($_value ?: '')), $paymentLeft, $yPayments, 'UTF-8');
                     $yPayments -= 15;

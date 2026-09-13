@@ -113,7 +113,7 @@ class SwatchesGenerator
      */
     private function generateSwatchColor($index)
     {
-        return '#' . str_repeat(dechex(255 * $index), 3);
+        return '#' . str_repeat(dechex((int) (255 * $index)), 3);
     }
 
     /**

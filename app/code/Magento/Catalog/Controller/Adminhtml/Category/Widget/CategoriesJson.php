@@ -62,7 +62,9 @@ class CategoriesJson extends \Magento\Catalog\Controller\Adminhtml\Category\Widg
                 $this->_coreRegistry->register('category', $category);
                 $this->_coreRegistry->register('current_category', $category);
             }
-            $categoryTreeBlock = $this->_getCategoryTreeBlock()->setSelectedCategories(explode(',', $selected));
+            $categoryTreeBlock = $this->_getCategoryTreeBlock()->setSelectedCategories(
+                explode(',', (string) $selected)
+            );
             /** @var \Magento\Framework\Controller\Result\Json $resultJson */
             $resultJson = $this->resultJsonFactory->create();
             return $resultJson->setJsonData($categoryTreeBlock->getTreeJson($category));

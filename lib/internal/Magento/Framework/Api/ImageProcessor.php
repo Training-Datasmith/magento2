@@ -170,7 +170,7 @@ class ImageProcessor implements ImageProcessorInterface, ImageContentUploaderInt
         $fileName = $this->getFileName($imageContent);
         // md5() here is not for cryptographic use.
         // phpcs:ignore Magento2.Security.InsecureFunction
-        $tmpFileName = substr(md5(rand()), 0, 7) . '.' . $fileName;
+        $tmpFileName = substr(md5((string) rand()), 0, 7) . '.' . $fileName;
         $tmpDirectory->writeFile($tmpFileName, $fileContent);
 
         return $tmpFileName;

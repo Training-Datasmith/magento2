@@ -58,7 +58,7 @@ class Element extends \Magento\Framework\Simplexml\Element
             return '';
         }
 
-        $value = str_replace('&amp;', '&', $value);
+        $value = str_replace('&amp;', '&', (string) $value);
         $value = str_replace('&', '&amp;', $value);
 
         return $value;

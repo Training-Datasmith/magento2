@@ -292,7 +292,10 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
             }
         }
         if ($listSku) {
-            $this->deleteProductTierPrices(array_unique($listSku), self::TABLE_TIER_PRICE);
+            $this->deleteProductTierPrices(
+                array_map('strval', array_unique($listSku)),
+                self::TABLE_TIER_PRICE
+            );
             $this->setUpdatedAt($listSku);
         }
         return $this;
@@ -425,7 +428,7 @@ class AdvancedPricing extends \Magento\ImportExport\Model\Import\Entity\Abstract
      * @param string $table
      * @throws \Exception
      */
-    protected function deleteProductTierPrices(array $listSku, $table): bool
+    protected function deleteProductTierPrices(array $listSku, $table)
     {
         $tableName = $this->_resourceFactory->create()->getTable($table);
         $productEntityLinkField = $this->getProductEntityLinkField();

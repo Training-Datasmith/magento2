@@ -50,9 +50,9 @@ class CacheOutdatedTest extends TestCase
 
         $objectManagerHelper = new ObjectManager($this);
         $arguments = [
-            'authorization' => $this->_authorizationMock,
-            'urlBuilder' => $this->_urlInterfaceMock,
-            'cacheTypeList' => $this->_cacheTypeListMock,
+            '_authorization' => $this->_authorizationMock,
+            '_urlBuilder' => $this->_urlInterfaceMock,
+            '_cacheTypeList' => $this->_cacheTypeListMock,
         ];
         $this->_messageModel = $objectManagerHelper->getObject(
             CacheOutdated::class,

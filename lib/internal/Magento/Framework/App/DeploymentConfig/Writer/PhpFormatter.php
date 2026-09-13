@@ -31,7 +31,7 @@ class PhpFormatter implements FormatterInterface
         if (!empty($comments) && is_array($data)) {
             return "<?php\nreturn [\n" . $this->formatData($data, $comments) . "\n];\n";
         }
-        return "<?php\nreturn " . $this->varExportShort($data, true) . ";\n";
+        return "<?php\nreturn " . $this->varExportShort($data, 1) . ";\n";
     }
 
     /**

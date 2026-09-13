@@ -150,7 +150,7 @@ class Builder
         AbstractCondition $condition,
         string $value = '',
         bool $isDefaultStoreUsed = true
-    ): string {
+    ) {
         $argument = $condition->getMappedSqlField();
 
         // If rule hasn't valid argument - prevent incorrect rule behavior.
@@ -219,7 +219,7 @@ class Builder
         Combine $combine,
         string $value = '',
         bool $isDefaultStoreUsed = true
-    ): string {
+    ) {
         $out = (!empty($value) ? $value : '');
         $value = ($combine->getValue() ? '' : ' NOT ');
         $getAggregator = $combine->getAggregator();

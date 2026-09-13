@@ -138,7 +138,7 @@ class DataObject implements \ArrayAccess
         }
 
         $data = $this->_data[$key] ?? null;
-        if ($data === null && $key !== null && strpos($key, '/') !== false) {
+        if ($data === null && $key !== null && strpos((string) $key, '/') !== false) {
             /* process a/b/c key as ['a']['b']['c'] */
             $data = $this->getDataByPath($key);
         }
@@ -379,7 +379,7 @@ class DataObject implements \ArrayAccess
             preg_match_all('/\{\{([a-z0-9_]+)\}\}/is', $format, $matches);
             foreach ($matches[1] as $var) {
                 $data = $this->getData($var) ?? '';
-                $format = str_replace('{{' . $var . '}}', $data, $format);
+                $format = str_replace('{{' . $var . '}}', (string) $data, $format);
             }
             $result = $format;
         }

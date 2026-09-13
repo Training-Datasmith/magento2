@@ -229,7 +229,7 @@ class Config implements \Magento\Framework\Mail\Template\ConfigInterface
     {
         $data = $this->_dataStorage->get();
         if (!isset($data[$templateId])) {
-            throw new UnexpectedTemplateIdValueException(__('Email template is not defined.'));
+            throw new UnexpectedTemplateIdValueException((string) __('Email template is not defined.'));
         }
         if (!isset($data[$templateId][$fieldName])) {
             throw new UnexpectedTemplateFieldNameValueException(

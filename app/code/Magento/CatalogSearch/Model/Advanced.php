@@ -378,17 +378,17 @@ class Advanced extends \Magento\Framework\Model\AbstractModel
                         $currencyModel = null;
                     }
 
-                    if (strlen($value['from']) > 0 && strlen($value['to']) > 0) {
+                    if (strlen((string) $value['from']) > 0 && strlen((string) $value['to']) > 0) {
                         // -
                         $value = sprintf(
                             '%s - %s',
                             $currencyModel ? $from : $value['from'],
                             $currencyModel ? $to : $value['to']
                         );
-                    } elseif (strlen($value['from']) > 0) {
+                    } elseif (strlen((string) $value['from']) > 0) {
                         // and more
                         $value = __('%1 and greater', $currencyModel ? $from : $value['from']);
-                    } elseif (strlen($value['to']) > 0) {
+                    } elseif (strlen((string) $value['to']) > 0) {
                         // to
                         $value = __('up to %1', $currencyModel ? $to : $value['to']);
                     }

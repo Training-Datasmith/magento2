@@ -157,6 +157,6 @@ class Websites extends \Magento\Backend\Block\Store\Switcher
             }
             $this->_storeFromHtml .= '</select>';
         }
-        return str_replace('__store_identifier__', $storeTo->getId(), $this->_storeFromHtml);
+        return str_replace('__store_identifier__', (string) $storeTo->getId(), $this->_storeFromHtml);
     }
 }

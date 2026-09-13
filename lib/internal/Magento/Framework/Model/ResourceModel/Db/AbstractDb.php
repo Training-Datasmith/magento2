@@ -592,7 +592,7 @@ abstract class AbstractDb extends AbstractResource
                     if ($value === null) {
                         $select->where($field . ' IS NULL');
                     } else {
-                        $select->where($field . '=?', trim($value));
+                        $select->where($field . '=?', trim((string) $value));
                     }
                 }
 

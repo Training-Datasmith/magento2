@@ -46,7 +46,7 @@ class ExportDataHandlerNotificationTest extends TestCase
             ExportDataHandlerNotification::class,
             [
                 'exportDataHandler' => $exportDataHandlerMockObject,
-                'connector' => $analyticsConnectorMockObject,
+                'analyticsConnector' => $analyticsConnectorMockObject,
             ]
         );
         $exportDataHandlerMockObject->expects($this->once())

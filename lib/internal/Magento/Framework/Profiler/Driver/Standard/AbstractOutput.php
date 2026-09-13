@@ -124,7 +124,7 @@ abstract class AbstractOutput implements OutputInterface
                 $result = number_format($value, 6);
                 break;
             default:
-                $result = number_format((string)$value);
+                $result = number_format(is_numeric($value) ? (float) $value : 0);
         }
         return $result;
     }

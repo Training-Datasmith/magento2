@@ -139,7 +139,7 @@ class SchemaPersistor
             if ($element->attributes()[$attributeName]) {
                 $element->attributes()->$attributeName = $attributeValue;
             } else {
-                $element->addAttribute($attributeName, $attributeValue);
+                $element->addAttribute($attributeName, (string) $attributeValue);
             }
         }
     }

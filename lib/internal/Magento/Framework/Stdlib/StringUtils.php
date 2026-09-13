@@ -53,9 +53,13 @@ class StringUtils
         foreach ($str as $part) {
             if ($this->strlen($part) >= $length) {
                 $lastDelimiter = $this->strpos($this->strrev($part), $needle);
-                $tmpNewStr = $this->substr($this->strrev($part), 0, $lastDelimiter) . $insert
-                    . $this->substr($this->strrev($part), $lastDelimiter);
-                $newStr .= $this->strrev($tmpNewStr);
+                if ($lastDelimiter === false) {
+                    $newStr .= $part . $insert;
+                } else {
+                    $tmpNewStr = $this->substr($this->strrev($part), 0, $lastDelimiter) . $insert
+                        . $this->substr($this->strrev($part), $lastDelimiter);
+                    $newStr .= $this->strrev($tmpNewStr);
+                }
             } else {
                 $newStr .= $part;
             }
@@ -87,7 +91,7 @@ class StringUtils
         }
         $value = $value !== null ? $value : '';
         if ($trim) {
-            $value = trim(preg_replace('/\s{2,}/siu', ' ', $value));
+            $value = trim(preg_replace('/\s{2,}/siu', ' ', (string) $value));
         }
         // do a usual str_split, but safe for our encoding
         if (!$keepWords || $length < 2) {
@@ -156,7 +160,7 @@ class StringUtils
      */
     public function strlen($string)
     {
-        return $string !== null ? mb_strlen($string, self::ICONV_CHARSET) : 0;
+        return $string !== null ? mb_strlen((string) $string, self::ICONV_CHARSET) : 0;
     }
 
     /**
@@ -184,7 +188,10 @@ class StringUtils
         if ($length === null) {
             $length = $this->strlen($string) - $offset;
         }
-        return mb_substr($string, $offset, $length, self::ICONV_CHARSET);
+        if ($offset === false) {
+            $offset = 0;
+        }
+        return mb_substr($string, $offset, $length === false ? null : $length, self::ICONV_CHARSET);
     }
 
     /**

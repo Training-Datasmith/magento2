@@ -21,7 +21,10 @@ class JsonValidator
      */
     public function isValid($string)
     {
-        if ($string !== false && $string !== null && $string !== '') {
+        if (is_int($string) || is_float($string)) {
+            $string = (string) $string;
+        }
+        if (is_string($string) && $string !== '') {
             json_decode($string);
             if (json_last_error() === JSON_ERROR_NONE) {
                 return true;

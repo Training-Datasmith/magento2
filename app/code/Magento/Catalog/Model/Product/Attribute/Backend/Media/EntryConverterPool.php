@@ -29,7 +29,7 @@ class EntryConverterPool
         foreach ($mediaGalleryEntryConvertersCollection as $converter) {
             if (!$converter instanceof EntryConverterInterface) {
                 throw new \InvalidArgumentException(
-                    __('Media Gallery converter should be an instance of EntryConverterInterface.')
+                    (string) __('Media Gallery converter should be an instance of EntryConverterInterface.')
                 );
             }
         }

@@ -436,7 +436,7 @@ class Currency extends \Magento\Framework\Model\AbstractModel implements ResetAf
         );
 
         $formattedCurrency = $this->numberFormatter->formatCurrency(
-            $price,
+            (float) $price,
             $this->getCode() ?? $this->numberFormatter->getTextAttribute(\NumberFormatter::CURRENCY_CODE)
         );
 

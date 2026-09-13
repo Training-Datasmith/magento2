@@ -62,7 +62,7 @@ abstract class AbstractSource implements \SeekableIterator
             throw new \InvalidArgumentException('Empty column names');
         }
         if (count(array_unique($colNames)) != count($colNames)) {
-            throw new \InvalidArgumentException('Duplicates found in column names: ' . var_export($colNames, 1));
+            throw new \InvalidArgumentException('Duplicates found in column names: ' . var_export($colNames, true));
         }
         $this->_colNames = $colNames;
         $this->_colQty = count($colNames);

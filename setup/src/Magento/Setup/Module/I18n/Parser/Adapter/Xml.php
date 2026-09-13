@@ -72,8 +72,8 @@ class Xml extends AbstractAdapter
      */
     private function parseTranslatableNodes(\SimpleXMLElement $attributes, \SimpleXMLElement $element)
     {
-        $nodesDelimiter = strpos($attributes['translate'], ' ') === false ? ',' : ' ';
-        foreach (explode($nodesDelimiter, $attributes['translate']) as $value) {
+        $nodesDelimiter = strpos((string) $attributes['translate'], ' ') === false ? ',' : ' ';
+        foreach (explode($nodesDelimiter, (string) $attributes['translate']) as $value) {
             $phrase = trim((string)$element->{$value});
             if ($phrase) {
                 $this->_addPhrase($phrase);

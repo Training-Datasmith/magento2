@@ -187,7 +187,7 @@ class Page extends AbstractHelper
         $this->setLayoutType($inRange, $resultPage);
         $resultPage->addHandle('cms_page_view');
         $pageHandles = [
-            'id' => $this->_page->getIdentifier() === null ? '' : str_replace('/', '_', $this->_page->getIdentifier()),
+            'id' => $this->_page->getIdentifier() === null ? '' : str_replace('/', '_', (string) $this->_page->getIdentifier()),
         ];
         //Selected custom updates.
         try {

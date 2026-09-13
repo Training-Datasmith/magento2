@@ -83,7 +83,7 @@ class Cron extends \Magento\Framework\Event\Observer
         }
 
         // handle multiple options
-        if ($expr && strpos($expr, ',') !== false) {
+        if ($expr && strpos((string) $expr, ',') !== false) {
             foreach (explode(',', $expr) as $e) {
                 if ($this->matchCronExpression($e, $num)) {
                     return true;
@@ -93,7 +93,7 @@ class Cron extends \Magento\Framework\Event\Observer
         }
 
         // handle modulus
-        if ($expr && strpos($expr, '/') !== false) {
+        if ($expr && strpos((string) $expr, '/') !== false) {
             $e = explode('/', $expr);
             if (count($e) !== 2) {
                 return false;
@@ -108,7 +108,7 @@ class Cron extends \Magento\Framework\Event\Observer
         }
 
         // handle range
-        if ($expr && strpos($expr, '-') !== false) {
+        if ($expr && strpos((string) $expr, '-') !== false) {
             $e = explode('-', $expr);
             if (count($e) !== 2) {
                 return false;

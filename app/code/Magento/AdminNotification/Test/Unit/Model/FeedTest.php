@@ -130,12 +130,12 @@ class FeedTest extends TestCase
         $this->feed = $this->objectManagerHelper->getObject(
             Feed::class,
             [
-                'backendConfig' => $this->backendConfig,
+                '_backendConfig' => $this->backendConfig,
                 'cacheManager' => $this->cacheManager,
                 'inboxFactory' => $this->inboxFactory,
                 'appState' => $this->appState,
                 'curlFactory' => $this->curlFactory,
-                'deploymentConfig' => $this->deploymentConfig,
+                '_deploymentConfig' => $this->deploymentConfig,
                 'productMetadata' => $this->productMetadata,
                 'urlBuilder' => $this->urlBuilder,
             ]

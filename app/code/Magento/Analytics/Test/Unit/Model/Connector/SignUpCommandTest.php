@@ -78,7 +78,6 @@ class SignUpCommandTest extends TestCase
         $this->responseResolverMock = $this->createMock(ResponseResolver::class);
 
         $this->signUpCommand = new SignUpCommand(
-            $this->analyticsTokenMock,
             $this->integrationManagerMock,
             $this->configMock,
             $this->httpClientMock,

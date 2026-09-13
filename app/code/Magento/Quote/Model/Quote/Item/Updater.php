@@ -74,7 +74,7 @@ class Updater
     public function update(Item $item, array $info)
     {
         if (!isset($info['qty'])) {
-            throw new InvalidArgumentException(__('The qty value is required to update quote item.'));
+            throw new InvalidArgumentException((string) __('The qty value is required to update quote item.'));
         }
         $itemQty = $info['qty'];
         if ($item->getProduct()->getStockItem()) {

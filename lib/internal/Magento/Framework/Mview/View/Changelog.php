@@ -341,7 +341,7 @@ class Changelog implements ChangelogInterface
     {
         if (!$this->viewId || strlen($this->viewId) == 0) {
             throw new \DomainException(
-                new Phrase("View's identifier is not set")
+                (string) new Phrase("View's identifier is not set")
             );
         }
         return $this->viewId . '_' . self::NAME_SUFFIX;

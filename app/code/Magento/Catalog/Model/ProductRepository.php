@@ -367,8 +367,8 @@ class ProductRepository implements \Magento\Catalog\Api\ProductRepositoryInterfa
 
         if ($this->cacheLimit && count($this->instances) > $this->cacheLimit) {
             $offset = round($this->cacheLimit / -2);
-            $this->instancesById = array_slice($this->instancesById, $offset, null, true);
-            $this->instances = array_slice($this->instances, $offset, null, true);
+            $this->instancesById = array_slice($this->instancesById, (int) $offset, null, true);
+            $this->instances = array_slice($this->instances, (int) $offset, null, true);
         }
     }
 
@@ -865,9 +865,9 @@ class ProductRepository implements \Magento\Catalog\Api\ProductRepositoryInterfa
      * @param string|null $id
      * @return void
      */
-    private function removeProductFromLocalCacheById(?string $id): void
+    private function removeProductFromLocalCacheById(int|string|null $id): void
     {
-        unset($this->instancesById[$id]);
+        unset($this->instancesById[(string) $id]);
     }
 
     /**

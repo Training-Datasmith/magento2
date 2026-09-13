@@ -143,9 +143,9 @@ class ComplexTypeStrategy extends AbstractComplexTypeStrategy
      */
     protected function _processParameter(\DOMElement $element, $isRequired, $parameterData, $parameterType, $callInfo)
     {
-        $element->setAttribute('minOccurs', $isRequired ? 1 : 0);
-        $maxOccurs = isset($parameterData['isArray']) && $parameterData['isArray'] ? 'unbounded' : 1;
-        $element->setAttribute('maxOccurs', $maxOccurs);
+        $element->setAttribute('minOccurs', $isRequired ? '1' : '0');
+        $maxOccurs = isset($parameterData['isArray']) && $parameterData['isArray'] ? 'unbounded' : '1';
+        $element->setAttribute('maxOccurs', (string) $maxOccurs);
         if ($this->_typeProcessor->isTypeSimple($parameterType) || $this->_typeProcessor->isTypeAny($parameterType)) {
             $typeNs = Wsdl::XSD_NS;
         } else {

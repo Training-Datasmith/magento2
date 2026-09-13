@@ -445,7 +445,7 @@ class Shipping implements RateCollectorInterface
             } else {
                 $weightItems[] = array_fill(
                     0,
-                    $qty,
+                    (int) $qty,
                     [
                         'weight' => $itemWeight,
                         'price' => $item->getBasePrice(),

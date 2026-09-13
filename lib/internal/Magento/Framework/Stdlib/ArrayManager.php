@@ -205,7 +205,7 @@ class ArrayManager
         }
 
         $currentNode = &$data;
-        $path = explode($delimiter, $path);
+        $path = explode($delimiter, (string) $path);
 
         foreach ($path as $index) {
             if (!is_array($currentNode)) {

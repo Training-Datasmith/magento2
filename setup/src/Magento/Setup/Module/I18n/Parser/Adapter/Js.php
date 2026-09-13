@@ -100,7 +100,7 @@ class Js extends AbstractAdapter
     {
         try {
             // phpcs:disable
-            $result = @stream_get_line($resource, $length, $ending);
+            $result = @stream_get_line($resource, $length, $ending ?? '');
             // phpcs:enable
         } catch (\Exception $e) {
             throw new FileSystemException(

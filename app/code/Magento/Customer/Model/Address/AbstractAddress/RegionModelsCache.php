@@ -34,9 +34,9 @@ class RegionModelsCache implements ResetAfterRequestInterface
      * @param Region $model
      * @return void
      */
-    public function add(string $key, Region $model): void
+    public function add(int|string $key, Region $model): void
     {
-        $this->regionModels[$key] = $model;
+        $this->regionModels[(string) $key] = $model;
     }
 
     /**
@@ -45,8 +45,8 @@ class RegionModelsCache implements ResetAfterRequestInterface
      * @param string $key
      * @return Region|null
      */
-    public function get(string $key): ?Region
+    public function get(int|string $key): ?Region
     {
-        return $this->regionModels[$key] ?? null;
+        return $this->regionModels[(string) $key] ?? null;
     }
 }

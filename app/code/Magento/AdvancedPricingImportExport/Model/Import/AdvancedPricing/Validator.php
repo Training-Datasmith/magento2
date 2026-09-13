@@ -30,7 +30,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
     {
         $returnValue = true;
         $this->_clearMessages();
-        foreach ($this->validators as $validator) {
+        foreach ($this->validators ?? [] as $validator) {
             if (!$validator->isValid($value)) {
                 $returnValue = false;
                 $this->_addMessages($validator->getMessages());
@@ -44,7 +44,7 @@ class Validator extends AbstractValidator implements RowValidatorInterface
      */
     public function init($context): static
     {
-        foreach ($this->validators as $validator) {
+        foreach ($this->validators ?? [] as $validator) {
             $validator->init($context);
         }
         return $this;

@@ -31,7 +31,7 @@ class BackendFrontnameGenerator
     public static function generate(): string
     {
         return self::ADMIN_AREA_PATH_PREFIX . strrev(
-            substr(base_convert(random_int(0, PHP_INT_MAX), 10, 36), 0, self::ADMIN_AREA_PATH_RANDOM_PART_LENGTH)
+            substr(base_convert((string) random_int(0, PHP_INT_MAX), 10, 36), 0, self::ADMIN_AREA_PATH_RANDOM_PART_LENGTH)
         );
     }
 }

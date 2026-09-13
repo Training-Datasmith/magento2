@@ -110,9 +110,9 @@ class Matrix extends \Magento\Backend\Block\Template
 
         foreach ($array as $key => $rate) {
             foreach ($rate as $code => $value) {
-                $parts = $value !== null ? explode('.', $value) : [];
+                $parts = $value !== null ? explode('.', (string) $value) : [];
                 if (count($parts) == 2) {
-                    $parts[1] = str_pad(rtrim($parts[1], 0), 4, '0', STR_PAD_RIGHT);
+                    $parts[1] = str_pad(rtrim((string) $parts[1], '0'), 4, '0', STR_PAD_RIGHT);
                     $array[$key][$code] = join('.', $parts);
                 } elseif ($value > 0) {
                     $array[$key][$code] = number_format($value, 4);

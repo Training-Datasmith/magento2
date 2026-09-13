@@ -53,12 +53,15 @@ class UrlRewrite extends \Magento\Framework\App\Helper\AbstractHelper
         $requestPath = $requestPath !== null ? $requestPath : '';
         if (strpos($requestPath, '//') !== false) {
             throw new \Exception(
-                __('Do not use two or more consecutive slashes in the request path.'),
+                (string) __('Do not use two or more consecutive slashes in the request path.'),
                 self::VERR_MANYSLASHES
             );
         }
         if (strpos($requestPath, '#') !== false) {
-            throw new \Exception(__('Anchor symbol (#) is not supported in request path.'), self::VERR_ANCHOR);
+            throw new \Exception(
+                (string) __('Anchor symbol (#) is not supported in request path.'),
+                self::VERR_ANCHOR
+            );
         }
         $requestPathArray = explode('/', $requestPath);
         foreach ($requestPathArray as $requestPathPart) {

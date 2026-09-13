@@ -597,7 +597,7 @@ abstract class AbstractEntity implements EntityInterface
                 // try analyze value in self::COLUMN_CUSTOM column and return behavior for given $rowData
                 if (array_key_exists(self::COLUMN_ACTION, $rowData)) {
                     if ($rowData[self::COLUMN_ACTION]
-                        && strtolower($rowData[self::COLUMN_ACTION]) == self::COLUMN_ACTION_VALUE_DELETE
+                        && strtolower((string) $rowData[self::COLUMN_ACTION]) == self::COLUMN_ACTION_VALUE_DELETE
                     ) {
                         $behavior = \Magento\ImportExport\Model\Import::BEHAVIOR_DELETE;
                     } else {
@@ -721,7 +721,7 @@ abstract class AbstractEntity implements EntityInterface
                 $message = self::ERROR_EXCEEDED_MAX_LENGTH;
                 break;
             case 'decimal':
-                $value = trim($rowData[$attributeCode]);
+                $value = trim((string) $rowData[$attributeCode]);
                 $valid = (float)$value == $value && is_numeric($value);
                 $message = self::ERROR_INVALID_ATTRIBUTE_TYPE;
                 break;
@@ -745,7 +745,7 @@ abstract class AbstractEntity implements EntityInterface
                 $message = self::ERROR_INVALID_ATTRIBUTE_OPTION;
                 break;
             case 'int':
-                $value = trim($rowData[$attributeCode]);
+                $value = trim((string) $rowData[$attributeCode]);
                 $valid = (int)$value == $value && is_numeric($value);
                 $message = self::ERROR_INVALID_ATTRIBUTE_TYPE;
                 break;

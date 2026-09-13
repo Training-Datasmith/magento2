@@ -415,7 +415,7 @@ class Bundle extends AbstractView implements ResetAfterRequestInterface
      * @param DataObject $preConfiguredValues
      * @return array
      */
-    private function processOptions(string $optionId, array $options, DataObject $preConfiguredValues)
+    private function processOptions(int|string $optionId, array $options, DataObject $preConfiguredValues)
     {
         $preConfiguredQtys = $preConfiguredValues->getData("bundle_option_qty/{$optionId}") ?? [];
         $selections = $options[$optionId]['selections'];

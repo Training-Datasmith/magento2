@@ -286,6 +286,11 @@ class SaveTest extends TestCase
         $customerStoreMock->expects($this->once())->method('setStore');
 
         $objectManager = new ObjectManager($this);
+        $objectManager->prepareObjectManager([
+            [\Magento\Customer\Model\ValidatorExceptionProcessor::class, $this->createMock(
+                \Magento\Customer\Model\ValidatorExceptionProcessor::class
+            )],
+        ]);
 
         $this->model = $objectManager->getObject(
             Save::class,

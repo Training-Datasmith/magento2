@@ -309,7 +309,11 @@ class SpecialPriceStorage implements SpecialPriceStorageInterface
      */
     private function isCorrectDateValue($date)
     {
-        $actualDate = date('Y-m-d H:i:s', strtotime($date));
+        $timestamp = strtotime((string) $date);
+        if ($timestamp === false) {
+            return false;
+        }
+        $actualDate = date('Y-m-d H:i:s', $timestamp);
         return $actualDate && $actualDate === $date;
     }
 }
