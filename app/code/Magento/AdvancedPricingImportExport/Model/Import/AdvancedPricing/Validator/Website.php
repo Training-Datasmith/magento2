@@ -56,7 +56,7 @@ class Website extends AbstractImportValidator implements RowValidatorInterface
      *
      *
      */
-    public function isValid(array $value): float|int|true
+    public function isValid(mixed $value): float|int|true
     {
         $this->_clearMessages();
         $valid = true;

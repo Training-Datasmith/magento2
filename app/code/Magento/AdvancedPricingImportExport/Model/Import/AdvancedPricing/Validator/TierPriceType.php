@@ -24,7 +24,7 @@ class TierPriceType extends AbstractImportValidator
      *
      * @return bool
      */
-    public function isValid(array $value)
+    public function isValid(mixed $value)
     {
         $isValid = true;
 

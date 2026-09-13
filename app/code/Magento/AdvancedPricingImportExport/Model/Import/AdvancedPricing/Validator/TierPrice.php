@@ -95,7 +95,7 @@ class TierPrice extends AbstractPrice
      * @SuppressWarnings(PHPMD.CyclomaticComplexity)
      * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
      */
-    public function isValid(array $value)
+    public function isValid(mixed $value)
     {
         $this->_clearMessages();
         if (!$this->customerGroups) {
